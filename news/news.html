@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin Tức Y Khoa</title>
+    <style>
+        :root {
+            --primary-color: #0070c0;
+            --primary-dark: #005590;
+            --text-dark: #333;
+            --text-light: #666;
+            --border-color: #ddd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .news-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .news-header {
+            border-bottom: 2px solid var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .news-header h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        .news-categories {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .category-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+
+        .category-link:hover {
+            color: var(--primary-color);
+        }
+
+        .featured-news {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .main-story {
+            position: relative;
+            height: 400px;
+        }
+
+        .main-story img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .main-story-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+        }
+
+        .main-story-content h3 {
+            font-size: 1.8rem;
+            margin: 0 0 10px 0;
+        }
+
+        .secondary-stories {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .secondary-story {
+            display: grid;
+            grid-template-columns: 120px auto;
+            gap: 15px;
+        }
+
+        .secondary-story img {
+            width: 120px;
+            height: 90px;
+            object-fit: cover;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .news-item {
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+
+        .news-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .category-tag {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 3px 8px;
+            font-size: 0.8em;
+            margin-bottom: 5px;
+        }
+
+        .news-title {
+            font-size: 1.1em;
+            margin: 5px 0;
+            color: var(--text-dark);
+        }
+
+        .news-brief {
+            color: var(--text-light);
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .featured-news {
+                grid-template-columns: 1fr;
+            }
+
+            .main-story {
+                height: 300px;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="news-section">
+        <div class="news-header">
+            <h2>Tin Tức Y Khoa</h2>
+        </div>
+
+        <nav class="news-categories">
+            <a href="#" class="category-link">Sản Phụ Khoa</a>
+            <a href="#" class="category-link">Tai Mũi Họng</a>
+            <a href="#" class="category-link">Nội Khoa</a>
+        </nav>
+
+        <div class="featured-news">
+            <div class="main-story">
+                <img src="image/news1.jpg" alt="Phương pháp mới điều trị u xơ tử cung">
+                <div class="main-story-content">
+                    <span class="category-tag">Sản Phụ Khoa</span>
+                    <h3>Đột phá mới trong điều trị u xơ tử cung không cần phẫu thuật</h3>
+                    <p>Phương pháp điều trị không xâm lấn mới đang được áp dụng tại bệnh viện...</p>
+                </div>
+            </div>
+
+            <div class="secondary-stories">
+                <div class="secondary-story">
+                    <img src="image/news2.jpg" alt="Viêm xoang mãn tính">
+                    <div>
+                        <span class="category-tag">Tai Mũi Họng</span>
+                        <h4 class="news-title">Cách phòng ngừa viêm xoang mãn tính hiệu quả</h4>
+                    </div>
+                </div>
+
+                <div class="secondary-story">
+                    <img src="image/news3.jpg" alt="Tim mạch">
+                    <div>
+                        <span class="category-tag">Nội Khoa</span>
+                        <h4 class="news-title">5 dấu hiệu cảnh báo sớm bệnh tim mạch</h4>
+                    </div>
+                </div>
+
+                <div class="secondary-story">
+                    <img src="image/news4.jpg" alt="Sàng lọc ung thư">
+                    <div>
+                        <span class="category-tag">Sản Phụ Khoa</span>
+                        <h4 class="news-title">Tầm quan trọng của sàng lọc ung thư cổ tử cung</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="news-grid">
+            <article class="news-item">
+                <img src="image/news5.jpg" alt="Viêm amidan">
+                <span class="category-tag">Tai Mũi Họng</span>
+                <h3 class="news-title">Điều trị viêm amidan mãn tính ở trẻ em</h3>
+                <p class="news-brief">Hướng dẫn chi tiết cho phụ huynh về cách nhận biết và điều trị...</p>
+            </article>
+
+            <article class="news-item">
+                <img src="image/news6.jpg" alt="Đái tháo đường">
+                <span class="category-tag">Nội Khoa</span>
+                <h3 class="news-title">Quản lý đái tháo đường type 2</h3>
+                <p class="news-brief">Những phương pháp mới nhất trong kiểm soát đường huyết...</p>
+            </article>
+
+            <article class="news-item">
+                <img src="image/news7.jpg" alt="Thai sản">
+                <span class="category-tag">Sản Phụ Khoa</span>
+                <h3 class="news-title">Chăm sóc thai kỳ 3 tháng đầu</h3>
+                <p class="news-brief">Những điều cần lưu ý trong giai đoạn đầu thai kỳ...</p>
+            </article>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+<script>
+    function updateParentHeight() {
+        const height = document.documentElement.scrollHeight;
+        window.parent.postMessage({ height: height }, '*');
+    }
+
+    // Cập nhật khi DOM loaded
+    document.addEventListener('DOMContentLoaded', updateParentHeight);
+
+    // Cập nhật khi tất cả tài nguyên loaded
+    window.addEventListener('load', updateParentHeight);
+
+    // Cập nhật khi có thay đổi kích thước
+    new ResizeObserver(updateParentHeight).observe(document.body);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

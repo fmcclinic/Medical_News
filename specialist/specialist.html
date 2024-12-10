@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyên Khoa | Phòng Khám</title>
+    <style>
+        .specialist-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2em;
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #3498db;
+            margin: 15px auto;
+        }
+
+        .specialty {
+            display: flex;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .specialty-image {
+            flex: 0 0 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .specialty-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .specialty:hover .specialty-image img {
+            transform: scale(1.1);
+        }
+
+        .specialty-content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .specialty-title {
+            color: #3498db;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .specialty-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #3498db;
+        }
+
+        .content-wrapper {
+            position: relative;
+            flex: 1;
+        }
+
+        .specialty-text {
+            font-size: 1em;
+            color: #555;
+            line-height: 1.6;
+            overflow: hidden;
+            position: relative;
+            max-height: 96px; /* 4 lines of text */
+            transition: max-height 0.3s ease;
+        }
+
+        .specialty-text.expanded {
+            max-height: 1000px;
+        }
+
+        .text-gradient {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(transparent, #fff);
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .specialty-text.expanded + .text-gradient {
+            opacity: 0;
+        }
+
+        .expand-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #3498db;
+            background: transparent;
+            border: none;
+            padding: 5px 0;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+
+        .expand-icon {
+            width: 16px;
+            height: 16px;
+            position: relative;
+        }
+
+        .expand-icon::before,
+        .expand-icon::after {
+            content: '';
+            position: absolute;
+            background: #3498db;
+            border-radius: 1px;
+        }
+
+        .expand-icon::before {
+            width: 2px;
+            height: 10px;
+            left: 7px;
+            top: 3px;
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        .expand-icon::after {
+            width: 10px;
+            height: 2px;
+            left: 3px;
+            top: 7px;
+        }
+
+        .expanded .expand-icon::before {
+            opacity: 0;
+        }
+
+        @media (max-width: 768px) {
+            .specialty {
+                flex-direction: column;
+            }
+
+            .specialty-image {
+                height: 150px;
+            }
+
+            .specialty-content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="specialist-section">
+        <h1 class="section-title">Đội Ngũ Y Bác Sĩ Chuyên Khoa Hàng Đầu</h1>
+
+        <div class="specialty">
+            <div class="specialty-image">
+                <img src="image/specialist1.jpg" alt="Chuyên Khoa Sản Phụ Khoa">
+            </div>
+            <div class="specialty-content">
+                <h2 class="specialty-title">Chuyên Khoa Sản Phụ Khoa</h2>
+                <div class="content-wrapper">
+                    <div class="specialty-text">
+                        <p>
+                            Phòng khám tự hào với đội ngũ bác sĩ giàu kinh nghiệm đến từ Bệnh viện Từ Dũ - một trong những trung tâm sản khoa hàng đầu khu vực phía Nam. Các bác sĩ chuyên về điều trị các bệnh lý phụ khoa phức tạp như u xơ tử cung, u nang buồng trứng, và tầm soát ung thư cổ tử cung. Đồng thời, chúng tôi cung cấp dịch vụ chăm sóc thai sản toàn diện, từ khám thai định kỳ, sàng lọc trước sinh đến hỗ trợ sinh tại Bệnh viện Từ Dũ.
+                        </p>
+                    </div>
+                    <div class="text-gradient"></div>
+                </div>
+                <button class="expand-button">
+                    <span class="expand-icon"></span>
+                    <span class="button-text">Xem thêm thông tin</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="specialty">
+            <div class="specialty-image">
+                <img src="image/specialist2.jpg" alt="Chuyên Khoa Tai Mũi Họng">
+            </div>
+            <div class="specialty-content">
+                <h2 class="specialty-title">Chuyên Khoa Tai Mũi Họng</h2>
+                <div class="content-wrapper">
+                    <div class="specialty-text">
+                        <p>
+                            Với đội ngũ chuyên gia đến từ Vinmec, phòng khám mang đến dịch vụ khám và điều trị các bệnh lý tai mũi họng chất lượng cao. Các bác sĩ có nhiều năm kinh nghiệm trong điều trị các bệnh lý như viêm xoang mãn tính, viêm amidan, viêm mũi dị ứng và đặc biệt là tầm soát ung thư vòm họng. Phòng khám được trang bị hệ thống nội soi hiện đại, giúp chẩn đoán chính xác và điều trị hiệu quả.
+                        </p>
+                    </div>
+                    <div class="text-gradient"></div>
+                </div>
+                <button class="expand-button">
+                    <span class="expand-icon"></span>
+                    <span class="button-text">Xem thêm thông tin</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="specialty">
+            <div class="specialty-image">
+                <img src="image/specialist3.jpg" alt="Chuyên Khoa Nội">
+            </div>
+            <div class="specialty-content">
+                <h2 class="specialty-title">Chuyên Khoa Nội</h2>
+                <div class="content-wrapper">
+                    <div class="specialty-text">
+                        <p>
+                            Phòng khám quy tụ các chuyên gia đến từ Bệnh viện FV với đa dạng chuyên môn sâu. Các lĩnh vực chuyên sâu bao gồm: Nội tổng quát với khám và điều trị các bệnh lý thông thường, Tim mạch chuyên chẩn đoán và điều trị các bệnh về tim mạch, Tim mạch can thiệp phụ trách tư vấn và theo dõi các ca bệnh phức tạp, và Nội tiết chuyển hóa chuyên sâu về đái tháo đường, rối loạn tuyến giáp và các bệnh chuyển hóa khác.
+                        </p>
+                    </div>
+                    <div class="text-gradient"></div>
+                </div>
+                <button class="expand-button">
+                    <span class="expand-icon"></span>
+                    <span class="button-text">Xem thêm thông tin</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.expand-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.closest('.specialty-content').querySelector('.specialty-text');
+                const buttonText = button.querySelector('.button-text');
+                const expandIcon = button.querySelector('.expand-icon');
+                
+                content.classList.toggle('expanded');
+                expandIcon.classList.toggle('expanded');
+                
+                buttonText.textContent = content.classList.contains('expanded') 
+                    ? 'Thu gọn nội dung' 
+                    : 'Xem thêm thông tin';
+                
+                if (content.classList.contains('expanded')) {
+                    setTimeout(() => {
+                        content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 300);
+                }
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    function updateParentHeight() {
+        const height = document.documentElement.scrollHeight;
+        window.parent.postMessage({ height: height }, '*');
+    }
+
+    // Cập nhật khi DOM loaded
+    document.addEventListener('DOMContentLoaded', updateParentHeight);
+
+    // Cập nhật khi tất cả tài nguyên loaded
+    window.addEventListener('load', updateParentHeight);
+
+    // Cập nhật khi có thay đổi kích thước
+    new ResizeObserver(updateParentHeight).observe(document.body);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
