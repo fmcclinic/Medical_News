@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FMC Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+        iframe {
+            width: 100%;
+            border: none;
+            display: block;
+            transition: height 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <iframe src="header/header.html" scrolling="no"></iframe>
+    <iframe src="hero/hero.html" scrolling="no"></iframe>
+    <iframe src="specialist/specialist.html" scrolling="no"></iframe>
+    <iframe src="news/news.html" scrolling="no"></iframe>
+    <iframe src="contact/contact.html" scrolling="no"></iframe>
+
+    <script>
+        // Lắng nghe message từ tất cả iframe
+        window.addEventListener('message', function(event) {
+            // Tìm iframe là nguồn của message
+            const sourceFrame = Array.from(document.querySelectorAll('iframe'))
+                .find(iframe => iframe.contentWindow === event.source);
+            
+            if (sourceFrame && event.data.height) {
+                sourceFrame.style.height = `${event.data.height}px`;
+            }
+        });
+    </script>
+</body>
+</html>
