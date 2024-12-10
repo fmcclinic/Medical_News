@@ -12,8 +12,6 @@
         }
 
         :root {
-            --header-height: 120px;
-            --slide-duration: 5s;
             --text-color: #fff;
         }
 
@@ -22,18 +20,16 @@
             line-height: 1.6;
             color: var(--text-color);
             overflow-x: hidden;
-        }
-
-        .header-placeholder {
-            height: var(--header-height);
-            background: #fff;
+            width: 100%;
         }
 
         .hero {
             position: relative;
-            height: calc(100vh - var(--header-height));
+            height: 800px;
             min-height: 500px;
+            width: 100%;
             overflow: hidden;
+            background-color: #f5f5f5;
         }
 
         .background-slider {
@@ -54,10 +50,13 @@
             transition: opacity 1s ease-in-out;
             background-size: cover;
             background-position: center;
+            transform: scale(1.1);
         }
 
         .slide.active {
             opacity: 1;
+            transform: scale(1);
+            transition: opacity 1s ease-in-out, transform 8s linear;
         }
 
         .overlay {
@@ -96,6 +95,7 @@
             margin-bottom: clamp(1rem, 3vw, 1.5rem);
             opacity: 0;
             animation: fadeInLeft 1s forwards;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .description {
@@ -103,6 +103,7 @@
             margin-bottom: clamp(1.5rem, 4vw, 2rem);
             opacity: 0;
             animation: fadeInLeft 1s 0.3s forwards;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         .highlights {
@@ -114,6 +115,7 @@
             font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             opacity: 0;
             animation: fadeInLeft 1s forwards;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .highlights li:nth-child(1) { animation-delay: 0.6s; }
@@ -123,14 +125,15 @@
         .highlights strong {
             font-weight: bold;
             margin-right: 0.5rem;
+            color: #ffd700;
         }
 
-        /* Animation Content Styles */
         .specialty {
             position: absolute;
             width: 100%;
             opacity: 0;
             pointer-events: none;
+            transition: opacity 0.5s ease;
         }
 
         .specialty.active {
@@ -143,6 +146,7 @@
             font-weight: bold;
             margin-bottom: 1rem;
             color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .disease-list {
@@ -154,9 +158,18 @@
             margin-bottom: 0.5rem;
             opacity: 0;
             transform: translateX(50px);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        /* Animations */
+        .disease-item::before {
+            content: "•";
+            color: #ffd700;
+            font-size: 1.2em;
+        }
+
         @keyframes fadeInLeft {
             from {
                 opacity: 0;
@@ -179,11 +192,6 @@
             }
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
         @keyframes slideInRight {
             from {
                 opacity: 0;
@@ -195,24 +203,28 @@
             }
         }
 
-        /* Mobile Styles */
         @media (max-width: 768px) {
+            .hero {
+                height: auto;
+                min-height: 100vh;
+            }
+
             .content {
                 flex-direction: column;
-                justify-content: flex-start;
-                padding-top: 2rem;
+                justify-content: center;
+                gap: 2rem;
+                padding: 4rem 2rem;
             }
 
             .main-content {
                 flex: none;
                 width: 100%;
-                margin-bottom: 2rem;
             }
 
             .animation-content {
                 flex: none;
                 width: 100%;
-                min-height: 200px;
+                min-height: 250px;
             }
 
             .headline, .description {
@@ -223,6 +235,8 @@
                 text-align: left;
                 display: flex;
                 flex-direction: column;
+                align-items: flex-start;
+                gap: 0.2rem;
             }
 
             .highlights strong {
@@ -240,7 +254,6 @@
     </style>
 </head>
 <body>
-    <div class="header-placeholder"></div>
     <section class="hero">
         <div class="background-slider">
             <div class="slide active" style="background-image: url('./image/hero1.jpg')"></div>
@@ -295,7 +308,7 @@
             {
                 title: 'Tai Mũi Họng',
                 diseases: [
-                    'Viêm xoang mãn',
+                    'Viêm xoang mãn tính',
                     'Viêm amidan',
                     'Viêm mũi dị ứng',
                     'Viêm họng mạn tính',
@@ -325,7 +338,6 @@
             div.appendChild(title);
 
             if (specialty.sections) {
-                // For Sản Phụ Khoa with multiple sections
                 specialty.sections.forEach(section => {
                     const subtitle = document.createElement('h4');
                     subtitle.className = 'specialty-title';
@@ -337,7 +349,6 @@
                     div.appendChild(list);
                 });
             } else {
-                // For other specialties
                 const list = createDiseaseList(specialty.diseases);
                 div.appendChild(list);
             }
@@ -353,7 +364,7 @@
                 const li = document.createElement('li');
                 li.className = 'disease-item';
                 li.textContent = disease;
-                li.style.animationDelay = `${index * 0.5}s`;
+                li.style.animationDelay = `${index * 0.3}s`;
                 ul.appendChild(li);
             });
 
@@ -366,7 +377,6 @@
             let currentSlide = 0;
             let currentSpecialty = 0;
 
-            // Create and append all specialty elements
             specialties.forEach(specialty => {
                 const element = createSpecialtyElement(specialty);
                 animationContent.appendChild(element);
@@ -378,12 +388,11 @@
                 specialtyElements.forEach(el => el.classList.remove('active'));
                 specialtyElements[currentSpecialty].classList.add('active');
 
-                // Restart disease items animation
                 const items = specialtyElements[currentSpecialty].querySelectorAll('.disease-item');
                 items.forEach((item, index) => {
                     item.style.animation = 'none';
                     item.offsetHeight; // Trigger reflow
-                    item.style.animation = `slideInRight 0.5s forwards ${index * 0.5}s`;
+                    item.style.animation = `slideInRight 0.5s forwards ${index * 0.3}s`;
                 });
             }
 
@@ -396,14 +405,15 @@
                 updateSpecialty();
             }
 
-            // Initial state
+            // Set initial state
             specialtyElements[0].classList.add('active');
+            
+            // Start animations
             setInterval(nextSlide, 5000);
         }
 
-        // Start the animations when the page loads
+        // Preload images
         window.addEventListener('load', function() {
-            // Preload images
             const imageUrls = ['hero1.jpg', 'hero2.jpg', 'hero3.jpg', 'hero4.jpg'];
             imageUrls.forEach(url => {
                 const img = new Image();
@@ -412,53 +422,21 @@
 
             initializeAnimations();
         });
+
+        // Height adjustment for iframe
+        function updateParentHeight() {
+            const height = Math.max(
+                document.documentElement.scrollHeight,
+                document.body.scrollHeight,
+                document.documentElement.offsetHeight,
+                document.body.offsetHeight
+            );
+            window.parent.postMessage({ height }, '*');
+        }
+
+        document.addEventListener('DOMContentLoaded', updateParentHeight);
+        window.addEventListener('load', updateParentHeight);
+        new ResizeObserver(updateParentHeight).observe(document.body);
     </script>
-
-
-
-
-
-
-
-
-
-
-
-<script>
-    function updateParentHeight() {
-        const height = document.documentElement.scrollHeight;
-        window.parent.postMessage({ height: height }, '*');
-    }
-
-    // Cập nhật khi DOM loaded
-    document.addEventListener('DOMContentLoaded', updateParentHeight);
-
-    // Cập nhật khi tất cả tài nguyên loaded
-    window.addEventListener('load', updateParentHeight);
-
-    // Cập nhật khi có thay đổi kích thước
-    new ResizeObserver(updateParentHeight).observe(document.body);
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
