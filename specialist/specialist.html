@@ -313,50 +313,54 @@
         </div>
     </section>
 
-    <script>
-<<<<<<< HEAD
-        // Xử lý sự kiện expand/collapse
-=======
-        // Xử lý expand/collapse
->>>>>>> 822e7db973f782b5ad52cc14063fe3ea96dbd257
+<script>
+    // Hàm cập nhật chiều cao cho trang chính
+    function updateParentHeight() {
+        const height = document.documentElement.scrollHeight;
+        window.parent.postMessage({ height: height }, '*');
+    }
+
+    // Xử lý expand/collapse nội dung
+    function initializeExpandButtons() {
         document.querySelectorAll('.expand-button').forEach(button => {
             button.addEventListener('click', () => {
                 const content = button.closest('.specialty-content').querySelector('.specialty-text');
                 const buttonText = button.querySelector('.button-text');
                 const expandIcon = button.querySelector('.expand-icon');
                 
+                // Toggle trạng thái
                 content.classList.toggle('expanded');
                 expandIcon.classList.toggle('expanded');
                 
+                // Cập nhật text của nút
                 buttonText.textContent = content.classList.contains('expanded') 
                     ? 'Thu gọn nội dung' 
                     : 'Xem thêm thông tin';
                 
+                // Scroll đến vị trí mới nếu đang mở rộng
                 if (content.classList.contains('expanded')) {
                     setTimeout(() => {
                         content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                     }, 300);
                 }
 
-                // Cập nhật chiều cao sau khi expand/collapse
+                // Cập nhật chiều cao sau khi thay đổi nội dung
                 updateParentHeight();
             });
         });
+    }
 
-        // Hàm cập nhật chiều cao cho trang chính
-        function updateParentHeight() {
-            const height = document.documentElement.scrollHeight;
-            window.parent.postMessage({ height: height }, '*');
-        }
+    // Khởi tạo khi DOM đã load
+    document.addEventListener('DOMContentLoaded', () => {
+        initializeExpandButtons();
+        updateParentHeight();
+    });
 
-        // Cập nhật khi DOM loaded
-        document.addEventListener('DOMContentLoaded', updateParentHeight);
+    // Cập nhật khi tất cả resources đã load
+    window.addEventListener('load', updateParentHeight);
 
-        // Cập nhật khi tất cả tài nguyên loaded
-        window.addEventListener('load', updateParentHeight);
-
-        // Cập nhật khi có thay đổi kích thước
-        new ResizeObserver(updateParentHeight).observe(document.body);
-    </script>
+    // Theo dõi thay đổi kích thước
+    new ResizeObserver(updateParentHeight).observe(document.body);
+</script>
 </body>
 </html>
