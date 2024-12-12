@@ -5,10 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chuyên Khoa | Phòng Khám</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f9f9f9;
+        }
+
         .specialist-section {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 0;
+            padding: 30px 20px;
         }
 
         .section-title {
@@ -38,7 +51,9 @@
         }
 
         .specialty-image {
-            flex: 0 0 200px;
+            width: 180px;
+            height: 180px;
+            min-width: 180px;
             position: relative;
             overflow: hidden;
         }
@@ -59,6 +74,7 @@
             padding: 20px;
             display: flex;
             flex-direction: column;
+            min-width: 0; /* Để tránh overflow trên các trình duyệt cũ */
         }
 
         .specialty-title {
@@ -67,6 +83,9 @@
             margin-bottom: 15px;
             position: relative;
             padding-bottom: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .specialty-title:after {
@@ -162,15 +181,25 @@
 
         @media (max-width: 768px) {
             .specialty {
-                flex-direction: column;
-            }
-
-            .specialty-image {
-                height: 150px;
+                flex-direction: row; /* Giữ layout ngang */
             }
 
             .specialty-content {
                 padding: 15px;
+            }
+
+            .specialty-title {
+                font-size: 1.2em;
+            }
+
+            .specialty-text {
+                font-size: 0.95em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8em;
             }
         }
     </style>
@@ -244,6 +273,7 @@
     </section>
 
     <script>
+        // Xử lý expand/collapse
         document.querySelectorAll('.expand-button').forEach(button => {
             button.addEventListener('click', () => {
                 const content = button.closest('.specialty-content').querySelector('.specialty-text');
@@ -262,53 +292,26 @@
                         content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                     }, 300);
                 }
+
+                // Cập nhật chiều cao sau khi expand/collapse
+                updateParentHeight();
             });
         });
+
+        // Hàm cập nhật chiều cao cho trang chính
+        function updateParentHeight() {
+            const height = document.documentElement.scrollHeight;
+            window.parent.postMessage({ height: height }, '*');
+        }
+
+        // Cập nhật khi DOM loaded
+        document.addEventListener('DOMContentLoaded', updateParentHeight);
+
+        // Cập nhật khi tất cả tài nguyên loaded
+        window.addEventListener('load', updateParentHeight);
+
+        // Cập nhật khi có thay đổi kích thước
+        new ResizeObserver(updateParentHeight).observe(document.body);
     </script>
-
-
-
-
-
-
-
-
-
-
-
-<script>
-    function updateParentHeight() {
-        const height = document.documentElement.scrollHeight;
-        window.parent.postMessage({ height: height }, '*');
-    }
-
-    // Cập nhật khi DOM loaded
-    document.addEventListener('DOMContentLoaded', updateParentHeight);
-
-    // Cập nhật khi tất cả tài nguyên loaded
-    window.addEventListener('load', updateParentHeight);
-
-    // Cập nhật khi có thay đổi kích thước
-    new ResizeObserver(updateParentHeight).observe(document.body);
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
