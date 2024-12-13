@@ -1,10 +1,8 @@
-news.html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Tin Tức Y Khoa</title>
    <style>
        * {
            box-sizing: border-box;
@@ -15,13 +13,17 @@ news.html
        body {
            font-family: Arial, sans-serif;
            line-height: 1.6;
-           padding: 20px;
-           max-width: 1200px;
-           margin: 0 auto;
            background: #f5f5f5;
+           color: #333;
        }
 
-       .header {
+       .news-section {
+           max-width: 1200px;
+           margin: 0 auto;
+           padding: 20px;
+       }
+
+       .news-header {
            text-align: center;
            margin-bottom: 20px;
            padding: 20px;
@@ -30,20 +32,24 @@ news.html
            border-radius: 8px;
        }
 
+       .news-header h1 {
+           margin: 0;
+       }
+
        .news-categories {
            display: flex;
            gap: 15px;
            margin-bottom: 20px;
-           padding: 10px;
+           padding: 15px;
            background: white;
            border-radius: 8px;
            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
        }
 
        .category-link {
-           padding: 8px 16px;
            color: #333;
            text-decoration: none;
+           padding: 8px 16px;
            border-radius: 20px;
            transition: all 0.3s;
        }
@@ -98,6 +104,11 @@ news.html
            padding: 10px;
            border-radius: 8px;
            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+           transition: transform 0.3s;
+       }
+
+       .secondary-story:hover {
+           transform: translateY(-3px);
        }
 
        .secondary-story img {
@@ -118,6 +129,11 @@ news.html
            border-radius: 8px;
            overflow: hidden;
            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+           transition: transform 0.3s;
+       }
+
+       .news-item:hover {
+           transform: translateY(-3px);
        }
 
        .news-item img {
@@ -146,6 +162,15 @@ news.html
            color: #333;
        }
 
+       .news-title a {
+           color: inherit;
+           text-decoration: none;
+       }
+
+       .news-title a:hover {
+           color: #0070c0;
+       }
+
        .news-brief {
            color: #666;
            font-size: 0.9em;
@@ -164,151 +189,152 @@ news.html
            .main-story {
                height: 300px;
            }
+
+           .news-categories {
+               flex-wrap: wrap;
+               justify-content: center;
+           }
        }
    </style>
 </head>
 <body>
-   <div class="header">
-       <h1>Tin Tức Y Khoa</h1>
-   </div>
+   <div class="news-section">
+       <div class="news-header">
+           <h1>Tin Tức Y Khoa</h1>
+       </div>
 
-   <nav class="news-categories">
-                         <a href="#obstetrics_and_gynecology" class="category-link">Sản Phụ Khoa</a>
-                  <a href="#ent" class="category-link">Tai Mũi Họng</a>
-                  <a href="#internal_medicine" class="category-link">Nội Khoa</a>
-          </nav>
+       <nav class="news-categories">
+                          <a href="#san-phu-khoa" class="category-link">Sản Phụ Khoa</a>
+                          <a href="#tai-mui-hong" class="category-link">Tai Mũi Họng</a>
+                          <a href="#noi-khoa" class="category-link">Nội Khoa</a>
+                  </nav>
 
-   <div class="featured-news">
-                  <div class="main-story">
-               <img src="https://github.com/fmcclinic/fmcweb/blob/main/news/image/news.jpg?raw=true" alt="Chủ Động Tầm Soát Ung Thư Vú - Đừng Để Quá Muộn">
-               <div class="main-story-content">
-                   <span class="category-tag">Sản Phụ Khoa</span>
-                   <h2 class="news-title">
-                       <a href="articles/NEWS_20241213134235.html" style="color: white; text-decoration: none;">
-                           Chủ Động Tầm Soát Ung Thư Vú - Đừng Để Quá Muộn                       </a>
-                   </h2>
-                   <p>&#34;Chị Lan (35 tuổi, TP.HCM) tưởng chừng đã quá muộn khi phát hiện khối u ở giai đoạn 2. Nhưng nhờ tầm soát định kỳ trong chương trình khám sức khỏe ...</p>
-               </div>
-           </div>
-       
-       <div class="secondary-stories">
-                          <div class="secondary-story">
-                   <img src="https://tamanhhospital.vn/wp-content/uploads/2021/04/tre-sinh-non-trong-long-ap.jpg" alt="Phát hiện các biến chứng sản khoa từ sớm và can thiệp kịp thời">
-                   <div>
-                       <span class="category-tag">Sản Phụ Khoa</span>
-                       <h3 class="news-title">
-                           <a href="articles/NEWS_20241211230026.html" style="color: #333; text-decoration: none;">
-                               Phát hiện các biến chứng sản khoa từ sớm và can thiệp kịp thời                           </a>
-                       </h3>
+       <div class="featured-news">
+                          <div class="main-story">
+                   <img src="https://www.sinusdoctor.com/wp-content/uploads/2024/05/SinusDoctor-Images-20.jpg" alt="Minimally Invasive Sinus Procedures: Balloon Sinuplasty vs. Traditional FESS">
+                   <div class="main-story-content">
+                       <span class="category-tag">Tai Mũi Họng</span>
+                       <h2 class="news-title">
+                           <a href="articles/NEWS_20241213192127.html" style="color: white; text-decoration: none;">
+                               Minimally Invasive Sinus Procedures: Balloon Sinuplasty vs. Traditional FESS                           </a>
+                       </h2>
+                       <p>IntroductionChronic sinusitis affects more than 30 million people every year globally. It can make breathing difficult and daily life uncomfortable...</p>
                    </div>
                </div>
-                          <div class="secondary-story">
-                   <img src="https://benhvienk.vn/mediacenter/media/files/1601/banners/546_1589328697_7615ebb3b39e0c6a.jpg" alt="Hồi ký những đêm trực sản">
-                   <div>
+           
+           <div class="secondary-stories">
+                                  <div class="secondary-story">
+                       <img src="https://www.templehealth.org/sites/default/files/styles/without_crop/public/2023-02/older-woman-coughing-into-hand.jpg?itok=sCMz7WFT" alt="Phòng bệnh viêm phế quản mùa Tết cho người lớn tuổi">
+                       <div>
+                           <span class="category-tag">Nội Khoa</span>
+                           <h3 class="news-title">
+                               <a href="articles/NEWS_20241213194508.html">
+                                   Phòng bệnh viêm phế quản mùa Tết cho người lớn tuổi                               </a>
+                           </h3>
+                       </div>
+                   </div>
+                                  <div class="secondary-story">
+                       <img src="https://www.sinusdoctor.com/wp-content/uploads/2024/09/44386.jpg" alt="Nasal Polyps Surgery: Recovery Timeline and Follow-up Care">
+                       <div>
+                           <span class="category-tag">Tai Mũi Họng</span>
+                           <h3 class="news-title">
+                               <a href="articles/NEWS_20241213184549.html">
+                                   Nasal Polyps Surgery: Recovery Timeline and Follow-up Care                               </a>
+                           </h3>
+                       </div>
+                   </div>
+                                  <div class="secondary-story">
+                       <img src="https://www.sinusdoctor.com/wp-content/uploads/2022/05/Home-page-Images.jpg" alt="Nội soi tai mũi họng: Khám phá thế giới bên trong để có sức khỏe hoàn hảo">
+                       <div>
+                           <span class="category-tag">Tai Mũi Họng</span>
+                           <h3 class="news-title">
+                               <a href="articles/NEWS_20241213182755.html">
+                                   Nội soi tai mũi họng: Khám phá thế giới bên trong để có sức khỏe hoàn hảo                               </a>
+                           </h3>
+                       </div>
+                   </div>
+                          </div>
+       </div>
+
+       <div class="news-grid">
+                          <article class="news-item">
+                   <img src="https://github.com/fmcclinic/fmcweb/blob/main/news/image/news.jpg?raw=true" alt="Chủ Động Tầm Soát Ung Thư Vú - Đừng Để Quá Muộn">
+                   <div class="news-content">
                        <span class="category-tag">Sản Phụ Khoa</span>
                        <h3 class="news-title">
-                           <a href="articles/NEWS_20241212074725.html" style="color: #333; text-decoration: none;">
-                               Hồi ký những đêm trực sản                           </a>
+                           <a href="articles/NEWS_20241213141102.html">
+                               Chủ Động Tầm Soát Ung Thư Vú - Đừng Để Quá Muộn                           </a>
                        </h3>
+                       <p class="news-brief">&#34;Chị Lan (35 tuổi, TP.HCM) tưởng chừng đã quá muộn khi phát hiện khối u ở giai đoạn 2. Nhưng nhờ tầm soát định kỳ trong chương trình khám sức khỏe ...</p>
                    </div>
-               </div>
-                          <div class="secondary-story">
-                   <img src="https://i1-suckhoe.vnecdn.net/2024/12/10/image001-9876-1733807778.png?w=680&amp;h=0&amp;q=100&amp;dpr=2&amp;fit=crop&amp;s=l5iZK9HCyFO4n1Ju-9cheQ" alt="Virus HPV tiến triển gây ung thư cổ tử cung">
-                   <div>
+               </article>
+                          <article class="news-item">
+                   <img src="https://www.aceaudiology.com.au/wp-content/uploads/2021/09/Hearing-Aids-Buying-Guide.jpg" alt="Cách lựa chọn máy trợ thính phù hợp">
+                   <div class="news-content">
+                       <span class="category-tag">Tai Mũi Họng</span>
+                       <h3 class="news-title">
+                           <a href="articles/NEWS_20241212161344.html">
+                               Cách lựa chọn máy trợ thính phù hợp                           </a>
+                       </h3>
+                       <p class="news-brief">Việc lựa chọn một chiếc máy trợ thính phù hợp là rất quan trọng để cải thiện chất lượng cuộc sống cho người gặp vấn đề về thính lực. Dưới đây là mộ...</p>
+                   </div>
+               </article>
+                          <article class="news-item">
+                   <img src="https://helpmehear.ca/wp-content/uploads/2024/03/presbycusis-hearing-loss.jpeg" alt="Giảm thính lực ở người già: Nguyên nhân và cách khắc phục">
+                   <div class="news-content">
+                       <span class="category-tag">Tai Mũi Họng</span>
+                       <h3 class="news-title">
+                           <a href="articles/NEWS_20241212160127.html">
+                               Giảm thính lực ở người già: Nguyên nhân và cách khắc phục                           </a>
+                       </h3>
+                       <p class="news-brief">Giảm thính lực là một vấn đề sức khỏe phổ biến ở người cao tuổi, ảnh hưởng đáng kể đến chất lượng cuộc sống. Hiểu rõ về nguyên nhân và cách khắc ph...</p>
+                   </div>
+               </article>
+                          <article class="news-item">
+                   <img src="https://suckhoedoisong.qltns.mediacdn.vn/Images/nguyenkhanh/2017/12/21/noi_soi_tai_mui_hong.jpg" alt="Tầm soát ung thư vòm họng: Bảo vệ sức khỏe bạn">
+                   <div class="news-content">
+                       <span class="category-tag">Tai Mũi Họng</span>
+                       <h3 class="news-title">
+                           <a href="articles/NEWS_20241212154352.html">
+                               Tầm soát ung thư vòm họng: Bảo vệ sức khỏe bạn                           </a>
+                       </h3>
+                       <p class="news-brief">Ung thư vòm họng là một loại ung thư nguy hiểm, nhưng nếu được phát hiện sớm, khả năng điều trị thành công sẽ cao hơn rất nhiều. Vì vậy, tầm soát u...</p>
+                   </div>
+               </article>
+                          <article class="news-item">
+                   <img src="https://thanhnien.mediacdn.vn/Uploaded/hongkyqc/2022_12_20/image2-3173.jpeg" alt="Sảy thai 3 lần, cuối cùng người mẹ Hàn sinh thành công nhờ bác sĩ Việt Nam">
+                   <div class="news-content">
                        <span class="category-tag">Sản Phụ Khoa</span>
                        <h3 class="news-title">
-                           <a href="articles/NEWS_20241212081726.html" style="color: #333; text-decoration: none;">
-                               Virus HPV tiến triển gây ung thư cổ tử cung                           </a>
+                           <a href="articles/NEWS_20241212133218.html">
+                               Sảy thai 3 lần, cuối cùng người mẹ Hàn sinh thành công nhờ bác sĩ Việt Nam                           </a>
                        </h3>
+                       <p class="news-brief">Thành&amp;nbsp;công&amp;nbsp;nhờ tin tưởng bác sĩ và bệnh việnCô J.J, 30 tuổi, người Hàn Quốc, cùng chồng sinh sống và làm việc tại Q.7, TP.HCM. Dù rất kha...</p>
                    </div>
-               </div>
+               </article>
+                          <article class="news-item">
+                   <img src="https://medlatec.vn/media/37959/file/ca-benh-vo-sinh-medlatec.jpg" alt="Hành trình “tìm con” gian truân do mắc phải bất thường gen di truyền đông máu">
+                   <div class="news-content">
+                       <span class="category-tag">Sản Phụ Khoa</span>
+                       <h3 class="news-title">
+                           <a href="articles/NEWS_20241212113525.html">
+                               Hành trình “tìm con” gian truân do mắc phải bất thường gen di truyền đông máu                           </a>
+                       </h3>
+                       <p class="news-brief">Kiên trì thực hiện phương pháp hỗ trợ sinh sản nhưng vẫn liên tiếp sảy thai&amp;nbsp;Bệnh nhân Đ.T.N.A (32 tuổi, Hà Nội) đến Bệnh viện Đa khoa MEDLATEC...</p>
+                   </div>
+               </article>
                   </div>
    </div>
 
-   <div class="news-grid">
-                  <article class="news-item">
-               <img src="https://image.tienphong.vn/w645/Uploaded/2024/bp-ejwbxw/2024_11_26/y-te-9854.jpg" alt="Phẫu thuật khẩn cứu bệnh nhi vỡ ruột trong bụng mẹ">
-               <div class="news-content">
-                   <span class="category-tag">Sản Phụ Khoa</span>
-                   <h3 class="news-title">
-                       <a href="articles/NEWS_20241212083214.html" style="color: #333; text-decoration: none;">
-                           Phẫu thuật khẩn cứu bệnh nhi vỡ ruột trong bụng mẹ                       </a>
-                   </h3>
-                   <p class="news-brief">Qua hội chẩn, các bác sĩ xác định đây là tình trạng&amp;nbsp;viêm phúc mạc&amp;nbsp;bào thai do một đoạn ruột vỡ vào trong ổ bụng, tạo thành một khối giả u...</p>
-               </div>
-           </article>
-                  <article class="news-item">
-               <img src="https://images2.thanhnien.vn/528068263637045248/2023/6/6/san-phu-16860187613801068180616.jpeg" alt="Đi bằng xe máy hơn 150 km, sản phụ bị nhau bong non nguy kịch">
-               <div class="news-content">
-                   <span class="category-tag">Sản Phụ Khoa</span>
-                   <h3 class="news-title">
-                       <a href="articles/NEWS_20241212111435.html" style="color: #333; text-decoration: none;">
-                           Đi bằng xe máy hơn 150 km, sản phụ bị nhau bong non nguy kịch                       </a>
-                   </h3>
-                   <p class="news-brief">Tại đây, qua thăm khám và siêu âm, đo monitoring, bác sĩ chẩn đoán sản phụ bị nhau bong non thể trung bình. Ngay sau đó, bác sĩ tiến hành&amp;nbsp;mổ l...</p>
-               </div>
-           </article>
-                  <article class="news-item">
-               <img src="https://medlatec.vn/media/39396/file/Nhung-con-co-that-manh-trong-chu-ky-kinh-nguyet-de-khien-vong-tranh-thai-bi-lech.jpg" alt="Lệch vòng tránh thai có bị đau lưng không và dấu hiệu nhận biết khác">
-               <div class="news-content">
-                   <span class="category-tag">Sản Phụ Khoa</span>
-                   <h3 class="news-title">
-                       <a href="articles/NEWS_20241212111955.html" style="color: #333; text-decoration: none;">
-                           Lệch vòng tránh thai có bị đau lưng không và dấu hiệu nhận biết khác                       </a>
-                   </h3>
-                   <p class="news-brief">1. Nguyên nhân gây lệch vòng tránh thai&amp;nbsp;Nguyên nhân dẫn đến tình trạng lệch vòng tránh thai có thể là do cơn co thắt tử cung mạnh xuất hiện tr...</p>
-               </div>
-           </article>
-                  <article class="news-item">
-               <img src="https://medlatec.vn/media/38520/file/Dau-vung-chau-khien-co-the-kho-chiu.jpg" alt="Đau vùng chậu - Triệu chứng cảnh báo nhiều bệnh lý chị em không nên xem thường">
-               <div class="news-content">
-                   <span class="category-tag">Sản Phụ Khoa</span>
-                   <h3 class="news-title">
-                       <a href="articles/NEWS_20241212112428.html" style="color: #333; text-decoration: none;">
-                           Đau vùng chậu - Triệu chứng cảnh báo nhiều bệnh lý chị em không nên xem thường                       </a>
-                   </h3>
-                   <p class="news-brief">2.2. Hội chứng ruột kích thích (IBS)Đau vùng chậu là một trong những dấu hiệu cảnh báo hội chứng ruột kích thích. Bên cạnh triệu chứng đau tại vùng...</p>
-               </div>
-           </article>
-                  <article class="news-item">
-               <img src="https://medlatec.vn/media/37959/file/ca-benh-vo-sinh-medlatec.jpg" alt="Hành trình “tìm con” gian truân do mắc phải bất thường gen di truyền đông máu">
-               <div class="news-content">
-                   <span class="category-tag">Sản Phụ Khoa</span>
-                   <h3 class="news-title">
-                       <a href="articles/NEWS_20241212113525.html" style="color: #333; text-decoration: none;">
-                           Hành trình “tìm con” gian truân do mắc phải bất thường gen di truyền đông máu                       </a>
-                   </h3>
-                   <p class="news-brief">Kiên trì thực hiện phương pháp hỗ trợ sinh sản nhưng vẫn liên tiếp sảy thai&amp;nbsp;Bệnh nhân Đ.T.N.A (32 tuổi, Hà Nội) đến Bệnh viện Đa khoa MEDLATEC...</p>
-               </div>
-           </article>
-                  <article class="news-item">
-               <img src="https://thanhnien.mediacdn.vn/Uploaded/hongkyqc/2022_12_20/image2-3173.jpeg" alt="Sảy thai 3 lần, cuối cùng người mẹ Hàn sinh thành công nhờ bác sĩ Việt Nam">
-               <div class="news-content">
-                   <span class="category-tag">Sản Phụ Khoa</span>
-                   <h3 class="news-title">
-                       <a href="articles/NEWS_20241212133218.html" style="color: #333; text-decoration: none;">
-                           Sảy thai 3 lần, cuối cùng người mẹ Hàn sinh thành công nhờ bác sĩ Việt Nam                       </a>
-                   </h3>
-                   <p class="news-brief">Thành&amp;nbsp;công&amp;nbsp;nhờ tin tưởng bác sĩ và bệnh việnCô J.J, 30 tuổi, người Hàn Quốc, cùng chồng sinh sống và làm việc tại Q.7, TP.HCM. Dù rất kha...</p>
-               </div>
-           </article>
-          </div>
+   <script>
+       function updateParentHeight() {
+           const height = document.documentElement.scrollHeight;
+           window.parent.postMessage({ height: height }, '*');
+       }
 
-<script>
-    function updateParentHeight() {
-        const height = document.documentElement.scrollHeight;
-        window.parent.postMessage({ height: height }, '*');
-    }
-
-    
-    document.addEventListener('DOMContentLoaded', updateParentHeight);
-
-    
-    window.addEventListener('load', updateParentHeight);
-
-    
-    new ResizeObserver(updateParentHeight).observe(document.body);
-</script>
-
+       document.addEventListener('DOMContentLoaded', updateParentHeight);
+       window.addEventListener('load', updateParentHeight);
+       new ResizeObserver(updateParentHeight).observe(document.body);
+   </script>
 </body>
 </html>

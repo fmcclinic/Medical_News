@@ -355,5 +355,33 @@
             alert('Có lỗi xảy ra khi tải dữ liệu. Vui lòng thử lại sau.');
         }
     </script>
+
+
+
+
+<script>
+    function updateParentHeight() {
+        const height = document.documentElement.scrollHeight;
+        window.parent.postMessage({ height: height }, '*');
+    }
+
+    
+    document.addEventListener('DOMContentLoaded', updateParentHeight);
+
+    
+    window.addEventListener('load', updateParentHeight);
+
+    
+    new ResizeObserver(updateParentHeight).observe(document.body);
+</script>
+
+
+
+
+
+
+
+
+
 </body>
 </html>
