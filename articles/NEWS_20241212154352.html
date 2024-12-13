@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Tầm soát ung thư vòm họng: Bảo vệ sức khỏe bạn - Tin Tức Y Khoa</title>
+   <style>
+       * {
+           box-sizing: border-box;
+           margin: 0;
+           padding: 0;
+       }
+
+       body {
+           font-family: Arial, sans-serif;
+           line-height: 1.6;
+           color: #333;
+           background: #f5f5f5;
+       }
+
+       .container {
+           max-width: 1200px;
+           margin: 0 auto;
+           padding: 20px;
+       }
+
+       .article-category {
+           display: inline-block;
+           background: #0070c0;
+           color: white;
+           padding: 5px 15px;
+           border-radius: 20px;
+           font-size: 0.9em;
+           margin-bottom: 15px;
+       }
+
+       h1 {
+           font-size: 2em;
+           margin-bottom: 15px;
+           line-height: 1.2;
+           color: #333;
+       }
+
+       .article-meta {
+           color: #666;
+           font-size: 0.9em;
+           margin-bottom: 20px;
+           display: flex;
+           align-items: center;
+           gap: 15px;
+       }
+
+       .reading-time {
+           display: inline-flex;
+           align-items: center;
+           gap: 5px;
+       }
+
+       img {
+           max-width: 100%;
+           height: auto;
+           border-radius: 8px;
+           margin-bottom: 20px;
+       }
+
+       .article-content {
+           background: white;
+           padding: 30px;
+           border-radius: 8px;
+           margin-bottom: 20px;
+           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+       }
+
+       .article-content p {
+           margin-bottom: 15px;
+           line-height: 1.8;
+       }
+
+       .article-content img {
+           margin: 20px 0;
+       }
+
+       .share-buttons {
+           margin-top: 30px;
+           padding: 20px 0;
+           border-top: 1px solid #eee;
+           display: flex;
+           gap: 10px;
+       }
+
+       .share-button {
+           padding: 10px 20px;
+           border: none;
+           border-radius: 4px;
+           color: white;
+           cursor: pointer;
+           display: flex;
+           align-items: center;
+           gap: 5px;
+           font-size: 14px;
+       }
+
+       .share-button.facebook {
+           background: #1877f2;
+       }
+
+       .share-button.twitter {
+           background: #1da1f2;
+       }
+
+       .share-button:hover {
+           opacity: 0.9;
+       }
+
+       .speech-controls {
+           margin: 20px 0;
+           padding: 15px;
+           background: #f8f9fa;
+           border-radius: 8px;
+           display: flex;
+           align-items: center;
+           gap: 20px;
+       }
+
+       .speech-button {
+           display: flex;
+           align-items: center;
+           gap: 8px;
+           padding: 10px 20px;
+           background: #0070c0;
+           color: white;
+           border: none;
+           border-radius: 4px;
+           cursor: pointer;
+           font-weight: bold;
+       }
+
+       .speech-button:hover {
+           background: #005590;
+       }
+
+       .speech-settings {
+           display: flex;
+           align-items: center;
+           gap: 10px;
+       }
+
+       .speech-settings select {
+           padding: 5px 10px;
+           border-radius: 4px;
+           border: 1px solid #ddd;
+       }
+
+       .related-articles {
+           margin-top: 40px;
+       }
+
+       .related-articles h2 {
+           font-size: 1.5em;
+           margin-bottom: 20px;
+           color: #0070c0;
+       }
+
+       .related-grid {
+           display: grid;
+           grid-template-columns: repeat(3, 1fr);
+           gap: 20px;
+       }
+
+       .related-article {
+           background: white;
+           border-radius: 8px;
+           overflow: hidden;
+           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+       }
+
+       .related-article img {
+           width: 100%;
+           height: 180px;
+           object-fit: cover;
+           margin-bottom: 0;
+       }
+
+       .related-article h3 {
+           padding: 15px;
+           margin: 0;
+           font-size: 1.1em;
+       }
+
+       .related-article h3 a {
+           color: #333;
+           text-decoration: none;
+       }
+
+       .related-article h3 a:hover {
+           color: #0070c0;
+       }
+
+       .related-article .date {
+           display: block;
+           padding: 0 15px 15px;
+           color: #666;
+           font-size: 0.9em;
+       }
+
+       @media (max-width: 768px) {
+           .container {
+               padding: 10px;
+           }
+
+           h1 {
+               font-size: 1.8em;
+           }
+
+           .article-meta {
+               flex-direction: column;
+               align-items: flex-start;
+               gap: 10px;
+           }
+
+           .speech-controls {
+               flex-direction: column;
+               align-items: stretch;
+           }
+
+           .related-grid {
+               grid-template-columns: 1fr;
+           }
+       }
+   </style>
+</head>
+<body>
+   <div class="container">
+       <span class="article-category">Tai Mũi Họng</span>
+       
+       <h1>Tầm soát ung thư vòm họng: Bảo vệ sức khỏe bạn</h1>
+       
+       <div class="article-meta">
+           <span>Đăng ngày 12/12/2024</span>
+           <span class="reading-time">
+               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                   <circle cx="12" cy="12" r="10"></circle>
+                   <polyline points="12 6 12 12 16 14"></polyline>
+               </svg>
+               3 phút đọc
+           </span>
+       </div>
+
+       <img src="https://suckhoedoisong.qltns.mediacdn.vn/Images/nguyenkhanh/2017/12/21/noi_soi_tai_mui_hong.jpg" alt="Tầm soát ung thư vòm họng: Bảo vệ sức khỏe bạn">
+
+       <div class="article-content">
+           
+           <div class="speech-controls">
+               <button id="playButton" class="speech-button" onclick="toggleSpeech()">
+                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                       <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                   </svg>
+                   Đọc bài viết
+               </button>
+               
+               <div class="speech-settings">
+                   <label>Tốc độ đọc:
+                       <select id="rateSelect" onchange="updateRate()">
+                           <option value="0.8">Chậm</option>
+                           <option value="1" selected>Bình thường</option>
+                           <option value="1.2">Nhanh</option>
+                       </select>
+                   </label>
+               </div>
+           </div>
+
+           <p>Ung thư vòm họng là một loại ung thư nguy hiểm, nhưng nếu được phát hiện sớm, khả năng điều trị thành công sẽ cao hơn rất nhiều. Vì vậy, tầm soát ung thư vòm họng định kỳ là vô cùng quan trọng.</p><h3><strong>Tại sao phải tầm soát ung thư vòm họng?</strong></h3><ul><li><strong>Phát hiện sớm:</strong> Các dấu hiệu ban đầu của ung thư vòm họng thường không rõ ràng hoặc dễ bị nhầm lẫn với các bệnh lý khác. Tầm soát giúp phát hiện bệnh ở giai đoạn sớm, khi khối u còn nhỏ và chưa xâm lấn các mô xung quanh.</li><li><strong>Điều trị hiệu quả:</strong> Khi phát hiện sớm, các phương pháp điều trị sẽ đơn giản hơn, ít xâm lấn hơn và hiệu quả cao hơn.</li><li><strong>Nâng cao chất lượng cuộc sống:</strong> Phát hiện và điều trị kịp thời giúp người bệnh giảm thiểu các biến chứng nguy hiểm và duy trì chất lượng cuộc sống.</li></ul><h3><strong>Những ai nên tầm soát ung thư vòm họng?</strong></h3><ul><li><strong>Người lớn tuổi:</strong> Nguy cơ mắc bệnh tăng theo tuổi.</li><li><strong>Người hút thuốc:</strong> Hút thuốc là yếu tố nguy cơ hàng đầu gây ung thư vòm họng.</li><li><strong>Người thường xuyên tiếp xúc với các chất gây ô nhiễm:</strong> Các chất này có thể làm tăng nguy cơ mắc bệnh.</li><li><strong>Người có tiền sử gia đình mắc ung thư vòm họng:</strong> Di truyền cũng là một yếu tố nguy cơ.</li></ul><h3><strong>Các phương pháp tầm soát ung thư vòm họng</strong></h3><ul><li><strong>Khám lâm sàng:</strong> Bác sĩ sẽ khám tai, mũi, họng để phát hiện các bất thường như sưng hạch cổ, khối u, loét...</li><li><strong>Nội soi tai mũi họng:</strong> Sử dụng ống nội soi để quan sát trực tiếp các tổn thương trong vòm họng.</li><li><a href="https://suckhoedoisong.vn/noi-soi-tai-mui-hong-nguoi-benh-can-luu-y-gi-169139761.htm" target="_blank"><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRVUx2VGEAPclHMZhAOcT8iK0B3-FwqLB6GXJwxxiK_gmJ_Zmc_b-3uMzjflcUd" alt="Image of Nội soi tai mũi họng"> Opens in a new window <img src="https://encrypted-tbn0.gstatic.com/favicon-tbn?q=tbn:ANd9GcTT6Qc6XqDmssw7MFfl-eErfyVAKxmoxXgXeCWKlJhQ5E4P4FYjIQLz5eqZnsZ5a0m61D9u2uhiMVhebL8PJUbokdTXMDsddv_K-lI">suckhoedoisong.vn</a></li><li>Nội soi tai mũi họng</li><li><strong>Sinh thiết:</strong> Lấy một mẫu mô nhỏ từ vùng nghi ngờ để xét nghiệm dưới kính hiển vi. Đây là cách chẩn đoán chính xác nhất.</li><li><strong>Xét nghiệm máu:</strong> Kiểm tra các chỉ số liên quan đến ung thư, như xét nghiệm tìm kháng thể virus Epstein-Barr (EBV).</li></ul><h3><strong>Các dấu hiệu cảnh báo ung thư vòm họng</strong></h3><ul><li>Đau họng kéo dài</li><li>Khó nuốt</li><li>Giảm cân không rõ nguyên nhân</li><li>Vùng cổ sưng hạch</li><li>Điếc một bên</li><li>Chảy máu mũi</li><li>Giọng nói thay đổi</li></ul><h3><strong>Cách phòng ngừa ung thư vòm họng</strong></h3><ul><li><strong>Không hút thuốc:</strong> Hút thuốc là nguyên nhân chính gây ung thư vòm họng.</li><li><strong>Hạn chế tiếp xúc với các chất gây ô nhiễm:</strong> Đeo khẩu trang khi làm việc trong môi trường ô nhiễm.</li><li><strong>Ăn uống lành mạnh:</strong> Tăng cường ăn rau quả, hạn chế đồ ăn chế biến sẵn.</li><li><strong>Khám sức khỏe định kỳ:</strong> Tầm soát ung thư vòm họng định kỳ để phát hiện sớm bệnh.</li></ul><p><strong>Lưu ý:</strong> Nếu bạn có bất kỳ dấu hiệu bất thường nào, hãy đến gặp bác sĩ chuyên khoa tai mũi họng để được khám và tư vấn kịp thời.</p><p><a href="https://medlatec.vn/tin-tuc/dau-hieu-ung-thu-vom-hong-nhu-the-nao-va-cach-xu-tri" target="_blank"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-vu50KkbPjE5uUzaYtn5qPHIdDxDdEu7GSBdufJruAAJtMfAkJbNneHfRXmUH" alt="Image of Các dấu hiệu cảnh báo ung thư vòm họng"> Opens in a new window <img src="https://encrypted-tbn2.gstatic.com/favicon-tbn?q=tbn:ANd9GcT3BFDHiV4q1h14AweSjrKdyfjEoRq34DUwyE3gDHgOhVXRoy4XuEfFcfoakWCwEZRkcstSOU2V5YkO_NgVSNI2Bgcc590">medlatec.vn</a></p><p>Các dấu hiệu cảnh báo ung thư vòm họng</p><p><strong>Tầm soát ung thư vòm họng là một hành động quan trọng để bảo vệ sức khỏe của bạn và gia đình. Hãy chủ động khám sức khỏe định kỳ để phát hiện và điều trị bệnh kịp thời.</strong></p>
+           <div class="share-buttons">
+               <button onclick="shareOnFacebook()" class="share-button facebook">
+                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                       <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                   </svg>
+                   Chia sẻ Facebook
+               </button>
+               <button onclick="shareOnTwitter()" class="share-button twitter">
+                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                       <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                   </svg>
+                   Chia sẻ Twitter
+               </button>
+           </div>
+       </div>
+
+       <div class="related-articles">
+           <h2>Bài viết liên quan</h2>
+           <div class="related-grid">
+               
+     <div class="related-article">
+       <img src="https://www.sinusdoctor.com/wp-content/uploads/2022/05/Home-page-Images.jpg" alt="Nội soi tai mũi họng: Khám phá thế giới bên trong để có sức khỏe hoàn hảo">
+       <h3><a href="NEWS_20241213182755.html">Nội soi tai mũi họng: Khám phá thế giới bên trong để có sức khỏe hoàn hảo</a></h3>
+       <span class="date">13/12/2024</span>
+     </div>
+   
+     <div class="related-article">
+       <img src="https://www.aceaudiology.com.au/wp-content/uploads/2021/09/Hearing-Aids-Buying-Guide.jpg" alt="Cách lựa chọn máy trợ thính phù hợp">
+       <h3><a href="NEWS_20241212161344.html">Cách lựa chọn máy trợ thính phù hợp</a></h3>
+       <span class="date">12/12/2024</span>
+     </div>
+   
+     <div class="related-article">
+       <img src="https://helpmehear.ca/wp-content/uploads/2024/03/presbycusis-hearing-loss.jpeg" alt="Giảm thính lực ở người già: Nguyên nhân và cách khắc phục">
+       <h3><a href="NEWS_20241212160127.html">Giảm thính lực ở người già: Nguyên nhân và cách khắc phục</a></h3>
+       <span class="date">12/12/2024</span>
+     </div>
+              </div>
+       </div>
+   </div>
+
+   <script>
+       let speech = null;
+       let isPaused = false;
+
+       function toggleSpeech() {
+           if (speech && !isPaused) {
+               window.speechSynthesis.pause();
+               isPaused = true;
+               document.getElementById('playButton').innerHTML = 'Tiếp tục đọc';
+           } else if (speech && isPaused) {
+               window.speechSynthesis.resume();
+               isPaused = false;
+               document.getElementById('playButton').innerHTML = 'Tạm dừng';
+           } else {
+               startSpeech();
+           }
+       }
+
+       function startSpeech() {
+           const content = document.querySelector('.article-content').textContent;
+           
+           speech = new SpeechSynthesisUtterance();
+           speech.text = content;
+           speech.lang = 'vi-VN';
+           speech.rate = parseFloat(document.getElementById('rateSelect').value);
+           
+           const voices = window.speechSynthesis.getVoices();
+           const viVoice = voices.find(voice => voice.lang.includes('vi'));
+           if (viVoice) {
+               speech.voice = viVoice;
+           }
+
+           speech.onend = function() {
+               speech = null;
+               isPaused = false;
+               document.getElementById('playButton').innerHTML = 'Đọc lại';
+           }
+
+           window.speechSynthesis.speak(speech);
+           document.getElementById('playButton').innerHTML = 'Tạm dừng';
+       }
+
+       function updateRate() {
+           if (speech) {
+               speech.rate = parseFloat(document.getElementById('rateSelect').value);
+               if (!isPaused) {
+                   window.speechSynthesis.cancel();
+                   window.speechSynthesis.speak(speech);
+               }
+           }
+       }
+
+       function shareOnFacebook() {
+           const url = window.location.href;
+           window.open(`https:
+       }
+
+       function shareOnTwitter() {
+           const url = window.location.href;
+           const title = document.title;
+           window.open(`https:
+       }
+
+       function updateParentHeight() {
+           const height = document.documentElement.scrollHeight;
+           window.parent.postMessage({ height: height }, '*');
+       }
+
+       document.addEventListener('DOMContentLoaded', updateParentHeight);
+       window.addEventListener('load', updateParentHeight);
+       new ResizeObserver(updateParentHeight).observe(document.body);
+   </script>
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Nội soi tai mũi họng: Khám phá thế giới bên trong để có sức khỏe hoàn hảo - Tin Tức Y Khoa</title>
+   <style>
+       * {
+           box-sizing: border-box;
+           margin: 0;
+           padding: 0;
+       }
+
+       body {
+           font-family: Arial, sans-serif;
+           line-height: 1.6;
+           color: #333;
+           background: #f5f5f5;
+       }
+
+       .container {
+           max-width: 1200px;
+           margin: 0 auto;
+           padding: 20px;
+       }
+
+       .article-category {
+           display: inline-block;
+           background: #0070c0;
+           color: white;
+           padding: 5px 15px;
+           border-radius: 20px;
+           font-size: 0.9em;
+           margin-bottom: 15px;
+       }
+
+       h1 {
+           font-size: 2em;
+           margin-bottom: 15px;
+           line-height: 1.2;
+           color: #333;
+       }
+
+       .article-meta {
+           color: #666;
+           font-size: 0.9em;
+           margin-bottom: 20px;
+           display: flex;
+           align-items: center;
+           gap: 15px;
+       }
+
+       .reading-time {
+           display: inline-flex;
+           align-items: center;
+           gap: 5px;
+       }
+
+       img {
+           max-width: 100%;
+           height: auto;
+           border-radius: 8px;
+           margin-bottom: 20px;
+       }
+
+       .article-content {
+           background: white;
+           padding: 30px;
+           border-radius: 8px;
+           margin-bottom: 20px;
+           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+       }
+
+       .article-content p {
+           margin-bottom: 15px;
+           line-height: 1.8;
+       }
+
+       .article-content img {
+           margin: 20px 0;
+       }
+
+       .share-buttons {
+           margin-top: 30px;
+           padding: 20px 0;
+           border-top: 1px solid #eee;
+           display: flex;
+           gap: 10px;
+       }
+
+       .share-button {
+           padding: 10px 20px;
+           border: none;
+           border-radius: 4px;
+           color: white;
+           cursor: pointer;
+           display: flex;
+           align-items: center;
+           gap: 5px;
+           font-size: 14px;
+       }
+
+       .share-button.facebook {
+           background: #1877f2;
+       }
+
+       .share-button.twitter {
+           background: #1da1f2;
+       }
+
+       .share-button:hover {
+           opacity: 0.9;
+       }
+
+       .speech-controls {
+           margin: 20px 0;
+           padding: 15px;
+           background: #f8f9fa;
+           border-radius: 8px;
+           display: flex;
+           align-items: center;
+           gap: 20px;
+       }
+
+       .speech-button {
+           display: flex;
+           align-items: center;
+           gap: 8px;
+           padding: 10px 20px;
+           background: #0070c0;
+           color: white;
+           border: none;
+           border-radius: 4px;
+           cursor: pointer;
+           font-weight: bold;
+       }
+
+       .speech-button:hover {
+           background: #005590;
+       }
+
+       .speech-settings {
+           display: flex;
+           align-items: center;
+           gap: 10px;
+       }
+
+       .speech-settings select {
+           padding: 5px 10px;
+           border-radius: 4px;
+           border: 1px solid #ddd;
+       }
+
+       .related-articles {
+           margin-top: 40px;
+       }
+
+       .related-articles h2 {
+           font-size: 1.5em;
+           margin-bottom: 20px;
+           color: #0070c0;
+       }
+
+       .related-grid {
+           display: grid;
+           grid-template-columns: repeat(3, 1fr);
+           gap: 20px;
+       }
+
+       .related-article {
+           background: white;
+           border-radius: 8px;
+           overflow: hidden;
+           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+       }
+
+       .related-article img {
+           width: 100%;
+           height: 180px;
+           object-fit: cover;
+           margin-bottom: 0;
+       }
+
+       .related-article h3 {
+           padding: 15px;
+           margin: 0;
+           font-size: 1.1em;
+       }
+
+       .related-article h3 a {
+           color: #333;
+           text-decoration: none;
+       }
+
+       .related-article h3 a:hover {
+           color: #0070c0;
+       }
+
+       .related-article .date {
+           display: block;
+           padding: 0 15px 15px;
+           color: #666;
+           font-size: 0.9em;
+       }
+
+       @media (max-width: 768px) {
+           .container {
+               padding: 10px;
+           }
+
+           h1 {
+               font-size: 1.8em;
+           }
+
+           .article-meta {
+               flex-direction: column;
+               align-items: flex-start;
+               gap: 10px;
+           }
+
+           .speech-controls {
+               flex-direction: column;
+               align-items: stretch;
+           }
+
+           .related-grid {
+               grid-template-columns: 1fr;
+           }
+       }
+   </style>
+</head>
+<body>
+   <div class="container">
+       <span class="article-category">Tai Mũi Họng</span>
+       
+       <h1>Nội soi tai mũi họng: Khám phá thế giới bên trong để có sức khỏe hoàn hảo</h1>
+       
+       <div class="article-meta">
+           <span>Đăng ngày 13/12/2024</span>
+           <span class="reading-time">
+               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                   <circle cx="12" cy="12" r="10"></circle>
+                   <polyline points="12 6 12 12 16 14"></polyline>
+               </svg>
+               2 phút đọc
+           </span>
+       </div>
+
+       <img src="https://www.sinusdoctor.com/wp-content/uploads/2022/05/Home-page-Images.jpg" alt="Nội soi tai mũi họng: Khám phá thế giới bên trong để có sức khỏe hoàn hảo">
+
+       <div class="article-content">
+           
+           <div class="speech-controls">
+               <button id="playButton" class="speech-button" onclick="toggleSpeech()">
+                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                       <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                   </svg>
+                   Đọc bài viết
+               </button>
+               
+               <div class="speech-settings">
+                   <label>Tốc độ đọc:
+                       <select id="rateSelect" onchange="updateRate()">
+                           <option value="0.8">Chậm</option>
+                           <option value="1" selected>Bình thường</option>
+                           <option value="1.2">Nhanh</option>
+                       </select>
+                   </label>
+               </div>
+           </div>
+
+           <p>Bạn thường xuyên gặp phải các vấn đề về tai mũi họng như nghẹt mũi, chảy nước mũi, đau họng, ù tai...? Đừng lo lắng, với công nghệ hiện đại, nội soi tai mũi họng sẽ giúp bạn tìm ra nguyên nhân và có giải pháp điều trị hiệu quả nhất.</p><h3><strong>Nội soi tai mũi họng là gì?</strong></h3><p>Nội soi tai mũi họng là một kỹ thuật y khoa sử dụng ống nội soi có gắn camera siêu nhỏ để quan sát trực tiếp các cấu trúc bên trong tai, mũi, họng. Phương pháp này giúp bác sĩ phát hiện sớm và chính xác các bệnh lý, từ đó đưa ra phác đồ điều trị phù hợp.</p><h3><strong>Tại sao nên chọn nội soi tai mũi họng?</strong></h3><ul><li><strong>Chẩn đoán chính xác:</strong> Nội soi giúp bác sĩ nhìn thấy rõ ràng các tổn thương, từ đó đưa ra kết luận chính xác về bệnh.</li><li><strong>Ít xâm lấn:</strong> Thủ thuật đơn giản, nhanh chóng, không gây đau đớn.</li><li><strong>An toàn:</strong> Được thực hiện bởi các bác sĩ chuyên khoa giàu kinh nghiệm, sử dụng trang thiết bị hiện đại.</li><li><strong>Điều trị hiệu quả:</strong> Nhờ chẩn đoán chính xác, việc điều trị trở nên dễ dàng và hiệu quả hơn.</li></ul><h3><strong>Nội soi tai mũi họng phát hiện được những bệnh gì?</strong></h3><ul><li><strong>Bệnh về mũi:</strong> Viêm mũi dị ứng, viêm xoang, polyp mũi, vẹo vách ngăn...</li><li><strong>Bệnh về họng:</strong> Viêm họng, viêm amidan, ung thư họng...</li><li><strong>Bệnh về tai:</strong> Viêm tai giữa, ù tai, giảm thính lực...</li></ul><h3><strong>Quy trình nội soi tai mũi họng diễn ra như thế nào?</strong></h3><ol><li><strong>Chuẩn bị:</strong> Bác sĩ sẽ giải thích về thủ thuật và hướng dẫn bệnh nhân chuẩn bị.</li><li><strong>Tiến hành:</strong> Bác sĩ nhẹ nhàng đưa ống nội soi vào mũi hoặc tai để quan sát.</li><li><strong>Kết quả:</strong> Hình ảnh sẽ được hiển thị trên màn hình, bác sĩ sẽ giải thích kết quả và tư vấn phương pháp điều trị.</li></ol><p><br></p>
+           <div class="share-buttons">
+               <button onclick="shareOnFacebook()" class="share-button facebook">
+                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                       <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                   </svg>
+                   Chia sẻ Facebook
+               </button>
+               <button onclick="shareOnTwitter()" class="share-button twitter">
+                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                       <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                   </svg>
+                   Chia sẻ Twitter
+               </button>
+           </div>
+       </div>
+
+       <div class="related-articles">
+           <h2>Bài viết liên quan</h2>
+           <div class="related-grid">
+               
+     <div class="related-article">
+       <img src="https://www.aceaudiology.com.au/wp-content/uploads/2021/09/Hearing-Aids-Buying-Guide.jpg" alt="Cách lựa chọn máy trợ thính phù hợp">
+       <h3><a href="NEWS_20241212161344.html">Cách lựa chọn máy trợ thính phù hợp</a></h3>
+       <span class="date">12/12/2024</span>
+     </div>
+   
+     <div class="related-article">
+       <img src="https://helpmehear.ca/wp-content/uploads/2024/03/presbycusis-hearing-loss.jpeg" alt="Giảm thính lực ở người già: Nguyên nhân và cách khắc phục">
+       <h3><a href="NEWS_20241212160127.html">Giảm thính lực ở người già: Nguyên nhân và cách khắc phục</a></h3>
+       <span class="date">12/12/2024</span>
+     </div>
+   
+     <div class="related-article">
+       <img src="https://suckhoedoisong.qltns.mediacdn.vn/Images/nguyenkhanh/2017/12/21/noi_soi_tai_mui_hong.jpg" alt="Tầm soát ung thư vòm họng: Bảo vệ sức khỏe bạn">
+       <h3><a href="NEWS_20241212154352.html">Tầm soát ung thư vòm họng: Bảo vệ sức khỏe bạn</a></h3>
+       <span class="date">12/12/2024</span>
+     </div>
+              </div>
+       </div>
+   </div>
+
+   <script>
+       let speech = null;
+       let isPaused = false;
+
+       function toggleSpeech() {
+           if (speech && !isPaused) {
+               window.speechSynthesis.pause();
+               isPaused = true;
+               document.getElementById('playButton').innerHTML = 'Tiếp tục đọc';
+           } else if (speech && isPaused) {
+               window.speechSynthesis.resume();
+               isPaused = false;
+               document.getElementById('playButton').innerHTML = 'Tạm dừng';
+           } else {
+               startSpeech();
+           }
+       }
+
+       function startSpeech() {
+           const content = document.querySelector('.article-content').textContent;
+           
+           speech = new SpeechSynthesisUtterance();
+           speech.text = content;
+           speech.lang = 'vi-VN';
+           speech.rate = parseFloat(document.getElementById('rateSelect').value);
+           
+           const voices = window.speechSynthesis.getVoices();
+           const viVoice = voices.find(voice => voice.lang.includes('vi'));
+           if (viVoice) {
+               speech.voice = viVoice;
+           }
+
+           speech.onend = function() {
+               speech = null;
+               isPaused = false;
+               document.getElementById('playButton').innerHTML = 'Đọc lại';
+           }
+
+           window.speechSynthesis.speak(speech);
+           document.getElementById('playButton').innerHTML = 'Tạm dừng';
+       }
+
+       function updateRate() {
+           if (speech) {
+               speech.rate = parseFloat(document.getElementById('rateSelect').value);
+               if (!isPaused) {
+                   window.speechSynthesis.cancel();
+                   window.speechSynthesis.speak(speech);
+               }
+           }
+       }
+
+       function shareOnFacebook() {
+           const url = window.location.href;
+           window.open(`https:
+       }
+
+       function shareOnTwitter() {
+           const url = window.location.href;
+           const title = document.title;
+           window.open(`https:
+       }
+
+       function updateParentHeight() {
+           const height = document.documentElement.scrollHeight;
+           window.parent.postMessage({ height: height }, '*');
+       }
+
+       document.addEventListener('DOMContentLoaded', updateParentHeight);
+       window.addEventListener('load', updateParentHeight);
+       new ResizeObserver(updateParentHeight).observe(document.body);
+   </script>
+</body>
+</html>
