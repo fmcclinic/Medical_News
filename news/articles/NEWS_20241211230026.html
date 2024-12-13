@@ -1,432 +1,387 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ARTICLE_TITLE}} - Tin Tức Y Khoa</title>
-    <style>
-         
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Phát hiện các biến chứng sản khoa từ sớm và can thiệp kịp thời - Tin Tức Y Khoa</title>
+   <style>
+       * {
+           box-sizing: border-box;
+           margin: 0;
+           padding: 0;
+       }
 
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f5f5f5;
-        }
+       body {
+           font-family: Arial, sans-serif;
+           line-height: 1.6;
+           color: #333;
+           background: #f5f5f5;
+       }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+       .container {
+           max-width: 1200px;
+           margin: 0 auto;
+           padding: 20px;
+       }
 
-         
-        .breadcrumb {
-            margin-bottom: 20px;
-            padding: 10px 0;
-            color: #666;
-        }
+       .article-category {
+           display: inline-block;
+           background: #0070c0;
+           color: white;
+           padding: 5px 15px;
+           border-radius: 20px;
+           font-size: 0.9em;
+           margin-bottom: 15px;
+       }
 
-        .breadcrumb a {
-            color: #0070c0;
-            text-decoration: none;
-        }
+       h1 {
+           font-size: 2em;
+           margin-bottom: 15px;
+           line-height: 1.2;
+           color: #333;
+       }
 
-        .breadcrumb a:hover {
-            text-decoration: underline;
-        }
+       .article-meta {
+           color: #666;
+           font-size: 0.9em;
+           margin-bottom: 20px;
+           display: flex;
+           align-items: center;
+           gap: 15px;
+       }
 
-         
-        .article-header {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
+       .reading-time {
+           display: inline-flex;
+           align-items: center;
+           gap: 5px;
+       }
 
-        .article-category {
-            display: inline-block;
-            background: #0070c0;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            margin-bottom: 15px;
-            text-decoration: none;
-        }
+       img {
+           max-width: 100%;
+           height: auto;
+           border-radius: 8px;
+           margin-bottom: 20px;
+       }
 
-        .article-category:hover {
-            background: #005590;
-        }
+       .article-content {
+           background: white;
+           padding: 30px;
+           border-radius: 8px;
+           margin-bottom: 20px;
+           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+       }
 
-        .article-title {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            line-height: 1.2;
-        }
+       .article-content p {
+           margin-bottom: 15px;
+           line-height: 1.8;
+       }
 
-        .article-meta {
-            display: flex;
-            align-items: center;
-            color: #666;
-            font-size: 0.9em;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
+       .article-content img {
+           margin: 20px 0;
+       }
 
-        .reading-time {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
+       .share-buttons {
+           margin-top: 30px;
+           padding: 20px 0;
+           border-top: 1px solid #eee;
+           display: flex;
+           gap: 10px;
+       }
 
-        .article-image {
-            width: 100%;
-            max-height: 500px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
+       .share-button {
+           padding: 10px 20px;
+           border: none;
+           border-radius: 4px;
+           color: white;
+           cursor: pointer;
+           display: flex;
+           align-items: center;
+           gap: 5px;
+           font-size: 14px;
+       }
 
-         
-        .article-content {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
+       .share-button.facebook {
+           background: #1877f2;
+       }
 
-        .article-content img {
-            max-width: 100%;
-            height: auto;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
+       .share-button.twitter {
+           background: #1da1f2;
+       }
 
-        .article-content p {
-            margin-bottom: 20px;
-            font-size: 1.1em;
-            line-height: 1.8;
-        }
+       .share-button:hover {
+           opacity: 0.9;
+       }
 
-        .article-content h2,
-        .article-content h3 {
-            margin: 30px 0 15px;
-            color: #0070c0;
-        }
+       .speech-controls {
+           margin: 20px 0;
+           padding: 15px;
+           background: #f8f9fa;
+           border-radius: 8px;
+           display: flex;
+           align-items: center;
+           gap: 20px;
+       }
 
-         
-        .speech-controls {
-            margin: 20px 0;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
+       .speech-button {
+           display: flex;
+           align-items: center;
+           gap: 8px;
+           padding: 10px 20px;
+           background: #0070c0;
+           color: white;
+           border: none;
+           border-radius: 4px;
+           cursor: pointer;
+           font-weight: bold;
+       }
 
-        .speech-button {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: #0070c0;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
+       .speech-button:hover {
+           background: #005590;
+       }
 
-        .speech-button:hover {
-            background: #005590;
-        }
+       .speech-settings {
+           display: flex;
+           align-items: center;
+           gap: 10px;
+       }
 
-        .speech-settings {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+       .speech-settings select {
+           padding: 5px 10px;
+           border-radius: 4px;
+           border: 1px solid #ddd;
+       }
 
-        .speech-settings select {
-            padding: 5px 10px;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-            font-size: 0.9em;
-        }
+       .related-articles {
+           margin-top: 40px;
+       }
 
-         
-        .share-buttons {
-            margin-top: 30px;
-            padding: 20px 0;
-            border-top: 1px solid #eee;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+       .related-articles h2 {
+           font-size: 1.5em;
+           margin-bottom: 20px;
+           color: #0070c0;
+       }
 
-        .share-button {
-            padding: 8px 20px;
-            border: none;
-            border-radius: 4px;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: opacity 0.3s;
-        }
+       .related-grid {
+           display: grid;
+           grid-template-columns: repeat(3, 1fr);
+           gap: 20px;
+       }
 
-        .share-button:hover {
-            opacity: 0.9;
-        }
+       .related-article {
+           background: white;
+           border-radius: 8px;
+           overflow: hidden;
+           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+       }
 
-         
-        .related-articles {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            margin-top: 30px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
+       .related-article img {
+           width: 100%;
+           height: 180px;
+           object-fit: cover;
+           margin-bottom: 0;
+       }
 
-        .related-title {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: #0070c0;
-        }
+       .related-article h3 {
+           padding: 15px;
+           margin: 0;
+           font-size: 1.1em;
+       }
 
-        .related-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+       .related-article h3 a {
+           color: #333;
+           text-decoration: none;
+       }
 
-        .related-item {
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.3s;
-        }
+       .related-article h3 a:hover {
+           color: #0070c0;
+       }
 
-        .related-item:hover {
-            transform: translateY(-5px);
-        }
+       .related-article .date {
+           display: block;
+           padding: 0 15px 15px;
+           color: #666;
+           font-size: 0.9em;
+       }
 
-        .related-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 4px;
-            margin-bottom: 10px;
-        }
+       @media (max-width: 768px) {
+           .container {
+               padding: 10px;
+           }
 
-        .related-item-title {
-            font-size: 1.1em;
-            margin-bottom: 5px;
-            color: #333;
-            line-height: 1.4;
-        }
+           h1 {
+               font-size: 1.8em;
+           }
 
-         
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
+           .article-meta {
+               flex-direction: column;
+               align-items: flex-start;
+               gap: 10px;
+           }
 
-            .article-title {
-                font-size: 2em;
-            }
+           .speech-controls {
+               flex-direction: column;
+               align-items: stretch;
+           }
 
-            .article-meta {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-
-            .related-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .article-header,
-            .article-content,
-            .related-articles {
-                padding: 20px;
-            }
-
-            .speech-controls {
-                flex-direction: column;
-                align-items: stretch;
-            }
-        }
-    </style>
+           .related-grid {
+               grid-template-columns: 1fr;
+           }
+       }
+   </style>
 </head>
 <body>
-    <div class="container">
-        
-        <div class="breadcrumb">
-            <a href="/news.html">Tin Tức</a> > 
-            <a href="#department">{{DEPARTMENT_NAME}}</a> > 
-            {{ARTICLE_TITLE}}
-        </div>
+   <div class="container">
+       <span class="article-category">Sản Phụ Khoa</span>
+       
+       <h1>Phát hiện các biến chứng sản khoa từ sớm và can thiệp kịp thời</h1>
+       
+       <div class="article-meta">
+           <span>Đăng ngày 11/12/2024</span>
+           <span class="reading-time">
+               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                   <circle cx="12" cy="12" r="10"></circle>
+                   <polyline points="12 6 12 12 16 14"></polyline>
+               </svg>
+               5 phút đọc
+           </span>
+       </div>
 
-        
-        <header class="article-header">
-            <a href="#department" class="article-category">{{DEPARTMENT_NAME}}</a>
-            <h1 class="article-title">{{ARTICLE_TITLE}}</h1>
-            <div class="article-meta">
-                <span>Đăng ngày {{PUBLISH_DATE}}</span>
-                <span class="reading-time">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                    </svg>
-                    {{READING_TIME}} phút đọc
-                </span>
-            </div>
-            <img src="{{FEATURE_IMAGE}}" alt="{{ARTICLE_TITLE}}" class="article-image">
-        </header>
+       <img src="https://tamanhhospital.vn/wp-content/uploads/2021/04/tre-sinh-non-trong-long-ap.jpg" alt="Phát hiện các biến chứng sản khoa từ sớm và can thiệp kịp thời">
 
-        
-        <article class="article-content">
-            
-            <div class="speech-controls">
-                <button id="playButton" class="speech-button" onclick="toggleSpeech()">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                    </svg>
-                    Đọc bài viết
-                </button>
-                
-                <div class="speech-settings">
-                    <label>Tốc độ đọc:
-                        <select id="rateSelect" onchange="updateRate()">
-                            <option value="0.8">Chậm</option>
-                            <option value="1" selected>Bình thường</option>
-                            <option value="1.2">Nhanh</option>
-                        </select>
-                    </label>
-                </div>
-            </div>
+       <div class="article-content">
+           
+           <div class="speech-controls">
+               <button id="playButton" class="speech-button" onclick="toggleSpeech()">
+                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                       <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                   </svg>
+                   Đọc bài viết
+               </button>
+               
+               <div class="speech-settings">
+                   <label>Tốc độ đọc:
+                       <select id="rateSelect" onchange="updateRate()">
+                           <option value="0.8">Chậm</option>
+                           <option value="1" selected>Bình thường</option>
+                           <option value="1.2">Nhanh</option>
+                       </select>
+                   </label>
+               </div>
+           </div>
 
-            {{ARTICLE_CONTENT}}
+           <p>Cứ 11 giây lại có 1 phụ nữ mang thai hoặc trẻ sơ sinh tử vong, hầu hết là do các nguyên nhân có thể phòng ngừa. Sự tiến bộ của y khoa trong chăm sóc thai kỳ và quá trình sinh nở sẽ ngăn chặn bi kịch gia đình, theo Bác sĩ Nguyễn Bá Mỹ Nhi.</p><p>Theo số liệu của Tổ chức Y tế Thế giới (WHO), mỗi năm có khoảng 515.000 phụ nữ trên thế giới tử vong trong quá trình mang thai và sinh nở. Tại Việt Nam, hàng năm có gần 800 bà mẹ tử vong do các tai biến sản khoa. Phần lớn các trường hợp này có thể ngăn ngừa khi phụ nữ được tiếp cận với dịch vụ chăm sóc sức khỏe sinh sản chất lượng, được thông qua các biện pháp can thiệp đơn giản, tiết kiệm chi phí.</p><h2>Phối hợp Sản – Nhi sơ sinh trong điều trị ca khó</h2><p>BVĐK Tâm Anh tiếp nhận khoảng 100 ca sinh mỗi tháng và trong khoảng 1.200 trẻ chào đời mỗi năm, có đến 70% là trẻ sinh non tháng, 50% trong đó là trẻ sinh sớm dưới 30 tuần. Sự phối hợp chặt chẽ giữa Sản khoa và Nhi Sơ sinh, theo dõi, phát hiện bất thường thai kỳ, đặc biệt là nguy cơ sinh non để theo dõi chặt chẽ và xử trí ngay tại phòng sinh… đã cứu sống hàng trăm trường hợp trẻ sinh non, thậm chí có ca chỉ 24 – 25 tuần tuổi.</p><p>Mới đây, các bác sĩ bệnh viện đa khoa Tâm Anh TP HCM vừa hồi sức thành công ca sinh non 25 tuần. Bác sĩ Chuyên khoa II Nguyễn Bá Mỹ Nhi – Giám đốc Trung tâm Sản phụ khoa, nhớ lại: “Thai phụ nhập viện trong tình trạng cơn gò xuất hiện với tần suất cao, ngay lập tức chúng tôi đã chỉ định sử dụng thuốc giảm gò với hy vọng giữ bé được lâu hơn…</p><p>Nhưng, các triệu chứng nghi nhiễm trùng như sốt, bạch cầu và CRP tăng. Sau khi hội chẩn liên tục và phối hợp với Trung tâm Gây mê hồi sức, Trung tâm Nhi sơ sinh thiết lập phác đồ giờ vàng hồi sức cho bé ngay trong phòng sinh, chúng tôi quyết định mổ lấy thai sớm”.</p><p>Với hơn 30 năm kinh nghiệm hồi sức và nuôi sống trẻ sinh non, Tiến sĩ, bác sĩ Cam Ngọc Phượng – Giám đốc Trung tâm sơ sinh và êkip đã có mặt ngay tại phòng sinh với đầy đủ các trang thiết bị chuyên dụng hiện đại. Ngay khi rời khỏi bụng mẹ, bé được ủ ấm với khăn bọc, đội nón, túi nhựa giữ nhiệt và chuyển ngay sang giường sưởi ấm đặt sát giường sinh. Bác sĩ và điều dưỡng nhi sơ sinh lập tức gắn ống thở CPAP không xâm lấn, giúp phổi bé không bị xẹp, hạn chế nhiễm trùng, không bị suy hô hấp.</p><p>“Việc ổn định thân nhiệt rất quan trọng vì trẻ sinh non nhẹ cân, thân nhiệt không ổn định sẽ tăng tỷ lệ tử vong 28%, tăng nhiễm trùng sơ sinh muộn 11%. Nếu ổn định thân nhiệt từ 36,5 độ C đến 37,2 độ C sẽ giảm thiểu đáng kể các tổn thương thần kinh, bệnh lý võng mạc và viêm ruột hoại tử”, bác sĩ Cam Ngọc Phượng cho biết.</p><p><img src="https://tamanhhospital.vn/wp-content/uploads/2021/04/he-thong-phong-kham-phong-sinh-phong-nicu-cao-cap.jpg" alt="Hệ thống phòng khám, phòng sinh, phòng NICU... được xây dựng cao cấp và đảm bảo các tiêu chuẩn vô trùng tuyệt đối. Ảnh: P.Lan" height="635" width="847"><em>Hệ thống phòng khám, phòng sinh, phòng NICU… được xây dựng cao cấp và đảm bảo các tiêu chuẩn vô trùng tuyệt đối. Ảnh: P.Lan</em></p><p>Trước đó, bệnh viện đa khoa Tâm Anh Hà Nội cũng từng nuôi thành công bé sinh non 24 tuần 5 ngày, cân nặng chỉ 550 gam. Sau sinh trẻ không thở, không khóc, không có phản xạ, trên da nhiều mảng bầm tím, nhịp tim chậm. Với sự phối hợp của khoa Sản và khoa Sơ sinh, các bác sĩ hồi sức tích cực sơ sinh đã túc trực trong phòng sinh và nhanh chóng chuyển bé về khoa Sơ sinh bằng thiết bị chuyên dụng.</p><p>Bé được theo dõi sát sao bằng phác đồ chăm sóc đặc biệt, với những trang thiết bị hiện đại nhất. Sau 3 tuần, bé đã có thể ăn sữa mẹ hoàn toàn qua sonde dạ dày. Sau 1 tháng 27 ngày, bé được cai máy thở, chuyển qua thở oxy gọng, dinh dưỡng hoàn toàn bằng đường miệng và sau gần 4 tháng điều trị tích cực, bé đã xuất viện với cân nặng 3 kg.</p><p>Theo ước tính, năm 2017, hơn 800 phụ nữ tử vong mỗi ngày do các biến chứng trong quá trình mang thai và sinh nở, tương đương hơn 290.000 người. Tương tự như vậy, đối với trẻ sơ sinh, 28 ngày đầu tiên của cuộc đời rất quan trọng đối với sự sống còn của trẻ. Trẻ phải đối mặt với nguy cơ tử vong cao nhất trong tháng đầu đời.</p><p>Năm 2018, 7.000 trẻ sơ sinh tử vong mỗi ngày. Khoảng một phần ba chết vào ngày chúng được sinh ra và gần ba phần tư chỉ trong tuần đầu tiên. Về tỷ lệ tử vong ở trẻ em, trẻ sơ sinh chiếm khoảng một nửa trong số 5,3 triệu trẻ em dưới 5 tuổi tử vong vào năm 2018.</p><p>Bác sĩ Nguyễn Bá Mỹ Nhi cho biết, có nhiều yếu tố dẫn đến nguy cơ sinh non ở thai phụ như tăng huyết áp, tiền sản giật, đái tháo đường, rau tiền đạo, rau cài răng lược, đa ối, thiểu ối, nhiễm trùng thai kỳ… Do đó, thai phụ cần khám thai đúng lịch ở cơ sở uy tín đầy đủ trang thiết bị và tuân thủ chặt chẽ hướng dẫn của bác sĩ với những trường hợp thai kỳ nguy cơ cao.</p>
+           <div class="share-buttons">
+               <button onclick="shareOnFacebook()" class="share-button facebook">
+                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                       <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                   </svg>
+                   Chia sẻ Facebook
+               </button>
+               <button onclick="shareOnTwitter()" class="share-button twitter">
+                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                       <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                   </svg>
+                   Chia sẻ Twitter
+               </button>
+           </div>
+       </div>
 
-            
-            <div class="share-buttons">
-                <button class="share-button" style="background: #1877f2;" onclick="shareOnFacebook()">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                    </svg>
-                    Chia sẻ Facebook
-                </button>
-                <button class="share-button" style="background: #1da1f2;" onclick="shareOnTwitter()">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                    </svg>
-                    Chia sẻ Twitter
-                </button>
-            </div>
-        </article>
+       <div class="related-articles">
+           <h2>Bài viết liên quan</h2>
+           <div class="related-grid">
+               
+      <div class="related-article">
+        <img src="https://github.com/fmcclinic/fmcweb/blob/main/news/image/news.jpg?raw=true" alt="Chủ Động Tầm Soát Ung Thư Vú - Đừng Để Quá Muộn">
+        <h3><a href="NEWS_20241212200044.html">Chủ Động Tầm Soát Ung Thư Vú - Đừng Để Quá Muộn</a></h3>
+        <span class="date">12/12/2024</span>
+      </div>
+    
+      <div class="related-article">
+        <img src="https://photos.app.goo.gl/RpBbGiwfxC8V9jSD9" alt="Chủ Động Tầm Soát Ung Thư Vú - Đừng Để Quá Muộn">
+        <h3><a href="NEWS_20241212195302.html">Chủ Động Tầm Soát Ung Thư Vú - Đừng Để Quá Muộn</a></h3>
+        <span class="date">12/12/2024</span>
+      </div>
+    
+      <div class="related-article">
+        <img src="https://photos.app.goo.gl/RpBbGiwfxC8V9jSD9" alt="Chủ Động Tầm Soát Ung Thư Vú - Đừng Để Quá Muộn">
+        <h3><a href="NEWS_20241212194815.html">Chủ Động Tầm Soát Ung Thư Vú - Đừng Để Quá Muộn</a></h3>
+        <span class="date">12/12/2024</span>
+      </div>
+               </div>
+       </div>
+   </div>
 
-        
-        <section class="related-articles">
-            <h2 class="related-title">Bài viết liên quan</h2>
-            <div class="related-grid">
-                {{RELATED_ARTICLES}}
-            </div>
-        </section>
-    </div>
+   <script>
+       let speech = null;
+       let isPaused = false;
 
-    <script>
-        let speech = null;
-        let isPaused = false;
+       function toggleSpeech() {
+           if (speech && !isPaused) {
+               window.speechSynthesis.pause();
+               isPaused = true;
+               document.getElementById('playButton').innerHTML = 'Tiếp tục đọc';
+           } else if (speech && isPaused) {
+               window.speechSynthesis.resume();
+               isPaused = false;
+               document.getElementById('playButton').innerHTML = 'Tạm dừng';
+           } else {
+               startSpeech();
+           }
+       }
 
-        
-        function toggleSpeech() {
-            if (speech && !isPaused) {
-                window.speechSynthesis.pause();
-                isPaused = true;
-                document.getElementById('playButton').innerHTML = 'Tiếp tục đọc';
-            } else if (speech && isPaused) {
-                window.speechSynthesis.resume();
-                isPaused = false;
-                document.getElementById('playButton').innerHTML = 'Tạm dừng';
-            } else {
-                startSpeech();
-            }
-        }
+       function startSpeech() {
+           const content = document.querySelector('.article-content').textContent;
+           
+           speech = new SpeechSynthesisUtterance();
+           speech.text = content;
+           speech.lang = 'vi-VN';
+           speech.rate = parseFloat(document.getElementById('rateSelect').value);
+           
+           const voices = window.speechSynthesis.getVoices();
+           const viVoice = voices.find(voice => voice.lang.includes('vi'));
+           if (viVoice) {
+               speech.voice = viVoice;
+           }
 
-        
-        function startSpeech() {
-            const content = document.querySelector('.article-content').textContent;
-            
-            speech = new SpeechSynthesisUtterance();
-            speech.text = content;
-            speech.lang = 'vi-VN';
-            speech.rate = parseFloat(document.getElementById('rateSelect').value);
-            
-            const voices = window.speechSynthesis.getVoices();
-            const viVoice = voices.find(voice => voice.lang.includes('vi'));
-            if (viVoice) {
-                speech.voice = viVoice;
-            }
+           speech.onend = function() {
+               speech = null;
+               isPaused = false;
+               document.getElementById('playButton').innerHTML = 'Đọc lại';
+           }
 
-            speech.onend = function() {
-                speech = null;
-                isPaused = false;
-                document.getElementById('playButton').innerHTML = 'Đọc lại';
-            }
+           window.speechSynthesis.speak(speech);
+           document.getElementById('playButton').innerHTML = 'Tạm dừng';
+       }
 
-            window.speechSynthesis.speak(speech);
-            document.getElementById('playButton').innerHTML = 'Tạm dừng';
-        }
+       function updateRate() {
+           if (speech) {
+               speech.rate = parseFloat(document.getElementById('rateSelect').value);
+               if (!isPaused) {
+                   window.speechSynthesis.cancel();
+                   window.speechSynthesis.speak(speech);
+               }
+           }
+       }
 
-        
-        function updateRate() {
-            if (speech) {
-                speech.rate = parseFloat(document.getElementById('rateSelect').value);
-                if (!isPaused) {
-                    window.speechSynthesis.cancel();
-                    window.speechSynthesis.speak(speech);
-                }
-            }
-        }
+       function shareOnFacebook() {
+           const url = window.location.href;
+           window.open(`https:
+       }
 
-        
-        function shareOnFacebook() {
-            const url = encodeURIComponent(window.location.href);
-            window.open(`https:
-        }
+       function shareOnTwitter() {
+           const url = window.location.href;
+           const title = document.title;
+           window.open(`https:
+       }
 
-        function shareOnTwitter() {
-            const url = encodeURIComponent(window.location.href);
-            const text = encodeURIComponent(document.title);
-            window.open(`https:
-        }
+       function updateParentHeight() {
+           const height = document.documentElement.scrollHeight;
+           window.parent.postMessage({ height: height }, '*');
+       }
 
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const content = document.querySelector('.article-content').textContent;
-            const wordsPerMinute = 200;
-            const words = content.trim().split(/\s+/).length;
-            const readingTime = Math.ceil(words / wordsPerMinute);
-            document.querySelector('.reading-time').innerHTML = `${readingTime} phút đọc`;
-        });
-
-        
-        window.speechSynthesis.onvoiceschanged = function() {
-            const voices = window.speechSynthesis.getVoices();
-            console.log('Available voices:', voices);
-        };
-    </script>
+       document.addEventListener('DOMContentLoaded', updateParentHeight);
+       window.addEventListener('load', updateParentHeight);
+       new ResizeObserver(updateParentHeight).observe(document.body);
+   </script>
 </body>
 </html>
