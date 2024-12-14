@@ -48,17 +48,22 @@
            display: flex;
            align-items: center;
            gap: 15px;
+           flex-wrap: wrap;
        }
 
        .reading-time {
            display: inline-flex;
            align-items: center;
            gap: 5px;
+           padding: 3px 8px;
+           background: #f0f0f0;
+           border-radius: 15px;
        }
 
-       img {
-           max-width: 100%;
-           height: auto;
+       .featured-image {
+           width: 100%;
+           max-height: 500px;
+           object-fit: cover;
            border-radius: 8px;
            margin-bottom: 20px;
        }
@@ -77,27 +82,121 @@
        }
 
        .article-content img {
+           max-width: 100%;
+           height: auto;
            margin: 20px 0;
+           border-radius: 4px;
+       }
+
+        
+       .speech-controls {
+           margin: 20px 0;
+           padding: 20px;
+           background: #f8f9fa;
+           border-radius: 8px;
+           box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+       }
+
+       .speech-header {
+           display: flex;
+           align-items: center;
+           gap: 15px;
+           margin-bottom: 15px;
+       }
+
+       .speech-title {
+           font-size: 1.1em;
+           font-weight: bold;
+           color: #333;
+       }
+
+       .controls-container {
+           display: flex;
+           align-items: center;
+           gap: 20px;
+           flex-wrap: wrap;
+       }
+
+       .play-button {
+           display: flex;
+           align-items: center;
+           gap: 8px;
+           padding: 10px 20px;
+           background: #0070c0;
+           color: white;
+           border: none;
+           border-radius: 4px;
+           cursor: pointer;
+           font-weight: 500;
+           transition: background 0.3s;
+       }
+
+       .play-button:hover {
+           background: #005590;
+       }
+
+       .play-button svg {
+           width: 20px;
+           height: 20px;
+       }
+
+       .speed-control {
+           display: flex;
+           align-items: center;
+           gap: 8px;
+       }
+
+       .speed-control select {
+           padding: 8px;
+           border: 1px solid #ddd;
+           border-radius: 4px;
+           font-size: 14px;
+           background: white;
+       }
+
+       .progress-container {
+           margin-top: 15px;
+           background: #e9ecef;
+           height: 4px;
+           border-radius: 2px;
+           overflow: hidden;
+       }
+
+       .progress-bar {
+           height: 100%;
+           background: #0070c0;
+           width: 0;
+           transition: width 0.3s;
+       }
+
+        
+       .share-section {
+           margin-top: 30px;
+           padding-top: 20px;
+           border-top: 1px solid #eee;
        }
 
        .share-buttons {
-           margin-top: 30px;
-           padding: 20px 0;
-           border-top: 1px solid #eee;
            display: flex;
            gap: 10px;
+           margin-top: 10px;
        }
 
        .share-button {
-           padding: 10px 20px;
+           display: inline-flex;
+           align-items: center;
+           gap: 8px;
+           padding: 8px 16px;
            border: none;
            border-radius: 4px;
            color: white;
            cursor: pointer;
-           display: flex;
-           align-items: center;
-           gap: 5px;
            font-size: 14px;
+           transition: opacity 0.3s;
+       }
+
+       .share-button:hover {
+           opacity: 0.9;
        }
 
        .share-button.facebook {
@@ -108,57 +207,15 @@
            background: #1da1f2;
        }
 
-       .share-button:hover {
-           opacity: 0.9;
-       }
-
-       .speech-controls {
-           margin: 20px 0;
-           padding: 15px;
-           background: #f8f9fa;
-           border-radius: 8px;
-           display: flex;
-           align-items: center;
-           gap: 20px;
-       }
-
-       .speech-button {
-           display: flex;
-           align-items: center;
-           gap: 8px;
-           padding: 10px 20px;
-           background: #0070c0;
-           color: white;
-           border: none;
-           border-radius: 4px;
-           cursor: pointer;
-           font-weight: bold;
-       }
-
-       .speech-button:hover {
-           background: #005590;
-       }
-
-       .speech-settings {
-           display: flex;
-           align-items: center;
-           gap: 10px;
-       }
-
-       .speech-settings select {
-           padding: 5px 10px;
-           border-radius: 4px;
-           border: 1px solid #ddd;
-       }
-
-       .related-articles {
+        
+       .related-section {
            margin-top: 40px;
        }
 
-       .related-articles h2 {
+       .related-title {
            font-size: 1.5em;
            margin-bottom: 20px;
-           color: #0070c0;
+           color: #333;
        }
 
        .related-grid {
@@ -172,27 +229,30 @@
            border-radius: 8px;
            overflow: hidden;
            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+           transition: transform 0.3s;
+       }
+
+       .related-article:hover {
+           transform: translateY(-3px);
        }
 
        .related-article img {
            width: 100%;
            height: 180px;
            object-fit: cover;
-           margin-bottom: 0;
        }
 
        .related-article h3 {
            padding: 15px;
            margin: 0;
-           font-size: 1.1em;
        }
 
-       .related-article h3 a {
+       .related-article a {
            color: #333;
            text-decoration: none;
        }
 
-       .related-article h3 a:hover {
+       .related-article a:hover {
            color: #0070c0;
        }
 
@@ -203,9 +263,39 @@
            font-size: 0.9em;
        }
 
+        
+       .scroll-top {
+           position: fixed;
+           bottom: 20px;
+           right: 20px;
+           background: #0070c0;
+           color: white;
+           width: 40px;
+           height: 40px;
+           border-radius: 50%;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           cursor: pointer;
+           opacity: 0;
+           visibility: hidden;
+           transition: all 0.3s;
+           border: none;
+           box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+       }
+
+       .scroll-top.visible {
+           opacity: 1;
+           visibility: visible;
+       }
+
+       .scroll-top:hover {
+           background: #005590;
+       }
+
        @media (max-width: 768px) {
            .container {
-               padding: 10px;
+               padding: 15px;
            }
 
            h1 {
@@ -215,10 +305,9 @@
            .article-meta {
                flex-direction: column;
                align-items: flex-start;
-               gap: 10px;
            }
 
-           .speech-controls {
+           .controls-container {
                flex-direction: column;
                align-items: stretch;
            }
@@ -246,48 +335,59 @@
            </span>
        </div>
 
-       <img src="https://www.aceaudiology.com.au/wp-content/uploads/2021/09/Hearing-Aids-Buying-Guide.jpg" alt="Cách lựa chọn máy trợ thính phù hợp">
+       <img src="https://www.aceaudiology.com.au/wp-content/uploads/2021/09/Hearing-Aids-Buying-Guide.jpg" alt="Cách lựa chọn máy trợ thính phù hợp" class="featured-image">
 
        <div class="article-content">
            
            <div class="speech-controls">
-               <button id="playButton" class="speech-button" onclick="toggleSpeech()">
-                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                       <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                   </svg>
-                   Đọc bài viết
-               </button>
+               <div class="speech-header">
+                   <span class="speech-title">Nghe bài viết</span>
+               </div>
                
-               <div class="speech-settings">
-                   <label>Tốc độ đọc:
+               <div class="controls-container">
+                   <button id="playButton" class="play-button" onclick="toggleSpeech()">
+                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                           <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                       </svg>
+                       Đọc bài viết
+                   </button>
+                   
+                   <div class="speed-control">
+                       <label for="rateSelect">Tốc độ đọc:</label>
                        <select id="rateSelect" onchange="updateRate()">
                            <option value="0.8">Chậm</option>
                            <option value="1" selected>Bình thường</option>
                            <option value="1.2">Nhanh</option>
                        </select>
-                   </label>
+                   </div>
+               </div>
+
+               <div class="progress-container">
+                   <div id="progressBar" class="progress-bar"></div>
                </div>
            </div>
 
            <p>Việc lựa chọn một chiếc máy trợ thính phù hợp là rất quan trọng để cải thiện chất lượng cuộc sống cho người gặp vấn đề về thính lực. Dưới đây là một số yếu tố cần cân nhắc khi lựa chọn:</p><h3>1. <strong>Khám và tư vấn chuyên sâu:</strong></h3><ul><li><strong>Đo thính lực:</strong> Bác sĩ sẽ tiến hành đo thính lực để xác định mức độ giảm thính lực, tần số âm thanh bị ảnh hưởng và loại hình mất thính lực.</li><li><strong>Tư vấn:</strong> Dựa trên kết quả đo, bác sĩ sẽ tư vấn về loại máy trợ thính phù hợp, các tính năng cần thiết và cách sử dụng.</li></ul><h3>2. <strong>Các yếu tố cần cân nhắc:</strong></h3><ul><li><strong>Mức độ giảm thính lực:</strong> Mỗi loại máy trợ thính phù hợp với một mức độ giảm thính lực khác nhau.</li><li><strong>Môi trường sống:</strong> Nếu thường xuyên tiếp xúc với tiếng ồn, cần chọn máy có khả năng lọc tiếng ồn tốt.</li><li><strong>Hoạt động hàng ngày:</strong> Nếu thường xuyên tham gia các hoạt động xã hội, cần chọn máy có tính năng kết nối với các thiết bị khác như điện thoại, tivi.</li><li><strong>Ngân sách:</strong> Giá cả của máy trợ thính rất đa dạng, tùy thuộc vào thương hiệu, tính năng và công nghệ.</li></ul><h3>3. <strong>Các loại máy trợ thính:</strong></h3><ul><li><strong>Máy trợ thính trong tai:</strong> Nhỏ gọn, kín đáo, phù hợp với người giảm thính lực nhẹ đến trung bình.</li><li><strong>Máy trợ thính đặt sau tai:</strong> Kích thước lớn hơn, có nhiều tính năng hơn, phù hợp với nhiều mức độ giảm thính lực.</li><li><strong>Máy trợ thính xương:</strong> Dành cho người mất thính lực do vấn đề về tai giữa hoặc tai trong.</li><li><strong>Máy trợ thính có implant:</strong> Cấy ghép trực tiếp vào tai, phù hợp với người mất thính lực nặng.</li></ul><h3>4. <strong>Các tính năng của máy trợ thính:</strong></h3><ul><li><strong>Khả năng lọc tiếng ồn:</strong> Giúp nghe rõ hơn trong môi trường ồn ào.</li><li><strong>Kết nối Bluetooth:</strong> Kết nối với điện thoại, tivi, máy tính.</li><li><strong>Điều khiển từ xa:</strong> Điều chỉnh âm lượng và các tính năng khác bằng điều khiển từ xa.</li><li><strong>Chống nước:</strong> Phù hợp với người thường xuyên hoạt động ngoài trời.</li></ul><h3>5. <strong>Thử nghiệm và điều chỉnh:</strong></h3><p>Sau khi chọn được máy trợ thính, bạn sẽ được điều chỉnh để phù hợp với thính lực của mình. Quá trình này có thể mất vài lần để đạt được hiệu quả tốt nhất.</p><h3><strong>Lời khuyên:</strong></h3><ul><li><strong>Chọn cơ sở uy tín:</strong> Nên chọn các trung tâm thính học uy tín để được tư vấn và lắp đặt máy trợ thính.</li><li><strong>Không tự ý mua máy:</strong> Việc tự mua máy trợ thính có thể không phù hợp với tình trạng thính lực của bạn.</li><li><strong>Kiên trì sử dụng:</strong> Cần thời gian để làm quen với máy trợ thính.</li></ul><p><br></p>
-           <div class="share-buttons">
-               <button onclick="shareOnFacebook()" class="share-button facebook">
-                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                       <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                   </svg>
-                   Chia sẻ Facebook
-               </button>
-               <button onclick="shareOnTwitter()" class="share-button twitter">
-                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                       <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                   </svg>
-                   Chia sẻ Twitter
-               </button>
+           <div class="share-section">
+               <div class="share-buttons">
+                   <button onclick="shareOnFacebook()" class="share-button facebook">
+                       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                           <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                       </svg>
+                       Chia sẻ Facebook
+                   </button>
+                   <button onclick="shareOnTwitter()" class="share-button twitter">
+                       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                           <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                       </svg>
+                       Chia sẻ Twitter
+                   </button>
+               </div>
            </div>
        </div>
 
-       <div class="related-articles">
-           <h2>Bài viết liên quan</h2>
+       <div class="related-section">
+           <h2 class="related-title">Bài viết liên quan</h2>
            <div class="related-grid">
                
      <div class="related-article">
@@ -311,58 +411,148 @@
        </div>
    </div>
 
+   
+   <button class="scroll-top" id="scrollTop" onclick="scrollToTop()">
+       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+           <polyline points="18 15 12 9 6 15"></polyline>
+       </svg>
+   </button>
+
    <script>
        let speech = null;
        let isPaused = false;
+       let voices = [];
+       let currentWordIndex = 0;
+       let words = [];
 
-       function toggleSpeech() {
-           if (speech && !isPaused) {
-               window.speechSynthesis.pause();
-               isPaused = true;
-               document.getElementById('playButton').innerHTML = 'Tiếp tục đọc';
-           } else if (speech && isPaused) {
-               window.speechSynthesis.resume();
-               isPaused = false;
-               document.getElementById('playButton').innerHTML = 'Tạm dừng';
-           } else {
-               startSpeech();
+       
+       window.speechSynthesis.onvoiceschanged = function() {
+           voices = window.speechSynthesis.getVoices();
+           const viVoice = voices.find(voice => voice.lang.includes('vi'));
+           if (viVoice) {
+               console.log("Đã tìm thấy giọng tiếng Việt:", viVoice.name);
            }
-       }
+       };
 
        function startSpeech() {
            const content = document.querySelector('.article-content').textContent;
+           words = content.split(/\s+/);
+           currentWordIndex = 0;
            
            speech = new SpeechSynthesisUtterance();
            speech.text = content;
            speech.lang = 'vi-VN';
            speech.rate = parseFloat(document.getElementById('rateSelect').value);
            
-           const voices = window.speechSynthesis.getVoices();
+           
            const viVoice = voices.find(voice => voice.lang.includes('vi'));
            if (viVoice) {
                speech.voice = viVoice;
+           } else {
+               console.log("Không tìm thấy giọng tiếng Việt, sử dụng giọng mặc định");
            }
+
+           speech.onboundary = function(event) {
+               currentWordIndex = Math.floor((event.charIndex / speech.text.length) * 100);
+               updateProgressBar();
+           };
 
            speech.onend = function() {
                speech = null;
                isPaused = false;
-               document.getElementById('playButton').innerHTML = 'Đọc lại';
-           }
+               currentWordIndex = 0;
+               updateProgressBar();
+               updatePlayButton(false);
+           };
 
            window.speechSynthesis.speak(speech);
-           document.getElementById('playButton').innerHTML = 'Tạm dừng';
+           updatePlayButton(true);
+       }
+
+       function updateProgressBar() {
+           const progressBar = document.getElementById('progressBar');
+           progressBar.style.width = currentWordIndex + '%';
+       }
+
+       function updatePlayButton(isPlaying) {
+           const button = document.getElementById('playButton');
+           if (isPlaying) {
+               button.innerHTML = `
+                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                       <rect x="6" y="4" width="4" height="16"></rect>
+                       <rect x="14" y="4" width="4" height="16"></rect>
+                   </svg>
+                   Tạm dừng`;
+           } else {
+               button.innerHTML = `
+                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                       <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                   </svg>
+                   ${speech ? 'Tiếp tục' : 'Đọc bài viết'}`;
+           }
+       }
+
+function toggleSpeech() {
+           if (!speech) {
+               startSpeech();
+           } else if (isPaused) {
+               window.speechSynthesis.resume();
+               isPaused = false;
+               updatePlayButton(true);
+           } else {
+               window.speechSynthesis.pause();
+               isPaused = true;
+               updatePlayButton(false);
+           }
        }
 
        function updateRate() {
+           const newRate = parseFloat(document.getElementById('rateSelect').value);
            if (speech) {
-               speech.rate = parseFloat(document.getElementById('rateSelect').value);
-               if (!isPaused) {
-                   window.speechSynthesis.cancel();
+               // Store current position and text
+               const currentText = speech.text;
+               const wasPaused = isPaused;
+
+               
+               window.speechSynthesis.cancel();
+
+               
+               speech = new SpeechSynthesisUtterance(currentText);
+               speech.rate = newRate;
+               speech.lang = 'vi-VN';
+
+               
+               const viVoice = voices.find(voice => voice.lang.includes('vi'));
+               if (viVoice) {
+                   speech.voice = viVoice;
+               }
+
+               
+               speech.onboundary = function(event) {
+                   currentWordIndex = Math.floor((event.charIndex / speech.text.length) * 100);
+                   updateProgressBar();
+               };
+
+               speech.onend = function() {
+                   speech = null;
+                   isPaused = false;
+                   currentWordIndex = 0;
+                   updateProgressBar();
+                   updatePlayButton(false);
+               };
+
+               
+               if (!wasPaused) {
                    window.speechSynthesis.speak(speech);
+                   updatePlayButton(true);
+               } else {
+                   isPaused = true;
+                   updatePlayButton(false);
                }
            }
        }
 
+       
        function shareOnFacebook() {
            const url = window.location.href;
            window.open(`https:
@@ -374,12 +564,40 @@
            window.open(`https:
        }
 
+       
+       const scrollTopButton = document.getElementById('scrollTop');
+
+       window.onscroll = function() {
+           if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+               scrollTopButton.classList.add('visible');
+           } else {
+               scrollTopButton.classList.remove('visible');
+           }
+       };
+
+       function scrollToTop() {
+           window.scrollTo({
+               top: 0,
+               behavior: 'smooth'
+           });
+       }
+
+       
        function updateParentHeight() {
            const height = document.documentElement.scrollHeight;
            window.parent.postMessage({ height: height }, '*');
        }
 
-       document.addEventListener('DOMContentLoaded', updateParentHeight);
+       
+       document.addEventListener('DOMContentLoaded', function() {
+           updateParentHeight();
+           if (speechSynthesis.onvoiceschanged !== undefined) {
+               speechSynthesis.onvoiceschanged = function() {
+                   voices = window.speechSynthesis.getVoices();
+               };
+           }
+       });
+
        window.addEventListener('load', updateParentHeight);
        new ResizeObserver(updateParentHeight).observe(document.body);
    </script>
