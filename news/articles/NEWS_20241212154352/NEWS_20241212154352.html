@@ -441,28 +441,25 @@
     </div>
 
     <script>
-
-
-const VOICE_CONFIG = {
-    'Vietnamese Female': {
-        name: 'Vietnamese Female',
-        lang: 'vi-VN',
-        voiceURI: 'Vietnamese Female',
-        rate: 1,
-        pitch: 1.1,
-        volume: 1
-    },
-    'Vietnamese Male': {
-        name: 'Vietnamese Male', 
-        lang: 'vi-VN',
-        voiceURI: 'Vietnamese Male',
-        rate: 1,
-        pitch: 0.9,
-        volume: 1
-    }
-};
-
-
+        
+        const VOICE_CONFIG = {
+            'Vietnamese Female': {
+                name: 'Vietnamese Female',
+                lang: 'vi-VN',
+                voiceURI: 'Vietnamese Female',
+                rate: 1,
+                pitch: 1.1,
+                volume: 1
+            },
+            'Vietnamese Male': {
+                name: 'Vietnamese Male', 
+                lang: 'vi-VN',
+                voiceURI: 'Vietnamese Male',
+                rate: 1,
+                pitch: 0.9,
+                volume: 1
+            }
+        };
 
         
         let isPlaying = false;
@@ -525,189 +522,189 @@ const VOICE_CONFIG = {
             console.log(`Tìm thấy ${paragraphs.length} đoạn văn`);
         }
 
+        
+        function toggleSpeech() {
+            if (!ttsInitialized) {
+                showError('TTS chưa sẵn sàng');
+                return;
+            }
 
-       function toggleSpeech() {
-           if (!ttsInitialized) {
-               showError('TTS chưa sẵn sàng');
-               return;
-           }
-
-           if (!isPlaying) {
-               startReading();
-           } else {
-               stopReading();
-           }
-       }
-
-       
-       function startReading() {
-           isPlaying = true;
-           currentParagraphIndex = 0;
-           updateUI('reading');
-           readNextParagraph();
-       }
-
-       
-\function readNextParagraph() {
-    if (currentParagraphIndex < paragraphs.length) {
-        try {
-            const voiceName = document.getElementById('voiceSelect').value;
-            const voiceConfig = VOICE_CONFIG[voiceName];
-            const rate = parseFloat(document.getElementById('rateSelect').value);
-
-            updateProgress(((currentParagraphIndex + 1) / paragraphs.length) * 100);
-            highlightCurrentParagraph(true);
-
-            
-            responsiveVoice.speak(
-                paragraphs[currentParagraphIndex],
-                voiceName,
-                {
-                    pitch: voiceConfig.pitch,
-                    rate: rate,
-                    volume: voiceConfig.volume,
-                    lang: voiceConfig.lang,
-                    voiceURI: voiceConfig.voiceURI,
-                    onstart: function() {
-                        console.log(`Đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
-                        updateStatus(`Đang đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
-                    },
-                    onend: function() {
-                        highlightCurrentParagraph(false);
-                        currentParagraphIndex++;
-                        if (isPlaying) {
-                            setTimeout(readNextParagraph, 100);
-                        }
-                    }
-                }
-            );
-        } catch (error) {
-            console.error('Error:', error);
-            showError(error.message);
-            stopReading();
+            if (!isPlaying) {
+                startReading();
+            } else {
+                stopReading();
+            }
         }
-    } else {
-        finishReading();
-    }
-}
 
-       
-       function stopReading() {
-           responsiveVoice.cancel();
-           isPlaying = false;
-           highlightCurrentParagraph(false);
-           updateUI('paused');
-       }
+        
+        function startReading() {
+            isPlaying = true;
+            currentParagraphIndex = 0;
+            updateUI('reading');
+            readNextParagraph();
+        }
 
-       
-       function finishReading() {
-           isPlaying = false;
-           updateProgress(100);
-           updateUI('finished');
-           console.log('Hoàn thành đọc bài viết');
-       }
+        
+        function readNextParagraph() {
+            if (currentParagraphIndex < paragraphs.length) {
+                try {
+                    const voiceName = document.getElementById('voiceSelect').value;
+                    const voiceConfig = VOICE_CONFIG[voiceName];
+                    const rate = parseFloat(document.getElementById('rateSelect').value);
 
-       
-       function handleVoiceChange() {
-           if (isPlaying) {
-               restartReading();
-           }
-       }
+                    updateProgress(((currentParagraphIndex + 1) / paragraphs.length) * 100);
+                    highlightCurrentParagraph(true);
 
-       
-       function handleRateChange() {
-           if (isPlaying) {
-               restartReading();
-           }
-       }
+                    responsiveVoice.speak(
+                        paragraphs[currentParagraphIndex],
+                        voiceName,
+                        {
+                            pitch: voiceConfig.pitch,
+                            rate: rate,
+                            volume: voiceConfig.volume,
+                            lang: voiceConfig.lang,
+                            voiceURI: voiceConfig.voiceURI,
+                            onstart: function() {
+                                console.log(`Đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
+                                updateStatus(`Đang đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
+                            },
+                            onend: function() {
+                                highlightCurrentParagraph(false);
+                                currentParagraphIndex++;
+                                if (isPlaying) {
+                                    setTimeout(readNextParagraph, 100);
+                                }
+                            }
+                        }
+                    );
+                } catch (error) {
+                    console.error('Error:', error);
+                    showError(error.message);
+                    stopReading();
+                }
+            } else {
+                finishReading();
+            }
+        }
 
-       
-       function restartReading() {
-           stopReading();
-           startReading();
-       }
+        
+        function stopReading() {
+            responsiveVoice.cancel();
+            isPlaying = false;
+            highlightCurrentParagraph(false);
+            updateUI('paused');
+        }
 
-       
-       function updateUI(state) {
-           const button = document.getElementById('playButton');
-           if (button) {
-               button.innerHTML = isPlaying ? 
-                   '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>Tạm dừng' :
-                   '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>Đọc bài viết';
-           }
-           updateStatus(state);
-       }
+        
+        function finishReading() {
+            isPlaying = false;
+            updateProgress(100);
+            updateUI('finished');
+            console.log('Hoàn thành đọc bài viết');
+        }
 
-       
-       function updateStatus(message) {
-           const statusText = document.getElementById('statusText');
-           const status = document.getElementById('status');
-           if (statusText && status) {
-               statusText.textContent = typeof message === 'string' ? message : 
-                   message === 'reading' ? 'Đang đọc...' :
-                   message === 'paused' ? 'Đã tạm dừng' :
-                   message === 'finished' ? 'Đã đọc xong' : '';
-               status.className = 'status active ' + message;
-           }
-       }
+        
+        function handleVoiceChange() {
+            if (isPlaying) {
+                restartReading();
+            }
+        }
 
-       
-       function updateProgress(percent) {
-           const progress = document.getElementById('progress');
-           if (progress) {
-               progress.style.width = percent + '%';
-           }
-       }
+        
+        function handleRateChange() {
+            if (isPlaying) {
+                restartReading();
+            }
+        }
 
-       
-       function highlightCurrentParagraph(isHighlight) {
-           const paragraphElements = document.querySelectorAll('.article-content p');
-           paragraphElements.forEach(p => p.classList.remove('current'));
-           
-           if (isHighlight && paragraphElements[currentParagraphIndex]) {
-               paragraphElements[currentParagraphIndex].classList.add('current');
-               paragraphElements[currentParagraphIndex].scrollIntoView({
-                   behavior: 'smooth',
-                   block: 'center'
-               });
-           }
-       }
+        
+        function restartReading() {
+            stopReading();
+            startReading();
+        }
 
-       
-       function showError(message) {
-           console.error(message);
-           updateStatus('error');
-           const statusText = document.getElementById('statusText');
-           if (statusText) {
-               statusText.textContent = message;
-           }
-       }
+        
+        function updateUI(state) {
+            const button = document.getElementById('playButton');
+            if (button) {
+                button.innerHTML = isPlaying ? 
+                    '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>Tạm dừng' :
+                    '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>Đọc bài viết';
+            }
+            updateStatus(state);
+        }
 
-       
-       function shareOnFacebook() {
-           const url = window.location.href;
-           window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url));
-       }
+        
+        function updateStatus(message) {
+            const statusText = document.getElementById('statusText');
+            const status = document.getElementById('status');
+            if (statusText && status) {
+                statusText.textContent = typeof message === 'string' ? message : 
+                    message === 'reading' ? 'Đang đọc...' :
+                    message === 'paused' ? 'Đã tạm dừng' :
+                    message === 'finished' ? 'Đã đọc xong' : '';
+                status.className = 'status active ' + message;
+            }
+        }
 
-       function shareOnTwitter() {
-           const url = window.location.href;
-           const title = document.title;
-           window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title));
-       }
+        
+        function updateProgress(percent) {
+            const progress = document.getElementById('progress');
+            if (progress) {
+                progress.style.width = percent + '%';
+            }
+        }
 
-       
-       function updateParentHeight() {
-           const height = document.documentElement.scrollHeight;
-           window.parent.postMessage({ height: height }, '*');
-       }
+        
+        function highlightCurrentParagraph(isHighlight) {
+            const paragraphElements = document.querySelectorAll('.article-content p');
+            paragraphElements.forEach(p => p.classList.remove('current'));
+            
+            if (isHighlight && paragraphElements[currentParagraphIndex]) {
+                paragraphElements[currentParagraphIndex].classList.add('current');
+                paragraphElements[currentParagraphIndex].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }
+        }
 
-       
-       document.addEventListener('DOMContentLoaded', function() {
-           updateParentHeight();
-       });
+        
+        function showError(message) {
+            console.error(message);
+            updateStatus('error');
+            const statusText = document.getElementById('statusText');
+            if (statusText) {
+                statusText.textContent = message;
+            }
+        }
 
-       
-       new ResizeObserver(updateParentHeight).observe(document.body);
-   </script>
+        
+        function shareOnFacebook() {
+            const url = window.location.href;
+            window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url));
+        }
+
+        function shareOnTwitter() {
+            const url = window.location.href;
+            const title = document.title;
+            window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title));
+        }
+
+        
+        function updateParentHeight() {
+            const height = document.documentElement.scrollHeight;
+            window.parent.postMessage({ height: height }, '*');
+        }
+
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            updateParentHeight();
+        });
+
+        
+        new ResizeObserver(updateParentHeight).observe(document.body);
+    </script>
 </body>
+</html>
 </html>
