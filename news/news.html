@@ -3,6 +3,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Tin Tức Y Khoa</title>
    <style>
        * {
            box-sizing: border-box;
@@ -13,27 +14,19 @@
        body {
            font-family: Arial, sans-serif;
            line-height: 1.6;
-           background: #f5f5f5;
-           color: #333;
-       }
-
-       .news-section {
+           padding: 20px;
            max-width: 1200px;
            margin: 0 auto;
-           padding: 20px;
+           background: #f5f5f5;
        }
 
-       .news-header {
+       .header {
            text-align: center;
            margin-bottom: 20px;
            padding: 20px;
            background: #0070c0;
            color: white;
            border-radius: 8px;
-       }
-
-       .news-header h1 {
-           margin: 0;
        }
 
        .news-categories {
@@ -159,11 +152,10 @@
        .news-title {
            font-size: 1.1em;
            margin: 5px 0;
-           color: #333;
        }
 
        .news-title a {
-           color: inherit;
+           color: #333;
            text-decoration: none;
        }
 
@@ -198,133 +190,157 @@
    </style>
 </head>
 <body>
-   <div class="news-section">
-       <div class="news-header">
-           <h1>Tin Tức Y Khoa</h1>
-       </div>
+   <div class="header">
+       <h1>Tin Tức Y Khoa</h1>
+   </div>
 
-       <nav class="news-categories">
-                          <a href="#san-phu-khoa" class="category-link">Sản Phụ Khoa</a>
-                          <a href="#tai-mui-hong" class="category-link">Tai Mũi Họng</a>
-                          <a href="#noi-khoa" class="category-link">Nội Khoa</a>
-                  </nav>
+   <nav class="news-categories">
+                  <a href="#obstetrics-and-gynecology" class="category-link">
+               Sản Phụ Khoa           </a>
+                  <a href="#ent" class="category-link">
+               Tai Mũi Họng           </a>
+                  <a href="#internal-medicine" class="category-link">
+               Nội Khoa           </a>
+                  <a href="#musculoskeletal-system" class="category-link">
+               Khoa Cơ Xương Khớp           </a>
+          </nav>
 
-       <div class="featured-news">
-                          <div class="main-story">
-                   <img src="https://raw.githubusercontent.com/fmcclinic/Medical_News/refs/heads/main/news/image/breast%20self%20examination.jpg" alt="5 Điều Cần Biết Về Tầm Soát Ung Thư Vú - Góc Nhìn Chuyên Gia">
-                   <div class="main-story-content">
-                       <span class="category-tag">Sản Phụ Khoa</span>
-                       <h2 class="news-title">
-                           <a href="articles/NEWS_20241214005025.html" style="color: white; text-decoration: none;">
-                               5 Điều Cần Biết Về Tầm Soát Ung Thư Vú - Góc Nhìn Chuyên Gia                           </a>
-                       </h2>
-                       <p>Bác sĩ chuyên khoa 2 Nguyễn Hoàng Lam, với 20 năm kinh nghiệm trong lĩnh vực ung bướu sản phụ khoa, chia sẻ những điều quan trọng nhất mà mọi phụ n...</p>
-                   </div>
+   <div class="featured-news">
+                  <div class="main-story">
+               <img src="https://magazine.medlineplus.gov/images/uploads/main_images/caervicalcancer-hpv.jpg" 
+                    alt="HPV và ung thư cổ tử cung: Những điều bạn cần biết">
+               <div class="main-story-content">
+                   <span class="category-tag">
+                       Sản Phụ Khoa                   </span>
+                   <h2 class="news-title">
+                       <a href="articles/NEWS_20241217125130/NEWS_20241217125130.html" 
+                          style="color: white; text-decoration: none;">
+                           HPV và ung thư cổ tử cung: Những điều bạn cần biết                       </a>
+                   </h2>
+                   <p>Virus papilloma ở người (HPV) là bệnh lây truyền qua đường tình dục phổ biến nhất ở Hoa Kỳ và có hơn 200 chủng loại virus này.Bốn mươi trong số đó ...</p>
                </div>
-           
+           </div>
+
            <div class="secondary-stories">
                                   <div class="secondary-story">
-                       <img src="https://www.templehealth.org/sites/default/files/styles/without_crop/public/2023-02/older-woman-coughing-into-hand.jpg?itok=sCMz7WFT" alt="Phòng bệnh viêm phế quản mùa Tết cho người lớn tuổi">
+                       <img src="https://www.cdc.gov/hepatitis-b/media/images/2024/04/what-is-hepatitis-b-thumbnail.jpg" 
+                            alt="Kiến thức cơ bản về bệnh viêm gan B">
                        <div>
-                           <span class="category-tag">Nội Khoa</span>
+                           <span class="category-tag">
+                               Nội Khoa                           </span>
                            <h3 class="news-title">
-                               <a href="articles/NEWS_20241213194508.html">
-                                   Phòng bệnh viêm phế quản mùa Tết cho người lớn tuổi                               </a>
+                               <a href="articles/NEWS_20241217072034/NEWS_20241217072034.html">
+                                   Kiến thức cơ bản về bệnh viêm gan B                               </a>
                            </h3>
                        </div>
                    </div>
                                   <div class="secondary-story">
-                       <img src="https://www.sinusdoctor.com/wp-content/uploads/2022/05/Home-page-Images.jpg" alt="Nội soi tai mũi họng: Khám phá thế giới bên trong để có sức khỏe hoàn hảo">
+                       <img src="https://blog.lexmed.com/images/librariesprovider80/blog-post-featured-images/hpv-virus.tmb-xlarge.jpg?sfvrsn=b544950b_1" 
+                            alt="HPV Can Lead to Head and Neck Cancers">
                        <div>
-                           <span class="category-tag">Tai Mũi Họng</span>
+                           <span class="category-tag">
+                               Sản Phụ Khoa                           </span>
                            <h3 class="news-title">
-                               <a href="articles/NEWS_20241213182755.html">
-                                   Nội soi tai mũi họng: Khám phá thế giới bên trong để có sức khỏe hoàn hảo                               </a>
+                               <a href="articles/NEWS_20241217003534/NEWS_20241217003534.html">
+                                   HPV Can Lead to Head and Neck Cancers                               </a>
                            </h3>
                        </div>
                    </div>
                                   <div class="secondary-story">
-                       <img src="https://github.com/fmcclinic/fmcweb/blob/main/news/image/news.jpg?raw=true" alt="Chủ Động Tầm Soát Ung Thư Vú - Đừng Để Quá Muộn">
+                       <img src="https://medlatec.vn/media/38520/file/Dau-vung-chau-khien-co-the-kho-chiu.jpg" 
+                            alt="Đau vùng chậu - Triệu chứng cảnh báo nhiều bệnh lý chị em không nên xem thường">
                        <div>
-                           <span class="category-tag">Sản Phụ Khoa</span>
+                           <span class="category-tag">
+                               Sản Phụ Khoa                           </span>
                            <h3 class="news-title">
-                               <a href="articles/NEWS_20241213141102.html">
-                                   Chủ Động Tầm Soát Ung Thư Vú - Đừng Để Quá Muộn                               </a>
+                               <a href="articles/NEWS_20241217001757/NEWS_20241217001757.html">
+                                   Đau vùng chậu - Triệu chứng cảnh báo nhiều bệnh lý chị em không nên xem thường                               </a>
                            </h3>
                        </div>
                    </div>
                           </div>
-       </div>
+          </div>
 
-       <div class="news-grid">
-                          <article class="news-item">
-                   <img src="https://www.aceaudiology.com.au/wp-content/uploads/2021/09/Hearing-Aids-Buying-Guide.jpg" alt="Cách lựa chọn máy trợ thính phù hợp">
-                   <div class="news-content">
-                       <span class="category-tag">Tai Mũi Họng</span>
-                       <h3 class="news-title">
-                           <a href="articles/NEWS_20241212161344.html">
-                               Cách lựa chọn máy trợ thính phù hợp                           </a>
-                       </h3>
-                       <p class="news-brief">Việc lựa chọn một chiếc máy trợ thính phù hợp là rất quan trọng để cải thiện chất lượng cuộc sống cho người gặp vấn đề về thính lực. Dưới đây là mộ...</p>
-                   </div>
-               </article>
-                          <article class="news-item">
-                   <img src="https://helpmehear.ca/wp-content/uploads/2024/03/presbycusis-hearing-loss.jpeg" alt="Giảm thính lực ở người già: Nguyên nhân và cách khắc phục">
-                   <div class="news-content">
-                       <span class="category-tag">Tai Mũi Họng</span>
-                       <h3 class="news-title">
-                           <a href="articles/NEWS_20241212160127.html">
-                               Giảm thính lực ở người già: Nguyên nhân và cách khắc phục                           </a>
-                       </h3>
-                       <p class="news-brief">Giảm thính lực là một vấn đề sức khỏe phổ biến ở người cao tuổi, ảnh hưởng đáng kể đến chất lượng cuộc sống. Hiểu rõ về nguyên nhân và cách khắc ph...</p>
-                   </div>
-               </article>
-                          <article class="news-item">
-                   <img src="https://suckhoedoisong.qltns.mediacdn.vn/Images/nguyenkhanh/2017/12/21/noi_soi_tai_mui_hong.jpg" alt="Tầm soát ung thư vòm họng: Bảo vệ sức khỏe bạn">
-                   <div class="news-content">
-                       <span class="category-tag">Tai Mũi Họng</span>
-                       <h3 class="news-title">
-                           <a href="articles/NEWS_20241212154352.html">
-                               Tầm soát ung thư vòm họng: Bảo vệ sức khỏe bạn                           </a>
-                       </h3>
-                       <p class="news-brief">Ung thư vòm họng là một loại ung thư nguy hiểm, nhưng nếu được phát hiện sớm, khả năng điều trị thành công sẽ cao hơn rất nhiều. Vì vậy, tầm soát u...</p>
-                   </div>
-               </article>
-                          <article class="news-item">
-                   <img src="https://medlatec.vn/media/38520/file/Dau-vung-chau-khien-co-the-kho-chiu.jpg" alt="Đau vùng chậu - Triệu chứng cảnh báo nhiều bệnh lý chị em không nên xem thường">
-                   <div class="news-content">
-                       <span class="category-tag">Sản Phụ Khoa</span>
-                       <h3 class="news-title">
-                           <a href="articles/NEWS_20241212112428.html">
-                               Đau vùng chậu - Triệu chứng cảnh báo nhiều bệnh lý chị em không nên xem thường                           </a>
-                       </h3>
-                       <p class="news-brief">2.2. Hội chứng ruột kích thích (IBS)Đau vùng chậu là một trong những dấu hiệu cảnh báo hội chứng ruột kích thích. Bên cạnh triệu chứng đau tại vùng...</p>
-                   </div>
-               </article>
-                          <article class="news-item">
-                   <img src="https://medlatec.vn/media/39396/file/Nhung-con-co-that-manh-trong-chu-ky-kinh-nguyet-de-khien-vong-tranh-thai-bi-lech.jpg" alt="Lệch vòng tránh thai có bị đau lưng không và dấu hiệu nhận biết khác">
-                   <div class="news-content">
-                       <span class="category-tag">Sản Phụ Khoa</span>
-                       <h3 class="news-title">
-                           <a href="articles/NEWS_20241212111955.html">
-                               Lệch vòng tránh thai có bị đau lưng không và dấu hiệu nhận biết khác                           </a>
-                       </h3>
-                       <p class="news-brief">1. Nguyên nhân gây lệch vòng tránh thai&amp;nbsp;Nguyên nhân dẫn đến tình trạng lệch vòng tránh thai có thể là do cơn co thắt tử cung mạnh xuất hiện tr...</p>
-                   </div>
-               </article>
-                          <article class="news-item">
-                   <img src="https://i1-suckhoe.vnecdn.net/2024/12/10/image001-9876-1733807778.png?w=680&amp;h=0&amp;q=100&amp;dpr=2&amp;fit=crop&amp;s=l5iZK9HCyFO4n1Ju-9cheQ" alt="Virus HPV tiến triển gây ung thư cổ tử cung">
-                   <div class="news-content">
-                       <span class="category-tag">Sản Phụ Khoa</span>
-                       <h3 class="news-title">
-                           <a href="articles/NEWS_20241212081726.html">
-                               Virus HPV tiến triển gây ung thư cổ tử cung                           </a>
-                       </h3>
-                       <p class="news-brief">TP HCMChị Linh 40 tuổi, nhiễm virus HPV 18, sau 5 năm không tái khám bác sĩ chẩn đoán mắc ung thư cổ tử cung.Khi ấy chị Linh nhiễm virus HPV 18, ch...</p>
-                   </div>
-               </article>
-                  </div>
-   </div>
+   <div class="news-grid">
+                  <article class="news-item">
+               <img src="https://thumbayuniversityhospital.com/wp-content/uploads/2021/07/papsmear.jpg" 
+                    alt="Phòng ngừa ung thư cổ tử cung:">
+               <div class="news-content">
+                   <span class="category-tag">
+                       Sản Phụ Khoa                   </span>
+                   <h3 class="news-title">
+                       <a href="articles/NEWS_20241216145732/NEWS_20241216145732.html">
+                           Phòng ngừa ung thư cổ tử cung:                       </a>
+                   </h3>
+                   <p class="news-brief">Phòng ngừa ung thư cổ tử cung:Cổ tử cung là phần dưới cùng của tử cung; nó mở vào âm đạoUng thư cổ tử cung xảy ra khi các tế bào bình thường ở cổ t...</p>
+               </div>
+           </article>
+                  <article class="news-item">
+               <img src="https://www.saintjohnscancer.org/gynecology/wp-content/uploads/sites/8/2024/08/HPV-Human-Papillomavirus-Saint-Johns-Cancer-Institute.png" 
+                    alt="Ung thư cổ tử cung: Nguyên nhân, Dấu hiệu &amp; Triệu chứng và Chẩn đoán">
+               <div class="news-content">
+                   <span class="category-tag">
+                       Sản Phụ Khoa                   </span>
+                   <h3 class="news-title">
+                       <a href="articles/NEWS_20241215214055/NEWS_20241215214055.html">
+                           Ung thư cổ tử cung: Nguyên nhân, Dấu hiệu &amp; Triệu chứng và Chẩn đoán                       </a>
+                   </h3>
+                   <p class="news-brief">Nguyên nhân gây ung thư cổ tử cungCó thể thực hiện sàng lọc ung thư tiền cổ tử cung hoặc ung thư cổ tử cung bằng xét nghiệm PAP lâm sàng.Cổ tử cung...</p>
+               </div>
+           </article>
+                  <article class="news-item">
+               <img src="https://github.com/fmcclinic/fmcweb/blob/main/news/image/news.jpg?raw=true" 
+                    alt="Chủ Động Tầm Soát Ung Thư Vú - Đừng Để Quá Muộn">
+               <div class="news-content">
+                   <span class="category-tag">
+                       Sản Phụ Khoa                   </span>
+                   <h3 class="news-title">
+                       <a href="articles/NEWS_20241214175049/NEWS_20241214175049.html">
+                           Chủ Động Tầm Soát Ung Thư Vú - Đừng Để Quá Muộn                       </a>
+                   </h3>
+                   <p class="news-brief">&#34;Chị Lan (35 tuổi, TP.HCM) tưởng chừng đã quá muộn khi phát hiện khối u ở giai đoạn 2. Nhưng nhờ tầm soát định kỳ trong chương trình khám sức khỏe ...</p>
+               </div>
+           </article>
+                  <article class="news-item">
+               <img src="https://www.aceaudiology.com.au/wp-content/uploads/2021/09/Hearing-Aids-Buying-Guide.jpg" 
+                    alt="Cách lựa chọn máy trợ thính phù hợp">
+               <div class="news-content">
+                   <span class="category-tag">
+                       Tai Mũi Họng                   </span>
+                   <h3 class="news-title">
+                       <a href="articles/NEWS_20241214135749/NEWS_20241214135749.html">
+                           Cách lựa chọn máy trợ thính phù hợp                       </a>
+                   </h3>
+                   <p class="news-brief">Việc lựa chọn một chiếc máy trợ thính phù hợp là rất quan trọng để cải thiện chất lượng cuộc sống cho người gặp vấn đề về thính lực. Dưới đây là mộ...</p>
+               </div>
+           </article>
+                  <article class="news-item">
+               <img src="https://naturalhealth.my/wp-content/uploads/2023/05/Hearing-Problem.jpg" 
+                    alt="Giảm thính lực ở người già: Nguyên nhân và cách khắc phục">
+               <div class="news-content">
+                   <span class="category-tag">
+                       Tai Mũi Họng                   </span>
+                   <h3 class="news-title">
+                       <a href="articles/NEWS_20241214134230/NEWS_20241214134230.html">
+                           Giảm thính lực ở người già: Nguyên nhân và cách khắc phục                       </a>
+                   </h3>
+                   <p class="news-brief">Giảm thính lực là một vấn đề sức khỏe phổ biến ở người cao tuổi, ảnh hưởng đáng kể đến chất lượng cuộc sống. Hiểu rõ về nguyên nhân và cách khắc ph...</p>
+               </div>
+           </article>
+                  <article class="news-item">
+               <img src="https://naturalhealth.my/wp-content/uploads/2023/05/Hearing-Problem.jpg" 
+                    alt="Giảm thính lực ở người già: Nguyên nhân và cách khắc phục">
+               <div class="news-content">
+                   <span class="category-tag">
+                       Nội Khoa                   </span>
+                   <h3 class="news-title">
+                       <a href="articles/NEWS_20241214134230/NEWS_20241214134230.html">
+                           Giảm thính lực ở người già: Nguyên nhân và cách khắc phục                       </a>
+                   </h3>
+                   <p class="news-brief">Giảm thính lực là một vấn đề sức khỏe phổ biến ở người cao tuổi, ảnh hưởng đáng kể đến chất lượng cuộc sống. Hiểu rõ về nguyên nhân và cách khắc ph...</p>
+               </div>
+           </article>
+          </div>
 
    <script>
        function updateParentHeight() {

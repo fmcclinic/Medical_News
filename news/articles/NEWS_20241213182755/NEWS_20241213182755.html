@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nội soi tai mũi họng: Khám phá thế giới bên trong để có sức khỏe hoàn hảo - Tin Tức Y Khoa</title>
+    
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=30xj8le1"></script>
+    <style>
+         
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .article-category {
+            display: inline-block;
+            background: #0070c0;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            color: #333;
+        }
+
+        .article-meta {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .reading-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 8px;
+            background: #f0f0f0;
+            border-radius: 15px;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .article-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .article-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+            padding: 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .article-content p.current {
+            background: #f0f9ff;
+            border-left: 3px solid #0070c0;
+            padding-left: 15px;
+        }
+
+        .article-content img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+         
+        .speech-controls {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .speech-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .speech-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .controls-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        #playButton {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #0070c0;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        #playButton:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        #playButton:hover:not(:disabled) {
+            background: #005590;
+        }
+
+        .speed-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            min-width: 120px;
+        }
+
+        .progress-container {
+            margin-top: 15px;
+            background: #e9ecef;
+            height: 4px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #0070c0;
+            width: 0;
+            transition: width 0.3s;
+        }
+
+        .status {
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            display: none;
+            font-size: 0.9em;
+        }
+
+        .status.active {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status.reading {
+            background: #e3f2fd;
+            color: #0070c0;
+            border-left: 4px solid #0070c0;
+        }
+
+        .status.paused {
+            background: #fff3e0;
+            color: #ef6c00;
+            border-left: 4px solid #ef6c00;
+        }
+
+        .status.error {
+            background: #ffebee;
+            color: #c62828;
+            border-left: 4px solid #c62828;
+        }
+
+         
+        .share-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .share-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            transition: opacity 0.3s;
+        }
+
+        .share-button:hover {
+            opacity: 0.9;
+        }
+
+        .share-button.facebook {
+            background: #1877f2;
+        }
+
+        .share-button.twitter {
+            background: #1da1f2;
+        }
+
+         
+        .related-section {
+            margin-top: 40px;
+        }
+
+        .related-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .related-article {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .related-article:hover {
+            transform: translateY(-3px);
+        }
+
+        .related-article img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .related-article h3 {
+            padding: 15px;
+            margin: 0;
+        }
+
+        .related-article a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .related-article a:hover {
+            color: #0070c0;
+        }
+
+        .related-article .date {
+            display: block;
+            padding: 0 15px 15px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .controls-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="article-category">Tai Mũi Họng</span>
+        
+        <h1>Nội soi tai mũi họng: Khám phá thế giới bên trong để có sức khỏe hoàn hảo</h1>
+        
+        <div class="article-meta">
+            <span>Đăng ngày 13/12/2024</span>
+            <span class="reading-time">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                2 phút đọc
+            </span>
+        </div>
+
+        <img src="https://www.sinusdoctor.com/wp-content/uploads/2022/05/Home-page-Images.jpg" alt="Nội soi tai mũi họng: Khám phá thế giới bên trong để có sức khỏe hoàn hảo" class="featured-image">
+
+        <div class="article-content">
+            
+            <div class="speech-controls">
+                <div class="speech-header">
+                    <span class="speech-title">Nghe bài viết</span>
+                </div>
+                
+                <div class="controls-container">
+                    <button id="playButton" disabled>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        Đọc bài viết
+                    </button>
+                    
+                    <div class="speed-control">
+                        <select id="voiceSelect">
+                            <option value="Vietnamese Female">Giọng Nữ</option>
+                            <option value="Vietnamese Male">Giọng Nam</option>
+                        </select>
+                        <label for="rateSelect">Tốc độ đọc:</label>
+                        <select id="rateSelect">
+                            <option value="0.8">Chậm</option>
+                            <option value="1" selected>Bình thường</option>
+                            <option value="1.2">Nhanh</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="progress-container">
+                    <div id="progress" class="progress-bar"></div>
+                </div>
+
+                <div id="status" class="status">
+                    <span id="statusText"></span>
+                </div>
+            </div>
+
+            <p>Bạn thường xuyên gặp phải các vấn đề về tai mũi họng như nghẹt mũi, chảy nước mũi, đau họng, ù tai...? Đừng lo lắng, với công nghệ hiện đại, nội soi tai mũi họng sẽ giúp bạn tìm ra nguyên nhân và có giải pháp điều trị hiệu quả nhất.</p><h3><strong>Nội soi tai mũi họng là gì?</strong></h3><p>Nội soi tai mũi họng là một kỹ thuật y khoa sử dụng ống nội soi có gắn camera siêu nhỏ để quan sát trực tiếp các cấu trúc bên trong tai, mũi, họng. Phương pháp này giúp bác sĩ phát hiện sớm và chính xác các bệnh lý, từ đó đưa ra phác đồ điều trị phù hợp.</p><h3><strong>Tại sao nên chọn nội soi tai mũi họng?</strong></h3><ul><li><strong>Chẩn đoán chính xác:</strong> Nội soi giúp bác sĩ nhìn thấy rõ ràng các tổn thương, từ đó đưa ra kết luận chính xác về bệnh.</li><li><strong>Ít xâm lấn:</strong> Thủ thuật đơn giản, nhanh chóng, không gây đau đớn.</li><li><strong>An toàn:</strong> Được thực hiện bởi các bác sĩ chuyên khoa giàu kinh nghiệm, sử dụng trang thiết bị hiện đại.</li><li><strong>Điều trị hiệu quả:</strong> Nhờ chẩn đoán chính xác, việc điều trị trở nên dễ dàng và hiệu quả hơn.</li></ul><h3><strong>Nội soi tai mũi họng phát hiện được những bệnh gì?</strong></h3><ul><li><strong>Bệnh về mũi:</strong> Viêm mũi dị ứng, viêm xoang, polyp mũi, vẹo vách ngăn...</li><li><strong>Bệnh về họng:</strong> Viêm họng, viêm amidan, ung thư họng...</li><li><strong>Bệnh về tai:</strong> Viêm tai giữa, ù tai, giảm thính lực...</li></ul><h3><strong>Quy trình nội soi tai mũi họng diễn ra như thế nào?</strong></h3><ol><li><strong>Chuẩn bị:</strong> Bác sĩ sẽ giải thích về thủ thuật và hướng dẫn bệnh nhân chuẩn bị.</li><li><strong>Tiến hành:</strong> Bác sĩ nhẹ nhàng đưa ống nội soi vào mũi hoặc tai để quan sát.</li><li><strong>Kết quả:</strong> Hình ảnh sẽ được hiển thị trên màn hình, bác sĩ sẽ giải thích kết quả và tư vấn phương pháp điều trị.</li></ol><p><br></p>
+            <div class="share-section">
+                <div class="share-buttons">
+                    <button onclick="shareOnFacebook()" class="share-button facebook">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                        Chia sẻ Facebook
+                    </button>
+                    <button onclick="shareOnTwitter()" class="share-button twitter">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                        </svg>
+                        Chia sẻ Twitter
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="related-section">
+            <h2 class="related-title">Bài viết liên quan</h2>
+            <div class="related-grid">
+                
+     <div class="related-article">
+       <img src="https://www.aceaudiology.com.au/wp-content/uploads/2021/09/Hearing-Aids-Buying-Guide.jpg" alt="Cách lựa chọn máy trợ thính phù hợp">
+       <h3>
+         <a href="NEWS_20241214135749.html">Cách lựa chọn máy trợ thính phù hợp</a>
+       </h3>
+       <span class="date">14/12/2024</span>
+     </div>
+   
+     <div class="related-article">
+       <img src="https://naturalhealth.my/wp-content/uploads/2023/05/Hearing-Problem.jpg" alt="Giảm thính lực ở người già: Nguyên nhân và cách khắc phục">
+       <h3>
+         <a href="NEWS_20241214134230.html">Giảm thính lực ở người già: Nguyên nhân và cách khắc phục</a>
+       </h3>
+       <span class="date">14/12/2024</span>
+     </div>
+   
+     <div class="related-article">
+       <img src="https://suckhoedoisong.qltns.mediacdn.vn/Images/nguyenkhanh/2017/12/21/noi_soi_tai_mui_hong.jpg" alt="Tầm soát ung thư vòm họng: Bảo vệ sức khỏe bạn">
+       <h3>
+         <a href="NEWS_20241212154352.html">Tầm soát ung thư vòm họng: Bảo vệ sức khỏe bạn</a>
+       </h3>
+       <span class="date">12/12/2024</span>
+     </div>
+               </div>
+        </div>
+    </div>
+
+    <script>
+
+
+const VOICE_CONFIG = {
+    'Vietnamese Female': {
+        name: 'Vietnamese Female',
+        lang: 'vi-VN',
+        voiceURI: 'Vietnamese Female',
+        rate: 1,
+        pitch: 1.1,
+        volume: 1
+    },
+    'Vietnamese Male': {
+        name: 'Vietnamese Male', 
+        lang: 'vi-VN',
+        voiceURI: 'Vietnamese Male',
+        rate: 1,
+        pitch: 0.9,
+        volume: 1
+    }
+};
+
+
+
+        
+        let isPlaying = false;
+        let currentParagraphIndex = 0;
+        let paragraphs = [];
+        let ttsInitialized = false;
+
+        
+        if (typeof responsiveVoice !== 'undefined') {
+            responsiveVoice.OnVoiceReady = function() {
+                console.log('ResponsiveVoice sẵn sàng');
+                initTTS();
+            };
+        }
+
+        
+        function initTTS() {
+            try {
+                if (!responsiveVoice.voiceSupport()) {
+                    throw new Error('Trình duyệt không hỗ trợ TTS');
+                }
+
+                setupElements();
+                setupEventListeners();
+                loadParagraphs();
+                
+                document.getElementById('playButton').disabled = false;
+                ttsInitialized = true;
+                
+                console.log('TTS đã khởi tạo thành công');
+                updateStatus('Sẵn sàng đọc');
+
+            } catch (error) {
+                showError('Không thể khởi tạo TTS: ' + error.message);
+            }
+        }
+
+        
+        function setupElements() {
+            const elements = ['playButton', 'voiceSelect', 'rateSelect', 'status', 'progress'];
+            elements.forEach(id => {
+                if (!document.getElementById(id)) {
+                    throw new Error(`Thiếu element: ${id}`);
+                }
+            });
+        }
+
+        
+        function setupEventListeners() {
+            document.getElementById('playButton').addEventListener('click', toggleSpeech);
+            document.getElementById('voiceSelect').addEventListener('change', handleVoiceChange);
+            document.getElementById('rateSelect').addEventListener('change', handleRateChange);
+        }
+
+        
+        function loadParagraphs() {
+            paragraphs = Array.from(document.querySelectorAll('.article-content p'))
+                            .map(p => p.textContent.trim())
+                            .filter(text => text.length > 0);
+            console.log(`Tìm thấy ${paragraphs.length} đoạn văn`);
+        }
+
+
+       function toggleSpeech() {
+           if (!ttsInitialized) {
+               showError('TTS chưa sẵn sàng');
+               return;
+           }
+
+           if (!isPlaying) {
+               startReading();
+           } else {
+               stopReading();
+           }
+       }
+
+       
+       function startReading() {
+           isPlaying = true;
+           currentParagraphIndex = 0;
+           updateUI('reading');
+           readNextParagraph();
+       }
+
+       
+\function readNextParagraph() {
+    if (currentParagraphIndex < paragraphs.length) {
+        try {
+            const voiceName = document.getElementById('voiceSelect').value;
+            const voiceConfig = VOICE_CONFIG[voiceName];
+            const rate = parseFloat(document.getElementById('rateSelect').value);
+
+            updateProgress(((currentParagraphIndex + 1) / paragraphs.length) * 100);
+            highlightCurrentParagraph(true);
+
+            
+            responsiveVoice.speak(
+                paragraphs[currentParagraphIndex],
+                voiceName,
+                {
+                    pitch: voiceConfig.pitch,
+                    rate: rate,
+                    volume: voiceConfig.volume,
+                    lang: voiceConfig.lang,
+                    voiceURI: voiceConfig.voiceURI,
+                    onstart: function() {
+                        console.log(`Đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
+                        updateStatus(`Đang đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
+                    },
+                    onend: function() {
+                        highlightCurrentParagraph(false);
+                        currentParagraphIndex++;
+                        if (isPlaying) {
+                            setTimeout(readNextParagraph, 100);
+                        }
+                    }
+                }
+            );
+        } catch (error) {
+            console.error('Error:', error);
+            showError(error.message);
+            stopReading();
+        }
+    } else {
+        finishReading();
+    }
+}
+
+       
+       function stopReading() {
+           responsiveVoice.cancel();
+           isPlaying = false;
+           highlightCurrentParagraph(false);
+           updateUI('paused');
+       }
+
+       
+       function finishReading() {
+           isPlaying = false;
+           updateProgress(100);
+           updateUI('finished');
+           console.log('Hoàn thành đọc bài viết');
+       }
+
+       
+       function handleVoiceChange() {
+           if (isPlaying) {
+               restartReading();
+           }
+       }
+
+       
+       function handleRateChange() {
+           if (isPlaying) {
+               restartReading();
+           }
+       }
+
+       
+       function restartReading() {
+           stopReading();
+           startReading();
+       }
+
+       
+       function updateUI(state) {
+           const button = document.getElementById('playButton');
+           if (button) {
+               button.innerHTML = isPlaying ? 
+                   '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>Tạm dừng' :
+                   '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>Đọc bài viết';
+           }
+           updateStatus(state);
+       }
+
+       
+       function updateStatus(message) {
+           const statusText = document.getElementById('statusText');
+           const status = document.getElementById('status');
+           if (statusText && status) {
+               statusText.textContent = typeof message === 'string' ? message : 
+                   message === 'reading' ? 'Đang đọc...' :
+                   message === 'paused' ? 'Đã tạm dừng' :
+                   message === 'finished' ? 'Đã đọc xong' : '';
+               status.className = 'status active ' + message;
+           }
+       }
+
+       
+       function updateProgress(percent) {
+           const progress = document.getElementById('progress');
+           if (progress) {
+               progress.style.width = percent + '%';
+           }
+       }
+
+       
+       function highlightCurrentParagraph(isHighlight) {
+           const paragraphElements = document.querySelectorAll('.article-content p');
+           paragraphElements.forEach(p => p.classList.remove('current'));
+           
+           if (isHighlight && paragraphElements[currentParagraphIndex]) {
+               paragraphElements[currentParagraphIndex].classList.add('current');
+               paragraphElements[currentParagraphIndex].scrollIntoView({
+                   behavior: 'smooth',
+                   block: 'center'
+               });
+           }
+       }
+
+       
+       function showError(message) {
+           console.error(message);
+           updateStatus('error');
+           const statusText = document.getElementById('statusText');
+           if (statusText) {
+               statusText.textContent = message;
+           }
+       }
+
+       
+       function shareOnFacebook() {
+           const url = window.location.href;
+           window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url));
+       }
+
+       function shareOnTwitter() {
+           const url = window.location.href;
+           const title = document.title;
+           window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title));
+       }
+
+       
+       function updateParentHeight() {
+           const height = document.documentElement.scrollHeight;
+           window.parent.postMessage({ height: height }, '*');
+       }
+
+       
+       document.addEventListener('DOMContentLoaded', function() {
+           updateParentHeight();
+       });
+
+       
+       new ResizeObserver(updateParentHeight).observe(document.body);
+   </script>
+</body>
+</html>
