@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -6,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kiến thức cơ bản về bệnh viêm gan B - Tin Tức Y Khoa</title>
     
-    <script src="https://code.responsivevoice.org/responsivevoice.js?key=30xj8le1"></script>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=YOUR_KEY"></script>
     <style>
+         
         * {
             box-sizing: border-box;
             margin: 0;
@@ -19,14 +19,19 @@
             line-height: 1.6;
             color: #333;
             background: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            flex: 1;
         }
 
+         
         .article-category {
             display: inline-block;
             background: #0070c0;
@@ -37,11 +42,12 @@
             margin-bottom: 15px;
         }
 
-        h1 {
+        .article-title {
             font-size: 2em;
             margin-bottom: 15px;
             line-height: 1.2;
             color: #333;
+            padding: 10px;
         }
 
         .article-meta {
@@ -63,6 +69,15 @@
             border-radius: 15px;
         }
 
+         
+        .article-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
         .featured-image {
             width: 100%;
             height: auto;
@@ -70,14 +85,6 @@
             object-fit: cover;
             border-radius: 8px;
             margin-bottom: 20px;
-        }
-
-        .article-content {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .article-content p {
@@ -88,17 +95,11 @@
             transition: all 0.3s ease;
         }
 
-        .article-content p.current {
+        .article-content p.current,
+        .article-title.current {
             background: #f0f9ff;
             border-left: 3px solid #0070c0;
             padding-left: 15px;
-        }
-
-        .article-content img {
-            max-width: 100%;
-            height: auto;
-            margin: 20px 0;
-            border-radius: 4px;
         }
 
          
@@ -142,14 +143,6 @@
             cursor: pointer;
             font-weight: 500;
             transition: all 0.3s ease;
-        }
-
-        #playButton {
-            background: #0070c0;
-        }
-
-        #mp3Button {
-            background: #28a745;
         }
 
         .control-button:hover {
@@ -197,7 +190,6 @@
             margin: 10px 0;
             border-radius: 4px;
             display: none;
-            font-size: 0.9em;
         }
 
         .status.active {
@@ -225,14 +217,67 @@
         }
 
          
-        .audio-player {
-            width: 100%;
-            margin-top: 10px;
-            display: none;
+        .related-section {
+            margin-top: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .audio-player.active {
+        .related-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .related-article {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .related-article:hover {
+            transform: translateY(-3px);
+        }
+
+        .related-article img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .related-article h3 {
+            padding: 15px;
+            margin: 0;
+            flex: 1;
+        }
+
+        .related-article a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .related-article a:hover {
+            color: #0070c0;
+        }
+
+        .related-article .date {
             display: block;
+            padding: 0 15px 15px;
+            color: #666;
+            font-size: 0.9em;
         }
 
          
@@ -245,7 +290,6 @@
         .share-buttons {
             display: flex;
             gap: 10px;
-            margin-top: 10px;
         }
 
         .share-button {
@@ -274,67 +318,12 @@
         }
 
          
-        .related-section {
-            margin-top: 40px;
-        }
-
-        .related-title {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .related-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .related-article {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .related-article:hover {
-            transform: translateY(-3px);
-        }
-
-        .related-article img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .related-article h3 {
-            padding: 15px;
-            margin: 0;
-        }
-
-        .related-article a {
-            color: #333;
-            text-decoration: none;
-        }
-
-        .related-article a:hover {
-            color: #0070c0;
-        }
-
-        .related-article .date {
-            display: block;
-            padding: 0 15px 15px;
-            color: #666;
-            font-size: 0.9em;
-        }
-
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
             }
 
-            h1 {
+            .article-title {
                 font-size: 1.8em;
             }
 
@@ -358,7 +347,7 @@
     <div class="container">
         <span class="article-category">Nội Khoa</span>
         
-        <h1>Kiến thức cơ bản về bệnh viêm gan B</h1>
+        <h1 class="article-title">Kiến thức cơ bản về bệnh viêm gan B</h1>
         
         <div class="article-meta">
             <span>Đăng ngày 17/12/2024</span>
@@ -374,59 +363,59 @@
         <img src="https://www.cdc.gov/hepatitis-b/media/images/2024/04/what-is-hepatitis-b-thumbnail.jpg" alt="Kiến thức cơ bản về bệnh viêm gan B" class="featured-image">
 
         <div class="article-content">
-            <div class="speech-controls">
-                <div class="speech-header">
-                    <span class="speech-title">Nghe bài viết</span>
-                </div>
-                
-                <div class="controls-container">
-                    
-                    <button id="mp3Button" class="control-button" style="display: none;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
-                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                            <line x1="12" y1="19" x2="12" y2="23"/>
-                            <line x1="8" y1="23" x2="16" y2="23"/>
-                        </svg>
-                        Audio đã thu
-                    </button>
+<div class="speech-controls">
+    <div class="speech-header">
+        <span class="speech-title">Nghe bài viết</span>
+    </div>
+    
+    <div class="controls-container">
+        
+        <button type="button" id="mp3Button" class="control-button" onclick="toggleMP3()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                <line x1="12" y1="19" x2="12" y2="23"/>
+                <line x1="8" y1="23" x2="16" y2="23"/>
+            </svg>
+            <span>Audio đã thu</span>
+        </button>
 
-                    
-                    <button id="playButton" class="control-button" disabled>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                        </svg>
-                        Đọc bài viết
-                    </button>
-                    
-                    <div class="speed-control">
-                        <select id="voiceSelect">
-                            <option value="Vietnamese Female">Giọng Nữ</option>
-                            <option value="Vietnamese Male">Giọng Nam</option>
-                        </select>
-                        <label for="rateSelect">Tốc độ đọc:</label>
-                        <select id="rateSelect">
-                            <option value="0.8">Chậm</option>
-                            <option value="1" selected>Bình thường</option>
-                            <option value="1.2">Nhanh</option>
-                        </select>
-                    </div>
-                </div>
+        
+        <button type="button" id="playButton" class="control-button" onclick="toggleSpeech()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <span>Đọc bài viết</span>
+        </button>
+        
+        
+        <div id="ttsControls" class="speed-control">
+            <select id="voiceSelect" onchange="handleVoiceChange()">
+                <option value="Vietnamese Female">Giọng Nữ</option>
+                <option value="Vietnamese Male">Giọng Nam</option>
+            </select>
+            <select id="rateSelect" onchange="handleRateChange()">
+                <option value="0.8">Chậm</option>
+                <option value="1" selected>Bình thường</option>
+                <option value="1.2">Nhanh</option>
+            </select>
+        </div>
+    </div>
 
-                
-                <audio id="audioPlayer" class="audio-player">
-                    <source id="audioSource" type="audio/mpeg">
-                    Trình duyệt không hỗ trợ phát audio.
-                </audio>
+    
+    <audio id="mp3Player" controls style="width: 100%; margin-top: 10px; display: none;">
+        <source id="mp3Source" type="audio/mpeg">
+        Trình duyệt không hỗ trợ phát audio.
+    </audio>
 
-                <div class="progress-container">
-                    <div id="progress" class="progress-bar"></div>
-                </div>
+    <div class="progress-container">
+        <div id="progress" class="progress-bar"></div>
+    </div>
 
-                <div id="status" class="status">
-                    <span id="statusText"></span>
-                </div>
-            </div>
+    <div id="status" class="status">
+        <span id="statusText"></span>
+    </div>
+</div>
 
             <p>Những điểm chính</p><ul><li>Viêm gan B là bệnh về gan do virus viêm gan B (HBV) gây ra.</li><li>Nhiễm trùng HBV có thể là ngắn hạn (cấp tính) hoặc dài hạn (mãn tính).</li><li>Khoảng 1/2 số người mắc bệnh viêm gan B không biết mình bị nhiễm bệnh.</li><li>HBV có khả năng lây nhiễm và phát tán qua tiếp xúc với máu và dịch cơ thể bị nhiễm bệnh.</li><li>Tiêm vắc-xin là cách tốt nhất để ngăn ngừa nhiễm trùng.</li></ul><p class="ql-align-center"><img src="https://www.cdc.gov/hepatitis-b/media/images/2024/04/what-is-hepatitis-b-thumbnail.jpg" alt="Hình ảnh minh họa cho thấy virus viêm gan B trong gan"></p><h2>Về Viêm gan B</h2><p>Viêm gan B là một bệnh nhiễm trùng gan có thể phòng ngừa bằng vắc-xin do HBV gây ra. HBV lây truyền khi máu, tinh dịch hoặc dịch cơ thể khác từ người bị nhiễm vi-rút xâm nhập vào cơ thể người không bị nhiễm.</p><p>Viêm gan B có thể là một căn bệnh cấp tính nhẹ, ngắn hạn kéo dài vài tuần hoặc là một căn bệnh mãn tính nghiêm trọng, kéo dài.</p><h2>Các loại</h2><p>Loại viêm gan B mà bạn mắc phải phụ thuộc vào thời gian bạn bị nhiễm virus trong cơ thể, sức khỏe của gan và các yếu tố khác. Xét nghiệm máu sẽ cho biết bạn mắc loại nào.</p><h3>Viêm gan B cấp tính</h3><p>Viêm gan B cấp tính là một căn bệnh ngắn hạn xảy ra trong vòng 6 tháng đầu sau khi tiếp xúc với HBV. Một số người bị viêm gan B cấp tính không có triệu chứng hoặc chỉ bị bệnh nhẹ. Đối với những người khác, viêm gan B cấp tính có thể gây ra bệnh nặng hơn cần phải nhập viện.</p><h4>Sự thật nhanh về viêm gan B cấp tính</h4><ul><li>Năm 2022, 52% số ca viêm gan B cấp tính là những người trong độ tuổi 40–59.</li><li>Tỷ lệ các ca viêm gan B cấp tính mới được báo cáo vẫn ổn định trong năm 2022.</li><li>Tỷ lệ mắc viêm gan B cấp tính cao nhất ở người da đen không phải gốc Tây Ban Nha.</li><li>Tỷ lệ viêm gan B cấp tính cao nhất ở các tiểu bang trong hoặc gần khu vực Appalachia.</li></ul><h3>Viêm gan B mãn tính</h3><p>Viêm gan B cấp tính có thể dẫn đến tình trạng nhiễm trùng suốt đời được gọi là viêm gan B mãn tính. Nếu không được điều trị, viêm gan B mãn tính có thể gây ra các vấn đề sức khỏe nghiêm trọng, bao gồm tổn thương gan, xơ gan, ung thư gan và thậm chí tử vong.</p><h4>Sự thật nhanh về viêm gan B mãn tính</h4><ul><li>CDC ước tính có khoảng 640.000 người lớn ở Hoa Kỳ mắc bệnh viêm gan B mãn tính (dài hạn).</li><li>Năm 2022, tỷ lệ mắc viêm gan B mãn tính cao nhất là ở người châu Á và Thái Bình Dương không phải gốc Tây Ban Nha.</li><li>Năm 2022, tỷ lệ các ca viêm gan B mãn tính mới được báo cáo cao gấp 11 lần ở những người gốc Á/Thái Bình Dương không phải gốc Tây Ban Nha so với những người da trắng không phải gốc Tây Ban Nha.</li></ul><h2>Dấu hiệu và triệu chứng</h2><p>Nhiều người bị nhiễm virus viêm gan B sẽ không có triệu chứng. Nếu các triệu chứng xuất hiện trong quá trình nhiễm trùng cấp tính, chúng thường bắt đầu sau 90 ngày kể từ khi tiếp xúc. Mặc dù các triệu chứng của nhiễm HBV cấp tính và nhiễm HBV mạn tính có thể giống nhau, nhưng hầu hết những người bị nhiễm trùng mạn tính không có triệu chứng cho đến tận sau này, thường là nhiều thập kỷ sau khi tiếp xúc.</p><h3>Nhớ lại‎</h3><p>Bạn có thể bị viêm gan B ngay cả khi không có bất kỳ triệu chứng nào.</p><p>Các triệu chứng của bệnh viêm gan B bao gồm:</p><ul><li>Nước tiểu sẫm màu hoặc phân màu đất sét</li><li>Cảm thấy mệt mỏi</li><li>Sốt</li><li>Đau khớp</li><li>Mất cảm giác thèm ăn</li><li>Buồn nôn, đau bụng, nôn mửa</li><li>Vàng da hoặc vàng mắt (vàng da)</li></ul><p>Tìm hiểu thêm về&nbsp;<a href="https://www-cdc-gov.translate.goog/hepatitis-b/signs-symptoms/index.html?_x_tr_sl=vi&amp;_x_tr_tl=en&amp;_x_tr_hl=vi&amp;_x_tr_pto=wapp" target="_blank" style="color: var(--colors-blue-vivid-60);">các triệu chứng của bệnh viêm gan</a>&nbsp;B.</p><h2>Nó lây lan như thế nào</h2><p>Viêm gan B chủ yếu lây lan khi máu, tinh dịch hoặc một số chất dịch cơ thể khác – ngay cả với lượng rất nhỏ – từ người bị nhiễm HBV xâm nhập vào cơ thể người không bị nhiễm.</p><p>Mặc dù bất kỳ ai cũng có thể mắc viêm gan B, nhưng một số hoàn cảnh sống, công việc và hành vi nhất định có thể làm tăng nguy cơ mắc bệnh.</p><p>Tìm hiểu thêm về&nbsp;<a href="https://www-cdc-gov.translate.goog/hepatitis-b/prevention/index.html?_x_tr_sl=vi&amp;_x_tr_tl=en&amp;_x_tr_hl=vi&amp;_x_tr_pto=wapp" target="_blank" style="color: var(--colors-blue-vivid-60);">các yếu tố nguy cơ cụ thể của bệnh viêm gan</a>&nbsp;B.</p><h2>Phòng ngừa</h2><p>Cách tốt nhất để phòng ngừa viêm gan B là tiêm vắc-xin. Bạn cần tiêm tất cả các mũi trong loạt mũi tiêm để được bảo vệ hoàn toàn.</p><h3>CDC khuyến cáo những nhóm sau đây nên tiêm vắc-xin phòng viêm gan B:</h3><ul><li>Tất cả&nbsp;<a href="https://www-cdc-gov.translate.goog/vaccines/schedules/hcp/imz/child-adolescent.html?_x_tr_sl=vi&amp;_x_tr_tl=en&amp;_x_tr_hl=vi&amp;_x_tr_pto=wapp" target="_blank" style="color: var(--colors-blue-vivid-60);">trẻ sơ sinh</a>&nbsp;.</li><li>Tất cả&nbsp;<a href="https://www-cdc-gov.translate.goog/vaccines/schedules/hcp/imz/child-adolescent.html?_x_tr_sl=vi&amp;_x_tr_tl=en&amp;_x_tr_hl=vi&amp;_x_tr_pto=wapp" target="_blank" style="color: var(--colors-blue-vivid-60);">trẻ em và thanh thiếu niên</a>&nbsp;dưới 19 tuổi chưa được tiêm vắc-xin.</li><li><a href="https://www-cdc-gov.translate.goog/vaccines/schedules/hcp/imz/adult.html?_x_tr_sl=vi&amp;_x_tr_tl=en&amp;_x_tr_hl=vi&amp;_x_tr_pto=wapp" target="_blank" style="color: var(--colors-blue-vivid-60);">Người lớn</a>&nbsp;từ 19 đến 59 tuổi.</li><li><a href="https://www-cdc-gov.translate.goog/vaccines/schedules/hcp/imz/adult.html?_x_tr_sl=vi&amp;_x_tr_tl=en&amp;_x_tr_hl=vi&amp;_x_tr_pto=wapp" target="_blank" style="color: var(--colors-blue-vivid-60);">Người lớn</a>&nbsp;từ 60 tuổi trở lên có nguy cơ mắc viêm gan B cao hơn.</li></ul><p>Tìm hiểu thêm về&nbsp;<a href="https://www-cdc-gov.translate.goog/hepatitis-b/prevention/index.html?_x_tr_sl=vi&amp;_x_tr_tl=en&amp;_x_tr_hl=vi&amp;_x_tr_pto=wapp" target="_blank" style="color: var(--colors-blue-vivid-60);">cách phòng ngừa viêm gan</a>&nbsp;B.</p><h3>Hãy tiêm vắc-xin‎</h3><p>Tiêm vắc-xin là cách tốt nhất để ngăn ngừa viêm gan B. Tìm hiểu thêm về&nbsp;<a href="https://www-cdc-gov.translate.goog/hepatitis-b/vaccination/index.html?_x_tr_sl=vi&amp;_x_tr_tl=en&amp;_x_tr_hl=vi&amp;_x_tr_pto=wapp" target="_blank" style="color: var(--colors-blue-vivid-60);">các khuyến nghị và lựa chọn tiêm vắc-xin</a>&nbsp;.</p><h2>Sàng lọc, xét nghiệm và chẩn đoán</h2><p>CDC khuyến cáo tất cả người lớn nên xét nghiệm viêm gan B ít nhất một lần trong đời thông qua xét nghiệm máu. Ngoài ra, có một số người nên được xét nghiệm thường xuyên hơn, bao gồm:</p><ul><li>Tất cả những người mang thai trong mỗi lần mang thai.</li><li>Trẻ sơ sinh được sinh ra từ người mẹ mang thai bị nhiễm HBV.</li><li>Những người có nguy cơ tiếp xúc liên tục.</li></ul><p>Tìm hiểu thêm về&nbsp;<a href="https://www-cdc-gov.translate.goog/hepatitis-b/testing/index.html?_x_tr_sl=vi&amp;_x_tr_tl=en&amp;_x_tr_hl=vi&amp;_x_tr_pto=wapp" target="_blank" style="color: var(--colors-blue-vivid-60);">các loại xét nghiệm được sử dụng để chẩn đoán viêm gan</a>&nbsp;B.</p><h3>Bạn có phải là nhà cung cấp dịch vụ chăm sóc sức khỏe không?</h3><p>Đối với các bác sĩ lâm sàng muốn tìm hiểu thêm về các lựa chọn xét nghiệm viêm gan siêu vi, hãy xem&nbsp;<a href="https://www-cdc-gov.translate.goog/hepatitis-b/hcp/diagnosis-testing/index.html?_x_tr_sl=vi&amp;_x_tr_tl=en&amp;_x_tr_hl=vi&amp;_x_tr_pto=wapp" target="_blank" style="color: var(--colors-blue-vivid-60);">hướng dẫn xét nghiệm lâm sàng</a>&nbsp;.</p><h2>Điều trị và phục hồi</h2><p>Nếu bạn được chẩn đoán mắc bệnh viêm gan B cấp tính hoặc mãn tính, hãy tìm bác sĩ chuyên về các bệnh truyền nhiễm, tiêu hóa hoặc gan. Họ sẽ cần phải làm các xét nghiệm thường xuyên để theo dõi tình trạng hoạt động của gan.</p><p>Đối với những người bị viêm gan B cấp tính và có các triệu chứng nhẹ, các nhà cung cấp dịch vụ chăm sóc sức khỏe thường khuyên nên nghỉ ngơi, dinh dưỡng đầy đủ và uống nhiều nước. Không có thuốc điều trị viêm gan B cấp tính. Có một số loại thuốc điều trị viêm gan B mãn tính; chúng không phải là thuốc chữa khỏi và chỉ có hiệu quả đối với một số người bị viêm gan B mãn tính&nbsp;. Tìm hiểu thêm về&nbsp;<a href="https://www-cdc-gov.translate.goog/hepatitis-b/treatment/index.html?_x_tr_sl=vi&amp;_x_tr_tl=en&amp;_x_tr_hl=vi&amp;_x_tr_pto=wapp" target="_blank" style="color: var(--colors-blue-vivid-60);">các lựa chọn điều trị viêm gan B.</a></p><h2>Những huyền thoại và quan niệm sai lầm</h2><p>Viêm gan B đôi khi khó hiểu, đặc biệt là cách lây lan và cách mọi người phục hồi. Sau đây là một số quan niệm sai lầm được giải đáp cho bạn.</p><h3>"Nếu tôi không có triệu chứng thì tôi không bị nhiễm bệnh."</h3><p>Nhiều người mắc bệnh viêm gan B không có triệu chứng nào.</p><h3>"Nếu tôi không có triệu chứng, tôi không thể lây truyền vi-rút cho người khác."</h3><p>Bạn vẫn có thể lây truyền HBV cho người khác ngay cả khi bạn không có bất kỳ triệu chứng nào.</p><h3>"Nếu tôi đã từng bị nhiễm HBV trong quá khứ, tôi có thể bị nhiễm lại."</h3><p>Hầu hết những người bị nhiễm viêm gan B không loại bỏ được virus trong vòng 6 tháng được chẩn đoán mắc viêm gan B mãn tính và vẫn bị nhiễm. Họ không thể bị nhiễm lại.</p><p>Một số người — bao gồm cả những người bị nhiễm trong thời thơ ấu — có thể bị nhiễm suốt đời nếu họ không bao giờ "loại bỏ" vi-rút khỏi cơ thể. Những người này được coi là bị viêm gan B mãn tính và có nguy cơ mắc bệnh gan nghiêm trọng.</p><h3>"Viêm gan B có thể lây lan qua nước bọt."</h3><p>Mặc dù HBV có thể được tìm thấy trong nước bọt, nhưng nó không lây lan qua hôn hoặc dùng chung đồ dùng. Nó cũng không lây lan qua hắt hơi, ho, ôm, cho con bú hoặc thức ăn hoặc nước.</p><h2>Những gì mong đợi trong dài hạn</h2><p>Nếu bạn bị viêm gan B mãn tính, điều quan trọng là phải tìm một bác sĩ hiểu rõ về căn bệnh này và có thể theo dõi gan của bạn thường xuyên. Viêm gan B mãn tính có thể gây ra các vấn đề sức khỏe nghiêm trọng, vì vậy việc có một người bên cạnh là rất quan trọng.</p><p>Nếu gần đây bạn được chẩn đoán mắc bệnh viêm gan B, hãy chắc chắn rằng:</p><ul><li>Tiêm vắc-xin phòng viêm gan A và xét nghiệm viêm gan C.</li><li>Cân nhắc xét nghiệm viêm gan D và virus gây suy giảm miễn dịch ở người (HIV).</li><li>Hạn chế uống rượu.</li><li>Thực hiện chế độ ăn uống lành mạnh và luôn vận động cơ thể.</li><li>Hãy tham khảo ý kiến ​​bác sĩ trước khi dùng bất kỳ loại thuốc theo toa, thực phẩm bổ sung dinh dưỡng, thảo dược hoặc thuốc không kê đơn nào vì chúng có khả năng gây hại cho gan.</li></ul><h2>CDC đang làm gì</h2><p>Để chấm dứt mối đe dọa đối với sức khỏe cộng đồng do viêm gan siêu vi, CDC hợp tác với các nhà cung cấp dịch vụ chăm sóc sức khỏe, sở y tế và các tổ chức cộng đồng để cải thiện khả năng tiếp cận các dịch vụ phòng ngừa, xét nghiệm, điều trị và chăm sóc viêm gan siêu vi tại Hoa Kỳ.</p><p>Vào năm 2022, CDC đã cập nhật các khuyến nghị về tiêm vắc-xin viêm gan B nhằm khuyến khích và thúc đẩy việc tiêm vắc-xin viêm gan B phổ cập cho tất cả người lớn trong độ tuổi từ 19 đến 59 và người lớn trên 60 tuổi có các yếu tố nguy cơ mắc viêm gan B.</p><p>Vào năm 2023, CDC đã cập nhật các khuyến nghị về sàng lọc và xét nghiệm viêm gan B để khuyến khích và thúc đẩy việc sàng lọc và xét nghiệm viêm gan B phổ cập cho tất cả mọi người từ 18 tuổi trở lên ít nhất một lần trong đời.</p>
             <div class="share-section">
@@ -452,381 +441,682 @@
             <div class="related-grid">
                 
       <div class="related-article">
-        <img src="https://naturalhealth.my/wp-content/uploads/2023/05/Hearing-Problem.jpg" alt="Giảm thính lực ở người già: Nguyên nhân và cách khắc phục">
+        <img src="https://cdnintech.com/books/8700/1713442765-245554739/cover.jpg" alt="Sử dụng An toàn Thuốc Chống Đông Máu">
         <h3>
-          <a href="../../articles/NEWS_20241214134230/NEWS_20241214134230.html">Giảm thính lực ở người già: Nguyên nhân và cách khắc phục</a>
+          <a href="../../articles/NEWS_20241220120851/NEWS_20241220120851.html">Sử dụng An toàn Thuốc Chống Đông Máu</a>
         </h3>
-        <span class="date">14/12/2024</span>
+        <span class="date">20/12/2024</span>
+      </div>
+    
+      <div class="related-article">
+        <img src="https://cdnintech.com/books/8700/1713442765-245554739/cover.jpg" alt="Sử dụng An toàn Thuốc Chống Đông Máu">
+        <h3>
+          <a href="../../articles/NEWS_20241220115930/NEWS_20241220115930.html">Sử dụng An toàn Thuốc Chống Đông Máu</a>
+        </h3>
+        <span class="date">20/12/2024</span>
+      </div>
+    
+      <div class="related-article">
+        <img src="https://pharmaceutical-journal.com/wp-content/uploads/2022/07/Anticoagulants-e1658921067805.jpg" alt="Sử dụng An toàn Thuốc Chống Đông Máu">
+        <h3>
+          <a href="../../articles/NEWS_20241220115107/NEWS_20241220115107.html">Sử dụng An toàn Thuốc Chống Đông Máu</a>
+        </h3>
+        <span class="date">20/12/2024</span>
       </div>
                 </div>
         </div>
     </div>
 
-    <script>
-        
-        const VOICE_CONFIG = {
-            'Vietnamese Female': {
-                name: 'Vietnamese Female',
-                lang: 'vi-VN',
-                voiceURI: 'Vietnamese Female',
-                rate: 1,
-                pitch: 1.1,
-               volume: 1
-           },
-           'Vietnamese Male': {
-               name: 'Vietnamese Male', 
-               lang: 'vi-VN',
-               voiceURI: 'Vietnamese Male',
-               rate: 1,
-               pitch: 0.9,
-               volume: 1
-           }
-       };
+<script>
 
-       
-       let isPlaying = false;
-       let currentParagraphIndex = 0;
-       let paragraphs = [];
-       let ttsInitialized = false;
-       let hasMP3 = false;
-
-       
-       if (typeof responsiveVoice !== 'undefined') {
-           responsiveVoice.OnVoiceReady = function() {
-               console.log('ResponsiveVoice sẵn sàng');
-               initTTS();
-               checkForMP3();
-           };
+const TTS_CONFIG = {
+   VOICE_OPTIONS: {
+       'Vietnamese Female': {
+           name: 'Vietnamese Female',
+           lang: 'vi-VN',
+           rate: 1,
+           pitch: 1.1,
+           volume: 1
+       },
+       'Vietnamese Male': {
+           name: 'Vietnamese Male',
+           lang: 'vi-VN',
+           rate: 1,
+           pitch: 0.9,
+           volume: 1
        }
+   },
+   PAUSE_BETWEEN: 500 
+};
 
-       
-       function initTTS() {
-           try {
-               if (!responsiveVoice.voiceSupport()) {
-                   throw new Error('Trình duyệt không hỗ trợ TTS');
-               }
 
-               setupElements();
-               setupEventListeners();
-               loadParagraphs();
-               
-               document.getElementById('playButton').disabled = false;
-               ttsInitialized = true;
-               
-               console.log('TTS đã khởi tạo thành công');
-               updateStatus('Sẵn sàng đọc');
+let isPlaying = false;
+let isMP3Playing = false;
+let currentParagraphIndex = 0;
+let paragraphs = [];
+let ttsInitialized = false;
 
-           } catch (error) {
-               showError('Không thể khởi tạo TTS: ' + error.message);
-           }
-       }
 
-       
+if (typeof responsiveVoice !== 'undefined') {
+   responsiveVoice.OnVoiceReady = function() {
+       console.log('ResponsiveVoice sẵn sàng');
+       initTTS();
+       checkForMP3();
+   };
+}
+
+
 function checkForMP3() {
-    const audio = document.createElement('audio');
-    const mp3Path = getMP3Path();
-    
-    
-    audio.addEventListener('canplaythrough', function() {
-        hasMP3 = true;
-        setupMP3Player(mp3Path);
-    });
+   const pathParts = window.location.pathname.split('/');
+   const newsId = pathParts[pathParts.length - 1].replace('.html', '');
+   const mp3Path = `${newsId}.mp3`;
+   
+   const audio = document.createElement('audio');
+   audio.addEventListener('canplaythrough', function() {
+       setupMP3Player(mp3Path);
+   });
 
-    audio.addEventListener('error', function() {
-        console.log('Không tìm thấy file MP3');
-        hasMP3 = false;
-    });
+   audio.addEventListener('error', function() {
+       console.log('Không tìm thấy file MP3');
+       document.getElementById('mp3Button').disabled = true;
+   });
 
-    
-    audio.src = mp3Path;
-    audio.load();
+   audio.src = mp3Path;
+   audio.load();
 }
 
-function getMP3Path() {
-    
-    const pathParts = window.location.pathname.split('/');
-    const newsId = pathParts[pathParts.length - 1].replace('.html', '');
-    
-    
-    const mp3Path = `${newsId}.mp3`;
-    
-    return mp3Path;
+
+function setupMP3Player(mp3Path) {
+   const mp3Player = document.getElementById('mp3Player');
+   document.getElementById('mp3Source').src = mp3Path;
+   mp3Player.load();
+
+   
+   const mp3Button = document.getElementById('mp3Button');
+   mp3Button.disabled = false;
+   mp3Button.onclick = toggleMP3;
+
+   
+   mp3Player.addEventListener('ended', function() {
+       isMP3Playing = false;
+       resetMP3Button();
+   });
 }
 
+
+function toggleMP3() {
+   if (isPlaying) {
+       stopReading(); 
+   }
+
+   const mp3Player = document.getElementById('mp3Player');
+   const mp3Button = document.getElementById('mp3Button');
+
+   if (!isMP3Playing) {
+       mp3Player.style.display = 'block';
+       mp3Player.play();
+       isMP3Playing = true;
+       mp3Button.innerHTML = `
+           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+               <rect x="6" y="4" width="4" height="16"></rect>
+               <rect x="14" y="4" width="4" height="16"></rect>
+           </svg>
+           <span>Tạm dừng</span>`;
+   } else {
+       mp3Player.pause();
+       isMP3Playing = false;
+       resetMP3Button();
+   }
+}
+
+
+function resetMP3Button() {
+   const mp3Button = document.getElementById('mp3Button');
+   mp3Button.innerHTML = `
+       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+           <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+           <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+           <line x1="12" y1="19" x2="12" y2="23"/>
+           <line x1="8" y1="23" x2="16" y2="23"/>
+       </svg>
+       <span>Audio đã thu</span>`;
+}
+
+
+function initTTS() {
+   try {
+       if (!responsiveVoice.voiceSupport()) {
+           throw new Error('Trình duyệt không hỗ trợ TTS');
+       }
+
+       setupElements();
+       loadContentToRead();
+       setupEventListeners();
        
-       function setupMP3Player(mp3Path) {
-    try {
-        const mp3Button = document.getElementById('mp3Button');
-        const audioPlayer = document.getElementById('audioPlayer');
+       document.getElementById('playButton').disabled = false;
+       ttsInitialized = true;
+       
+       console.log('TTS khởi tạo thành công');
+       updateStatus('Sẵn sàng đọc');
+   } catch (error) {
+       console.error('Lỗi khởi tạo TTS:', error);
+       showError(error.message);
+   }
+}
 
-        
-        if (mp3Button && audioPlayer) {
-            mp3Button.style.display = 'flex';
-            audioPlayer.querySelector('source').src = mp3Path;
-            audioPlayer.load();
 
-            mp3Button.addEventListener('click', toggleMP3);
-            audioPlayer.addEventListener('timeupdate', updateMP3Progress);
-            audioPlayer.addEventListener('ended', resetMP3);
-            
-            console.log('Đã thiết lập MP3 Player');
-        }
-    } catch (error) {
-        console.error('Lỗi thiết lập MP3 Player:', error);
+function setupElements() {
+   const elements = ['playButton', 'voiceSelect', 'rateSelect', 'status', 'progress'];
+   elements.forEach(id => {
+       if (!document.getElementById(id)) {
+           throw new Error(`Thiếu element: ${id}`);
+       }
+   });
+}
+
+
+function loadContentToRead() {
+   const title = document.querySelector('.article-title');
+   const paragraphElements = document.querySelectorAll('.article-content p');
+
+   paragraphs = [];
+
+   
+   if (title) {
+       paragraphs.push({
+           element: title,
+           text: title.textContent.trim()
+       });
+   }
+
+   
+   paragraphElements.forEach(p => {
+       const text = p.textContent.trim();
+       if (text.length > 0) {
+           paragraphs.push({
+               element: p,
+               text: text
+           });
+       }
+   });
+
+   console.log(`Đã tải ${paragraphs.length} đoạn văn bản`);
+}
+
+
+function setupEventListeners() {
+   document.getElementById('playButton').addEventListener('click', toggleSpeech);
+   document.getElementById('voiceSelect').addEventListener('change', handleVoiceChange);
+   document.getElementById('rateSelect').addEventListener('change', handleRateChange);
+}
+
+
+function toggleSpeech() {
+   if (!ttsInitialized) {
+       showError('TTS chưa sẵn sàng');
+       return;
+   }
+
+   if (isMP3Playing) {
+       const mp3Player = document.getElementById('mp3Player');
+       mp3Player.pause();
+       isMP3Playing = false;
+       resetMP3Button();
+   }
+
+   if (!isPlaying) {
+       startReading();
+   } else {
+       stopReading();
+   }
+}
+
+
+function startReading() {
+   isPlaying = true;
+   currentParagraphIndex = 0;
+   updateUI('reading');
+   readNextParagraph();
+}
+
+
+function readNextParagraph() {
+   if (currentParagraphIndex < paragraphs.length) {
+       try {
+           const voiceName = document.getElementById('voiceSelect').value;
+           const rate = parseFloat(document.getElementById('rateSelect').value);
+           const voiceConfig = TTS_CONFIG.VOICE_OPTIONS[voiceName];
+
+           updateProgress(((currentParagraphIndex + 1) / paragraphs.length) * 100);
+           highlightParagraph(currentParagraphIndex);
+
+           responsiveVoice.speak(
+               paragraphs[currentParagraphIndex].text,
+               voiceName,
+               {
+                   pitch: voiceConfig.pitch,
+                   rate: rate,
+                   volume: voiceConfig.volume,
+                   lang: voiceConfig.lang,
+                   onstart: function() {
+                       updateStatus(`Đang đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
+                   },
+                   onend: function() {
+                       unhighlightParagraph(currentParagraphIndex);
+                       currentParagraphIndex++;
+                       if (isPlaying) {
+                           setTimeout(readNextParagraph, TTS_CONFIG.PAUSE_BETWEEN);
+                       }
+                   }
+               }
+           );
+       } catch (error) {
+           console.error('Error:', error);
+           showError(error.message);
+           stopReading();
+       }
+   } else {
+       finishReading();
+   }
+}
+
+// Stop reading
+function stopReading() {
+   responsiveVoice.cancel();
+   isPlaying = false;
+   unhighlightAll();
+   updateUI('paused');
+}
+
+
+function finishReading() {
+   isPlaying = false;
+   updateProgress(100);
+   updateUI('finished');
+   unhighlightAll();
+}
+
+
+function highlightParagraph(index) {
+   if (paragraphs[index]) {
+       paragraphs[index].element.classList.add('current');
+       scrollToParagraph(paragraphs[index].element);
+   }
+}
+
+
+function unhighlightParagraph(index) {
+   if (paragraphs[index]) {
+       paragraphs[index].element.classList.remove('current');
+   }
+}
+
+
+function unhighlightAll() {
+   paragraphs.forEach(p => p.element.classList.remove('current'));
+}
+
+
+function scrollToParagraph(element) {
+   element.scrollIntoView({
+       behavior: 'smooth',
+       block: 'center'
+   });
+}
+
+
+function updateUI(state) {
+   const button = document.getElementById('playButton');
+   if (button) {
+       button.innerHTML = isPlaying ? 
+           `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+               <rect x="6" y="4" width="4" height="16"></rect>
+               <rect x="14" y="4" width="4" height="16"></rect>
+           </svg>
+           <span>Tạm dừng</span>` :
+           `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+               <polygon points="5 3 19 12 5 21 5 3"></polygon>
+           </svg>
+           <span>Đọc bài viết</span>`;
+   }
+   updateStatus(state);
+}
+
+// Update status message
+function updateStatus(state) {
+   const status = document.getElementById('status');
+   const statusText = document.getElementById('statusText');
+   if (status && statusText) {
+       status.className = 'status active ' + state;
+       statusText.textContent = typeof state === 'string' ? state : 
+           state === 'reading' ? 'Đang đọc...' :
+           state === 'paused' ? 'Đã tạm dừng' :
+           state === 'finished' ? 'Đã đọc xong' : '';
+   }
+}
+
+
+function updateProgress(percent) {
+   const progress = document.getElementById('progress');
+   if (progress) {
+       progress.style.width = percent + '%';
+   }
+}
+
+
+function handleVoiceChange() {
+   if (isPlaying) {
+       restartReading();
+   }
+}
+
+
+function handleRateChange() {
+   if (isPlaying) {
+       restartReading();
+   }
+}
+
+
+function restartReading() {
+   stopReading();
+   startReading();
+}
+
+
+function showError(message) {
+   console.error(message);
+   updateStatus('error');
+   const statusText = document.getElementById('statusText');
+   if (statusText) {
+       statusText.textContent = message;
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function toggleMP3() {
+    console.log('toggleMP3 called');
+    if (isPlaying) {
+        stopReading(); 
+    }
+
+    const mp3Player = document.getElementById('mp3Player');
+    const mp3Button = document.getElementById('mp3Button');
+
+    
+    console.log('mp3Player:', mp3Player);
+    console.log('mp3Button:', mp3Button);
+
+    if (!isMP3Playing) {
+        mp3Player.style.display = 'block';
+        mp3Player.play();
+        isMP3Playing = true;
+        mp3Button.innerHTML = `...`; 
+    } else {
+        mp3Player.pause();
+        isMP3Playing = false;
+        resetMP3Button();
     }
 }
 
-       
-       function toggleMP3() {
-           const audioPlayer = document.getElementById('audioPlayer');
-           const mp3Button = document.getElementById('mp3Button');
 
-           if (isPlaying) {
-               stopReading(); 
-           }
+function setupMP3Player(mp3Path) {
+    console.log('Setting up MP3 player with path:', mp3Path);
+    
+    const mp3Player = document.getElementById('mp3Player');
+    const mp3Button = document.getElementById('mp3Button');
+    
+    if (!mp3Player || !mp3Button) {
+        console.error('Missing MP3 elements');
+        return;
+    }
 
-           if (audioPlayer.paused) {
-               audioPlayer.play();
-               mp3Button.innerHTML = `
-                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                       <rect x="6" y="4" width="4" height="16"></rect>
-                       <rect x="14" y="4" width="4" height="16"></rect>
-                   </svg>
-                   Tạm dừng Audio`;
-           } else {
-               audioPlayer.pause();
-               resetMP3();
-           }
-       }
+    
+    document.getElementById('mp3Source').src = mp3Path;
+    mp3Player.load();
 
-       // Update MP3 Progress
-       function updateMP3Progress() {
-           const audioPlayer = document.getElementById('audioPlayer');
-           const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-           document.getElementById('progress').style.width = progress + '%';
-       }
+    
+    mp3Button.addEventListener('click', function(e) {
+        e.preventDefault();
+        toggleMP3();
+    });
 
-       
-       function resetMP3() {
-           const mp3Button = document.getElementById('mp3Button');
-           mp3Button.innerHTML = `
-               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                   <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
-                   <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                   <line x1="12" y1="19" x2="12" y2="23"/>
-                   <line x1="8" y1="23" x2="16" y2="23"/>
-               </svg>
-               Audio đã thu`;
-           document.getElementById('progress').style.width = '0%';
-       }
+    
+    mp3Button.disabled = false;
 
-       // Setup elements
-       function setupElements() {
-           const elements = ['playButton', 'voiceSelect', 'rateSelect', 'status', 'progress'];
-           elements.forEach(id => {
-               if (!document.getElementById(id)) {
-                   throw new Error(`Thiếu element: ${id}`);
-               }
-           });
-       }
+    console.log('MP3 player setup complete');
+}
 
-       
-       function setupEventListeners() {
-           document.getElementById('playButton').addEventListener('click', toggleSpeech);
-           document.getElementById('voiceSelect').addEventListener('change', handleVoiceChange);
-           document.getElementById('rateSelect').addEventListener('change', handleRateChange);
-       }
 
-       
-       function loadParagraphs() {
-           paragraphs = Array.from(document.querySelectorAll('.article-content p'))
-                           .map(p => p.textContent.trim())
-                           .filter(text => text.length > 0);
-           console.log(`Tìm thấy ${paragraphs.length} đoạn văn`);
-       }
+function setupEventListeners() {
+    console.log('Setting up event listeners');
+    
+    const playButton = document.getElementById('playButton');
+    const voiceSelect = document.getElementById('voiceSelect');
+    const rateSelect = document.getElementById('rateSelect');
 
-       
-       function toggleSpeech() {
-           if (!ttsInitialized) {
-               showError('TTS chưa sẵn sàng');
-               return;
-           }
+    if (playButton) {
+        playButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('TTS button clicked');
+            toggleSpeech();
+        });
+    }
 
-           if (!isPlaying) {
-               startReading();
-           } else {
-               stopReading();
-           }
-       }
+    if (voiceSelect) {
+        voiceSelect.addEventListener('change', handleVoiceChange);
+    }
 
-       
-       function startReading() {
-           isPlaying = true;
-           currentParagraphIndex = 0;
-           updateUI('reading');
-           readNextParagraph();
-       }
+    if (rateSelect) {
+        rateSelect.addEventListener('change', handleRateChange);
+    }
 
-       
-       function readNextParagraph() {
-           if (currentParagraphIndex < paragraphs.length) {
-               try {
-                   const voiceName = document.getElementById('voiceSelect').value;
-                   const voiceConfig = VOICE_CONFIG[voiceName];
-                   const rate = parseFloat(document.getElementById('rateSelect').value);
+    console.log('Event listeners setup complete');
+}
 
-                   updateProgress(((currentParagraphIndex + 1) / paragraphs.length) * 100);
-                   highlightCurrentParagraph(true);
 
-                   responsiveVoice.speak(
-                       paragraphs[currentParagraphIndex],
-                       voiceName,
-                       {
-                           pitch: voiceConfig.pitch,
-                           rate: rate,
-                           volume: voiceConfig.volume,
-                           lang: voiceConfig.lang,
-                           voiceURI: voiceConfig.voiceURI,
-                           onstart: function() {
-                               console.log(`Đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
-                               updateStatus(`Đang đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
-                           },
-                           onend: function() {
-                               highlightCurrentParagraph(false);
-                               currentParagraphIndex++;
-                               if (isPlaying) {
-                                   setTimeout(readNextParagraph, 100);
-                               }
-                           }
-                       }
-                   );
-               } catch (error) {
-                   console.error('Error:', error);
-                   showError(error.message);
-                   stopReading();
-               }
-           } else {
-               finishReading();
-           }
-       }
+function toggleSpeech() {
+    console.log('toggleSpeech called, ttsInitialized:', ttsInitialized);
+    console.log('isPlaying:', isPlaying);
 
-       
-       function stopReading() {
-           responsiveVoice.cancel();
-           isPlaying = false;
-           highlightCurrentParagraph(false);
-           updateUI('paused');
-       }
+    if (!ttsInitialized) {
+        console.error('TTS not initialized');
+        showError('TTS chưa sẵn sàng');
+        return;
+    }
 
-       
-       function finishReading() {
-           isPlaying = false;
-           updateProgress(100);
-           updateUI('finished');
-           console.log('Hoàn thành đọc bài viết');
-       }
+    if (isMP3Playing) {
+        const mp3Player = document.getElementById('mp3Player');
+        mp3Player.pause();
+        isMP3Playing = false;
+        resetMP3Button();
+    }
 
-       
-       function handleVoiceChange() {
-           if (isPlaying) {
-               restartReading();
-           }
-       }
+    if (!isPlaying) {
+        startReading();
+    } else {
+        stopReading();
+    }
+}
 
-       
-       function handleRateChange() {
-           if (isPlaying) {
-               restartReading();
-           }
-       }
 
-       
-       function restartReading() {
-           stopReading();
-           startReading();
-       }
+function initTTS() {
+    console.log('Initializing TTS');
+    try {
+        if (!responsiveVoice) {
+            throw new Error('ResponsiveVoice not loaded');
+        }
 
-       
-       function updateUI(state) {
-           const button = document.getElementById('playButton');
-           if (button) {
-               button.innerHTML = isPlaying ? 
-                   '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>Tạm dừng' :
-                   '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>Đọc bài viết';
-           }
-           updateStatus(state);
-       }
+        if (!responsiveVoice.voiceSupport()) {
+            throw new Error('Browser does not support TTS');
+        }
 
-       
-       function updateStatus(message) {
-           const statusText = document.getElementById('statusText');
-           const status = document.getElementById('status');
-           if (statusText && status) {
-               statusText.textContent = typeof message === 'string' ? message : 
-                   message === 'reading' ? 'Đang đọc...' :
-                   message === 'paused' ? 'Đã tạm dừng' :
-                   message === 'finished' ? 'Đã đọc xong' : '';
-               status.className = 'status active ' + message;
-           }
-       }
+        setupElements();
+        loadContentToRead();
+        setupEventListeners();
+        
+        const playButton = document.getElementById('playButton');
+        if (playButton) {
+            playButton.disabled = false;
+        }
+        
+        ttsInitialized = true;
+        console.log('TTS initialized successfully');
+        updateStatus('Sẵn sàng đọc');
 
-       
-       function updateProgress(percent) {
-           const progress = document.getElementById('progress');
-           if (progress) {
-               progress.style.width = percent + '%';
-           }
-       }
+    } catch (error) {
+        console.error('TTS initialization error:', error);
+        showError(error.message);
+    }
+}
 
-       
-       function highlightCurrentParagraph(isHighlight) {
-           const paragraphElements = document.querySelectorAll('.article-content p');
-           paragraphElements.forEach(p => p.classList.remove('current'));
-           
-           if (isHighlight && paragraphElements[currentParagraphIndex]) {
-               paragraphElements[currentParagraphIndex].classList.add('current');
-               paragraphElements[currentParagraphIndex].scrollIntoView({
-                   behavior: 'smooth',
-                   block: 'center'
-               });
-           }
-       }
 
-       
-       function showError(message) {
-           console.error(message);
-           updateStatus('error');
-           const statusText = document.getElementById('statusText');
-           if (statusText) {
-               statusText.textContent = message;
-           }
-       }
 
-       
-       function shareOnFacebook() {
-           const url = window.location.href;
-           window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url));
-       }
+window.addEventListener('DOMContentLoaded', function() {
+    if (typeof responsiveVoice !== 'undefined') {
+        responsiveVoice.init().then(function() {
+            console.log('ResponsiveVoice đã sẵn sàng');
+            return new Promise(function(resolve) {
+                responsiveVoice.OnVoiceReady = function() {
+                    resolve();
+                };
+            });
+        }).then(function() {
+            initTTS();
+            checkForMP3();
+        }).catch(function(error) {
+            console.error('Lỗi khởi tạo ResponsiveVoice:', error);
+        });
+    } else {
+        console.error('ResponsiveVoice chưa được load');
+    }
+});
 
-       function shareOnTwitter() {
-           const url = window.location.href;
-           const title = document.title;
-           window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title));
-       }
 
-       
-       function updateParentHeight() {
-           const height = document.documentElement.scrollHeight;
-           window.parent.postMessage({ height: height }, '*');
-       }
+function initTTS() {
+    console.log('Đang khởi tạo TTS');
+    try {
+        if (!responsiveVoice) {
+            throw new Error('ResponsiveVoice chưa được load');
+        }
 
-       
-       document.addEventListener('DOMContentLoaded', function() {
-           updateParentHeight();
-       });
+        if (!responsiveVoice.voiceSupport()) {
+            throw new Error('Trình duyệt không hỗ trợ TTS');
+        }
 
-       
-       new ResizeObserver(updateParentHeight).observe(document.body);
-   </script>
+        
+        if (!responsiveVoice.isInitialized()) {
+            throw new Error('ResponsiveVoice chưa khởi tạo xong');
+        }
+
+        setupElements();
+        loadContentToRead();
+        setupEventListeners();
+        
+        const playButton = document.getElementById('playButton');
+        if (playButton) {
+            playButton.disabled = false;
+        }
+        
+        ttsInitialized = true;
+        console.log('TTS đã khởi tạo thành công');
+        updateStatus('Sẵn sàng đọc');
+
+    } catch (error) {
+        console.error('Lỗi khởi tạo TTS:', error);
+        showError(error.message);
+        return false;
+    }
+    return true;
+}
+
+
+function toggleSpeech() {
+    console.log('toggleSpeech called, ttsInitialized:', ttsInitialized);
+    console.log('isPlaying:', isPlaying);
+
+    
+    if (!ttsInitialized && !initTTS()) {
+        showError('TTS chưa sẵn sàng, vui lòng thử lại');
+        return;
+    }
+
+    
+    if (isMP3Playing) {
+        const mp3Player = document.getElementById('mp3Player');
+        mp3Player.pause();
+        isMP3Playing = false;
+        resetMP3Button();
+    }
+
+    if (!isPlaying) {
+        startReading();
+    } else {
+        stopReading();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+window.onload = function() {
+   window.scrollTo(0, 0);
+   updateParentHeight();
+}
+
+
+function updateParentHeight() {
+   const height = document.documentElement.scrollHeight;
+   window.parent.postMessage({ height: height }, '*');
+}
+
+
+new ResizeObserver(updateParentHeight).observe(document.body);
+
+
+function shareOnFacebook() {
+   const url = window.location.href;
+   window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url));
+}
+
+function shareOnTwitter() {
+   const url = window.location.href;
+   const title = document.title;
+   window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title));
+}
+</script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -6,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dinh dưỡng trong điều trị ung thư: Hướng dẫn toàn diện cho bệnh nhân và người chăm sóc - Tin Tức Y Khoa</title>
     
-    <script src="https://code.responsivevoice.org/responsivevoice.js?key=30xj8le1"></script>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=YOUR_KEY"></script>
     <style>
+         
         * {
             box-sizing: border-box;
             margin: 0;
@@ -19,14 +19,19 @@
             line-height: 1.6;
             color: #333;
             background: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            flex: 1;
         }
 
+         
         .article-category {
             display: inline-block;
             background: #0070c0;
@@ -37,11 +42,12 @@
             margin-bottom: 15px;
         }
 
-        h1 {
+        .article-title {
             font-size: 2em;
             margin-bottom: 15px;
             line-height: 1.2;
             color: #333;
+            padding: 10px;
         }
 
         .article-meta {
@@ -63,6 +69,15 @@
             border-radius: 15px;
         }
 
+         
+        .article-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
         .featured-image {
             width: 100%;
             height: auto;
@@ -70,14 +85,6 @@
             object-fit: cover;
             border-radius: 8px;
             margin-bottom: 20px;
-        }
-
-        .article-content {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .article-content p {
@@ -88,17 +95,11 @@
             transition: all 0.3s ease;
         }
 
-        .article-content p.current {
+        .article-content p.current,
+        .article-title.current {
             background: #f0f9ff;
             border-left: 3px solid #0070c0;
             padding-left: 15px;
-        }
-
-        .article-content img {
-            max-width: 100%;
-            height: auto;
-            margin: 20px 0;
-            border-radius: 4px;
         }
 
          
@@ -142,14 +143,6 @@
             cursor: pointer;
             font-weight: 500;
             transition: all 0.3s ease;
-        }
-
-        #playButton {
-            background: #0070c0;
-        }
-
-        #mp3Button {
-            background: #28a745;
         }
 
         .control-button:hover {
@@ -197,7 +190,6 @@
             margin: 10px 0;
             border-radius: 4px;
             display: none;
-            font-size: 0.9em;
         }
 
         .status.active {
@@ -225,14 +217,67 @@
         }
 
          
-        .audio-player {
-            width: 100%;
-            margin-top: 10px;
-            display: none;
+        .related-section {
+            margin-top: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .audio-player.active {
+        .related-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .related-article {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .related-article:hover {
+            transform: translateY(-3px);
+        }
+
+        .related-article img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .related-article h3 {
+            padding: 15px;
+            margin: 0;
+            flex: 1;
+        }
+
+        .related-article a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .related-article a:hover {
+            color: #0070c0;
+        }
+
+        .related-article .date {
             display: block;
+            padding: 0 15px 15px;
+            color: #666;
+            font-size: 0.9em;
         }
 
          
@@ -245,7 +290,6 @@
         .share-buttons {
             display: flex;
             gap: 10px;
-            margin-top: 10px;
         }
 
         .share-button {
@@ -274,67 +318,12 @@
         }
 
          
-        .related-section {
-            margin-top: 40px;
-        }
-
-        .related-title {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .related-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .related-article {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .related-article:hover {
-            transform: translateY(-3px);
-        }
-
-        .related-article img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .related-article h3 {
-            padding: 15px;
-            margin: 0;
-        }
-
-        .related-article a {
-            color: #333;
-            text-decoration: none;
-        }
-
-        .related-article a:hover {
-            color: #0070c0;
-        }
-
-        .related-article .date {
-            display: block;
-            padding: 0 15px 15px;
-            color: #666;
-            font-size: 0.9em;
-        }
-
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
             }
 
-            h1 {
+            .article-title {
                 font-size: 1.8em;
             }
 
@@ -358,7 +347,7 @@
     <div class="container">
         <span class="article-category">Sản Phụ Khoa</span>
         
-        <h1>Dinh dưỡng trong điều trị ung thư: Hướng dẫn toàn diện cho bệnh nhân và người chăm sóc</h1>
+        <h1 class="article-title">Dinh dưỡng trong điều trị ung thư: Hướng dẫn toàn diện cho bệnh nhân và người chăm sóc</h1>
         
         <div class="article-meta">
             <span>Đăng ngày 17/12/2024</span>
@@ -374,59 +363,59 @@
         <img src="https://marylandoncology.com/wp-content/uploads/2023/12/MOH-Feature-1.jpg" alt="Dinh dưỡng trong điều trị ung thư: Hướng dẫn toàn diện cho bệnh nhân và người chăm sóc" class="featured-image">
 
         <div class="article-content">
-            <div class="speech-controls">
-                <div class="speech-header">
-                    <span class="speech-title">Nghe bài viết</span>
-                </div>
-                
-                <div class="controls-container">
-                    
-                    <button id="mp3Button" class="control-button" style="display: none;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
-                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                            <line x1="12" y1="19" x2="12" y2="23"/>
-                            <line x1="8" y1="23" x2="16" y2="23"/>
-                        </svg>
-                        Audio đã thu
-                    </button>
+<div class="speech-controls">
+    <div class="speech-header">
+        <span class="speech-title">Nghe bài viết</span>
+    </div>
+    
+    <div class="controls-container">
+        
+        <button type="button" id="mp3Button" class="control-button" onclick="toggleMP3()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                <line x1="12" y1="19" x2="12" y2="23"/>
+                <line x1="8" y1="23" x2="16" y2="23"/>
+            </svg>
+            <span>Audio đã thu</span>
+        </button>
 
-                    
-                    <button id="playButton" class="control-button" disabled>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                        </svg>
-                        Đọc bài viết
-                    </button>
-                    
-                    <div class="speed-control">
-                        <select id="voiceSelect">
-                            <option value="Vietnamese Female">Giọng Nữ</option>
-                            <option value="Vietnamese Male">Giọng Nam</option>
-                        </select>
-                        <label for="rateSelect">Tốc độ đọc:</label>
-                        <select id="rateSelect">
-                            <option value="0.8">Chậm</option>
-                            <option value="1" selected>Bình thường</option>
-                            <option value="1.2">Nhanh</option>
-                        </select>
-                    </div>
-                </div>
+        
+        <button type="button" id="playButton" class="control-button" onclick="toggleSpeech()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <span>Đọc bài viết</span>
+        </button>
+        
+        
+        <div id="ttsControls" class="speed-control">
+            <select id="voiceSelect" onchange="handleVoiceChange()">
+                <option value="Vietnamese Female">Giọng Nữ</option>
+                <option value="Vietnamese Male">Giọng Nam</option>
+            </select>
+            <select id="rateSelect" onchange="handleRateChange()">
+                <option value="0.8">Chậm</option>
+                <option value="1" selected>Bình thường</option>
+                <option value="1.2">Nhanh</option>
+            </select>
+        </div>
+    </div>
 
-                
-                <audio id="audioPlayer" class="audio-player">
-                    <source id="audioSource" type="audio/mpeg">
-                    Trình duyệt không hỗ trợ phát audio.
-                </audio>
+    
+    <audio id="mp3Player" controls style="width: 100%; margin-top: 10px; display: none;">
+        <source id="mp3Source" type="audio/mpeg">
+        Trình duyệt không hỗ trợ phát audio.
+    </audio>
 
-                <div class="progress-container">
-                    <div id="progress" class="progress-bar"></div>
-                </div>
+    <div class="progress-container">
+        <div id="progress" class="progress-bar"></div>
+    </div>
 
-                <div id="status" class="status">
-                    <span id="statusText"></span>
-                </div>
-            </div>
+    <div id="status" class="status">
+        <span id="statusText"></span>
+    </div>
+</div>
 
             <h2>Giới thiệu về dinh dưỡng trong điều trị ung thư</h2><p>Dinh dưỡng đóng vai trò then chốt trong hành trình điều trị ung thư. Việc duy trì chế độ dinh dưỡng phù hợp không chỉ giúp cơ thể chống chọi với bệnh tật mà còn hỗ trợ quá trình phục hồi và nâng cao hiệu quả điều trị.</p><h3>Định nghĩa về dinh dưỡng trong điều trị ung thư</h3><p>Dinh dưỡng bao gồm tất cả những gì bạn ăn và uống, cùng cách cơ thể sử dụng chúng. Một chế độ dinh dưỡng lành mạnh cần có đầy đủ:</p><ul><li>Protein</li><li>Carbohydrate</li><li>Chất béo</li><li>Vitamin</li><li>Khoáng chất</li><li>Nước</li></ul><h2>Tác động của các phương pháp điều trị ung thư đến dinh dưỡng</h2><h3>1. Hóa trị</h3><h2>Tác động trực tiếp:</h2><ul><li>Tổn thương các tế bào phát triển nhanh trong miệng và đường tiêu hóa</li><li>Gây suy giảm hệ miễn dịch</li><li>Ảnh hưởng đến khả năng hấp thu dinh dưỡng</li></ul><h2>Tác dụng phụ thường gặp:</h2><ul><li>Buồn nôn và nôn (thường xuất hiện sau 2-6 giờ điều trị)</li><li>Viêm niêm mạc miệng (có thể xuất hiện sau 5-7 ngày)</li><li>Tiêu chảy hoặc táo bón</li><li>Thay đổi vị giác (thức ăn có thể có vị kim loại)</li><li>Mệt mỏi ảnh hưởng đến việc chuẩn bị và ăn uống</li></ul><h3>2. Xạ trị</h3><h2>Tác động theo vùng điều trị:</h2><ul><li>Vùng đầu và cổ:</li><li class="ql-indent-1">Khô miệng kéo dài</li><li class="ql-indent-1">Khó nuốt</li><li class="ql-indent-1">Mất vị giác</li><li class="ql-indent-1">Sâu răng</li><li>Vùng ngực:</li><li class="ql-indent-1">Khó nuốt</li><li class="ql-indent-1">Trào ngược dạ dày</li><li class="ql-indent-1">Viêm thực quản</li><li>Vùng bụng và tiểu khung:</li><li class="ql-indent-1">Buồn nôn</li><li class="ql-indent-1">Tiêu chảy</li><li class="ql-indent-1">Viêm ruột</li></ul><h3>3. Phẫu thuật</h3><h2>Tác động tùy theo vị trí phẫu thuật:</h2><ul><li>Phẫu thuật đầu cổ:</li><li class="ql-indent-1">Khó nhai</li><li class="ql-indent-1">Khó nuốt</li><li class="ql-indent-1">Thay đổi vị giác</li><li>Phẫu thuật dạ dày:</li><li class="ql-indent-1">Đầy bụng sớm</li><li class="ql-indent-1">Khó tiêu</li><li class="ql-indent-1">Hội chứng Dumping</li><li>Phẫu thuật ruột:</li><li class="ql-indent-1">Kém hấp thu</li><li class="ql-indent-1">Tiêu chảy</li><li class="ql-indent-1">Táo bón</li></ul><h2>Hướng dẫn chi tiết quản lý dinh dưỡng</h2><h3>1. Khi giảm cảm giác ngon miệng</h3><h2>Các biện pháp cụ thể:</h2><ul><li>Thời điểm ăn:</li><li class="ql-indent-1">Ăn khi cảm thấy đói nhất trong ngày</li><li class="ql-indent-1">Ăn sáng nhiều hơn vì thường cảm giác ngon miệng tốt nhất vào buổi sáng</li><li>Cách thức ăn:</li><li class="ql-indent-1">Chia thành 5-6 bữa nhỏ thay vì 3 bữa lớn</li><li class="ql-indent-1">Mang theo đồ ăn nhẹ để ăn bất cứ khi nào cảm thấy đói</li><li class="ql-indent-1">Tránh uống nhiều nước trong bữa ăn</li></ul><h2>Thực đơn gợi ý:</h2><ul><li>Bữa sáng:</li><li class="ql-indent-1">Bánh mì nướng với bơ đậu phộng</li><li class="ql-indent-1">Sữa chua với hạt và mật ong</li><li class="ql-indent-1">Sinh tố protein với trái cây</li><li>Bữa nhẹ:</li><li class="ql-indent-1">Các loại hạt</li><li class="ql-indent-1">Phô mai</li><li class="ql-indent-1">Trứng luộc</li><li class="ql-indent-1">Sữa chua</li></ul><h3>2. Khi bị buồn nôn và nôn</h3><h2>Biện pháp phòng ngừa:</h2><ul><li>Tránh mùi nấu nướng</li><li>Giữ không khí trong lành</li><li>Ăn từ từ và nhai kỹ</li><li>Không nằm ngay sau khi ăn</li></ul><h2>Thực phẩm phù hợp:</h2><ul><li>Bánh mì nướng</li><li>Bánh quy mặn</li><li>Cháo loãng</li><li>Súp trong</li><li>Nước gừng</li></ul><h3>3. Khi bị khó nuốt</h3><h2>Điều chỉnh độ đặc của thức ăn:</h2><ul><li>Thức ăn dạng lỏng:</li><li class="ql-indent-1">Sinh tố</li><li class="ql-indent-1">Súp xay nhuyễn</li><li class="ql-indent-1">Sữa làm đặc</li><li>Thức ăn dạng nhão:</li><li class="ql-indent-1">Cháo nhuyễn</li><li class="ql-indent-1">Khoai tây nghiền</li><li class="ql-indent-1">Trứng bác</li></ul><h2>Kỹ thuật ăn an toàn:</h2><ul><li>Ngồi thẳng khi ăn</li><li>Cúi đầu nhẹ về phía trước</li><li>Ăn chậm và từng miếng nhỏ</li><li>Không nói chuyện khi ăn</li></ul><h2>Hỗ trợ dinh dưỡng đặc biệt</h2><h3>1. Dinh dưỡng qua ống thông</h3><h2>Chỉ định:</h2><ul><li>Không thể ăn đường miệng</li><li>Khó nuốt nặng</li><li>Suy dinh dưỡng nghiêm trọng</li></ul><h2>Các loại ống thông:</h2><ul><li>Ống thông mũi-dạ dày (ngắn hạn)</li><li>Ống thông dạ dày (PEG - dài hạn)</li><li>Ống thông hỗng tràng</li></ul><h3>2. Dinh dưỡng tĩnh mạch</h3><h2>Chỉ định:</h2><ul><li>Không thể sử dụng đường tiêu hóa</li><li>Hấp thu kém nghiêm trọng</li><li>Tắc ruột</li></ul><h2>Theo dõi và quản lý:</h2><ul><li>Kiểm tra đường huyết</li><li>Cân bằng điện giải</li><li>Phòng ngừa nhiễm trùng</li></ul><h2>Kế hoạch dinh dưỡng theo giai đoạn</h2><h3>1. Trước điều trị:</h3><ul><li>Đánh giá tình trạng dinh dưỡng</li><li>Tư vấn với chuyên gia dinh dưỡng</li><li>Chuẩn bị thực phẩm và dụng cụ cần thiết</li></ul><h3>2. Trong điều trị:</h3><ul><li>Theo dõi cân nặng</li><li>Điều chỉnh chế độ ăn theo tác dụng phụ</li><li>Duy trì liên lạc với đội ngũ y tế</li></ul><h3>3. Sau điều trị:</h3><ul><li>Phục hồi thói quen ăn uống</li><li>Điều chỉnh cân nặng về mức khỏe mạnh</li><li>Xây dựng chế độ ăn lành mạnh lâu dài</li></ul><h2>An toàn thực phẩm</h2><h3>Nguyên tắc cơ bản:</h3><ul><li>Rửa tay thường xuyên</li><li>Rửa rau củ quả kỹ</li><li>Nấu chín kỹ thực phẩm</li><li>Bảo quản thực phẩm đúng cách</li></ul><h3>Thực phẩm cần tránh:</h3><ul><li>Thực phẩm sống hoặc tái</li><li>Trứng sống</li><li>Pho mát không thanh trùng</li><li>Nước ép không thanh trùng</li></ul><h2>Kết luận</h2><p>Dinh dưỡng đóng vai trò quan trọng trong điều trị ung thư, ảnh hưởng trực tiếp đến kết quả điều trị và chất lượng cuộc sống của người bệnh. Việc hiểu rõ và áp dụng các nguyên tắc dinh dưỡng phù hợp, kết hợp với sự theo dõi và điều chỉnh linh hoạt, sẽ giúp người bệnh vượt qua giai đoạn điều trị một cách tốt nhất.</p><p>Luôn nhớ rằng mỗi người bệnh có nhu cầu dinh dưỡng khác nhau, vì vậy cần tham khảo ý kiến của đội ngũ y tế và chuyên gia dinh dưỡng để có được phương pháp phù hợp nhất cho từng trường hợp cụ thể.</p>
             <div class="share-section">
@@ -478,371 +467,649 @@
         </div>
     </div>
 
-    <script>
-        
-        const VOICE_CONFIG = {
-            'Vietnamese Female': {
-                name: 'Vietnamese Female',
-                lang: 'vi-VN',
-                voiceURI: 'Vietnamese Female',
-                rate: 1,
-                pitch: 1.1,
-               volume: 1
-           },
-           'Vietnamese Male': {
-               name: 'Vietnamese Male', 
-               lang: 'vi-VN',
-               voiceURI: 'Vietnamese Male',
-               rate: 1,
-               pitch: 0.9,
-               volume: 1
-           }
-       };
+<script>
 
-       
-       let isPlaying = false;
-       let currentParagraphIndex = 0;
-       let paragraphs = [];
-       let ttsInitialized = false;
-       let hasMP3 = false;
-
-       
-       if (typeof responsiveVoice !== 'undefined') {
-           responsiveVoice.OnVoiceReady = function() {
-               console.log('ResponsiveVoice sẵn sàng');
-               initTTS();
-               checkForMP3();
-           };
+const TTS_CONFIG = {
+   VOICE_OPTIONS: {
+       'Vietnamese Female': {
+           name: 'Vietnamese Female',
+           lang: 'vi-VN',
+           rate: 1,
+           pitch: 1.1,
+           volume: 1
+       },
+       'Vietnamese Male': {
+           name: 'Vietnamese Male',
+           lang: 'vi-VN',
+           rate: 1,
+           pitch: 0.9,
+           volume: 1
        }
+   },
+   PAUSE_BETWEEN: 500 
+};
 
-       
-       function initTTS() {
-           try {
-               if (!responsiveVoice.voiceSupport()) {
-                   throw new Error('Trình duyệt không hỗ trợ TTS');
-               }
 
-               setupElements();
-               setupEventListeners();
-               loadParagraphs();
-               
-               document.getElementById('playButton').disabled = false;
-               ttsInitialized = true;
-               
-               console.log('TTS đã khởi tạo thành công');
-               updateStatus('Sẵn sàng đọc');
+let isPlaying = false;
+let isMP3Playing = false;
+let currentParagraphIndex = 0;
+let paragraphs = [];
+let ttsInitialized = false;
 
-           } catch (error) {
-               showError('Không thể khởi tạo TTS: ' + error.message);
-           }
-       }
 
-       
+window.addEventListener('DOMContentLoaded', function() {
+    if (typeof responsiveVoice !== 'undefined') {
+        responsiveVoice.init().then(function() {
+            console.log('ResponsiveVoice đã sẵn sàng');
+            return new Promise(function(resolve) {
+                responsiveVoice.OnVoiceReady = function() {
+                    resolve();
+                };
+            });
+        }).then(function() {
+            initTTS();
+            checkForMP3();
+        }).catch(function(error) {
+            console.error('Lỗi khởi tạo ResponsiveVoice:', error);
+        });
+    } else {
+        console.error('ResponsiveVoice chưa được load');
+    }
+});
+
+
 function checkForMP3() {
-    const audio = document.createElement('audio');
-    const mp3Path = getMP3Path();
-    
-    
-    audio.addEventListener('canplaythrough', function() {
-        hasMP3 = true;
-        setupMP3Player(mp3Path);
-    });
+   const pathParts = window.location.pathname.split('/');
+   const newsId = pathParts[pathParts.length - 1].replace('.html', '');
+   const mp3Path = `${newsId}.mp3`;
+   
+   const audio = document.createElement('audio');
+   audio.addEventListener('canplaythrough', function() {
+       setupMP3Player(mp3Path);
+   });
 
-    audio.addEventListener('error', function() {
-        console.log('Không tìm thấy file MP3');
-        hasMP3 = false;
-    });
+   audio.addEventListener('error', function() {
+       console.log('Không tìm thấy file MP3');
+       document.getElementById('mp3Button').disabled = true;
+   });
 
-    
-    audio.src = mp3Path;
-    audio.load();
+   audio.src = mp3Path;
+   audio.load();
 }
 
-function getMP3Path() {
-    
-    const pathParts = window.location.pathname.split('/');
-    const newsId = pathParts[pathParts.length - 1].replace('.html', '');
-    
-    
-    const mp3Path = `${newsId}.mp3`;
-    
-    return mp3Path;
+
+function setupMP3Player(mp3Path) {
+   const mp3Player = document.getElementById('mp3Player');
+   document.getElementById('mp3Source').src = mp3Path;
+   mp3Player.load();
+
+   
+   const mp3Button = document.getElementById('mp3Button');
+   mp3Button.disabled = false;
+   mp3Button.onclick = toggleMP3;
+
+   
+   mp3Player.addEventListener('ended', function() {
+       isMP3Playing = false;
+       resetMP3Button();
+   });
 }
 
+
+function toggleMP3() {
+   if (isPlaying) {
+       stopReading(); 
+   }
+
+   const mp3Player = document.getElementById('mp3Player');
+   const mp3Button = document.getElementById('mp3Button');
+
+   if (!isMP3Playing) {
+       mp3Player.style.display = 'block';
+       mp3Player.play();
+       isMP3Playing = true;
+       mp3Button.innerHTML = `
+           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+               <rect x="6" y="4" width="4" height="16"></rect>
+               <rect x="14" y="4" width="4" height="16"></rect>
+           </svg>
+           <span>Tạm dừng</span>`;
+   } else {
+       mp3Player.pause();
+       isMP3Playing = false;
+       resetMP3Button();
+   }
+}
+
+
+function resetMP3Button() {
+   const mp3Button = document.getElementById('mp3Button');
+   mp3Button.innerHTML = `
+       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+           <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+           <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+           <line x1="12" y1="19" x2="12" y2="23"/>
+           <line x1="8" y1="23" x2="16" y2="23"/>
+       </svg>
+       <span>Audio đã thu</span>`;
+}
+
+
+function initTTS() {
+   try {
+       if (!responsiveVoice.voiceSupport()) {
+           throw new Error('Trình duyệt không hỗ trợ TTS');
+       }
+
+       setupElements();
+       loadContentToRead();
+       setupEventListeners();
        
-       function setupMP3Player(mp3Path) {
-    try {
-        const mp3Button = document.getElementById('mp3Button');
-        const audioPlayer = document.getElementById('audioPlayer');
+       document.getElementById('playButton').disabled = false;
+       ttsInitialized = true;
+       
+       console.log('TTS khởi tạo thành công');
+       updateStatus('Sẵn sàng đọc');
+   } catch (error) {
+       console.error('Lỗi khởi tạo TTS:', error);
+       showError(error.message);
+   }
+}
 
-        
-        if (mp3Button && audioPlayer) {
-            mp3Button.style.display = 'flex';
-            audioPlayer.querySelector('source').src = mp3Path;
-            audioPlayer.load();
 
-            mp3Button.addEventListener('click', toggleMP3);
-            audioPlayer.addEventListener('timeupdate', updateMP3Progress);
-            audioPlayer.addEventListener('ended', resetMP3);
-            
-            console.log('Đã thiết lập MP3 Player');
-        }
-    } catch (error) {
-        console.error('Lỗi thiết lập MP3 Player:', error);
+function setupElements() {
+   const elements = ['playButton', 'voiceSelect', 'rateSelect', 'status', 'progress'];
+   elements.forEach(id => {
+       if (!document.getElementById(id)) {
+           throw new Error(`Thiếu element: ${id}`);
+       }
+   });
+}
+
+
+function loadContentToRead() {
+   const title = document.querySelector('.article-title');
+   const paragraphElements = document.querySelectorAll('.article-content p');
+
+   paragraphs = [];
+
+   
+   if (title) {
+       paragraphs.push({
+           element: title,
+           text: title.textContent.trim()
+       });
+   }
+
+   
+   paragraphElements.forEach(p => {
+       const text = p.textContent.trim();
+       if (text.length > 0) {
+           paragraphs.push({
+               element: p,
+               text: text
+           });
+       }
+   });
+
+   console.log(`Đã tải ${paragraphs.length} đoạn văn bản`);
+}
+
+
+function setupEventListeners() {
+   document.getElementById('playButton').addEventListener('click', toggleSpeech);
+   document.getElementById('voiceSelect').addEventListener('change', handleVoiceChange);
+   document.getElementById('rateSelect').addEventListener('change', handleRateChange);
+}
+
+
+function toggleSpeech() {
+   if (!ttsInitialized) {
+       showError('TTS chưa sẵn sàng');
+       return;
+   }
+
+   if (isMP3Playing) {
+       const mp3Player = document.getElementById('mp3Player');
+       mp3Player.pause();
+       isMP3Playing = false;
+       resetMP3Button();
+   }
+
+   if (!isPlaying) {
+       startReading();
+   } else {
+       stopReading();
+   }
+}
+
+
+function startReading() {
+   isPlaying = true;
+   currentParagraphIndex = 0;
+   updateUI('reading');
+   readNextParagraph();
+}
+
+
+function readNextParagraph() {
+   if (currentParagraphIndex < paragraphs.length) {
+       try {
+           const voiceName = document.getElementById('voiceSelect').value;
+           const rate = parseFloat(document.getElementById('rateSelect').value);
+           const voiceConfig = TTS_CONFIG.VOICE_OPTIONS[voiceName];
+
+           updateProgress(((currentParagraphIndex + 1) / paragraphs.length) * 100);
+           highlightParagraph(currentParagraphIndex);
+
+           responsiveVoice.speak(
+               paragraphs[currentParagraphIndex].text,
+               voiceName,
+               {
+                   pitch: voiceConfig.pitch,
+                   rate: rate,
+                   volume: voiceConfig.volume,
+                   lang: voiceConfig.lang,
+                   onstart: function() {
+                       updateStatus(`Đang đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
+                   },
+                   onend: function() {
+                       unhighlightParagraph(currentParagraphIndex);
+                       currentParagraphIndex++;
+                       if (isPlaying) {
+                           setTimeout(readNextParagraph, TTS_CONFIG.PAUSE_BETWEEN);
+                       }
+                   }
+               }
+           );
+       } catch (error) {
+           console.error('Error:', error);
+           showError(error.message);
+           stopReading();
+       }
+   } else {
+       finishReading();
+   }
+}
+
+// Stop reading
+function stopReading() {
+   responsiveVoice.cancel();
+   isPlaying = false;
+   unhighlightAll();
+   updateUI('paused');
+}
+
+
+function finishReading() {
+   isPlaying = false;
+   updateProgress(100);
+   updateUI('finished');
+   unhighlightAll();
+}
+
+
+function highlightParagraph(index) {
+   if (paragraphs[index]) {
+       paragraphs[index].element.classList.add('current');
+       scrollToParagraph(paragraphs[index].element);
+   }
+}
+
+
+function unhighlightParagraph(index) {
+   if (paragraphs[index]) {
+       paragraphs[index].element.classList.remove('current');
+   }
+}
+
+
+function unhighlightAll() {
+   paragraphs.forEach(p => p.element.classList.remove('current'));
+}
+
+
+function scrollToParagraph(element) {
+   element.scrollIntoView({
+       behavior: 'smooth',
+       block: 'center'
+   });
+}
+
+
+function updateUI(state) {
+   const button = document.getElementById('playButton');
+   if (button) {
+       button.innerHTML = isPlaying ? 
+           `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+               <rect x="6" y="4" width="4" height="16"></rect>
+               <rect x="14" y="4" width="4" height="16"></rect>
+           </svg>
+           <span>Tạm dừng</span>` :
+           `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+               <polygon points="5 3 19 12 5 21 5 3"></polygon>
+           </svg>
+           <span>Đọc bài viết</span>`;
+   }
+   updateStatus(state);
+}
+
+// Update status message
+function updateStatus(state) {
+   const status = document.getElementById('status');
+   const statusText = document.getElementById('statusText');
+   if (status && statusText) {
+       status.className = 'status active ' + state;
+       statusText.textContent = typeof state === 'string' ? state : 
+           state === 'reading' ? 'Đang đọc...' :
+           state === 'paused' ? 'Đã tạm dừng' :
+           state === 'finished' ? 'Đã đọc xong' : '';
+   }
+}
+
+
+function updateProgress(percent) {
+   const progress = document.getElementById('progress');
+   if (progress) {
+       progress.style.width = percent + '%';
+   }
+}
+
+
+function handleVoiceChange() {
+   if (isPlaying) {
+       restartReading();
+   }
+}
+
+
+function handleRateChange() {
+   if (isPlaying) {
+       restartReading();
+   }
+}
+
+
+function restartReading() {
+   stopReading();
+   startReading();
+}
+
+
+function showError(message) {
+   console.error(message);
+   updateStatus('error');
+   const statusText = document.getElementById('statusText');
+   if (statusText) {
+       statusText.textContent = message;
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function toggleMP3() {
+    console.log('toggleMP3 called');
+    if (isPlaying) {
+        stopReading(); 
+    }
+
+    const mp3Player = document.getElementById('mp3Player');
+    const mp3Button = document.getElementById('mp3Button');
+
+    
+    console.log('mp3Player:', mp3Player);
+    console.log('mp3Button:', mp3Button);
+
+    if (!isMP3Playing) {
+        mp3Player.style.display = 'block';
+        mp3Player.play();
+        isMP3Playing = true;
+        mp3Button.innerHTML = `...`; 
+    } else {
+        mp3Player.pause();
+        isMP3Playing = false;
+        resetMP3Button();
     }
 }
 
-       
-       function toggleMP3() {
-           const audioPlayer = document.getElementById('audioPlayer');
-           const mp3Button = document.getElementById('mp3Button');
 
-           if (isPlaying) {
-               stopReading(); 
-           }
+function setupMP3Player(mp3Path) {
+    console.log('Setting up MP3 player with path:', mp3Path);
+    
+    const mp3Player = document.getElementById('mp3Player');
+    const mp3Button = document.getElementById('mp3Button');
+    
+    if (!mp3Player || !mp3Button) {
+        console.error('Missing MP3 elements');
+        return;
+    }
 
-           if (audioPlayer.paused) {
-               audioPlayer.play();
-               mp3Button.innerHTML = `
-                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                       <rect x="6" y="4" width="4" height="16"></rect>
-                       <rect x="14" y="4" width="4" height="16"></rect>
-                   </svg>
-                   Tạm dừng Audio`;
-           } else {
-               audioPlayer.pause();
-               resetMP3();
-           }
-       }
+    
+    document.getElementById('mp3Source').src = mp3Path;
+    mp3Player.load();
 
-       // Update MP3 Progress
-       function updateMP3Progress() {
-           const audioPlayer = document.getElementById('audioPlayer');
-           const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-           document.getElementById('progress').style.width = progress + '%';
-       }
+    
+    mp3Button.addEventListener('click', function(e) {
+        e.preventDefault();
+        toggleMP3();
+    });
 
-       
-       function resetMP3() {
-           const mp3Button = document.getElementById('mp3Button');
-           mp3Button.innerHTML = `
-               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                   <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
-                   <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                   <line x1="12" y1="19" x2="12" y2="23"/>
-                   <line x1="8" y1="23" x2="16" y2="23"/>
-               </svg>
-               Audio đã thu`;
-           document.getElementById('progress').style.width = '0%';
-       }
+    
+    mp3Button.disabled = false;
 
-       // Setup elements
-       function setupElements() {
-           const elements = ['playButton', 'voiceSelect', 'rateSelect', 'status', 'progress'];
-           elements.forEach(id => {
-               if (!document.getElementById(id)) {
-                   throw new Error(`Thiếu element: ${id}`);
-               }
-           });
-       }
+    console.log('MP3 player setup complete');
+}
 
-       
-       function setupEventListeners() {
-           document.getElementById('playButton').addEventListener('click', toggleSpeech);
-           document.getElementById('voiceSelect').addEventListener('change', handleVoiceChange);
-           document.getElementById('rateSelect').addEventListener('change', handleRateChange);
-       }
 
-       
-       function loadParagraphs() {
-           paragraphs = Array.from(document.querySelectorAll('.article-content p'))
-                           .map(p => p.textContent.trim())
-                           .filter(text => text.length > 0);
-           console.log(`Tìm thấy ${paragraphs.length} đoạn văn`);
-       }
+function setupEventListeners() {
+    console.log('Setting up event listeners');
+    
+    const playButton = document.getElementById('playButton');
+    const voiceSelect = document.getElementById('voiceSelect');
+    const rateSelect = document.getElementById('rateSelect');
 
-       
-       function toggleSpeech() {
-           if (!ttsInitialized) {
-               showError('TTS chưa sẵn sàng');
-               return;
-           }
+    if (playButton) {
+        playButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('TTS button clicked');
+            toggleSpeech();
+        });
+    }
 
-           if (!isPlaying) {
-               startReading();
-           } else {
-               stopReading();
-           }
-       }
+    if (voiceSelect) {
+        voiceSelect.addEventListener('change', handleVoiceChange);
+    }
 
-       
-       function startReading() {
-           isPlaying = true;
-           currentParagraphIndex = 0;
-           updateUI('reading');
-           readNextParagraph();
-       }
+    if (rateSelect) {
+        rateSelect.addEventListener('change', handleRateChange);
+    }
 
-       
-       function readNextParagraph() {
-           if (currentParagraphIndex < paragraphs.length) {
-               try {
-                   const voiceName = document.getElementById('voiceSelect').value;
-                   const voiceConfig = VOICE_CONFIG[voiceName];
-                   const rate = parseFloat(document.getElementById('rateSelect').value);
+    console.log('Event listeners setup complete');
+}
 
-                   updateProgress(((currentParagraphIndex + 1) / paragraphs.length) * 100);
-                   highlightCurrentParagraph(true);
 
-                   responsiveVoice.speak(
-                       paragraphs[currentParagraphIndex],
-                       voiceName,
-                       {
-                           pitch: voiceConfig.pitch,
-                           rate: rate,
-                           volume: voiceConfig.volume,
-                           lang: voiceConfig.lang,
-                           voiceURI: voiceConfig.voiceURI,
-                           onstart: function() {
-                               console.log(`Đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
-                               updateStatus(`Đang đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
-                           },
-                           onend: function() {
-                               highlightCurrentParagraph(false);
-                               currentParagraphIndex++;
-                               if (isPlaying) {
-                                   setTimeout(readNextParagraph, 100);
-                               }
-                           }
-                       }
-                   );
-               } catch (error) {
-                   console.error('Error:', error);
-                   showError(error.message);
-                   stopReading();
-               }
-           } else {
-               finishReading();
-           }
-       }
+function toggleSpeech() {
+    console.log('toggleSpeech called, ttsInitialized:', ttsInitialized);
+    console.log('isPlaying:', isPlaying);
 
-       
-       function stopReading() {
-           responsiveVoice.cancel();
-           isPlaying = false;
-           highlightCurrentParagraph(false);
-           updateUI('paused');
-       }
+    if (!ttsInitialized) {
+        console.error('TTS not initialized');
+        showError('TTS chưa sẵn sàng');
+        return;
+    }
 
-       
-       function finishReading() {
-           isPlaying = false;
-           updateProgress(100);
-           updateUI('finished');
-           console.log('Hoàn thành đọc bài viết');
-       }
+    if (isMP3Playing) {
+        const mp3Player = document.getElementById('mp3Player');
+        mp3Player.pause();
+        isMP3Playing = false;
+        resetMP3Button();
+    }
 
-       
-       function handleVoiceChange() {
-           if (isPlaying) {
-               restartReading();
-           }
-       }
+    if (!isPlaying) {
+        startReading();
+    } else {
+        stopReading();
+    }
+}
 
-       
-       function handleRateChange() {
-           if (isPlaying) {
-               restartReading();
-           }
-       }
 
-       
-       function restartReading() {
-           stopReading();
-           startReading();
-       }
+function initTTS() {
+    console.log('Initializing TTS');
+    try {
+        if (!responsiveVoice) {
+            throw new Error('ResponsiveVoice not loaded');
+        }
 
-       
-       function updateUI(state) {
-           const button = document.getElementById('playButton');
-           if (button) {
-               button.innerHTML = isPlaying ? 
-                   '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>Tạm dừng' :
-                   '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>Đọc bài viết';
-           }
-           updateStatus(state);
-       }
+        if (!responsiveVoice.voiceSupport()) {
+            throw new Error('Browser does not support TTS');
+        }
 
-       
-       function updateStatus(message) {
-           const statusText = document.getElementById('statusText');
-           const status = document.getElementById('status');
-           if (statusText && status) {
-               statusText.textContent = typeof message === 'string' ? message : 
-                   message === 'reading' ? 'Đang đọc...' :
-                   message === 'paused' ? 'Đã tạm dừng' :
-                   message === 'finished' ? 'Đã đọc xong' : '';
-               status.className = 'status active ' + message;
-           }
-       }
+        setupElements();
+        loadContentToRead();
+        setupEventListeners();
+        
+        const playButton = document.getElementById('playButton');
+        if (playButton) {
+            playButton.disabled = false;
+        }
+        
+        ttsInitialized = true;
+        console.log('TTS initialized successfully');
+        updateStatus('Sẵn sàng đọc');
 
-       
-       function updateProgress(percent) {
-           const progress = document.getElementById('progress');
-           if (progress) {
-               progress.style.width = percent + '%';
-           }
-       }
+    } catch (error) {
+        console.error('TTS initialization error:', error);
+        showError(error.message);
+    }
+}
 
-       
-       function highlightCurrentParagraph(isHighlight) {
-           const paragraphElements = document.querySelectorAll('.article-content p');
-           paragraphElements.forEach(p => p.classList.remove('current'));
-           
-           if (isHighlight && paragraphElements[currentParagraphIndex]) {
-               paragraphElements[currentParagraphIndex].classList.add('current');
-               paragraphElements[currentParagraphIndex].scrollIntoView({
-                   behavior: 'smooth',
-                   block: 'center'
-               });
-           }
-       }
 
-       
-       function showError(message) {
-           console.error(message);
-           updateStatus('error');
-           const statusText = document.getElementById('statusText');
-           if (statusText) {
-               statusText.textContent = message;
-           }
-       }
 
-       
-       function shareOnFacebook() {
-           const url = window.location.href;
-           window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url));
-       }
 
-       function shareOnTwitter() {
-           const url = window.location.href;
-           const title = document.title;
-           window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title));
-       }
 
-       
-       function updateParentHeight() {
-           const height = document.documentElement.scrollHeight;
-           window.parent.postMessage({ height: height }, '*');
-       }
+function initTTS() {
+    console.log('Đang khởi tạo TTS');
+    try {
+        if (!responsiveVoice) {
+            throw new Error('ResponsiveVoice chưa được load');
+        }
 
-       
-       document.addEventListener('DOMContentLoaded', function() {
-           updateParentHeight();
-       });
+        if (!responsiveVoice.voiceSupport()) {
+            throw new Error('Trình duyệt không hỗ trợ TTS');
+        }
 
-       
-       new ResizeObserver(updateParentHeight).observe(document.body);
-   </script>
+        
+        if (!responsiveVoice.isInitialized()) {
+            throw new Error('ResponsiveVoice chưa khởi tạo xong');
+        }
+
+        setupElements();
+        loadContentToRead();
+        setupEventListeners();
+        
+        const playButton = document.getElementById('playButton');
+        if (playButton) {
+            playButton.disabled = false;
+        }
+        
+        ttsInitialized = true;
+        console.log('TTS đã khởi tạo thành công');
+        updateStatus('Sẵn sàng đọc');
+
+    } catch (error) {
+        console.error('Lỗi khởi tạo TTS:', error);
+        showError(error.message);
+        return false;
+    }
+    return true;
+}
+
+
+function toggleSpeech() {
+    console.log('toggleSpeech called, ttsInitialized:', ttsInitialized);
+    console.log('isPlaying:', isPlaying);
+
+    
+    if (!ttsInitialized && !initTTS()) {
+        showError('TTS chưa sẵn sàng, vui lòng thử lại');
+        return;
+    }
+
+    
+    if (isMP3Playing) {
+        const mp3Player = document.getElementById('mp3Player');
+        mp3Player.pause();
+        isMP3Playing = false;
+        resetMP3Button();
+    }
+
+    if (!isPlaying) {
+        startReading();
+    } else {
+        stopReading();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+window.onload = function() {
+   window.scrollTo(0, 0);
+   updateParentHeight();
+}
+
+
+function updateParentHeight() {
+   const height = document.documentElement.scrollHeight;
+   window.parent.postMessage({ height: height }, '*');
+}
+
+
+new ResizeObserver(updateParentHeight).observe(document.body);
+
+
+function shareOnFacebook() {
+   const url = window.location.href;
+   window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url));
+}
+
+function shareOnTwitter() {
+   const url = window.location.href;
+   const title = document.title;
+   window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title));
+}
+</script>
 </body>
 </html>
