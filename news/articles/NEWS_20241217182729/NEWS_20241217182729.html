@@ -383,6 +383,9 @@ function waitForResponsiveVoice() {
         <img src="https://www.breastsurgeryireland.com/3d-images/inflammatory-breast-cancer.jpg" alt="Ung thư vú viêm" class="featured-image">
 
         <div class="article-content">
+
+
+
 <div class="speech-controls">
     <div class="speech-header">
         <span class="speech-title">Nghe bài viết</span>
@@ -390,18 +393,16 @@ function waitForResponsiveVoice() {
     
     <div class="controls-container">
         
-        <button type="button" id="mp3Button" class="control-button" onclick="toggleMP3()">
+        <button id="mp3Button" class="control-button" onclick="toggleMP3()">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
                 <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                <line x1="12" y1="19" x2="12" y2="23"/>
-                <line x1="8" y1="23" x2="16" y2="23"/>
             </svg>
             <span>Audio đã thu</span>
         </button>
 
         
-        <button type="button" id="playButton" class="control-button" onclick="toggleSpeech()">
+        <button id="playButton" class="control-button">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
@@ -409,12 +410,12 @@ function waitForResponsiveVoice() {
         </button>
         
         
-        <div id="ttsControls" class="speed-control">
-            <select id="voiceSelect" onchange="handleVoiceChange()">
+        <div class="speed-control">
+            <select id="voiceSelect">
                 <option value="Vietnamese Female">Giọng Nữ</option>
                 <option value="Vietnamese Male">Giọng Nam</option>
             </select>
-            <select id="rateSelect" onchange="handleRateChange()">
+            <select id="rateSelect">
                 <option value="0.8">Chậm</option>
                 <option value="1" selected>Bình thường</option>
                 <option value="1.2">Nhanh</option>
@@ -423,7 +424,7 @@ function waitForResponsiveVoice() {
     </div>
 
     
-    <audio id="mp3Player" controls style="width: 100%; margin-top: 10px; display: none;">
+    <audio id="mp3Player" class="audio-player" controls style="width: 100%; margin-top: 10px; display: none;">
         <source id="mp3Source" type="audio/mpeg">
         Trình duyệt không hỗ trợ phát audio.
     </audio>
@@ -436,6 +437,7 @@ function waitForResponsiveVoice() {
         <span id="statusText"></span>
     </div>
 </div>
+
 
             <h2>Ung thư vú viêm là gì?</h2><p>Ung thư vú viêm là một dạng ung thư vú hiếm gặp, trong đó vú có màu đỏ và sưng do tắc nghẽn mạch bạch huyết. Đây là loại ung thư vú hung hãn thường phát triển từ các tế bào lót ống dẫn sữa.</p><h2>Ai có nguy cơ mắc bệnh ung thư vú viêm?</h2><p>So với các loại ung thư vú khác, ung thư vú viêm thường xảy ra ở phụ nữ trẻ hơn. Phụ nữ Mỹ gốc Phi và phụ nữ béo phì có nguy cơ cao hơn. Bệnh này cũng có thể ảnh hưởng đến nam giới.</p><h2>Những triệu chứng liên quan đến ung thư vú viêm là gì?</h2><p><strong>Các triệu chứng của ung thư vú viêm bao gồm:</strong></p><ul><li>Sưng hoặc đỏ ở ít nhất một phần ba vú</li><li>Tăng kích thước vú, nặng và đau, núm vú bị tụt vào trong</li><li>Khối u thường không thể cảm nhận được</li><li>Xuất hiện lớp vỏ cam trên da vú do tích tụ dịch bạch huyết</li><li>Sưng hạch bạch huyết dưới cánh tay hoặc gần xương đòn</li></ul><p>Ung thư vú viêm tiến triển nhanh trong vài tuần hoặc vài tháng và có thể lan sang các hạch bạch huyết xung quanh và các mô khác. Bệnh có thể được chẩn đoán muộn trong quá trình phát triển.</p><h2>Ung thư vú viêm được chẩn đoán như thế nào?</h2><p>Bác sĩ sẽ xem xét các triệu chứng và tiền sử bệnh của bạn, tiến hành khám sức khỏe và yêu cầu làm một số xét nghiệm nhất định.</p><p><strong>Các xét nghiệm hình ảnh được thực hiện bao gồm:</strong></p><ul><li>Chụp nhũ ảnh chẩn đoán</li><li>Siêu âm vú và các hạch bạch huyết gần đó</li><li>Chụp CT, chụp PET hoặc chụp xương để kiểm tra xem ung thư đã di căn chưa</li></ul><p>Sinh thiết cũng có thể được yêu cầu.</p><p><strong>Ung thư vú viêm có thể được chẩn đoán muộn vì một số lý do:</strong></p><ul><li>Các triệu chứng này thường gặp ở các tình trạng khác như nhiễm trùng, chấn thương hoặc các loại ung thư vú khác,</li><li>Thông thường, không thấy có khối u khi khám.</li><li>Vú có mật độ tăng lên nên chụp nhũ ảnh tầm soát có thể không thấy rõ.</li><li>Bệnh có thể xảy ra và tiến triển nhanh chóng giữa các lần kiểm tra vú theo lịch trình.</li></ul><p><strong>Ung thư vú viêm được xem xét nếu bạn có:</strong></p><ul><li>Triệu chứng khởi phát nhanh</li><li>Đỏ ở ít nhất một phần ba vú</li><li>Không có khối u sờ thấy được</li><li>Kết quả sinh thiết cho thấy ung thư xâm lấn</li></ul><p>Phân loại ung thư được thực hiện để giúp bác sĩ quyết định phương pháp điều trị và tiên lượng tình trạng của bạn. Các tế bào ung thư được kiểm tra thụ thể hormone và mức độ tăng của gen hoặc protein HER2. Điều này giúp mô tả đặc điểm ung thư và có thể chỉ ra các chiến lược điều trị khả thi. Ung thư dương tính với HER2 hung hãn hơn.</p><h2>Ung thư vú viêm được điều trị như thế nào?</h2><p><strong>Ung thư vú viêm được điều trị bằng phương pháp đa phương thức bao gồm:</strong></p><ul><li><strong>Hóa trị toàn thân</strong>&nbsp;được áp dụng để thu nhỏ khối u. Sáu chu kỳ hóa trị được thực hiện trong khoảng thời gian từ 4-6 tháng.</li><li><strong>Phẫu thuật</strong>&nbsp;được thực hiện để loại bỏ mô ung thư. Điều này bao gồm phẫu thuật cắt bỏ vú triệt căn đã được sửa đổi tức là cắt bỏ vú bị ảnh hưởng và các hạch bạch huyết gần đó ở vú và cánh tay. Phẫu thuật được thực hiện sau khi hóa trị nhưng có thể được thực hiện sớm hơn nếu ung thư tiến triển quá nhanh. Các cơ ngực bên dưới vú thường được bảo tồn, nhưng lớp lót của chúng bị cắt bỏ. Trong trường hợp bệnh lan rộng, một số cơ ngực cũng được cắt bỏ.</li><li><strong>Xạ trị</strong>&nbsp;được sử dụng để tiêu diệt bất kỳ tế bào ung thư nào còn sót lại sau khi cắt bỏ vú.</li></ul><p>Phương pháp đa phương thức này đã cho thấy kết quả tốt trong điều trị ung thư vú viêm.</p><h2>Có những phương pháp nào khác để điều trị ung thư vú viêm?</h2><p><strong>Bác sĩ cũng có thể đề nghị một trong các phương pháp điều trị sau:</strong></p><ul><li><strong>Liệu pháp nhắm mục tiêu:</strong>&nbsp;Đối với bệnh ung thư có mức protein HER2 tăng cao, liệu pháp nhắm mục tiêu sẽ ngăn chặn việc sản xuất loại protein này và có thể được khuyến nghị trước hoặc sau phẫu thuật.</li><li><strong>Liệu pháp hormone:</strong>&nbsp;Phương pháp điều trị này có thể được sử dụng cho các tế bào ung thư có thụ thể hormone. Các hormone như estrogen liên kết với các thụ thể và giúp các loại ung thư này phát triển và nhân lên. Liệu pháp hormone ngăn chặn sự liên kết của hormone với các thụ thể hoặc ngăn chặn việc sản xuất hormone. Tuy nhiên, hầu hết các trường hợp ung thư vú viêm đều có thụ thể hormone âm tính.</li><li><strong>Tái tạo vú:</strong>&nbsp;Tái tạo vú được khuyến nghị để phục hồi hình dạng vú.</li></ul><h2>Tiên lượng của bệnh ung thư vú viêm là gì?</h2><p><strong>Tiên lượng phụ thuộc vào các yếu tố như:</strong></p><ul><li>Loại và vị trí của ung thư</li><li>dàn dựng</li><li>Tuổi tác và sức khỏe tổng quát</li><li>Phản ứng với điều trị</li></ul><p>Mặc dù ung thư vú viêm là căn bệnh hung hãn nhưng có thể điều trị hiệu quả nếu được chẩn đoán sớm.</p>
             <div class="share-section">
@@ -461,6 +463,14 @@ function waitForResponsiveVoice() {
             <div class="related-grid">
                 
       <div class="related-article">
+        <img src="https://github.com/fmcclinic/Medical_News/blob/main/news/image/Chu%E1%BA%A9n%20b%E1%BB%8B%20sinh%20n%E1%BB%9F%20Nh%E1%BB%AFng%20%C4%91i%E1%BB%81u%20m%E1%BA%B9%20b%E1%BA%A7u%20c%E1%BA%A7n%20bi%E1%BA%BFt.jpg?raw=true" alt="Chuẩn bị sinh nở - Những điều mẹ bầu cần biết">
+        <h3>
+          <a href="../../articles/NEWS_20241222175335/NEWS_20241222175335.html">Chuẩn bị sinh nở - Những điều mẹ bầu cần biết</a>
+        </h3>
+        <span class="date">22/12/2024</span>
+      </div>
+    
+      <div class="related-article">
         <img src="https://raw.githubusercontent.com/fmcclinic/Medical_News/refs/heads/main/news/image/A%20woman%20with%20a%20visible%20pregnancy.jpg" alt="Dinh dưỡng trong thai kỳ - Ăn gì để mẹ khỏe con thông minh?">
         <h3>
           <a href="../../articles/NEWS_20241221144428/NEWS_20241221144428.html">Dinh dưỡng trong thai kỳ - Ăn gì để mẹ khỏe con thông minh?</a>
@@ -475,68 +485,66 @@ function waitForResponsiveVoice() {
         </h3>
         <span class="date">21/12/2024</span>
       </div>
-    
-      <div class="related-article">
-        <img src="https://www.tsmh.org.tw/sites/nursing_department/images/gyn/gyn_p12_2.png" alt="Chăm sóc hậu phẫu cho phẫu thuật phụ khoa">
-        <h3>
-          <a href="../../articles/NEWS_20241221002552/NEWS_20241221002552.html">Chăm sóc hậu phẫu cho phẫu thuật phụ khoa</a>
-        </h3>
-        <span class="date">21/12/2024</span>
-      </div>
                 </div>
         </div>
     </div>
 
 <script>
 
+let currentMP3File = null;
+let audioPreviewUrl = null;
+let isPlaying = false;
+let isTTSPlaying = false;
+let isMP3Playing = false;
+let ttsInitialized = false;
+let currentParagraphIndex = 0;
+let paragraphs = [];
+
+
 const TTS_CONFIG = {
-   VOICE_OPTIONS: {
-       'Vietnamese Female': {
-           name: 'Vietnamese Female',
-           lang: 'vi-VN',
-           rate: 1,
-           pitch: 1.1,
-           volume: 1
-       },
-       'Vietnamese Male': {
-           name: 'Vietnamese Male',
-           lang: 'vi-VN',
-           rate: 1,
-           pitch: 0.9,
-           volume: 1
-       }
-   },
-   PAUSE_BETWEEN: 500 
+    VOICE_OPTIONS: {
+        'Vietnamese Female': {
+            name: 'Vietnamese Female',
+            lang: 'vi-VN',
+            rate: 1,
+            pitch: 1.1,
+            volume: 1
+        },
+        'Vietnamese Male': {
+            name: 'Vietnamese Male',
+            lang: 'vi-VN',
+            rate: 1,
+            pitch: 0.9,
+            volume: 1
+        }
+    },
+    PAUSE_BETWEEN: 500 
 };
 
 
-
-
-
-document.addEventListener('DOMContentLoaded', async function() {
-    try {
-        
-        await waitForResponsiveVoice();
-        console.log('ResponsiveVoice đã load và sẵn sàng');
-
-        
-        initTTS();
-        checkForMP3();
-
-    } catch (error) {
-        console.error('Không thể khởi tạo ResponsiveVoice:', error);
+document.addEventListener('DOMContentLoaded', function() {
+    
+    if (typeof responsiveVoice !== 'undefined') {
+        responsiveVoice.OnVoiceReady = function() {
+            console.log('ResponsiveVoice sẵn sàng');
+            initTTS();
+            setupMP3EventListeners();
+        };
     }
+
+    
+    window.scrollTo(0, 0);
+    updateParentHeight();
 });
+
+
+new ResizeObserver(updateParentHeight).observe(document.body);
 
 
 function initTTS() {
     console.log('Đang khởi tạo TTS');
     try {
-        if (!window.responsiveVoice) {
-            throw new Error('ResponsiveVoice chưa load');
-        }
-
-        if (!window.responsiveVoice.voiceSupport()) {
+        if (!responsiveVoice.voiceSupport()) {
             throw new Error('Trình duyệt không hỗ trợ TTS');
         }
 
@@ -560,112 +568,22 @@ function initTTS() {
 }
 
 
-function showError(message) {
-    console.error(message);
-    const statusText = document.getElementById('statusText');
-    const status = document.getElementById('status');
-    if (statusText && status) {
-        statusText.textContent = message;
-        status.className = 'status active error';
-    }
-}
-
-
-function checkForMP3() {
-   const pathParts = window.location.pathname.split('/');
-   const newsId = pathParts[pathParts.length - 1].replace('.html', '');
-   const mp3Path = `${newsId}.mp3`;
-   
-   const audio = document.createElement('audio');
-   audio.addEventListener('canplaythrough', function() {
-       setupMP3Player(mp3Path);
-   });
-
-   audio.addEventListener('error', function() {
-       console.log('Không tìm thấy file MP3');
-       document.getElementById('mp3Button').disabled = true;
-   });
-
-   audio.src = mp3Path;
-   audio.load();
-}
-
-
-function setupMP3Player(mp3Path) {
-   const mp3Player = document.getElementById('mp3Player');
-   document.getElementById('mp3Source').src = mp3Path;
-   mp3Player.load();
-
-   
-   const mp3Button = document.getElementById('mp3Button');
-   mp3Button.disabled = false;
-   mp3Button.onclick = toggleMP3;
-
-   
-   mp3Player.addEventListener('ended', function() {
-       isMP3Playing = false;
-       resetMP3Button();
-   });
-}
-
-
-function toggleMP3() {
-   if (isPlaying) {
-       stopReading(); 
-   }
-
-   const mp3Player = document.getElementById('mp3Player');
-   const mp3Button = document.getElementById('mp3Button');
-
-   if (!isMP3Playing) {
-       mp3Player.style.display = 'block';
-       mp3Player.play();
-       isMP3Playing = true;
-       mp3Button.innerHTML = `
-           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-               <rect x="6" y="4" width="4" height="16"></rect>
-               <rect x="14" y="4" width="4" height="16"></rect>
-           </svg>
-           <span>Tạm dừng</span>`;
-   } else {
-       mp3Player.pause();
-       isMP3Playing = false;
-       resetMP3Button();
-   }
-}
-
-
-function resetMP3Button() {
-   const mp3Button = document.getElementById('mp3Button');
-   mp3Button.innerHTML = `
-       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-           <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
-           <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-           <line x1="12" y1="19" x2="12" y2="23"/>
-           <line x1="8" y1="23" x2="16" y2="23"/>
-       </svg>
-       <span>Audio đã thu</span>`;
-}
-
-
-
-
 function setupElements() {
-   const elements = ['playButton', 'voiceSelect', 'rateSelect', 'status', 'progress'];
-   elements.forEach(id => {
-       if (!document.getElementById(id)) {
-           throw new Error(`Thiếu element: ${id}`);
-       }
-   });
+    const elements = ['playButton', 'voiceSelect', 'rateSelect', 'status', 'progress'];
+    elements.forEach(id => {
+        if (!document.getElementById(id)) {
+            throw new Error(`Thiếu element: ${id}`);
+        }
+    });
 }
 
 
 function loadContentToRead() {
     const title = document.querySelector('.article-title');
-    const paragraphElements = document.querySelectorAll('.article-content p');
-
+    const contentElements = document.querySelectorAll('.article-content p, .article-content div > p, .article-content ul > li, .article-content ol > li');
+    
     console.log('Title element:', title);
-    console.log('Paragraph elements:', paragraphElements);
+    console.log('Content elements:', contentElements);
 
     paragraphs = [];
 
@@ -678,207 +596,29 @@ function loadContentToRead() {
     }
 
     
-    const content = document.querySelector('.article-content');
-    if (content) {
-        
-        const textElements = content.querySelectorAll('p, div > p, ul > li, ol > li');
-        textElements.forEach((element) => {
-            const text = element.textContent.trim();
-            if (text.length > 0) {
-                paragraphs.push({
-                    element: element,
-                    text: text
-                });
-            }
-        });
-    }
+    contentElements.forEach(element => {
+        const text = element.textContent.trim();
+        if (text.length > 0) {
+            paragraphs.push({
+                element: element,
+                text: text
+            });
+        }
+    });
 
     console.log('Total paragraphs loaded:', paragraphs.length);
     console.log('Paragraphs content:', paragraphs.map(p => p.text));
 }
 
 
-
-
-
-function startReading() {
-   isPlaying = true;
-   currentParagraphIndex = 0;
-   updateUI('reading');
-   readNextParagraph();
-}
-
-
-
-
-function highlightParagraph(index) {
-   if (paragraphs[index]) {
-       paragraphs[index].element.classList.add('current');
-       scrollToParagraph(paragraphs[index].element);
-   }
-}
-
-
-function unhighlightParagraph(index) {
-   if (paragraphs[index]) {
-       paragraphs[index].element.classList.remove('current');
-   }
-}
-
-
-function unhighlightAll() {
-   paragraphs.forEach(p => p.element.classList.remove('current'));
-}
-
-
-function scrollToParagraph(element) {
-   element.scrollIntoView({
-       behavior: 'smooth',
-       block: 'center'
-   });
-}
-
-
-function updateUI(state) {
-   const button = document.getElementById('playButton');
-   if (button) {
-       button.innerHTML = isPlaying ? 
-           `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-               <rect x="6" y="4" width="4" height="16"></rect>
-               <rect x="14" y="4" width="4" height="16"></rect>
-           </svg>
-           <span>Tạm dừng</span>` :
-           `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-               <polygon points="5 3 19 12 5 21 5 3"></polygon>
-           </svg>
-           <span>Đọc bài viết</span>`;
-   }
-   updateStatus(state);
-}
-
-// Update status message
-function updateStatus(state) {
-   const status = document.getElementById('status');
-   const statusText = document.getElementById('statusText');
-   if (status && statusText) {
-       status.className = 'status active ' + state;
-       statusText.textContent = typeof state === 'string' ? state : 
-           state === 'reading' ? 'Đang đọc...' :
-           state === 'paused' ? 'Đã tạm dừng' :
-           state === 'finished' ? 'Đã đọc xong' : '';
-   }
-}
-
-
-function updateProgress(percent) {
-   const progress = document.getElementById('progress');
-   if (progress) {
-       progress.style.width = percent + '%';
-   }
-}
-
-
-function handleVoiceChange() {
-   if (isPlaying) {
-       restartReading();
-   }
-}
-
-
-function handleRateChange() {
-   if (isPlaying) {
-       restartReading();
-   }
-}
-
-
-function restartReading() {
-   stopReading();
-   startReading();
-}
-
-
-function showError(message) {
-   console.error(message);
-   updateStatus('error');
-   const statusText = document.getElementById('statusText');
-   if (statusText) {
-       statusText.textContent = message;
-   }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-function toggleMP3() {
-    console.log('toggleMP3 called');
-    if (isPlaying) {
-        stopReading(); 
-    }
-
-    const mp3Player = document.getElementById('mp3Player');
-    const mp3Button = document.getElementById('mp3Button');
-
-    
-    console.log('mp3Player:', mp3Player);
-    console.log('mp3Button:', mp3Button);
-
-    if (!isMP3Playing) {
-        mp3Player.style.display = 'block';
-        mp3Player.play();
-        isMP3Playing = true;
-        mp3Button.innerHTML = `...`; 
-    } else {
-        mp3Player.pause();
-        isMP3Playing = false;
-        resetMP3Button();
-    }
-}
-
-
-function setupMP3Player(mp3Path) {
-    console.log('Setting up MP3 player with path:', mp3Path);
-    
-    const mp3Player = document.getElementById('mp3Player');
-    const mp3Button = document.getElementById('mp3Button');
-    
-    if (!mp3Player || !mp3Button) {
-        console.error('Missing MP3 elements');
-        return;
-    }
-
-    
-    document.getElementById('mp3Source').src = mp3Path;
-    mp3Player.load();
-
-    
-    mp3Button.addEventListener('click', function(e) {
-        e.preventDefault();
-        toggleMP3();
-    });
-
-    
-    mp3Button.disabled = false;
-
-    console.log('MP3 player setup complete');
-}
-
-
 function setupEventListeners() {
     console.log('Setting up event listeners');
+
     
     const playButton = document.getElementById('playButton');
     const voiceSelect = document.getElementById('voiceSelect');
     const rateSelect = document.getElementById('rateSelect');
+    const mp3Button = document.getElementById('mp3Button');
 
     if (playButton) {
         playButton.addEventListener('click', function(e) {
@@ -896,230 +636,126 @@ function setupEventListeners() {
         rateSelect.addEventListener('change', handleRateChange);
     }
 
+    if (mp3Button) {
+        mp3Button.addEventListener('click', toggleMP3);
+    }
+
     console.log('Event listeners setup complete');
 }
 
 
-function toggleSpeech() {
-    console.log('toggleSpeech called, ttsInitialized:', ttsInitialized);
-    console.log('isPlaying:', isPlaying);
 
-    if (!ttsInitialized) {
-        console.error('TTS not initialized');
-        showError('TTS chưa sẵn sàng');
-        return;
-    }
+function toggleMP3() {
+    console.log('toggleMP3 called');
 
-    if (isMP3Playing) {
-        const mp3Player = document.getElementById('mp3Player');
-        mp3Player.pause();
-        isMP3Playing = false;
-        resetMP3Button();
-    }
+    const mp3Player = document.getElementById('mp3Player');
+    const mp3Button = document.getElementById('mp3Button');
 
-    if (!isPlaying) {
-        startReading();
-    } else {
-        stopReading();
-    }
-}
-
-
-
-
-
-
-
-
-
-function toggleSpeech() {
-    console.log('toggleSpeech called, ttsInitialized:', ttsInitialized);
-    console.log('isPlaying:', isPlaying);
-
-    
-    if (!ttsInitialized && !initTTS()) {
-        showError('TTS chưa sẵn sàng, vui lòng thử lại');
+    if (!mp3Player || !mp3Button) {
+        console.error('MP3 elements not found');
         return;
     }
 
     
-    if (isMP3Playing) {
-        const mp3Player = document.getElementById('mp3Player');
-        mp3Player.pause();
-        isMP3Playing = false;
-        resetMP3Button();
-    }
-
-    if (!isPlaying) {
-        startReading();
-    } else {
+    if (isTTSPlaying) {
         stopReading();
     }
-}
 
-
-
-
-
-
-
-
-function toggleSpeech() {
-    console.log('toggleSpeech called, ttsInitialized:', ttsInitialized);
-    console.log('isPlaying before toggle:', isPlaying);
-
-    if (!ttsInitialized) {
-        showError('TTS chưa sẵn sàng');
-        return;
-    }
-
-    if (isMP3Playing) {
-        const mp3Player = document.getElementById('mp3Player');
-        mp3Player.pause();
-        isMP3Playing = false;
-        resetMP3Button();
-    }
-
-    isPlaying = !isPlaying; 
-    console.log('isPlaying after toggle:', isPlaying);
-
-    if (isPlaying) {
-        startReading();
-    } else {
-        stopReading();
-    }
-}
-
-
-
-function setupEventListeners() {
-    console.log('Setting up event listeners');
     
+    mp3Player.style.display = 'block';
+
     
-    const playButton = document.getElementById('playButton');
-    if (playButton) {
-        playButton.removeEventListener('click', toggleSpeech); 
-        playButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation(); 
-            console.log('TTS button clicked');
+    if (mp3Player.paused) {
+        
+        mp3Player.load();
+        mp3Player.addEventListener('canplaythrough', function playAudio() {
             
-            if (!isPlaying) {
-                isPlaying = true;
-                startReading();
-            } else {
-                isPlaying = false;
-                stopReading();
-            }
+            mp3Player.removeEventListener('canplaythrough', playAudio);
+            
+            
+            mp3Player.play()
+                .then(() => {
+                    console.log('MP3 playing successfully');
+                    isMP3Playing = true;
+                    mp3Button.innerHTML = `
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="6" y="4" width="4" height="16"></rect>
+                            <rect x="14" y="4" width="4" height="16"></rect>
+                        </svg>
+                        <span>Tạm dừng</span>`;
+                })
+                .catch(error => {
+                    console.error('Error playing MP3:', error);
+                    isMP3Playing = false;
+                    showToast('Lỗi phát audio', 'error');
+                });
+        }, { once: true }); 
+    } else {
+        
+        mp3Player.pause();
+        isMP3Playing = false;
+        mp3Button.innerHTML = `
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            </svg>
+            <span>Audio đã thu</span>`;
+    }
+}
+
+
+function setupMP3EventListeners() {
+    const mp3Player = document.getElementById('mp3Player');
+    const mp3Button = document.getElementById('mp3Button');
+
+    if (mp3Player && mp3Button) {
+        mp3Player.addEventListener('ended', function() {
+            isMP3Playing = false;
+            mp3Button.innerHTML = `
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                </svg>
+                <span>Audio đã thu</span>`;
         });
     }
+}
+
+
+function toggleSpeech() {
+    console.log('toggleSpeech called, ttsInitialized:', ttsInitialized);
+    console.log('isPlaying:', isPlaying);
 
     
-    const voiceSelect = document.getElementById('voiceSelect');
-    const rateSelect = document.getElementById('rateSelect');
-
-    if (voiceSelect) {
-        voiceSelect.addEventListener('change', handleVoiceChange);
-    }
-
-    if (rateSelect) {
-        rateSelect.addEventListener('change', handleRateChange);
-    }
-
-    console.log('Event listeners setup complete');
-}
-
-function readNextParagraph() {
-    console.log('Reading paragraph:', currentParagraphIndex + 1, 'of', paragraphs.length);
-    console.log('isPlaying status:', isPlaying);
-
-    if (currentParagraphIndex < paragraphs.length) {
-        try {
-            const voiceName = document.getElementById('voiceSelect').value;
-            const rate = parseFloat(document.getElementById('rateSelect').value);
-
-            console.log('Current text:', paragraphs[currentParagraphIndex].text);
-            console.log('Voice:', voiceName, 'Rate:', rate);
-
-            responsiveVoice.speak(
-                paragraphs[currentParagraphIndex].text,
-                voiceName,
-                {
-                    rate: rate,
-                    onstart: () => {
-                        console.log(`Bắt đầu đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
-                        updateStatus(`Đang đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
-                        highlightParagraph(currentParagraphIndex);
-                        updateProgress(((currentParagraphIndex + 1) / paragraphs.length) * 100);
-                    },
-                    onend: () => {
-                        console.log(`Kết thúc đọc đoạn ${currentParagraphIndex + 1}`);
-                        unhighlightParagraph(currentParagraphIndex);
-                        
-                        
-                        currentParagraphIndex++;
-                        if (isPlaying && currentParagraphIndex < paragraphs.length) {
-                            console.log('Proceeding to next paragraph');
-                            readNextParagraph(); 
-                        } else if (currentParagraphIndex >= paragraphs.length) {
-                            console.log('Reached end of content');
-                            finishReading();
-                        }
-                    }
-                }
-            );
-        } catch (error) {
-            console.error('Error in readNextParagraph:', error);
-            stopReading();
+    if (isMP3Playing) {
+        const mp3Player = document.getElementById('mp3Player');
+        const mp3Button = document.getElementById('mp3Button');
+        
+        mp3Player.pause();
+        isMP3Playing = false;
+        if (mp3Button) {
+            mp3Button.innerHTML = `
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                </svg>
+                <span>Audio đã thu</span>`;
         }
+    }
+
+    if (!ttsInitialized) {
+        showError('TTS chưa sẵn sàng');
+        return;
+    }
+
+    if (!isPlaying) {
+        startReading();
+        isTTSPlaying = true;
     } else {
-        finishReading();
+        stopReading();
+        isTTSPlaying = false;
     }
 }
-
-
-function setupPlayButton() {
-    const playButton = document.getElementById('playButton');
-    if (playButton) {
-        playButton.onclick = function(e) {
-            e.preventDefault();
-            console.log('Play button clicked');
-            if (!isPlaying) {
-                isPlaying = true;
-                currentParagraphIndex = 0; 
-                startReading();
-            } else {
-                isPlaying = false;
-                stopReading();
-            }
-            updateUI(isPlaying ? 'reading' : 'paused');
-        };
-    }
-}
-
-
-
-
-
-
-let isPlaying = false;
-let isMP3Playing = false;
-let currentParagraphIndex = 0;
-let paragraphs = [];
-let ttsInitialized = false;
-
-
-
-function stopReading() {
-    console.log('Stopping reading');
-    isPlaying = false;
-    if (responsiveVoice) {
-        responsiveVoice.cancel(); 
-    }
-    unhighlightAll();
-    updateUI('paused');
-}
-
 
 function startReading() {
     console.log('Starting reading');
@@ -1130,140 +766,193 @@ function startReading() {
 }
 
 
-function handlePlayButtonClick() {
-    console.log('Play button clicked, current state:', isPlaying);
-    if (!isPlaying) {
-        startReading();
-    } else {
-        stopReading();
-    }
-}
-
-
-function setupPlayButton() {
-    const playButton = document.getElementById('playButton');
-    if (playButton) {
-        playButton.onclick = handlePlayButtonClick;
-    }
-}
-
-
 function readNextParagraph() {
     console.log('Reading paragraph:', currentParagraphIndex + 1, 'of', paragraphs.length);
     console.log('isPlaying status:', isPlaying);
-
-    if (!isPlaying) {
-        console.log('Reading stopped');
-        return;
-    }
 
     if (currentParagraphIndex < paragraphs.length) {
         try {
             const voiceName = document.getElementById('voiceSelect').value;
             const rate = parseFloat(document.getElementById('rateSelect').value);
+            const voiceConfig = TTS_CONFIG.VOICE_OPTIONS[voiceName];
+
+            updateProgress(((currentParagraphIndex + 1) / paragraphs.length) * 100);
+            highlightParagraph(currentParagraphIndex);
 
             console.log('Current text:', paragraphs[currentParagraphIndex].text);
-            console.log('Voice:', voiceName, 'Rate:', rate);
 
             responsiveVoice.speak(
                 paragraphs[currentParagraphIndex].text,
                 voiceName,
                 {
+                    pitch: voiceConfig.pitch,
                     rate: rate,
-                    onstart: () => {
+                    volume: voiceConfig.volume,
+                    lang: voiceConfig.lang,
+                    onstart: function() {
                         console.log(`Bắt đầu đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
                         updateStatus(`Đang đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
-                        highlightParagraph(currentParagraphIndex);
-                        updateProgress(((currentParagraphIndex + 1) / paragraphs.length) * 100);
                     },
-                    onend: () => {
+                    onend: function() {
                         console.log(`Kết thúc đọc đoạn ${currentParagraphIndex + 1}`);
                         unhighlightParagraph(currentParagraphIndex);
+                        currentParagraphIndex++;
+
                         
-                        if (isPlaying) {
-                            currentParagraphIndex++;
-                            if (currentParagraphIndex < paragraphs.length) {
-                                console.log('Moving to next paragraph');
-                                readNextParagraph();
-                            } else {
-                                console.log('Reached end of content');
-                                finishReading();
-                            }
+                        if (isPlaying && currentParagraphIndex < paragraphs.length) {
+                            console.log('Moving to next paragraph after delay');
+                            setTimeout(readNextParagraph, TTS_CONFIG.PAUSE_BETWEEN);
+                        } else if (currentParagraphIndex >= paragraphs.length) {
+                            console.log('Reached end of content');
+                            finishReading();
                         }
                     }
                 }
             );
         } catch (error) {
-            console.error('Error in readNextParagraph:', error);
+            console.error('Error reading paragraph:', error);
+            showError(error.message);
             stopReading();
         }
     } else {
+        console.log('No more paragraphs to read');
         finishReading();
     }
 }
 
 
-function setupEventListeners() {
-    console.log('Setting up event listeners');
-    setupPlayButton();
-    
-    
-    const voiceSelect = document.getElementById('voiceSelect');
-    const rateSelect = document.getElementById('rateSelect');
-
-    if (voiceSelect) {
-        voiceSelect.onchange = handleVoiceChange;
-    }
-
-    if (rateSelect) {
-        rateSelect.onchange = handleRateChange;
-    }
-
-    console.log('Event listeners setup complete');
+function stopReading() {
+    console.log('Stopping reading');
+    responsiveVoice.cancel();
+    isPlaying = false;
+    isTTSPlaying = false;
+    unhighlightAll();
+    updateUI('paused');
 }
 
 
+function finishReading() {
+    console.log('Finishing reading');
+    isPlaying = false;
+    isTTSPlaying = false;
+    updateProgress(100);
+    updateUI('finished');
+    unhighlightAll();
+}
 
 
+function highlightParagraph(index) {
+    if (paragraphs[index]) {
+        paragraphs[index].element.classList.add('current');
+        scrollToParagraph(paragraphs[index].element);
+    }
+}
 
 
+function unhighlightParagraph(index) {
+    if (paragraphs[index]) {
+        paragraphs[index].element.classList.remove('current');
+    }
+}
 
 
+function unhighlightAll() {
+    paragraphs.forEach(p => p.element.classList.remove('current'));
+}
+
+function scrollToParagraph(element) {
+    element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+    });
+}
 
 
+function updateUI(state) {
+    const button = document.getElementById('playButton');
+    if (button) {
+        button.innerHTML = isPlaying ? 
+            `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="6" y="4" width="4" height="16"></rect>
+                <rect x="14" y="4" width="4" height="16"></rect>
+            </svg>
+            <span>Tạm dừng</span>` :
+            `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <span>Đọc bài viết</span>`;
+    }
+    updateStatus(state);
+}
+
+// Update status
+function updateStatus(state) {
+    const status = document.getElementById('status');
+    const statusText = document.getElementById('statusText');
+    if (status && statusText) {
+        status.className = 'status active ' + state;
+        statusText.textContent = typeof state === 'string' ? state : 
+            state === 'reading' ? 'Đang đọc...' :
+            state === 'paused' ? 'Đã tạm dừng' :
+            state === 'finished' ? 'Đã đọc xong' : '';
+    }
+}
 
 
+function updateProgress(percent) {
+    const progress = document.getElementById('progress');
+    if (progress) {
+        progress.style.width = percent + '%';
+    }
+}
 
 
+function handleVoiceChange() {
+    if (isPlaying) {
+        restartReading();
+    }
+}
 
 
+function handleRateChange() {
+    if (isPlaying) {
+        restartReading();
+    }
+}
 
 
+function restartReading() {
+    stopReading();
+    startReading();
+}
 
-window.onload = function() {
-   window.scrollTo(0, 0);
-   updateParentHeight();
+
+function showError(message) {
+    console.error(message);
+    const statusText = document.getElementById('statusText');
+    const status = document.getElementById('status');
+    if (statusText && status) {
+        statusText.textContent = message;
+        status.className = 'status active error';
+    }
 }
 
 
 function updateParentHeight() {
-   const height = document.documentElement.scrollHeight;
-   window.parent.postMessage({ height: height }, '*');
+    const height = document.documentElement.scrollHeight;
+    window.parent.postMessage({ height: height }, '*');
 }
-
-
-new ResizeObserver(updateParentHeight).observe(document.body);
 
 
 function shareOnFacebook() {
-   const url = window.location.href;
-   window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url));
+    const url = window.location.href;
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url));
 }
 
 function shareOnTwitter() {
-   const url = window.location.href;
-   const title = document.title;
-   window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title));
+    const url = window.location.href;
+    const title = document.title;
+    window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title));
 }
 </script>
 </body>

@@ -383,6 +383,9 @@ function waitForResponsiveVoice() {
         <img src="https://naturalhealth.my/wp-content/uploads/2023/05/Hearing-Problem.jpg" alt="Giảm thính lực ở người già: Nguyên nhân và cách khắc phục" class="featured-image">
 
         <div class="article-content">
+
+
+
 <div class="speech-controls">
     <div class="speech-header">
         <span class="speech-title">Nghe bài viết</span>
@@ -390,18 +393,16 @@ function waitForResponsiveVoice() {
     
     <div class="controls-container">
         
-        <button type="button" id="mp3Button" class="control-button" onclick="toggleMP3()">
+        <button id="mp3Button" class="control-button" onclick="toggleMP3()">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
                 <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                <line x1="12" y1="19" x2="12" y2="23"/>
-                <line x1="8" y1="23" x2="16" y2="23"/>
             </svg>
             <span>Audio đã thu</span>
         </button>
 
         
-        <button type="button" id="playButton" class="control-button" onclick="toggleSpeech()">
+        <button id="playButton" class="control-button">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
@@ -409,12 +410,12 @@ function waitForResponsiveVoice() {
         </button>
         
         
-        <div id="ttsControls" class="speed-control">
-            <select id="voiceSelect" onchange="handleVoiceChange()">
+        <div class="speed-control">
+            <select id="voiceSelect">
                 <option value="Vietnamese Female">Giọng Nữ</option>
                 <option value="Vietnamese Male">Giọng Nam</option>
             </select>
-            <select id="rateSelect" onchange="handleRateChange()">
+            <select id="rateSelect">
                 <option value="0.8">Chậm</option>
                 <option value="1" selected>Bình thường</option>
                 <option value="1.2">Nhanh</option>
@@ -423,7 +424,7 @@ function waitForResponsiveVoice() {
     </div>
 
     
-    <audio id="mp3Player" controls style="width: 100%; margin-top: 10px; display: none;">
+    <audio id="mp3Player" class="audio-player" controls style="width: 100%; margin-top: 10px; display: none;">
         <source id="mp3Source" type="audio/mpeg">
         Trình duyệt không hỗ trợ phát audio.
     </audio>
@@ -436,6 +437,7 @@ function waitForResponsiveVoice() {
         <span id="statusText"></span>
     </div>
 </div>
+
 
             <p><strong>Giảm thính lực</strong> là một vấn đề sức khỏe phổ biến ở người cao tuổi, ảnh hưởng đáng kể đến chất lượng cuộc sống. Hiểu rõ về nguyên nhân và cách khắc phục sẽ giúp người già và gia đình có những biện pháp phù hợp.</p><h3>Nguyên nhân gây giảm thính lực ở người già</h3><ul><li><strong>Lão hóa tự nhiên:</strong> Theo thời gian, các tế bào lông cảm giác trong tai sẽ bị thoái hóa, gây giảm khả năng nghe.</li><li><strong>Tiếp xúc với tiếng ồn:</strong> Tiếp xúc lâu dài với tiếng ồn lớn có thể làm tổn thương các tế bào lông cảm giác, gây giảm thính lực vĩnh viễn.</li><li><strong>Một số bệnh lý:</strong> Bệnh tiểu đường, huyết áp cao, các bệnh về tim mạch, tai giữa, thần kinh... đều có thể gây giảm thính lực.</li><li><strong>Sử dụng một số loại thuốc:</strong> Một số loại thuốc có thể gây tác dụng phụ là giảm thính lực.</li></ul><p><br></p><h3>Các biểu hiện của giảm thính lực</h3><ul><li><strong>Nghe kém:</strong> Khó nghe rõ khi người khác nói, đặc biệt ở nơi ồn ào.</li><li><strong>Phải tăng âm lượng TV, radio.</strong></li><li><strong>Khó nghe âm thanh cao tần:</strong> Nghe kém tiếng trẻ con, tiếng chim hót.</li><li><strong>Hay hiểu nhầm lời người khác nói.</strong></li><li><strong>Cảm thấy cô lập, khó giao tiếp.</strong></li></ul><h3>Cách khắc phục và chăm sóc người già bị giảm thính lực</h3><ul><li><strong>Khám tai mũi họng định kỳ:</strong> Để phát hiện sớm các vấn đề về thính lực và có biện pháp can thiệp kịp thời.</li><li><strong>Sử dụng máy trợ thính:</strong> Máy trợ thính là một công cụ hữu ích giúp người già nghe rõ hơn.</li><li><strong>Tạo môi trường giao tiếp thuận lợi:</strong> Nói chậm, rõ ràng, tránh nói quá nhỏ hoặc quá lớn tiếng.</li><li><strong>Giảm thiểu tiếng ồn:</strong> Tạo không gian yên tĩnh để người già dễ nghe hơn.</li><li><strong>Tìm hiểu về các lớp tập phục hồi thính lực:</strong> Các lớp học này giúp người già cải thiện khả năng nghe và giao tiếp.</li><li><strong>Tư vấn tâm lý:</strong> Giúp người già vượt qua cảm giác cô lập, khó khăn trong giao tiếp.</li></ul><h3>Phòng ngừa giảm thính lực</h3><ul><li><strong>Bảo vệ tai khỏi tiếng ồn:</strong> Đeo tai nghe bảo hộ khi làm việc ở môi trường ồn ào.</li><li><strong>Điều trị kịp thời các bệnh lý về tai:</strong> Khám và điều trị các bệnh về tai ngay khi có dấu hiệu bất thường.</li><li><strong>Kiểm tra sức khỏe định kỳ:</strong> Đặc biệt là đối với người cao tuổi có các yếu tố nguy cơ.</li><li><strong>Chế độ ăn uống lành mạnh:</strong> Bổ sung các vitamin và khoáng chất cần thiết cho sức khỏe tai.</li></ul><p><strong>Lưu ý:</strong> Việc giảm thính lực ở người già là một quá trình tự nhiên, tuy nhiên, với những biện pháp phù hợp, người già vẫn có thể duy trì chất lượng cuộc sống tốt.</p>
             <div class="share-section">
@@ -473,54 +475,60 @@ function waitForResponsiveVoice() {
 
 <script>
 
+let currentMP3File = null;
+let audioPreviewUrl = null;
+let isPlaying = false;
+let isTTSPlaying = false;
+let isMP3Playing = false;
+let ttsInitialized = false;
+let currentParagraphIndex = 0;
+let paragraphs = [];
+
+
 const TTS_CONFIG = {
-   VOICE_OPTIONS: {
-       'Vietnamese Female': {
-           name: 'Vietnamese Female',
-           lang: 'vi-VN',
-           rate: 1,
-           pitch: 1.1,
-           volume: 1
-       },
-       'Vietnamese Male': {
-           name: 'Vietnamese Male',
-           lang: 'vi-VN',
-           rate: 1,
-           pitch: 0.9,
-           volume: 1
-       }
-   },
-   PAUSE_BETWEEN: 500 
+    VOICE_OPTIONS: {
+        'Vietnamese Female': {
+            name: 'Vietnamese Female',
+            lang: 'vi-VN',
+            rate: 1,
+            pitch: 1.1,
+            volume: 1
+        },
+        'Vietnamese Male': {
+            name: 'Vietnamese Male',
+            lang: 'vi-VN',
+            rate: 1,
+            pitch: 0.9,
+            volume: 1
+        }
+    },
+    PAUSE_BETWEEN: 500 
 };
 
 
-
-
-
-document.addEventListener('DOMContentLoaded', async function() {
-    try {
-        
-        await waitForResponsiveVoice();
-        console.log('ResponsiveVoice đã load và sẵn sàng');
-
-        
-        initTTS();
-        checkForMP3();
-
-    } catch (error) {
-        console.error('Không thể khởi tạo ResponsiveVoice:', error);
+document.addEventListener('DOMContentLoaded', function() {
+    
+    if (typeof responsiveVoice !== 'undefined') {
+        responsiveVoice.OnVoiceReady = function() {
+            console.log('ResponsiveVoice sẵn sàng');
+            initTTS();
+            setupMP3EventListeners();
+        };
     }
+
+    
+    window.scrollTo(0, 0);
+    updateParentHeight();
 });
+
+
+new ResizeObserver(updateParentHeight).observe(document.body);
 
 
 function initTTS() {
     console.log('Đang khởi tạo TTS');
     try {
-        if (!window.responsiveVoice) {
-            throw new Error('ResponsiveVoice chưa load');
-        }
-
-        if (!window.responsiveVoice.voiceSupport()) {
+        if (!responsiveVoice.voiceSupport()) {
             throw new Error('Trình duyệt không hỗ trợ TTS');
         }
 
@@ -544,112 +552,22 @@ function initTTS() {
 }
 
 
-function showError(message) {
-    console.error(message);
-    const statusText = document.getElementById('statusText');
-    const status = document.getElementById('status');
-    if (statusText && status) {
-        statusText.textContent = message;
-        status.className = 'status active error';
-    }
-}
-
-
-function checkForMP3() {
-   const pathParts = window.location.pathname.split('/');
-   const newsId = pathParts[pathParts.length - 1].replace('.html', '');
-   const mp3Path = `${newsId}.mp3`;
-   
-   const audio = document.createElement('audio');
-   audio.addEventListener('canplaythrough', function() {
-       setupMP3Player(mp3Path);
-   });
-
-   audio.addEventListener('error', function() {
-       console.log('Không tìm thấy file MP3');
-       document.getElementById('mp3Button').disabled = true;
-   });
-
-   audio.src = mp3Path;
-   audio.load();
-}
-
-
-function setupMP3Player(mp3Path) {
-   const mp3Player = document.getElementById('mp3Player');
-   document.getElementById('mp3Source').src = mp3Path;
-   mp3Player.load();
-
-   
-   const mp3Button = document.getElementById('mp3Button');
-   mp3Button.disabled = false;
-   mp3Button.onclick = toggleMP3;
-
-   
-   mp3Player.addEventListener('ended', function() {
-       isMP3Playing = false;
-       resetMP3Button();
-   });
-}
-
-
-function toggleMP3() {
-   if (isPlaying) {
-       stopReading(); 
-   }
-
-   const mp3Player = document.getElementById('mp3Player');
-   const mp3Button = document.getElementById('mp3Button');
-
-   if (!isMP3Playing) {
-       mp3Player.style.display = 'block';
-       mp3Player.play();
-       isMP3Playing = true;
-       mp3Button.innerHTML = `
-           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-               <rect x="6" y="4" width="4" height="16"></rect>
-               <rect x="14" y="4" width="4" height="16"></rect>
-           </svg>
-           <span>Tạm dừng</span>`;
-   } else {
-       mp3Player.pause();
-       isMP3Playing = false;
-       resetMP3Button();
-   }
-}
-
-
-function resetMP3Button() {
-   const mp3Button = document.getElementById('mp3Button');
-   mp3Button.innerHTML = `
-       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-           <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
-           <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-           <line x1="12" y1="19" x2="12" y2="23"/>
-           <line x1="8" y1="23" x2="16" y2="23"/>
-       </svg>
-       <span>Audio đã thu</span>`;
-}
-
-
-
-
 function setupElements() {
-   const elements = ['playButton', 'voiceSelect', 'rateSelect', 'status', 'progress'];
-   elements.forEach(id => {
-       if (!document.getElementById(id)) {
-           throw new Error(`Thiếu element: ${id}`);
-       }
-   });
+    const elements = ['playButton', 'voiceSelect', 'rateSelect', 'status', 'progress'];
+    elements.forEach(id => {
+        if (!document.getElementById(id)) {
+            throw new Error(`Thiếu element: ${id}`);
+        }
+    });
 }
 
 
 function loadContentToRead() {
     const title = document.querySelector('.article-title');
-    const paragraphElements = document.querySelectorAll('.article-content p');
-
+    const contentElements = document.querySelectorAll('.article-content p, .article-content div > p, .article-content ul > li, .article-content ol > li');
+    
     console.log('Title element:', title);
-    console.log('Paragraph elements:', paragraphElements);
+    console.log('Content elements:', contentElements);
 
     paragraphs = [];
 
@@ -662,207 +580,29 @@ function loadContentToRead() {
     }
 
     
-    const content = document.querySelector('.article-content');
-    if (content) {
-        
-        const textElements = content.querySelectorAll('p, div > p, ul > li, ol > li');
-        textElements.forEach((element) => {
-            const text = element.textContent.trim();
-            if (text.length > 0) {
-                paragraphs.push({
-                    element: element,
-                    text: text
-                });
-            }
-        });
-    }
+    contentElements.forEach(element => {
+        const text = element.textContent.trim();
+        if (text.length > 0) {
+            paragraphs.push({
+                element: element,
+                text: text
+            });
+        }
+    });
 
     console.log('Total paragraphs loaded:', paragraphs.length);
     console.log('Paragraphs content:', paragraphs.map(p => p.text));
 }
 
 
-
-
-
-function startReading() {
-   isPlaying = true;
-   currentParagraphIndex = 0;
-   updateUI('reading');
-   readNextParagraph();
-}
-
-
-
-
-function highlightParagraph(index) {
-   if (paragraphs[index]) {
-       paragraphs[index].element.classList.add('current');
-       scrollToParagraph(paragraphs[index].element);
-   }
-}
-
-
-function unhighlightParagraph(index) {
-   if (paragraphs[index]) {
-       paragraphs[index].element.classList.remove('current');
-   }
-}
-
-
-function unhighlightAll() {
-   paragraphs.forEach(p => p.element.classList.remove('current'));
-}
-
-
-function scrollToParagraph(element) {
-   element.scrollIntoView({
-       behavior: 'smooth',
-       block: 'center'
-   });
-}
-
-
-function updateUI(state) {
-   const button = document.getElementById('playButton');
-   if (button) {
-       button.innerHTML = isPlaying ? 
-           `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-               <rect x="6" y="4" width="4" height="16"></rect>
-               <rect x="14" y="4" width="4" height="16"></rect>
-           </svg>
-           <span>Tạm dừng</span>` :
-           `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-               <polygon points="5 3 19 12 5 21 5 3"></polygon>
-           </svg>
-           <span>Đọc bài viết</span>`;
-   }
-   updateStatus(state);
-}
-
-// Update status message
-function updateStatus(state) {
-   const status = document.getElementById('status');
-   const statusText = document.getElementById('statusText');
-   if (status && statusText) {
-       status.className = 'status active ' + state;
-       statusText.textContent = typeof state === 'string' ? state : 
-           state === 'reading' ? 'Đang đọc...' :
-           state === 'paused' ? 'Đã tạm dừng' :
-           state === 'finished' ? 'Đã đọc xong' : '';
-   }
-}
-
-
-function updateProgress(percent) {
-   const progress = document.getElementById('progress');
-   if (progress) {
-       progress.style.width = percent + '%';
-   }
-}
-
-
-function handleVoiceChange() {
-   if (isPlaying) {
-       restartReading();
-   }
-}
-
-
-function handleRateChange() {
-   if (isPlaying) {
-       restartReading();
-   }
-}
-
-
-function restartReading() {
-   stopReading();
-   startReading();
-}
-
-
-function showError(message) {
-   console.error(message);
-   updateStatus('error');
-   const statusText = document.getElementById('statusText');
-   if (statusText) {
-       statusText.textContent = message;
-   }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-function toggleMP3() {
-    console.log('toggleMP3 called');
-    if (isPlaying) {
-        stopReading(); 
-    }
-
-    const mp3Player = document.getElementById('mp3Player');
-    const mp3Button = document.getElementById('mp3Button');
-
-    
-    console.log('mp3Player:', mp3Player);
-    console.log('mp3Button:', mp3Button);
-
-    if (!isMP3Playing) {
-        mp3Player.style.display = 'block';
-        mp3Player.play();
-        isMP3Playing = true;
-        mp3Button.innerHTML = `...`; 
-    } else {
-        mp3Player.pause();
-        isMP3Playing = false;
-        resetMP3Button();
-    }
-}
-
-
-function setupMP3Player(mp3Path) {
-    console.log('Setting up MP3 player with path:', mp3Path);
-    
-    const mp3Player = document.getElementById('mp3Player');
-    const mp3Button = document.getElementById('mp3Button');
-    
-    if (!mp3Player || !mp3Button) {
-        console.error('Missing MP3 elements');
-        return;
-    }
-
-    
-    document.getElementById('mp3Source').src = mp3Path;
-    mp3Player.load();
-
-    
-    mp3Button.addEventListener('click', function(e) {
-        e.preventDefault();
-        toggleMP3();
-    });
-
-    
-    mp3Button.disabled = false;
-
-    console.log('MP3 player setup complete');
-}
-
-
 function setupEventListeners() {
     console.log('Setting up event listeners');
+
     
     const playButton = document.getElementById('playButton');
     const voiceSelect = document.getElementById('voiceSelect');
     const rateSelect = document.getElementById('rateSelect');
+    const mp3Button = document.getElementById('mp3Button');
 
     if (playButton) {
         playButton.addEventListener('click', function(e) {
@@ -880,230 +620,126 @@ function setupEventListeners() {
         rateSelect.addEventListener('change', handleRateChange);
     }
 
+    if (mp3Button) {
+        mp3Button.addEventListener('click', toggleMP3);
+    }
+
     console.log('Event listeners setup complete');
 }
 
 
-function toggleSpeech() {
-    console.log('toggleSpeech called, ttsInitialized:', ttsInitialized);
-    console.log('isPlaying:', isPlaying);
 
-    if (!ttsInitialized) {
-        console.error('TTS not initialized');
-        showError('TTS chưa sẵn sàng');
-        return;
-    }
+function toggleMP3() {
+    console.log('toggleMP3 called');
 
-    if (isMP3Playing) {
-        const mp3Player = document.getElementById('mp3Player');
-        mp3Player.pause();
-        isMP3Playing = false;
-        resetMP3Button();
-    }
+    const mp3Player = document.getElementById('mp3Player');
+    const mp3Button = document.getElementById('mp3Button');
 
-    if (!isPlaying) {
-        startReading();
-    } else {
-        stopReading();
-    }
-}
-
-
-
-
-
-
-
-
-
-function toggleSpeech() {
-    console.log('toggleSpeech called, ttsInitialized:', ttsInitialized);
-    console.log('isPlaying:', isPlaying);
-
-    
-    if (!ttsInitialized && !initTTS()) {
-        showError('TTS chưa sẵn sàng, vui lòng thử lại');
+    if (!mp3Player || !mp3Button) {
+        console.error('MP3 elements not found');
         return;
     }
 
     
-    if (isMP3Playing) {
-        const mp3Player = document.getElementById('mp3Player');
-        mp3Player.pause();
-        isMP3Playing = false;
-        resetMP3Button();
-    }
-
-    if (!isPlaying) {
-        startReading();
-    } else {
+    if (isTTSPlaying) {
         stopReading();
     }
-}
 
-
-
-
-
-
-
-
-function toggleSpeech() {
-    console.log('toggleSpeech called, ttsInitialized:', ttsInitialized);
-    console.log('isPlaying before toggle:', isPlaying);
-
-    if (!ttsInitialized) {
-        showError('TTS chưa sẵn sàng');
-        return;
-    }
-
-    if (isMP3Playing) {
-        const mp3Player = document.getElementById('mp3Player');
-        mp3Player.pause();
-        isMP3Playing = false;
-        resetMP3Button();
-    }
-
-    isPlaying = !isPlaying; 
-    console.log('isPlaying after toggle:', isPlaying);
-
-    if (isPlaying) {
-        startReading();
-    } else {
-        stopReading();
-    }
-}
-
-
-
-function setupEventListeners() {
-    console.log('Setting up event listeners');
     
+    mp3Player.style.display = 'block';
+
     
-    const playButton = document.getElementById('playButton');
-    if (playButton) {
-        playButton.removeEventListener('click', toggleSpeech); 
-        playButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation(); 
-            console.log('TTS button clicked');
+    if (mp3Player.paused) {
+        
+        mp3Player.load();
+        mp3Player.addEventListener('canplaythrough', function playAudio() {
             
-            if (!isPlaying) {
-                isPlaying = true;
-                startReading();
-            } else {
-                isPlaying = false;
-                stopReading();
-            }
+            mp3Player.removeEventListener('canplaythrough', playAudio);
+            
+            
+            mp3Player.play()
+                .then(() => {
+                    console.log('MP3 playing successfully');
+                    isMP3Playing = true;
+                    mp3Button.innerHTML = `
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="6" y="4" width="4" height="16"></rect>
+                            <rect x="14" y="4" width="4" height="16"></rect>
+                        </svg>
+                        <span>Tạm dừng</span>`;
+                })
+                .catch(error => {
+                    console.error('Error playing MP3:', error);
+                    isMP3Playing = false;
+                    showToast('Lỗi phát audio', 'error');
+                });
+        }, { once: true }); 
+    } else {
+        
+        mp3Player.pause();
+        isMP3Playing = false;
+        mp3Button.innerHTML = `
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            </svg>
+            <span>Audio đã thu</span>`;
+    }
+}
+
+
+function setupMP3EventListeners() {
+    const mp3Player = document.getElementById('mp3Player');
+    const mp3Button = document.getElementById('mp3Button');
+
+    if (mp3Player && mp3Button) {
+        mp3Player.addEventListener('ended', function() {
+            isMP3Playing = false;
+            mp3Button.innerHTML = `
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                </svg>
+                <span>Audio đã thu</span>`;
         });
     }
+}
+
+
+function toggleSpeech() {
+    console.log('toggleSpeech called, ttsInitialized:', ttsInitialized);
+    console.log('isPlaying:', isPlaying);
 
     
-    const voiceSelect = document.getElementById('voiceSelect');
-    const rateSelect = document.getElementById('rateSelect');
-
-    if (voiceSelect) {
-        voiceSelect.addEventListener('change', handleVoiceChange);
-    }
-
-    if (rateSelect) {
-        rateSelect.addEventListener('change', handleRateChange);
-    }
-
-    console.log('Event listeners setup complete');
-}
-
-function readNextParagraph() {
-    console.log('Reading paragraph:', currentParagraphIndex + 1, 'of', paragraphs.length);
-    console.log('isPlaying status:', isPlaying);
-
-    if (currentParagraphIndex < paragraphs.length) {
-        try {
-            const voiceName = document.getElementById('voiceSelect').value;
-            const rate = parseFloat(document.getElementById('rateSelect').value);
-
-            console.log('Current text:', paragraphs[currentParagraphIndex].text);
-            console.log('Voice:', voiceName, 'Rate:', rate);
-
-            responsiveVoice.speak(
-                paragraphs[currentParagraphIndex].text,
-                voiceName,
-                {
-                    rate: rate,
-                    onstart: () => {
-                        console.log(`Bắt đầu đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
-                        updateStatus(`Đang đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
-                        highlightParagraph(currentParagraphIndex);
-                        updateProgress(((currentParagraphIndex + 1) / paragraphs.length) * 100);
-                    },
-                    onend: () => {
-                        console.log(`Kết thúc đọc đoạn ${currentParagraphIndex + 1}`);
-                        unhighlightParagraph(currentParagraphIndex);
-                        
-                        
-                        currentParagraphIndex++;
-                        if (isPlaying && currentParagraphIndex < paragraphs.length) {
-                            console.log('Proceeding to next paragraph');
-                            readNextParagraph(); 
-                        } else if (currentParagraphIndex >= paragraphs.length) {
-                            console.log('Reached end of content');
-                            finishReading();
-                        }
-                    }
-                }
-            );
-        } catch (error) {
-            console.error('Error in readNextParagraph:', error);
-            stopReading();
+    if (isMP3Playing) {
+        const mp3Player = document.getElementById('mp3Player');
+        const mp3Button = document.getElementById('mp3Button');
+        
+        mp3Player.pause();
+        isMP3Playing = false;
+        if (mp3Button) {
+            mp3Button.innerHTML = `
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                </svg>
+                <span>Audio đã thu</span>`;
         }
+    }
+
+    if (!ttsInitialized) {
+        showError('TTS chưa sẵn sàng');
+        return;
+    }
+
+    if (!isPlaying) {
+        startReading();
+        isTTSPlaying = true;
     } else {
-        finishReading();
+        stopReading();
+        isTTSPlaying = false;
     }
 }
-
-
-function setupPlayButton() {
-    const playButton = document.getElementById('playButton');
-    if (playButton) {
-        playButton.onclick = function(e) {
-            e.preventDefault();
-            console.log('Play button clicked');
-            if (!isPlaying) {
-                isPlaying = true;
-                currentParagraphIndex = 0; 
-                startReading();
-            } else {
-                isPlaying = false;
-                stopReading();
-            }
-            updateUI(isPlaying ? 'reading' : 'paused');
-        };
-    }
-}
-
-
-
-
-
-
-let isPlaying = false;
-let isMP3Playing = false;
-let currentParagraphIndex = 0;
-let paragraphs = [];
-let ttsInitialized = false;
-
-
-
-function stopReading() {
-    console.log('Stopping reading');
-    isPlaying = false;
-    if (responsiveVoice) {
-        responsiveVoice.cancel(); 
-    }
-    unhighlightAll();
-    updateUI('paused');
-}
-
 
 function startReading() {
     console.log('Starting reading');
@@ -1114,140 +750,193 @@ function startReading() {
 }
 
 
-function handlePlayButtonClick() {
-    console.log('Play button clicked, current state:', isPlaying);
-    if (!isPlaying) {
-        startReading();
-    } else {
-        stopReading();
-    }
-}
-
-
-function setupPlayButton() {
-    const playButton = document.getElementById('playButton');
-    if (playButton) {
-        playButton.onclick = handlePlayButtonClick;
-    }
-}
-
-
 function readNextParagraph() {
     console.log('Reading paragraph:', currentParagraphIndex + 1, 'of', paragraphs.length);
     console.log('isPlaying status:', isPlaying);
-
-    if (!isPlaying) {
-        console.log('Reading stopped');
-        return;
-    }
 
     if (currentParagraphIndex < paragraphs.length) {
         try {
             const voiceName = document.getElementById('voiceSelect').value;
             const rate = parseFloat(document.getElementById('rateSelect').value);
+            const voiceConfig = TTS_CONFIG.VOICE_OPTIONS[voiceName];
+
+            updateProgress(((currentParagraphIndex + 1) / paragraphs.length) * 100);
+            highlightParagraph(currentParagraphIndex);
 
             console.log('Current text:', paragraphs[currentParagraphIndex].text);
-            console.log('Voice:', voiceName, 'Rate:', rate);
 
             responsiveVoice.speak(
                 paragraphs[currentParagraphIndex].text,
                 voiceName,
                 {
+                    pitch: voiceConfig.pitch,
                     rate: rate,
-                    onstart: () => {
+                    volume: voiceConfig.volume,
+                    lang: voiceConfig.lang,
+                    onstart: function() {
                         console.log(`Bắt đầu đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
                         updateStatus(`Đang đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
-                        highlightParagraph(currentParagraphIndex);
-                        updateProgress(((currentParagraphIndex + 1) / paragraphs.length) * 100);
                     },
-                    onend: () => {
+                    onend: function() {
                         console.log(`Kết thúc đọc đoạn ${currentParagraphIndex + 1}`);
                         unhighlightParagraph(currentParagraphIndex);
+                        currentParagraphIndex++;
+
                         
-                        if (isPlaying) {
-                            currentParagraphIndex++;
-                            if (currentParagraphIndex < paragraphs.length) {
-                                console.log('Moving to next paragraph');
-                                readNextParagraph();
-                            } else {
-                                console.log('Reached end of content');
-                                finishReading();
-                            }
+                        if (isPlaying && currentParagraphIndex < paragraphs.length) {
+                            console.log('Moving to next paragraph after delay');
+                            setTimeout(readNextParagraph, TTS_CONFIG.PAUSE_BETWEEN);
+                        } else if (currentParagraphIndex >= paragraphs.length) {
+                            console.log('Reached end of content');
+                            finishReading();
                         }
                     }
                 }
             );
         } catch (error) {
-            console.error('Error in readNextParagraph:', error);
+            console.error('Error reading paragraph:', error);
+            showError(error.message);
             stopReading();
         }
     } else {
+        console.log('No more paragraphs to read');
         finishReading();
     }
 }
 
 
-function setupEventListeners() {
-    console.log('Setting up event listeners');
-    setupPlayButton();
-    
-    
-    const voiceSelect = document.getElementById('voiceSelect');
-    const rateSelect = document.getElementById('rateSelect');
-
-    if (voiceSelect) {
-        voiceSelect.onchange = handleVoiceChange;
-    }
-
-    if (rateSelect) {
-        rateSelect.onchange = handleRateChange;
-    }
-
-    console.log('Event listeners setup complete');
+function stopReading() {
+    console.log('Stopping reading');
+    responsiveVoice.cancel();
+    isPlaying = false;
+    isTTSPlaying = false;
+    unhighlightAll();
+    updateUI('paused');
 }
 
 
+function finishReading() {
+    console.log('Finishing reading');
+    isPlaying = false;
+    isTTSPlaying = false;
+    updateProgress(100);
+    updateUI('finished');
+    unhighlightAll();
+}
 
 
+function highlightParagraph(index) {
+    if (paragraphs[index]) {
+        paragraphs[index].element.classList.add('current');
+        scrollToParagraph(paragraphs[index].element);
+    }
+}
 
 
+function unhighlightParagraph(index) {
+    if (paragraphs[index]) {
+        paragraphs[index].element.classList.remove('current');
+    }
+}
 
 
+function unhighlightAll() {
+    paragraphs.forEach(p => p.element.classList.remove('current'));
+}
+
+function scrollToParagraph(element) {
+    element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+    });
+}
 
 
+function updateUI(state) {
+    const button = document.getElementById('playButton');
+    if (button) {
+        button.innerHTML = isPlaying ? 
+            `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="6" y="4" width="4" height="16"></rect>
+                <rect x="14" y="4" width="4" height="16"></rect>
+            </svg>
+            <span>Tạm dừng</span>` :
+            `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <span>Đọc bài viết</span>`;
+    }
+    updateStatus(state);
+}
+
+// Update status
+function updateStatus(state) {
+    const status = document.getElementById('status');
+    const statusText = document.getElementById('statusText');
+    if (status && statusText) {
+        status.className = 'status active ' + state;
+        statusText.textContent = typeof state === 'string' ? state : 
+            state === 'reading' ? 'Đang đọc...' :
+            state === 'paused' ? 'Đã tạm dừng' :
+            state === 'finished' ? 'Đã đọc xong' : '';
+    }
+}
 
 
+function updateProgress(percent) {
+    const progress = document.getElementById('progress');
+    if (progress) {
+        progress.style.width = percent + '%';
+    }
+}
 
 
+function handleVoiceChange() {
+    if (isPlaying) {
+        restartReading();
+    }
+}
 
 
+function handleRateChange() {
+    if (isPlaying) {
+        restartReading();
+    }
+}
 
 
+function restartReading() {
+    stopReading();
+    startReading();
+}
 
-window.onload = function() {
-   window.scrollTo(0, 0);
-   updateParentHeight();
+
+function showError(message) {
+    console.error(message);
+    const statusText = document.getElementById('statusText');
+    const status = document.getElementById('status');
+    if (statusText && status) {
+        statusText.textContent = message;
+        status.className = 'status active error';
+    }
 }
 
 
 function updateParentHeight() {
-   const height = document.documentElement.scrollHeight;
-   window.parent.postMessage({ height: height }, '*');
+    const height = document.documentElement.scrollHeight;
+    window.parent.postMessage({ height: height }, '*');
 }
-
-
-new ResizeObserver(updateParentHeight).observe(document.body);
 
 
 function shareOnFacebook() {
-   const url = window.location.href;
-   window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url));
+    const url = window.location.href;
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url));
 }
 
 function shareOnTwitter() {
-   const url = window.location.href;
-   const title = document.title;
-   window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title));
+    const url = window.location.href;
+    const title = document.title;
+    window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title));
 }
 </script>
 </body>

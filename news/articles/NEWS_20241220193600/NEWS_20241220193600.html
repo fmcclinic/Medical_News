@@ -383,6 +383,9 @@ function waitForResponsiveVoice() {
         <img src="https://cdnintech.com/books/8700/1713442765-245554739/cover.jpg" alt="Sử dụng An toàn Thuốc Chống Đông Máu" class="featured-image">
 
         <div class="article-content">
+
+
+
 <div class="speech-controls">
     <div class="speech-header">
         <span class="speech-title">Nghe bài viết</span>
@@ -390,18 +393,16 @@ function waitForResponsiveVoice() {
     
     <div class="controls-container">
         
-        <button type="button" id="mp3Button" class="control-button" onclick="toggleMP3()">
+        <button id="mp3Button" class="control-button" onclick="toggleMP3()">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
                 <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                <line x1="12" y1="19" x2="12" y2="23"/>
-                <line x1="8" y1="23" x2="16" y2="23"/>
             </svg>
             <span>Audio đã thu</span>
         </button>
 
         
-        <button type="button" id="playButton" class="control-button" onclick="toggleSpeech()">
+        <button id="playButton" class="control-button">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
@@ -409,12 +410,12 @@ function waitForResponsiveVoice() {
         </button>
         
         
-        <div id="ttsControls" class="speed-control">
-            <select id="voiceSelect" onchange="handleVoiceChange()">
+        <div class="speed-control">
+            <select id="voiceSelect">
                 <option value="Vietnamese Female">Giọng Nữ</option>
                 <option value="Vietnamese Male">Giọng Nam</option>
             </select>
-            <select id="rateSelect" onchange="handleRateChange()">
+            <select id="rateSelect">
                 <option value="0.8">Chậm</option>
                 <option value="1" selected>Bình thường</option>
                 <option value="1.2">Nhanh</option>
@@ -423,7 +424,7 @@ function waitForResponsiveVoice() {
     </div>
 
     
-    <audio id="mp3Player" controls style="width: 100%; margin-top: 10px; display: none;">
+    <audio id="mp3Player" class="audio-player" controls style="width: 100%; margin-top: 10px; display: none;">
         <source id="mp3Source" type="audio/mpeg">
         Trình duyệt không hỗ trợ phát audio.
     </audio>
@@ -436,6 +437,7 @@ function waitForResponsiveVoice() {
         <span id="statusText"></span>
     </div>
 </div>
+
 
             <h1>Sử dụng An toàn Thuốc Chống Đông Máu</h1><h2>Giới thiệu</h2><p>Thuốc chống đông máu là một nhóm thuốc quan trọng được sử dụng rộng rãi trong y học để ngăn ngừa và điều trị các rối loạn huyết khối. Tuy nhiên, việc sử dụng không đúng cách có thể dẫn đến các biến chứng nghiêm trọng, thậm chí đe dọa tính mạng. Bài viết này sẽ cung cấp thông tin toàn diện về cách sử dụng an toàn các thuốc chống đông máu.</p><h2>Tổng quan về thuốc chống đông máu</h2><p>Thuốc chống đông máu hoạt động bằng cách can thiệp vào quá trình đông máu tự nhiên của cơ thể, giúp ngăn ngừa sự hình thành các cục máu đông không mong muốn. Có hai nhóm chính:</p><h3>Thuốc chống đông máu truyền thống</h3><ul><li>Warfarin (Coumadin)</li><li>Heparin không phân đoạn</li><li>Heparin trọng lượng phân tử thấp (LMWH)</li></ul><h3>Thuốc chống đông máu thế hệ mới (NOACs)</h3><ul><li>Dabigatran (Pradaxa)</li><li>Rivaroxaban (Xarelto)</li><li>Apixaban (Eliquis)</li><li>Edoxaban (Lixiana)</li></ul><p><img src="data:image/jpeg;base64,UklGRkpXAABXRUJQVlA4ID5XAAAw/gGdASoABIECPp1Ook0lpC60IpJ5UoATiWduwlq5FTH259KbylkZaz6pLkZzva0bjjtwcgi8d0HeZ3f/e87Plfwd&#43;nabP9Tw5&#43;A/53l6dI&#43;cb/tet39X&#43;w90FfOB5nv/e6UnqyN6m/dzK3Po3&#43;z/3fpw&#43;b/zX/D8RfPn8591vkh/b8tfwn&#43;d5m/z/8mfu/YB/jd&#43;vzH1CPy7&#43;sf7vfo&#43;A/5/oI&#43;23230FfuP&#43;3/h/WX7P/973Av6R/d/Hh8Uj8r/1vYE/pf&#43;U/Z73iv9zzG/X//09xj9ihL56fesqWNhhikgxSQYpIMUkGKSDFJBikgxSQYpIMUkGKSDFJBikgxSQYpIMUkGKSDFJBikgxSQYpIMUkGKSDFJBikgxSQYpIMUkGKSDFJBikgxSQYpIMUkGKRbU&#43;9ZUsbDDFJBikgxSQYpIMUkGKSDFJBikgxSQYpFtT71lSxsMMUkGKSDFJBikgxSQYpIMUkGKSDFJBikW1PvWVLGwwxSQYpIMUkGKSDFJBikgxSQYpIMUkGKRbMckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkknZM6rVarVarVarVarVarVarVarVarVarVarVarVarVarVarVfcTicTicTicTicTicTicTicTicTicTicTicTicTicTicTicTqLXfU6rVarVarVarVarVarVarVarVarVarVarVarVarVarVa4qgUTicTicTicTicTicTicTicTicTicTicTicTicTicTicTiynfU6rVarVarVarVarVarVarVarVarVarVarVarVarVarVar7icTicTicTicUMALKnIK5LnCCH601GaYWLTHqXa1mYN9GD1Vc9td&#43;irDSGmTg7uAjRTzROyDFJBikgCrOp1Wq1Wq1W27OChMEGoDW3TZRPB61N11GK4UAjzQf3Az1qGkdZukQSq1m5zJgj4AJravUNb&#43;/FdJb9zd3nOZKl5PO4D&#43;jZcQi&#43;njCaRFYh/S/GSc3BI9RVCgaSpjDwXm3x8YQeMLoDa27xdUnY6wcAk5qs4NxJ5HYYhpnlSxsMMUkAVZ1Oq1Wq1Wq6L5Ov8AEKDPwGRpXxm8wkG0J3AWC/v7JhD1wm28jxJyVZ48MtKHI9PUVdmXDFfSb4lLukH7hbwVvJrmOEbMdVqtVqtVqvuJxOJxOJxOKnBdd4KO9KFLafy/h2fhZ/SJ1dGBs7u0VEHjXpUzMSf0HlvkkwFqtf4jacYFj0314IbZ8fxndQdupIytkysm1V6ZpJxtiTbjc6&#43;K1RqZryz0UgOVz4ydkGKJNMrmd0PDAn&#43;qGLrj&#43;3Xfg/zhGDYVtdR/rWIgPCDSbXz8Umggl01M70d5lkmT2M/L8i1pBUXdlgwsv5dOQcS8sjsL2ZZHqhaJVdsAiUxnuniBj3Y/x7My62i9Ey9B2AZUIpTGVnhJt&#43;ptJr6Ab9BfsbjOuGmn7N/F0ajWazaw&#43;6HhiKWmaAIIMzLb5FTPxzEliPZToa7qFtvdDctA0WtMoYK1ItGokgHRkmT92TOqZaGi16VyGt7vDiK4ZBpB9A5ksZjhF0&#43;F3IKPoQJQA44djEG&#43;nJM9SVAYW7Yz9&#43;dPm3ftClJJJ2U9R4odp6xag8xGydqnVvubmPSqeR0l205u4D2zjUkOczkllREbHrz9VcHvmpRGeuYQv9j6hAtvh4c3Yl1&#43;DA83IBO9iQBaMgTb3lvYUa/O18Tc4kD/VbY2&#43;GrHrtDRpBJslYmWb1MJyJY/mPhN3X/rptAO8UiYWj&#43;cE/wyJEW1OAuRFRW6NSErUf7HjhOxwuBkWJGG76pwmwh0k3k7H4tI3kmmgHZJs/1S9i6bbVd9egBuy1sMjqcylAPm0TUfuk68CHhPE1mhBUZKAIV5v0BfYdM/QYMNHYXWygJApZdIQFFoa3F2AC78w3Y2Uj&#43;nqI6IZ8MBmIRqmu1mH2sLl3TjSl8gueKuzFwBCi&#43;jXXud0XHmk6HJ0uqc24MnDDbH3xGrNYBh&#43;mdgXfnp1Opp2lX/6FGCCsATQkrJPJbGdY85AUvnyhPJKsvkK33T49c0hZz&#43;T5ejoq14zRtvAnRZ&#43;h4kaK8/aW9YsBbLf6o5MUIvNgF7DaohB4hJE2K&#43;mcxGE19A0pFlJA0cuxP9rCTh3mrqDt5X0crUG&#43;9riVGFV6tFRV8ckfxWvbsgNQEQETLT8EcBWFH0lIFJu3Q1lFNtFk2jKCkTYzD2DUYSdwHpmywGNLMeCj4lsgjCyezG9T2N&#43;2hpFm4NpuiT&#43;&#43;dOOXNwLj66HDzvcFinIuDbezfbXv36I9JkKZXym&#43;7KYJ1YSMVtZXB5e9ut5oBist7Qgt3IYX24YOdOgzO/JG8HDBGwCg5D7nPtcqAXwPGSSJ/twtR/0z98wwoTlCNZ7O7d&#43;mqG1H1UjyWNQWJ4doINNHsL8cHJ8&#43;iS8gKdgjnc28jXAAOiIqwheuW0h4b3nW6XMv8zjU6FYyNrYZIQpoISGu4jU/I0yWJwXcjQLZMIuV3QSKAxtk1aelbthHn0flDKnAoaIxKYq7E80ISDgv724/90spSmI7H0g&#43;HLJd&#43;VL9w/Zip/IYYiVo/rZKrmoigYjxWASSkrBAbNReW0t4kNuM2RAZYILSIdqfO7nGMjzSeJy&#43;Z26obz10z41/KheX9LYeDy4jX6AZ2CPMblTMbJOMdo679BntMxnsDBuUu8QI7B7hHPP73btQpwY&#43;/Otcj&#43;qmrBB5WosFiA6uFkhanfNwqarfHQPcJuNZ5ItM3R4hLawxNOz05IhaKH2iLe8KMmUtBhsjMwRWHzZbvf2D9&#43;9Xk730/dMXnxuN9gIFCrdK7otqrJWn32NmwFlLPCmvyF7IaaQexiUDBrgWwF8UcymGwmopeFfpte97/w912d7Ye75SD&#43;Xn0E47M2ofp0626eS8gDL5kyioX0DR4MUZYeLe0&#43;p2ZNFJeFqj3ig0EiFwjxrczYebmTYzqG5mlPmqLs3Rkv/F6cY5K53QTYuDGBZ0YEtzeQHD2cs/zwnWyB1jfDHPODxjUfee8nk80wbJNwe5HIzh3KuI46GPGsGw&#43;DIisPJ5PPyDffMQqt885uSr2AR/qJtSEWOrqFEu63A7TZ95/il7C0nbP9Q1fuQfFOedbcg4AdBbPJjsoVxo4/8L0OowYAHMIxXcKkDEGkjneqIrpkLGIU09p&#43;IGVJoO4FVlZdZpEFMLIgibEgXxbvHCCBrqZbycLrDJkx0&#43;jadbCkHDc/epn0GK2CdOZBimdoTjqTL/HMfMdefOEeF8U1SxFfr7XXOjgjfkDGZmo3cn2saEzVnwNtaeqx7N52NeKBJdE8XQMtLT7RNz/7iAGupNTP1bRPHZZXKma76uh1BnVAehZ7mCIVi9wr5R5TKGTUlOyO1iYV6Nkgs4ChKpoBKPcPkwMV0u/9fmYjI022&#43;B5WSyiwAhFc531nrwO2RjQihkhVIh1kaNQFgZ9KCPuY/8RYBmnqZH9YYXQWFX&#43;0A5wyjqCUtnrvJw66wbNYvU2S/a&#43;yZjTtCAswRb0l6y8r&#43;EHeVr68APkeqzDRUo369&#43;zRTx4Z05oLIyhFIAIseoHoHH7noxX5/JRRA0cS3A1APf4Il3pvbBnfHFRHbQYgkGWtvCtA&#43;NF2Rvxu4kdMcnKc06VN9Vmsoi7ysa&#43;teeUVoCvLx9dMu6Bm6OWKdVHDFcc9keoRZQtwnBEzjl9cFWeoDUtC0St4F9aDp84KA5P4cCuTmGkQ8rvYBzcnp04Wr95Cb5henOy1f3rOKkKkLJlv3xBL3rbIg8rmi91GxJJHuc4MogBuQfy3cjorRBWYsMg&#43;OG67BM43JiOBRDNhJfx1omJ1FdMcu2piHJQ9Z3h7PKCebFWGgRfBVpEyAdnODRQh&#43;zepnrODamMRbMcnnTPs8/QMJxUYarAvTVcXz/ebi4ymHr&#43;0sZP0SUbc2wxKBI9euqIIfxEsTnqprfmKsuKofZ7crCXkZQCuGuFbMe3pbq33HfRRH7hfQP4IxQg2Cs4UhaBoIXuEOLr&#43;xGMZ0&#43;UvuIvaBXLHeL87Flh3&#43;vk5P38xzyT1AuxpSdI7ViC8zudwCKrhqTwozzPxMXkp56oeQMcdMROiSD1fIlqiV25NifrxZ6BvLNVADxPQaC&#43;DbqzeV4KyWvV2WILXrpOsGWFpUTBoO&#43;xxCTBJ9egmmqSss5TyfoSYeNTI0fxP1GwO3iH9yiSjo75sZjviWye5lMCUTy3MZJZr&#43;TBvAeAMSu8GMgNe10eGHg/ihIL/bdhL2w65a13xMOFiCMxecd5qHdZG3wweGOuX4zE8HTzbgjBQMy0F/aEzgucVxToP3Zhr0epMeEeWtaKDWqXLl14bIunNm8mHRsoVnyrsHqroto1MEDkMAJVGsUV/KP/e8mLYYW5sSAMHttHBs0YqUmSXPgOhnvROIM7cWQFf0Adr&#43;nyeAme&#43;2NmYqBRL05LUH9jQSCRJ86Tdf0k7ehVp5PwWEJhWRGG28Uj8fPloAndD1N5uFOIL3tkUr&#43;p&#43;6sTOkFP2xs1CEwZrfHAe3FgZVBljsWZyQng/z7LTJyRgswRXvsCiC4lodDNz6ObJRF&#43;YLHJYVuMl93/dovD8IobqyE2XGbzX6TGTic4suagphqoogUbgiS5LzPb6MkkkO1pkmXU7&#43;izMYBUKV3FSct1bu9wK5Rm6mwafXLnOTWMK22pDo2DQNDUebXXu6X9jn18NGvLLQgbalZMxOHQi&#43;tLLD59sZECq1fXD6amxGVPJ3a1mJ0yQr3yGam0M1W3tOdqZ/SzT7UAblr5ARF7zX5ptY/w5J79luoUbAOn3bC82wdECFYqIBZLa2WdTqj0HlmdqTQq0RL3qj7b/uLzkkGZjtCIVbg9Jn4an9kg7CTpwvcfS/imbDk199YmsAqorQ26HvilnEeWqQqqT6iapIlMauS6PQUKUCdPKmRoI7qXXrdOW1ZU/fqdrleSqcGIVMaxMo0fYrM21G2XSeAyq1dMVJYjMqc76YN16XRrmHx4x2cdfax1Bc/RgpoX&#43;E523XQMhhOZMcP4UiA5&#43;bK2uPLWQdzWFsdiGJ47CQVhnfAUdPb&#43;w4XVPj2mkLAo0uzO50m4xxZagPZy3lGp4&#43;FQ65imHpvn7mlcKzbEzNt9P3wrVFPA7WUazWaza/q1KniqHk9uxsYarCKm/RxF7Nl63ZClJGOxJPj3AR3Z25j9F2WP7C/jFGGQfM7oeGCxTpApJJJJJJJJJazs8rTXrQizx63NAW0V1pWBC5pDdR2ua6jrQgysOu&#43;gonE4nE4nFlO&#43;p1Wq1Wq1Wq1WUSdOKSDEJImqZXVQVTv&#43;iSd26rqhC8xh90PDBVYxI1Gs1qDjvPT7x51F/mg8sOklqLjy2dRfmyEgNd9Tqvuq6oNDwwWKdOKSC3NrnZGMmfuJ1XVMoVzP17IS8aqGW&#43;2h2JJIn9UMt9tDsSSRP6oZb7aHYkkif1Qy320OxJJE/qhlvtodiMYAAP77n5YPwM3w81NlF68UuxtWMOOSdfU89BfpykXMmyi9eKXY2rGHHJOvqeegv05SLmTZRevFLsbVjDjknXthIAAAAAAAAAAAAAAAAAAAAAIHtyAAAAAA8MAAAAACFYAAAAAE&#43;gAAAAALWAAAAAAAADuAAAAAAAABOAAAAAAAAAaCAAAAAAAAIggAAAAAAAC7wAAAAAAAA90ANfx2RHeoebdV5xyduaqqXx5iuu2OrjLfVIesRVyT72mujCTQ1ZqCU4MS1TAIV/K05Zi/MsET&#43;tqysJp61WIgM5zNF0iYYfWXP0A9EAbHbZXmoitQ57nxL22q58gQIu3Oz67bk3L5wINomSJk4So&#43;DIEkRLo3&#43;VPTaQkle9F2hvWKbLeSFPL9HE&#43;u5KNx5bcNSC2GXnpjasZ7S&#43;9hXRyh6O3gxL1A&#43;L6nJCXCPq/pnXTwhjF2U8zX6jSF/WamgXMBk9RUzRBmVFBKhzo7iBK2wIK0eji1&#43;6&#43;D9d2XhNFhHHLZi9Dr&#43;ch0L3vVOQCkKEv6jK3hhdJNyPNKsYn4bbIpBMfKfAb9&#43;3DTBv7UtBfYx3k4774&#43;WJLsXRKaoXT67g9ofcCtJ8nXptjwsEIagKmzsxCkWPBBDsSGhKTES7i0KxGusGyKwenqODhnOlhiKXgvB1&#43;NgtKPzIhELDI2Gyok01LDe/sF1NzHjAOoVCqY1F28H&#43;sIRv1gZgZaL0eJ9qlyeBUgjCh3Cun9cjHrLzAb9lft2bNBgDvA2Ghqr5ieVohSrxzTRbm8IuZLA&#43;obQNZled8aWgjiY9/nFjqmMf8EIzaNZxM5q3aqwCexGd4wWIzvU&#43;JICxUUM1ZGtghM7alTcRF9evPuFY1XL9IEGLjRvLIMsUqkTULs34dJ7wz/krvPZC8ub6XBouRIdEiNsku&#43;Fq7ickHjXHBDSB5/JJlkkhrLIh01R0tiY0LA5Eukj7QEFpUSVsdxCEt3lxqiGIOpnwhjORstt1MGPWGPet2RKPfW33a31hOFjMqhCPrNs&#43;hzcF1gZA/cAOs4yxSh7Gd/ca63keAlNkF8F22MZ48ml6hQuCwd3CEeZcuNDLPD5wHm9/5rAVHc3EpG9c4gzm9t82/v5FmdY/BrMEGWInHZEiPaPyyT0mZ&#43;Fh&#43;sS9Rmvf/9vyyJ3uQdGnhP1zKxhNmT/2U1L2wvLSINDVm88&#43;OSEOrlaOykrJoz7sLfcCeLD4xjhIU572JYYp1BBel1tc4uL49RBJrOjTiC1EKv/eD1SexWPV1dkuPfhvFzwiMwIoOmb7lV8cli6ypx&#43;nuP5wAffTyhRmWnF7mZLFXcEekrwg&#43;jL8EVqKCneOa31q0UACt80A12ARQgeJb2cfUyzJqNckMVFOc&#43;fpsaIlq&#43;MCDt0ZpBlvKjHkDcKvgeMCWs3jYLHcAMUAEAGkyKYXp2H7MpT8cspge/Sh9uP6YW/V2XCVZbRfIbm5Iqj46duqiBOyD4twwL5Ke8xo5SLMPiQaBLUjUV3O&#43;cEFPyIiiVeZSjMjBnXZH72vzeK85a&#43;I83GW&#43;5RAy58NbJ8ZeVVpk1&#43;Vxx7Ei1tgjIgDWbdZK/nt2s9ZJaTSRIrqLWa73O1h2ALWjsAfR6qquXecu/fG28LMZ&#43;XV4cwAYgcnQa8rpbp0tqNIRWbnKh42eZwPXTRd7bOD3T477b7x6hxCH7QSbHSXmpqR07D1R2DzgBYbqnKIIqvT7C2RAzPb3YSe3wEJKInUosXYmCvO69ZcP/fEeGFR1K&#43;FzBFvYQzN7d0mq6zk/ff1fj3DKlfN&#43;rMshL8QXUDeQQht183bTnSAuZG0JsgxU/HZNumvBTE4K7mOPzxJf9NQysOOR387bxOmENJLNQUGgn7PB67UTSlV38aBcnnYQ7XwlxIg0ArD/6iL9NWDe8t9a0EKj16nxJwfkj4ZqtbmgARn4GeRrx3P4wYSGxYDwRTFeO2huI73VO8/ADGKMzaN7w24R9N&#43;jVFUyVadA10QFKmbDK70/4qj&#43;B&#43;dBXqhfdjCYJvC322IIZPfO0MQAHQJVmWfaneHVsPAM3&#43;jpscRSa5nKFYaSrtbUUUL4X1X4J7f/gobfQ9ZauHroaIpgBVEKFg1R1XwxxEyemUOj9d&#43;CsrYUyJJ0dLCZSmXwCZ7X0JFHr1u4GI6NbIP&#43;32vs4u1V0T1Lx8/tYKQ2m4l/T4JF&#43;k9Hrx/lQZcg0YmXquz0zQnsNGT4xHdL4NB4XafYv7MmIvLcPGbtHG8SHRxzXod0nLNW4iWDAEFhRcvgXtHKCMBY/MUzfABGXcVZAw0z3DP3YHDXOBmqdU7fdOdSZ&#43;I0Q1x5uZQRhH&#43;zwHhQ2ad9hP1BqsxnJyhPTlPRTaINwZ7h6ve6efEe&#43;fcomkFhOUvbc64Fn68if&#43;hmNb8BPDVPwCxG9NdqHXJ9FDU1tY0XlXlAxQk0oRLin6hN/MlzVfZ7WRFhBF/nruke1jJL8lkcFuVNlMIeQsif1j81rphKQ&#43;hcSnZFTx&#43;RKLZM39b6yfMe4Wa5nd7/Ua8dkCPzy/bOjFGe8wQuDBK2G&#43;15w8kDHUvUlJ4nhZIgjmfBWeRf8Y025mA9NrP7Y1GOML5r9xknM39faMK6bn6Rs447qRHu/ckZekR0JVQGQDR6tcqnQ0b2AQxYy5joI/zV5GbiRRQwDb4370/V7H01eyShPiLKmEMpErLUsPK1&#43;X0GGkYeMzUbkm8q0iTPEyjYZPwptz4f6aPZrKJHuUCCvoPrYc/aZk8lcKb37pa4ebyC9GnX55Ih3RO4EFFs3Fe79gP3tJiGWIfcUf8dwYBuZP538GFqX7rpO2Seji9bOPMOWzlm11ZjJHLSNSaM3jJD1wkPllbHzl6pO4zfu18N/hnu40cAC&#43;vPskqLYFT0dOHMLPfh/oOgfTTjd12OljIH1y83iRBWQ236pDX8hwlVUl&#43;ZwGRNYlc41E04Y6xpd6pI8b55jtmb0dEuXyjZ91u86xR6CtFmvj4R2hJlg8vtmJf1uICdctvBSUJgeZ/riCi&#43;yycn26WEFaetnFFXmX7xVA&#43;dncZ1JkrDkdNZxE4X7EiLMP8QRqOSy0PDIqkIiYc0H7YeQo0eHyeUqk0pK410P9y/lkU5FZ45VobHL1wPFAxWGd90wPHuDeBVZ/13XMkUWS6aIk4iJRtOrljO85RigsyHl9RwNrWihqY60gWOPrIQA4F9cpxwC26plt1TnpSsz6csNXuwXjsoWJDAoKWPvD7dpm&#43;4cuMxMPQkb0sasbg4LnsJE6xbYoxJp9i5t9L2pN3DCAtzcqOkoKds3w4zaqKbcqHqfig2zqMPPpewxyGQOooFJP2aKPeN9Q/wAMoYMWQbeCMj1GjXZKnDTWlcdFhYbhKPXS4ke0Ga/pWxVIno4yqaS0q8Y//5dQj&#43;49iDicbfW84jZPmk4LyOYwsF5sYi2R083wd5qeqaNBND4Nl6Y7i2GU2VpqOWhEynTKeJBCpKK3iSLbDy5gtYcPoahj/USkM1GGhORxeA3IYxwarttBBsR&#43;38e0jepvIZZzzSpQqGhPVA9ICSmaFnTB5gjVT8p9u/aauhp7LeTwV3H0NO2b&#43;ljlkjbzMzFwZdBcBmyEGEDGFV4P2Yji9UW8g5xDIlpkI3Ew8pbfrSApBx/zZ&#43;CcWaV/gdyrCskkvUJ/hNeERSkZEOnczIJtakX4PdnqSFhAEkeG2RUjnOWcjuPd2a&#43;tz&#43;5e&#43;ZM0O/HUOEJthTQqFkaZvZaEXsicKUT/KQP/h10h0QlVajqrauqc8wGeXiRAEaYQflbYcu&#43;ECNtEH/Nh14w2Zgrs5TMvlruK6Atao9H8uk&#43;RNgVXZdhYezMrwnhwS52xh15aIKNpLCqexb2Rs8zIo&#43;WL42120URDVRRx0W6QtcUHulFLyKPyXWd&#43;RAbXhUb2foAN6go6JtiS7H5Tr5RILsYLRWlvU8J/KTG7YVqInl3tIfAFOFnlMzvazTpmmoPV8qHcGsCZ9fuKP0AulFaH62pKV10xLevJ/zX9BQ2ySbNTMvQ8Q9JXpy/AEK1ZSPmfp9oWmqucIO/cQvq&#43;H24y6k9ZzMbHR9gzSXvKM0dSKoByDJ6NuDjxoJxpqSfC1UVP3mhcTyBz9BHxVe10J1fauEqVyhJ6ZGFvb16FZaAjAzzMI2wAEQPPxYHDaIYAfT1tBxzC&#43;YdXJ1YwOF6H38by3RGWEokn6WpuwpZXGnsWVTpIMusZ/8VoV8gopuRQ6DIkS6nrn/JKpnwG/5lHDxwQ4PNUbeOnfCtYSKPfRN/IWqjwOwG7A8gPhAhOv3qifUrqtwQFRktdwtiDlMwY9bymwkidscIeWbqLxKnFqUdpXm72Ba1UeeczbeDFq9zMxNubEdoe9osXrPnxOr&#43;MrnpnxwXLzPxZkB5dmN7oojMOYBMfEhmONi60gWoYLSGYJfSoKwKtMbrA7Ksms1g&#43;7NDrqqZzKO86lKxUyO5910UwUcjUXfbzIq8lcgLko6qDILIXbb7upQiGnJbzG76vVzvA3vzJcYasoeYEiAK9fI3Ph0eiEi0stMr&#43;&#43;Gj6ZNu784Y0bN5qlnK587uL42/k6R8UV/ulvv&#43;fPPQeckvwN33wl/ou2irFdn9/hbv0vA90F613jV69clBkv&#43;RLCDnHmpYj63wrrYCv0/u0ulBjUCJyGYbIVQy4zndoav17MOmOyCPZm9Il8&#43;ld8JG0vV5&#43;nvWPqHRmghneAvcHSUfkfpoPsxdh0SVqsyQ/QZQX5/3XcQoHGGc6e3lCVvhMp&#43;YQGfJa3CGS8X1WK3Z9QJONqvBVJAuc/oX15njoiaDN4oRTnW9dOZ9tm7tTdQUQ&#43;&#43;YEdqNvymlN&#43;1xLiJbz2UWzT&#43;ix2&#43;W1Up9ufFdjzZRtdZSluhgp&#43;3hax0GML9TN&#43;TtZ2yM3JuqJuFQy5PRLodX76gdA1x0XXPVlYqESc4di1pv3dF64f6zeERHi&#43;k&#43;0GW1GoVbt/JCWC&#43;R1iWDLgNZbNGXOht4YPuNKOG7nk1gZwsXNN4jJJKdi1XbStJrf/MuCbTVoRq2Fp00hd&#43;DIGKsFM5FxWk5AJLJThJxT1ofb8SBLA9aBk&#43;8dw1PXKzA3g/fQ&#43;ESVExKHjAP0ZHY0Yvk6r/A6eeInUtuIYAXpwN4ZQERGyVB5ZKvOis7s17H&#43;FcATLRSVJys9LHt0Pi2DskfdYSLZhge8Fjc9jya7Kvt66BkYonRnjHhNb8MqPGWmujSGkQHn8oyJ63OnbvnC3UzwyNf8f6OzrslliM&#43;yI36&#43;km2UAgBCNKMQ8fA3iMMykq6NfN5YlOdHJR2htVaGRxYH0QNbLEoc6TBW7ZvhXCTWi5h4zZkxvQxbbwpzL4v/8kGRxahJqqt2JoBUlWPx0XgzfRSZPv6pdR6tAwl2cEg2mzAn1q4JBN9hANKHQEh1Pxcd&#43;ixR31ott5dIo9B9WX1QYOVLOY/EK1P7OL/KR6tmVD9/Taks41zsMAdCLKeYrJfZ7mlZWG/P9&#43;pDOH5eS/2rPCoBZB4LSAjLnWHkcrStp8i7W0kWIOl2&#43;oryioruk1uSYAyWrRQe&#43;H/8YVKW/IIFJN/WmOb5HZtT1v00GbfQqqWyjfiqSbzK0bbVPaSInxJVIdU9NMnZBakx9gciqB96BWL/Hm4kQtSJ3Dgkbj536c69mW38pJJ5qyRnHs7Msuuak6mtjdYPR4rb5j3b32/ahoGQq0YjyO4bdoV5/3pacKDnJO/Or&#43;P5iof1r8rGMQnTbnAW0oEumPxG&#43;DcY7bZFofB5ZGpGVQyTiVyPuPyZWQ81FlUvEIGMey/6DJfhxAO8tV9iIExp9IPiOzbTdMkuAHQxNsWEm35OYGlRo2Y&#43;FvRK4&#43;WwXpyUeBQDlSWUdY0ZoejItGlEXFylNkqIqArWBOBLdfk04LceAGPd95D5MEPZwBNtrnq2MCpezcBZroHXep3enx7V3KKfLytW1ITNLyJkkiekRxtlmzcJSwxREMWo122v64kpBsNeASBDDXTXyXrF7/yiLtYj3xadQGYhWP7&#43;sGefpey33QIL8/h&#43;P&#43;XMpUFE3SX&#43;tMXz30ev8wStJZ4wjawlId/xM48ckDKrxmAfmUyZef2fVz&#43;5Mkw674DMZ3kjS8THkXV2QCw9WrkGPSAonWhQL96CQUUISNahH0mVS&#43;/9ll23YdAJVUE9M7DQ9OX9BnOV/e9kjrKQ2VP5sU53mKm&#43;UMxv0BDi&#43;fkF0QK87l&#43;wOglA/DKVBPoYXdBIsGuNCIkzYvuOGsZv&#43;SETJqV4MUxMFap/5wGU/05PvK6qQchAoqIrprm7ksN42DOPCPRl&#43;h3rQ3Qp25Fm57FETJwVQUHPoyThlKxWZEUE7MZUwJpsKmvDCW7&#43;g0igUxribRsFia0nP8&#43;6PIypEJPQdp9aGvClaTxBpyk15PnfZNQ9Yy1WCIL6ACP0sAjHdvcw56AiOYClUOzY42YKpINql6eEa7vYmW8IVMVSgPFPFlK5/wEeh15JyBwL6mJxBcP68PqbG5V4d6MPxpDOdC16Sp3XejVUCpdz&#43;SRTJ1xXAua8kkLKW2WqYFPzftl6XUxrbwzIdjXr6aMjN1F&#43;8q0Zan7njz0ercsrfkbVepjVPMOS8mSZdKKq3o1NaUPuFDCsmqpT2lJXy/Uve7cml1&#43;rnXj/DGsAOwrBw57r//sVdnPvr6WFdGojmrjI7YnDLA3sKCLEtzPNUP49Pp43ZXxovwmCu3yWij7Bh3D3JlBW0G&#43;WvEvHmTSamXucqlKr9MEW6Xd/ZvgGFp3ndr/WXaAWYlvcrQlpZg5NWmEcncwPyZTThbxSxqGRFzHxf5e69bCaaTaU1Kz4q&#43;J0UIojyeiz3qZ6kYcUEq6&#43;n4wtFcjWZA0oMQHJxSK8H7RkbFMM7svpvVV/lpkRLujjcDP/27dP5JSqsTRuAILl2kbh831Q5nfsUNUw94F7iCl/N4Qp8lY4EALMIPPCaeUGEXGHPEhg39yjNxC&#43;rd6TrON1mwgC4K5qDZaWeGDINjHYdhK4ywetURVnh/iAKYl3k6sZsV77tEELtQsVEB1WSYwyvgMVChzAaGf7PaBIUOZp5SSmOVWt4LdGtSpYdJfMCJchL0Dxp/Y2LZbewW/nbrh1t52BPY6YdKoMepju7r0qg&#43;5XFEMgHy&#43;XpWXJjduNg8JJlVk13Q28pULBhOqzpMHB4eZcbXeLJQ4OU32Azu4KwAGF3SuHBJx4f8G5PaX90e1PbAxdfuNnmya&#43;teUKEOuJimGGmft4E1CsvoH2c9MZX2e0VX8JOSlU40BzBHP&#43;AkYu7qV7UxzlgFxgzQONkAzBTWp3/XsUTpzw5jLiqRe3fn&#43;/K2DywekyA&#43;pZ9e&#43;P5nmOcmc&#43;8YZw5wIriTE1TJZDuYVBFGSjusg2twjh/TnprlW0l7qsfOignug4zh&#43;s9hok9jX2u1N4/C8wJERtkHuwkDabbbgnnLiDtD7pqkgY8mzaWeF7Z4kyhgAqeDNoA8YJQxGjeJz&#43;PoMS53DI4e0TUkp3YAgQ31XYBYcv3LCPTwI1Jb0Z6jG9NQRJEPe/fIUa8ZxPIEo1nLCihN37LsfHMVDURLnZM9c2uvzVqmDyLKwf86diprP35IQaYCWl2atOX340QQWU8Ap49ggIDW9NJhKoGYT6WoFtMB6g62/y&#43;cf/cG6M9D3dNZZw1u2dGEGVwHO8hDIaeEsxwIqRAEhYYo6Awskj4fCytzqZBYWqjO5W4Ow9x5GiDIWsNgxkftm4zhGmttMCjC/9B0K657Ck7mbL&#43;KSvRCTUysh6tV2Au17KFeBxulXBrMxlOD5LehPxbA1M/wDefEZoVdsPS8yi&#43;UHGrju&#43;b2f/wAfgOrp3wV76S3QbgFyJOMgO5ILPB0i6DPJWpKqPEA50RbhEvhI4y1uQE57iPBZJ5qOvzJOSOejvK5/IgjlcBpakQIud4tmckNDo1D0qqPCl8Or0&#43;yQrHVzZuNo49ZuyagzsAglJZ8FmhCAStWWGsguhGQWHRdhGb0vnRYe14MuhpI0IaG9lPn/YuXsnxHaK7R42I4PAnwt0AtvUq43DMOsZZ1CjTE7U&#43;Io26YAo5dvgnJ4&#43;RlSRK5NIX&#43;5CUcAqYBjHiEGycMweNFnHzcrmXaX0cHIVIQU6kB2azy&#43;Tk3/V7biixVtJQ1fMw7ZCnkJ55Fjjcn&#43;G/eJSZOO0tuS5cQV3DtBOmG7f5Ct1qDoezQqZwRrQ2bb0XfELXcMkFaFUak8CRli79GEEL&#43;WtP&#43;V1&#43;k8ot2G7BjRyWKwJ&#43;aKoukyrBtyusC6rPEXd7sy9OUR/x0x4BC6b/gBCvyMepkaIZg4rdAGWXojEJH5jAaX39zeK9gXAAxaLaXfJQxxlxEum8kwW0&#43;E6EUOZ6zFZtlH2fbhYC4YFjgaFs&#43;QaLAGJh6QNu4T&#43;RFIEQHivobPbOKHYQxYHAjLmklZGd3LXqo18sCifdnyZ2fg9xya61wxpyvt4wi6ifWFeWhMrKWsNOMqz1CaI8PA7SwnLYS6DCkVdgZDaeDENdeRpSQyIVcE4LsQGDTGHsa54senPjNaCPvzP&#43;FZFQw4OSoao28JZm513qP0jW&#43;orzKalceiy63coNGRNPQFaXEE0ptLdbKJfZv8LdaEc6iUu6L42JcLnW4CZljzvcvAMoUbnYy7ZE1qZ&#43;BFuXoyPp5W8PHRpLIKI4CXTQGCYztsiqSonZtVwxj2HXaRXXPcbvI4u/u6cqx1PVs6s3EAHrAviwnhL8QOdRL8VYDppSjP8B&#43;8O1Nkb4A/pdNUj8J4AUnrwO1udUKGIrZ8YMW8F8n23R9T58aLMSZwTPhIhT9QFz0oyAbq3WtbtNXfbB2loiWSxg8CL6sfQEkq3QizU8sGBzSLjPAPz/MY0NEq4To8p8yUr86s4QDYn2WmEnZWUVsGgZ&#43;WNSdMvXiYGCOFXasB6te6nSrGwm8U4BSZEO4zGu2Z7edNuFnujjVsRxISYPVaqMG41Z3LkYKBKWqk3jIlg9aaHidEAnQ8PFarW2a3JPzKxXF/fcPFA0MjCD7S0l3qXdAgSVH8A9OCv/nk4U0bSQWax6nfsBixoZmmO4o9IJ12l5YJsXYUh2kdYrElSFc3ae7UCfZD3SGQgGRKA2sOC3mU4qDKXdeBoJXjPk9GyzZskSrhyQlbRF0ZpgWgGp6YyhFp2WolnwoOv05lykk88japfYOIgjixfsPtfwoJgPvQWJhEUuFAgCqRI6XwbUoEwht0yvCAkxITZJH02y6SSVEjyz7yc3EIkBZgOL2CuijL0apLM655q7A6VFFHJVeoIpsX5WlZnUBd/bWwAEBG9mcRyLidBPFBkFgVDSpnIX0qTFWlFrL/HNJ9VPVQPLuIsTVX72CCgy/pR6JjqfxMbG2txZHXqR8NzRbq4jpIOBKIWR8Cb2K2KP8j4Yx0xaaYkeV1KsfXT5vs2/Si0lAn1siZq2/9BZI9q7aq9Z6JskxkT6lhyv8IFNu3qHQ&#43;DVMhJHZ4KQdge56557SiYRrA4WI6p&#43;S5pxgXpjrukTRFOJlCbOS2QLK&#43;qltNpCxqtJn&#43;U2e1IhItOR5c6Cx1ZdILTB2sIgIuIEeKg2tsztrt3yWkckPKja02Is&#43;AUN3RfAsL2U9rW3ibGckMyuILazylpTggbYaXLD6vZZFVyoj5GoZbxzdmQMwciK1dD4NfAycU&#43;6jrFPwip3tkF5XpbHRQyWScUBqZrYrDv3F68ThxsWmLI/lNoV3z9RD44BLXLWFZ06QRkk9rnu0bRfaN3MzUKNhdVGMLLlUPzwjq2zhEQgWc6&#43;U/IzvBfW6hl0wvz46QfVtACRdZQHfvdhvLK95BcnNYSjN7c46gw5YZZsEnnQf9Fevekc14D2geiTweGKWwxKemCQvHtIRDGOW/fAebrVg&#43;BdirF5opq&#43;Dj4Vsl42cIF7zlNKpR6T1ZWK2tGAA2UtsnGW4niDjs4TuJFjiCMP9yboZ/XGiYEcIG3kIn&#43;H9axSzHwg3eKAjuail/dPmE0MXWrCfd7enuhqaLarlepc7s4inWm8GiH9k0dvFoUHi3XJ3ScJ4J7sx4k&#43;xSBGZ75ut6aV8l//t8EHmaSjNsH98RMqey2vNygQc&#43;PkCOsrYFxoUwgELZn4r/g7OF1rbsFs6uDOttFO7OeeYh8UkzVRSMpAj1l4xd3loxW9Luf2UwkRjj8tHojXQZYTOixCjMdw8Fex/dosx7wlLEZ8Ut561FJ&#43;hSIjQ2fj9vO/slTONauX8j2BVhIgjajGESi5pLieuNONwopwPiGf1ipPCXbbhQA5JdkeC1aAk1oU&#43;g0N7VtwJNPSoiKCkAOSln8pRHqDIVAlzQEt&#43;3pWPCR7BAbJfZpi1sCYD/BLWP2cSAhHGpkbXApJrJE5LlOdyOBAk7ESCoBWbASYP07TVodo0U9MSuH2FBWRT2Dkz&#43;VH0dMkvXJrcDd9L59L4A89EA&#43;uBOxuHVM0SP2rYOCn&#43;VOBdohKaMOk8DXpGAOhzH2ews4ahGaoo6B5brfkx9gDKu1F271vrZSABJepDZUL2njZhU39//qtdCueoVA49SOa0xbWdiDsOV9Iy6VUXifs7jHvXldmOaChmBgtF8RfhxomK8KmrmkRxPzlwXx&#43;g1GCN0eBF/fAkCJG3KdcKLMIcSUTtW4&#43;2mVNAG4eHCZqijsyUkUib3OoLnHkCtMBBlvBqaUGW5JdPdw5ho4WsbDtTR/4UkHD&#43;NbE/6BOi967LWb3ePNGe55TPG&#43;WAmCn6AP3hD1rFTMQ13Hz4D1dQjCIGziO/RW9kV067ktt0IYDpMABVKA0MJmTOm&#43;IZC/ZDREfgwiWSHKsP9sUynoC4G30LkTtAaFIA4Pbv&#43;LCYOU14g6TJx11H4EOpCsDvub9iMSXJqLIdRo2swo/uOv1/kQqa&#43;VxvVG266RBvj6hZaqDiLnJ33kITe9TSpgPzwpmEaUIDU448SqvsfRBxsVUjTCro1ImhytRS7IEtaFdaAEVtSs9kX/ulpQST57/SFps/58EDHNWI8qmLnEDnQtg&#43;eGR8H6/zIjmpp9yFCO/ECy4YNya10Gx/S0cUfoepctqbLHwI3YVkBGT5VzOFb5Is9QiGFOIZWvYSMr&#43;dDVA4AA6ooKiuhx8Mszw2SCFqNa8cU9bY2p8jAVPOlL9ymNLMFslHNMsjkjXyTT66vxrAI03vG19tfUI4lx&#43;KG8pU4sYHGMnwC69eKqaOwzYadhq1zUDHl09sAq0KzObDmaEeKM2PS4M6YACgixZ38hWPziTjUsPDaYuZO0YukeFSND1lAT8KnM5JBUjRb0ULbHE5oNqG48G4dltSBGziRReRvVXdwuMYmOpdS3ra0dBuR28t4UyO9wSVU0tpvY/DtlHWgRX6ikfiABL2g&#43;qwcAwG93gAbOUF3AFVyWfAkxkKSZ5uotDQC&#43;4ipWMScn0EZyQVmYIUJUXtCUSXILjyra6l5aodFpC6L2WOwyCbfy7HSdat74S5Wr7paIWht&#43;SwJO5Oh0TzRup7JAWKIzgptSOqy2eq54I8076IutXh&#43;DrIBGXYS5IxcS0brnAOY8dUGOET7M8HwilWtaiB5LTyZRtQPwmRnvFLLAbe4k9oDc5XCO5lEyfVJVehmof/HAMIw4FHtC&#43;VwQow5wUM6vL3aIdqwEZinAjlRjGwX2htbO&#43;1o7qQuSwtHvm5n5jyapHt2Caa4I5aY2IeNBY5zj02peQa83p2hOfMY&#43;4HNuR1&#43;hOi4US0nGgVQOnPa1pSYtl&#43;DjSk8suTJ5SwVqj2lSwrFWwB69reFifCejhzr3wFHdyF6llPCsnlWn27XKzd/cAp&#43;yvK5OUEIhn5og45WgEcmwUMSEztBwlNqNRxhqU3sXEGooOoVXEae6VFAXkJG99XuutgsrJdPhCyX&#43;MmmEpBo2dratRf1k1FdfeGstmg/c3noQbgQCbBr7nkJgYlD0iGc6eVCVayPKmixNV22CGQwWysBdLcY6&#43;GO&#43;nOm&#43;Lt5a8ReTJBH&#43;EOPM4EgTBfXkoU0Ga6ZrsTfULsIMqCTIY1z/pn3VvtVCrir6Y9qLC1BkgF2M1V&#43;DY1Qq5&#43;mm0CndLsQpOobPvi4mOf9A1C0QVwd7sPmbldXW8iHXZbYfSN0V5H/Ap3tGMTAT62BJlAjEIJsjvBR370doVlj0aeWtUu&#43;M07kOpt3nhb0mt6Yith26n43F48XS33SydBNNVYmMkz1JiZjPsJlfWZM6MEYD/Jpi6VtqXB2lSNQ8LnQtULaHal0n2vwLgkQ3k27Y2UX9Sd4Dvenpsh1GYIixI9EBCyAXkd9iTzOSpwcHnDYxQm9010ZB2bv4vwdA9wQNqUJkF3koUGpp7YkC0zQjXcEKXDrWlrS3Jr/aScaFqxgEe8qFGDAIwE3M64eKSyvShIMlVM&#43;KIHK5dhI6bukEJkFW1X3vhnheZ75nkzjnT3/ztL&#43;L50zwkXD2ZINmj51WjVWd4pOVsMeavcifdfJUQ0EcZ3fR81O41yW6cf6aW/3ORZOtlfL5Aayxt3KKbXEwziuz4H&#43;gR4qrOmyknKRn01V2xvQe&#43;ieDs9bjpHpMzezOls87RKnNVbVmEStEpTiWenAWEV9ilYyw4RFxlvF1epudwBgDs0c1hvtaypseW&#43;0XX9PYGbq6oFEcktn61&#43;jymJjWoBcKDYMhxmlr8tnAD63vJ6yG&#43;K2GgOzejwSXNaGUox0T6Qr7/uHMhHzOt8meaCIdK6&#43;63uXAxOvw9gqDfB7PB/OtV9ZlssJrZOkrP4qCiJu9EOVi9lzSQKFBZPr6TPUhUE806kqv2DlURhw4sY2ZBYth3YIggH2QAJkMwubV2uqtXeRoY/1yS&#43;D/fYJtJFvKrwIxBBVk7mqXAnL0AZBAgVsSw7XvWwFELcd7ErNgoAcMoOVVsDXwGgzQ&#43;MUTuie97BtET6Lk5TkqaWaQwPDJGAF3oETnMrYxHgOgDLmTmNwyagKFvZLiieMI4aA0C4SlHz5c3sjHzlJ6Qewxxxvt4bnNbafinszh/SB18Tg1ME15q8oJf71JEHNeuGsvd27xy5UU1wVUWbC5wI0oOqAwPn9K&#43;WRkEnpK&#43;AQnHxurmHcE&#43;VIx8nfz0lWoBxzQ1OC7rkm0SSdO6sCRrju2tGnWxefw55X&#43;/332QpOAksL6/7P02kWJMYgQA&#43;XAx/pHpQIyLtRa6L9/rnS05PR7M0ogon0JM&#43;xfc0hzIex7zBQ229paCN4q06M3eSJ&#43;0LGLHB36AyutnXWEsen/jd/84BLDJs0MBiCqV6L3V2gAjLXGcNcsr9FjFliTPL&#43;F2r/9f2UmYAV0yvLhGFWhEwUxd2jcTGWFfWjZjT5kMbGowSzqJTOwtBf&#43;tPbJWTpHX8jMvVrHECgk&#43;gJ33atqhTk&#43;mdo2hCg5C&#43;P2RiUp69sdPGj4zE&#43;u6fjt1glqiGRnBswIWarlg/IXIJBlgc1VSSPe08jtdIWRoOGbcPoM5/0Iy21n1DnoJsY1oiRTdhBx4sWxPf3GS/JncbgIpN5mxmNB8nvot80vaHz0hROs3UUxZnFs8Ma8YYQYkqWCdpE/7PoZf61a5YwdJNceMUbNfRLzEYLxk6I0E2flsYH4YhJrcww5ODFouOVPsyhkt8A5uYALwwGaZ9k51oTC2p5BoaNts0IeTH9WJY4LQgysgw4BX&#43;sSr&#43;ZLR3siYw5y8esimB51moEVT3Uha2Mk4gIg0XifIUzYsem&#43;zd1RZ&#43;RourhnnZ2xesygljnKNd&#43;SkQoCA5b1sbD5zSVpZ9ex8ao9LkJHRnQOKN/ZD76P4ItTB5raXSewnN6AV5fD50ninwoYq9lqGi1Rg0MhTaeiJoh2ugjfPhw/gAG7MsFZWN0qUNCRbRC/ItwlQRkXGxAyDhCH&#43;4xnnPLOynL1j1OnQBOojOkCzocWfpJ9TclOkywzuzUWOJZ1KSAbfpKMkFU6Usq9QzFkYjPQvi&#43;m2RPnIiWitAynnhjFtOQDHV8w0B8Mg87St9x&#43;37l5tihMdnLxcg&#43;bl7nNRw77ud40Yy2Vu2EYjg76C0CnTk0c2JIySnmtA/Y4NdzroTfg/x5UANjpLaBalePLVFYu&#43;SEvx0nouqaWMKLP9rBQ5qOapo1GPBBvaG11mznqXnZBhf2xR9abaNX5Cw349&#43;z2IGZTCIoWWDwJs2pPSU4sGVshp8E1GUAsJejg/xyKBeraLNn1YGim&#43;ILzckRP1W0Puv4o2/UyNp5Wt1KK4jZ&#43;AxkUR0OcDruxY9ndZfFUsMIZ/6/OagqRqcCI&#43;i8Wl1VVVG/1l8qauOnKO12fO8mxXalKgi065ea7GuBiWWBObEInXk1qx4dVp0Y9jFBg2ruJi&#43;Jdjo16BvsuOEGGGnjXqY7Ovc7zFLmKL2GahOsJx&#43;SmwvfiCofez9PpvvYCDhNJlsy6Je860nsozSnhuDKC7CBVLvR3is5f6qSJ6bLVqN3WLMwrgTrVnyFTy9ekkkMaBGsjAA95t36eRgY3yjOCYNjQ5HUjYyWktUiS1leLcZVxHUqFSq39PjyJSNCZZ3&#43;IUDRI7aEMK9L2Cjt2sWCyyJSJCjhWWQRjPpxo&#43;bQpnh0ZArZ7TiIoshDAqyjmrW5UmZCJe&#43;F9mKQaYCnd6Hav4Czl4E2Ycw384&#43;ynpuLDXKIlnB9&#43;NSIBWaMsvzOMeN0ffbn7UqifM0MPLCUdoAkd1r&#43;V1JrmUAS8&#43;zbc3mD22nYtxVl43yS48CgG7JINCnv8t6Z3HAD4dGnwotErMDhYJEmfdNcWKDcOH1LJTkK0ToNGItplwLuzPtCbEtxrkx2ycpRFI0x&#43;iUaO8AG5q&#43;y/ZjGzbCRlX6DPM8ZgYBKZsebGi3jHsODzeEXtoQ2dqT7hJ4aLOHJNrQbJmVjRqpOl0xLCLobKsux51cvm47wlTO8IV6Vgks7orjUH9lRC0vqRxozKPap/Nvk0UtjtOi2fU/uJQ29BRP6Wws53QGpZrz&#43;c146Mq0V4bhQmE3TBvrOmvY2ph/SMGjK7GjNKgbW5TJDoLgNp5ysJJulLpyqwPCls1PjoNzwQxuQIBD1aw5N2/5fnolBvwbUIFVYcjP9RbryLY3hnssR/BDXtDC&#43;4BDuB594exQGDD2RoOl4X6a/Ti/CNXRc3b2Z/2ZL9Cr27X0w05UijXjexSYyj3e0JAo4TAKbjHoP307D9CEqXA9ND9M95vfUqt4absiTTnvlA2KryUtxAIg9UxQ7QutpzpiFGzQn&#43;mibe&#43;Uh0xQdHfxLfJgiJUCcdnFhAzkPWOurebXwIgKImMcGYaCs5DOo9UvGzME9935VI12a3hKLwEFavaKagr44cgH3SjUUfUICbQHP/xiRVI6SfXnOkiQWxUALv5AGhMFidNg1qCb4AIOm1W1zCJL0gFbAwLN3dalhXQF8ID47nhP40N7n0DCK4T7kbcpJhqCoI1cGlOP1cvUC/Kf6xgfqBZ7Z1S&#43;VopOtnWBVen1VKpnOtII/LPPzU6i7QljXEIfMq40w&#43;9RWMm6kWtEvl0ak&#43;1GRkPJmvjI/aiwanBtkCbhL48T3LCwiS5j2IRE&#43;xm&#43;QwvYEndv3ma&#43;mKqXaDfmjhb0ks9A7mr6PAEZ1vC9jLqhhEMtfa3pRknehGtbbFKMyCEe6ztpCwNxmTr4FuGD3utS61wNOYmmZOqLqWviAP3pzK9t6K1lG&#43;&#43;H&#43;pm6CMQlrl8N6J638HZ7Gpr2JHdsZ27839NJaG4Di8vjBjdYmTKLg2bOoKOyZV2rzyERLWG9U&#43;zZ9W6tw/&#43;TyF74qSnf6rlbf9EHazR3YeNUQKiyf0H2IAHgX6kLVt2ce4julRiKxd5fVvmdKnboZHTHhb7QXahNpTBuML2SKc/WEcrHzZ&#43;sjrlhCAKU&#43;CAuv06Ng&#43;fQh1cq4N5hMbAzWfXgKsZ0bTbb32VBO19qjfYb3MPAcI5MTlZLTRY4cETN7dD9LzfAtxmDQrmPDqF4pMy2uYUWA2wq8x2U3Y51A09Ao93kjODmTUD4OYp&#43;WHUzzlx2sF8r6CDmg68BeRLJonDr6y&#43;H04lhUi6M4pgkQQXGyE9LsHaVC&#43;Yq3zYz8ESjPJ3ZDyZ3Pz&#43;Gv9rUHCWCiSZjVsWg9bK/jvst0nmaG8LL9Di0GXfmFoMyDvdcwmvKk6KFqkEmgC/wAHilO7osmLcxlM/m0oaZBb8Rie7IGIohHh5TXhgMoGQMMr3jaNtE2mw51iOiRQ7/oe2jped62Hc&#43;bATjZK/g2ey1lOMuhmKDf7NoVExzIG8Ea3X8BjtbNobRw6IFa3Ciu6k9yRhMAkHFwDscW6Uesmf9FEX8OC3GFxKbEhxga8K3DI4nrgMtl3hbonX5jShGclLkfXC2YEo1cpKC3RSOhX9lfyv7MplPsUdxa8qH4xE/zhFcIrSprFadaj7VKLqMUO&#43;c5ud&#43;Jg3to1fXFeurRB8AXEW/HoM0x9lwAsTzJSLVQcpP9KhR8w6omaCD5NGx2LlKpN0/qFQgtSE/M1RNGJQHncMsVXkJI3PESRX1tmXVF&#43;h&#43;QoaXyUVEkBQHMdjOP5Wt9ddnRUFwe69WuXamVDZJEaHxykpbBSHcVBn2utzntcM2RtfSysoxFluO8zY13drbFn7wpD/QIJyVhmpTFaLufq12AZvfdzW7RAm0EHyJdaZxCWNzIFA/UrrbCMmAZwUAuzjhBUtexO8/BisZmlO62KD2KCXGggMQ1rC7OjxhutsyL0B3TwW2GAHodjRpqzx6v4Qzh4k7e2G1Pk7mBHEms/B9VywlyooqjuZuMbLv0qBmoS51XIVWBJQLTWabQK&#43;Zw1bcH8lYzxcwmTvfiYadPhj67cJ/6d85hpJ9Cd9rf9Lx2mivQxtgXknrEZDHzySGyHWBhQkvkcZ/I3H2DKZoDZ4JGXVvqGx&#43;TS6OZyksGvGqK9weJkEFXXl&#43;6jOkzFM&#43;aOjvsVyAlbI5e64a5MqNsi6jHg1OYDqo2O/CifVQqKSP5Lck3rnprc4h0o1LwMqCY8uNFMZtuztDwcfnsRVTW/wBsMH1WrSh05OMrRIbhuFvmkCDAeNkucGgT93bi6bGUpPg6mX9uGfjTFmOWlU8OZpOQCGb/bhAKeSihbYKXPfRLFGlzwJs4D&#43;BynZIZ7C5fJexeXy09OAPJ0Q70F&#43;wHSj6CG3U7ieQvn2kdup7pvgLAaNdPxWAse5KH6HUr7G68KnvsD5SsPj3vRufXWJa7A&#43;rXC6Y3GO5ViRNJFlMpL7kvW8gLvx1vQ/P68ULsODXTQlkrFhipmYXIKIPYYEpWN1lXrbKfa0cXHkuJdSNARRnLC2Fw9FH4G9IgqN/D&#43;MmW/g88VqPC9uGQIzsMdmOApUVi6D4GI0rrRUIRaln8A8UdPWr760g&#43;90Jn4Xy9jZQ5bADXK/qkoe7y4g4lrfrAEdtiSYr4v5/OGaiW9CAJBXEe3pYHF&#43;f9LE70TbKPvSLXHYk8xg2We8y1UnD84&#43;PwoXrVB5u6Hzs3JhKdJJH7BjAQ5qb7cEt6/HikcFz0dWmmkhlQi05Yekjr3mZmvRtCIEjhD9RMhP0nqYQSTCT08HnqEXPn/SyV3EEsjmLrBD4fRvphc64YpmB1OR0N&#43;Y/hKGunbU2RgIPY3UvC65VrhMtcQ2nS9lavNerszUAFHkpi0EvuFT/0mF8VEIFpCgAMQdgmm6J7&#43;z1&#43;w7XDToFp5k8v1itxAz/ahhGByY4hWun9JBWt6f4CJ9Ff1FG/sVe&#43;kUqPgq9fru1x62nah9PApSX4RQEHHP9GqqE6dR4jLfLCpDIcV9ss&#43;0djJWe0AU81L1zvIicARD/q90hr8JSVQ1g3q9oOyvOCQpvN3gFu0lriEgLWWXKZQwtdbcLBHe2eNSVQ5mE093TrAD175cX474JWoV4MSzvdtwKvNydD4gimMQr&#43;Ap3lNxOX0sVjXhTy3N4ixct5ol/GaZGXDj4wuUynsQyPO8bT1uBEZeXhpQAiTYh/VOpXwaI4QgSN0Dexgr4Hi&#43;G3p/HDk99wlbaqsoENQN5o0kYRGT4d7oYKxrw3kGA3msAO20iTmq5ejaQ14MUPIIdvH/FnpGi9GzfLYODVPgFQAlhksRPqOACWSkBlAXCqXirBdN0UXxmYNkzvVwaETCR22ESGg&#43;juN0tI3ptiNTINXz2Sepj/v7/2ypTPwItPzRwmz&#43;l5SDsW4C7rShpfXOnFxMlzdQKeOM3BrRKO6B/ghxrEHo79Fbw6ijGVh7rk/R2l1gOoqT/QOUYULk24kxnvQhoLLYW6lOejmIUWq73MRexn3xUu9eYB8Hdj5tWu/Ocd&#43;vFq6VwM5cAcOiwmPZ0/1mscfsDGN2LMmR98/uiF9kvbIM5gKw&#43;AQQaYwVX5D0tvwxuxlMEdIu6l4h0ZKgkeivdOf9y/DlSpENCK0w9KXSVod5ccRFYCoknNnukBMYE3EYYhUME8lhaY2viPmiGNTRdKe2y4YFqJEk5nZvORxs193Hl4lg5oOJuG/7SVD9HPd/LsHLvb7NGl92Pcf8lZBb7FkmgQxH9Rs4c/U5/Xq8OK6wEZx6/N24vdhcwOP6OkLPzw55xoVGL/ccRrGp9GJlgpnrEexXrLcWN33q69QduXPtqSJ4k09FCqcYfZIsJTk1y8U0JFUmzyRILoMNzs6ptLB0tW8V7VdGCfcNPNFTrnX4cXAic1Sg95/kmf6vLPaTxDYb0R0aFCCkxLzA17xYrSd4ty22ELHBM9&#43;Nqw2e6T5xz1n7xSEA0b4FsmxSHjtGTpXvP//lySukBCJNxSIzfJrMD6xfO45hpSLnjXlCM5uzOS3XS4ivmBwWiioN02NqG3tU07X16Q3VVLBxV3W75zOT07JNtHtR2e0BKVeVhwd4jnI8vrkSh6HNk/vTluMIpm0/&#43;moyPm7GhdSk&#43;FIguXFAatB8dkQKUPVR1IEjl6HMM8/Wvw8RAfu6MrBorAsTNZVKnEd8eDiKYDzF6u4TQtxQvsuB18Y6Zx4m753tBir6wCJI6zLvDRkq/obwrrQPlyAPKy/IJcLbgxhRwF467JvTpI6RmnHC1BoBBF7BPnYlVHeapTlNzGPbgRmw25sBbqxRahFr/cCUPQaHPV0tO3qRNqhU6PQSnOB6ux/6alPGNPzDA18c/TqAGQouYr00lAPUrQ6BHva7ShBhaCwRDvL586O4mIx6gYRkO0Jc&#43;RzHynvCZFYMq&#43;j2AtipHKsCiDbBysx89bSwSyBwnUtgKsCOcd9NRLGGC9m1o5rWMb3aADjMS2CurUFTBhe2//lZ7bKRW86mWSpxI0CeExnERA8W/d0FvfeowpTp1AaU0WeGZiTp2oKh/haobrLnjyHr3m4NzDz3go7zrbDTRJ5pQoG7aD2jWgQB/DpEgOuc/q1WaX4PjgV99Y15cYkz2pWjmGmoCprE07midccShkajTrrKxSeHfJ9axsVcaS&#43;GqXKzf5Fy0hvjYT/MjW4wY6zZ822fHB6KSB0W4UufIZ9&#43;CCQ&#43;9zQS8Tw&#43;hrVlJr5RQvZ0MmhQQq3RzMuN83PFrFLIQIF37sh0ajro73dQ3HgYWt49CgVbE3jdqHCZ0n53sGIpLePaM713xit3amv4iBTg5q872QFPE&#43;bFrFBT5CCgCg5PwLTrQaUIODhr9/v1k4LcqsI7Mg80phOHsSfmpWkpU5P&#43;scBQHBUi&#43;zk1X1fc/YEcBneWRTGUbVLwK0xsd/&#43;Z3AeoeIoGDOvWXlUTXkI/5tIw0sXBST8X5UXl/qaUvayTjpCMlhigqyEldxMi0akjrTZ0z1rwJRol&#43;/A481kSWKibC1lLsghEKIlXJAN1KEMp7QpbcUtgmIzsUlqblpvHWJ0MFAWvX3tjDXDCEI9t9hd0H&#43;kWiG/f&#43;ztax0ceXcj2fQyT5/CxVEAhJylFSjXkTpKsc&#43;b/e6c0HmDfy3Fl9QWmA&#43;KgTrwdEDgYki4taZa/juZtzOXJZMvBvETw/LkP6x/MpT6X5j5AHGDoXPtHNu141vurpP8PZN2GWh0Fod9&#43;bixlWq3vcQZ50vtPdhx/qJDf5HRnrZIAV2V8fMsjRajg6fcZTa2LTKtMhE2ZTC8eB&#43;QNk3zUjyHxgAwD&#43;loQn6D0xpkP9O39eQXoYkzxt7Q0IXgpt1Ncno2aahlepHgjt81&#43;i0OHMrTDCg5dFrnZWdcEtc5Yd08X/QQU4dzc&#43;kFXIa62/w/EYcu7ovWpGeLTgJop9nYcmGF2zcZm/Ve8THyp0/PMa9cnLAoHlwa3gLZIv7xwmFW/GrgDPHonAGfWbH7YUjAKqZxkBWMkjpbe9E4Wfsw2wyCfvNCoCeee60OAUgo2L/Px9H22wk57pdt9GmRuxyUo1MPqzduf8ZaEHZqknn2XYR66DWjnNgUjpazmuY18RdZsmE/Qoi&#43;MXinVi0/d4HevD9brDkx2Fb9nqzxHxKOpOBbJRzgmOhCcpB9Bf4/agfQW24uK8fQaQJ4VHv69XQjLpgk&#43;ha/vMQ4eXkqGurisJl1Ny0QxkcCvQkdrX9CUG&#43;mxMC&#43;Icp0NakYPqfZxmtdGJl5qN/EVNHXVlo16picMG5iFo6HS8kVMWqzfTcEstWqiWvbNrg4Pxu/sFLJ&#43;YDmz3XWexu56aXfvh/nH7KCkGo2wKIKwMminIc8kR2ZGBZatFZuZirNZVQI40ocvNKWSiKsef4zyX6ngL00M/mR65BYF7jiCkiJI7ZOne9c3tOT1ES9CsqnRbUg60DTSNJBcxfyiBnZskPwulYak40p8eQi8WKmdDZwnUVvcMDxhSIRH9CI9Bt7z0GHNi5R/Wu5i7GFpj1phRS2Q4uRkSFJeep2nzlRQf1R43GlZjAcyAgkDfUco3MRKrW/kSx1rQQ0xjJcnF1NQ1sxYk8ze9BK3ytsvOImXYxqsP8tIFlijVQaoxuxSIxQXrKI2eGbEJ&#43;&#43;SUPzxbj14b2z5pwgrQcJV8Ou8eNC7ygnd2Ar&#43;Ajg1KrUau5RCJc1B0lS3fj/VzwTTVr0867zk/nGVZiRun7x&#43;H9Z3YfZ&#43;s8AT0CloWJkyESu2sRYC3ZDoqsVTi8wQzUmvu4c&#43;oPLXRHk0uYNQ3K2usuXNtI5iCImQYn&#43;o6cxhQijsJtOWue29tonf63nus0SSvQPINEmxtxC6ZC5OTppmRSvnCkHwnpf09tHWoKIaf5&#43;b8Fkm9MbFpqcdTDoDqnXgkq8IARqXMYaVV5CH2aL5QN3GKuM1D/5eKC1JmbVVYP0mx00K5E&#43;y50m5ZuO/DPsUEEFCFCE6YjbOpcOK3dBvG6xq0u8J5HHwq6&#43;k1Qi57rseLY6M0Lw78d/ZO2mriDQDDZ6V2a9b8Ebe3JiCQLQGnXpJqqcHC1Olabiyk8YeaduYNsTs&#43;rOeZTQ9&#43;jRI&#43;eab&#43;NvLaV50mZo&#43;8tAhnUy06sFl/h/J&#43;w9pMbwL9L8z9gKq9jWmJB8pJVfWA4/NAfoL96u4FrH0IVR&#43;q4eiIJkZZfMA8dIAyENoao1OdVUUptW7AlzwL3hm38q4s08jchidhGdzq85Z58XZ8wfh5DDea60qRappkHt8nmOoM&#43;11xpt0VXV64qzHc6dDJo3vUSOvG8f&#43;EzvntyNdVWuaY5cK5CpuNH0vHWFxL6g&#43;btFC824kkAOgeSHFGbXOMUVF0AQDShAvVGt8MT9DkIiwJ8SG/PqTj&#43;/LzECXkeB/QeA2mPdVB&#43;X1piMte5vzoNfBA7qLgi&#43;rOOXuwUoGLtB6vi1AvO/1lkp/vO/uAPGGX/aQPAZlERgp2dE2Xe88dJLbMF6q1c52qFO9U5E3vnbgdXgn&#43;PYOjs1oiV0Ee64h073CDkuioNOrjZFqqC4Lwek35v6E&#43;m1SVsyNZPq/tYQzKuo9S/Tac&#43;CSrtKd&#43;OxIxs19IzR1WLWG9Vk2l14rDZPiyDfzItuJDQO9dOu16ZRfE2JdrpuDGbu5Z4gsWvnWd4PbvdTGTa1s&#43;v&#43;Q90OdCWvaJFf2/0PC0Y6y73z3e7YtGNPF2hsGEGfgu&#43;oxZ6/q&#43;gWG0nQi69j6t6KHo1OLRbdzEAJ648NzA8bnIPbJ0bf&#43;b&#43;XLUOjHGVZmtHPrRYNT2j9grzKFGqAr7hgp2PEquYl2&#43;mRtYqG8Eb0qdOO&#43;cgr78e8saPyvBByiAMhh2RnhLisQGBQMt8oRo68C/F4pOre7ddqEZN9W/Xlrvzn5MzjRNcQK0TccaWxFWR/ZWgVk9ZW8HP/ltz&#43;L0JnBt0&#43;aARILDLxzVo9BI0YPG8w&#43;Zn4f/OvZZ/w2thMqeBXteGI/EINyZ&#43;ipCxjWSTvqTjvED4p3TNaYQgreo1NNiAFZ8qW/qZeCAmJu&#43;NyNTnMjsuUKrE7aAHgCdMkuoQmXVUN1wnX4BEhlTw0fZYOBLzaIyN8h49Q7wpKXml4dBD/va5YBL6DnFXA98kbbjIe9Ds/EYDXRF0Xjw3gQgSvJPYmgqVxBTG1&#43;d7SXcLYaKz9y/W&#43;UslKf49BJ&#43;8Pwfmk0rSTcFS1IH4tgiN7wvljSYqMkvCPaVIzZkFQUDY6J87doDYKl4PLY1j8w7OEibTIZkPJx2SRrj6rT1g&#43;ykGV17buoyoY9G/jcreOPslm8jhouRCKu06yneqrwkpWbGxGri6LoLqlcTnEa/d0LjxI1idZn7Iy0UJBLA/ho1JY55I5KoF8W9FLPOx42rsAFPcezmZNhAPzCZUssC9AOOnVbe&#43;1cQGNoa2lZxBWtls8KdC8cGXwKredEjpPYpYAO5pNSbHc9jav&#43;cU&#43;MSRfz1jrD4x1XLBrMmaqvwRd/2zVubwHMYxa3Ev1wgyN0iDhXbyhik16wQod7C7Gb9uSXpj6qRTuD/BLqN6CwrpvK1GxIUznOjnoDoqUnYROK18FUz0nAoXm&#43;ZDul64oeY5M6Z53Tjy0S4qDHftMrjHny/wRtoIZXjrttrZAJfTh54ORQrujZvwdRzKTZFEheMpdFln0lk&#43;J3BijR/2PI0PeTTTxsvsVtAMu&#43;Jm8wUMBBBkESo&#43;yIbH3SzdSUUQN0G5dOvcqy8mbdnTTTMGPqc0n2Shleso3HSvSB&#43;OFSQsTx3453LJ/NSzhXKrWrUpgN4f9jncHAPsU4nzw9vZePchJYcm/rJOpFx/juG&#43;efXqrL1ON0m34E0i0zPF7AMif23RAu8rPqXbc03fh4f1&#43;AKGrmqPsSlta/3YeaDQCsJT3D7WfJb3s73Bjx7gc2AjqsWpsCIonPDODzM0kxLn/J4mJs4ct&#43;LKXQUSisWqJ8ffg8zH5ewsST9L2Bz8Uhz2BmzsIg6xX40qlhOMS&#43;R07BLudSye7E5LwJmfnV1ORVOgkR/E7PxGyRHOJFc/ob/S02fd4k8B6zNIoHLa/&#43;LSuOu8HqELM0&#43;zWg&#43;l9K3IBfbiSiPxn1BQPMOJYM4CmzRHmdcyOaFzWxOz9Fe95jJ1l2AwKAcjZ1yu8K7hGv5upmSNg673yfPtENmDe1bDqxagCWVrQjaNUHcAbMTnimHjMskhQHVMMwMtZQitBahi3Ye&#43;1D7AS0VkvzV7wo&#43;KAwkGXA6X9voYiftCQpsHEHT35Xfj9XrOeYDcZwDwHBoDtyO9/nMK&#43;5&#43;45rkwUAzQT/POTAi5&#43;0Dw3nd0xXQ9VoVq8u8s6aTvRR&#43;kv6tlWdu&#43;UAtxLitYDn3Vxkd8airuPCTRmcTlK9ez/J7PTSWo4K6CjtiEZ&#43;ho&#43;DiffQUv9aS0fU&#43;h74BIyTMMeALpTB15xt1d7ZeKnqw6Q4gMz3KMfygOaSZE7VfYoTeWBsKONY&#43;qLhMXk&#43;C/ld5due5AWJENMnCgdID9eeXsnYiyRe1w9w8rXLwL/BWihHBvkL104HMx7iA0bKsSR2EKHeud5dZkvgP7TIbJO10MnFciBlgcYSu0zVVcvL&#43;vK5o89IcboUtfAUTgeN&#43;sTwJ0w60B7PM8pG8GJDrRSXU3CjwBnHXpl4GBhicTC9LCfxYLWaj6430st4O0uZiITAz5OwSv9Et73vU9TdtzGzCQC&#43;mwViZxHgIlqge/WeYBCFnmRdLMSTMunSVi7ZZb9UtlXUDJi5&#43;zbAVq3njkOKXxqHrEzG8ZqSZIYQ1uoQqHURFbhxl1I0Q9dOxcapRE52tK1&#43;yZt6RycqFJxJ71lJa451ByRk18PNlLJzbM/QLNjA&#43;plwUPkRfmUmwhQOCSsE20GUZfZLDdJY7yLJFGsEP2ttNQeBakJEntTVj2BIfXLwSgrcFZzXwKDUwIYWZqXYQ8RJ5LROyZOmpioJ8KhIOJHR8WByJVJirSdMAiAVZTKXOjXx9hiZAXTbJBxExKu03mO0rrTHNkPDC2AFKRpuiAk2vKbsJthFM7nUYD4SIqNEeXY9xQ4DJzuhPPyTcbz7D6QCCAqwlMeejTXkZobe8nd6xEENEIMCVXguuOuPLpbzygF0v0yvZZjQhARvGiRUK6fvrfQyu9cmSs8VzRI6e0TCYx4nsTwMg3htpaJNZoABIi3cTEAENprLYkTQTf/DVUpPoQECmfxml0uZDYYDAIAEVAAAAAAAAAAAAAAAAAAAAAAAAABz3wBEbPXXXXXdRkifG3I5ZZZZvwbYRPuDTU8qZ9Pi5qMRYcmuaLefT4NpXClPBo67qeOXclOLCAAA=="></p><h2>Chỉ định sử dụng</h2><p>Thuốc chống đông máu được chỉ định trong nhiều trường hợp:</p><ol><li>Phòng ngừa và điều trị huyết khối tĩnh mạch sâu (DVT)</li><li>Phòng ngừa và điều trị thuyên tắc phổi (PE)</li><li>Phòng ngừa đột quỵ ở bệnh nhân rung nhĩ</li><li>Sau phẫu thuật thay van tim</li><li>Điều trị hội chứng mạch vành cấp</li><li>Phòng ngừa biến chứng huyết khối ở bệnh nhân nằm viện kéo dài</li></ol><h2>Các yếu tố nguy cơ cần cân nhắc</h2><p>Trước khi bắt đầu điều trị bằng thuốc chống đông, cần đánh giá kỹ các yếu tố nguy cơ:</p><h3>Nguy cơ xuất huyết</h3><ul><li>Tiền sử xuất huyết</li><li>Tuổi cao (&gt;75 tuổi)</li><li>Suy thận hoặc suy gan</li><li>Huyết áp cao không kiểm soát</li><li>Sử dụng đồng thời thuốc chống kết tập tiểu cầu</li><li>Rối loạn đông máu bẩm sinh</li></ul><h3>Nguy cơ tương tác thuốc</h3><ul><li>Kháng sinh</li><li>Thuốc chống nấm</li><li>Thuốc chống viêm không steroid (NSAIDs)</li><li>Các thuốc ảnh hưởng đến cytochrome P450</li></ul><h2>Hướng dẫn sử dụng an toàn</h2><h3>Tuân thủ điều trị</h3><ol><li>Uống thuốc đúng giờ và đúng liều</li><li>Không tự ý ngừng thuốc</li><li>Thông báo cho bác sĩ nếu quên uống thuốc</li><li>Mang theo thẻ thông tin về việc đang sử dụng thuốc chống đông</li></ol><h3>Theo dõi và kiểm tra</h3><ol><li>Xét nghiệm INR định kỳ (đối với warfarin)</li><li>Kiểm tra chức năng thận và gan</li><li>Theo dõi các dấu hiệu xuất huyết</li><li>Đánh giá định kỳ hiệu quả điều trị</li></ol><h3>Chế độ ăn uống</h3><ol><li>Duy trì chế độ ăn ổn định (đặc biệt với vitamin K khi dùng warfarin)</li><li>Tránh uống rượu bia</li><li>Uống đủ nước</li><li>Thận trọng với thực phẩm chức năng và thảo dược</li></ol><h2>Xử trí các tình huống đặc biệt</h2><h3>Chuẩn bị phẫu thuật</h3><ol><li>Thông báo cho bác sĩ về việc đang sử dụng thuốc chống đông</li><li>Tuân thủ hướng dẫn ngừng thuốc trước phẫu thuật</li><li>Có thể cần điều trị cầu nối bằng heparin</li><li>Lên kế hoạch tái sử dụng thuốc sau phẫu thuật</li></ol><h3>Chảy máu nhẹ</h3><ol><li>Áp lực trực tiếp lên vị trí chảy máu</li><li>Theo dõi sát tình trạng</li><li>Liên hệ bác sĩ nếu chảy máu kéo dài</li><li>Ghi nhận thời gian và mức độ chảy máu</li></ol><h3>Xuất huyết nặng</h3><ol><li>Ngừng thuốc ngay lập tức</li><li>Tìm kiếm hỗ trợ y tế khẩn cấp</li><li>Có thể cần sử dụng thuốc đối kháng</li><li>Theo dõi sát các dấu hiệu sinh tồn</li></ol><h2>Quản lý thuốc chống đông trong các nhóm đặc biệt</h2><h3>Người cao tuổi</h3><ol><li>Điều chỉnh liều phù hợp</li><li>Theo dõi sát các tác dụng phụ</li><li>Đánh giá nguy cơ té ngã</li><li>Kiểm tra tương tác thuốc thường xuyên</li></ol><h3>Phụ nữ mang thai</h3><ol><li>Tránh sử dụng warfarin trong tam cá nguyệt đầu</li><li>Ưu tiên sử dụng heparin</li><li>Theo dõi sát thai nhi</li><li>Lên kế hoạch chuyển dạ an toàn</li></ol><h3>Bệnh nhân suy thận</h3><ol><li>Điều chỉnh liều theo mức độ suy thận</li><li>Theo dõi chức năng thận thường xuyên</li><li>Cân nhắc chuyển đổi thuốc nếu cần</li><li>Tránh các thuốc độc thận</li></ol><h2>Giáo dục bệnh nhân</h2><h3>Nhận biết dấu hiệu cảnh báo</h3><ol><li>Chảy máu bất thường</li><li>Bầm tím dễ dàng</li><li>Phân đen hoặc có máu</li><li>Đau đầu dữ dội</li></ol><h3>Phòng ngừa chấn thương</h3><ol><li>Tránh các hoạt động có nguy cơ chấn thương cao</li><li>Sử dụng bàn chải đánh răng mềm</li><li>Cẩn thận khi cắt móng tay</li><li>Đảm bảo môi trường sống an toàn</li></ol><h3>Tương tác thuốc và thực phẩm</h3><ol><li>Kiểm tra với bác sĩ trước khi sử dụng thuốc mới</li><li>Tránh các thực phẩm chức năng chưa được kiểm chứng</li><li>Duy trì chế độ ăn ổn định</li><li>Ghi chép lại các phản ứng bất thường</li></ol><h2>Theo dõi và đánh giá</h2><h3>Đánh giá định kỳ</h3><ol><li>Kiểm tra hiệu quả điều trị</li><li>Đánh giá các tác dụng phụ</li><li>Cập nhật kế hoạch điều trị</li><li>Xem xét việc điều chỉnh liều</li></ol><h3>Ghi chép và theo dõi</h3><ol><li>Ghi lại thời gian uống thuốc</li><li>Theo dõi các triệu chứng bất thường</li><li>Lưu giữ kết quả xét nghiệm</li><li>Ghi nhận các tương tác thuốc</li></ol><h2>Kết luận</h2><p>Sử dụng an toàn thuốc chống đông đòi hỏi sự phối hợp chặt chẽ giữa bác sĩ và bệnh nhân. Việc tuân thủ điều trị, theo dõi sát và nhận biết các dấu hiệu cảnh báo là những yếu tố quan trọng để đảm bảo hiệu quả và an toàn trong điều trị. Giáo dục bệnh nhân và gia đình về cách sử dụng thuốc đúng cách, nhận biết các tác dụng phụ và biết cách xử trí các tình huống khẩn cấp là những yếu tố then chốt để đạt được kết quả điều trị tối ưu.</p><h2>Khuyến nghị</h2><ol><li>Luôn mang theo thông tin về việc đang sử dụng thuốc chống đông</li><li>Duy trì lịch hẹn khám định kỳ với bác sĩ</li><li>Thông báo cho các nhân viên y tế về việc đang sử dụng thuốc chống đông trước khi thực hiện bất kỳ thủ thuật y tế nào</li><li>Xây dựng kế hoạch dự phòng cho các tình huống khẩn cấp</li><li>Giữ liên lạc thường xuyên với nhóm chăm sóc sức khỏe</li></ol><p>Việc sử dụng an toàn thuốc chống đông là một quá trình đòi hỏi sự cam kết và phối hợp chặt chẽ giữa nhiều bên liên quan. Với sự hiểu biết đầy đủ và tuân thủ các nguyên tắc an toàn, bệnh nhân có thể đạt được lợi ích tối đa từ việc điều trị bằng thuốc chống đông trong khi giảm thiểu các rủi ro có thể xảy ra.</p>
             <div class="share-section">
@@ -473,54 +475,60 @@ function waitForResponsiveVoice() {
 
 <script>
 
+let currentMP3File = null;
+let audioPreviewUrl = null;
+let isPlaying = false;
+let isTTSPlaying = false;
+let isMP3Playing = false;
+let ttsInitialized = false;
+let currentParagraphIndex = 0;
+let paragraphs = [];
+
+
 const TTS_CONFIG = {
-   VOICE_OPTIONS: {
-       'Vietnamese Female': {
-           name: 'Vietnamese Female',
-           lang: 'vi-VN',
-           rate: 1,
-           pitch: 1.1,
-           volume: 1
-       },
-       'Vietnamese Male': {
-           name: 'Vietnamese Male',
-           lang: 'vi-VN',
-           rate: 1,
-           pitch: 0.9,
-           volume: 1
-       }
-   },
-   PAUSE_BETWEEN: 500 
+    VOICE_OPTIONS: {
+        'Vietnamese Female': {
+            name: 'Vietnamese Female',
+            lang: 'vi-VN',
+            rate: 1,
+            pitch: 1.1,
+            volume: 1
+        },
+        'Vietnamese Male': {
+            name: 'Vietnamese Male',
+            lang: 'vi-VN',
+            rate: 1,
+            pitch: 0.9,
+            volume: 1
+        }
+    },
+    PAUSE_BETWEEN: 500 
 };
 
 
-
-
-
-document.addEventListener('DOMContentLoaded', async function() {
-    try {
-        
-        await waitForResponsiveVoice();
-        console.log('ResponsiveVoice đã load và sẵn sàng');
-
-        
-        initTTS();
-        checkForMP3();
-
-    } catch (error) {
-        console.error('Không thể khởi tạo ResponsiveVoice:', error);
+document.addEventListener('DOMContentLoaded', function() {
+    
+    if (typeof responsiveVoice !== 'undefined') {
+        responsiveVoice.OnVoiceReady = function() {
+            console.log('ResponsiveVoice sẵn sàng');
+            initTTS();
+            setupMP3EventListeners();
+        };
     }
+
+    
+    window.scrollTo(0, 0);
+    updateParentHeight();
 });
+
+
+new ResizeObserver(updateParentHeight).observe(document.body);
 
 
 function initTTS() {
     console.log('Đang khởi tạo TTS');
     try {
-        if (!window.responsiveVoice) {
-            throw new Error('ResponsiveVoice chưa load');
-        }
-
-        if (!window.responsiveVoice.voiceSupport()) {
+        if (!responsiveVoice.voiceSupport()) {
             throw new Error('Trình duyệt không hỗ trợ TTS');
         }
 
@@ -544,112 +552,22 @@ function initTTS() {
 }
 
 
-function showError(message) {
-    console.error(message);
-    const statusText = document.getElementById('statusText');
-    const status = document.getElementById('status');
-    if (statusText && status) {
-        statusText.textContent = message;
-        status.className = 'status active error';
-    }
-}
-
-
-function checkForMP3() {
-   const pathParts = window.location.pathname.split('/');
-   const newsId = pathParts[pathParts.length - 1].replace('.html', '');
-   const mp3Path = `${newsId}.mp3`;
-   
-   const audio = document.createElement('audio');
-   audio.addEventListener('canplaythrough', function() {
-       setupMP3Player(mp3Path);
-   });
-
-   audio.addEventListener('error', function() {
-       console.log('Không tìm thấy file MP3');
-       document.getElementById('mp3Button').disabled = true;
-   });
-
-   audio.src = mp3Path;
-   audio.load();
-}
-
-
-function setupMP3Player(mp3Path) {
-   const mp3Player = document.getElementById('mp3Player');
-   document.getElementById('mp3Source').src = mp3Path;
-   mp3Player.load();
-
-   
-   const mp3Button = document.getElementById('mp3Button');
-   mp3Button.disabled = false;
-   mp3Button.onclick = toggleMP3;
-
-   
-   mp3Player.addEventListener('ended', function() {
-       isMP3Playing = false;
-       resetMP3Button();
-   });
-}
-
-
-function toggleMP3() {
-   if (isPlaying) {
-       stopReading(); 
-   }
-
-   const mp3Player = document.getElementById('mp3Player');
-   const mp3Button = document.getElementById('mp3Button');
-
-   if (!isMP3Playing) {
-       mp3Player.style.display = 'block';
-       mp3Player.play();
-       isMP3Playing = true;
-       mp3Button.innerHTML = `
-           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-               <rect x="6" y="4" width="4" height="16"></rect>
-               <rect x="14" y="4" width="4" height="16"></rect>
-           </svg>
-           <span>Tạm dừng</span>`;
-   } else {
-       mp3Player.pause();
-       isMP3Playing = false;
-       resetMP3Button();
-   }
-}
-
-
-function resetMP3Button() {
-   const mp3Button = document.getElementById('mp3Button');
-   mp3Button.innerHTML = `
-       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-           <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
-           <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-           <line x1="12" y1="19" x2="12" y2="23"/>
-           <line x1="8" y1="23" x2="16" y2="23"/>
-       </svg>
-       <span>Audio đã thu</span>`;
-}
-
-
-
-
 function setupElements() {
-   const elements = ['playButton', 'voiceSelect', 'rateSelect', 'status', 'progress'];
-   elements.forEach(id => {
-       if (!document.getElementById(id)) {
-           throw new Error(`Thiếu element: ${id}`);
-       }
-   });
+    const elements = ['playButton', 'voiceSelect', 'rateSelect', 'status', 'progress'];
+    elements.forEach(id => {
+        if (!document.getElementById(id)) {
+            throw new Error(`Thiếu element: ${id}`);
+        }
+    });
 }
 
 
 function loadContentToRead() {
     const title = document.querySelector('.article-title');
-    const paragraphElements = document.querySelectorAll('.article-content p');
-
+    const contentElements = document.querySelectorAll('.article-content p, .article-content div > p, .article-content ul > li, .article-content ol > li');
+    
     console.log('Title element:', title);
-    console.log('Paragraph elements:', paragraphElements);
+    console.log('Content elements:', contentElements);
 
     paragraphs = [];
 
@@ -662,207 +580,29 @@ function loadContentToRead() {
     }
 
     
-    const content = document.querySelector('.article-content');
-    if (content) {
-        
-        const textElements = content.querySelectorAll('p, div > p, ul > li, ol > li');
-        textElements.forEach((element) => {
-            const text = element.textContent.trim();
-            if (text.length > 0) {
-                paragraphs.push({
-                    element: element,
-                    text: text
-                });
-            }
-        });
-    }
+    contentElements.forEach(element => {
+        const text = element.textContent.trim();
+        if (text.length > 0) {
+            paragraphs.push({
+                element: element,
+                text: text
+            });
+        }
+    });
 
     console.log('Total paragraphs loaded:', paragraphs.length);
     console.log('Paragraphs content:', paragraphs.map(p => p.text));
 }
 
 
-
-
-
-function startReading() {
-   isPlaying = true;
-   currentParagraphIndex = 0;
-   updateUI('reading');
-   readNextParagraph();
-}
-
-
-
-
-function highlightParagraph(index) {
-   if (paragraphs[index]) {
-       paragraphs[index].element.classList.add('current');
-       scrollToParagraph(paragraphs[index].element);
-   }
-}
-
-
-function unhighlightParagraph(index) {
-   if (paragraphs[index]) {
-       paragraphs[index].element.classList.remove('current');
-   }
-}
-
-
-function unhighlightAll() {
-   paragraphs.forEach(p => p.element.classList.remove('current'));
-}
-
-
-function scrollToParagraph(element) {
-   element.scrollIntoView({
-       behavior: 'smooth',
-       block: 'center'
-   });
-}
-
-
-function updateUI(state) {
-   const button = document.getElementById('playButton');
-   if (button) {
-       button.innerHTML = isPlaying ? 
-           `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-               <rect x="6" y="4" width="4" height="16"></rect>
-               <rect x="14" y="4" width="4" height="16"></rect>
-           </svg>
-           <span>Tạm dừng</span>` :
-           `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-               <polygon points="5 3 19 12 5 21 5 3"></polygon>
-           </svg>
-           <span>Đọc bài viết</span>`;
-   }
-   updateStatus(state);
-}
-
-// Update status message
-function updateStatus(state) {
-   const status = document.getElementById('status');
-   const statusText = document.getElementById('statusText');
-   if (status && statusText) {
-       status.className = 'status active ' + state;
-       statusText.textContent = typeof state === 'string' ? state : 
-           state === 'reading' ? 'Đang đọc...' :
-           state === 'paused' ? 'Đã tạm dừng' :
-           state === 'finished' ? 'Đã đọc xong' : '';
-   }
-}
-
-
-function updateProgress(percent) {
-   const progress = document.getElementById('progress');
-   if (progress) {
-       progress.style.width = percent + '%';
-   }
-}
-
-
-function handleVoiceChange() {
-   if (isPlaying) {
-       restartReading();
-   }
-}
-
-
-function handleRateChange() {
-   if (isPlaying) {
-       restartReading();
-   }
-}
-
-
-function restartReading() {
-   stopReading();
-   startReading();
-}
-
-
-function showError(message) {
-   console.error(message);
-   updateStatus('error');
-   const statusText = document.getElementById('statusText');
-   if (statusText) {
-       statusText.textContent = message;
-   }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-function toggleMP3() {
-    console.log('toggleMP3 called');
-    if (isPlaying) {
-        stopReading(); 
-    }
-
-    const mp3Player = document.getElementById('mp3Player');
-    const mp3Button = document.getElementById('mp3Button');
-
-    
-    console.log('mp3Player:', mp3Player);
-    console.log('mp3Button:', mp3Button);
-
-    if (!isMP3Playing) {
-        mp3Player.style.display = 'block';
-        mp3Player.play();
-        isMP3Playing = true;
-        mp3Button.innerHTML = `...`; 
-    } else {
-        mp3Player.pause();
-        isMP3Playing = false;
-        resetMP3Button();
-    }
-}
-
-
-function setupMP3Player(mp3Path) {
-    console.log('Setting up MP3 player with path:', mp3Path);
-    
-    const mp3Player = document.getElementById('mp3Player');
-    const mp3Button = document.getElementById('mp3Button');
-    
-    if (!mp3Player || !mp3Button) {
-        console.error('Missing MP3 elements');
-        return;
-    }
-
-    
-    document.getElementById('mp3Source').src = mp3Path;
-    mp3Player.load();
-
-    
-    mp3Button.addEventListener('click', function(e) {
-        e.preventDefault();
-        toggleMP3();
-    });
-
-    
-    mp3Button.disabled = false;
-
-    console.log('MP3 player setup complete');
-}
-
-
 function setupEventListeners() {
     console.log('Setting up event listeners');
+
     
     const playButton = document.getElementById('playButton');
     const voiceSelect = document.getElementById('voiceSelect');
     const rateSelect = document.getElementById('rateSelect');
+    const mp3Button = document.getElementById('mp3Button');
 
     if (playButton) {
         playButton.addEventListener('click', function(e) {
@@ -880,230 +620,126 @@ function setupEventListeners() {
         rateSelect.addEventListener('change', handleRateChange);
     }
 
+    if (mp3Button) {
+        mp3Button.addEventListener('click', toggleMP3);
+    }
+
     console.log('Event listeners setup complete');
 }
 
 
-function toggleSpeech() {
-    console.log('toggleSpeech called, ttsInitialized:', ttsInitialized);
-    console.log('isPlaying:', isPlaying);
 
-    if (!ttsInitialized) {
-        console.error('TTS not initialized');
-        showError('TTS chưa sẵn sàng');
-        return;
-    }
+function toggleMP3() {
+    console.log('toggleMP3 called');
 
-    if (isMP3Playing) {
-        const mp3Player = document.getElementById('mp3Player');
-        mp3Player.pause();
-        isMP3Playing = false;
-        resetMP3Button();
-    }
+    const mp3Player = document.getElementById('mp3Player');
+    const mp3Button = document.getElementById('mp3Button');
 
-    if (!isPlaying) {
-        startReading();
-    } else {
-        stopReading();
-    }
-}
-
-
-
-
-
-
-
-
-
-function toggleSpeech() {
-    console.log('toggleSpeech called, ttsInitialized:', ttsInitialized);
-    console.log('isPlaying:', isPlaying);
-
-    
-    if (!ttsInitialized && !initTTS()) {
-        showError('TTS chưa sẵn sàng, vui lòng thử lại');
+    if (!mp3Player || !mp3Button) {
+        console.error('MP3 elements not found');
         return;
     }
 
     
-    if (isMP3Playing) {
-        const mp3Player = document.getElementById('mp3Player');
-        mp3Player.pause();
-        isMP3Playing = false;
-        resetMP3Button();
-    }
-
-    if (!isPlaying) {
-        startReading();
-    } else {
+    if (isTTSPlaying) {
         stopReading();
     }
-}
 
-
-
-
-
-
-
-
-function toggleSpeech() {
-    console.log('toggleSpeech called, ttsInitialized:', ttsInitialized);
-    console.log('isPlaying before toggle:', isPlaying);
-
-    if (!ttsInitialized) {
-        showError('TTS chưa sẵn sàng');
-        return;
-    }
-
-    if (isMP3Playing) {
-        const mp3Player = document.getElementById('mp3Player');
-        mp3Player.pause();
-        isMP3Playing = false;
-        resetMP3Button();
-    }
-
-    isPlaying = !isPlaying; 
-    console.log('isPlaying after toggle:', isPlaying);
-
-    if (isPlaying) {
-        startReading();
-    } else {
-        stopReading();
-    }
-}
-
-
-
-function setupEventListeners() {
-    console.log('Setting up event listeners');
     
+    mp3Player.style.display = 'block';
+
     
-    const playButton = document.getElementById('playButton');
-    if (playButton) {
-        playButton.removeEventListener('click', toggleSpeech); 
-        playButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation(); 
-            console.log('TTS button clicked');
+    if (mp3Player.paused) {
+        
+        mp3Player.load();
+        mp3Player.addEventListener('canplaythrough', function playAudio() {
             
-            if (!isPlaying) {
-                isPlaying = true;
-                startReading();
-            } else {
-                isPlaying = false;
-                stopReading();
-            }
+            mp3Player.removeEventListener('canplaythrough', playAudio);
+            
+            
+            mp3Player.play()
+                .then(() => {
+                    console.log('MP3 playing successfully');
+                    isMP3Playing = true;
+                    mp3Button.innerHTML = `
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="6" y="4" width="4" height="16"></rect>
+                            <rect x="14" y="4" width="4" height="16"></rect>
+                        </svg>
+                        <span>Tạm dừng</span>`;
+                })
+                .catch(error => {
+                    console.error('Error playing MP3:', error);
+                    isMP3Playing = false;
+                    showToast('Lỗi phát audio', 'error');
+                });
+        }, { once: true }); 
+    } else {
+        
+        mp3Player.pause();
+        isMP3Playing = false;
+        mp3Button.innerHTML = `
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            </svg>
+            <span>Audio đã thu</span>`;
+    }
+}
+
+
+function setupMP3EventListeners() {
+    const mp3Player = document.getElementById('mp3Player');
+    const mp3Button = document.getElementById('mp3Button');
+
+    if (mp3Player && mp3Button) {
+        mp3Player.addEventListener('ended', function() {
+            isMP3Playing = false;
+            mp3Button.innerHTML = `
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                </svg>
+                <span>Audio đã thu</span>`;
         });
     }
+}
+
+
+function toggleSpeech() {
+    console.log('toggleSpeech called, ttsInitialized:', ttsInitialized);
+    console.log('isPlaying:', isPlaying);
 
     
-    const voiceSelect = document.getElementById('voiceSelect');
-    const rateSelect = document.getElementById('rateSelect');
-
-    if (voiceSelect) {
-        voiceSelect.addEventListener('change', handleVoiceChange);
-    }
-
-    if (rateSelect) {
-        rateSelect.addEventListener('change', handleRateChange);
-    }
-
-    console.log('Event listeners setup complete');
-}
-
-function readNextParagraph() {
-    console.log('Reading paragraph:', currentParagraphIndex + 1, 'of', paragraphs.length);
-    console.log('isPlaying status:', isPlaying);
-
-    if (currentParagraphIndex < paragraphs.length) {
-        try {
-            const voiceName = document.getElementById('voiceSelect').value;
-            const rate = parseFloat(document.getElementById('rateSelect').value);
-
-            console.log('Current text:', paragraphs[currentParagraphIndex].text);
-            console.log('Voice:', voiceName, 'Rate:', rate);
-
-            responsiveVoice.speak(
-                paragraphs[currentParagraphIndex].text,
-                voiceName,
-                {
-                    rate: rate,
-                    onstart: () => {
-                        console.log(`Bắt đầu đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
-                        updateStatus(`Đang đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
-                        highlightParagraph(currentParagraphIndex);
-                        updateProgress(((currentParagraphIndex + 1) / paragraphs.length) * 100);
-                    },
-                    onend: () => {
-                        console.log(`Kết thúc đọc đoạn ${currentParagraphIndex + 1}`);
-                        unhighlightParagraph(currentParagraphIndex);
-                        
-                        
-                        currentParagraphIndex++;
-                        if (isPlaying && currentParagraphIndex < paragraphs.length) {
-                            console.log('Proceeding to next paragraph');
-                            readNextParagraph(); 
-                        } else if (currentParagraphIndex >= paragraphs.length) {
-                            console.log('Reached end of content');
-                            finishReading();
-                        }
-                    }
-                }
-            );
-        } catch (error) {
-            console.error('Error in readNextParagraph:', error);
-            stopReading();
+    if (isMP3Playing) {
+        const mp3Player = document.getElementById('mp3Player');
+        const mp3Button = document.getElementById('mp3Button');
+        
+        mp3Player.pause();
+        isMP3Playing = false;
+        if (mp3Button) {
+            mp3Button.innerHTML = `
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                </svg>
+                <span>Audio đã thu</span>`;
         }
+    }
+
+    if (!ttsInitialized) {
+        showError('TTS chưa sẵn sàng');
+        return;
+    }
+
+    if (!isPlaying) {
+        startReading();
+        isTTSPlaying = true;
     } else {
-        finishReading();
+        stopReading();
+        isTTSPlaying = false;
     }
 }
-
-
-function setupPlayButton() {
-    const playButton = document.getElementById('playButton');
-    if (playButton) {
-        playButton.onclick = function(e) {
-            e.preventDefault();
-            console.log('Play button clicked');
-            if (!isPlaying) {
-                isPlaying = true;
-                currentParagraphIndex = 0; 
-                startReading();
-            } else {
-                isPlaying = false;
-                stopReading();
-            }
-            updateUI(isPlaying ? 'reading' : 'paused');
-        };
-    }
-}
-
-
-
-
-
-
-let isPlaying = false;
-let isMP3Playing = false;
-let currentParagraphIndex = 0;
-let paragraphs = [];
-let ttsInitialized = false;
-
-
-
-function stopReading() {
-    console.log('Stopping reading');
-    isPlaying = false;
-    if (responsiveVoice) {
-        responsiveVoice.cancel(); 
-    }
-    unhighlightAll();
-    updateUI('paused');
-}
-
 
 function startReading() {
     console.log('Starting reading');
@@ -1114,140 +750,193 @@ function startReading() {
 }
 
 
-function handlePlayButtonClick() {
-    console.log('Play button clicked, current state:', isPlaying);
-    if (!isPlaying) {
-        startReading();
-    } else {
-        stopReading();
-    }
-}
-
-
-function setupPlayButton() {
-    const playButton = document.getElementById('playButton');
-    if (playButton) {
-        playButton.onclick = handlePlayButtonClick;
-    }
-}
-
-
 function readNextParagraph() {
     console.log('Reading paragraph:', currentParagraphIndex + 1, 'of', paragraphs.length);
     console.log('isPlaying status:', isPlaying);
-
-    if (!isPlaying) {
-        console.log('Reading stopped');
-        return;
-    }
 
     if (currentParagraphIndex < paragraphs.length) {
         try {
             const voiceName = document.getElementById('voiceSelect').value;
             const rate = parseFloat(document.getElementById('rateSelect').value);
+            const voiceConfig = TTS_CONFIG.VOICE_OPTIONS[voiceName];
+
+            updateProgress(((currentParagraphIndex + 1) / paragraphs.length) * 100);
+            highlightParagraph(currentParagraphIndex);
 
             console.log('Current text:', paragraphs[currentParagraphIndex].text);
-            console.log('Voice:', voiceName, 'Rate:', rate);
 
             responsiveVoice.speak(
                 paragraphs[currentParagraphIndex].text,
                 voiceName,
                 {
+                    pitch: voiceConfig.pitch,
                     rate: rate,
-                    onstart: () => {
+                    volume: voiceConfig.volume,
+                    lang: voiceConfig.lang,
+                    onstart: function() {
                         console.log(`Bắt đầu đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
                         updateStatus(`Đang đọc đoạn ${currentParagraphIndex + 1}/${paragraphs.length}`);
-                        highlightParagraph(currentParagraphIndex);
-                        updateProgress(((currentParagraphIndex + 1) / paragraphs.length) * 100);
                     },
-                    onend: () => {
+                    onend: function() {
                         console.log(`Kết thúc đọc đoạn ${currentParagraphIndex + 1}`);
                         unhighlightParagraph(currentParagraphIndex);
+                        currentParagraphIndex++;
+
                         
-                        if (isPlaying) {
-                            currentParagraphIndex++;
-                            if (currentParagraphIndex < paragraphs.length) {
-                                console.log('Moving to next paragraph');
-                                readNextParagraph();
-                            } else {
-                                console.log('Reached end of content');
-                                finishReading();
-                            }
+                        if (isPlaying && currentParagraphIndex < paragraphs.length) {
+                            console.log('Moving to next paragraph after delay');
+                            setTimeout(readNextParagraph, TTS_CONFIG.PAUSE_BETWEEN);
+                        } else if (currentParagraphIndex >= paragraphs.length) {
+                            console.log('Reached end of content');
+                            finishReading();
                         }
                     }
                 }
             );
         } catch (error) {
-            console.error('Error in readNextParagraph:', error);
+            console.error('Error reading paragraph:', error);
+            showError(error.message);
             stopReading();
         }
     } else {
+        console.log('No more paragraphs to read');
         finishReading();
     }
 }
 
 
-function setupEventListeners() {
-    console.log('Setting up event listeners');
-    setupPlayButton();
-    
-    
-    const voiceSelect = document.getElementById('voiceSelect');
-    const rateSelect = document.getElementById('rateSelect');
-
-    if (voiceSelect) {
-        voiceSelect.onchange = handleVoiceChange;
-    }
-
-    if (rateSelect) {
-        rateSelect.onchange = handleRateChange;
-    }
-
-    console.log('Event listeners setup complete');
+function stopReading() {
+    console.log('Stopping reading');
+    responsiveVoice.cancel();
+    isPlaying = false;
+    isTTSPlaying = false;
+    unhighlightAll();
+    updateUI('paused');
 }
 
 
+function finishReading() {
+    console.log('Finishing reading');
+    isPlaying = false;
+    isTTSPlaying = false;
+    updateProgress(100);
+    updateUI('finished');
+    unhighlightAll();
+}
 
 
+function highlightParagraph(index) {
+    if (paragraphs[index]) {
+        paragraphs[index].element.classList.add('current');
+        scrollToParagraph(paragraphs[index].element);
+    }
+}
 
 
+function unhighlightParagraph(index) {
+    if (paragraphs[index]) {
+        paragraphs[index].element.classList.remove('current');
+    }
+}
 
 
+function unhighlightAll() {
+    paragraphs.forEach(p => p.element.classList.remove('current'));
+}
+
+function scrollToParagraph(element) {
+    element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+    });
+}
 
 
+function updateUI(state) {
+    const button = document.getElementById('playButton');
+    if (button) {
+        button.innerHTML = isPlaying ? 
+            `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="6" y="4" width="4" height="16"></rect>
+                <rect x="14" y="4" width="4" height="16"></rect>
+            </svg>
+            <span>Tạm dừng</span>` :
+            `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <span>Đọc bài viết</span>`;
+    }
+    updateStatus(state);
+}
+
+// Update status
+function updateStatus(state) {
+    const status = document.getElementById('status');
+    const statusText = document.getElementById('statusText');
+    if (status && statusText) {
+        status.className = 'status active ' + state;
+        statusText.textContent = typeof state === 'string' ? state : 
+            state === 'reading' ? 'Đang đọc...' :
+            state === 'paused' ? 'Đã tạm dừng' :
+            state === 'finished' ? 'Đã đọc xong' : '';
+    }
+}
 
 
+function updateProgress(percent) {
+    const progress = document.getElementById('progress');
+    if (progress) {
+        progress.style.width = percent + '%';
+    }
+}
 
 
+function handleVoiceChange() {
+    if (isPlaying) {
+        restartReading();
+    }
+}
 
 
+function handleRateChange() {
+    if (isPlaying) {
+        restartReading();
+    }
+}
 
 
+function restartReading() {
+    stopReading();
+    startReading();
+}
 
-window.onload = function() {
-   window.scrollTo(0, 0);
-   updateParentHeight();
+
+function showError(message) {
+    console.error(message);
+    const statusText = document.getElementById('statusText');
+    const status = document.getElementById('status');
+    if (statusText && status) {
+        statusText.textContent = message;
+        status.className = 'status active error';
+    }
 }
 
 
 function updateParentHeight() {
-   const height = document.documentElement.scrollHeight;
-   window.parent.postMessage({ height: height }, '*');
+    const height = document.documentElement.scrollHeight;
+    window.parent.postMessage({ height: height }, '*');
 }
-
-
-new ResizeObserver(updateParentHeight).observe(document.body);
 
 
 function shareOnFacebook() {
-   const url = window.location.href;
-   window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url));
+    const url = window.location.href;
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url));
 }
 
 function shareOnTwitter() {
-   const url = window.location.href;
-   const title = document.title;
-   window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title));
+    const url = window.location.href;
+    const title = document.title;
+    window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title));
 }
 </script>
 </body>
