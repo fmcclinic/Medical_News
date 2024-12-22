@@ -463,9 +463,9 @@ function waitForResponsiveVoice() {
             <div class="related-grid">
                 
       <div class="related-article">
-        <img src="https://github.com/fmcclinic/Medical_News/blob/main/news/image/Chu%E1%BA%A9n%20b%E1%BB%8B%20sinh%20n%E1%BB%9F%20Nh%E1%BB%AFng%20%C4%91i%E1%BB%81u%20m%E1%BA%B9%20b%E1%BA%A7u%20c%E1%BA%A7n%20bi%E1%BA%BFt.jpg?raw=true" alt="Chuẩn bị sinh nở - Những điều mẹ bầu cần biết">
+        <img src="https://github.com/fmcclinic/Medical_News/blob/main/news/image/Chu%E1%BA%A9n%20b%E1%BB%8B%20sinh%20n%E1%BB%9F%20Nh%E1%BB%AFng%20%C4%91i%E1%BB%81u%20m%E1%BA%B9%20b%E1%BA%A7u%20c%E1%BA%A7n%20bi%E1%BA%BFt.jpg?raw=true" alt="Chuẩn bị sinh nở - Những điều mẹ bầu cần biết.">
         <h3>
-          <a href="../../articles/NEWS_20241222175335/NEWS_20241222175335.html">Chuẩn bị sinh nở - Những điều mẹ bầu cần biết</a>
+          <a href="../../articles/NEWS_20241222175335/NEWS_20241222175335.html">Chuẩn bị sinh nở - Những điều mẹ bầu cần biết.</a>
         </h3>
         <span class="date">22/12/2024</span>
       </div>
@@ -644,12 +644,15 @@ function setupEventListeners() {
 }
 
 
-
 function toggleMP3() {
     console.log('toggleMP3 called');
 
     const mp3Player = document.getElementById('mp3Player');
     const mp3Button = document.getElementById('mp3Button');
+
+    console.log('MP3 Player:', mp3Player);
+    console.log('MP3 Button:', mp3Button);
+    console.log('Current MP3 state - paused:', mp3Player?.paused);
 
     if (!mp3Player || !mp3Button) {
         console.error('MP3 elements not found');
@@ -657,20 +660,36 @@ function toggleMP3() {
     }
 
     
-    if (isTTSPlaying) {
-        stopReading();
+    const pathParts = window.location.pathname.split('/');
+    const newsId = pathParts[pathParts.length - 1].replace('.html', '');
+    
+    
+    const mp3Path = `${newsId}.mp3`;
+
+    console.log('MP3 Path:', mp3Path);
+
+    
+    const mp3Source = mp3Player.querySelector('source');
+    if (!mp3Source?.src) {
+        console.log('Setting MP3 source to:', mp3Path);
+        mp3Source.src = mp3Path;
     }
+
+    
+    console.log('Current source:', mp3Source.src);
 
     
     mp3Player.style.display = 'block';
 
-    
     if (mp3Player.paused) {
+        console.log('Attempting to play MP3...');
+        
         
         mp3Player.load();
-        mp3Player.addEventListener('canplaythrough', function playAudio() {
-            
-            mp3Player.removeEventListener('canplaythrough', playAudio);
+        
+        mp3Player.addEventListener('loadeddata', function onLoad() {
+            console.log('MP3 loaded, attempting to play');
+            mp3Player.removeEventListener('loadeddata', onLoad);
             
             
             mp3Player.play()
@@ -687,11 +706,10 @@ function toggleMP3() {
                 .catch(error => {
                     console.error('Error playing MP3:', error);
                     isMP3Playing = false;
-                    showToast('Lỗi phát audio', 'error');
                 });
-        }, { once: true }); 
+        });
     } else {
-        
+        console.log('Pausing MP3...');
         mp3Player.pause();
         isMP3Playing = false;
         mp3Button.innerHTML = `
@@ -701,6 +719,67 @@ function toggleMP3() {
             </svg>
             <span>Audio đã thu</span>`;
     }
+}
+
+
+
+
+function checkMP3Source() {
+   const mp3Player = document.getElementById('mp3Player');
+   const source = document.getElementById('mp3Source');
+   const mp3Button = document.getElementById('mp3Button');
+   
+   console.log('Checking MP3 source elements:');
+   console.log('Audio element:', mp3Player);
+   console.log('Source element:', source);
+   console.log('Button element:', mp3Button);
+   
+   if (mp3Player && source) {
+       console.log('Current source:', source.src);
+       console.log('Audio ready state:', mp3Player.readyState);
+       console.log('Audio paused state:', mp3Player.paused);
+       console.log('Audio current time:', mp3Player.currentTime);
+       console.log('Audio duration:', mp3Player.duration);
+
+       
+       const isValidSource = source.src && source.src.length > 0;
+       console.log('Is valid source:', isValidSource);
+
+       
+       if (isValidSource) {
+           const testAudio = new Audio();
+           testAudio.src = source.src;
+           
+           testAudio.addEventListener('loadedmetadata', () => {
+               console.log('MP3 file is accessible');
+               mp3Button.disabled = false;
+           });
+
+           testAudio.addEventListener('error', () => {
+               console.error('Error loading MP3 file');
+               mp3Button.disabled = true;
+               showError('Không thể tải file MP3');
+           });
+       } else {
+           console.log('No MP3 source set');
+           mp3Button.disabled = true;
+       }
+
+       
+       const events = mp3Player.eventNames?.() || [];
+       console.log('Bound events:', events);
+
+       return {
+           hasSource: isValidSource,
+           readyState: mp3Player.readyState,
+           isPaused: mp3Player.paused,
+           currentTime: mp3Player.currentTime,
+           duration: mp3Player.duration
+       };
+   } else {
+       console.error('Required MP3 elements not found');
+       return null;
+   }
 }
 
 
