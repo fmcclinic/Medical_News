@@ -15,11 +15,7 @@
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
-<<<<<<< HEAD
-            background: #fff;
-=======
             background: #f9f9f9;
->>>>>>> 822e7db973f782b5ad52cc14063fe3ea96dbd257
         }
 
         .specialist-section {
@@ -55,14 +51,9 @@
         }
 
         .specialty-image {
-<<<<<<< HEAD
-            flex: 0 0 180px;
-            height: 250px;
-=======
             width: 180px;
-            height: 180px;
             min-width: 180px;
->>>>>>> 822e7db973f782b5ad52cc14063fe3ea96dbd257
+            height: 180px;
             position: relative;
             overflow: hidden;
         }
@@ -71,12 +62,14 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: top center;
-            transition: transform 0.3s ease;
+            transition: opacity 0.5s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
-        .specialty:hover .specialty-image img {
-            transform: scale(1.1);
+        .specialty-image img:not(.active) {
+            opacity: 0;
         }
 
         .specialty-content {
@@ -84,11 +77,7 @@
             padding: 20px;
             display: flex;
             flex-direction: column;
-<<<<<<< HEAD
-            justify-content: center;
-=======
-            min-width: 0; /* Để tránh overflow trên các trình duyệt cũ */
->>>>>>> 822e7db973f782b5ad52cc14063fe3ea96dbd257
+            min-width: 0;
         }
 
         .specialty-title {
@@ -128,7 +117,7 @@
         }
 
         .specialty-text.expanded {
-            max-height: 1000px;
+            max-height: none;
         }
 
         .text-gradient {
@@ -146,6 +135,136 @@
             opacity: 0;
         }
 
+        /* Phần slider bác sĩ */
+        .doctors-slider {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .doctors-slider.visible {
+            display: block;
+        }
+
+        .doctors-slider h3 {
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .doctors-wrapper {
+            position: relative;
+            padding: 0 30px;
+        }
+
+        .doctors-container {
+            overflow: hidden;
+        }
+
+        .doctors-track {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+
+        .doctor-card {
+            flex: 0 0 calc(33.333% - 20px);
+            margin: 0 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+        }
+
+        .doctor-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .doctor-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .doctor-info {
+            min-width: 0;
+        }
+
+        .doctor-name {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .doctor-title {
+            font-size: 0.9em;
+            color: #666;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background: #3498db;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .slider-button:hover {
+            background: #2980b9;
+        }
+
+        .slider-button.prev {
+            left: 0;
+        }
+
+        .slider-button.next {
+            right: 0;
+        }
+
+        .slider-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .dots-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active {
+            background: #3498db;
+        }
+
         .expand-button {
             display: inline-flex;
             align-items: center;
@@ -159,6 +278,10 @@
             margin-top: 8px;
         }
 
+        .expand-button:hover {
+            color: #2980b9;
+        }
+
         .expand-icon {
             width: 16px;
             height: 16px;
@@ -169,7 +292,7 @@
         .expand-icon::after {
             content: '';
             position: absolute;
-            background: #3498db;
+            background: currentColor;
             border-radius: 1px;
         }
 
@@ -193,54 +316,44 @@
             opacity: 0;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 768px) and (min-width: 481px) {
             .specialty {
-<<<<<<< HEAD
+                flex-direction: row;
+            }
+
+            .specialty-image {
+                width: 150px;
+                min-width: 150px;
+                height: 150px;
+            }
+
+            .doctor-card {
+                flex: 0 0 calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .specialty {
                 flex-direction: column;
             }
 
             .specialty-image {
-                flex: none;
                 width: 100%;
-                height: auto;
-                aspect-ratio: 0.72;
-                max-width: 180px;
+                max-width: 200px;
+                height: 200px;
                 margin: 0 auto;
-=======
-                flex-direction: row; /* Giữ layout ngang */
->>>>>>> 822e7db973f782b5ad52cc14063fe3ea96dbd257
             }
 
             .specialty-content {
                 padding: 15px;
             }
 
-<<<<<<< HEAD
-            .specialty-text {
-                max-height: 80px;
-            }
-        }
-
-        /* Fallback cho trình duyệt không hỗ trợ aspect-ratio */
-        @supports not (aspect-ratio: 1) {
-            @media (max-width: 768px) {
-                .specialty-image {
-                    height: 250px;
-                }
-=======
-            .specialty-title {
-                font-size: 1.2em;
+            .doctor-card {
+                flex: 0 0 calc(100% - 20px);
             }
 
-            .specialty-text {
-                font-size: 0.95em;
-            }
-        }
-
-        @media (max-width: 480px) {
             .section-title {
                 font-size: 1.8em;
->>>>>>> 822e7db973f782b5ad52cc14063fe3ea96dbd257
             }
         }
     </style>
@@ -251,7 +364,10 @@
 
         <div class="specialty">
             <div class="specialty-image">
-                <img src="image/specialist1.jpg" alt="Chuyên Khoa Sản Phụ Khoa" loading="lazy">
+                <img src="image/specialist1-1.jpg" alt="Chuyên Khoa Sản Phụ Khoa" class="active" loading="lazy">
+                <img src="image/specialist1-2.jpg" alt="Chuyên Khoa Sản Phụ Khoa" loading="lazy">
+                <img src="image/specialist1-3.jpg" alt="Chuyên Khoa Sản Phụ Khoa" loading="lazy">
+		<img src="image/specialist1-4.jpg" alt="Chuyên Khoa Sản Phụ Khoa" loading="lazy">
             </div>
             <div class="specialty-content">
                 <h2 class="specialty-title">Chuyên Khoa Sản Phụ Khoa</h2>
@@ -262,6 +378,54 @@
                         </p>
                     </div>
                     <div class="text-gradient"></div>
+                    <div class="doctors-slider">
+                        <h3>Đội ngũ bác sĩ:</h3>
+                        <div class="doctors-wrapper">
+                            <button class="slider-button prev" disabled>&lt;</button>
+                            <div class="doctors-container">
+                                <div class="doctors-track">
+                                    <div class="doctor-card">
+                                        <div class="doctor-avatar">
+                                            <img src="image/doctor1.jpg" alt="BS. Nguyễn Hoàng Lam" loading="lazy">
+                                        </div>
+                                        <div class="doctor-info">
+                                            <div class="doctor-name">BS. Nguyễn Hoàng Lam</div>
+                                            <div class="doctor-title">Chuyên khoa 2 - Phó Khoa</div>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-card">
+                                        <div class="doctor-avatar">
+                                            <img src="image/doctor2.jpg" alt="BS. Đào Hoàng Hoa Hà Hải Âu" loading="lazy">
+                                        </div>
+                                        <div class="doctor-info">
+                                            <div class="doctor-name">BS. Đào Hoàng Hoa Hà Hải Âu</div>
+                                            <div class="doctor-title">Chuyên khoa I</div>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-card">
+                                        <div class="doctor-avatar">
+                                            <img src="image/doctor1.jpg" alt="BS. Nguyễn Hoàng Lam" loading="lazy">
+                                        </div>
+                                        <div class="doctor-info">
+                                            <div class="doctor-name">BS. Nguyễn Hoàng Lam</div>
+                                            <div class="doctor-title">Chuyên khoa 2 - Phó Khoa</div>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-card">
+                                        <div class="doctor-avatar">
+                                            <img src="image/doctor2.jpg" alt="BS. Đào Hoàng Hoa Hà Hải Âu" loading="lazy">
+                                        </div>
+                                        <div class="doctor-info">
+                                            <div class="doctor-name">BS. Đào Hoàng Hoa Hà Hải Âu</div>
+                                            <div class="doctor-title">Chuyên khoa I</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="slider-button next">&gt;</button>
+                            <div class="dots-container"></div>
+                        </div>
+                    </div>
                 </div>
                 <button class="expand-button">
                     <span class="expand-icon"></span>
@@ -272,7 +436,9 @@
 
         <div class="specialty">
             <div class="specialty-image">
-                <img src="image/specialist2.jpg" alt="Chuyên Khoa Tai Mũi Họng" loading="lazy">
+                <img src="image/specialist2-1.jpg" alt="Chuyên Khoa Tai Mũi Họng" class="active" loading="lazy">
+		<img src="image/specialist2-2.jpg" alt="Chuyên Khoa Tai Mũi Họng" loading="lazy">
+                <img src="image/specialist2-3.jpg" alt="Chuyên Khoa Tai Mũi Họng" loading="lazy">
             </div>
             <div class="specialty-content">
                 <h2 class="specialty-title">Chuyên Khoa Tai Mũi Họng</h2>
@@ -283,6 +449,54 @@
                         </p>
                     </div>
                     <div class="text-gradient"></div>
+                    <div class="doctors-slider">
+                        <h3>Đội ngũ bác sĩ:</h3>
+                        <div class="doctors-wrapper">
+                            <button class="slider-button prev" disabled>&lt;</button>
+                            <div class="doctors-container">
+                                <div class="doctors-track">
+                                    <div class="doctor-card">
+                                        <div class="doctor-avatar">
+                                            <img src="image/doctor5.jpg" alt="BS. Đặng Thị Thùy Trang" loading="lazy">
+                                        </div>
+                                        <div class="doctor-info">
+                                            <div class="doctor-name">BS. Đặng Thị Thùy Trang</div>
+                                            <div class="doctor-title">Chuyên khoa 2 - Trưởng khoa - Bệnh viện Vinmec</div>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-card">
+                                        <div class="doctor-avatar">
+                                            <img src="image/doctor6.jpg" alt="BS. Trọng" loading="lazy">
+                                        </div>
+                                        <div class="doctor-info">
+                                            <div class="doctor-name">BS. Trọng</div>
+                                            <div class="doctor-title">Chuyên khoa 1</div>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-card">
+                                        <div class="doctor-avatar">
+                                            <img src="image/doctor7.jpg" alt="BS. Chinh" loading="lazy">
+                                        </div>
+                                        <div class="doctor-info">
+                                            <div class="doctor-name">BS. Chinh</div>
+                                            <div class="doctor-title">Bác sĩ -Chuyên khoa 1</div>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-card">
+                                        <div class="doctor-avatar">
+                                            <img src="image/doctor8.jpg" alt="" loading="lazy">
+                                        </div>
+                                        <div class="doctor-info">
+                                            <div class="doctor-name"></div>
+                                            <div class="doctor-title"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="slider-button next">&gt;</button>
+                            <div class="dots-container"></div>
+                        </div>
+                    </div>
                 </div>
                 <button class="expand-button">
                     <span class="expand-icon"></span>
@@ -293,7 +507,9 @@
 
         <div class="specialty">
             <div class="specialty-image">
-                <img src="image/specialist3.jpg" alt="Chuyên Khoa Nội" loading="lazy">
+                <img src="image/specialist3-1.jpg" alt="Chuyên Khoa Nội" class="active" loading="lazy">
+                <img src="image/specialist3-2.jpg" alt="Chuyên Khoa Nội" loading="lazy">
+                <img src="image/specialist3-3.jpg" alt="Chuyên Khoa Nội" loading="lazy">
             </div>
             <div class="specialty-content">
                 <h2 class="specialty-title">Chuyên Khoa Nội</h2>
@@ -304,6 +520,54 @@
                         </p>
                     </div>
                     <div class="text-gradient"></div>
+                    <div class="doctors-slider">
+                        <h3>Đội ngũ bác sĩ:</h3>
+                        <div class="doctors-wrapper">
+                            <button class="slider-button prev" disabled>&lt;</button>
+                            <div class="doctors-container">
+                                <div class="doctors-track">
+                                    <div class="doctor-card">
+                                        <div class="doctor-avatar">
+                                            <img src="image/doctor9.jpg" alt="BS. Đỗ Thành Long" loading="lazy">
+                                        </div>
+                                        <div class="doctor-info">
+                                            <div class="doctor-name">BS. Đỗ Thành Long</div>
+                                            <div class="doctor-title">Chuyên khoa 1</div>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-card">
+                                        <div class="doctor-avatar">
+                                            <img src="image/doctor10.jpg" alt="BS. Nguyễn Anh Hoàng" loading="lazy">
+                                        </div>
+                                        <div class="doctor-info">
+                                            <div class="doctor-name">BS. Nguyễn Anh Hoàng</div>
+                                            <div class="doctor-title">Chuyên khoa 1</div>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-card">
+                                        <div class="doctor-avatar">
+                                            <img src="image/doctor11.jpg" alt="BS. Đỗ Thành Long" loading="lazy">
+                                        </div>
+                                        <div class="doctor-info">
+                                            <div class="doctor-name">BS. Đỗ Thành Long</div>
+                                            <div class="doctor-title">Chuyên khoa 1</div>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-card">
+                                        <div class="doctor-avatar">
+                                            <img src="image/doctor12.jpg" alt="BS. Nguyễn Anh Hoàng" loading="lazy">
+                                        </div>
+                                        <div class="doctor-info">
+                                            <div class="doctor-name">BS. Nguyễn Anh Hoàng</div>
+                                            <div class="doctor-title">Chuyên khoa 1</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="slider-button next">&gt;</button>
+                            <div class="dots-container"></div>
+                        </div>
+                    </div>
                 </div>
                 <button class="expand-button">
                     <span class="expand-icon"></span>
@@ -313,54 +577,175 @@
         </div>
     </section>
 
-<script>
-    // Hàm cập nhật chiều cao cho trang chính
-    function updateParentHeight() {
-        const height = document.documentElement.scrollHeight;
-        window.parent.postMessage({ height: height }, '*');
-    }
+    <script>
+        // Hàm cập nhật chiều cao cho trang chính
+        function updateParentHeight() {
+            const height = document.documentElement.scrollHeight;
+            window.parent.postMessage({ height: height }, '*');
+        }
 
-    // Xử lý expand/collapse nội dung
-    function initializeExpandButtons() {
-        document.querySelectorAll('.expand-button').forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.closest('.specialty-content').querySelector('.specialty-text');
-                const buttonText = button.querySelector('.button-text');
-                const expandIcon = button.querySelector('.expand-icon');
-                
-                // Toggle trạng thái
-                content.classList.toggle('expanded');
-                expandIcon.classList.toggle('expanded');
-                
-                // Cập nhật text của nút
-                buttonText.textContent = content.classList.contains('expanded') 
-                    ? 'Thu gọn nội dung' 
-                    : 'Xem thêm thông tin';
-                
-                // Scroll đến vị trí mới nếu đang mở rộng
-                if (content.classList.contains('expanded')) {
-                    setTimeout(() => {
-                        content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    }, 300);
-                }
+        // Hàm thay đổi ảnh tự động cho chuyên khoa
+        function initializeImageSlider(specialtyImage) {
+            const images = specialtyImage.querySelectorAll('img');
+            let currentIndex = 0;
 
-                // Cập nhật chiều cao sau khi thay đổi nội dung
-                updateParentHeight();
+            function showImage(index) {
+                images.forEach(img => img.classList.remove('active'));
+                images[index].classList.add('active');
+            }
+
+            function nextImage() {
+                currentIndex = (currentIndex + 1) % images.length;
+                showImage(currentIndex);
+            }
+
+            // Tự động chuyển ảnh mỗi 3 giây
+            let interval = setInterval(nextImage, 3000);
+
+            // Dừng chuyển ảnh khi hover
+            specialtyImage.addEventListener('mouseenter', () => clearInterval(interval));
+            specialtyImage.addEventListener('mouseleave', () => interval = setInterval(nextImage, 3000));
+        }
+
+        // Khởi tạo slider bác sĩ
+        function initializeDoctorSlider(slider) {
+            const track = slider.querySelector('.doctors-track');
+            const cards = track.querySelectorAll('.doctor-card');
+            const prevButton = slider.querySelector('.slider-button.prev');
+            const nextButton = slider.querySelector('.slider-button.next');
+            const dotsContainer = slider.querySelector('.dots-container');
+
+            let currentSlide = 0;
+            let cardsPerView = getCardsPerView();
+            let totalSlides = Math.ceil(cards.length / cardsPerView);
+
+            // Tạo dots navigation
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+
+            // Cập nhật nút prev/next
+            function updateButtons() {
+                prevButton.disabled = currentSlide === 0;
+                nextButton.disabled = currentSlide === totalSlides - 1;
+            }
+
+            // Cập nhật dots
+            function updateDots() {
+                const dots = dotsContainer.querySelectorAll('.dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+
+            // Di chuyển đến slide cụ thể
+            function goToSlide(index) {
+                currentSlide = index;
+                const offset = -(currentSlide * 100 / totalSlides);
+                track.style.transform = `translateX(${offset}%)`;
+                updateButtons();
+                updateDots();
+            }
+
+            // Xử lý nút prev/next
+            prevButton.addEventListener('click', () => {
+                if (currentSlide > 0) goToSlide(currentSlide - 1);
             });
+
+            nextButton.addEventListener('click', () => {
+                if (currentSlide < totalSlides - 1) goToSlide(currentSlide + 1);
+            });
+
+            // Tính số cards hiển thị dựa trên viewport
+            function getCardsPerView() {
+                if (window.innerWidth <= 480) return 1;
+                if (window.innerWidth <= 768) return 2;
+                return 3;
+            }
+
+            // Cập nhật layout khi resize
+            window.addEventListener('resize', () => {
+                const newCardsPerView = getCardsPerView();
+                if (newCardsPerView !== cardsPerView) {
+                    cardsPerView = newCardsPerView;
+                    totalSlides = Math.ceil(cards.length / cardsPerView);
+                    currentSlide = 0;
+                    goToSlide(0);
+
+                    // Cập nhật lại dots
+                    dotsContainer.innerHTML = '';
+                    for (let i = 0; i < totalSlides; i++) {
+                        const dot = document.createElement('div');
+                        dot.classList.add('dot');
+                        if (i === 0) dot.classList.add('active');
+                        dot.addEventListener('click', () => goToSlide(i));
+                        dotsContainer.appendChild(dot);
+                    }
+                }
+            });
+        }
+
+        // Xử lý expand/collapse nội dung
+        function initializeExpandButtons() {
+            document.querySelectorAll('.expand-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.closest('.specialty-content');
+                    const text = content.querySelector('.specialty-text');
+                    const doctorsSlider = content.querySelector('.doctors-slider');
+                    const buttonText = button.querySelector('.button-text');
+                    const expandIcon = button.querySelector('.expand-icon');
+                    
+                    text.classList.toggle('expanded');
+                    doctorsSlider.classList.toggle('visible');
+                    expandIcon.classList.toggle('expanded');
+                    
+                    buttonText.textContent = text.classList.contains('expanded') 
+                        ? 'Thu gọn nội dung' 
+                        : 'Xem thêm thông tin';
+                    
+                    if (text.classList.contains('expanded')) {
+                        setTimeout(() => {
+                            const specialty = button.closest('.specialty');
+                            specialty.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }, 300);
+                    }
+
+                    updateParentHeight();
+                });
+            });
+        }
+
+        // Khởi tạo khi DOM đã load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Khởi tạo image slider cho mỗi chuyên khoa
+            document.querySelectorAll('.specialty-image').forEach(initializeImageSlider);
+
+            // Khởi tạo doctor slider cho mỗi chuyên khoa
+            document.querySelectorAll('.doctors-slider').forEach(initializeDoctorSlider);
+
+            // Khởi tạo nút expand/collapse
+            initializeExpandButtons();
+
+// Cập nhật chiều cao ban đầu
+            updateParentHeight();
         });
-    }
 
-    // Khởi tạo khi DOM đã load
-    document.addEventListener('DOMContentLoaded', () => {
-        initializeExpandButtons();
-        updateParentHeight();
-    });
+        // Cập nhật khi tất cả resources đã load
+        window.addEventListener('load', updateParentHeight);
 
-    // Cập nhật khi tất cả resources đã load
-    window.addEventListener('load', updateParentHeight);
-
-    // Theo dõi thay đổi kích thước
-    new ResizeObserver(updateParentHeight).observe(document.body);
-</script>
+        // Theo dõi thay đổi kích thước
+        new ResizeObserver(() => {
+            updateParentHeight();
+        }).observe(document.body);
+    </script>
 </body>
 </html>
+
+
+
+
+
