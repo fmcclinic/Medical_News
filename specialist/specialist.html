@@ -5,357 +5,378 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chuyên Khoa | Phòng Khám</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f9f9f9;
-        }
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f9f9f9;
+}
 
-        .specialist-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 30px 20px;
-        }
+.specialist-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
 
-        .section-title {
-            text-align: center;
-            color: #2c3e50;
-            font-size: 2em;
-            position: relative;
-            margin-bottom: 30px;
-        }
+.section-title {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2em;
+    position: relative;
+    margin-bottom: 30px;
+}
 
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background: #3498db;
-            margin: 15px auto;
-        }
+.section-title:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: #3498db;
+    margin: 15px auto;
+}
 
-        .specialty {
-            display: flex;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
+.specialty {
+    display: flex;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
 
-        .specialty-image {
-            width: 180px;
-            min-width: 180px;
-            height: 180px;
-            position: relative;
-            overflow: hidden;
-        }
+.specialty-image {
+    width: 180px;
+    min-width: 180px;
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+}
 
-        .specialty-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.5s ease;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
+.specialty-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
-        .specialty-image img:not(.active) {
-            opacity: 0;
-        }
+.specialty-image img:not(.active) {
+    opacity: 0;
+}
 
-        .specialty-content {
-            flex: 1;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            min-width: 0;
-        }
+.specialty-content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
 
-        .specialty-title {
-            color: #3498db;
-            font-size: 1.4em;
-            margin-bottom: 15px;
-            position: relative;
-            padding-bottom: 10px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+.specialty-title {
+    color: #3498db;
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
-        .specialty-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: #3498db;
-        }
+.specialty-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: #3498db;
+}
 
-        .content-wrapper {
-            position: relative;
-            flex: 1;
-        }
+.content-wrapper {
+    position: relative;
+    flex: 1;
+}
 
-        .specialty-text {
-            font-size: 1em;
-            color: #555;
-            line-height: 1.6;
-            overflow: hidden;
-            position: relative;
-            max-height: 96px;
-            transition: max-height 0.3s ease;
-        }
+.specialty-text {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.6;
+    overflow: hidden;
+    position: relative;
+    max-height: 96px;
+    transition: max-height 0.3s ease;
+}
 
-        .specialty-text.expanded {
-            max-height: none;
-        }
+.specialty-text.expanded {
+    max-height: none;
+}
 
-        .text-gradient {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 40px;
-            background: linear-gradient(transparent, #fff);
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
+.text-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(transparent, #fff);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
 
-        .specialty-text.expanded + .text-gradient {
-            opacity: 0;
-        }
+.specialty-text.expanded + .text-gradient {
+    opacity: 0;
+}
 
-        /* Phần slider bác sĩ */
-        .doctors-slider {
-            display: none;
-            margin-top: 20px;
-        }
+/* Doctors Slider */
+.doctors-slider {
+    display: none;
+    margin-top: 20px;
+    overflow: hidden;  /* Thêm mới */
+}
 
-        .doctors-slider.visible {
-            display: block;
-        }
+.doctors-slider.visible {
+    display: block;
+}
 
-        .doctors-slider h3 {
-            color: #2c3e50;
-            font-size: 1.1em;
-            margin-bottom: 15px;
-        }
+.doctors-slider h3 {
+    color: #2c3e50;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
 
-        .doctors-wrapper {
-            position: relative;
-            padding: 0 30px;
-        }
+.doctors-wrapper {
+    position: relative;
+    padding: 0 30px;
+    overflow: hidden;  /* Thêm mới */
+}
 
-        .doctors-container {
-            overflow: hidden;
-        }
+.doctors-container {
+    overflow: hidden;
+    margin: 0 -10px;  /* Bù trừ margin của card */
+}
 
-        .doctors-track {
-            display: flex;
-            transition: transform 0.3s ease;
-        }
+.doctors-track {
+    display: flex;
+    transition: transform 0.3s ease;
+    width: 100%;
+}
 
-        .doctor-card {
-            flex: 0 0 calc(33.333% - 20px);
-            margin: 0 10px;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-        }
+.doctor-card {
+    flex-shrink: 0;
+    width: calc(33.333% - 20px);  /* Desktop: 3 cards */
+    margin: 0 10px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+}
 
-        .doctor-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 10px;
-            flex-shrink: 0;
-        }
+.doctor-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
 
-        .doctor-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+.doctor-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-        .doctor-info {
-            min-width: 0;
-        }
+.doctor-info {
+    min-width: 0;
+}
 
-        .doctor-name {
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+.doctor-name {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
-        .doctor-title {
-            font-size: 0.9em;
-            color: #666;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+.doctor-title {
+    font-size: 0.9em;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
-        .slider-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 30px;
-            height: 30px;
-            background: #3498db;
-            border: none;
-            border-radius: 50%;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s ease;
-        }
+/* Slider Controls */
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: #3498db;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    z-index: 1;  /* Thêm mới */
+}
 
-        .slider-button:hover {
-            background: #2980b9;
-        }
+.slider-button:hover {
+    background: #2980b9;
+}
 
-        .slider-button.prev {
-            left: 0;
-        }
+.slider-button.prev {
+    left: 0;
+}
 
-        .slider-button.next {
-            right: 0;
-        }
+.slider-button.next {
+    right: 0;
+}
 
-        .slider-button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
+.slider-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
 
-        .dots-container {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 15px;
-        }
+.dots-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+}
 
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #ddd;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-        .dot.active {
-            background: #3498db;
-        }
+.dot.active {
+    background: #3498db;
+}
 
-        .expand-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: #3498db;
-            background: transparent;
-            border: none;
-            padding: 5px 0;
-            cursor: pointer;
-            font-size: 0.9em;
-            margin-top: 8px;
-        }
+/* Expand Button */
+.expand-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #3498db;
+    background: transparent;
+    border: none;
+    padding: 5px 0;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 15px;
+}
 
-        .expand-button:hover {
-            color: #2980b9;
-        }
+.expand-icon {
+    width: 16px;
+    height: 16px;
+    position: relative;
+}
 
-        .expand-icon {
-            width: 16px;
-            height: 16px;
-            position: relative;
-        }
+.expand-icon::before,
+.expand-icon::after {
+    content: '';
+    position: absolute;
+    background: currentColor;
+    border-radius: 1px;
+}
 
-        .expand-icon::before,
-        .expand-icon::after {
-            content: '';
-            position: absolute;
-            background: currentColor;
-            border-radius: 1px;
-        }
+.expand-icon::before {
+    width: 2px;
+    height: 10px;
+    left: 7px;
+    top: 3px;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
 
-        .expand-icon::before {
-            width: 2px;
-            height: 10px;
-            left: 7px;
-            top: 3px;
-            opacity: 1;
-            transition: opacity 0.3s;
-        }
+.expand-icon::after {
+    width: 10px;
+    height: 2px;
+    left: 3px;
+    top: 7px;
+}
 
-        .expand-icon::after {
-            width: 10px;
-            height: 2px;
-            left: 3px;
-            top: 7px;
-        }
+.expanded .expand-icon::before {
+    opacity: 0;
+}
 
-        .expanded .expand-icon::before {
-            opacity: 0;
-        }
+/* Responsive Design */
+@media (max-width: 768px) and (min-width: 481px) {
+    .specialty {
+        flex-direction: row;
+    }
 
-        @media (max-width: 768px) and (min-width: 481px) {
-            .specialty {
-                flex-direction: row;
-            }
+    .specialty-image {
+        width: 150px;
+        min-width: 150px;
+        height: 150px;
+    }
 
-            .specialty-image {
-                width: 150px;
-                min-width: 150px;
-                height: 150px;
-            }
+    .doctor-card {
+        width: calc(50% - 20px);  /* Tablet: 2 cards */
+    }
 
-            .doctor-card {
-                flex: 0 0 calc(50% - 20px);
-            }
-        }
+    .doctors-track {
+        width: 200%;  /* 2 lần container width để chứa tất cả cards */
+    }
+}
 
-        @media (max-width: 480px) {
-            .specialty {
-                flex-direction: column;
-            }
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.8em;
+    }
 
-            .specialty-image {
-                width: 100%;
-                max-width: 200px;
-                height: 200px;
-                margin: 0 auto;
-            }
+    .specialty {
+        flex-direction: column;
+    }
 
-            .specialty-content {
-                padding: 15px;
-            }
+    .specialty-image {
+        width: 100%;
+        max-width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
 
-            .doctor-card {
-                flex: 0 0 calc(100% - 20px);
-            }
+    .specialty-content {
+        padding: 15px;
+    }
 
-            .section-title {
-                font-size: 1.8em;
-            }
-        }
+    .doctor-card {
+        width: calc(100% - 20px);  /* Mobile: 1 card */
+    }
+
+    .doctors-track {
+        width: 400%;  /* 4 lần container width để chứa tất cả cards */
+    }
+
+    .specialty-title {
+        font-size: 1.2em;
+    }
+
+    .specialty-text {
+        font-size: 0.95em;
+    }
+}
     </style>
 </head>
 <body>
@@ -661,11 +682,11 @@
             });
 
             // Tính số cards hiển thị dựa trên viewport
-            function getCardsPerView() {
-                if (window.innerWidth <= 480) return 1;
-                if (window.innerWidth <= 768) return 2;
-                return 3;
-            }
+function getCardsPerView() {
+    if (window.innerWidth <= 480) return 1;  // Mobile: 1 card
+    if (window.innerWidth <= 768) return 2;  // Tablet: 2 cards
+    return 3;  // Desktop: 3 cards
+}
 
             // Cập nhật layout khi resize
             window.addEventListener('resize', () => {
