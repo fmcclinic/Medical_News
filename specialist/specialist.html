@@ -346,66 +346,132 @@ body {
 }
 
 @media (max-width: 480px) {
-    .section-title {
-        font-size: 1.8em;
-    }
+   .section-title {
+       font-size: 1.8em;
+   }
 
-    .specialty {
-        flex-direction: column;
-    }
+   .specialty {
+       flex-direction: column;
+   }
 
-    .specialty-image {
-        width: 100%;
-        max-width: 200px;
-        height: 200px;
-        margin: 0 auto;
-    }
+   .specialty-image {
+       width: 100%;
+       max-width: 200px;
+       height: 200px;
+       margin: 0 auto;
+   }
 
-    .specialty-content {
-        padding: 15px;
-    }
+   .specialty-content {
+       padding: 15px;
+   }
 
-    .specialty-title {
-        font-size: 1.2em;
-    }
+   .specialty-title {
+       font-size: 1.2em;
+   }
 
-    .specialty-text {
-        font-size: 0.95em;
-    }
+   .specialty-text {
+       font-size: 0.95em;
+   }
 
-    .doctors-wrapper {
-        padding: 0;
-        margin: 0 -15px;
-    }
+   /* Doctor Slider optimized for mobile */
+   .doctors-wrapper {
+       padding: 0;
+       position: relative;
+       overflow: visible; /* Cho phép nút prev/next hiện bên ngoài nếu cần */
+   }
 
-    .doctors-container {
-        overflow-x: auto;
-    }
+   .doctors-container {
+       overflow-x: auto;
+       scroll-snap-type: x mandatory;
+       -webkit-overflow-scrolling: touch;
+       scrollbar-width: none; /* Ẩn scrollbar trên Firefox */
+       -ms-overflow-style: none; /* Ẩn scrollbar trên IE/Edge */
+   }
 
-    .doctor-card {
-        width: calc(100% - 30px);
-        margin: 0 15px;
-        scroll-snap-align: center;
-    }
+   .doctors-container::-webkit-scrollbar {
+       display: none; /* Ẩn scrollbar trên Chrome/Safari */
+   }
 
-    .doctors-track {
-        width: fit-content;
-        transform: none !important;
-    }
+   .doctors-track {
+       display: flex;
+       width: fit-content;
+       gap: 0;
+   }
 
-    .slider-button {
-        display: none;
-    }
+   .doctor-card {
+       width: 100vw;  /* Sử dụng viewport width */
+       max-width: calc(100vw - 30px); /* Trừ đi padding của section */
+       margin: 0;
+       padding: 15px;
+       flex-shrink: 0;
+       scroll-snap-align: center;
+       background: #f8f9fa;
+       border-radius: 8px;
+       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+   }
 
-    .dots-container {
-        margin-top: 20px;
-    }
+   .doctor-avatar {
+       width: 60px;  /* Tăng kích thước avatar trên mobile */
+       height: 60px;
+       border-radius: 50%;
+       overflow: hidden;
+       margin-right: 15px;
+   }
 
-    .dot {
-        width: 10px;
-        height: 10px;
-    }
-}    </style>
+   .doctor-info {
+       flex: 1;
+   }
+
+   .doctor-name {
+       font-size: 1.1em;
+       margin-bottom: 4px;
+   }
+
+   .doctor-title {
+       font-size: 0.9em;
+       color: #666;
+   }
+
+   /* Ẩn nút prev/next trên mobile */
+   .slider-button {
+       display: none;
+   }
+
+   /* Tối ưu dots navigation cho mobile */
+   .dots-container {
+       margin-top: 15px;
+       padding: 10px 0;
+       gap: 12px; /* Tăng khoảng cách giữa các dots */
+   }
+
+   .dot {
+       width: 10px;
+       height: 10px;
+       background: #ddd;
+       border-radius: 50%;
+       transition: all 0.3s ease;
+   }
+
+   .dot.active {
+       background: #3498db;
+       transform: scale(1.2); /* Tăng kích thước dot active */
+   }
+
+   /* Tối ưu text gradient cho mobile */
+   .text-gradient {
+       height: 50px; /* Tăng chiều cao gradient */
+   }
+
+   /* Tối ưu nút expand cho mobile */
+   .expand-button {
+       padding: 8px 0;
+       margin-top: 10px;
+   }
+
+   .specialty-text {
+       max-height: 80px; /* Giảm chiều cao text khi chưa expand */
+   }
+}}    </style>
 </head>
 <body>
     <section class="specialist-section">
