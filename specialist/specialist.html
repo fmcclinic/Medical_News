@@ -768,28 +768,211 @@ function getCardsPerView() {
             });
         }
 
-        // Khởi tạo khi DOM đã load
-        document.addEventListener('DOMContentLoaded', () => {
-            // Khởi tạo image slider cho mỗi chuyên khoa
-            document.querySelectorAll('.specialty-image').forEach(initializeImageSlider);
 
-            // Khởi tạo doctor slider cho mỗi chuyên khoa
-            document.querySelectorAll('.doctors-slider').forEach(initializeDoctorSlider);
 
-            // Khởi tạo nút expand/collapse
-            initializeExpandButtons();
+//============================================================================
 
-// Cập nhật chiều cao ban đầu
-            updateParentHeight();
+// Hàm cập nhật chiều cao cho trang chính
+function updateParentHeight() {
+    const height = document.documentElement.scrollHeight;
+    window.parent.postMessage({ height: height }, '*');
+}
+
+// Hàm thay đổi ảnh tự động cho chuyên khoa
+function initializeImageSlider(specialtyImage) {
+    const images = specialtyImage.querySelectorAll('img');
+    let currentIndex = 0;
+
+    function showImage(index) {
+        images.forEach(img => img.classList.remove('active'));
+        images[index].classList.add('active');
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    }
+
+    let interval = setInterval(nextImage, 3000);
+    specialtyImage.addEventListener('mouseenter', () => clearInterval(interval));
+    specialtyImage.addEventListener('mouseleave', () => interval = setInterval(nextImage, 3000));
+}
+
+// Khởi tạo slider bác sĩ
+function initializeDoctorSlider(slider) {
+    const container = slider.querySelector('.doctors-container');
+    const track = slider.querySelector('.doctors-track');
+    const cards = track.querySelectorAll('.doctor-card');
+    const prevButton = slider.querySelector('.slider-button.prev');
+    const nextButton = slider.querySelector('.slider-button.next');
+    const dotsContainer = slider.querySelector('.dots-container');
+
+    let currentSlide = 0;
+    let startX = 0;
+    let scrollLeft = 0;
+    let isDown = false;
+
+    // Touch events for mobile
+    container.addEventListener('touchstart', (e) => {
+        isDown = true;
+        container.style.cursor = 'grabbing';
+        startX = e.touches[0].pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+    });
+
+    container.addEventListener('touchend', () => {
+        isDown = false;
+        container.style.cursor = 'grab';
+        const slideWidth = container.clientWidth;
+        const targetSlide = Math.round(container.scrollLeft / slideWidth);
+        container.scrollTo({
+            left: targetSlide * slideWidth,
+            behavior: 'smooth'
+        });
+        updateDots(targetSlide);
+    });
+
+    container.addEventListener('touchmove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.touches[0].pageX - container.offsetLeft;
+        const walk = (x - startX);
+        container.scrollLeft = scrollLeft - walk;
+    });
+
+    // Scroll snap on desktop
+    function updateDots(index) {
+        const dots = dotsContainer.querySelectorAll('.dot');
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+        currentSlide = index;
+    }
+
+    function createDots() {
+        dotsContainer.innerHTML = '';
+        const totalSlides = window.innerWidth <= 480 ? 
+            cards.length : 
+            window.innerWidth <= 768 ? 
+                Math.ceil(cards.length / 2) : 
+                Math.ceil(cards.length / 3);
+
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                const slideWidth = container.clientWidth;
+                container.scrollTo({
+                    left: i * slideWidth,
+                    behavior: 'smooth'
+                });
+                updateDots(i);
+            });
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    // Desktop controls
+    if (prevButton && nextButton) {
+        prevButton.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                container.scrollTo({
+                    left: currentSlide * container.clientWidth,
+                    behavior: 'smooth'
+                });
+                updateDots(currentSlide);
+            }
         });
 
-        // Cập nhật khi tất cả resources đã load
-        window.addEventListener('load', updateParentHeight);
+        nextButton.addEventListener('click', () => {
+            const maxSlide = Math.ceil(cards.length / (window.innerWidth <= 768 ? 2 : 3)) - 1;
+            if (currentSlide < maxSlide) {
+                currentSlide++;
+                container.scrollTo({
+                    left: currentSlide * container.clientWidth,
+                    behavior: 'smooth'
+                });
+                updateDots(currentSlide);
+            }
+        });
+    }
 
-        // Theo dõi thay đổi kích thước
-        new ResizeObserver(() => {
+    // Scroll event for dots update
+    container.addEventListener('scroll', () => {
+        const slideWidth = container.clientWidth;
+        const targetSlide = Math.round(container.scrollLeft / slideWidth);
+        updateDots(targetSlide);
+    });
+
+    // Initialize dots
+    createDots();
+
+    // Update on resize
+    window.addEventListener('resize', createDots);
+}
+
+// Xử lý expand/collapse nội dung
+function initializeExpandButtons() {
+    document.querySelectorAll('.expand-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const content = button.closest('.specialty-content');
+            const text = content.querySelector('.specialty-text');
+            const doctorsSlider = content.querySelector('.doctors-slider');
+            const buttonText = button.querySelector('.button-text');
+            const expandIcon = button.querySelector('.expand-icon');
+            
+            text.classList.toggle('expanded');
+            doctorsSlider.classList.toggle('visible');
+            expandIcon.classList.toggle('expanded');
+            
+            buttonText.textContent = text.classList.contains('expanded') 
+                ? 'Thu gọn nội dung' 
+                : 'Xem thêm thông tin';
+            
+            if (text.classList.contains('expanded')) {
+                setTimeout(() => {
+                    const specialty = button.closest('.specialty');
+                    specialty.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 300);
+            }
+
             updateParentHeight();
-        }).observe(document.body);
+        });
+    });
+}
+
+// Khởi tạo khi DOM đã load
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.specialty-image').forEach(initializeImageSlider);
+    document.querySelectorAll('.doctors-slider').forEach(initializeDoctorSlider);
+    initializeExpandButtons();
+    updateParentHeight();
+});
+
+// Cập nhật khi tất cả resources đã load
+window.addEventListener('load', updateParentHeight);
+
+// Theo dõi thay đổi kích thước
+new ResizeObserver(updateParentHeight).observe(document.body);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </script>
 </body>
 </html>
