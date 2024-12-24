@@ -634,507 +634,279 @@ body {
 
 
 <script>
-        // Hàm cập nhật chiều cao cho trang chính
-        function updateParentHeight() {
-            const height = document.documentElement.scrollHeight;
-            window.parent.postMessage({ height: height }, '*');
-        }
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
 
-        // Hàm thay đổi ảnh tự động cho chuyên khoa
-        function initializeImageSlider(specialtyImage) {
-            const images = specialtyImage.querySelectorAll('img');
-            let currentIndex = 0;
+    const DOM = {
+        specialtyImages: () => document.querySelectorAll('.specialty-image'),
+        doctorsSliders: () => document.querySelectorAll('.doctors-slider'),
+        expandButtons: () => document.querySelectorAll('.expand-button')
+    };
 
-            function showImage(index) {
-                images.forEach(img => img.classList.remove('active'));
-                images[index].classList.add('active');
-            }
+    const updateParentHeight = debounce(() => {
+        const height = document.documentElement.scrollHeight;
+        window.parent.postMessage({ height }, '*');
+    }, 100);
 
-            function nextImage() {
+    function initializeImageSlider(specialtyImage) {
+        const images = Array.from(specialtyImage.querySelectorAll('img'));
+        if (!images.length) return;
+
+        let currentIndex = 0;
+        let interval = null;
+
+        const showImage = (index) => {
+            images.forEach(img => img.classList.remove('active'));
+            images[index].classList.add('active');
+        };
+
+        const startSlideshow = () => {
+            if (interval) clearInterval(interval);
+            interval = setInterval(() => {
                 currentIndex = (currentIndex + 1) % images.length;
                 showImage(currentIndex);
+            }, 3000);
+        };
+
+        const stopSlideshow = () => {
+            if (interval) {
+                clearInterval(interval);
+                interval = null;
             }
+        };
 
-            let interval = setInterval(nextImage, 3000);
-            specialtyImage.addEventListener('mouseenter', () => clearInterval(interval));
-            specialtyImage.addEventListener('mouseleave', () => interval = setInterval(nextImage, 3000));
-        }
+        const cleanup = () => {
+            stopSlideshow();
+            specialtyImage.removeEventListener('mouseenter', stopSlideshow);
+            specialtyImage.removeEventListener('mouseleave', startSlideshow);
+        };
 
-        // Khởi tạo slider bác sĩ
-        function initializeDoctorSlider(slider) {
-            const container = slider.querySelector('.doctors-container');
-            const track = slider.querySelector('.doctors-track');
-            const cards = track.querySelectorAll('.doctor-card');
-            const prevButton = slider.querySelector('.slider-button.prev');
-            const nextButton = slider.querySelector('.slider-button.next');
-            const dotsContainer = slider.querySelector('.dots-container');
+        specialtyImage.addEventListener('mouseenter', stopSlideshow);
+        specialtyImage.addEventListener('mouseleave', startSlideshow);
 
-            let currentSlide = 0;
-            let startX = 0;
-            let scrollLeft = 0;
-            let isDown = false;
+        startSlideshow();
 
-            // Touch events for mobile
-            container.addEventListener('touchstart', (e) => {
-                isDown = true;
-                container.style.cursor = 'grabbing';
-                startX = e.touches[0].pageX - container.offsetLeft;
-                scrollLeft = container.scrollLeft;
-            });
+        return cleanup;
+    }
 
-            container.addEventListener('touchend', () => {
-                isDown = false;
-                container.style.cursor = 'grab';
-                const slideWidth = container.clientWidth;
-                const targetSlide = Math.round(container.scrollLeft / slideWidth);
+    function initializeDoctorSlider(slider) {
+        const container = slider.querySelector('.doctors-container');
+        const track = slider.querySelector('.doctors-track');
+        const cards = Array.from(track.querySelectorAll('.doctor-card'));
+        const prevButton = slider.querySelector('.slider-button.prev');
+        const nextButton = slider.querySelector('.slider-button.next');
+        const dotsContainer = slider.querySelector('.dots-container');
+
+        let currentSlide = 0;
+        let startX = 0;
+        let scrollLeft = 0;
+        let isDown = false;
+        let touchTimeout = null;
+
+        const handleTouchStart = (e) => {
+            isDown = true;
+            container.classList.add('grabbing');
+            startX = e.touches[0].pageX - container.offsetLeft;
+            scrollLeft = container.scrollLeft;
+        };
+
+        const handleTouchEnd = () => {
+            if (!isDown) return;
+            isDown = false;
+            container.classList.remove('grabbing');
+
+            const slideWidth = container.clientWidth;
+            const targetSlide = Math.round(container.scrollLeft / slideWidth);
+
+            requestAnimationFrame(() => {
                 container.scrollTo({
                     left: targetSlide * slideWidth,
                     behavior: 'smooth'
                 });
                 updateDots(targetSlide);
             });
+        };
 
-            container.addEventListener('touchmove', (e) => {
-                if (!isDown) return;
-                e.preventDefault();
-                const x = e.touches[0].pageX - container.offsetLeft;
-                const walk = (x - startX);
-                container.scrollLeft = scrollLeft - walk;
-            });
+        const handleTouchMove = (e) => {
+            if (!isDown) return;
 
-            // Scroll snap on desktop
-            function updateDots(index) {
-                const dots = dotsContainer.querySelectorAll('.dot');
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === index);
-                });
-                currentSlide = index;
+            if (touchTimeout) return;
+            touchTimeout = setTimeout(() => touchTimeout = null, 16);
+
+            const x = e.touches[0].pageX - container.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            container.scrollLeft = scrollLeft - walk;
+        };
+
+        const updateDots = (index) => {
+            const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+            currentSlide = index;
+
+            if (prevButton && nextButton) {
+                prevButton.disabled = index === 0;
+                nextButton.disabled = index === dots.length - 1;
             }
+        };
 
-            function createDots() {
-                dotsContainer.innerHTML = '';
-                const totalSlides = window.innerWidth <= 480 ? 
-                    cards.length : 
-                    window.innerWidth <= 768 ? 
-                        Math.ceil(cards.length / 2) : 
-                        Math.ceil(cards.length / 3);
+        const createDots = () => {
+            dotsContainer.innerHTML = '';
+            const totalSlides = window.innerWidth <= 480 ? 
+                cards.length : 
+                window.innerWidth <= 768 ? 
+                    Math.ceil(cards.length / 2) : 
+                    Math.ceil(cards.length / 3);
 
-                for (let i = 0; i < totalSlides; i++) {
-                    const dot = document.createElement('div');
-                    dot.classList.add('dot');
-                    if (i === 0) dot.classList.add('active');
-                    dot.addEventListener('click', () => {
-                        const slideWidth = container.clientWidth;
+            const fragment = document.createDocumentFragment();
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active');
+
+                dot.addEventListener('click', () => {
+                    const slideWidth = container.clientWidth;
+                    requestAnimationFrame(() => {
                         container.scrollTo({
                             left: i * slideWidth,
                             behavior: 'smooth'
                         });
                         updateDots(i);
                     });
-                    dotsContainer.appendChild(dot);
-                }
-            }
-
-            // Desktop controls
-            if (prevButton && nextButton) {
-                prevButton.addEventListener('click', () => {
-                    if (currentSlide > 0) {
-                        currentSlide--;
-                        container.scrollTo({
-                            left: currentSlide * container.clientWidth,
-                            behavior: 'smooth'
-                        });
-                        updateDots(currentSlide);
-                    }
                 });
 
-                nextButton.addEventListener('click', () => {
-                    const maxSlide = Math.ceil(cards.length / (window.innerWidth <= 768 ? 2 : 3)) - 1;
-                    if (currentSlide < maxSlide) {
-                        currentSlide++;
-                        container.scrollTo({
-                            left: currentSlide * container.clientWidth,
-                            behavior: 'smooth'
-                        });
-                        updateDots(currentSlide);
-                    }
-                });
+                fragment.appendChild(dot);
             }
+            dotsContainer.appendChild(fragment);
+        };
 
-            // Scroll event for dots update
-            container.addEventListener('scroll', () => {
+        if (prevButton && nextButton) {
+            const handleButtonClick = (direction) => {
+                const maxSlide = Math.ceil(cards.length / (window.innerWidth <= 768 ? 2 : 3)) - 1;
+                const newSlide = direction === 'prev' ? 
+                    Math.max(0, currentSlide - 1) : 
+                    Math.min(maxSlide, currentSlide + 1);
+
+                requestAnimationFrame(() => {
+                    container.scrollTo({
+                        left: newSlide * container.clientWidth,
+                        behavior: 'smooth'
+                    });
+                    updateDots(newSlide);
+                });
+            };
+
+            prevButton.addEventListener('click', () => handleButtonClick('prev'));
+            nextButton.addEventListener('click', () => handleButtonClick('next'));
+        }
+
+        let scrollTimeout;
+        const handleScroll = () => {
+            if (scrollTimeout) return;
+            scrollTimeout = setTimeout(() => {
                 const slideWidth = container.clientWidth;
                 const targetSlide = Math.round(container.scrollLeft / slideWidth);
                 updateDots(targetSlide);
-            });
+                scrollTimeout = null;
+            }, 50);
+        };
 
-            // Initialize dots
+        container.addEventListener('touchstart', handleTouchStart, { passive: true });
+        container.addEventListener('touchend', handleTouchEnd);
+        container.addEventListener('touchmove', handleTouchMove, { passive: false });
+        container.addEventListener('scroll', handleScroll, { passive: true });
+
+        createDots();
+
+        const handleResize = debounce(() => {
             createDots();
+            updateDots(0);
+            container.scrollLeft = 0;
+        }, 250);
 
-            // Update on resize
-            window.addEventListener('resize', createDots);
-        }
+        window.addEventListener('resize', handleResize);
 
-        // Xử lý expand/collapse nội dung
-        function initializeExpandButtons() {
-            document.querySelectorAll('.expand-button').forEach(button => {
-                button.addEventListener('click', () => {
-                    const content = button.closest('.specialty-content');
-                    const text = content.querySelector('.specialty-text');
-                    const doctorsSlider = content.querySelector('.doctors-slider');
-                    const buttonText = button.querySelector('.button-text');
-                    const expandIcon = button.querySelector('.expand-icon');
-                    
-                    text.classList.toggle('expanded');
-                    doctorsSlider.classList.toggle('visible');
-                    expandIcon.classList.toggle('expanded');
-                    
-                    buttonText.textContent = text.classList.contains('expanded') 
-                        ? 'Thu gọn nội dung' 
-                        : 'Xem thêm thông tin';
-                    
-                    if (text.classList.contains('expanded')) {
-                        setTimeout(() => {
-                            const specialty = button.closest('.specialty');
-                            specialty.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        }, 300);
-                    }
-
-                    updateParentHeight();
-                });
-            });
-        }
-
-        // Khởi tạo khi DOM đã load
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.specialty-image').forEach(initializeImageSlider);
-            document.querySelectorAll('.doctors-slider').forEach(initializeDoctorSlider);
-            initializeExpandButtons();
-            updateParentHeight();
-        });
-
-        // Cập nhật khi tất cả resources đã load
-        window.addEventListener('load', updateParentHeight);
-
-        // Theo dõi thay đổi kích thước
-        new ResizeObserver(updateParentHeight).observe(document.body);
-
-
-
-
-//cải tiến=================================
-
-// Debounce function để tránh gọi liên tục khi resize
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
+        return () => {
+            container.removeEventListener('touchstart', handleTouchStart);
+            container.removeEventListener('touchend', handleTouchEnd);
+            container.removeEventListener('touchmove', handleTouchMove);
+            container.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleResize);
         };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Cache selectors thường xuyên sử dụng
-const DOM = {
-    specialtyImages: () => document.querySelectorAll('.specialty-image'),
-    doctorsSliders: () => document.querySelectorAll('.doctors-slider'),
-    expandButtons: () => document.querySelectorAll('.expand-button')
-};
-
-// Hàm cập nhật chiều cao cho trang chính
-const updateParentHeight = debounce(() => {
-    const height = document.documentElement.scrollHeight;
-    window.parent.postMessage({ height }, '*');
-}, 100);
-
-// Hàm thay đổi ảnh tự động cho chuyên khoa
-function initializeImageSlider(specialtyImage) {
-    const images = Array.from(specialtyImage.querySelectorAll('img'));
-    if (!images.length) return;
-
-    let currentIndex = 0;
-    let interval = null;
-
-    const showImage = (index) => {
-        images.forEach(img => img.classList.remove('active'));
-        images[index].classList.add('active');
-    };
-
-    const startSlideshow = () => {
-        if (interval) clearInterval(interval);
-        interval = setInterval(() => {
-            currentIndex = (currentIndex + 1) % images.length;
-            showImage(currentIndex);
-        }, 3000);
-    };
-
-    const stopSlideshow = () => {
-        if (interval) {
-            clearInterval(interval);
-            interval = null;
-        }
-    };
-
-    // Event listeners với cleanup
-    const cleanup = () => {
-        stopSlideshow();
-        specialtyImage.removeEventListener('mouseenter', stopSlideshow);
-        specialtyImage.removeEventListener('mouseleave', startSlideshow);
-    };
-
-    specialtyImage.addEventListener('mouseenter', stopSlideshow);
-    specialtyImage.addEventListener('mouseleave', startSlideshow);
-
-    // Start initial slideshow
-    startSlideshow();
-
-    // Return cleanup function
-    return cleanup;
-}
-
-// Khởi tạo slider bác sĩ
-function initializeDoctorSlider(slider) {
-    const container = slider.querySelector('.doctors-container');
-    const track = slider.querySelector('.doctors-track');
-    const cards = Array.from(track.querySelectorAll('.doctor-card'));
-    const prevButton = slider.querySelector('.slider-button.prev');
-    const nextButton = slider.querySelector('.slider-button.next');
-    const dotsContainer = slider.querySelector('.dots-container');
-
-    let currentSlide = 0;
-    let startX = 0;
-    let scrollLeft = 0;
-    let isDown = false;
-    let touchTimeout = null;
-
-    // Tối ưu touch events
-    const handleTouchStart = (e) => {
-        isDown = true;
-        container.classList.add('grabbing');
-        startX = e.touches[0].pageX - container.offsetLeft;
-        scrollLeft = container.scrollLeft;
-    };
-
-    const handleTouchEnd = () => {
-        if (!isDown) return;
-        isDown = false;
-        container.classList.remove('grabbing');
-
-        const slideWidth = container.clientWidth;
-        const targetSlide = Math.round(container.scrollLeft / slideWidth);
-
-        // Sử dụng requestAnimationFrame cho animation mượt mà
-        requestAnimationFrame(() => {
-            container.scrollTo({
-                left: targetSlide * slideWidth,
-                behavior: 'smooth'
-            });
-            updateDots(targetSlide);
-        });
-    };
-
-    const handleTouchMove = (e) => {
-        if (!isDown) return;
-
-        // Thêm throttle cho touch move
-        if (touchTimeout) return;
-        touchTimeout = setTimeout(() => touchTimeout = null, 16); // ~60fps
-
-        const x = e.touches[0].pageX - container.offsetLeft;
-        const walk = (x - startX) * 1.5; // Tăng độ nhạy
-        container.scrollLeft = scrollLeft - walk;
-    };
-
-    // Tối ưu dots navigation
-    const updateDots = (index) => {
-        const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-        currentSlide = index;
-
-        // Update button states
-        if (prevButton && nextButton) {
-            prevButton.disabled = index === 0;
-            nextButton.disabled = index === dots.length - 1;
-        }
-    };
-
-    const createDots = () => {
-        dotsContainer.innerHTML = '';
-        const totalSlides = window.innerWidth <= 480 ? 
-            cards.length : 
-            window.innerWidth <= 768 ? 
-                Math.ceil(cards.length / 2) : 
-                Math.ceil(cards.length / 3);
-
-        const fragment = document.createDocumentFragment();
-        for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (i === 0) dot.classList.add('active');
-
-            dot.addEventListener('click', () => {
-                const slideWidth = container.clientWidth;
-                requestAnimationFrame(() => {
-                    container.scrollTo({
-                        left: i * slideWidth,
-                        behavior: 'smooth'
-                    });
-                    updateDots(i);
-                });
-            });
-
-            fragment.appendChild(dot);
-        }
-        dotsContainer.appendChild(fragment);
-    };
-
-    // Desktop controls
-    if (prevButton && nextButton) {
-        const handleButtonClick = (direction) => {
-            const maxSlide = Math.ceil(cards.length / (window.innerWidth <= 768 ? 2 : 3)) - 1;
-            const newSlide = direction === 'prev' ? 
-                Math.max(0, currentSlide - 1) : 
-                Math.min(maxSlide, currentSlide + 1);
-
-            requestAnimationFrame(() => {
-                container.scrollTo({
-                    left: newSlide * container.clientWidth,
-                    behavior: 'smooth'
-                });
-                updateDots(newSlide);
-            });
-        };
-
-        prevButton.addEventListener('click', () => handleButtonClick('prev'));
-        nextButton.addEventListener('click', () => handleButtonClick('next'));
     }
 
-    // Optimize scroll event với throttle
-    let scrollTimeout;
-    const handleScroll = () => {
-        if (scrollTimeout) return;
-        scrollTimeout = setTimeout(() => {
-            const slideWidth = container.clientWidth;
-            const targetSlide = Math.round(container.scrollLeft / slideWidth);
-            updateDots(targetSlide);
-            scrollTimeout = null;
-        }, 50);
-    };
+    function initializeExpandButtons() {
+        const cleanupFunctions = [];
 
-    // Event Listeners
-    container.addEventListener('touchstart', handleTouchStart, { passive: true });
-    container.addEventListener('touchend', handleTouchEnd);
-    container.addEventListener('touchmove', handleTouchMove, { passive: false });
-    container.addEventListener('scroll', handleScroll, { passive: true });
+        DOM.expandButtons().forEach(button => {
+            const content = button.closest('.specialty-content');
+            const text = content.querySelector('.specialty-text');
+            const doctorsSlider = content.querySelector('.doctors-slider');
+            const buttonText = button.querySelector('.button-text');
+            const expandIcon = button.querySelector('.expand-icon');
 
-    // Initialize
-    createDots();
+            const handleClick = () => {
+                text.classList.toggle('expanded');
+                doctorsSlider.classList.toggle('visible');
+                expandIcon.classList.toggle('expanded');
 
-    // Debounced resize handler
-    const handleResize = debounce(() => {
-        createDots();
-        updateDots(0);
-        container.scrollLeft = 0;
-    }, 250);
+                buttonText.textContent = text.classList.contains('expanded')
+                    ? 'Thu gọn nội dung'
+                    : 'Xem thêm thông tin';
 
-    window.addEventListener('resize', handleResize);
+                if (text.classList.contains('expanded')) {
+                    requestAnimationFrame(() => {
+                        const specialty = button.closest('.specialty');
+                        specialty.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    });
+                }
 
-    // Return cleanup function
-    return () => {
-        container.removeEventListener('touchstart', handleTouchStart);
-        container.removeEventListener('touchend', handleTouchEnd);
-        container.removeEventListener('touchmove', handleTouchMove);
-        container.removeEventListener('scroll', handleScroll);
-        window.removeEventListener('resize', handleResize);
-    };
-}
+                updateParentHeight();
+            };
 
-// Xử lý expand/collapse nội dung
-function initializeExpandButtons() {
-    const cleanupFunctions = [];
+            button.addEventListener('click', handleClick);
+            cleanupFunctions.push(() => button.removeEventListener('click', handleClick));
+        });
 
-    DOM.expandButtons().forEach(button => {
-        const content = button.closest('.specialty-content');
-        const text = content.querySelector('.specialty-text');
-        const doctorsSlider = content.querySelector('.doctors-slider');
-        const buttonText = button.querySelector('.button-text');
-        const expandIcon = button.querySelector('.expand-icon');
+        return () => cleanupFunctions.forEach(cleanup => cleanup());
+    }
 
-        const handleClick = () => {
-            text.classList.toggle('expanded');
-            doctorsSlider.classList.toggle('visible');
-            expandIcon.classList.toggle('expanded');
+    document.addEventListener('DOMContentLoaded', () => {
+        const cleanupFunctions = [];
 
-            buttonText.textContent = text.classList.contains('expanded')
-                ? 'Thu gọn nội dung'
-                : 'Xem thêm thông tin';
+        DOM.specialtyImages().forEach(image => {
+            const cleanup = initializeImageSlider(image);
+            if (cleanup) cleanupFunctions.push(cleanup);
+        });
 
-            if (text.classList.contains('expanded')) {
-                requestAnimationFrame(() => {
-                    const specialty = button.closest('.specialty');
-                    specialty.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                });
-            }
+        DOM.doctorsSliders().forEach(slider => {
+            const cleanup = initializeDoctorSlider(slider);
+            if (cleanup) cleanupFunctions.push(cleanup);
+        });
 
-            updateParentHeight();
-        };
+        const expandCleanup = initializeExpandButtons();
+        if (expandCleanup) cleanupFunctions.push(expandCleanup);
 
-        button.addEventListener('click', handleClick);
-        cleanupFunctions.push(() => button.removeEventListener('click', handleClick));
+        updateParentHeight();
+
+        window.addEventListener('unload', () => {
+            cleanupFunctions.forEach(cleanup => cleanup());
+        });
     });
 
-    return () => cleanupFunctions.forEach(cleanup => cleanup());
-}
+    window.addEventListener('load', updateParentHeight);
 
-// Khởi tạo khi DOM đã load
-document.addEventListener('DOMContentLoaded', () => {
-    const cleanupFunctions = [];
-
-    // Initialize image sliders
-    DOM.specialtyImages().forEach(image => {
-        const cleanup = initializeImageSlider(image);
-        if (cleanup) cleanupFunctions.push(cleanup);
-    });
-
-    // Initialize doctor sliders
-    DOM.doctorsSliders().forEach(slider => {
-        const cleanup = initializeDoctorSlider(slider);
-        if (cleanup) cleanupFunctions.push(cleanup);
-    });
-
-    // Initialize expand buttons
-    const expandCleanup = initializeExpandButtons();
-    if (expandCleanup) cleanupFunctions.push(expandCleanup);
-
-    // Initial height update
-    updateParentHeight();
-
-    // Cleanup on page unload
-    window.addEventListener('unload', () => {
-        cleanupFunctions.forEach(cleanup => cleanup());
-    });
-});
-
-// Cập nhật khi tất cả resources đã load
-window.addEventListener('load', updateParentHeight);
-
-// Theo dõi thay đổi kích thước với ResizeObserver
-const resizeObserver = new ResizeObserver(updateParentHeight);
-resizeObserver.observe(document.body);
-
-
-
-
-
-
-
-
-
-
-    </script>
+    const resizeObserver = new ResizeObserver(updateParentHeight);
+    resizeObserver.observe(document.body);
+</script>
 
 
 
