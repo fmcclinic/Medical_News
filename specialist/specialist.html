@@ -139,7 +139,6 @@ body {
 .doctors-slider {
     display: none;
     margin-top: 20px;
-    overflow: hidden;  /* Thêm mới */
 }
 
 .doctors-slider.visible {
@@ -155,12 +154,15 @@ body {
 .doctors-wrapper {
     position: relative;
     padding: 0 30px;
-    overflow: hidden;  /* Thêm mới */
+    overflow: hidden;
+    touch-action: pan-y pinch-zoom;
 }
 
 .doctors-container {
     overflow: hidden;
-    margin: 0 -10px;  /* Bù trừ margin của card */
+    margin: 0 -10px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
 }
 
 .doctors-track {
@@ -171,13 +173,14 @@ body {
 
 .doctor-card {
     flex-shrink: 0;
-    width: calc(33.333% - 20px);  /* Desktop: 3 cards */
+    width: calc(33.333% - 20px);
     margin: 0 10px;
     padding: 10px;
     background: #f8f9fa;
     border-radius: 6px;
     display: flex;
     align-items: center;
+    scroll-snap-align: start;
 }
 
 .doctor-avatar {
@@ -232,7 +235,7 @@ body {
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s ease;
-    z-index: 1;  /* Thêm mới */
+    z-index: 1;
 }
 
 .slider-button:hover {
@@ -257,6 +260,7 @@ body {
     justify-content: center;
     gap: 8px;
     margin-top: 15px;
+    padding: 10px 0;
 }
 
 .dot {
@@ -333,11 +337,11 @@ body {
     }
 
     .doctor-card {
-        width: calc(50% - 20px);  /* Tablet: 2 cards */
+        width: calc(50% - 20px);
     }
 
     .doctors-track {
-        width: 200%;  /* 2 lần container width để chứa tất cả cards */
+        width: 200%;
     }
 }
 
@@ -361,14 +365,6 @@ body {
         padding: 15px;
     }
 
-    .doctor-card {
-        width: calc(100% - 20px);  /* Mobile: 1 card */
-    }
-
-    .doctors-track {
-        width: 400%;  /* 4 lần container width để chứa tất cả cards */
-    }
-
     .specialty-title {
         font-size: 1.2em;
     }
@@ -376,8 +372,40 @@ body {
     .specialty-text {
         font-size: 0.95em;
     }
-}
-    </style>
+
+    .doctors-wrapper {
+        padding: 0;
+        margin: 0 -15px;
+    }
+
+    .doctors-container {
+        overflow-x: auto;
+    }
+
+    .doctor-card {
+        width: calc(100% - 30px);
+        margin: 0 15px;
+        scroll-snap-align: center;
+    }
+
+    .doctors-track {
+        width: fit-content;
+        transform: none !important;
+    }
+
+    .slider-button {
+        display: none;
+    }
+
+    .dots-container {
+        margin-top: 20px;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+}    </style>
 </head>
 <body>
     <section class="specialist-section">
