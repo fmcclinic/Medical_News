@@ -398,17 +398,19 @@ body {
        gap: 0;
    }
 
-   .doctor-card {
-       width: 100vw;  /* Sử dụng viewport width */
-       max-width: calc(100vw - 30px); /* Trừ đi padding của section */
-       margin: 0;
-       padding: 15px;
-       flex-shrink: 0;
-       scroll-snap-align: center;
-       background: #f8f9fa;
-       border-radius: 8px;
-       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-   }
+    .doctor-card {
+        width: 100vw;
+        max-width: calc(100vw - 30px);
+        margin: 0;
+        padding: 15px;
+        flex-shrink: 0;
+        scroll-snap-align: center;
+        background: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        /* Thêm min-height để đảm bảo card không bị vỡ layout khi text xuống dòng */
+        min-height: 90px;
+    }
 
    .doctor-avatar {
        width: 60px;  /* Tăng kích thước avatar trên mobile */
@@ -418,19 +420,29 @@ body {
        margin-right: 15px;
    }
 
-   .doctor-info {
-       flex: 1;
-   }
+    .doctor-info {
+        flex: 1;
+        min-width: 0; /* Đảm bảo flex item có thể co lại */
+        display: flex;
+        flex-direction: column;
+    }
 
-   .doctor-name {
-       font-size: 1.1em;
-       margin-bottom: 4px;
-   }
+    .doctor-name {
+        font-size: 1.1em;
+        margin-bottom: 4px;
+        /* Bỏ white-space: nowrap và text-overflow */
+        word-wrap: break-word; /* Cho phép từ dài được xuống dòng */
+        line-height: 1.3; /* Tăng line-height cho dễ đọc */
+    }
 
-   .doctor-title {
-       font-size: 0.9em;
-       color: #666;
-   }
+	    .doctor-title {
+        font-size: 0.9em;
+        color: #666;
+        /* Cho phép chức danh xuống dòng nếu cần */
+        white-space: normal;
+        line-height: 1.3;
+    }
+}
 
    /* Ẩn nút prev/next trên mobile */
    .slider-button {
