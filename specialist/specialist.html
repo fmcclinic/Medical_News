@@ -763,151 +763,152 @@ body {
 
         return cleanup;
     }
-
     function initializeDoctorSlider(slider) {
-        const container = slider.querySelector('.doctors-container');
-        const track = slider.querySelector('.doctors-track');
-        const cards = Array.from(track.querySelectorAll('.doctor-card'));
-        const prevButton = slider.querySelector('.slider-button.prev');
-        const nextButton = slider.querySelector('.slider-button.next');
-        const dotsContainer = slider.querySelector('.dots-container');
+   const container = slider.querySelector('.doctors-container');
+   const track = slider.querySelector('.doctors-track');
+   const cards = Array.from(track.querySelectorAll('.doctor-card'));
+   const prevButton = slider.querySelector('.slider-button.prev');
+   const nextButton = slider.querySelector('.slider-button.next');
+   const dotsContainer = slider.querySelector('.dots-container');
 
-        let currentSlide = 0;
-        let startX = 0;
-        let scrollLeft = 0;
-        let isDown = false;
-        let touchTimeout = null;
+   let currentSlide = 0;
+   let startX = 0;
+   let scrollLeft = 0;
+   let isDown = false;
+   let touchTimeout = null;
 
-        const handleTouchStart = (e) => {
-            isDown = true;
-            container.classList.add('grabbing');
-            startX = e.touches[0].pageX - container.offsetLeft;
-            scrollLeft = container.scrollLeft;
-        };
+   const getCardsPerView = () => {
+       if (window.innerWidth <= 480) return 1;  // Mobile: 1 card
+       if (window.innerWidth <= 768) return 2;  // Tablet: 2 cards
+       return 3;  // Desktop: 3 cards
+   };
 
-        const handleTouchEnd = () => {
-            if (!isDown) return;
-            isDown = false;
-            container.classList.remove('grabbing');
+   const handleTouchStart = (e) => {
+       isDown = true;
+       container.classList.add('grabbing');
+       startX = e.touches[0].pageX - container.offsetLeft;
+       scrollLeft = container.scrollLeft;
+   };
 
-            const slideWidth = container.clientWidth;
-            const targetSlide = Math.round(container.scrollLeft / slideWidth);
+   const handleTouchEnd = () => {
+       if (!isDown) return;
+       isDown = false;
+       container.classList.remove('grabbing');
 
-            requestAnimationFrame(() => {
-                container.scrollTo({
-                    left: targetSlide * slideWidth,
-                    behavior: 'smooth'
-                });
-                updateDots(targetSlide);
-            });
-        };
+       const slideWidth = container.clientWidth;
+       const targetSlide = Math.round(container.scrollLeft / slideWidth);
 
-        const handleTouchMove = (e) => {
-            if (!isDown) return;
+       requestAnimationFrame(() => {
+           container.scrollTo({
+               left: targetSlide * slideWidth,
+               behavior: 'smooth'
+           });
+           updateDots(targetSlide);
+       });
+   };
 
-            if (touchTimeout) return;
-            touchTimeout = setTimeout(() => touchTimeout = null, 16);
+   const handleTouchMove = (e) => {
+       if (!isDown) return;
 
-            const x = e.touches[0].pageX - container.offsetLeft;
-            const walk = (x - startX) * 1.5;
-            container.scrollLeft = scrollLeft - walk;
-        };
+       if (touchTimeout) return;
+       touchTimeout = setTimeout(() => touchTimeout = null, 16);
 
-        const updateDots = (index) => {
-            const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
-            dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-            currentSlide = index;
+       const x = e.touches[0].pageX - container.offsetLeft;
+       const walk = (x - startX) * 1.5;
+       container.scrollLeft = scrollLeft - walk;
+   };
 
-            if (prevButton && nextButton) {
-                prevButton.disabled = index === 0;
-                nextButton.disabled = index === dots.length - 1;
-            }
-        };
+   const updateDots = (index) => {
+       const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
+       dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+       currentSlide = index;
 
-        const createDots = () => {
-            dotsContainer.innerHTML = '';
-            const totalSlides = window.innerWidth <= 480 ? 
-                cards.length : 
-                window.innerWidth <= 768 ? 
-                    Math.ceil(cards.length / 2) : 
-                    Math.ceil(cards.length / 3);
+       if (prevButton && nextButton) {
+           prevButton.disabled = index === 0;
+           nextButton.disabled = index === dots.length - 1;
+       }
+   };
 
-            const fragment = document.createDocumentFragment();
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('div');
-                dot.classList.add('dot');
-                if (i === 0) dot.classList.add('active');
+   const createDots = () => {
+       dotsContainer.innerHTML = '';
+       const totalSlides = Math.ceil(cards.length / getCardsPerView());
 
-                dot.addEventListener('click', () => {
-                    const slideWidth = container.clientWidth;
-                    requestAnimationFrame(() => {
-                        container.scrollTo({
-                            left: i * slideWidth,
-                            behavior: 'smooth'
-                        });
-                        updateDots(i);
-                    });
-                });
+       const fragment = document.createDocumentFragment();
+       for (let i = 0; i < totalSlides; i++) {
+           const dot = document.createElement('div');
+           dot.classList.add('dot');
+           if (i === 0) dot.classList.add('active');
 
-                fragment.appendChild(dot);
-            }
-            dotsContainer.appendChild(fragment);
-        };
+           dot.addEventListener('click', () => {
+               const slideWidth = container.clientWidth;
+               requestAnimationFrame(() => {
+                   container.scrollTo({
+                       left: i * slideWidth,
+                       behavior: 'smooth'
+                   });
+                   updateDots(i);
+               });
+           });
 
-        if (prevButton && nextButton) {
-            const handleButtonClick = (direction) => {
-                const maxSlide = Math.ceil(cards.length / (window.innerWidth <= 768 ? 2 : 3)) - 1;
-                const newSlide = direction === 'prev' ? 
-                    Math.max(0, currentSlide - 1) : 
-                    Math.min(maxSlide, currentSlide + 1);
+           fragment.appendChild(dot);
+       }
+       dotsContainer.appendChild(fragment);
+   };
 
-                requestAnimationFrame(() => {
-                    container.scrollTo({
-                        left: newSlide * container.clientWidth,
-                        behavior: 'smooth'
-                    });
-                    updateDots(newSlide);
-                });
-            };
+   if (prevButton && nextButton) {
+       const handleButtonClick = (direction) => {
+           const maxSlide = Math.ceil(cards.length / getCardsPerView()) - 1;
+           const newSlide = direction === 'prev' ? 
+               Math.max(0, currentSlide - 1) : 
+               Math.min(maxSlide, currentSlide + 1);
 
-            prevButton.addEventListener('click', () => handleButtonClick('prev'));
-            nextButton.addEventListener('click', () => handleButtonClick('next'));
-        }
+           requestAnimationFrame(() => {
+               container.scrollTo({
+                   left: newSlide * container.clientWidth,
+                   behavior: 'smooth'
+               });
+               updateDots(newSlide);
+           });
+       };
 
-        let scrollTimeout;
-        const handleScroll = () => {
-            if (scrollTimeout) return;
-            scrollTimeout = setTimeout(() => {
-                const slideWidth = container.clientWidth;
-                const targetSlide = Math.round(container.scrollLeft / slideWidth);
-                updateDots(targetSlide);
-                scrollTimeout = null;
-            }, 50);
-        };
+       prevButton.addEventListener('click', () => handleButtonClick('prev'));
+       nextButton.addEventListener('click', () => handleButtonClick('next'));
+   }
 
-        container.addEventListener('touchstart', handleTouchStart, { passive: true });
-        container.addEventListener('touchend', handleTouchEnd);
-        container.addEventListener('touchmove', handleTouchMove, { passive: false });
-        container.addEventListener('scroll', handleScroll, { passive: true });
+   let scrollTimeout;
+   const handleScroll = () => {
+       if (scrollTimeout) return;
+       scrollTimeout = setTimeout(() => {
+           const slideWidth = container.clientWidth;
+           const targetSlide = Math.round(container.scrollLeft / slideWidth);
+           updateDots(targetSlide);
+           scrollTimeout = null;
+       }, 50);
+   };
 
-        createDots();
+   container.addEventListener('touchstart', handleTouchStart, { passive: true });
+   container.addEventListener('touchend', handleTouchEnd);
+   container.addEventListener('touchmove', handleTouchMove, { passive: false });
+   container.addEventListener('scroll', handleScroll, { passive: true });
 
-        const handleResize = debounce(() => {
-            createDots();
-            updateDots(0);
-            container.scrollLeft = 0;
-        }, 250);
+   createDots();
 
-        window.addEventListener('resize', handleResize);
+   const handleResize = debounce(() => {
+       createDots();
+       updateDots(0);
+       container.scrollLeft = 0;
+   }, 250);
 
-        return () => {
-            container.removeEventListener('touchstart', handleTouchStart);
-            container.removeEventListener('touchend', handleTouchEnd);
-            container.removeEventListener('touchmove', handleTouchMove);
-            container.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('resize', handleResize);
-        };
-    }
+   window.addEventListener('resize', handleResize);
+
+   return () => {
+       container.removeEventListener('touchstart', handleTouchStart);
+       container.removeEventListener('touchend', handleTouchEnd);
+       container.removeEventListener('touchmove', handleTouchMove);
+       container.removeEventListener('scroll', handleScroll);
+       window.removeEventListener('resize', handleResize);
+   };
+}
 
     function initializeExpandButtons() {
         const cleanupFunctions = [];
