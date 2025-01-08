@@ -7,17 +7,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
-        .animate-in {
+        .info-card {
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeInUp 0.5s ease forwards;
+            transition: all 0.5s ease;
         }
         
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .info-card.show {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .form-loading {
@@ -39,14 +37,33 @@
                 opacity: 1;
             }
         }
+
+        .loading-spinner {
+            display: none;
+        }
+
+        .form-loading .loading-spinner {
+            display: inline-block;
+        }
+
+        .spinner {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body>
-
 <section id="contact" class="contact-section py-16 bg-gray-50">
     <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12">Liên Hệ</h2>
-
         <div class="grid md:grid-cols-2 gap-8">
             <!-- Contact Info -->
             <div class="space-y-8">
@@ -59,7 +76,8 @@
                             height="100%" 
                             style="border:0;" 
                             allowfullscreen="" 
-                            loading="lazy">
+                            loading="lazy"
+                            aria-label="Bản đồ địa chỉ phòng khám">
                         </iframe>
                     </div>
                 </div>
@@ -70,7 +88,7 @@
                     
                     <div class="flex items-center space-x-4">
                         <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-map-marker-alt text-blue-600 text-xl"></i>
+                            <i class="fas fa-map-marker-alt text-blue-600 text-xl" aria-hidden="true"></i>
                         </div>
                         <div>
                             <h4 class="font-semibold">Địa chỉ</h4>
@@ -80,7 +98,7 @@
 
                     <div class="flex items-center space-x-4">
                         <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-phone-alt text-blue-600 text-xl"></i>
+                            <i class="fas fa-phone-alt text-blue-600 text-xl" aria-hidden="true"></i>
                         </div>
                         <div>
                             <h4 class="font-semibold">Điện thoại</h4>
@@ -90,7 +108,7 @@
 
                     <div class="flex items-center space-x-4">
                         <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                            <i class="far fa-clock text-blue-600 text-xl"></i>
+                            <i class="far fa-clock text-blue-600 text-xl" aria-hidden="true"></i>
                         </div>
                         <div>
                             <h4 class="font-semibold">Giờ làm việc</h4>
@@ -102,14 +120,14 @@
                     <!-- Social Links -->
                     <div class="pt-4 border-t">
                         <div class="flex space-x-4">
-                            <a href="#" class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
-                                <i class="fab fa-facebook-f"></i>
+                            <a href="#" class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors" aria-label="Facebook">
+                                <i class="fab fa-facebook-f" aria-hidden="true"></i>
                             </a>
-                            <a href="#" class="w-10 h-10 bg-red-600 text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors">
-                                <i class="fab fa-youtube"></i>
+                            <a href="#" class="w-10 h-10 bg-red-600 text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors" aria-label="Youtube">
+                                <i class="fab fa-youtube" aria-hidden="true"></i>
                             </a>
-                            <a href="#" class="w-10 h-10 bg-pink-600 text-white rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors">
-                                <i class="fab fa-instagram"></i>
+                            <a href="#" class="w-10 h-10 bg-pink-600 text-white rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors" aria-label="Instagram">
+                                <i class="fab fa-instagram" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
@@ -119,53 +137,66 @@
             <!-- Contact Form -->
             <div class="bg-white rounded-lg shadow-lg p-8 info-card">
                 <h3 class="text-xl font-semibold mb-6">Đặt Lịch Khám</h3>
-                <form id="contactForm" class="space-y-6">
+                
+                <!-- The form -->
+                <form name="submit-to-google-sheet" class="space-y-6">
+                    <input type="hidden" name="timestamp" id="timestamp">
+                    <input type="hidden" name="status" value="Chờ xác nhận">
+
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Họ và tên</label>
-                            <input type="text" name="name" required
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Họ và tên</label>
+                            <input type="text" id="name" name="name" required
                                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <div class="error-message text-red-500 text-sm mt-1 hidden"></div>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Số điện thoại</label>
-                            <input type="tel" name="phone" required
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Số điện thoại</label>
+                            <input type="tel" id="phone" name="phone" required
                                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <div class="error-message text-red-500 text-sm mt-1 hidden"></div>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                        <input type="email" name="email"
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <input type="email" id="email" name="email"
                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <div class="error-message text-red-500 text-sm mt-1 hidden"></div>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Chọn chuyên khoa</label>
-                        <select name="department" required
+                        <label for="department" class="block text-sm font-medium text-gray-700 mb-2">Chọn chuyên khoa</label>
+                        <select id="department" name="department" required
                                 class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                             <option value="">-- Chọn chuyên khoa --</option>
-                            <option value="obstetrics">Sản phụ khoa</option>
-                            <option value="ent">Tai Mũi Họng</option>
-                            <option value="internal">Nội khoa</option>
+                            <option value="Sản phụ khoa">Sản phụ khoa</option>
+                            <option value="Tai Mũi Họng">Tai Mũi Họng</option>
+                            <option value="Nội khoa">Nội khoa</option>
                         </select>
+                        <div class="error-message text-red-500 text-sm mt-1 hidden"></div>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Ngày khám</label>
-                        <input type="date" name="date" required
+                        <label for="date" class="block text-sm font-medium text-gray-700 mb-2">Ngày khám</label>
+                        <input type="date" id="date" name="date" required
                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <div class="error-message text-red-500 text-sm mt-1 hidden"></div>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Ghi chú</label>
-                        <textarea name="note" rows="4"
+                        <label for="note" class="block text-sm font-medium text-gray-700 mb-2">Ghi chú</label>
+                        <textarea id="note" name="note" rows="4"
                                   class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
                     </div>
 
                     <button type="submit" 
-                            class="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
-                        <i class="fas fa-calendar-check mr-2"></i>
-                        Đặt lịch ngay
+                            class="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2">
+                        <i class="fas fa-calendar-check"></i>
+                        <span class="loading-spinner">
+                            <i class="fas fa-spinner spinner"></i>
+                        </span>
+                        <span>Đặt lịch ngay</span>
                     </button>
                 </form>
             </div>
@@ -174,33 +205,76 @@
 </section>
 
 <script>
-class ContactManager {
-    constructor() {
-        this.initElements();
-        this.bindEvents();
-        this.setupIntersectionObserver();
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyl1EKKb-fgifin1MsoxTmgolq150ljzODiOLnRyF0JMd0Px33eiH2WKguwVZHjHngk/exec';
+const form = document.forms['submit-to-google-sheet'];
+
+// Validate individual field
+function validateField(input) {
+    const value = input.value.trim();
+    // Tìm error div dựa trên data attribute thay vì nextElementSibling
+    const errorDiv = input.parentElement.querySelector('.error-message');
+    if (!errorDiv) return true; // Nếu không có error div thì coi như valid
+
+    let isValid = true;
+    let errorMessage = '';
+
+    switch(input.name) {
+        case 'name':
+            if (value.length < 2) {
+                isValid = false;
+                errorMessage = 'Vui lòng nhập họ tên đầy đủ';
+            }
+            break;
+            
+        case 'phone':
+            const phoneRegex = /(84|0[3|5|7|8|9])+([0-9]{8})\b/;
+            if (!phoneRegex.test(value)) {
+                isValid = false;
+                errorMessage = 'Số điện thoại không hợp lệ';
+            }
+            break;
+            
+        case 'email':
+            if (value) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    isValid = false;
+                    errorMessage = 'Email không hợp lệ';
+                }
+            }
+            break;
+            
+        case 'department':
+            if (!value) {
+                isValid = false;
+                errorMessage = 'Vui lòng chọn chuyên khoa';
+            }
+            break;
+            
+        case 'date':
+            if (!value) {
+                isValid = false;
+                errorMessage = 'Vui lòng chọn ngày khám';
+            }
+            break;
     }
 
-    initElements() {
-        this.form = document.getElementById('contactForm');
-        this.inputs = this.form.querySelectorAll('input, select, textarea');
-        this.submitButton = this.form.querySelector('button[type="submit"]');
+    if (!isValid) {
+        errorDiv.textContent = errorMessage;
+        errorDiv.classList.remove('hidden');
+        input.classList.add('border-red-500');
+    } else {
+        errorDiv.classList.add('hidden');
+        input.classList.remove('border-red-500');
     }
 
-    bindEvents() {
-        this.form.addEventListener('submit', (e) => this.handleSubmit(e));
-        this.inputs.forEach(input => {
-            input.addEventListener('blur', (e) => this.validateInput(e.target));
-            input.addEventListener('input', (e) => this.validateInput(e.target));
-        });
+    return isValid;
+}
 
-        const dateInput = this.form.querySelector('input[type="date"]');
-        if (dateInput) {
-            this.setupDateRestrictions(dateInput);
-        }
-    }
-
-    setupDateRestrictions(dateInput) {
+// Set up date restrictions
+function setupDateRestrictions() {
+    const dateInput = document.getElementById('date');
+    if (dateInput) {
         const today = new Date();
         const maxDate = new Date();
         maxDate.setMonth(maxDate.getMonth() + 1);
@@ -208,174 +282,112 @@ class ContactManager {
         dateInput.min = today.toISOString().split('T')[0];
         dateInput.max = maxDate.toISOString().split('T')[0];
     }
+}
 
-    validateInput(input) {
-        const value = input.value.trim();
-        const name = input.name;
+// Show success message
+function showSuccessMessage() {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'success-message fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+    messageDiv.innerHTML = `
+        <div class="flex items-center">
+            <i class="fas fa-check-circle mr-2"></i>
+            <span>Đặt lịch thành công! Chúng tôi sẽ liên hệ sớm.</span>
+        </div>
+    `;
+    document.body.appendChild(messageDiv);
 
-        const existingError = input.parentElement.querySelector('.error-message');
-        if (existingError) existingError.remove();
+    setTimeout(() => {
+        messageDiv.remove();
+    }, 5000);
+}
 
-        let isValid = true;
-        let errorMessage = '';
+// Show error message
+function showErrorMessage(message) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+    messageDiv.innerHTML = `
+        <div class="flex items-center">
+            <i class="fas fa-exclamation-circle mr-2"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    document.body.appendChild(messageDiv);
 
-        switch (name) {
-            case 'name':
-                if (value.length < 2) {
-                    isValid = false;
-                    errorMessage = 'Vui lòng nhập họ tên đầy đủ';
-                }
-                break;
+    setTimeout(() => {
+        messageDiv.remove();
+    }, 5000);
+}
 
-            case 'phone':
-                const phoneRegex = /(84|0[3|5|7|8|9])+([0-9]{8})\b/;
-                if (!phoneRegex.test(value)) {
-                    isValid = false;
-                    errorMessage = 'Số điện thoại không hợp lệ';
-                }
-                break;
-
-            case 'email':
-                if (value) {
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailRegex.test(value)) {
-                        isValid = false;
-                        errorMessage = 'Email không hợp lệ';
-                    }
-                }
-                break;
-
-            case 'department':
-                if (!value) {
-                    isValid = false;
-                    errorMessage = 'Vui lòng chọn chuyên khoa';
-                }
-                break;
-
-            case 'date':
-                if (!value) {
-                    isValid = false;
-                    errorMessage = 'Vui lòng chọn ngày khám';
-                }
-                break;
+// Initialize form
+document.addEventListener('DOMContentLoaded', function() {
+    // Set up form validation
+    const inputs = form.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+        if (input.type !== 'hidden') {
+            input.addEventListener('blur', (e) => validateField(e.target));
+            input.addEventListener('input', (e) => validateField(e.target));
         }
+    });
 
-        if (!isValid) {
-            this.showError(input, errorMessage);
-            return false;
-        }
+    // Set up date restrictions
+    setupDateRestrictions();
 
-        return true;
-    }
-
-    showError(input, message) {
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'error-message text-red-500 text-sm mt-1';
-        errorDiv.textContent = message;
-        input.parentElement.appendChild(errorDiv);
-        input.classList.add('border-red-500');
-    }
-
-    async handleSubmit(e) {
+    // Handle form submission
+    form.addEventListener('submit', e => {
         e.preventDefault();
 
+        // Validate all fields
         let isValid = true;
-        this.inputs.forEach(input => {
-            if (!this.validateInput(input)) {
+        inputs.forEach(input => {
+            if (input.type !== 'hidden' && !validateField(input)) {
                 isValid = false;
             }
         });
 
         if (!isValid) return;
 
-        this.form.classList.add('form-loading');
-        this.submitButton.disabled = true;
+        // Show loading state
+        form.classList.add('form-loading');
+        const submitButton = form.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
 
-        try {
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            this.showSuccessMessage();
-            this.form.reset();
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
-        } finally {
-            this.form.classList.remove('form-loading');
-            this.submitButton.disabled = false;
-        }
-    }
+        // Prepare form data
+        const formData = new FormData(form);
+        formData.append('timestamp', new Date().toISOString());
+        formData.append('status', 'Chờ xác nhận');
 
-    showSuccessMessage() {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = 'success-message fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg';
-        messageDiv.textContent = 'Đặt lịch thành công! Chúng tôi sẽ liên hệ sớm.';
-        document.body.appendChild(messageDiv);
-
-        setTimeout(() => {
-            messageDiv.remove();
-        }, 3000);
-    }
-
-    setupIntersectionObserver() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                    observer.unobserve(entry.target);
-                }
+        // Submit form using fetch with no-cors mode
+        fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
+            .then(() => {
+                showSuccessMessage();
+                form.reset();
+                setupDateRestrictions(); // Reset date restrictions after form reset
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                showErrorMessage('Có lỗi xảy ra. Vui lòng thử lại sau.');
+            })
+            .finally(() => {
+                form.classList.remove('form-loading');
+                submitButton.disabled = false;
             });
-        }, { threshold: 0.2 });
+    });
 
-        document.querySelectorAll('.info-card').forEach(card => {
-            observer.observe(card);
+    // Set up animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                observer.unobserve(entry.target);
+            }
         });
-    }
-}
+    }, { threshold: 0.2 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    new ContactManager();
+    document.querySelectorAll('.info-card').forEach(card => {
+        observer.observe(card);
+    });
 });
 </script>
-
-
-
-
-
-
-
-
-
-
-<script>
-    function updateParentHeight() {
-        const height = document.documentElement.scrollHeight;
-        window.parent.postMessage({ height: height }, '*');
-    }
-
-    // Cập nhật khi DOM loaded
-    document.addEventListener('DOMContentLoaded', updateParentHeight);
-
-    // Cập nhật khi tất cả tài nguyên loaded
-    window.addEventListener('load', updateParentHeight);
-
-    // Cập nhật khi có thay đổi kích thước
-    new ResizeObserver(updateParentHeight).observe(document.body);
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>
