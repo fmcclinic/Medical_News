@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FMC Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .iframe-container {
+            width: 100%;
+            position: relative;
+        }
+        
+        iframe {
+            width: 100%;
+            border: none;
+            display: block;
+            transition: height 0.3s ease;
+        }
+
+        .iframe-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .iframe-error {
+            padding: 20px;
+            text-align: center;
+            color: #e53e3e;
+        }
+    </style>
+</head>
+<body>
+    <div class="iframe-container" data-section="header">
+        <iframe src="header/header.html" scrolling="no" title="Header section"></iframe>
+    </div>
+    <div class="iframe-container" data-section="hero">
+        <iframe src="hero/hero.html" scrolling="no" title="Hero section"></iframe>
+    </div>
+    <div class="iframe-container" data-section="specialist">
+        <iframe src="specialist/specialist.html" scrolling="no" title="Specialist section"></iframe>
+    </div>
+    <div class="iframe-container" data-section="news">
+        <iframe src="news/news.html" scrolling="no" title="News section"></iframe>
+    </div>
+    <div class="iframe-container" data-section="contact">
+        <iframe src="contact/contact.html" scrolling="no" title="Contact section"></iframe>
+    </div>
+
+    <script>
+        // Quản lý load/error cho iframe
+        document.querySelectorAll('.iframe-container').forEach(container => {
+            const iframe = container.querySelector('iframe');
+            const section = container.dataset.section;
+            
+            // Tạo loading indicator
+            const loading = document.createElement('div');
+            loading.className = 'iframe-loading';
+            loading.innerHTML = `Loading ${section} section...`;
+            container.appendChild(loading);
+
+            // Xử lý load thành công
+            iframe.addEventListener('load', () => {
+                loading.remove();
+            });
+
+            // Xử lý lỗi
+            iframe.addEventListener('error', () => {
+                loading.remove();
+                const error = document.createElement('div');
+                error.className = 'iframe-error';
+                error.innerHTML = `Failed to load ${section} section. Please refresh the page.`;
+                container.appendChild(error);
+            });
+        });
+
+        // Xử lý resize từ iframe
+        window.addEventListener('message', function(event) {
+            const sourceFrame = Array.from(document.querySelectorAll('iframe'))
+                .find(iframe => iframe.contentWindow === event.source);
+            
+            if (sourceFrame && event.data.height) {
+                sourceFrame.style.height = `${event.data.height}px`;
+            }
+        });
+
+        // Xử lý scroll smooth đến section
+        function scrollToSection(sectionId) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            if (container) {
+                container.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>
