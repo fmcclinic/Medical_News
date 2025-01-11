@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FMC Chat Widget</title>
+    <link rel="stylesheet" href="chat.css">
+    <!-- Font Awesome cho icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Header của chat -->
+        <div class="chat-header">
+            <div class="clinic-info">
+                <img src="../assets/images/logo.png" alt="FMC Logo" class="clinic-logo">
+                <span class="clinic-name">FMC Support</span>
+            </div>
+            <div class="header-actions">
+                <button class="minimize-btn">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Khu vực chat chính -->
+        <div class="chat-messages" id="chatMessages">
+            <!-- Messages sẽ được thêm vào đây qua JavaScript -->
+        </div>
+
+        <!-- Quick replies -->
+        <div class="quick-replies">
+            <button class="quick-reply-btn">Đặt lịch khám</button>
+            <button class="quick-reply-btn">Giờ làm việc</button>
+            <button class="quick-reply-btn">Giá dịch vụ</button>
+        </div>
+
+        <!-- Input area -->
+        <div class="chat-input-area">
+            <input type="text" 
+                   id="chatInput" 
+                   placeholder="Nhập tin nhắn..." 
+                   class="chat-input">
+            <button class="send-btn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="chat.js"></script>
+</body>
+</html>
