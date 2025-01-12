@@ -20,21 +20,104 @@
             display: block;
             transition: height 0.3s ease;
         }
+        #chat-widget-container {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #chat-widget-container.loaded {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
-    <iframe src="header/header.html" scrolling="no"></iframe>
-    <iframe src="hero/hero.html" scrolling="no"></iframe>
-    <iframe src="specialist/specialist.html" scrolling="no"></iframe>
-    <iframe src="news/news.html" scrolling="no"></iframe>
-    <iframe src="contact/contact.html" scrolling="no"></iframe>
+    <iframe src="header/header.html" scrolling="no" class="section-frame"></iframe>
+    <iframe src="hero/hero.html" scrolling="no" class="section-frame"></iframe>
+    <iframe src="specialist/specialist.html" scrolling="no" class="section-frame"></iframe>
+    <iframe src="news/news.html" scrolling="no" class="section-frame"></iframe>
+    <iframe src="contact/contact.html" scrolling="no" class="section-frame"></iframe>
 
-<iframe 
-    src="chat/chat.html" 
-    id="chat-widget"
-    style="position: fixed; bottom: 20px; right: 20px; border: none; width: 350px; height: 500px; z-index: 1000;"
-></iframe>
+    <!-- Placeholder for chat widget -->
+    <div id="chat-widget-container"></div>
 
+    <script>
+        // Đếm số sections đã load
+        let loadedSections = 0;
+        const totalSections = document.querySelectorAll('.section-frame').length;
 
+        // Theo dõi trạng thái load của sections
+        let sectionsStable = false;
+        let heightsAdjusted = false;
+
+        // Lắng nghe message từ tất cả iframe sections
+        window.addEventListener('message', function(event) {
+            // Tìm iframe là nguồn của message
+            const sourceFrame = Array.from(document.querySelectorAll('.section-frame'))
+                .find(iframe => iframe.contentWindow === event.source);
+            
+            if (sourceFrame && event.data.height) {
+                sourceFrame.style.height = `${event.data.height}px`;
+                checkAllSectionsStable();
+            }
+        });
+
+        // Kiểm tra khi section load xong
+        document.querySelectorAll('.section-frame').forEach(frame => {
+            frame.onload = () => {
+                loadedSections++;
+                if (loadedSections === totalSections) {
+                    sectionsStable = true;
+                    initChatWhenReady();
+                }
+            };
+        });
+
+        // Kiểm tra sections đã ổn định
+        function checkAllSectionsStable() {
+            if (!heightsAdjusted && sectionsStable) {
+                // Đợi thêm một chút để đảm bảo mọi thứ đã ổn định
+                setTimeout(() => {
+                    heightsAdjusted = true;
+                    initChatWhenReady();
+                }, 500);
+            }
+        }
+
+        // Khởi tạo chat khi mọi thứ đã sẵn sàng
+        function initChatWhenReady() {
+            if (sectionsStable && heightsAdjusted) {
+                console.log('All sections stable, loading chat...');
+                loadChatWidget();
+            }
+        }
+
+        // Load chat widget
+        function loadChatWidget() {
+            const chatContainer = document.getElementById('chat-widget-container');
+            
+            // Tạo iframe cho chat
+            const chatFrame = document.createElement('iframe');
+            chatFrame.src = 'chat/chat.html';
+            chatFrame.id = 'chat-widget';
+            chatFrame.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                border: none;
+                width: 350px;
+                height: 500px;
+                z-index: 1000;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                border-radius: 10px;
+            `;
+
+            // Thêm chat vào container
+            chatContainer.appendChild(chatFrame);
+
+            // Hiển thị chat với animation
+            setTimeout(() => {
+                chatContainer.classList.add('loaded');
+            }, 100);
+        }
+    </script>
 </body>
 </html>
