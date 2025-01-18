@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        #response {
+            white-space: pre-wrap;
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin: 10px 0;
+        }
+        #status {
+            color: #666;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Claude API Test</h1>
+    
+    <div>
+        <label for="apiKey">Claude API Key:</label><br>
+        <input type="text" id="apiKey" style="width: 100%; margin: 5px 0;" placeholder="Nhập API key của bạn">
+    </div>
+
+    <div>
+        <label for="userMessage">Tin nhắn:</label><br>
+        <textarea id="userMessage" placeholder="Nhập câu hỏi của bạn"></textarea>
+    </div>
+
+    <button onclick="sendToClaude()">Gửi tới Claude</button>
+    
+    <div id="status"></div>
+    <pre id="response"></pre>
+
+    <script>
+        async function sendToClaude() {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            const message = document.getElementById('userMessage').value.trim();
+            const statusDiv = document.getElementById('status');
+            const responseDiv = document.getElementById('response');
+
+            if (!apiKey || !message) {
+                statusDiv.textContent = 'Vui lòng nhập đầy đủ API key và tin nhắn';
+                return;
+            }
+
+            try {
+                statusDiv.textContent = 'Đang gửi yêu cầu...';
+                responseDiv.textContent = '';
+
+                const response = await fetch('http://localhost:3000/api/claude', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-api-key': apiKey
+                    },
+                    body: JSON.stringify({
+                        model: 'claude-3-opus-20240229',
+                        max_tokens: 1024,
+                        messages: [{
+                            role: 'user',
+                            content: message
+                        }]
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'API request failed');
+                }
+
+                console.log('API Response:', data);
+                statusDiv.textContent = 'Nhận được phản hồi!';
+                
+                // Hiển thị nội dung phản hồi
+                const botResponse = data.content[0].text;
+                responseDiv.textContent = botResponse;
+
+            } catch (error) {
+                console.error('Error:', error);
+                statusDiv.textContent = 'Lỗi: ' + error.message;
+            }
+        }
+
+        document.getElementById('userMessage').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendToClaude();
+            }
+        });
+    </script>
+</body>
+</html>
