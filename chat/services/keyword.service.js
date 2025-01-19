@@ -36,7 +36,7 @@ class KeywordService {
                 }
             },
             "bác_sĩ": {
-                keywords: ["bác sĩ", "doctor", "bác sỹ", "bacsi"],
+                keywords: ["BS", "bác sĩ", "doctor", "bác sỹ", "bacsi"],
                 variations: ["ai khám", "người khám", "bs nào", "bác sĩ nào", "bs giỏi"],
                 departmentRelated: ["sản", "phụ khoa", "tai mũi họng", "nội"],
                 priority: 2,

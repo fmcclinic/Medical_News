@@ -44,13 +44,14 @@ class GitHubService {
 
     validatePattern(pattern) {
         return {
-            pattern: this.cleanJsonString(pattern.pattern || ''),
+            pattern: this.normalizePattern(pattern.pattern || ''),
             responses: Array.isArray(pattern.responses) 
-                ? pattern.responses.map(r => this.cleanJsonString(r))
+                ? pattern.responses.map(r => this.formatResponse(r))
                 : [],
             score: Number(pattern.score) || 0,
             createdAt: pattern.createdAt || new Date().toISOString(),
-            updatedAt: new Date().toISOString()
+            updatedAt: new Date().toISOString(),
+            source: pattern.source || 'keyword'
         };
     }
 
@@ -346,6 +347,102 @@ class GitHubService {
             return false;
         }
     }
-}
 
+        // Thêm methods mới
+        async markPatternForImprovement(pattern) {
+            try {
+                const existingPattern = Array.from(this.patternCache.values())
+                    .find(p => p.pattern === pattern);
+    
+                if (existingPattern) {
+                    await this.updatePattern(existingPattern.issueNumber, {
+                        labels: ['pattern', 'needs-improvement'],
+                        body: JSON.stringify({
+                            ...existingPattern,
+                            needsImprovement: true,
+                            lastFeedback: new Date().toISOString()
+                        })
+                    });
+                }
+            } catch (error) {
+                console.error('Error marking pattern:', error);
+            }
+        }
+    
+        // Trong github.service.js
+
+async saveAIResponse(question, response) {
+    try {
+        // Chuẩn hóa pattern
+        const normalizedPattern = this.normalizePattern(question);
+ 
+        // Format response - chỉ format basic mà không thêm prefix
+        const formattedResponse = this.formatResponse(response);
+ 
+        const patternData = this.validatePattern({
+            pattern: normalizedPattern,
+            responses: [formattedResponse],
+            score: 2,
+            source: 'ai',
+            createdAt: new Date().toISOString()
+        });
+ 
+        const body = {
+            title: `[AI Pattern] ${normalizedPattern.slice(0, 50)}...`,
+            body: JSON.stringify(patternData, null, 2), // Pretty print JSON
+            labels: ['pattern', 'ai-generated', 'high-quality']
+        };
+ 
+        const apiResponse = await fetch(
+            `${this.baseUrl}/repos/${this.owner}/${this.repo}/issues`,
+            {
+                method: 'POST',
+                headers: this.headers,
+                body: JSON.stringify(body)
+            }
+        );
+ 
+        if (!apiResponse.ok) {
+            throw new Error('Failed to save AI response');
+        }
+ 
+        await this.syncPatterns();
+        return true;
+    } catch (error) {
+        console.error('Error saving AI response:', error);
+        return false;
+    }
+ }
+ 
+ // Chỉ format basic cho response, không thêm prefix
+ formatResponse(response) {
+    return response
+        .trim()                          // Bỏ spaces đầu/cuối
+        .replace(/\n{3,}/g, '\n\n')      // Giảm nhiều dòng trống thành 2 dòng
+        .replace(/\s+$/gm, '');          // Bỏ spaces cuối mỗi dòng
+ }
+ 
+ validatePattern(pattern) {
+    return {
+        pattern: this.normalizePattern(pattern.pattern || ''),
+        responses: Array.isArray(pattern.responses) 
+            ? pattern.responses.map(r => this.formatResponse(r))
+            : [],
+        score: Number(pattern.score) || 0,
+        createdAt: pattern.createdAt || new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        source: pattern.source || 'keyword'
+    };
+ }
+ 
+ normalizePattern(pattern) {
+    return pattern
+        .toLowerCase()
+        .trim()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '') // Bỏ dấu
+        .replace(/[^\w\s]/g, ' ')        // Thay ký tự đặc biệt bằng space
+        .replace(/\s+/g, ' ');           // Giảm nhiều space thành 1 space
+ }
+    }
 export const githubService = new GitHubService();

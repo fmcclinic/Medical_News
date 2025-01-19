@@ -3,7 +3,7 @@
 export const clinicConfig = {
     // Basic Info
     info: {
-        name: "FMC - Family Medical Center",
+        name: "FMC - Friend Medical Clinic",
         address: "A12 Saigon Villas Hill, 99 Lê Văn Việt, Thành phố Thủ Đức, TP.HCM 700000",
         phone: "028 3535 5353",
         workingHours: {

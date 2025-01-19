@@ -280,6 +280,41 @@ class ChatUI {
             this.addWelcomeMessages();
         }
     }
+
+    // Thêm method mới vào class ChatUI
+addAIResponse(messageId, response) {
+    const messageDiv = document.querySelector(`[data-message-id="${messageId}"]`);
+    if (!messageDiv) return;
+
+    // Create new response container
+    const aiResponseDiv = document.createElement('div');
+    aiResponseDiv.className = 'ai-enhanced-response';
+    aiResponseDiv.innerHTML = `
+        <div class="ai-badge">
+            <i class="fas fa-robot"></i>
+            Câu trả lời được cải thiện bởi AI
+        </div>
+        <div class="response-content">
+            ${response}
+        </div>
+    `;
+
+    // Add slide-in animation
+    aiResponseDiv.style.opacity = '0';
+    aiResponseDiv.style.transform = 'translateY(-10px)';
+
+    // Replace old response
+    messageDiv.querySelector('.response-content')?.remove();
+    messageDiv.appendChild(aiResponseDiv);
+
+    // Trigger animation
+    setTimeout(() => {
+        aiResponseDiv.style.opacity = '1';
+        aiResponseDiv.style.transform = 'translateY(0)';
+    }, 100);
+
+    return messageId;
+}
 }
 
 // Export singleton instance

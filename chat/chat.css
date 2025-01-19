@@ -221,7 +221,31 @@
         transform: translateY(-6px);
     }
 }
+/* Thêm vào file CSS của bạn */
+.ai-enhanced-response {
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+    border-left: 3px solid #4285f4;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 4px;
+}
 
+.ai-badge {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #4285f4;
+    margin-bottom: 8px;
+}
+
+.ai-badge i {
+    margin-right: 6px;
+}
+
+.response-content {
+    line-height: 1.5;
+}
 /* Mobile Styles */
 @media (max-width: 480px) {
     .chat-container {

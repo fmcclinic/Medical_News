@@ -221,39 +221,50 @@ class ChatBot {
 async handleFeedback(feedback) {
     try {
         this.logDebug('Processing feedback:', feedback);
-
+ 
         if (!feedback.isPositive && feedback.useAI) {
+            // Mark old pattern for improvement
+            await this.githubService.markPatternForImprovement(feedback.message);
+ 
             // Get new response từ Claude
             const aiResponse = await this.claudeService.processMessage(
                 feedback.message,
                 this.currentConversationId
             );
-
-            // Remove processing indicator 
+ 
+            // Remove processing indicator
             this.feedback.removeProcessingIndicator(feedback.messageId);
-
+ 
             if (aiResponse) {
-                // Add new AI response
-                const newMessageId = this.ui.addMessage(aiResponse.text, 'bot');
-
-                // Add feedback UI cho câu trả lời mới
-                this.feedback.addFeedbackUI(newMessageId, feedback.message, aiResponse.text);
-
+                // Use new enhanced UI for AI response
+                const newMessageId = this.ui.addAIResponse(
+                    feedback.messageId,
+                    aiResponse.text
+                );
+ 
+                // Save AI response with higher quality marking 
+                await this.githubService.saveAIResponse(
+                    feedback.message,
+                    aiResponse.text
+                );
+ 
+                // Add feedback UI for new response
+                this.feedback.addFeedbackUI(
+                    newMessageId,
+                    feedback.message, 
+                    aiResponse.text
+                );
+ 
                 // Save to chat history
                 await this.saveChatHistory({
                     conversationId: this.currentConversationId,
                     type: 'claude',
                     message: feedback.message,
                     response: aiResponse.text,
-                    isAIRetry: true
+                    isAIRetry: true,
+                    previousMessageId: feedback.messageId
                 });
-
-                // Learn from AI response
-                await this.githubService.processLearning(
-                    feedback.message, 
-                    aiResponse.text,
-                    true
-                );
+ 
             } else {
                 // Show error message if AI fails
                 this.ui.addMessage(
@@ -261,35 +272,49 @@ async handleFeedback(feedback) {
                     'bot'
                 );
             }
-
+ 
             return;
         }
-
-        // Handle positive feedback normally...
+ 
+        // Process positive feedback
         await this.githubService.processLearning(
             feedback.message,
             feedback.response,
             feedback.isPositive
         );
-
+ 
+        // Update pattern score
+        await this.githubService.updatePatternScore(
+            feedback.message,
+            feedback.isPositive ? 0.5 : -0.5
+        );
+ 
         // Store feedback
         await storageManager.saveFeedback({
             conversationId: this.currentConversationId,
             messageId: feedback.messageId,
-            type: feedback.type,
+            type: feedback.type || 'unknown',
             isPositive: feedback.isPositive,
+            message: feedback.message,
+            response: feedback.response,
             timestamp: Date.now()
         });
-
+ 
     } catch (error) {
         console.error('Error processing feedback:', error);
         // Remove indicator if error occurs
         if (feedback.messageId) {
             this.feedback.removeProcessingIndicator(feedback.messageId);
         }
-        this.handleError(error);
+        // Log error
+        await this.handleError(error);
+        // Show error message to user
+        this.ui.addMessage(
+            'Xin lỗi, có lỗi xảy ra khi xử lý phản hồi của bạn.',
+            'bot'
+        );
     }
-}
+ }
 
     addEventListeners() {
         document.addEventListener('chat:message', async (event) => {
