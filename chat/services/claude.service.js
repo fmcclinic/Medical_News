@@ -6,7 +6,7 @@ import { githubService } from './github.service.js';
 class ClaudeService {
     constructor() {
         // API Configuration
-        this.API_KEY = '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';
+        this.API_KEY = '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';
         this.API_URL = 'http://localhost:3000/api/claude';
         this.MODEL = 'claude-3-opus-20240229';
         
@@ -220,12 +220,12 @@ class ClaudeService {
             // Add system prompt if available
             if (systemPrompt) {
                 messages.push({
-                    role: "system",
+                    role: "system", 
                     content: systemPrompt
                 });
             }
-
-            // Add context messages if available
+ 
+            // Add context messages if available 
             if (context && Array.isArray(context)) {
                 context.forEach(c => {
                     messages.push({
@@ -234,18 +234,19 @@ class ClaudeService {
                     });
                 });
             }
-
+ 
             // Add user message
             messages.push({
                 role: "user",
                 content: message
             });
-
+ 
             const response = await fetch(this.API_URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-api-key': this.API_KEY
+                    'x-api-key': this.API_KEY,
+                    'anthropic-version': '2023-06-01'
                 },
                 body: JSON.stringify({
                     model: this.MODEL,
@@ -253,22 +254,28 @@ class ClaudeService {
                     messages: messages
                 })
             });
-
+ 
             if (!response.ok) {
                 throw new Error(`API request failed: ${response.statusText}`);
             }
-
+ 
             const data = await response.json();
+            
+            // Process and return response
             return {
                 text: data.content[0].text,
                 isClinicQuestion: true,
-                score: 1.0
+                score: 1.0, 
+                analysis: data.analysis || null,
+                raw: data // Store raw response for debugging
             };
-
+ 
         } catch (error) {
+            // Implement exponential backoff for retries
             if (retryCount < 3) {
-                this.logDebug(`Retrying API call (${retryCount + 1}/3)`);
-                await new Promise(resolve => setTimeout(resolve, 1000 * (retryCount + 1)));
+                const delay = Math.pow(2, retryCount) * 1000; // 1s, 2s, 4s
+                this.logDebug(`Retrying API call (${retryCount + 1}/3) after ${delay}ms`);
+                await new Promise(resolve => setTimeout(resolve, delay));
                 return this.callClaudeAPI(message, systemPrompt, context, retryCount + 1);
             }
             throw error;

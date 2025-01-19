@@ -11,66 +11,181 @@ class KeywordService {
 
     initializeKeywordMap() {
         this.keywordMap = {
-            "giờ_làm_việc": {
-                keywords: ["giờ", "thời gian", "làm việc", "mở cửa", "đóng cửa", "lịch"],
-                variations: ["khi nào", "mấy giờ", "khám được", "còn làm không"],
-                priority: 1,
-                handler: () => {
-                    return `Giờ làm việc của phòng khám:\n${clinicConfig.info.workingHours.weekday}\n${clinicConfig.info.workingHours.sunday}`;
-                }
-            },
-            "địa_điểm": {
-                keywords: ["địa chỉ", "ở đâu", "chỗ nào", "tới", "đường", "quận"],
-                variations: ["chỉ đường", "tìm đường", "đi như thế nào", "bản đồ", "địa điểm"],
-                priority: 1,
-                handler: () => {
-                    return `Địa chỉ phòng khám: ${clinicConfig.info.address}\nSố điện thoại liên hệ: ${clinicConfig.info.phone}`;
-                }
-            },
-            "đặt_lịch": {
-                keywords: ["đặt lịch", "đặt hẹn", "booking", "lịch khám", "hẹn khám", "đăng ký khám"],
-                variations: ["muốn khám", "đăng ký", "book lịch", "lấy lịch", "xin lịch"],
-                priority: 1,
-                handler: () => {
-                    return this.getBookingInfo();
-                }
-            },
-            "bác_sĩ": {
-                keywords: ["BS", "bác sĩ", "doctor", "bác sỹ", "bacsi"],
-                variations: ["ai khám", "người khám", "bs nào", "bác sĩ nào", "bs giỏi"],
-                departmentRelated: ["sản", "phụ khoa", "tai mũi họng", "nội"],
-                priority: 2,
-                handler: (dept) => {
-                    return this.getDoctorInfo(dept);
-                }
-            },
-            "chuyên_khoa": {
-                keywords: ["chuyên khoa", "khoa", "bệnh", "điều trị", "chuyên môn"],
-                variations: ["chữa được", "có khám", "trị được", "chuyên gì"],
-                priority: 2,
-                handler: (specialty) => {
-                    return this.getDepartmentInfo(specialty);
-                }
-            },
-            "dịch_vụ": {
-                keywords: ["dịch vụ", "khám gì", "điều trị gì", "làm được gì"],
-                variations: ["có những gì", "khám những gì", "dịch vụ gì", "khám bệnh gì"],
-                priority: 2,
-                handler: (dept) => {
-                    return this.getServiceInfo(dept);
-                }
+        "giờ_làm_việc": {
+                "keywords": [
+                    "giờ",
+                    "thời gian",
+                    "làm việc",
+                    "mở cửa",
+                    "đóng cửa",
+                    "lịch"
+                ],
+                "variations": [
+                    "khi nào",
+                    "mấy giờ",
+                    "khám được",
+                    "còn làm không"
+                ],
+                "priority": 1,
+                "handler": () => {
+                                                    return `Giờ làm việc của phòng khám:\n${clinicConfig.info.workingHours.weekday}\n${clinicConfig.info.workingHours.sunday}`;
+                                                }
             },
 
-"điện_thoại": {
-    keywords: ["điện thoại", "số điện thoại"],
-    variations: ["phone", "số phone", "liên hệ", "liên lạc"],
-    priority: 2,
-    handler: () => {
-        return `Số điện thoại phòng khám: ${clinicConfig.info.phone}`;
-    }
-}
+        "địa_điểm": {
+                "keywords": [
+                    "địa chỉ",
+                    "ở đâu",
+                    "chỗ nào",
+                    "tới",
+                    "đường",
+                    "quận"
+                ],
+                "variations": [
+                    "chỉ đường",
+                    "tìm đường",
+                    "đi như thế nào",
+                    "bản đồ",
+                    "địa điểm"
+                ],
+                "priority": 1,
+                "handler": () => {
+                                                    return `Địa chỉ phòng khám: ${clinicConfig.info.address}\nSố điện thoại liên hệ: ${clinicConfig.info.phone}`;
+                                                }
+            },
 
-        };
+        "đặt_lịch": {
+                "keywords": [
+                    "đặt lịch",
+                    "đặt hẹn",
+                    "booking",
+                    "lịch khám",
+                    "hẹn khám",
+                    "đăng ký khám"
+                ],
+                "variations": [
+                    "muốn khám",
+                    "đăng ký",
+                    "book lịch",
+                    "lấy lịch",
+                    "xin lịch"
+                ],
+                "priority": 1,
+                "handler": () => {
+                                                    return this.getBookingInfo();
+                                                }
+            },
+
+        "bác_sĩ": {
+                "keywords": [
+                    "BS",
+                    "bác sĩ",
+                    "doctor",
+                    "bác sỹ",
+                    "bacsi"
+                ],
+                "variations": [
+                    "ai khám",
+                    "người khám",
+                    "bs nào",
+                    "bác sĩ nào",
+                    "bs giỏi"
+                ],
+                "priority": 2,
+                "departmentRelated": [
+                    "sản",
+                    "phụ khoa",
+                    "tai mũi họng",
+                    "nội"
+                ],
+                "handler": (dept) => {
+                                                    return this.getDoctorInfo(dept);
+                                                }
+            },
+
+        "chuyên_khoa": {
+                "keywords": [
+                    "chuyên khoa",
+                    "khoa",
+                    "bệnh",
+                    "điều trị",
+                    "chuyên môn"
+                ],
+                "variations": [
+                    "chữa được",
+                    "có khám",
+                    "trị được",
+                    "chuyên gì"
+                ],
+                "priority": 2,
+                "handler": (specialty) => {
+                                                    return this.getDepartmentInfo(specialty);
+                                                }
+            },
+
+        "dịch_vụ": {
+                "keywords": [
+                    "dịch vụ",
+                    "khám gì",
+                    "điều trị gì",
+                    "làm được gì"
+                ],
+                "variations": [
+                    "có những gì",
+                    "khám những gì",
+                    "dịch vụ gì",
+                    "khám bệnh gì"
+                ],
+                "priority": 2,
+                "handler": (dept) => {
+                                                    return this.getServiceInfo(dept);
+                                                }
+            },
+
+        "điện_thoại": {
+                "keywords": [
+                    "điện thoại",
+                    "số điện thoại"
+                ],
+                "variations": [
+                    "phone",
+                    "số phone",
+                    "liên hệ",
+                    "liên lạc"
+                ],
+                "priority": 2,
+                "handler": () => {
+                                        return `Số điện thoại phòng khám: ${clinicConfig.info.phone}`;
+                                    }
+            },
+
+        "tang_huyet_ap": {
+                "keywords": [
+                    "tăng huyết áp",
+                    "huyết áp cao",
+                    "cao huyết áp",
+                    "bệnh huyết áp",
+                    "đo huyết áp",
+                    "huyết áp"
+                ],
+                "variations": [
+                    "đau đầu chóng mặt",
+                    "nhức đầu hoa mắt",
+                    "tim đập nhanh",
+                    "mỏi gáy",
+                    "áp cao",
+                    "máu cao",
+                    "điều trị huyết áp",
+                    "khám huyết áp",
+                    "đi khám huyết áp",
+                    "đo huyết áp",
+                    "theo dõi huyết áp"
+                ],
+                "priority": 1,
+                "handler": (dept) => {
+                return this.getDoctorInfo(dept);}
+            }
+};
         console.log('KeywordMap initialized with intents:', Object.keys(this.keywordMap));
     }
 
