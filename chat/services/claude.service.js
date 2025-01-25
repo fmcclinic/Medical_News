@@ -6,7 +6,7 @@ import { githubService } from './github.service.js';
 class ClaudeService {
     constructor() {
         // API Configuration
-        this.API_KEY = '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';
+        this.API_KEY = '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'; // Thay thế key mới
         this.API_URL = 'http://localhost:3000/api/claude';
         this.MODEL = 'claude-3-opus-20240229';
         
@@ -16,12 +16,12 @@ class ClaudeService {
         this.MAX_CACHE_SIZE = 1000;
         this.contextMemory = [];
         this.MAX_CONTEXT_LENGTH = 10;
-
+     
         // Rate Limiting
         this.requestCount = 0;
         this.requestTimestamp = Date.now();
         this.MAX_REQUESTS_PER_MINUTE = 50;
-
+     
         // Initialize
         this.systemPrompts = this.initializePrompts();
         this.questionPatterns = this.initializePatterns();
@@ -29,7 +29,7 @@ class ClaudeService {
         
         // Debug Mode
         this.DEBUG = true;
-    }
+     }
 
     initializePrompts() {
         return {
