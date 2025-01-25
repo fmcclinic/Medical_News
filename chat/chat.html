@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FMC Chat Widget</title>
-    
+    <script src="config/credentials.js"></script>
     <!-- Styles -->
     <link rel="modulepreload" href="config/clinic.config.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -70,22 +69,55 @@
         </div>
     </div>
 
+    <!-- Load Credentials First -->
+    <script src="config/credentials.js"></script>
+    <script>
+        console.log('Checking credentials load:', {
+            time: new Date().toISOString(),
+            hasConfig: !!window.GITHUB_CONFIG,
+            configPath: 'config/credentials.js'
+        });
+    </script>
+    <!-- Error Handler -->
+    <script>
+        window.addEventListener('error', (event) => {
+            if (!window.GITHUB_CONFIG || !window.GITHUB_CONFIG.token) {
+                console.error('GitHub credentials not loaded correctly');
+            }
+            console.error('Chat error:', event.error);
+        });
+    </script>
+
     <!-- Main Chat Script -->
     <script type="module">
+        // Verify credentials before initializing
+        if (!window.GITHUB_CONFIG || !window.GITHUB_CONFIG.token) {
+            console.error('GitHub credentials missing. Please check credentials.js');
+        }
+
         // Wait for DOM to be fully loaded
         window.addEventListener('load', async () => {
             try {
+                if (!window.GITHUB_CONFIG?.token) {
+                    throw new Error('GitHub token not found. Check credentials.js');
+                }
+
                 const { chatBot } = await import('./chat.js');
                 await chatBot.init();
                 console.log('Chat initialized successfully');
             } catch (error) {
                 console.error('Chat initialization error:', error);
+                // Show user-friendly error message
+                const chatMessages = document.getElementById('chatMessages');
+                if (chatMessages) {
+                    chatMessages.innerHTML = `
+                        <div class="system-message error">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Không thể khởi tạo chat. Vui lòng thử lại sau.
+                        </div>
+                    `;
+                }
             }
-        });
-
-        // Global error handling
-        window.addEventListener('error', (event) => {
-            console.error('Chat error:', event.error);
         });
 
         window.addEventListener('unhandledrejection', (event) => {
