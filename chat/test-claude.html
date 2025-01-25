@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Claude API Test</title>
+</head>
+<body>
+    <div id="output" style="white-space: pre-wrap;"></div>
+    <script>
+        async function testAPI() {
+            const output = document.getElementById('output');
+            const API_URL = 'http://localhost:3000/api/claude';
+            
+            try {
+                output.innerText = 'Testing API: ' + API_URL + '\n';
+                
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-api-key': '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'
+                    },
+                    body: JSON.stringify({
+                        model: 'claude-3-opus-20240229',
+                        messages: [{
+                            role: 'user',
+                            content: 'Xin chào'
+                        }]
+                    })
+                });
+                
+                const data = await response.json();
+                output.innerText += JSON.stringify(data, null, 2);
+            } catch (error) {
+                output.innerText += '\nError: ' + error;
+                output.innerText += '\nKiểm tra:\n1. Server đang chạy?\n2. Port 3000 có đúng không?\n3. API endpoint có chính xác?';
+            }
+        }
+
+        testAPI();
+    </script>
+</body>
+</html>
