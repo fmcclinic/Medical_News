@@ -98,10 +98,28 @@
     // Dashboard API URL - endpoint đã hoạt động
     const DASHBOARD_URL = 'https://claude-api-test.vercel.app';
     
-    // API status check - sửa lại xử lý response theo format mới
-    async function checkApiKeys() {
+// Thêm timeout và retry cho API calls
+async function fetchWithTimeout(url, options = {}, timeout = 5000) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+    try {
+        const response = await fetch(url, {
+            ...options,
+            signal: controller.signal
+        });
+        return response;
+    } finally {
+        clearTimeout(timeoutId);
+    }
+}
+
+async function checkApiKeys(retries = 3) {
+    const DASHBOARD_URL = 'https://claude-api-test.vercel.app';
+    
+    for (let i = 0; i < retries; i++) {
         try {
-            const response = await fetch(`${DASHBOARD_URL}/api/test-keys`);
+            const response = await fetchWithTimeout(`${DASHBOARD_URL}/api/test-keys`);
             const data = await response.json();
             
             if (!data.success) {
@@ -115,10 +133,16 @@
 
             return data.status.ready;
         } catch (error) {
-            console.error('Error checking API keys:', error);
-            return false;
+            console.error(`Attempt ${i + 1}/${retries} failed:`, error);
+            if (i === retries - 1) {
+                throw error; // Throw on last retry
+            }
+            // Wait before retry (exponential backoff)
+            await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 1000));
         }
     }
+    return false;
+}
 
     // Wait for DOM to be fully loaded
     window.addEventListener('load', async () => {
