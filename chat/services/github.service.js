@@ -19,35 +19,31 @@ class GitHubService {
 
    async callGitHubAPI(endpoint, method = 'GET', body = null) {
     try {
-        // Tạo request options
         const options = {
             method: method,
             headers: {
                 'Content-Type': 'application/json'
             }
         };
- 
-        // Thêm body nếu cần
+
         if (body) {
             options.body = JSON.stringify(body);
         }
- 
-        // Gọi API endpoint
+
         const response = await fetch(this.apiUrl, options);
         const data = await response.json();
- 
-        // Check response status
+
         if (!data.success) {
             throw new Error(data.error || 'GitHub API call failed');
         }
- 
-        return data.response; // Trả về response data từ Dashboard API
- 
+
+        return data.response;  // Return actual response data
+
     } catch (error) {
         console.error('GitHub API Error:', error);
         throw new Error(`GitHub API error: ${error.message}`);
     }
- }
+}
 
    async init() {
        try {
