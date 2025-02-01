@@ -76,46 +76,64 @@ class GitHubService {
        }
    }
 
-   async syncPatterns(retryCount = 0) {
-       if (this.syncInProgress) return false;
-       this.syncInProgress = true;
-
-       try {
-           const issues = await this.callGitHubAPI(
-               `/repos/${this.owner}/${this.repo}/issues?state=open&labels=pattern`
-           );
-
-           this.patternCache.clear();
-           for (const issue of issues) {
-               try {
-                   const cleanBody = this.cleanJsonString(issue.body);
-                   let data = JSON.parse(cleanBody);
-                   data = this.validatePattern(data);
-                   
-                   if (data.pattern && data.responses.length > 0) {
-                       this.patternCache.set(data.pattern, {
-                           issueNumber: issue.number,
-                           ...data
-                       });
-                   }
-               } catch (parseError) {
-                   console.error(`Error parsing issue #${issue.number}:`, parseError);
-               }
-           }
-
-           this.lastSyncTime = new Date();
-           await this.backupToLocalStorage();
-           return true;
-       } catch (error) {
-           if (retryCount < this.maxRetries) {
-               await new Promise(resolve => setTimeout(resolve, this.retryDelay * Math.pow(2, retryCount)));
-               return this.syncPatterns(retryCount + 1);
-           }
-           throw error;
-       } finally {
-           this.syncInProgress = false;
-       }
-   }
+// Thêm xử lý errors cụ thể
+async syncPatterns(retryCount = 0) {
+    if (this.syncInProgress) return false;
+    this.syncInProgress = true;
+ 
+    try {
+        const issues = await this.callGitHubAPI(
+            `/repos/${this.owner}/${this.repo}/issues?state=open&labels=pattern`
+        );
+ 
+        // Check issues data
+        if (!Array.isArray(issues)) {
+            throw new Error('Invalid response format from Dashboard API');
+        }
+ 
+        // Process issues...
+        this.patternCache.clear();
+        for (const issue of issues) {
+            try {
+                const cleanBody = this.cleanJsonString(issue.body);
+                let data = JSON.parse(cleanBody);
+                data = this.validatePattern(data);
+                
+                if (data.pattern && data.responses.length > 0) {
+                    this.patternCache.set(data.pattern, {
+                        issueNumber: issue.number,
+                        ...data
+                    });
+                }
+            } catch (parseError) {
+                console.error(`Error parsing issue #${issue.number}:`, parseError);
+                // Continue với issue tiếp theo
+            }
+        }
+ 
+        this.lastSyncTime = new Date();
+        await this.backupToLocalStorage();
+        return true;
+ 
+    } catch (error) {
+        // Xử lý retry
+        if (retryCount < this.maxRetries) {
+            console.log(`Retrying sync (${retryCount + 1}/${this.maxRetries})...`);
+            await new Promise(resolve => setTimeout(resolve, this.retryDelay * Math.pow(2, retryCount)));
+            return this.syncPatterns(retryCount + 1);
+        }
+ 
+        // Log detailed error
+        console.error('Pattern sync failed:', error);
+        
+        // Load from backup
+        this.loadFromLocalStorage();
+        
+        throw new Error(`GitHub sync failed: ${error.message}`);
+    } finally {
+        this.syncInProgress = false;
+    }
+ }
 
    async findBestMatch(userInput) {
        try {
