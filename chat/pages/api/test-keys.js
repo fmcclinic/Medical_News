@@ -1,4 +1,11 @@
 export default function handler(req, res) {
+  if (req.method !== 'GET') {
+    return res.status(405).json({ 
+      success: false, 
+      error: 'Method not allowed' 
+    });
+  }
+
   const hasGithubToken = !!process.env.GITHUB_TOKEN;
   const hasClaudeKey = !!process.env.CLAUDE_API_KEY;
 
