@@ -4,11 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FMC Chat Widget</title>
-    <script src="config/credentials.js"></script>
+    
     <!-- Styles -->
     <link rel="modulepreload" href="config/clinic.config.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="chat.css">
+    
+    <style>
+    /* Thêm styles cho trạng thái minimize */
+    .chat-container.minimized {
+        height: 60px; /* Chỉ hiện header */
+        transition: height 0.3s ease;
+    }
+    
+    .chat-container.minimized .chat-messages,
+    .chat-container.minimized .quick-replies,
+    .chat-container.minimized .chat-input-area {
+        display: none;
+    }
+
+    .minimize-btn i {
+        transition: transform 0.3s ease;
+    }
+
+    .minimized .minimize-btn i {
+        transform: rotate(180deg);
+    }
+    </style>
 </head>
 <body>
     <!-- Chat Container -->
@@ -20,7 +42,7 @@
                 <span class="clinic-name">FMC Support</span>
             </div>
             <div class="header-actions">
-                <button class="minimize-btn" title="Thu nhỏ/Phóng to">
+                <button class="minimize-btn" title="Thu nhỏ/Phóng to" id="minimizeBtn">
                     <i class="fas fa-minus"></i>
                 </button>
             </div>
@@ -69,37 +91,45 @@
         </div>
     </div>
 
-    <!-- Load Credentials First -->
-    <script src="config/credentials.js"></script>
-    <script>
-        console.log('Checking credentials load:', {
-            time: new Date().toISOString(),
-            hasConfig: !!window.GITHUB_CONFIG,
-            configPath: 'config/credentials.js'
-        });
-    </script>
-    <!-- Error Handler -->
-    <script>
-        window.addEventListener('error', (event) => {
-            if (!window.GITHUB_CONFIG || !window.GITHUB_CONFIG.token) {
-                console.error('GitHub credentials not loaded correctly');
-            }
-            console.error('Chat error:', event.error);
-        });
-    </script>
-
     <!-- Main Chat Script -->
     <script type="module">
-        // Verify credentials before initializing
-        if (!window.GITHUB_CONFIG || !window.GITHUB_CONFIG.token) {
-            console.error('GitHub credentials missing. Please check credentials.js');
+        // Dashboard API URL
+        const DASHBOARD_URL = 'https://claude-api-test.vercel.app';
+        
+        // API status check
+        async function checkApiKeys() {
+            try {
+                const response = await fetch(`${DASHBOARD_URL}/api/test-keys`);
+                const data = await response.json();
+                console.log('API Status:', data);
+                return data.status.ready;
+            } catch (error) {
+                console.error('Error checking API keys:', error);
+                return false;
+            }
+        }
+
+        // Minimize functionality
+        document.getElementById('minimizeBtn').addEventListener('click', () => {
+            const container = document.getElementById('chat-container');
+            container.classList.toggle('minimized');
+            
+            // Save state to localStorage
+            localStorage.setItem('chatMinimized', container.classList.contains('minimized'));
+        });
+
+        // Restore minimize state on load
+        const wasMinimized = localStorage.getItem('chatMinimized') === 'true';
+        if (wasMinimized) {
+            document.getElementById('chat-container').classList.add('minimized');
         }
 
         // Wait for DOM to be fully loaded
         window.addEventListener('load', async () => {
             try {
-                if (!window.GITHUB_CONFIG?.token) {
-                    throw new Error('GitHub token not found. Check credentials.js');
+                const apiReady = await checkApiKeys();
+                if (!apiReady) {
+                    throw new Error('API keys not configured properly');
                 }
 
                 const { chatBot } = await import('./chat.js');
@@ -118,6 +148,11 @@
                     `;
                 }
             }
+        });
+
+        // Error handling
+        window.addEventListener('error', (event) => {
+            console.error('Chat error:', event.error);
         });
 
         window.addEventListener('unhandledrejection', (event) => {
