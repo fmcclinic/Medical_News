@@ -91,73 +91,72 @@
         </div>
     </div>
 
-    <!-- Main Chat Script -->
-    <script type="module">
-        // Dashboard API URL
-        const DASHBOARD_URL = 'https://claude-api-test.vercel.app';
-        
-        // API status check
-        async function checkApiKeys() {
-            try {
-                const response = await fetch(`${DASHBOARD_URL}/api/test-keys`);
-                const data = await response.json();
-                console.log('API Status:', data);
-                return data.status.ready;
-            } catch (error) {
-                console.error('Error checking API keys:', error);
-                return false;
-            }
-        }
 
-        // Minimize functionality
-        document.getElementById('minimizeBtn').addEventListener('click', () => {
-            const container = document.getElementById('chat-container');
-            container.classList.toggle('minimized');
+    
+<!-- Main Chat Script -->
+<script type="module">
+    // Dashboard API URL - endpoint đã hoạt động
+    const DASHBOARD_URL = 'https://claude-api-test.vercel.app';
+    
+    // API status check - sửa lại xử lý response theo format mới
+    async function checkApiKeys() {
+        try {
+            const response = await fetch(`${DASHBOARD_URL}/api/test-keys`);
+            const data = await response.json();
             
-            // Save state to localStorage
-            localStorage.setItem('chatMinimized', container.classList.contains('minimized'));
-        });
-
-        // Restore minimize state on load
-        const wasMinimized = localStorage.getItem('chatMinimized') === 'true';
-        if (wasMinimized) {
-            document.getElementById('chat-container').classList.add('minimized');
-        }
-
-        // Wait for DOM to be fully loaded
-        window.addEventListener('load', async () => {
-            try {
-                const apiReady = await checkApiKeys();
-                if (!apiReady) {
-                    throw new Error('API keys not configured properly');
-                }
-
-                const { chatBot } = await import('./chat.js');
-                await chatBot.init();
-                console.log('Chat initialized successfully');
-            } catch (error) {
-                console.error('Chat initialization error:', error);
-                // Show user-friendly error message
-                const chatMessages = document.getElementById('chatMessages');
-                if (chatMessages) {
-                    chatMessages.innerHTML = `
-                        <div class="system-message error">
-                            <i class="fas fa-exclamation-circle"></i>
-                            Không thể khởi tạo chat. Vui lòng thử lại sau.
-                        </div>
-                    `;
-                }
+            if (!data.success) {
+                throw new Error(data.status?.message || 'API check failed');
             }
-        });
 
-        // Error handling
-        window.addEventListener('error', (event) => {
-            console.error('Chat error:', event.error);
-        });
+            console.log('API Status:', {
+                github: data.env.github.message,
+                claude: data.env.claude.message
+            });
 
-        window.addEventListener('unhandledrejection', (event) => {
-            console.error('Unhandled promise rejection:', event.reason);
-        });
-    </script>
+            return data.status.ready;
+        } catch (error) {
+            console.error('Error checking API keys:', error);
+            return false;
+        }
+    }
+
+    // Wait for DOM to be fully loaded
+    window.addEventListener('load', async () => {
+        try {
+            // Check API keys trước khi init chat
+            const apiReady = await checkApiKeys();
+            if (!apiReady) {
+                throw new Error('API keys not configured properly');
+            }
+
+            const { chatBot } = await import('./chat.js');
+            await chatBot.init();
+            console.log('Chat initialized successfully');
+        } catch (error) {
+            console.error('Chat initialization error:', error);
+            // Show user-friendly error message
+            const chatMessages = document.getElementById('chatMessages');
+            if (chatMessages) {
+                chatMessages.innerHTML = `
+                    <div class="system-message error">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Không thể khởi tạo chat. Vui lòng kiểm tra lại API keys.
+                    </div>
+                `;
+            }
+        }
+    });
+
+    // Error handling
+    window.addEventListener('error', (event) => {
+        console.error('Chat error:', event.error);
+    });
+
+    window.addEventListener('unhandledrejection', (event) => {
+        console.error('Unhandled promise rejection:', event.reason);
+    });
+</script>
+
+
 </body>
 </html>
