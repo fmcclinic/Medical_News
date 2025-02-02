@@ -93,99 +93,74 @@
 
 
     
-<!-- Main Chat Script -->
-<script type="module">
-    // Dashboard API URL - endpoint đã hoạt động
-    const DASHBOARD_URL = 'https://claude-api-test.vercel.app';
+    <!-- Main Chat Script -->
+    <script type="module">
+        // Dashboard API URL
+        const DASHBOARD_URL = 'https://claude-api-test.vercel.app';
+        
+        // Đơn giản hóa hàm check API
+        async function checkApiKeys() {
+            try {
+                const response = await fetch(`${DASHBOARD_URL}/api/test-keys`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
     
-// Thêm timeout và retry cho API calls
-// Bỏ timeout quá ngắn trong fetchWithTimeout
-async function fetchWithTimeout(url, options = {}, timeout = 10000) { // Tăng timeout lên 10s
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), timeout);
-
-    try {
-        const response = await fetch(url, {
-            ...options,
-            signal: controller.signal
+                console.log('Raw response:', response);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('API Status:', data);
+    
+                return data.status.ready;
+            } catch (error) {
+                console.error('Error checking API keys:', error);
+                return false;
+            }
+        }
+    
+        // Wait for DOM to be fully loaded
+        window.addEventListener('load', async () => {
+            try {
+                console.log('Starting API check...');
+                const apiReady = await checkApiKeys();
+                console.log('API check result:', apiReady);
+    
+                if (!apiReady) {
+                    throw new Error('API keys not configured properly');
+                }
+    
+                const { chatBot } = await import('./chat.js');
+                await chatBot.init();
+                console.log('Chat initialized successfully');
+            } catch (error) {
+                console.error('Chat initialization error:', error);
+                const chatMessages = document.getElementById('chatMessages');
+                if (chatMessages) {
+                    chatMessages.innerHTML = `
+                        <div class="system-message error">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Không thể khởi tạo chat. Vui lòng kiểm tra lại API keys.
+                        </div>
+                    `;
+                }
+            }
         });
-        clearTimeout(timeoutId); // Clear timeout nếu fetch thành công
-        return response;
-    } catch (error) {
-        clearTimeout(timeoutId); // Clear timeout nếu có lỗi
-        throw error;
-    }
-}
-
-async function checkApiKeys(retries = 3) {
-    const DASHBOARD_URL = 'https://claude-api-test.vercel.app';
     
-    for (let i = 0; i < retries; i++) {
-        try {
-            console.log(`Checking API keys, attempt ${i + 1}/${retries}...`);
-            const response = await fetchWithTimeout(`${DASHBOARD_URL}/api/test-keys`);
-            
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            
-            const data = await response.json();
-            console.log('API Status:', data);
-
-            if (!data.success) {
-                throw new Error(data.status?.message || 'API check failed');
-            }
-
-            return data.status.ready;
-
-        } catch (error) {
-            console.error(`Attempt ${i + 1}/${retries} failed:`, error);
-            if (i === retries - 1) {
-                throw error;
-            }
-            // Tăng thời gian delay giữa các lần retry
-            await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 2000));
-        }
-    }
-    return false;
-}
-
-    // Wait for DOM to be fully loaded
-    window.addEventListener('load', async () => {
-        try {
-            // Check API keys trước khi init chat
-            const apiReady = await checkApiKeys();
-            if (!apiReady) {
-                throw new Error('API keys not configured properly');
-            }
-
-            const { chatBot } = await import('./chat.js');
-            await chatBot.init();
-            console.log('Chat initialized successfully');
-        } catch (error) {
-            console.error('Chat initialization error:', error);
-            // Show user-friendly error message
-            const chatMessages = document.getElementById('chatMessages');
-            if (chatMessages) {
-                chatMessages.innerHTML = `
-                    <div class="system-message error">
-                        <i class="fas fa-exclamation-circle"></i>
-                        Không thể khởi tạo chat. Vui lòng kiểm tra lại API keys.
-                    </div>
-                `;
-            }
-        }
-    });
-
-    // Error handling
-    window.addEventListener('error', (event) => {
-        console.error('Chat error:', event.error);
-    });
-
-    window.addEventListener('unhandledrejection', (event) => {
-        console.error('Unhandled promise rejection:', event.reason);
-    });
-</script>
+        // Error handling
+        window.addEventListener('error', (event) => {
+            console.error('Chat error:', event.error);
+        });
+    
+        window.addEventListener('unhandledrejection', (event) => {
+            console.error('Unhandled promise rejection:', event.reason);
+        });
+    </script>
 
 
 </body>
