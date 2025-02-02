@@ -8,8 +8,8 @@ class ClaudeService {
    constructor() {
        // API Configuration
 
-       this.API_URL = 'https://claude-api-test.vercel.app/api/claude';
-
+       this.API_URL = 'https://fmc-chat-idw92qzwb-fmcclinics-projects.vercel.app/api/claude';
+       
        this.MODEL = 'claude-3-opus-20240229';
        
        // Cache and Memory Settings
