@@ -7,7 +7,7 @@ import { storageManager } from '../utils/storage.utils.js';
 class GitHubService {
    constructor() {
 
-    this.apiUrl = 'https://claude-api-test.vercel.app/api/github';
+    this.apiUrl = 'https://claude-api-test-p9hxmhbgn-fmcclinics-projects.vercel.app/api/github';
        this.owner = 'fmcclinic';
        this.repo = 'fmc-chatbot-learning';
        this.patternCache = new Map();
