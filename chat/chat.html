@@ -99,7 +99,8 @@
     const DASHBOARD_URL = 'https://claude-api-test.vercel.app';
     
 // Thêm timeout và retry cho API calls
-async function fetchWithTimeout(url, options = {}, timeout = 5000) {
+// Bỏ timeout quá ngắn trong fetchWithTimeout
+async function fetchWithTimeout(url, options = {}, timeout = 10000) { // Tăng timeout lên 10s
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), timeout);
 
@@ -108,9 +109,11 @@ async function fetchWithTimeout(url, options = {}, timeout = 5000) {
             ...options,
             signal: controller.signal
         });
+        clearTimeout(timeoutId); // Clear timeout nếu fetch thành công
         return response;
-    } finally {
-        clearTimeout(timeoutId);
+    } catch (error) {
+        clearTimeout(timeoutId); // Clear timeout nếu có lỗi
+        throw error;
     }
 }
 
@@ -119,26 +122,29 @@ async function checkApiKeys(retries = 3) {
     
     for (let i = 0; i < retries; i++) {
         try {
+            console.log(`Checking API keys, attempt ${i + 1}/${retries}...`);
             const response = await fetchWithTimeout(`${DASHBOARD_URL}/api/test-keys`);
-            const data = await response.json();
             
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            console.log('API Status:', data);
+
             if (!data.success) {
                 throw new Error(data.status?.message || 'API check failed');
             }
 
-            console.log('API Status:', {
-                github: data.env.github.message,
-                claude: data.env.claude.message
-            });
-
             return data.status.ready;
+
         } catch (error) {
             console.error(`Attempt ${i + 1}/${retries} failed:`, error);
             if (i === retries - 1) {
-                throw error; // Throw on last retry
+                throw error;
             }
-            // Wait before retry (exponential backoff)
-            await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 1000));
+            // Tăng thời gian delay giữa các lần retry
+            await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 2000));
         }
     }
     return false;
