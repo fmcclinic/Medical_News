@@ -35,14 +35,14 @@
     <iframe src="specialist/specialist.html" scrolling="no" class="section-frame"></iframe>
     <iframe src="news/news.html" scrolling="no" class="section-frame"></iframe>
     <iframe src="contact/contact.html" scrolling="no" class="section-frame"></iframe>
-    <!-- AI Medical Section -->
-    <iframe src="https://fmcclinic.github.io/chatViaLM/" scrolling="no" class="section-frame"></iframe>
+
     <!-- Chat Widget Container -->
     <div id="chat-widget-container"></div>
+
     <script>
         // Wait for sections to load
         let loadedSections = 0;
-        const totalSections = document.querySelectorAll('.section-frame').length; // Now includes AI section
+        const totalSections = document.querySelectorAll('.section-frame').length;
         let sectionsStable = false;
         let heightsAdjusted = false;
 
@@ -101,7 +101,9 @@
                 box-shadow: 0 2px 10px rgba(0,0,0,0.1);
                 border-radius: 10px;
             `;
+
             chatContainer.appendChild(chatFrame);
+
             setTimeout(() => {
                 chatContainer.classList.add('loaded');
             }, 100);
