@@ -63,7 +63,7 @@
                 loadedSections++;
                 if (loadedSections === totalSections) {
                     sectionsStable = true;
-                    initChatWhenReady();
+                    
                 }
             };
         });
@@ -72,7 +72,7 @@
             if (!heightsAdjusted && sectionsStable) {
                 setTimeout(() => {
                     heightsAdjusted = true;
-                    initChatWhenReady();
+                    
                 }, 500);
             }
         }
