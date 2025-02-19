@@ -16,7 +16,11 @@
         body {
             width: 100%;
             overflow-x: hidden;
-            padding-top: 70px; /* Height of header */
+            padding-top: 70px;
+        }
+
+        body.menu-open {
+            overflow: hidden;
         }
 
         iframe {
@@ -44,6 +48,7 @@
 
         .logo {
             height: 50px;
+            z-index: 1001; /* Above mobile menu */
         }
 
         .logo img {
@@ -76,13 +81,24 @@
             padding: 6px 8px;
             border-radius: 4px;
             white-space: nowrap;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             cursor: pointer;
+        }
+
+        .main-nav a svg {
+            width: 16px;
+            height: 16px;
+            transition: all 0.3s ease;
         }
 
         .main-nav a.active,
         .main-nav a:hover {
             color: #007bff;
+        }
+
+        .main-nav a.active svg,
+        .main-nav a:hover svg {
+            stroke: #007bff;
         }
 
         .status-container {
@@ -114,7 +130,7 @@
         .appointment-btn {
             background: #007bff;
             color: white;
-            padding: 6px 12px;
+            padding: 8px 16px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -124,15 +140,39 @@
             align-items: center;
             gap: 4px;
             white-space: nowrap;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .appointment-btn:hover {
             background: #0056b3;
+            transform: translateY(-1px);
         }
 
         .mobile-menu-btn {
             display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001; /* Above mobile menu */
+        }
+
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
         }
 
         @media (max-width: 1024px) {
@@ -151,32 +191,85 @@
 
             .nav-container {
                 position: fixed;
-                top: 60px;
+                top: 0;
                 left: 0;
                 right: 0;
+                bottom: 0;
                 background: white;
                 flex-direction: column;
-                padding: 15px;
-                transform: translateY(-150%);
-                transition: transform 0.3s ease;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                padding: 80px 20px 20px;
+                visibility: hidden;
+                opacity: 0;
+                transition: all 0.3s ease;
+                overflow-y: auto;
+                z-index: 1000;
             }
 
             .nav-container.active {
-                transform: translateY(0);
+                visibility: visible;
+                opacity: 1;
             }
 
             .main-nav {
                 flex-direction: column;
                 width: 100%;
                 margin-right: 0;
+                gap: 20px;
+            }
+
+            .main-nav a {
+                font-size: 18px;
+                padding: 12px;
+            }
+
+            .main-nav a svg {
+                width: 20px;
+                height: 20px;
             }
 
             .status-container {
                 flex-direction: column;
                 width: 100%;
                 align-items: stretch;
+                margin-top: 30px;
+                gap: 20px;
             }
+
+            .contact-group,
+            .appointment-btn {
+                justify-content: center;
+                padding: 12px;
+                font-size: 16px;
+            }
+
+            #openStatus {
+                justify-content: center;
+                font-size: 16px;
+            }
+        }
+
+        /* Animation for menu items */
+        @media (max-width: 1024px) {
+            .nav-container.active .main-nav li,
+            .nav-container.active .status-container > * {
+                animation: slideIn 0.4s ease forwards;
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            @keyframes slideIn {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .nav-container.active .main-nav li:nth-child(1) { animation-delay: 0.1s; }
+            .nav-container.active .main-nav li:nth-child(2) { animation-delay: 0.2s; }
+            .nav-container.active .main-nav li:nth-child(3) { animation-delay: 0.3s; }
+            .nav-container.active .status-container > *:nth-child(1) { animation-delay: 0.4s; }
+            .nav-container.active .status-container > *:nth-child(2) { animation-delay: 0.5s; }
+            .nav-container.active .status-container > *:nth-child(3) { animation-delay: 0.6s; }
         }
     </style>
 </head>
@@ -193,6 +286,7 @@
                 <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
         </button>
+        <div class="mobile-menu-overlay" id="menuOverlay"></div>
         <div class="nav-container">
             <nav>
                 <ul class="main-nav">
@@ -235,107 +329,119 @@
     <iframe src="https://fmcclinic.github.io/chatViaLM/" scrolling="no" class="section-frame" id="chat"></iframe>
 
     <script>
-        // Navigation
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                const headerHeight = document.querySelector('.header').offsetHeight;
-                const sectionTop = section.offsetTop - headerHeight;
-                window.scrollTo({
-                    top: sectionTop,
-                    behavior: 'smooth'
-                });
-                
-                // Update active state
-                document.querySelectorAll('.main-nav a').forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('data-section') === sectionId) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        }
-
-        // Setup navigation click handlers
-        document.querySelectorAll('.main-nav a, .appointment-btn').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const sectionId = link.getAttribute('data-section');
-                scrollToSection(sectionId);
-                
-                // Close mobile menu if open
-                if (window.innerWidth <= 1024) {
-                    document.querySelector('.nav-container').classList.remove('active');
-                    updateMobileMenuIcon(false);
-                }
-            });
-        });
-
-        // Mobile menu
+        // Mobile menu handling
         const menuBtn = document.getElementById('menuBtn');
         const navContainer = document.querySelector('.nav-container');
-
-        function updateMobileMenuIcon(isOpen) {
+        const menuOverlay = document.getElementById('menuOverlay');
+        
+        function toggleMenu(show) {
             const icon = menuBtn.querySelector('svg');
-            if (isOpen) {
+            if (show) {
+                navContainer.classList.add('active');
+                menuOverlay.style.display = 'block';
+                document.body.classList.add('menu-open');
+                setTimeout(() => menuOverlay.classList.add('active'), 0);
                 icon.innerHTML = '<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>';
             } else {
-                icon.innerHTML = '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>';
-            }
-        }
+               navContainer.classList.remove('active');
+               menuOverlay.classList.remove('active');
+               document.body.classList.remove('menu-open');
+               icon.innerHTML = '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>';
+               setTimeout(() => {
+                   menuOverlay.style.display = 'none';
+               }, 300); // Match transition duration
+           }
+       }
 
-        menuBtn.addEventListener('click', () => {
-            const isOpen = navContainer.classList.toggle('active');
-            updateMobileMenuIcon(isOpen);
-        });
+       menuBtn.addEventListener('click', () => {
+           const isOpen = navContainer.classList.contains('active');
+           toggleMenu(!isOpen);
+       });
 
-        // Open Status
-        function updateOpenStatus() {
-            const now = new Date();
-            const day = now.getDay();
-            const hour = now.getHours();
-            
-            const statusElement = document.querySelector('#openStatus span');
-            const statusIcon = document.querySelector('#openStatus svg');
-            let isOpen = false;
+       menuOverlay.addEventListener('click', () => {
+           toggleMenu(false);
+       });
 
-            if (day === 0) {
-                isOpen = hour >= 8 && hour < 12;
-            } else {
-                isOpen = hour >= 8 && hour < 20;
-            }
+       // Navigation
+       function scrollToSection(sectionId) {
+           const section = document.getElementById(sectionId);
+           if (section) {
+               const headerHeight = document.querySelector('.header').offsetHeight;
+               const sectionTop = section.offsetTop - headerHeight;
+               window.scrollTo({
+                   top: sectionTop,
+                   behavior: 'smooth'
+               });
+               
+               // Update active state
+               document.querySelectorAll('.main-nav a').forEach(link => {
+                   link.classList.remove('active');
+                   if (link.getAttribute('data-section') === sectionId) {
+                       link.classList.add('active');
+                   }
+               });
 
-            statusElement.textContent = isOpen ? 'Đang mở cửa' : 'Đang đóng cửa';
-            const color = isOpen ? '#28a745' : '#dc3545';
-            statusElement.style.color = color;
-            statusIcon.style.stroke = color;
-        }
+               // Close mobile menu if open
+               if (window.innerWidth <= 1024) {
+                   toggleMenu(false);
+               }
+           }
+       }
 
-        updateOpenStatus();
-        setInterval(updateOpenStatus, 60000);
+       // Setup navigation click handlers
+       document.querySelectorAll('.main-nav a, .appointment-btn').forEach(link => {
+           link.addEventListener('click', (e) => {
+               e.preventDefault();
+               const sectionId = link.getAttribute('data-section');
+               scrollToSection(sectionId);
+           });
+       });
 
-        // Handle iframe heights
-        window.addEventListener('message', function(event) {
-            const sourceFrame = Array.from(document.querySelectorAll('.section-frame'))
-                .find(iframe => iframe.contentWindow === event.source);
-            
-            if (sourceFrame && event.data.height) {
-                sourceFrame.style.height = `${event.data.height}px`;
-            }
-        });
+       // Open Status
+       function updateOpenStatus() {
+           const now = new Date();
+           const day = now.getDay();
+           const hour = now.getHours();
+           
+           const statusElement = document.querySelector('#openStatus span');
+           const statusIcon = document.querySelector('#openStatus svg');
+           let isOpen = false;
 
-     // Active section tracking
-     window.addEventListener('scroll', () => {
+           if (day === 0) {
+               isOpen = hour >= 8 && hour < 12;
+           } else {
+               isOpen = hour >= 8 && hour < 20;
+           }
+
+           statusElement.textContent = isOpen ? 'Đang mở cửa' : 'Đang đóng cửa';
+           const color = isOpen ? '#28a745' : '#dc3545';
+           statusElement.style.color = color;
+           statusIcon.style.stroke = color;
+       }
+
+       updateOpenStatus();
+       setInterval(updateOpenStatus, 60000);
+
+       // Handle iframe heights
+       window.addEventListener('message', function(event) {
+           const sourceFrame = Array.from(document.querySelectorAll('.section-frame'))
+               .find(iframe => iframe.contentWindow === event.source);
+           
+           if (sourceFrame && event.data.height) {
+               sourceFrame.style.height = `${event.data.height}px`;
+           }
+       });
+
+       // Active section tracking
+       window.addEventListener('scroll', () => {
            const headerHeight = document.querySelector('.header').offsetHeight;
-           const scrollPosition = window.scrollY + headerHeight + 100; // Offset để active sớm hơn một chút
+           const scrollPosition = window.scrollY + headerHeight + 100;
 
-           // Tìm section đang hiển thị
            document.querySelectorAll('.section-frame').forEach(section => {
                const sectionTop = section.offsetTop;
                const sectionBottom = sectionTop + section.offsetHeight;
                
                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                   // Update active state trong menu
                    document.querySelectorAll('.main-nav a').forEach(link => {
                        link.classList.remove('active');
                        if (link.getAttribute('data-section') === section.id) {
@@ -346,6 +452,22 @@
            });
        });
 
+       // Handle window resize
+       let resizeTimeout;
+       window.addEventListener('resize', () => {
+           clearTimeout(resizeTimeout);
+           resizeTimeout = setTimeout(() => {
+               // Close mobile menu if window is resized to desktop
+               if (window.innerWidth > 1024 && navContainer.classList.contains('active')) {
+                   toggleMenu(false);
+               }
+               // Update iframe heights
+               document.querySelectorAll('.section-frame').forEach(frame => {
+                   frame.contentWindow.postMessage('requestHeight', '*');
+               });
+           }, 250);
+       });
+
        // Handle initial section loading
        let loadedSections = 0;
        const totalSections = document.querySelectorAll('.section-frame').length;
@@ -354,8 +476,6 @@
            frame.onload = () => {
                loadedSections++;
                if (loadedSections === totalSections) {
-                   // Tất cả sections đã load xong
-                   // Kiểm tra nếu có hash trong URL để scroll đến section tương ứng
                    if (window.location.hash) {
                        const sectionId = window.location.hash.substring(1);
                        setTimeout(() => {
@@ -364,22 +484,8 @@
                    }
                }
            };
-       });
 
-       // Handle resize
-       let resizeTimeout;
-       window.addEventListener('resize', () => {
-           clearTimeout(resizeTimeout);
-           resizeTimeout = setTimeout(() => {
-               // Cập nhật chiều cao của các iframe khi resize
-               document.querySelectorAll('.section-frame').forEach(frame => {
-                   frame.contentWindow.postMessage('requestHeight', '*');
-               });
-           }, 250);
-       });
-
-       // Handle errors
-       document.querySelectorAll('.section-frame').forEach(frame => {
+           // Handle errors
            frame.onerror = () => {
                console.error(`Failed to load section: ${frame.src}`);
                frame.style.display = 'none';
