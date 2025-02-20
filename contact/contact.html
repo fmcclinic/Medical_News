@@ -56,49 +56,44 @@
         }
 
         /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-        }
+        /* CSS cho modal */
+.modal {
+    position: fixed;
+    bottom: 0; /* Thay đổi từ top: 0 thành bottom: 0 */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: none;
+}
 
-        .modal.show {
-            display: flex;
-            animation: fadeIn 0.3s ease-out;
-        }
+.modal.show {
+    display: flex;
+    align-items: flex-end; /* Căn xuống dưới */
+    animation: fadeIn 0.3s ease-out;
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+.modal-content {
+    background: white;
+    border-radius: 1rem 1rem 0 0; /* Bo góc trên */
+    padding: 2rem;
+    width: 100%; /* Chiếm full width */
+    max-height: 90vh;
+    overflow-y: auto;
+    margin: 0 auto; /* Căn giữa */
+    animation: slideUp 0.3s ease-out;
+}
 
-        .modal-content {
-            background: white;
-            border-radius: 0.5rem;
-            padding: 2rem;
-            max-width: 90%;
-            width: 600px;
-            max-height: 90vh;
-            overflow-y: auto;
-            margin: auto;
-            animation: slideUp 0.3s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+/* Animation mới cho modal */
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
 
         /* Time slot styles */
         .time-slot {
@@ -138,16 +133,23 @@
             background-color: #F9FAFB;
         }
 
-        @media (max-width: 640px) {
-            .grid-cols-4 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .modal-content {
-                width: 95%;
-                padding: 1rem;
-            }
-        }
+
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .modal-content {
+        padding: 1.5rem;
+    }
+}
+
+@media (min-width: 641px) {
+    .modal-content {
+        max-width: 600px; /* Giới hạn độ rộng trên desktop */
+        border-radius: 1rem 1rem 0 0;
+    }
+}
+
+
     </style>
 </head>
 <body>
@@ -513,19 +515,52 @@ function setupDateRestrictions() {
 // Show success message
 function showSuccessMessage() {
     const messageDiv = document.createElement('div');
-    messageDiv.className = 'success-message fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+    messageDiv.className = `fixed bottom-4 left-1/2 transform -translate-x-1/2 
+                          bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50
+                          w-[90%] max-w-md mx-auto text-center success-message`;
     messageDiv.innerHTML = `
-        <div class="flex items-center">
+        <div class="flex items-center justify-center">
             <i class="fas fa-check-circle mr-2"></i>
             <span>Đặt lịch thành công! Chúng tôi sẽ liên hệ sớm.</span>
         </div>
     `;
     document.body.appendChild(messageDiv);
 
+    // Animation cho thông báo
+    messageDiv.style.animation = 'slideInBottom 0.3s ease-out';
+
     setTimeout(() => {
-        messageDiv.remove();
+        messageDiv.style.animation = 'slideOutBottom 0.3s ease-out';
+        setTimeout(() => messageDiv.remove(), 300);
     }, 5000);
 }
+
+// Thêm CSS animation cho thông báo
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideInBottom {
+        from {
+            transform: translate(-50%, 100%);
+            opacity: 0;
+        }
+        to {
+            transform: translate(-50%, 0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideOutBottom {
+        from {
+            transform: translate(-50%, 0);
+            opacity: 1;
+        }
+        to {
+            transform: translate(-50%, 100%);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
 
 // Show error message
 function showErrorMessage(message) {
