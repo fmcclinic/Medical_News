@@ -106,27 +106,37 @@
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
 
-        .highlights {
-            list-style: none;
+        .strengths {
+            margin-top: clamp(2rem, 5vw, 3rem);
+            opacity: 0;
+            animation: fadeInLeft 1s 0.6s forwards;
         }
 
-        .highlights li {
-            margin-bottom: clamp(0.5rem, 2vw, 1rem);
+        .strengths-title {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #ffd700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .strengths-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .strengths-list li {
             font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            margin-bottom: 0.5rem;
             opacity: 0;
             animation: fadeInLeft 1s forwards;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
-
-        .highlights li:nth-child(1) { animation-delay: 0.6s; }
-        .highlights li:nth-child(2) { animation-delay: 0.9s; }
-        .highlights li:nth-child(3) { animation-delay: 1.2s; }
-
-        .highlights strong {
-            font-weight: bold;
-            margin-right: 0.5rem;
-            color: #ffd700;
-        }
+        .strengths-list li:nth-child(1) { animation-delay: 0.9s; }
+        .strengths-list li:nth-child(2) { animation-delay: 1.2s; }
+        .strengths-list li:nth-child(3) { animation-delay: 1.5s; }
+        .strengths-list li:nth-child(4) { animation-delay: 1.8s; }
+        .strengths-list li:nth-child(5) { animation-delay: 2.1s; }
 
         .specialty {
             position: absolute;
@@ -231,7 +241,7 @@
                 text-align: center;
             }
 
-            .highlights li {
+            .strengths-list li {
                 text-align: left;
                 display: flex;
                 flex-direction: column;
@@ -239,13 +249,13 @@
                 gap: 0.2rem;
             }
 
-            .highlights strong {
+            .strengths-list strong {
                 margin-bottom: 0.2rem;
             }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .headline, .description, .highlights li, .disease-item {
+            .headline, .description, .strengths, .strengths-list li, .disease-item {
                 animation: none !important;
                 opacity: 1 !important;
                 transform: none !important;
@@ -265,16 +275,19 @@
         <div class="content">
             <div class="main-content">
                 <h1 class="headline">Phòng Khám Chất Lượng Cao</h1>
-                <h2 class="description">Friend Medical Clinic<br>Chăm Sóc y tế chuyên khoa sâu</h2>
-                <ul class="highlights">
-                    <li><strong>Không cần di chuyển xa</strong> | Thuận tiện</li>
-                    <li><strong>Trang thiết bị hiện đại</strong> | Chẩn đoán chính xác</li>
-                    <li><strong>Giờ khám: 8:00 - 20:00</strong> | Cả chủ nhật</li>
-                </ul>
+                <div class="strengths">
+                    <h3 class="strengths-title">THẾ MẠNH HÀNG ĐẦU CỦA CHÚNG TÔI</h3>
+                    <ul class="strengths-list">
+                        <li><strong>Đội ngũ bác sĩ</strong> giàu kinh nghiệm từ các bệnh viện lớn của TP.HCM: Từ Dũ, Hùng Vương, FV, Ung Bướu.</li>
+                        <li><strong>Khám Tai Mũi Họng</strong>: Có hệ thống nội soi.</li>
+                        <li><strong>Khám Phụ khoa</strong> bằng hệ thống soi quang học.</li>
+                        <li><strong>Khám Nội khoa</strong> với sự hỗ trợ máy đo điện tim và máy siêu âm.</li>
+                        <li><strong>Trang thiết bị hiện đại</strong>: Hệ thống nội soi tai mũi họng, hệ thống soi cổ tử cung, máy siêu âm màu 4D, hệ thống đo tim thai không dây, hệ thống điện tim ECG 12 chuyển đạo.</li>
+                    </ul>
+                </div>
             </div>
             <div class="animation-content">
-                <!-- Content will be dynamically added by JavaScript -->
-            </div>
+                </div>
         </div>
     </section>
 
