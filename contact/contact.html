@@ -157,9 +157,7 @@
     <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12">Liên Hệ</h2>
         <div class="grid md:grid-cols-2 gap-8">
-            <!-- Contact Info -->
             <div class="space-y-8">
-                <!-- Map -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden info-card">
                     <div class="h-[400px] relative">
                         <iframe 
@@ -174,7 +172,6 @@
                     </div>
                 </div>
 
-                <!-- Contact Details -->
                 <div class="bg-white rounded-lg shadow-lg p-6 space-y-6 info-card">
                     <h3 class="text-xl font-semibold mb-4">Thông Tin Liên Hệ</h3>
                     
@@ -209,9 +206,11 @@
                         </div>
                     </div>
 
-                    <!-- Social Links -->
                     <div class="pt-4 border-t">
                         <div class="flex space-x-4">
+                            <a href="tel:0939148630" class="w-10 h-10 bg-green-500 text-white rounded-full flex items-center justify-center hover:bg-green-600 transition-colors">
+                                <i class="fas fa-comment-dots"></i>
+                            </a>
                             <a href="#" class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
@@ -226,7 +225,6 @@
                 </div>
             </div>
 
-            <!-- Appointment Form -->
             <div class="bg-white rounded-lg shadow-lg p-8 info-card">
                 <h3 class="text-xl font-semibold mb-6">Đặt Lịch Khám</h3>
                 
@@ -235,7 +233,6 @@
                     <input type="hidden" name="status" value="Chờ xác nhận">
                     <input type="hidden" name="selected_time" id="selected_time">
 
-                    <!-- Personal Information -->
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Họ và tên</label>
@@ -270,7 +267,6 @@
                         <div class="error-message text-red-500 text-sm mt-1 hidden"></div>
                     </div>
 
-                    <!-- Date Selection -->
                     <div>
                         <label for="date" class="block text-sm font-medium text-gray-700 mb-2">Ngày khám</label>
                         <input type="date" id="date" name="date" required
@@ -278,23 +274,19 @@
                         <div class="error-message text-red-500 text-sm mt-1 hidden"></div>
                     </div>
 
-                    <!-- Time Slots -->
                     <div class="time-slots-container hidden">
                         <label class="block text-sm font-medium text-gray-700 mb-2">Chọn giờ khám</label>
                         
-                        <!-- Morning Slots -->
                         <div class="time-slots-section">
                             <h4 class="text-sm font-medium text-gray-600 mb-2">Buổi sáng (8:00 - 12:00)</h4>
                             <div class="grid grid-cols-4 gap-2" id="morning-slots"></div>
                         </div>
 
-                        <!-- Afternoon Slots -->
                         <div class="time-slots-section">
                             <h4 class="text-sm font-medium text-gray-600 mb-2">Buổi chiều (13:00 - 17:00)</h4>
                             <div class="grid grid-cols-4 gap-2" id="afternoon-slots"></div>
                         </div>
 
-                        <!-- Evening Slots -->
                         <div class="time-slots-section" id="evening-section">
                             <h4 class="text-sm font-medium text-gray-600 mb-2">Buổi tối (17:00 - 20:00)</h4>
                             <div class="grid grid-cols-4 gap-2" id="evening-slots"></div>
@@ -318,13 +310,11 @@
     </div>
 </section>
 
-<!-- Review Modal -->
 <div id="review-modal" class="modal" role="dialog" aria-modal="true">
     <div class="modal-content">
         <h3 class="text-xl font-semibold mb-6">Xác nhận thông tin đặt lịch</h3>
         <div id="review-content" class="space-y-4">
-            <!-- Content will be dynamically inserted here -->
-        </div>
+            </div>
         
         <div class="mt-6">
             <label class="flex items-center space-x-2">
