@@ -4,264 +4,267 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Friend Medical Clinic</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        :root {
-            --text-color: #fff;
-        }
+    :root {
+        --text-color: #fff;
+    }
 
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            overflow-x: hidden;
-            width: 100%;
-        }
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        overflow-x: hidden;
+        width: 100%;
+    }
 
-        .hero {
-            position: relative;
-            height: 800px;
-            min-height: 500px;
-            width: 100%;
-            overflow: hidden;
-            background-color: #f5f5f5;
-        }
+    .hero {
+        position: relative;
+        height: 800px;
+        min-height: 500px;
+        width: 100%;
+        overflow: hidden;
+        background-color: #f5f5f5;
+    }
 
-        .background-slider {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
+    .background-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+    .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        background-size: cover;
+        background-position: center;
+        transform: scale(1.1);
+    }
+
+    .slide.active {
+        opacity: 1;
+        transform: scale(1);
+        transition: opacity 1s ease-in-out, transform 8s linear;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .content {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .main-content {
+        flex: 0 0 45%;
+    }
+
+    .animation-content {
+        flex: 0 0 45%;
+        min-height: 300px;
+        position: relative;
+    }
+
+    .headline {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: bold;
+        margin-bottom: clamp(1rem, 3vw, 1.5rem);
+        opacity: 0;
+        animation: fadeInLeft 1s forwards;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .description {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        margin-bottom: clamp(1.5rem, 4vw, 2rem);
+        opacity: 0;
+        animation: fadeInLeft 1s 0.3s forwards;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .strengths {
+        margin-top: clamp(2rem, 5vw, 3rem);
+        opacity: 0;
+        animation: fadeInLeft 1s 0.6s forwards;
+    }
+
+    .strengths-title {
+        font-size: clamp(1rem, 3vw, 1.2rem);
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: #ffd700;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .strengths-list {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .strengths-list li {
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        margin-bottom: 0.5rem;
+        opacity: 0;
+        animation: fadeInLeft 1s forwards;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    .strengths-list li:nth-child(1) { animation-delay: 0.9s; }
+    .strengths-list li:nth-child(2) { animation-delay: 1.2s; }
+    .strengths-list li:nth-child(3) { animation-delay: 1.5s; }
+    .strengths-list li:nth-child(4) { animation-delay: 1.8s; }
+    .strengths-list li:nth-child(5) { animation-delay: 2.1s; }
+
+    .specialty {
+        position: absolute;
+        width: 100%;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease;
+    }
+
+    .specialty.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .specialty-title {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .disease-list {
+        list-style: none;
+    }
+
+    .disease-item {
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        margin-bottom: 0.5rem;
+        opacity: 0;
+        transform: translateX(50px);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .disease-item::before {
+        content: "•";
+        color: #ffd700;
+        font-size: 1.2em;
+    }
+
+    @keyframes fadeInLeft {
+        from {
             opacity: 0;
-            transition: opacity 1s ease-in-out;
-            background-size: cover;
-            background-position: center;
-            transform: scale(1.1);
+            transform: translateX(-30px);
         }
-
-        .slide.active {
+        to {
             opacity: 1;
-            transform: scale(1);
-            transition: opacity 1s ease-in-out, transform 8s linear;
+            transform: translateX(0);
         }
+    }
 
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+    @keyframes fadeInRight {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero {
+            height: auto;
+            min-height: 100vh;
         }
 
         .content {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            height: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2rem;
+            padding: 4rem 2rem;
         }
 
         .main-content {
-            flex: 0 0 45%;
+            flex: none;
+            width: 100%;
         }
 
         .animation-content {
-            flex: 0 0 45%;
-            min-height: 300px;
-            position: relative;
+            flex: none;
+            width: 100%;
+            min-height: 250px;
         }
 
-        .headline {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: bold;
-            margin-bottom: clamp(1rem, 3vw, 1.5rem);
-            opacity: 0;
-            animation: fadeInLeft 1s forwards;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .description {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            margin-bottom: clamp(1.5rem, 4vw, 2rem);
-            opacity: 0;
-            animation: fadeInLeft 1s 0.3s forwards;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-        }
-
-        .strengths {
-            margin-top: clamp(2rem, 5vw, 3rem);
-            opacity: 0;
-            animation: fadeInLeft 1s 0.6s forwards;
-        }
-
-        .strengths-title {
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            font-weight: bold;
-            margin-bottom: 1rem;
-            color: #ffd700;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .strengths-list {
-            list-style: none;
-            padding-left: 0;
+        .headline, .description {
+            text-align: center;
         }
 
         .strengths-list li {
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-            margin-bottom: 0.5rem;
-            opacity: 0;
-            animation: fadeInLeft 1s forwards;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        .strengths-list li:nth-child(1) { animation-delay: 0.9s; }
-        .strengths-list li:nth-child(2) { animation-delay: 1.2s; }
-        .strengths-list li:nth-child(3) { animation-delay: 1.5s; }
-        .strengths-list li:nth-child(4) { animation-delay: 1.8s; }
-        .strengths-list li:nth-child(5) { animation-delay: 2.1s; }
-
-        .specialty {
-            position: absolute;
-            width: 100%;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.5s ease;
-        }
-
-        .specialty.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .specialty-title {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            font-weight: bold;
-            margin-bottom: 1rem;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .disease-list {
-            list-style: none;
-        }
-
-        .disease-item {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            margin-bottom: 0.5rem;
-            opacity: 0;
-            transform: translateX(50px);
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            text-align: left;
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.2rem;
         }
 
-        .disease-item::before {
-            content: "•";
-            color: #ffd700;
-            font-size: 1.2em;
+        .strengths-list strong {
+            margin-bottom: 0.2rem;
         }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .slide {
+            background-position: left center !important;
         }
+    }
 
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+    @media (prefers-reduced-motion: reduce) {
+        .headline, .description, .strengths, .strengths-list li, .disease-item {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
         }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                height: auto;
-                min-height: 100vh;
-            }
-
-            .content {
-                flex-direction: column;
-                justify-content: center;
-                gap: 2rem;
-                padding: 4rem 2rem;
-            }
-
-            .main-content {
-                flex: none;
-                width: 100%;
-            }
-
-            .animation-content {
-                flex: none;
-                width: 100%;
-                min-height: 250px;
-            }
-
-            .headline, .description {
-                text-align: center;
-            }
-
-            .strengths-list li {
-                text-align: left;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.2rem;
-            }
-
-            .strengths-list strong {
-                margin-bottom: 0.2rem;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .headline, .description, .strengths, .strengths-list li, .disease-item {
-                animation: none !important;
-                opacity: 1 !important;
-                transform: none !important;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
     <section class="hero">
