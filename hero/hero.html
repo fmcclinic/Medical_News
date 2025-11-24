@@ -1,459 +1,393 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Friend Medical Clinic</title>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+<div id="hero-component-wrapper" class="hero-component-scope">
+    <style>
+        /* --- CSS Scoping cho Hero --- */
+        /* Tất cả CSS đều bắt đầu bằng .hero-component-scope để không ảnh hưởng trang khác */
+        
+        .hero-component-scope {
+            width: 100%;
+            display: block;
+            position: relative;
+        }
 
-    :root {
-        --text-color: #fff;
-    }
+        .hero-component-scope .hero {
+            position: relative;
+            height: 800px;
+            min-height: 500px;
+            width: 100%;
+            overflow: hidden;
+            background-color: #f5f5f5;
+            padding-bottom: 50px;
+            margin-bottom: 50px;
+        }
 
-    body {
-        font-family: 'Segoe UI', Arial, sans-serif;
-        line-height: 1.6;
-        color: var(--text-color);
-        overflow-x: hidden;
-        width: 100%;
-    }
+        .hero-component-scope .background-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
 
-    .hero {
-        position: relative;
-        height: 800px;
-        min-height: 500px;
-        width: 100%;
-        overflow: hidden;
-        background-color: #f5f5f5;
-    }
-
-    .background-slider {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-
-    .slide {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
-        background-size: cover;
-        background-position: center;
-        transform: scale(1.1);
-    }
-
-    .slide.active {
-        opacity: 1;
-        transform: scale(1);
-        transition: opacity 1s ease-in-out, transform 8s linear;
-    }
-
-    .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-    }
-
-    .content {
-        position: relative;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem;
-        height: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .main-content {
-        flex: 0 0 45%;
-    }
-
-    .animation-content {
-        flex: 0 0 45%;
-        min-height: 300px;
-        position: relative;
-    }
-
-    .headline {
-        font-size: clamp(2rem, 5vw, 3rem);
-        font-weight: bold;
-        margin-bottom: clamp(1rem, 3vw, 1.5rem);
-        opacity: 0;
-        animation: fadeInLeft 1s forwards;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    .description {
-        font-size: clamp(1.5rem, 4vw, 2rem);
-        margin-bottom: clamp(1.5rem, 4vw, 2rem);
-        opacity: 0;
-        animation: fadeInLeft 1s 0.3s forwards;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-    }
-
-    .strengths {
-        margin-top: clamp(2rem, 5vw, 3rem);
-        opacity: 0;
-        animation: fadeInLeft 1s 0.6s forwards;
-    }
-
-    .strengths-title {
-        font-size: clamp(1rem, 3vw, 1.2rem);
-        font-weight: bold;
-        margin-bottom: 1rem;
-        color: #ffd700;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    }
-
-    .strengths-list {
-        list-style: none;
-        padding-left: 0;
-    }
-
-    .strengths-list li {
-        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-        margin-bottom: 0.5rem;
-        opacity: 0;
-        animation: fadeInLeft 1s forwards;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    }
-    .strengths-list li:nth-child(1) { animation-delay: 0.9s; }
-    .strengths-list li:nth-child(2) { animation-delay: 1.2s; }
-    .strengths-list li:nth-child(3) { animation-delay: 1.5s; }
-    .strengths-list li:nth-child(4) { animation-delay: 1.8s; }
-    .strengths-list li:nth-child(5) { animation-delay: 2.1s; }
-
-    .specialty {
-        position: absolute;
-        width: 100%;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.5s ease;
-    }
-
-    .specialty.active {
-        opacity: 1;
-        pointer-events: auto;
-    }
-
-    .specialty-title {
-        font-size: clamp(1.5rem, 4vw, 2rem);
-        font-weight: bold;
-        margin-bottom: 1rem;
-        color: #fff;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    .disease-list {
-        list-style: none;
-    }
-
-    .disease-item {
-        font-size: clamp(1rem, 2.5vw, 1.2rem);
-        margin-bottom: 0.5rem;
-        opacity: 0;
-        transform: translateX(50px);
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .disease-item::before {
-        content: "•";
-        color: #ffd700;
-        font-size: 1.2em;
-    }
-
-    @keyframes fadeInLeft {
-        from {
+        .hero-component-scope .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             opacity: 0;
-            transform: translateX(-30px);
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.1);
         }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
 
-    @keyframes fadeInRight {
-        from {
+        .hero-component-scope .slide.active {
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 1s ease-in-out, transform 8s linear;
+        }
+
+        .hero-component-scope .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-component-scope .content {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+
+        .hero-component-scope .main-content {
+            flex: 0 0 45%;
+        }
+
+        .hero-component-scope .animation-content {
+            flex: 0 0 45%;
+            min-height: 300px;
+            position: relative;
+        }
+
+        .hero-component-scope .headline {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: bold;
+            margin-bottom: clamp(1rem, 3vw, 1.5rem);
             opacity: 0;
-            transform: translateX(30px);
+            animation: heroFadeInLeft 1s forwards;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
         }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
 
-    @keyframes slideInRight {
-        from {
+        .hero-component-scope .description {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+            opacity: 0;
+            animation: heroFadeInLeft 1s 0.3s forwards;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-component-scope .strengths {
+            margin-top: clamp(2rem, 5vw, 3rem);
+            opacity: 0;
+            animation: heroFadeInLeft 1s 0.6s forwards;
+        }
+
+        .hero-component-scope .strengths-title {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #ffd700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+        }
+
+        .hero-component-scope .strengths-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .hero-component-scope .strengths-list li {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: heroFadeInLeft 1s forwards;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-component-scope .strengths-list-child {
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+        
+        .hero-component-scope .strengths-list-child li {
+            font-size: 0.95em;
+            margin-bottom: 0.3rem;
+        }
+
+        .hero-component-scope .strengths-list li:nth-child(1) { animation-delay: 0.9s; }
+        .hero-component-scope .strengths-list li:nth-child(2) { animation-delay: 1.2s; }
+        .hero-component-scope .strengths-list-child li:nth-child(1) { animation-delay: 1.5s; }
+        .hero-component-scope .strengths-list-child li:nth-child(2) { animation-delay: 1.8s; }
+        .hero-component-scope .strengths-list-child li:nth-child(3) { animation-delay: 2.1s; }
+
+        /* ĐỔI TÊN CLASS ĐỂ TRÁNH XUNG ĐỘT VỚI SPECIALIST.HTML */
+        .hero-component-scope .hero-specialty-anim {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+            top: 0;
+        }
+
+        .hero-component-scope .hero-specialty-anim.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .hero-component-scope .specialty-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-component-scope .disease-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .hero-component-scope .disease-item {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            margin-bottom: 0.5rem;
             opacity: 0;
             transform: translateX(50px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    @media (max-width: 768px) {
-        .hero {
-            height: auto;
-            min-height: 100vh;
-        }
-
-        .content {
-            flex-direction: column;
-            justify-content: center;
-            gap: 2rem;
-            padding: 4rem 2rem;
-        }
-
-        .main-content {
-            flex: none;
-            width: 100%;
-        }
-
-        .animation-content {
-            flex: none;
-            width: 100%;
-            min-height: 250px;
-        }
-
-        .headline, .description {
-            text-align: center;
-        }
-
-        .strengths-list li {
-            text-align: left;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.2rem;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .strengths-list strong {
-            margin-bottom: 0.2rem;
+        .hero-component-scope .disease-item::before {
+            content: "•";
+            color: #ffd700;
+            font-size: 1.5em;
+            line-height: 1;
         }
-        .slide {
-            background-position: left center !important;
-        }
-    }
 
-    @media (prefers-reduced-motion: reduce) {
-        .headline, .description, .strengths, .strengths-list li, .disease-item {
-            animation: none !important;
-            opacity: 1 !important;
-            transform: none !important;
+        /* Đổi tên Animation để tránh trùng lặp global */
+        @keyframes heroFadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
         }
-    }
-</style>
-</head>
-<body>
+
+        @keyframes heroSlideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-component-scope .hero {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .hero-component-scope .content {
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+                padding: 6rem 2rem 4rem 2rem;
+            }
+
+            .hero-component-scope .main-content, 
+            .hero-component-scope .animation-content {
+                flex: none;
+                width: 100%;
+            }
+
+            .hero-component-scope .animation-content {
+                min-height: 250px;
+                margin-top: 1rem;
+            }
+
+            .hero-component-scope .headline, 
+            .hero-component-scope .description {
+                text-align: center;
+            }
+
+            .hero-component-scope .headline { font-size: 2.5rem; }
+            
+            .hero-component-scope .strengths { margin-top: 1.5rem; }
+
+            .hero-component-scope .slide {
+                background-position: center center !important;
+            }
+        }
+    </style>
+
     <section class="hero">
         <div class="background-slider">
-            <div class="slide active" style="background-image: url('./image/hero1.jpg')"></div>
-            <div class="slide" style="background-image: url('./image/hero2.jpg')"></div>
-            <div class="slide" style="background-image: url('./image/hero3.jpg')"></div>
-            <div class="slide" style="background-image: url('./image/hero4.jpg')"></div>
+            <div class="slide active" style="background-image: url('hero/image/hero1.jpg')"></div>
+            <div class="slide" style="background-image: url('hero/image/hero2.jpg')"></div>
+            <div class="slide" style="background-image: url('hero/image/hero3.jpg')"></div>
+            <div class="slide" style="background-image: url('hero/image/hero4.jpg')"></div>
         </div>
         <div class="overlay"></div>
+        
         <div class="content">
             <div class="main-content">
                 <h1 class="headline">Phòng Khám Chất Lượng Cao</h1>
+                
                 <div class="strengths">
                     <h3 class="strengths-title">THẾ MẠNH HÀNG ĐẦU CỦA CHÚNG TÔI</h3>
-<ul class="strengths-list">
-    <li>
-        <strong>Đội ngũ bác sĩ</strong> Giàu kinh nghiệm từ các bệnh viện lớn của TP.HCM như Từ Dũ, Hùng Vương, FV, Ung Bướu.
-    </li>
-    <li>
-        <strong>Khám chuyên sâu</strong> Với trang thiết bị hiện đại:
-    </li>
-    <ul class="strengths-list-child">
-        <li><strong>Tai Mũi Họng:</strong> Hệ thống nội soi tiên tiến.</li>
-        <li><strong>Sản Phụ khoa:</strong> Hệ thống soi quang học chuyên dụng và máy đo tim thai không dây.</li>
-        <li><strong>Nội khoa:</strong> được hỗ trợ bằng máy siêu âm và máy đo điện tim ECG 12 chuyển đạo.</li>
-    </ul>
-</ul>
+                    <ul class="strengths-list">
+                        <li>
+                            <strong>Đội ngũ bác sĩ</strong> Giàu kinh nghiệm từ các bệnh viện lớn của TP.HCM như Từ Dũ, Hùng Vương, FV, Ung Bướu.
+                        </li>
+                        <li>
+                            <strong>Khám chuyên sâu</strong> Với trang thiết bị hiện đại:
+                        </li>
+                        <ul class="strengths-list-child">
+                            <li><strong>Tai Mũi Họng:</strong> Hệ thống nội soi tiên tiến.</li>
+                            <li><strong>Sản Phụ khoa:</strong> Hệ thống soi quang học chuyên dụng và máy đo tim thai không dây.</li>
+                            <li><strong>Nội khoa:</strong> được hỗ trợ bằng máy siêu âm và máy đo điện tim ECG 12 chuyển đạo.</li>
+                        </ul>
+                    </ul>
                 </div>
             </div>
+            
             <div class="animation-content">
                 </div>
         </div>
     </section>
 
     <script>
-        const specialties = [
-            {
-                title: 'Sản Khoa',
-                diseases: [
-                    'Khám thai định kỳ',
-                    'Siêu âm thai',
-                    'Sàng lọc trước sinh',
-                    'Hỗ trợ sinh tại Từ Dũ',
-                    'Chăm sóc sau sinh'
-                ]
-            },
-            {
-                title: 'Phụ Khoa',
-                diseases: [
-                    'U xơ tử cung',
-                    'U nang buồng trứng',
-                    'Viêm nhiễm phụ khoa',
-                    'Rối loạn kinh nguyệt',
-                    'Tầm soát ung thư cổ tử cung'
-                ]
-            },
-            {
-                title: 'Tai Mũi Họng',
-                diseases: [
-                    'Viêm xoang mãn tính',
-                    'Viêm amidan',
-                    'Viêm mũi dị ứng',
-                    'Viêm họng mạn tính',
-                    'Ngủ ngáy - Rối loạn giấc ngủ',
-                    'Tầm soát ung thư vòm họng'
-                ]
-            },
-            {
-                title: 'Nội Khoa',
-                diseases: [
-                    'Tăng huyết áp',
-                    'Rối loạn mỡ máu',
-                    'Đái tháo đường',
-                    'Bệnh tuyến giáp',
-                    'Các bệnh về dạ dày'
-                ]
-            }
-        ];
+        (function() {
+            // Scope JS vào trong wrapper này thôi
+            const WRAPPER_ID = 'hero-component-wrapper';
+            const wrapper = document.getElementById(WRAPPER_ID);
 
-        function createSpecialtyElement(specialty) {
-            const div = document.createElement('div');
-            div.className = 'specialty';
-            
-            const title = document.createElement('h3');
-            title.className = 'specialty-title';
-            title.textContent = specialty.title;
-            div.appendChild(title);
+            if (!wrapper) return; // An toàn nếu load sai
 
-            if (specialty.sections) {
-                specialty.sections.forEach(section => {
-                    const subtitle = document.createElement('h4');
-                    subtitle.className = 'specialty-title';
-                    subtitle.style.fontSize = '1.2rem';
-                    subtitle.textContent = section.subtitle;
-                    div.appendChild(subtitle);
+            const specialties = [
+                {
+                    title: 'Sản Khoa',
+                    diseases: ['Khám thai định kỳ', 'Siêu âm thai', 'Sàng lọc trước sinh', 'Hỗ trợ sinh tại Từ Dũ', 'Chăm sóc sau sinh']
+                },
+                {
+                    title: 'Phụ Khoa',
+                    diseases: ['U xơ tử cung', 'U nang buồng trứng', 'Viêm nhiễm phụ khoa', 'Rối loạn kinh nguyệt', 'Tầm soát ung thư cổ tử cung']
+                },
+                {
+                    title: 'Tai Mũi Họng',
+                    diseases: ['Viêm xoang mãn tính', 'Viêm amidan', 'Viêm mũi dị ứng', 'Viêm họng mạn tính', 'Ngủ ngáy - Rối loạn giấc ngủ', 'Tầm soát ung thư vòm họng']
+                },
+                {
+                    title: 'Nội Khoa',
+                    diseases: ['Tăng huyết áp', 'Rối loạn mỡ máu', 'Đái tháo đường', 'Bệnh tuyến giáp', 'Các bệnh về dạ dày']
+                }
+            ];
 
-                    const list = createDiseaseList(section.diseases);
-                    div.appendChild(list);
-                });
-            } else {
+            function createSpecialtyElement(specialty) {
+                const div = document.createElement('div');
+                // QUAN TRỌNG: Đã đổi tên class để khớp với CSS mới và không trùng specialist.html
+                div.className = 'hero-specialty-anim'; 
+                
+                const title = document.createElement('h3');
+                title.className = 'specialty-title';
+                title.textContent = specialty.title;
+                div.appendChild(title);
+
                 const list = createDiseaseList(specialty.diseases);
                 div.appendChild(list);
+
+                return div;
             }
 
-            return div;
-        }
-
-        function createDiseaseList(diseases) {
-            const ul = document.createElement('ul');
-            ul.className = 'disease-list';
-            
-            diseases.forEach((disease, index) => {
-                const li = document.createElement('li');
-                li.className = 'disease-item';
-                li.textContent = disease;
-                li.style.animationDelay = `${index * 0.3}s`;
-                ul.appendChild(li);
-            });
-
-            return ul;
-        }
-
-        function initializeAnimations() {
-            const animationContent = document.querySelector('.animation-content');
-            const slides = document.querySelectorAll('.slide');
-            let currentSlide = 0;
-            let currentSpecialty = 0;
-
-            specialties.forEach(specialty => {
-                const element = createSpecialtyElement(specialty);
-                animationContent.appendChild(element);
-            });
-
-            const specialtyElements = document.querySelectorAll('.specialty');
-
-            function updateSpecialty() {
-                specialtyElements.forEach(el => el.classList.remove('active'));
-                specialtyElements[currentSpecialty].classList.add('active');
-
-                const items = specialtyElements[currentSpecialty].querySelectorAll('.disease-item');
-                items.forEach((item, index) => {
-                    item.style.animation = 'none';
-                    item.offsetHeight; // Trigger reflow
-                    item.style.animation = `slideInRight 0.5s forwards ${index * 0.3}s`;
+            function createDiseaseList(diseases) {
+                const ul = document.createElement('ul');
+                ul.className = 'disease-list';
+                
+                diseases.forEach((disease, index) => {
+                    const li = document.createElement('li');
+                    li.className = 'disease-item';
+                    li.textContent = disease;
+                    li.style.animationDelay = `${index * 0.3}s`;
+                    ul.appendChild(li);
                 });
+
+                return ul;
             }
 
-            function nextSlide() {
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
+            function initializeAnimations() {
+                const animationContent = wrapper.querySelector('.animation-content');
+                if (!animationContent) return;
 
-                currentSpecialty = (currentSpecialty + 1) % specialties.length;
-                updateSpecialty();
+                animationContent.innerHTML = ''; // Reset
+
+                const slides = wrapper.querySelectorAll('.slide');
+                let currentSlide = 0;
+                let currentSpecialty = 0;
+
+                // Tạo DOM
+                specialties.forEach(specialty => {
+                    const element = createSpecialtyElement(specialty);
+                    animationContent.appendChild(element);
+                });
+
+                // Lấy danh sách element theo class mới
+                const specialtyElements = wrapper.querySelectorAll('.hero-specialty-anim');
+
+                function updateSpecialty() {
+                    specialtyElements.forEach(el => el.classList.remove('active'));
+                    
+                    if (specialtyElements[currentSpecialty]) {
+                        specialtyElements[currentSpecialty].classList.add('active');
+
+                        const items = specialtyElements[currentSpecialty].querySelectorAll('.disease-item');
+                        items.forEach((item, index) => {
+                            item.style.animation = 'none';
+                            item.offsetHeight; // Trigger reflow
+                            item.style.animation = `heroSlideInRight 0.5s forwards ${index * 0.3}s`; // Dùng animation name mới
+                        });
+                    }
+                }
+
+                function nextSlide() {
+                    if (slides.length > 0) {
+                        slides[currentSlide].classList.remove('active');
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        slides[currentSlide].classList.add('active');
+                    }
+
+                    if (specialties.length > 0) {
+                        currentSpecialty = (currentSpecialty + 1) % specialties.length;
+                        updateSpecialty();
+                    }
+                }
+
+                if (specialtyElements.length > 0) {
+                    specialtyElements[0].classList.add('active');
+                }
+                
+                setInterval(nextSlide, 5000);
             }
-
-            // Set initial state
-            specialtyElements[0].classList.add('active');
-            
-            // Start animations
-            setInterval(nextSlide, 5000);
-        }
-
-        // Preload images
-        window.addEventListener('load', function() {
-            const imageUrls = ['hero1.jpg', 'hero2.jpg', 'hero3.jpg', 'hero4.jpg'];
-            imageUrls.forEach(url => {
-                const img = new Image();
-                img.src = `./image/${url}`;
-            });
 
             initializeAnimations();
-        });
 
-        // Height adjustment for iframe
-        function updateParentHeight() {
-            const height = Math.max(
-                document.documentElement.scrollHeight,
-                document.body.scrollHeight,
-                document.documentElement.offsetHeight,
-                document.body.offsetHeight
-            );
-            window.parent.postMessage({ height }, '*');
-        }
-
-        document.addEventListener('DOMContentLoaded', updateParentHeight);
-        window.addEventListener('load', updateParentHeight);
-        new ResizeObserver(updateParentHeight).observe(document.body);
+        })(); 
     </script>
-</body>
-</html>
+</div>
