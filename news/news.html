@@ -1,389 +1,352 @@
-<div id="news-component-wrapper" class="news-component-scope">
-    <style>
-        /* --- CSS Scoping cho News --- */
-        .news-component-scope {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            padding: 50px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            background: #f5f5f5;
-            color: #333;
-            width: 100%;
-            display: block;
-        }
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Tin Tức Y Khoa</title>
+   <style>
+       * {
+           box-sizing: border-box;
+           margin: 0;
+           padding: 0;
+       }
 
-        .news-component-scope * {
-            box-sizing: border-box;
-        }
+       body {
+           font-family: Arial, sans-serif;
+           line-height: 1.6;
+           padding: 20px;
+           max-width: 1200px;
+           margin: 0 auto;
+           background: #f5f5f5;
+       }
 
-        .news-component-scope .section-main-title {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2em;
-            color: #2c3e50;
-            font-weight: bold;
-            position: relative;
-        }
-        
-        .news-component-scope .section-main-title:after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: #3498db;
-            margin: 15px auto;
-        }
+       .header {
+           text-align: center;
+           margin-bottom: 20px;
+           padding: 20px;
+           background: #0070c0;
+           color: white;
+           border-radius: 8px;
+       }
 
-        .news-component-scope .news-categories {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
-            padding: 15px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+       .news-categories {
+           display: flex;
+           gap: 15px;
+           margin-bottom: 20px;
+           padding: 15px;
+           background: white;
+           border-radius: 8px;
+           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+       }
 
-        .news-component-scope .category-link {
-            color: #333;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: all 0.3s;
-            font-weight: 500;
-            border: 1px solid transparent;
-        }
+       .category-link {
+           color: #333;
+           text-decoration: none;
+           padding: 8px 16px;
+           border-radius: 20px;
+           transition: all 0.3s;
+       }
 
-        .news-component-scope .category-link:hover {
-            background: #0070c0;
-            color: white;
-            border-color: #0070c0;
-        }
-        
-        .news-component-scope .featured-news {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
+       .category-link:hover {
+           background: #0070c0;
+           color: white;
+       }
 
-        .news-component-scope .main-story {
-            position: relative;
-            height: 400px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            group: 'main-story';
-        }
+       .featured-news {
+           display: grid;
+           grid-template-columns: 2fr 1fr;
+           gap: 20px;
+           margin-bottom: 30px;
+       }
 
-        .news-component-scope .main-story img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
+       .main-story {
+           position: relative;
+           height: 400px;
+           border-radius: 8px;
+           overflow: hidden;
+           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+       }
 
-        .news-component-scope .main-story:hover img {
-            transform: scale(1.05);
-        }
+       .main-story img {
+           width: 100%;
+           height: 100%;
+           object-fit: cover;
+       }
 
-        .news-component-scope .main-story-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 20px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
-            color: white;
-        }
+       .main-story-content {
+           position: absolute;
+           bottom: 0;
+           left: 0;
+           right: 0;
+           padding: 20px;
+           background: linear-gradient(transparent, rgba(0,0,0,0.8));
+           color: white;
+       }
 
-        .news-component-scope .secondary-stories {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+       .secondary-stories {
+           display: flex;
+           flex-direction: column;
+           gap: 20px;
+       }
 
-        .news-component-scope .secondary-story {
-            display: grid;
-            grid-template-columns: 120px auto;
-            gap: 15px;
-            background: white;
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            height: 100%;
-            align-items: center;
-        }
+       .secondary-story {
+           display: grid;
+           grid-template-columns: 120px auto;
+           gap: 15px;
+           background: white;
+           padding: 10px;
+           border-radius: 8px;
+           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+           transition: transform 0.3s;
+       }
 
-        .news-component-scope .secondary-story:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
+       .secondary-story:hover {
+           transform: translateY(-3px);
+       }
 
-        .news-component-scope .secondary-story img {
-            width: 120px;
-            height: 90px;
-            object-fit: cover;
-            border-radius: 4px;
-        }
+       .secondary-story img {
+           width: 120px;
+           height: 90px;
+           object-fit: cover;
+           border-radius: 4px;
+       }
 
-        .news-component-scope .news-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+       .news-grid {
+           display: grid;
+           grid-template-columns: repeat(3, 1fr);
+           gap: 20px;
+       }
 
-        .news-component-scope .news-item {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
+       .news-item {
+           background: white;
+           border-radius: 8px;
+           overflow: hidden;
+           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+           transition: transform 0.3s;
+       }
 
-        .news-component-scope .news-item:hover {
-            transform: translateY(-5px);
-        }
+       .news-item:hover {
+           transform: translateY(-3px);
+       }
 
-        .news-component-scope .news-item img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
+       .news-item img {
+           width: 100%;
+           height: 180px;
+           object-fit: cover;
+       }
 
-        .news-component-scope .news-content {
-            padding: 15px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
+       .news-content {
+           padding: 15px;
+       }
 
-        .news-component-scope .category-tag {
-            display: inline-block;
-            background: #0070c0;
-            color: white;
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 0.75em;
-            margin-bottom: 8px;
-            align-self: flex-start;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
+       .category-tag {
+           display: inline-block;
+           background: #0070c0;
+           color: white;
+           padding: 3px 8px;
+           border-radius: 15px;
+           font-size: 0.8em;
+           margin-bottom: 5px;
+       }
 
-        .news-component-scope .news-title {
-            font-size: 1.1em;
-            margin: 5px 0 10px 0;
-            line-height: 1.4;
-        }
+       .news-title {
+           font-size: 1.1em;
+           margin: 5px 0;
+       }
 
-        .news-component-scope .news-title a {
-            color: #333;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.2s;
-        }
+       .news-title a {
+           color: #333;
+           text-decoration: none;
+       }
 
-        .news-component-scope .news-title a:hover {
-            color: #0070c0;
-        }
+       .news-title a:hover {
+           color: #0070c0;
+       }
 
-        .news-component-scope .news-brief {
-            color: #666;
-            font-size: 0.9em;
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
+       .news-brief {
+           color: #666;
+           font-size: 0.9em;
+           line-height: 1.4;
+       }
 
-        @media (max-width: 768px) {
-            .news-component-scope .featured-news {
-                grid-template-columns: 1fr;
-            }
+       @media (max-width: 768px) {
+           .featured-news {
+               grid-template-columns: 1fr;
+           }
 
-            .news-component-scope .news-grid {
-                grid-template-columns: 1fr;
-            }
+           .news-grid {
+               grid-template-columns: 1fr;
+           }
 
-            .news-component-scope .main-story {
-                height: 300px;
-            }
+           .main-story {
+               height: 300px;
+           }
 
-            .news-component-scope .news-categories {
-                justify-content: flex-start;
-                overflow-x: auto;
-                white-space: nowrap;
-                padding-bottom: 10px;
-            }
-        }
-    </style>
+           .news-categories {
+               flex-wrap: wrap;
+               justify-content: center;
+           }
+       }
+   </style>
+</head>
+<body>
+   <div class="header">
+       <h1>Tin Tức Y Khoa</h1>
+   </div>
 
-    <h1 class="section-main-title">Tin Tức Y Khoa Mới Nhất</h1>
+<nav class="news-categories">
+       <a href="archive.html?department=Obstetrics_and_Gynecology" class="category-link">Sản Phụ Khoa</a><a href="archive.html?department=ENT" class="category-link">Tai Mũi Họng</a><a href="archive.html?department=Internal_Medicine" class="category-link">Nội Khoa</a><a href="archive.html?department=Musculoskeletal_System" class="category-link">Khoa Cơ Xương Khớp</a>       
+       <a href="archive.html" class="category-link" style="background: #e0e0e0;">
+           <b>Xem tất cả &raquo;</b>
+       </a>
+   </nav>
 
-    <nav class="news-categories">
-        <a href="#" onclick="navigateToArchive('Obstetrics_and_Gynecology'); return false;" class="category-link">Sản Phụ Khoa</a>
-        <a href="#" onclick="navigateToArchive('ENT'); return false;" class="category-link">Tai Mũi Họng</a>
-        <a href="#" onclick="navigateToArchive('Internal_Medicine'); return false;" class="category-link">Nội Khoa</a>
-        <a href="#" onclick="navigateToArchive('Musculoskeletal_System'); return false;" class="category-link">Khoa Cơ Xương Khớp</a>       
-        <a href="#" onclick="navigateToArchive(''); return false;" class="category-link" style="background: #e0e0e0;">
-            <b>Xem tất cả &raquo;</b>
-        </a>
-    </nav>
+   <div class="featured-news">
+                  <div class="main-story">
+               <img src="https://sa1s3optim.patientpop.com/1536x/filters:format(webp)/assets/images/provider/photos/2756337.jpeg" 
+                    alt="Cơn Gout Cấp – Hiểu Rõ “Kẻ Thù” Giấu Mặt Trong Khớp Xương">
+               <div class="main-story-content">
+                   <span class="category-tag">
+                       Khoa Cơ Xương Khớp                   </span>
+                   <h2 class="news-title">
+                       <a href="articles/NEWS_20251125195606/NEWS_20251125195606.html" 
+                          style="color: white; text-decoration: none;">
+                           Cơn Gout Cấp – Hiểu Rõ “Kẻ Thù” Giấu Mặt Trong Khớp Xương                       </a>
+                   </h2>
+                   <p>	Có lẽ cụm từ &#34;bệnh Gout&#34; (Gút) không còn xa lạ với nhiều người. Tuy nhiên, chỉ khi thực sự trải qua một cơn đau Gout cấp tính, người bệnh mới thấu...</p>
+               </div>
+           </div>
 
-    <div class="featured-news">
-        <div class="main-story">
-            <img src="https://github.com/fmcclinic/Medical_News/blob/main/news/image/zona_%E1%BB%8Bnury.jpg?raw=true" 
-                alt="Nỗi đau sau zona – câu chuyện tôi muốn kể cùng bạn đọc" loading="lazy">
-            <div class="main-story-content">
-                <span class="category-tag">Nội Khoa</span>
-                <h2 class="news-title">
-                    <a href="news/articles/NEWS_20251123000808/NEWS_20251123000808.html" 
-                        style="color: white; text-decoration: none;">
-                        Nỗi đau sau zona – câu chuyện tôi muốn kể cùng bạn đọc
-                    </a>
-                </h2>
-                <p style="margin-top: 10px; font-size: 0.95em; opacity: 0.9;">Hôm nay, trong lúc tư vấn cho một chị về một vấn đề y khoa khác, cuộc trò chuyện bất ngờ kéo dài hơn dự kiến...</p>
-            </div>
-        </div>
+           <div class="secondary-stories">
+                                  <div class="secondary-story">
+                       <img src="https://github.com/fmcclinic/Medical_News/blob/main/news/image/zona_%E1%BB%8Bnury.jpg?raw=true" 
+                            alt="Nỗi đau sau zona – câu chuyện tôi muốn kể cùng bạn đọc">
+                       <div>
+                           <span class="category-tag">
+                               Nội Khoa                           </span>
+                           <h3 class="news-title">
+                               <a href="articles/NEWS_20251123000808/NEWS_20251123000808.html">
+                                   Nỗi đau sau zona – câu chuyện tôi muốn kể cùng bạn đọc                               </a>
+                           </h3>
+                       </div>
+                   </div>
+                                  <div class="secondary-story">
+                       <img src="https://raw.githubusercontent.com/fmcclinic/Medical_News/refs/heads/main/news/image/%C4%91au-kh%E1%BB%9Bp-g%E1%BB%91i.gif" 
+                            alt="THOÁI HÓA KHỚP GỐI: 3 YẾU TỐ GÂY BỆNH CƠ BẢN BẠN CÓ THỂ KIỂM SOÁT ĐƯỢC">
+                       <div>
+                           <span class="category-tag">
+                               Khoa Cơ Xương Khớp                           </span>
+                           <h3 class="news-title">
+                               <a href="articles/NEWS_20251031110706/NEWS_20251031110706.html">
+                                   THOÁI HÓA KHỚP GỐI: 3 YẾU TỐ GÂY BỆNH CƠ BẢN BẠN CÓ THỂ KIỂM SOÁT ĐƯỢC                               </a>
+                           </h3>
+                       </div>
+                   </div>
+                                  <div class="secondary-story">
+                       <img src="https://github.com/fmcclinic/Medical_News/blob/main/news/image/What%20will%20the%20doctor%20do%20to%20diagnose%20knee%20osteoarthritis.gif?raw=true" 
+                            alt="Bác sĩ sẽ làm gì để Chẩn đoán Thoái hóa khớp gối ">
+                       <div>
+                           <span class="category-tag">
+                               Khoa Cơ Xương Khớp                           </span>
+                           <h3 class="news-title">
+                               <a href="articles/NEWS_20251031081906/NEWS_20251031081906.html">
+                                   Bác sĩ sẽ làm gì để Chẩn đoán Thoái hóa khớp gối                                </a>
+                           </h3>
+                       </div>
+                   </div>
+                          </div>
+          </div>
 
-        <div class="secondary-stories">
-            <div class="secondary-story">
-                <img src="https://raw.githubusercontent.com/fmcclinic/Medical_News/refs/heads/main/news/image/%C4%91au-kh%E1%BB%9Bp-g%E1%BB%91i.gif" 
-                    alt="Thoái hóa khớp gối" loading="lazy">
-                <div>
-                    <span class="category-tag">Khoa Cơ Xương Khớp</span>
-                    <h3 class="news-title" style="font-size: 1em;">
-                        <a href="news/articles/NEWS_20251031110706/NEWS_20251031110706.html">
-                            THOÁI HÓA KHỚP GỐI: 3 YẾU TỐ BẠN CÓ THỂ KIỂM SOÁT ĐƯỢC
-                        </a>
-                    </h3>
-                </div>
-            </div>
-            <div class="secondary-story">
-                <img src="https://github.com/fmcclinic/Medical_News/blob/main/news/image/What%20will%20the%20doctor%20do%20to%20diagnose%20knee%20osteoarthritis.gif?raw=true" 
-                    alt="Chẩn đoán Thoái hóa khớp gối" loading="lazy">
-                <div>
-                    <span class="category-tag">Khoa Cơ Xương Khớp</span>
-                    <h3 class="news-title" style="font-size: 1em;">
-                        <a href="news/articles/NEWS_20251031081906/NEWS_20251031081906.html">
-                            Bác sĩ sẽ làm gì để Chẩn đoán Thoái hóa khớp gối?
-                        </a>
-                    </h3>
-                </div>
-            </div>
-            <div class="secondary-story">
-                <img src="https://github.com/fmcclinic/Medical_News/blob/main/news/image/Tho%C3%A1i-h%C3%B3a-kh%E1%BB%9Bp-g%E1%BB%91i.gif?raw=true" 
-                    alt="Điều Trị Thoái hóa khớp gối" loading="lazy">
-                <div>
-                    <span class="category-tag">Khoa Cơ Xương Khớp</span>
-                    <h3 class="news-title" style="font-size: 1em;">
-                        <a href="news/articles/NEWS_20251030171907/NEWS_20251030171907.html">
-                            Các phương pháp Điều Trị Thoái hóa khớp gối hiệu quả
-                        </a>
-                    </h3>
-                </div>
-            </div>
-        </div>
-    </div>
+   <div class="news-grid">
+                  <article class="news-item">
+               <img src="https://github.com/fmcclinic/Medical_News/blob/main/news/image/Tho%C3%A1i-h%C3%B3a-kh%E1%BB%9Bp-g%E1%BB%91i.gif?raw=true" 
+                    alt=" Điều Trị  Thoái hóa khớp gối">
+               <div class="news-content">
+                   <span class="category-tag">
+                       Khoa Cơ Xương Khớp                   </span>
+                   <h3 class="news-title">
+                       <a href="articles/NEWS_20251030171907/NEWS_20251030171907.html">
+                            Điều Trị  Thoái hóa khớp gối                       </a>
+                   </h3>
+                   <p class="news-brief">Thoái hóa khớp gối là một bệnh lý khớp mãn tính và tiến triển. Bệnh được đặc trưng bởi suy giảm cấu trúc và chức năng của khớp hoạt dịch, không còn...</p>
+               </div>
+           </article>
+                  <article class="news-item">
+               <img src="https://www.mgs.physio/app/uploads/2023/10/knee-osteoarthritis-and-how-to-avoid-surgery-2048x1368.jpg" 
+                    alt="Thoái hóa khớp gối">
+               <div class="news-content">
+                   <span class="category-tag">
+                       Khoa Cơ Xương Khớp                   </span>
+                   <h3 class="news-title">
+                       <a href="articles/NEWS_20251030075627/NEWS_20251030075627.html">
+                           Thoái hóa khớp gối                       </a>
+                   </h3>
+                   <p class="news-brief">Thoái hóa khớp không còn được coi là một bệnh lý chỉ tập trung vào sụn khớp hay là một bệnh hao mòn (wear-and-tear disease). Thay vào đó, bệnh này ...</p>
+               </div>
+           </article>
+                  <article class="news-item">
+               <img src="https://benhvienthucuc.vn/_next/image?url=https%3A%2F%2Fbenhvienthucuc.vn%2Fwp-content%2Fuploads%2F2016%2F12%2FNh%25E1%25BB%25AFng-b%25E1%25BB%2587nh-ph%25E1%25BB%25A5-khoa-b%25C3%25A0-b%25E1%25BA%25A7u-c%25C3%25B3-th%25E1%25BB%2583-m%25E1%25BA%25AFc.jpeg&amp;w=1080&amp;q=100" 
+                    alt="Khám thai định kỳ">
+               <div class="news-content">
+                   <span class="category-tag">
+                       Sản Phụ Khoa                   </span>
+                   <h3 class="news-title">
+                       <a href="articles/NEWS_20251026225706/NEWS_20251026225706.html">
+                           Khám thai định kỳ                       </a>
+                   </h3>
+                   <p class="news-brief">Khám thai định kỳ&amp;nbsp;là chuỗi các buổi thăm khám được lên kế hoạch trong suốt thai kỳ để theo dõi sức khỏe của mẹ và sự phát triển của thai nhi.&amp;...</p>
+               </div>
+           </article>
+                  <article class="news-item">
+               <img src="https://ilshospitals.com/blog/wp-content/uploads/2019/07/Common-Gynecological-Problems.png" 
+                    alt="Các vấn đề phụ khoa thường gặp: Nguyên nhân, triệu chứng và phòng ngừa.">
+               <div class="news-content">
+                   <span class="category-tag">
+                       Sản Phụ Khoa                   </span>
+                   <h3 class="news-title">
+                       <a href="articles/NEWS_20241228101505/NEWS_20241228101505.html">
+                           Các vấn đề phụ khoa thường gặp: Nguyên nhân, triệu chứng và phòng ngừa.                       </a>
+                   </h3>
+                   <p class="news-brief">Sức khỏe sinh sản là một vấn đề quan trọng đối với phụ nữ. Hiểu biết về các bệnh phụ khoa thường gặp sẽ giúp bạn chăm sóc bản thân tốt hơn và phát ...</p>
+               </div>
+           </article>
+                  <article class="news-item">
+               <img src="https://github.com/fmcclinic/Medical_News/blob/main/news/image/C%C3%A1c%20b%E1%BB%87nh%20ph%E1%BB%A5%20khoa%20th%C6%B0%E1%BB%9Dng%20g%E1%BA%B7p%20v%C3%A0%20c%C3%A1ch%20ph%C3%B2ng%20ng%E1%BB%ABa.jpg?raw=true" 
+                    alt="Các bệnh phụ khoa thường gặp và cách phòng ngừa.">
+               <div class="news-content">
+                   <span class="category-tag">
+                       Sản Phụ Khoa                   </span>
+                   <h3 class="news-title">
+                       <a href="articles/NEWS_20241225192105/NEWS_20241225192105.html">
+                           Các bệnh phụ khoa thường gặp và cách phòng ngừa.                       </a>
+                   </h3>
+                   <p class="news-brief">Giới thiệu  Các bệnh phụ khoa là nhóm bệnh lý phổ biến ảnh hưởng trực tiếp đến sức khỏe sinh sản và chất lượng cuộc sống của chị em phụ nữ. Việc hi...</p>
+               </div>
+           </article>
+                  <article class="news-item">
+               <img src="https://github.com/fmcclinic/Medical_News/blob/main/news/image/Chu%E1%BA%A9n%20b%E1%BB%8B%20sinh%20n%E1%BB%9F%20Nh%E1%BB%AFng%20%C4%91i%E1%BB%81u%20m%E1%BA%B9%20b%E1%BA%A7u%20c%E1%BA%A7n%20bi%E1%BA%BFt.jpg?raw=true" 
+                    alt="Chuẩn bị sinh nở - Những điều mẹ bầu cần biết.">
+               <div class="news-content">
+                   <span class="category-tag">
+                       Sản Phụ Khoa                   </span>
+                   <h3 class="news-title">
+                       <a href="articles/NEWS_20241222175335/NEWS_20241222175335.html">
+                           Chuẩn bị sinh nở - Những điều mẹ bầu cần biết.                       </a>
+                   </h3>
+                   <p class="news-brief">Chuẩn bị sinh nở - Những điều mẹ bầu cần biếtGiới thiệuViệc chuẩn bị chu đáo cho quá trình sinh nở không chỉ giúp thai phụ tự tin hơn mà còn đảm bả...</p>
+               </div>
+           </article>
+          </div>
 
-    <div class="news-grid">
-        <article class="news-item">
-            <img src="https://www.mgs.physio/app/uploads/2023/10/knee-osteoarthritis-and-how-to-avoid-surgery-2048x1368.jpg" 
-                alt="Thoái hóa khớp gối" loading="lazy">
-            <div class="news-content">
-                <span class="category-tag">Khoa Cơ Xương Khớp</span>
-                <h3 class="news-title">
-                    <a href="news/articles/NEWS_20251030075627/NEWS_20251030075627.html">
-                        Thoái hóa khớp gối - Hiểu đúng để trị đúng
-                    </a>
-                </h3>
-                <p class="news-brief">Thoái hóa khớp không còn được coi là một bệnh lý chỉ tập trung vào sụn khớp hay là một bệnh hao mòn đơn thuần...</p>
-            </div>
-        </article>
+   <script>
+       function updateParentHeight() {
+           const height = document.documentElement.scrollHeight;
+           window.parent.postMessage({ height: height }, '*');
+       }
 
-        <article class="news-item">
-            <img src="https://benhvienthucuc.vn/_next/image?url=https%3A%2F%2Fbenhvienthucuc.vn%2Fwp-content%2Fuploads%2F2016%2F12%2FNh%25E1%25BB%25AFng-b%25E1%25BB%2587nh-ph%25E1%25BB%25A5-khoa-b%25C3%25A0-b%25E1%25BA%25A7u-c%25C3%25B3-th%25E1%25BB%2583-m%25E1%25BA%25AFc.jpeg&amp;w=1080&amp;q=100" 
-                alt="Khám thai định kỳ" loading="lazy">
-            <div class="news-content">
-                <span class="category-tag">Sản Phụ Khoa</span>
-                <h3 class="news-title">
-                    <a href="news/articles/NEWS_20251026225706/NEWS_20251026225706.html">
-                        Lịch khám thai định kỳ mẹ bầu cần nhớ
-                    </a>
-                </h3>
-                <p class="news-brief">Khám thai định kỳ là chuỗi các buổi thăm khám được lên kế hoạch trong suốt thai kỳ để theo dõi sức khỏe của mẹ và bé...</p>
-            </div>
-        </article>
-
-        <article class="news-item">
-            <img src="https://ilshospitals.com/blog/wp-content/uploads/2019/07/Common-Gynecological-Problems.png" 
-                alt="Các vấn đề phụ khoa" loading="lazy">
-            <div class="news-content">
-                <span class="category-tag">Sản Phụ Khoa</span>
-                <h3 class="news-title">
-                    <a href="news/articles/NEWS_20241228101505/NEWS_20241228101505.html">
-                        Các vấn đề phụ khoa thường gặp và cách phòng ngừa
-                    </a>
-                </h3>
-                <p class="news-brief">Sức khỏe sinh sản là vấn đề quan trọng. Hiểu biết về các bệnh phụ khoa thường gặp sẽ giúp bạn chăm sóc bản thân tốt hơn...</p>
-            </div>
-        </article>
-        
-        <article class="news-item">
-            <img src="https://github.com/fmcclinic/Medical_News/blob/main/news/image/C%C3%A1c%20b%E1%BB%87nh%20ph%E1%BB%A5%20khoa%20th%C6%B0%E1%BB%9Dng%20g%E1%BA%B7p%20v%C3%A0%20c%C3%A1ch%20ph%C3%B2ng%20ng%E1%BB%ABa.jpg?raw=true" 
-                alt="Phòng ngừa bệnh phụ khoa" loading="lazy">
-            <div class="news-content">
-                <span class="category-tag">Sản Phụ Khoa</span>
-                <h3 class="news-title">
-                    <a href="news/articles/NEWS_20241225192105/NEWS_20241225192105.html">
-                        Hướng dẫn toàn diện về phòng ngừa bệnh phụ khoa
-                    </a>
-                </h3>
-                <p class="news-brief">Các bệnh phụ khoa tuy phổ biến nhưng có thể phòng ngừa hiệu quả thông qua việc duy trì lối sống lành mạnh...</p>
-            </div>
-        </article>
-
-        <article class="news-item">
-            <img src="https://github.com/fmcclinic/Medical_News/blob/main/news/image/Chu%E1%BA%A9n%20b%E1%BB%8B%20sinh%20n%E1%BB%9F%20Nh%E1%BB%AFng%20%C4%91i%E1%BB%81u%20m%E1%BA%B9%20b%E1%BA%A7u%20c%E1%BA%A7n%20bi%E1%BA%BFt.jpg?raw=true" 
-                alt="Chuẩn bị sinh nở" loading="lazy">
-            <div class="news-content">
-                <span class="category-tag">Sản Phụ Khoa</span>
-                <h3 class="news-title">
-                    <a href="news/articles/NEWS_20241222175335/NEWS_20241222175335.html">
-                        Chuẩn bị sinh nở - Những điều mẹ bầu cần biết
-                    </a>
-                </h3>
-                <p class="news-brief">Việc chuẩn bị chu đáo cho quá trình sinh nở không chỉ giúp thai phụ tự tin hơn mà còn đảm bảo mọi thứ diễn ra suôn sẻ...</p>
-            </div>
-        </article>
-
-        <article class="news-item">
-            <img src="https://raw.githubusercontent.com/fmcclinic/Medical_News/refs/heads/main/news/image/A%20woman%20with%20a%20visible%20pregnancy.jpg" 
-                alt="Dinh dưỡng thai kỳ" loading="lazy">
-            <div class="news-content">
-                <span class="category-tag">Sản Phụ Khoa</span>
-                <h3 class="news-title">
-                    <a href="news/articles/NEWS_20241221144428/NEWS_20241221144428.html">
-                        Dinh dưỡng trong thai kỳ - Ăn gì để mẹ khỏe con thông minh?
-                    </a>
-                </h3>
-                <p class="news-brief">Dinh dưỡng trong thai kỳ đóng vai trò quan trọng đối với sự phát triển của thai nhi và sức khỏe của mẹ...</p>
-            </div>
-        </article>
-    </div>
-    
-    <div style="text-align: center; margin-top: 20px;">
-        <button onclick="navigateToArchive(''); return false;" 
-                style="padding: 10px 30px; background: #2c3e50; color: white; border: none; border-radius: 25px; font-weight: bold; cursor: pointer; transition: background 0.3s;">
-            Xem thêm tin tức khác
-        </button>
-    </div>
-</div>
+       document.addEventListener('DOMContentLoaded', updateParentHeight);
+       window.addEventListener('load', updateParentHeight);
+       new ResizeObserver(updateParentHeight).observe(document.body);
+   </script>
+</body>
+</html>
