@@ -108,32 +108,32 @@
             displayPagination(currentFilteredList.length);
         }
 
-        function displayArticles(articles) {
-            const container = document.getElementById('articlesContainer');
-            const start = (currentPage - 1) * itemsPerPage;
-            const paginatedArticles = articles.slice(start, start + itemsPerPage);
+      function displayArticles(articles) {
+        const container = document.getElementById('articlesContainer');
+        const start = (currentPage - 1) * itemsPerPage;
+        const paginatedArticles = articles.slice(start, start + itemsPerPage);
 
-            if (paginatedArticles.length === 0) {
-                container.innerHTML = `<div class="no-results" style="grid-column: 1/-1; text-align:center;"><h3>Không tìm thấy kết quả</h3></div>`;
-                document.getElementById('pagination').style.display = 'none';
-                return;
-            }
-
-            container.innerHTML = paginatedArticles.map(article => `
-                <div class="article-card">
-                    <img src="${article.imageUrl}" alt="${article.title}" class="article-image">
-                    <div class="article-content">
-                        <span class="article-category">${getDepartmentName(article.department)}</span>
-                        
-                        <h3><a href="news/articles/${article.id}/${article.id}.html" class="article-title">${article.title}</a></h3>
-                        
-                        <div class="article-meta">${formatDate(article.date)}</div>
-                    </div>
-                </div>
-            `).join('');
-            
-            window.scrollTo(0, 0);
+        if (paginatedArticles.length === 0) {
+            container.innerHTML = `<div class="no-results" style="grid-column: 1/-1; text-align:center;"><h3>Không tìm thấy kết quả</h3></div>`;
+            document.getElementById('pagination').style.display = 'none';
+            return;
         }
+
+        container.innerHTML = paginatedArticles.map(article => `
+            <div class="article-card">
+                <img src="${article.imageUrl}" alt="${article.title}" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">${getDepartmentName(article.department)}</span>
+                    
+                    <h3><a href="articles/${article.id}/${article.id}.html" class="article-title">${article.title}</a></h3>
+                    
+                    <div class="article-meta">${formatDate(article.date)}</div>
+                </div>
+            </div>
+        `).join('');
+        
+        window.scrollTo(0, 0);
+      }
 
         function displayPagination(totalItems) {
             const totalPages = Math.ceil(totalItems / itemsPerPage);
