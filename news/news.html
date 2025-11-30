@@ -1,4 +1,251 @@
-<div id="news-component-wrapper" class="news-component-scope">
+<style>
+     
+    .fmc-header-wrapper { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.5; }
+    .fmc-header-wrapper * { box-sizing: border-box; margin: 0; padding: 0; }
+
+     
+    .fmc-header {
+        height: 70px; background-color: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+        transition: transform 0.3s ease-in-out; display: flex; justify-content: center;
+    }
+    .fmc-header.hidden-header { transform: translateY(-100%); }
+
+    .fmc-container {
+        max-width: 1400px; width: 100%; height: 100%;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 15px; position: relative;
+    }
+
+     
+    .fmc-logo-link {
+        height: 46px; flex-shrink: 0; cursor: pointer; display: block;
+        transition: transform 0.2s; position: relative; z-index: 10000;
+    }
+    .fmc-logo-link:hover { transform: scale(1.03); }
+    .fmc-logo-link img { height: 100%; width: auto; object-fit: contain; display: block; }
+
+     
+    .fmc-desktop-nav { display: flex; list-style: none; gap: 25px; margin: 0 20px; }
+    .fmc-nav-link {
+        text-decoration: none; color: #333; font-size: 15px; font-weight: 600;
+        display: flex; align-items: center; gap: 6px; padding: 8px 10px;
+        border-radius: 6px; transition: all 0.2s; white-space: nowrap;
+    }
+    .fmc-nav-link:hover { color: #007bff; background: rgba(0, 123, 255, 0.05); }
+
+    .fmc-desktop-actions { display: flex; align-items: center; gap: 20px; }
+    .fmc-status-box { text-align: right; font-size: 13px; }
+    .fmc-status-text { font-weight: 700; display: block; margin-bottom: 2px;}
+    .fmc-hotline { text-decoration: none; color: #007bff; font-weight: 700; font-size: 14px; }
+
+    .fmc-btn-primary {
+        background: #007bff; color: white; border: none; border-radius: 30px;
+        font-weight: 600; cursor: pointer; text-decoration: none;
+        transition: background 0.2s; display: inline-flex; align-items: center;
+        justify-content: center; white-space: nowrap; box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
+    }
+    .fmc-btn-primary:hover { background: #0056b3; }
+    .fmc-btn-desktop { padding: 10px 20px; font-size: 14px; gap: 8px; }
+
+     
+    .fmc-mobile-quick-actions { display: none; align-items: center; gap: 10px; }
+    .fmc-mobile-link-text {
+        text-decoration: none; color: #333; font-weight: 600; font-size: 13px;
+        padding: 5px; white-space: nowrap;
+    }
+    .fmc-mobile-link-text:hover { color: #007bff; }
+    .fmc-btn-mobile { padding: 6px 12px; font-size: 13px; gap: 5px; border-radius: 20px; }
+    .fmc-hamburger {
+        background: none; border: none; font-size: 24px; color: #333;
+        cursor: pointer; padding: 0 0 0 5px; display: flex; align-items: center;
+    }
+
+     
+    .fmc-mobile-dropdown {
+        position: fixed; top: 70px; left: 0; right: 0; background: white;
+        border-top: 1px solid #f0f0f0; box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        display: none; flex-direction: column; padding: 10px 0; z-index: 9998;
+    }
+    .fmc-mobile-dropdown.active { display: flex; }
+    .fmc-dropdown-item {
+        padding: 12px 20px; text-decoration: none; color: #333; font-size: 15px;
+        font-weight: 500; border-bottom: 1px solid #f9f9f9; display: flex; align-items: center; gap: 10px;
+    }
+    .fmc-dropdown-item:active { background: #f0f8ff; }
+    .fmc-dropdown-info {
+        padding: 15px 20px; background: #f8f9fa; margin-top: 5px;
+        display: flex; justify-content: space-between; align-items: center;
+    }
+
+     
+    .fmc-progress-track {
+        position: absolute; bottom: 0; left: 0; width: 100%; height: 3px;
+        background: transparent; pointer-events: none;
+    }
+    .fmc-progress-bar { height: 100%; background: #007bff; width: 0%; transition: width 0.1s; }
+
+     
+    @media (max-width: 900px) {
+        .fmc-desktop-nav, .fmc-desktop-actions { display: none !important; }
+        .fmc-mobile-quick-actions { display: flex !important; }
+        .fmc-container { padding: 0 10px; }
+    }
+</style>
+
+<div class="fmc-header-wrapper">
+    <header class="fmc-header" id="fmcMainHeader">
+        <div class="fmc-container">
+            <a href="#" class="fmc-logo-link" id="fmcLogo" title="Trang chủ">
+                <img id="fmcLogoImg" src="header/logo.png" alt="FMC Logo">
+            </a>
+
+            <nav>
+                <ul class="fmc-desktop-nav">
+                    <li><a href="#specialist-slot" class="fmc-nav-link fmc-link-specialist">🩺 Chuyên khoa</a></li>
+                    <li><a href="#news-slot" class="fmc-nav-link fmc-link-news">📰 Tin tức</a></li>
+                    <li><a href="#contact-slot" class="fmc-nav-link fmc-link-contact">📞 Liên hệ</a></li>
+                </ul>
+            </nav>
+
+            <div class="fmc-desktop-actions">
+                <div class="fmc-status-box">
+                    <span class="fmc-status-text" id="fmcStatusDesktop">Loading...</span>
+                    <a href="tel:02835355353" class="fmc-hotline">028 3535 5353</a>
+                </div>
+                <a href="#contact-slot" class="fmc-btn-primary fmc-btn-desktop fmc-link-appoint">
+                    📅 Đặt lịch khám
+                </a>
+            </div>
+
+            <div class="fmc-mobile-quick-actions">
+                <a href="#news-slot" class="fmc-mobile-link-text fmc-link-news">Tin tức</a>
+                <a href="#contact-slot" class="fmc-btn-primary fmc-btn-mobile fmc-link-appoint">📅 Đặt lịch</a>
+                <button class="fmc-hamburger" onclick="toggleFmcDropdown()" aria-label="Menu">☰</button>
+            </div>
+        </div>
+
+        <div class="fmc-progress-track">
+            <div class="fmc-progress-bar" id="fmcProgressBar"></div>
+        </div>
+
+        <div class="fmc-mobile-dropdown" id="fmcMobileDropdown">
+            <a href="#specialist-slot" class="fmc-dropdown-item fmc-link-specialist">🩺 Chuyên khoa</a>
+            <a href="#contact-slot" class="fmc-dropdown-item fmc-link-contact">📞 Liên hệ</a>
+            <div class="fmc-dropdown-info">
+                <span class="fmc-status-text" id="fmcStatusMobile" style="font-size: 13px;">...</span>
+                <a href="tel:02835355353" class="fmc-hotline">📞 028 3535 5353</a>
+            </div>
+        </div>
+    </header>
+</div>
+
+<script>
+    (function() {
+        
+        function resolvePaths() {
+            const path = window.location.pathname;
+            
+            
+            let prefix = '';
+            
+            if (path.includes('/articles/')) {
+                
+                
+                prefix = '../../../';
+            } else if (path.includes('/news/')) {
+                
+                
+                prefix = '../';
+            } else {
+                
+                
+                prefix = '';
+            }
+
+            const homeFile = 'index.html'; 
+
+            
+            const targets = {
+                '#fmcLogo': prefix + homeFile,
+                '.fmc-link-specialist': prefix + homeFile + '#specialist-slot',
+                '.fmc-link-news': prefix + homeFile + '#news-slot',
+                '.fmc-link-contact': prefix + homeFile + '#contact-slot',
+                '.fmc-link-appoint': prefix + homeFile + '#contact-slot'
+            };
+
+            for (let selector in targets) {
+                const elements = document.querySelectorAll(selector);
+                elements.forEach(el => {
+                    
+                    if (prefix === '' && targets[selector].includes('#')) {
+                        const hash = targets[selector].split('#')[1];
+                        el.href = '#' + hash;
+                    } else {
+                        el.href = targets[selector];
+                    }
+                });
+            }
+
+            
+            const logoImg = document.getElementById('fmcLogoImg');
+            if (logoImg) {
+                const baseSrc = 'header/logo.png'; 
+                logoImg.src = prefix + baseSrc;    
+            }
+        }
+
+        
+        function updateOpenStatus() {
+            const now = new Date();
+            const day = now.getDay();
+            const hour = now.getHours();
+            const isOpen = (day === 0) ? (hour >= 8 && hour < 12) : (hour >= 8 && hour < 20);
+            
+            const html = isOpen 
+                ? '<span style="color:#28a745">🟢 Đang mở cửa</span>' 
+                : '<span style="color:#dc3545">🔴 Đang đóng cửa</span>';
+            
+            const elDesktop = document.getElementById('fmcStatusDesktop');
+            const elMobile = document.getElementById('fmcStatusMobile');
+            if(elDesktop) elDesktop.innerHTML = html;
+            if(elMobile) elMobile.innerHTML = html;
+        }
+
+        
+        let lastScroll = 0;
+        const header = document.getElementById('fmcMainHeader');
+        const progressBar = document.getElementById('fmcProgressBar');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const winHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            if (progressBar && winHeight > 0) progressBar.style.width = (currentScroll / winHeight * 100) + "%";
+
+            if (Math.abs(lastScroll - currentScroll) <= 5) return;
+            if (currentScroll > lastScroll && currentScroll > 80) {
+                header.classList.add('hidden-header');
+                document.getElementById('fmcMobileDropdown').classList.remove('active');
+            } else {
+                header.classList.remove('hidden-header');
+            }
+            lastScroll = currentScroll <= 0 ? 0 : currentScroll;
+        }, { passive: true });
+
+        window.toggleFmcDropdown = function() {
+            document.getElementById('fmcMobileDropdown').classList.toggle('active');
+        };
+
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => { resolvePaths(); updateOpenStatus(); });
+        } else {
+            resolvePaths(); updateOpenStatus();
+        }
+        setInterval(updateOpenStatus, 60000);
+
+    })();
+</script><div id="news-component-wrapper" class="news-component-scope">
     <style>
          
         .news-component-scope {
@@ -238,14 +485,14 @@
 
     <div class="featured-news">
                     <div class="main-story">
-                <img src="https://drive.google.com/thumbnail?id=1zYJJN-0x8Of3e5SawUIQ-IsSKcfrO67L&amp;sz=w4096" alt="Cơn Gout Cấp – Hiểu Rõ “Kẻ Thù” Giấu Mặt Trong Khớp Xương" loading="lazy">
+                <img src="https://cdn-ileeeid.nitrocdn.com/zxLbIaOUtnvkVTvadtQXbMxAFtAgimwY/assets/images/optimized/rev-b10936d/craftbodyscan.com/wp-content/uploads/2025/01/Understanding_Chronic_Small_Vessel_Ischemic_Disease_Blog_Image_3.webp" alt="Có đáng sợ không khi kết quả MRI ghi &#34;Bệnh lý mạch máu nhỏ - Tổn thương chất trắng&#34;?" loading="lazy">
                 <div class="main-story-content">
-                    <span class="category-tag">Khoa Cơ Xương Khớp</span>
+                    <span class="category-tag">Nội Khoa</span>
                     <h2 class="news-title">
-                        <a href="news/articles/NEWS_20251125195606/NEWS_20251125195606.html" style="color: white; text-decoration: none;">
-                            Cơn Gout Cấp – Hiểu Rõ “Kẻ Thù” Giấu Mặt Trong Khớp Xương                        </a>
+                        <a href="news/articles/NEWS_20251130133933/NEWS_20251130133933.html" style="color: white; text-decoration: none;">
+                            Có đáng sợ không khi kết quả MRI ghi &#34;Bệnh lý mạch máu nhỏ - Tổn thương chất trắng&#34;?                        </a>
                     </h2>
-                    <p>	Có lẽ cụm từ &#34;bệnh Gout&#34; (Gút) không còn xa lạ với nhiều người. Tuy nhiên, chỉ khi thực sự trải qua một cơn đau Gout cấp tính, người bệnh mới thấu...</p>
+                    <p>Một bệnh nhân gần đây đến phòng khám vì chóng mặt kéo dài, cảm giác loạng choạng và khó tập trung. Kết quả MRI cho thấy có nhiều ổ tổn thương chất ...</p>
                 </div>
             </div>
 
@@ -261,6 +508,16 @@
                         </div>
                     </div>
                                     <div class="secondary-story">
+                        <img src="https://drive.google.com/thumbnail?id=1zYJJN-0x8Of3e5SawUIQ-IsSKcfrO67L&amp;sz=w4096" alt="Cơn Gout Cấp – Hiểu Rõ “Kẻ Thù” Giấu Mặt Trong Khớp Xương" loading="lazy">
+                        <div>
+                            <span class="category-tag">Khoa Cơ Xương Khớp</span>
+                            <h3 class="news-title" style="font-size: 1em;">
+                                <a href="news/articles/NEWS_20251125195606/NEWS_20251125195606.html">
+                                    Cơn Gout Cấp – Hiểu Rõ “Kẻ Thù” Giấu Mặt Trong Khớp Xương                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                                    <div class="secondary-story">
                         <img src="https://raw.githubusercontent.com/fmcclinic/Medical_News/refs/heads/main/news/image/%C4%91au-kh%E1%BB%9Bp-g%E1%BB%91i.gif" alt="THOÁI HÓA KHỚP GỐI: 3 YẾU TỐ GÂY BỆNH CƠ BẢN BẠN CÓ THỂ KIỂM SOÁT ĐƯỢC" loading="lazy">
                         <div>
                             <span class="category-tag">Khoa Cơ Xương Khớp</span>
@@ -270,20 +527,21 @@
                             </h3>
                         </div>
                     </div>
-                                    <div class="secondary-story">
-                        <img src="https://github.com/fmcclinic/Medical_News/blob/main/news/image/What%20will%20the%20doctor%20do%20to%20diagnose%20knee%20osteoarthritis.gif?raw=true" alt="Bác sĩ sẽ làm gì để Chẩn đoán Thoái hóa khớp gối " loading="lazy">
-                        <div>
-                            <span class="category-tag">Khoa Cơ Xương Khớp</span>
-                            <h3 class="news-title" style="font-size: 1em;">
-                                <a href="news/articles/NEWS_20251031081906/NEWS_20251031081906.html">
-                                    Bác sĩ sẽ làm gì để Chẩn đoán Thoái hóa khớp gối                                 </a>
-                            </h3>
-                        </div>
-                    </div>
                             </div>
             </div>
 
     <div class="news-grid">
+                    <article class="news-item">
+                <img src="https://github.com/fmcclinic/Medical_News/blob/main/news/image/What%20will%20the%20doctor%20do%20to%20diagnose%20knee%20osteoarthritis.gif?raw=true" alt="Bác sĩ sẽ làm gì để Chẩn đoán Thoái hóa khớp gối " loading="lazy">
+                <div class="news-content">
+                    <span class="category-tag">Khoa Cơ Xương Khớp</span>
+                    <h3 class="news-title">
+                        <a href="news/articles/NEWS_20251031081906/NEWS_20251031081906.html">
+                            Bác sĩ sẽ làm gì để Chẩn đoán Thoái hóa khớp gối                         </a>
+                    </h3>
+                    <p class="news-brief">Chẩn đoán các bệnh lý khớp gối thường gặpBa trong số những nguyên nhân phổ biến nhất gây đau khớp gối là thoái hóa khớp (OA), đau xương bánh chè (P...</p>
+                </div>
+            </article>
                     <article class="news-item">
                 <img src="https://github.com/fmcclinic/Medical_News/blob/main/news/image/Tho%C3%A1i-h%C3%B3a-kh%E1%BB%9Bp-g%E1%BB%91i.gif?raw=true" alt=" Điều Trị  Thoái hóa khớp gối" loading="lazy">
                 <div class="news-content">
@@ -337,17 +595,6 @@
                             Các bệnh phụ khoa thường gặp và cách phòng ngừa.                        </a>
                     </h3>
                     <p class="news-brief">Giới thiệu  Các bệnh phụ khoa là nhóm bệnh lý phổ biến ảnh hưởng trực tiếp đến sức khỏe sinh sản và chất lượng cuộc sống của chị em phụ nữ. Việc hi...</p>
-                </div>
-            </article>
-                    <article class="news-item">
-                <img src="https://github.com/fmcclinic/Medical_News/blob/main/news/image/Chu%E1%BA%A9n%20b%E1%BB%8B%20sinh%20n%E1%BB%9F%20Nh%E1%BB%AFng%20%C4%91i%E1%BB%81u%20m%E1%BA%B9%20b%E1%BA%A7u%20c%E1%BA%A7n%20bi%E1%BA%BFt.jpg?raw=true" alt="Chuẩn bị sinh nở - Những điều mẹ bầu cần biết." loading="lazy">
-                <div class="news-content">
-                    <span class="category-tag">Sản Phụ Khoa</span>
-                    <h3 class="news-title">
-                        <a href="news/articles/NEWS_20241222175335/NEWS_20241222175335.html">
-                            Chuẩn bị sinh nở - Những điều mẹ bầu cần biết.                        </a>
-                    </h3>
-                    <p class="news-brief">Chuẩn bị sinh nở - Những điều mẹ bầu cần biếtGiới thiệuViệc chuẩn bị chu đáo cho quá trình sinh nở không chỉ giúp thai phụ tự tin hơn mà còn đảm bả...</p>
                 </div>
             </article>
             </div>

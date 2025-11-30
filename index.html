@@ -96,38 +96,7 @@
 </head>
 <body>
 
-    <header class="header" id="main-header">
-        <div class="header-container">
-            <a href="#" class="logo-link" onclick="navigateHome(); return false;">
-                <img src="header/logo.png" alt="FMC Logo">
-            </a>
 
-            <nav>
-                <ul class="main-nav">
-                    <li><a href="#specialist-slot" onclick="smoothScroll('specialist-slot'); return false;"><i class="fas fa-stethoscope"></i> Chuyên khoa</a></li>
-                    <li><a href="#news-slot" onclick="smoothScroll('news-slot'); return false;"><i class="far fa-newspaper"></i> Tin tức</a></li>
-                </ul>
-            </nav>
-
-            <div class="status-container">
-                <div id="openStatus">
-                    <i class="fas fa-circle"></i>
-                    <span>Đang tải...</span>
-                </div>
-                <a href="tel:02835355353" class="contact-group">
-                    <i class="fas fa-phone-alt"></i> <span>028 3535 5353</span>
-                </a>
-            </div>
-
-            <button class="appointment-btn" onclick="smoothScroll('contact-slot')">
-                <i class="far fa-calendar-check"></i> <span>Đặt lịch khám</span>
-            </button>
-        </div>
-        
-        <div class="progress-container">
-            <div class="progress-bar" id="myBar"></div>
-        </div>
-    </header>
 
     <div id="hero-slot" class="section-slot"></div>
     <div id="specialist-slot" class="section-slot"></div>
@@ -143,18 +112,19 @@
     </div>
 
 
-    <script>
-        // --- CƠ CHẾ LOAD COMPONENT (KHÔNG DÙNG CHO CHAT NỮA) ---
-        async function loadComponent(slotId, filePath) {
-            try {
-                const response = await fetch(filePath);
-                if (!response.ok) throw new Error(`Lỗi tải ${filePath}`);
-                const html = await response.text();
-                
-                const slot = document.getElementById(slotId);
+<script>
+    // 1. CƠ CHẾ LOAD COMPONENT (Giữ nguyên)
+    async function loadComponent(slotId, filePath) {
+        try {
+            const response = await fetch(filePath);
+            if (!response.ok) throw new Error(`Lỗi tải ${filePath}`);
+            const html = await response.text();
+            
+            const slot = document.getElementById(slotId);
+            if (slot) {
                 slot.innerHTML = html;
 
-                // Kích hoạt thẻ <script>
+                // Kích hoạt lại thẻ <script> bên trong component (nếu có)
                 const scripts = slot.querySelectorAll("script");
                 scripts.forEach(oldScript => {
                     const newScript = document.createElement("script");
@@ -162,149 +132,94 @@
                     newScript.appendChild(document.createTextNode(oldScript.innerHTML));
                     oldScript.parentNode.replaceChild(newScript, oldScript);
                 });
-            } catch (error) {
-                console.error(error);
             }
+        } catch (error) {
+            console.error(error);
         }
+    }
 
-        // 2. Tải toàn bộ nội dung khi trang web mở
-        document.addEventListener("DOMContentLoaded", () => {
-            loadComponent('hero-slot', 'hero/hero.html');
-            loadComponent('specialist-slot', 'specialist/specialist.html');
-            loadComponent('news-slot', 'news/news.html');
-            loadComponent('contact-slot', 'contact/contact.html');
-            
-            updateOpenStatus();
-            setInterval(updateOpenStatus, 60000);
-        });
+    // 2. CHƯƠNG TRÌNH CHÍNH (Đợi load xong mới chạy tiếp)
+    document.addEventListener("DOMContentLoaded", async () => {
+        // A. Tải song song tất cả các thành phần và ĐỢI cho đến khi xong hết
+        await Promise.all([
+            loadComponent('hero-slot', 'hero/hero.html'),
+            loadComponent('specialist-slot', 'specialist/specialist.html'),
+            loadComponent('news-slot', 'news/news.html'),
+            loadComponent('contact-slot', 'contact/contact.html')
+        ]);
+        
+        // B. Sau khi giao diện đã đầy đủ, mới kích hoạt các tính năng phụ
+        updateOpenStatus();
+        setInterval(updateOpenStatus, 60000);
 
-        // 3. Smart Sticky Header & Progress Bar
-        let lastScrollTop = 0;
-        const header = document.getElementById('main-header');
-        const progressBar = document.getElementById("myBar");
+        // C. QUAN TRỌNG: Kiểm tra và cuộn đến mục tương ứng (nếu có hash trên URL)
+        checkAndScrollToHash();
+    });
 
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Progress Bar
-            const winHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (scrollTop / winHeight) * 100;
-            progressBar.style.width = scrolled + "%";
-
-            // Smart Header
-            if (Math.abs(lastScrollTop - scrollTop) <= 5) return;
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                header.classList.add('hidden-header');
-            } else {
-                header.classList.remove('hidden-header');
-            }
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-        }, { passive: true });
-
-        // 4. Hàm cuộn mượt
-        function smoothScroll(id) {
-            const element = document.getElementById(id);
-            if(element) {
-                const headerOffset = 80;
-                const elementPosition = element.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-            }
+    // 3. HÀM XỬ LÝ CUỘN THÔNG MINH
+    function checkAndScrollToHash() {
+        // Lấy phần sau dấu # (ví dụ: #news-slot)
+        const hash = window.location.hash; 
+        
+        if (hash) {
+            const id = hash.replace('#', '');
+            // Thêm delay nhỏ 100ms để trình duyệt kịp vẽ lại layout sau khi chèn HTML
+            setTimeout(() => {
+                smoothScroll(id);
+            }, 100);
         }
+    }
 
-        // 5. Cập nhật trạng thái mở cửa (Giữ nguyên)
-        function updateOpenStatus() {
-            const now = new Date();
-            const day = now.getDay();
-            const hour = now.getHours();
-            const statusDiv = document.getElementById('openStatus');
+    // 4. HÀM CUỘN MƯỢT (Có trừ hao chiều cao Banner)
+    function smoothScroll(id) {
+        const element = document.getElementById(id);
+        if(element) {
+            // Chiều cao banner khoảng 70px, ta trừ hao 80px cho thoáng
+            const headerOffset = 80; 
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({ 
+                top: offsetPosition, 
+                behavior: "smooth" 
+            });
+        }
+    }
+
+    // 5. CẬP NHẬT TRẠNG THÁI MỞ CỬA (Logic cũ)
+    function updateOpenStatus() {
+        // Lưu ý: Banner mới (banner.html) có logic update riêng của nó.
+        // Hàm này chỉ giữ lại nếu bạn còn dùng phần hiển thị cũ ở đâu đó trong body,
+        // nếu không, banner.html sẽ tự lo phần hiển thị trên thanh menu.
+        const now = new Date();
+        const day = now.getDay();
+        const hour = now.getHours();
+        
+        // Cập nhật cho các phần tử cũ (nếu còn sót lại trong các slot)
+        const statusDiv = document.getElementById('openStatus');
+        if(statusDiv) {
             const icon = statusDiv.querySelector('i');
             const text = statusDiv.querySelector('span');
-            
             let isOpen = (day === 0) ? (hour >= 8 && hour < 12) : (hour >= 8 && hour < 20);
             
-            if(statusDiv) {
-                text.textContent = isOpen ? 'Đang mở cửa' : 'Đang đóng cửa';
-                const color = isOpen ? '#28a745' : '#dc3545';
-                text.style.color = color;
-                icon.style.color = color;
-            }
+            text.textContent = isOpen ? 'Đang mở cửa' : 'Đang đóng cửa';
+            const color = isOpen ? '#28a745' : '#dc3545';
+            text.style.color = color;
+            if(icon) icon.style.color = color;
         }
-        
-        // 6. Logic mở/đóng Chat Widget
-        window.toggleChatWidget = function() {
-            const widget = document.getElementById('chat-widget-fixed');
-            if (widget.classList.contains('active')) {
-                widget.classList.remove('active');
-            } else {
-                widget.classList.add('active');
-            }
-        };
-    </script>
-
-    <div class="zalo-chat-widget" data-oaid="1720397530862692001" data-welcome-message="Chào bạn! Chúng tôi có thể giúp gì cho bạn?" data-autopopup="0" data-width="" data-height="" style="z-index: 999999;"></div>
-    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
-
-<script>
-    // Hàm điều hướng SPA: Chuyển từ Trang chủ sang trang Archive
-async function navigateToArchive(department) {
-    console.log("Navigating to Archive:", department);
-
-    // 1. Ẩn nội dung trang chủ (Hero, Specialist, News...)
-    // Giả sử bạn bọc nội dung trang chủ trong một div có id="home-view"
-    // Hoặc ẩn từng slot:
-    document.getElementById('hero-slot').style.display = 'none';
-    document.getElementById('specialist-slot').style.display = 'none';
-    document.getElementById('news-slot').style.display = 'none';
-    document.getElementById('contact-slot').style.display = 'none'; // Tùy chọn
-
-    // 2. Chuẩn bị Slot cho Archive (nếu chưa có thì tạo)
-    let archiveSlot = document.getElementById('archive-slot');
-    if (!archiveSlot) {
-        archiveSlot = document.createElement('div');
-        archiveSlot.id = 'archive-slot';
-        // Chèn vào sau header hoặc vị trí bạn muốn
-        document.getElementById('main-header').after(archiveSlot);
     }
-    archiveSlot.style.display = 'block';
-
-    // 3. Load component archive.html (nếu chưa load)
-    // Lưu ý đường dẫn: news/archive.html
-    if (!archiveSlot.innerHTML.trim()) {
-        await loadComponent('archive-slot', 'news/archive.html');
-    }
-
-    // 4. Cập nhật bộ lọc cho Archive Component
-    // Chúng ta cần đợi DOM update xong, sau đó kích hoạt filter
-    setTimeout(() => {
-        const deptSelect = document.querySelector('#archive-component-wrapper #departmentFilter');
-        const applyBtn = document.querySelector('#archive-component-wrapper #btnApplyFilters');
-        
-        if (deptSelect && applyBtn) {
-            deptSelect.value = department; // Set giá trị dropdown
-            applyBtn.click(); // Giả lập click nút tìm kiếm để lọc lại dữ liệu
-            
-            // Cuộn lên đầu trang
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    }, 100); // Delay nhỏ để đảm bảo HTML đã được render
-}
-
-// Hàm reset để quay về trang chủ (Gán cho Logo hoặc nút Trang chủ)
-function navigateHome() {
-    // Ẩn Archive
-    const archiveSlot = document.getElementById('archive-slot');
-    if (archiveSlot) archiveSlot.style.display = 'none';
-
-    // Hiện lại trang chủ
-    document.getElementById('hero-slot').style.display = 'block';
-    document.getElementById('specialist-slot').style.display = 'block';
-    document.getElementById('news-slot').style.display = 'block';
-    document.getElementById('contact-slot').style.display = 'block';
     
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+    // 6. LOGIC CHAT WIDGET (Giữ nguyên)
+    window.toggleChatWidget = function() {
+        const widget = document.getElementById('chat-widget-fixed');
+        if (widget) {
+            widget.classList.toggle('active');
+        }
+    };
 </script>
+
+<div class="zalo-chat-widget" data-oaid="1720397530862692001" data-welcome-message="Chào bạn! Chúng tôi có thể giúp gì cho bạn?" data-autopopup="0" data-width="" data-height="" style="z-index: 999999;"></div>
+<script src="https://sp.zalo.me/plugins/sdk.js"></script>
 
 </body>
 </html>
