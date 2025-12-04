@@ -15,7 +15,7 @@
     <meta property="og:image" content="https://drive.google.com/thumbnail?id=1LHbXTIQgQ8VQ5zMbldNg-2KbKT7vbchG&amp;sz=w4096" />
     <meta property="og:site_name" content="Tin Tức Y Khoa" />
     <meta property="article:section" content="Nội Khoa" />
-    <meta property="article:published_time" content="29/11/2025" />
+    <meta property="article:published_time" content="30/11/2025" />
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Nỗi đau sau zona – câu chuyện tôi muốn kể cùng bạn đọc">
@@ -41,7 +41,7 @@
     }
     </script>
 
-    <style>
+<style>
          
         * {
             box-sizing: border-box;
@@ -50,7 +50,8 @@
         }
 
         body {
-            padding-top: 80px;  
+             
+            padding-top: 80px;
             font-family: Arial, sans-serif;
             line-height: 1.6;
             color: #333;
@@ -104,6 +105,19 @@
             background: #f0f0f0;
             border-radius: 15px;
         }
+        
+         
+        .featured-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;  
+            margin: 0 auto 20px auto;
+            object-fit: cover;
+            background-color: #f0f2f5;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
 
          
         .article-content {
@@ -114,36 +128,13 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-         
         .article-content img {
-            max-width: 100% !important;  
-            height: auto !important;     
-            display: block;              
-            margin: 10px auto;           
-            border-radius: 4px;          
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);  
-        }
-
-         
-        .featured-image {
+            max-width: 100% !important;
+            height: auto !important;
             display: block;
-            width: auto;
-            max-width: 100%;
-            height: 500px;
-            margin: 0 auto 20px auto;
-            object-fit: contain;
-            background-color: #f0f2f5;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        @media (max-width: 768px) {
-            .featured-image {
-                width: 100%;
-                height: auto;
-                max-height: 500px;
-                object-fit: cover;
-            }
+            margin: 10px auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .article-content p {
@@ -153,12 +144,24 @@
             border-radius: 4px;
             transition: all 0.3s ease;
         }
-
+        
         .article-content p.current,
         .article-title.current {
             background: #f0f9ff;
             border-left: 3px solid #0070c0;
             padding-left: 15px;
+        }
+        
+         
+        .article-content ul, 
+        .article-content ol {
+            padding-left: 40px !important;
+            margin-bottom: 15px;
+            list-style-type: disc !important;
+        }
+        .article-content li {
+            display: list-item !important;
+            list-style-type: disc !important;
         }
 
          
@@ -169,111 +172,34 @@
             border-radius: 8px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
-
-        .speech-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .speech-title {
-            font-size: 1.1em;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .controls-container {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
+        .speech-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .speech-title { font-size: 1.1em; font-weight: bold; color: #333; }
+        .controls-container { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
         .control-button {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: #0070c0;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            display: flex; align-items: center; gap: 8px; padding: 10px 20px;
+            background: #0070c0; color: white; border: none; border-radius: 4px;
+            cursor: pointer; font-weight: 500; transition: all 0.3s ease;
         }
-
-        .control-button:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
+        .control-button:hover { opacity: 0.9; transform: translateY(-1px); }
+        .speed-control { display: flex; align-items: center; gap: 10px; }
+        select { padding: 8px; border: 1px solid #ddd; border-radius: 4px; background: white; min-width: 120px; }
+        .progress-container { margin-top: 15px; background: #e9ecef; height: 4px; border-radius: 2px; overflow: hidden; }
+        .progress-bar { height: 100%; background: #0070c0; width: 0; transition: width 0.3s; }
+        .status { padding: 10px 15px; margin: 10px 0; border-radius: 4px; display: none; }
+        .status.active { display: flex; align-items: center; gap: 8px; }
+        .status.reading { background: #e3f2fd; color: #0070c0; border-left: 4px solid #0070c0; }
+        
+         
+        .share-section { margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; }
+        .share-buttons { display: flex; gap: 10px; }
+        .share-button {
+            display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px;
+            border: none; border-radius: 4px; color: white; cursor: pointer;
+            font-size: 14px; transition: opacity 0.3s;
         }
-
-        .control-button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .speed-control {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        select {
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background: white;
-            min-width: 120px;
-        }
-
-        .progress-container {
-            margin-top: 15px;
-            background: #e9ecef;
-            height: 4px;
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background: #0070c0;
-            width: 0;
-            transition: width 0.3s;
-        }
-
-        .status {
-            padding: 10px 15px;
-            margin: 10px 0;
-            border-radius: 4px;
-            display: none;
-        }
-
-        .status.active {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .status.reading {
-            background: #e3f2fd;
-            color: #0070c0;
-            border-left: 4px solid #0070c0;
-        }
-
-        .status.paused {
-            background: #fff3e0;
-            color: #ef6c00;
-            border-left: 4px solid #ef6c00;
-        }
-
-        .status.error {
-            background: #ffebee;
-            color: #c62828;
-            border-left: 4px solid #c62828;
-        }
+        .share-button:hover { opacity: 0.9; }
+        .share-button.facebook { background: #1877f2; }
+        .share-button.twitter { background: #1da1f2; }
 
          
         .related-section {
@@ -290,6 +216,7 @@
             color: #333;
         }
 
+         
         .related-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -311,9 +238,10 @@
             transform: translateY(-3px);
         }
 
+         
         .related-article img {
             width: 100%;
-            height: 180px;
+            aspect-ratio: 1 / 1;  
             object-fit: cover;
         }
 
@@ -321,6 +249,7 @@
             padding: 15px;
             margin: 0;
             flex: 1;
+            font-size: 1.1em;
         }
 
         .related-article a {
@@ -340,55 +269,23 @@
         }
 
          
-        .share-section {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-
-        .share-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
-        .share-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border: none;
-            border-radius: 4px;
-            color: white;
-            cursor: pointer;
-            font-size: 14px;
-            transition: opacity 0.3s;
-        }
-
-        .share-button:hover {
-            opacity: 0.9;
-        }
-
-        .share-button.facebook {
-            background: #1877f2;
-        }
-
-        .share-button.twitter {
-            background: #1da1f2;
-        }
-
-         
         @media (max-width: 768px) {
             .container {
-                padding: 15px;
+                padding: 5px;  
+            }
+
+            .article-content {
+                padding: 10px;  
             }
 
             .article-title {
-                font-size: 1.8em;
+                font-size: 1.6em;
             }
 
             .article-meta {
                 flex-direction: column;
                 align-items: flex-start;
+                gap: 5px;
             }
 
             .controls-container {
@@ -396,29 +293,10 @@
                 align-items: stretch;
             }
 
+             
             .related-grid {
                 grid-template-columns: 1fr;
             }
-        }
-
-         
-        .article-content ul, 
-        .article-content ol {
-            padding-left: 40px !important;
-            margin-bottom: 15px;
-            list-style-type: disc !important;
-        }
-
-        .article-content li {
-            display: list-item !important;
-            list-style-type: disc !important;
-        }
-
-        .article-content ul ul,
-        .article-content ol ol,
-        .article-content ul ol,
-        .article-content ol ul {
-            list-style-type: circle !important;
         }
     </style>
 </head>
@@ -677,7 +555,7 @@
         <h1 class="article-title">Nỗi đau sau zona – câu chuyện tôi muốn kể cùng bạn đọc</h1>
         
         <div class="article-meta">
-            <span>Đăng ngày 29/11/2025</span>
+            <span>Đăng ngày 30/11/2025</span>
             <span class="reading-time">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="12" r="10"></circle>
@@ -766,6 +644,11 @@
             <h2 class="related-title">Bài viết liên quan</h2>
             <div class="related-grid">
                 
+        <div class="related-article">
+          <a href="../NEWS_20251130133933/NEWS_20251130133933.html"><img src="https://cdn-ileeeid.nitrocdn.com/zxLbIaOUtnvkVTvadtQXbMxAFtAgimwY/assets/images/optimized/rev-b10936d/craftbodyscan.com/wp-content/uploads/2025/01/Understanding_Chronic_Small_Vessel_Ischemic_Disease_Blog_Image_3.webp" alt="Có đáng sợ không khi kết quả MRI ghi &#34;Bệnh lý mạch máu nhỏ - Tổn thương chất trắng&#34;?"></a>
+          <h3><a href="../NEWS_20251130133933/NEWS_20251130133933.html">Có đáng sợ không khi kết quả MRI ghi "Bệnh lý mạch máu nhỏ - Tổn thương chất trắng"?</a></h3>
+          <span class="date">30/11/2025</span>
+        </div>
         <div class="related-article">
           <a href="../NEWS_20241220193600/NEWS_20241220193600.html"><img src="https://cdnintech.com/books/8700/1713442765-245554739/cover.jpg" alt="Sử dụng An toàn Thuốc Chống Đông Máu"></a>
           <h3><a href="../NEWS_20241220193600/NEWS_20241220193600.html">Sử dụng An toàn Thuốc Chống Đông Máu</a></h3>
