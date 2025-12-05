@@ -448,22 +448,15 @@
         
         function resolvePaths() {
             const path = window.location.pathname;
-            
-            
             let prefix = '';
             
+            
             if (path.includes('/articles/')) {
-                
-                
                 prefix = '../../../';
             } else if (path.includes('/news/')) {
-                
-                
                 prefix = '../';
             } else {
-                
-                
-                prefix = '';
+                prefix = ''; 
             }
 
             const homeFile = 'index.html'; 
@@ -485,6 +478,7 @@
                         const hash = targets[selector].split('#')[1];
                         el.href = '#' + hash;
                     } else {
+                        
                         el.href = targets[selector];
                     }
                 });
@@ -522,19 +516,24 @@
 
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
+            
+            
             const winHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             if (progressBar && winHeight > 0) progressBar.style.width = (currentScroll / winHeight * 100) + "%";
 
+            
             if (Math.abs(lastScroll - currentScroll) <= 5) return;
             if (currentScroll > lastScroll && currentScroll > 80) {
                 header.classList.add('hidden-header');
-                document.getElementById('fmcMobileDropdown').classList.remove('active');
+                const dropdown = document.getElementById('fmcMobileDropdown');
+                if(dropdown) dropdown.classList.remove('active');
             } else {
                 header.classList.remove('hidden-header');
             }
             lastScroll = currentScroll <= 0 ? 0 : currentScroll;
         }, { passive: true });
 
+        
         window.toggleFmcDropdown = function() {
             document.getElementById('fmcMobileDropdown').classList.toggle('active');
         };

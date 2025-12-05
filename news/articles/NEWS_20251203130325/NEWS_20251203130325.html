@@ -448,22 +448,15 @@
         
         function resolvePaths() {
             const path = window.location.pathname;
-            
-            
             let prefix = '';
             
+            
             if (path.includes('/articles/')) {
-                
-                
                 prefix = '../../../';
             } else if (path.includes('/news/')) {
-                
-                
                 prefix = '../';
             } else {
-                
-                
-                prefix = '';
+                prefix = ''; 
             }
 
             const homeFile = 'index.html'; 
@@ -485,6 +478,7 @@
                         const hash = targets[selector].split('#')[1];
                         el.href = '#' + hash;
                     } else {
+                        
                         el.href = targets[selector];
                     }
                 });
@@ -522,19 +516,24 @@
 
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
+            
+            
             const winHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             if (progressBar && winHeight > 0) progressBar.style.width = (currentScroll / winHeight * 100) + "%";
 
+            
             if (Math.abs(lastScroll - currentScroll) <= 5) return;
             if (currentScroll > lastScroll && currentScroll > 80) {
                 header.classList.add('hidden-header');
-                document.getElementById('fmcMobileDropdown').classList.remove('active');
+                const dropdown = document.getElementById('fmcMobileDropdown');
+                if(dropdown) dropdown.classList.remove('active');
             } else {
                 header.classList.remove('hidden-header');
             }
             lastScroll = currentScroll <= 0 ? 0 : currentScroll;
         }, { passive: true });
 
+        
         window.toggleFmcDropdown = function() {
             document.getElementById('fmcMobileDropdown').classList.toggle('active');
         };
@@ -645,19 +644,19 @@
             <div class="related-grid">
                 
         <div class="related-article">
-          <a href="../NEWS_20251203085129/NEWS_20251203085129.html"><img src="https://drive.google.com/thumbnail?id=10BUaha3ZmuBOtwACxJsI_KY9tSq_nEL9&amp;sz=w4096" alt="TÁO BÓN KÉO DÀI: KHÔNG PHẢI CHỈ DO &#34;LƯỜI ĂN RAU&#34;. GIẢI MÃ VÒNG XOẮN BỆNH LÝ VÀ SAI LẦM KHI DÙNG THUỐC"></a>
-          <h3><a href="../NEWS_20251203085129/NEWS_20251203085129.html">TÁO BÓN KÉO DÀI: KHÔNG PHẢI CHỈ DO "LƯỜI ĂN RAU". GIẢI MÃ VÒNG XOẮN BỆNH LÝ VÀ SAI LẦM KHI DÙNG THUỐC</a></h3>
-          <span class="date">03/12/2025</span>
+          <a href="../NEWS_20251205115720/NEWS_20251205115720.html"><img src="https://drive.google.com/thumbnail?id=1JxZ0HiQA9NaMdcdOzxfFzFxWivfaImre&amp;sz=w4096" alt="SỐT CAO CO GIẬT: 5 PHÚT &#34;SINH TỬ&#34; VÀ NHỮNG SAI LẦM SƠ CỨU KHIẾN TÌNH TRẠNG TỒI TỆ HƠN"></a>
+          <h3><a href="../NEWS_20251205115720/NEWS_20251205115720.html">SỐT CAO CO GIẬT: 5 PHÚT "SINH TỬ" VÀ NHỮNG SAI LẦM SƠ CỨU KHIẾN TÌNH TRẠNG TỒI TỆ HƠN</a></h3>
+          <span class="date">05/12/2025</span>
         </div>
         <div class="related-article">
-          <a href="../NEWS_20251203073552/NEWS_20251203073552.html"><img src="https://drive.google.com/thumbnail?id=1DUzqjw8oALAysjC6ZBxY2f0kva3ot-dN&amp;sz=w4096" alt="SỐT Ở TRẺ EM: KẺ THÙ HAY ĐỒNG MINH? CẨM NANG DÙNG THUỐC CHUẨN Y KHOA VÀ GIẢI MÃ HIỆN TƯỢNG &#34;SỐT MÀ RÉT RUN&#34;"></a>
-          <h3><a href="../NEWS_20251203073552/NEWS_20251203073552.html">SỐT Ở TRẺ EM: KẺ THÙ HAY ĐỒNG MINH? CẨM NANG DÙNG THUỐC CHUẨN Y KHOA VÀ GIẢI MÃ HIỆN TƯỢNG "SỐT MÀ RÉT RUN"</a></h3>
-          <span class="date">03/12/2025</span>
+          <a href="../NEWS_20251205085123/NEWS_20251205085123.html"><img src="https://www.wikihow.com/images/thumb/7/77/Perform-the-Heimlich-Maneuver-Step-13.jpg/aid122029-v4-728px-Perform-the-Heimlich-Maneuver-Step-13.jpg.webp" alt="HÓC DỊ VẬT ĐƯỜNG THỞ: 4 PHÚT &#34;VÀNG NGỌC&#34; QUYẾT ĐỊNH SỰ SỐNG. KỸ NĂNG MÀ MỌI BỐ MẸ PHẢI THUỘC LÒNG"></a>
+          <h3><a href="../NEWS_20251205085123/NEWS_20251205085123.html">HÓC DỊ VẬT ĐƯỜNG THỞ: 4 PHÚT "VÀNG NGỌC" QUYẾT ĐỊNH SỰ SỐNG. KỸ NĂNG MÀ MỌI BỐ MẸ PHẢI THUỘC LÒNG</a></h3>
+          <span class="date">05/12/2025</span>
         </div>
         <div class="related-article">
           <a href="../NEWS_20251201103245/NEWS_20251201103245.html"><img src="https://drive.google.com/thumbnail?id=106OQxtBjmyx5GCh5Sx7OM7ULwQkEZR0p&amp;sz=w4096" alt="TAY CHÂN MIỆNG: BỆNH LÀNH TÍNH HAY &#34;SÁT THỦ&#34; GIẤU MẶT? NHẬN BIẾT SỚM ĐỂ TRÁNH BIẾN CHỨNG"></a>
           <h3><a href="../NEWS_20251201103245/NEWS_20251201103245.html">TAY CHÂN MIỆNG: BỆNH LÀNH TÍNH HAY "SÁT THỦ" GIẤU MẶT? NHẬN BIẾT SỚM ĐỂ TRÁNH BIẾN CHỨNG</a></h3>
-          <span class="date">03/12/2025</span>
+          <span class="date">05/12/2025</span>
         </div>            </div>
         </div>
     </div>
