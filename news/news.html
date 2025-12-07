@@ -18,6 +18,7 @@
         }
 
         .news-component-scope * { box-sizing: border-box; }
+        .news-component-scope a { text-decoration: none; transition: color 0.2s; }
 
          
         .news-component-scope .news-section-header { text-align: center; margin-bottom: 30px; }
@@ -33,106 +34,124 @@
         .news-component-scope .news-categories {
             display: flex; gap: 10px; margin-bottom: 30px; padding: 15px;
             background: white; border-radius: 8px; flex-wrap: wrap; justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .news-component-scope .category-link {
-            text-decoration: none; color: #555; padding: 8px 16px; border-radius: 20px;
-            font-size: 14px; font-weight: 600; background: #f0f2f5; transition: all 0.3s;
+            color: #555; padding: 8px 16px; border-radius: 20px;
+            font-size: 14px; font-weight: 600; background: #f0f2f5; 
         }
         .news-component-scope .category-link:hover { background: #0070c0; color: white; transform: translateY(-2px); }
 
          
         .news-component-scope .featured-news {
             display: grid;
-             
-            grid-template-columns: 3fr 2fr; 
+            grid-template-columns: 3fr 2fr;  
             gap: 25px;
             margin-bottom: 40px;
+            align-items: start;
         }
 
          
- 
+        .news-component-scope .main-story {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            transition: transform 0.3s;
+        }
+        
+        .news-component-scope .main-story:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
 
- 
-.news-component-scope .main-story-content {
-    padding: 20px;
-    background: white;        
-    color: #333;              
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    border-top: 1px solid #eee;  
-}
+         
+        .news-component-scope .main-story img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;       
+            object-fit: contain;     
+            background-color: #fff;
+            display: block;
+            margin: 0 auto;
+        }
 
- 
-.news-component-scope .main-story .news-title a {
-    color: #2c3e50 !important;  
-    text-decoration: none;
-    font-size: 1.6em;           
-    font-weight: 700;
-    display: block;             
-}
+         
+        .news-component-scope .main-story-content {
+            padding: 25px;
+            background: white;
+            color: #333;
+            border-top: 1px solid #eee;
+        }
 
-.news-component-scope .main-story .news-title a:hover {
-    color: #0070c0 !important;  
-}
+        .news-component-scope .main-story .category-tag {
+            background: #0070c0; color: white;
+            padding: 5px 12px; border-radius: 4px; 
+            font-size: 0.8em; font-weight: 700; text-transform: uppercase;
+            display: inline-block; margin-bottom: 12px;
+        }
 
- 
-.news-component-scope .main-story p {
-    color: #555 !important;     
-    font-size: 1em;
-    line-height: 1.5;
-    margin-top: 10px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;      
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    opacity: 1;                 
-}
+        .news-component-scope .main-story .news-title a {
+            color: #2c3e50;          
+            font-size: 1.6em;
+            font-weight: 700;
+            line-height: 1.3;
+            display: block;
+        }
+        .news-component-scope .main-story .news-title a:hover { color: #0070c0; }
 
- 
-.news-component-scope .main-story .category-tag { 
-    background: #0070c0; 
-    color: white; 
-    align-self: flex-start;  
-    margin-bottom: 10px;
-}
+        .news-component-scope .main-story p {
+            color: #555;
+            margin-top: 12px;
+            font-size: 1.05em;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
 
          
         .news-component-scope .secondary-stories {
             display: flex; 
-            flex-direction: column;  
-            gap: 20px;
-            height: 100%;
+            flex-direction: column; 
+            gap: 25px; 
         }
 
-         
         .news-component-scope .secondary-story {
             display: flex; 
-            flex-direction: column;  
-            background: white; border-radius: 12px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s;
+            flex-direction: column; 
+            background: white; 
+            border-radius: 12px;
             overflow: hidden;
-            flex: 1;  
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08); 
+            transition: transform 0.2s;
         }
-        .news-component-scope .secondary-story:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .news-component-scope .secondary-story:hover { transform: translateY(-3px); }
 
-         
         .news-component-scope .secondary-story img {
             width: 100%;
-            height: auto;
-            aspect-ratio: 1/1;  
+            aspect-ratio: 1:1;
             object-fit: cover;
             border-bottom: 1px solid #eee;
         }
         
-         
         .news-component-scope .secondary-story div {
-            padding: 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            padding: 15px 20px;
+        }
+
+        .news-component-scope .secondary-story .news-title a {
+            color: #333; font-size: 1.1em; font-weight: 700;
+        }
+        .news-component-scope .secondary-story .news-title a:hover { color: #0070c0; }
+
+        .news-component-scope .category-tag {
+            display: inline-block; background: #e3f2fd; color: #0070c0; 
+            padding: 3px 8px; border-radius: 4px; font-size: 0.7em; 
+            font-weight: 700; text-transform: uppercase; margin-bottom: 8px;
         }
 
          
@@ -145,54 +164,42 @@
             display: flex; flex-direction: column;
         }
         .news-component-scope .news-item:hover { transform: translateY(-5px); }
-        .news-component-scope .news-item img {
-            width: 100%; aspect-ratio: 1/1; object-fit: cover; border-bottom: 1px solid #eee;
-        }
-        .news-component-scope .news-content { padding: 20px; flex: 1; display: flex; flex-direction: column; }
-
-         
-        .news-component-scope .category-tag {
-            display: inline-block; background: #e3f2fd; color: #0070c0; padding: 4px 10px;
-            border-radius: 4px; font-size: 0.75em; font-weight: 700; text-transform: uppercase;
-            margin-bottom: 10px; align-self: flex-start;
-        }
-        .news-component-scope .main-story .category-tag { background: #0070c0; color: white; }
         
-        .news-component-scope .news-title { font-size: 1.2em; margin: 5px 0 10px 0; font-weight: 700; line-height: 1.4; }
-        .news-component-scope .news-title a { color: #333; text-decoration: none; }
+        .news-component-scope .news-item img {
+            width: 100%; aspect-ratio: 1:1; object-fit: cover; border-bottom: 1px solid #eee;
+        }
+        
+        .news-component-scope .news-content { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+        
+        .news-component-scope .news-title { font-size: 1.15em; margin: 5px 0 10px 0; font-weight: 700; line-height: 1.4; }
+        .news-component-scope .news-title a { color: #333; }
         .news-component-scope .news-title a:hover { color: #0070c0; }
         
-         
-        .news-component-scope .main-story .news-title { font-size: 1.6em; }
-
         .news-component-scope .news-brief {
             color: #666; font-size: 0.95em; line-height: 1.5;
             display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
         }
-        .news-component-scope .main-story p { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top: 5px; opacity: 0.9; }
 
          
         @media (max-width: 900px) {
-             
+            .news-component-scope .featured-news { grid-template-columns: 1fr; }
+            .news-component-scope .news-grid { grid-template-columns: repeat(2, 1fr); }
             
              
-            .news-component-scope .featured-news {
-                grid-template-columns: 1fr; 
-            }
-
-             
-            .news-component-scope .news-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .news-component-scope .main-story-content { padding: 15px; }
+            .news-component-scope .main-story .news-title a { font-size: 1.3em; }
+            .news-component-scope .main-story img { max-height: 250px; }
         }
 
         @media (max-width: 600px) {
             body { padding-top: 70px; }
             .news-component-scope { padding: 15px 10px; }
-            
-             
             .news-component-scope .news-grid { grid-template-columns: 1fr; }
-            .news-component-scope .news-categories { justify-content: flex-start; overflow-x: auto; white-space: nowrap; }
+            .news-component-scope .news-categories { 
+                justify-content: flex-start; overflow-x: auto; 
+                white-space: nowrap; padding: 10px;
+                -webkit-overflow-scrolling: touch;
+            }
         }
     </style>
 
@@ -213,7 +220,7 @@
                 <div class="main-story-content">
                     <span class="category-tag">Nhi Khoa</span>
                     <h2 class="news-title">
-                        <a href="news/articles/NEWS_20251205115720/NEWS_20251205115720.html" style="color: white; text-decoration: none;">
+                        <a href="news/articles/NEWS_20251205115720/NEWS_20251205115720.html">
                             SỐT CAO CO GIẬT: 5 PHÚT &#34;SINH TỬ&#34; VÀ NHỮNG SAI LẦM SƠ CỨU KHIẾN TÌNH TRẠNG TỒI TỆ HƠN                        </a>
                     </h2>
                     <p>&#34;Bác sĩ ơi, con em đang sốt thì tự nhiên mắt trợn ngược lên, người cứng đờ rồi giật giật, môi tím ngắt. Em sợ quá vội lấy cái thìa ngáng vào miệng ...</p>
@@ -225,7 +232,7 @@
                         <img src="https://www.wikihow.com/images/thumb/7/77/Perform-the-Heimlich-Maneuver-Step-13.jpg/aid122029-v4-728px-Perform-the-Heimlich-Maneuver-Step-13.jpg.webp" alt="HÓC DỊ VẬT ĐƯỜNG THỞ: 4 PHÚT &#34;VÀNG NGỌC&#34; QUYẾT ĐỊNH SỰ SỐNG. KỸ NĂNG MÀ MỌI BỐ MẸ PHẢI THUỘC LÒNG" loading="lazy">
                         <div>
                             <span class="category-tag">Nhi Khoa</span>
-                            <h3 class="news-title" style="font-size: 1em;">
+                            <h3 class="news-title">
                                 <a href="news/articles/NEWS_20251205085123/NEWS_20251205085123.html">
                                     HÓC DỊ VẬT ĐƯỜNG THỞ: 4 PHÚT &#34;VÀNG NGỌC&#34; QUYẾT ĐỊNH SỰ SỐNG. KỸ NĂNG MÀ MỌI BỐ MẸ PHẢI THUỘC LÒNG                                </a>
                             </h3>
@@ -235,7 +242,7 @@
                         <img src="https://drive.google.com/thumbnail?id=106OQxtBjmyx5GCh5Sx7OM7ULwQkEZR0p&amp;sz=w4096" alt="TAY CHÂN MIỆNG: BỆNH LÀNH TÍNH HAY &#34;SÁT THỦ&#34; GIẤU MẶT? NHẬN BIẾT SỚM ĐỂ TRÁNH BIẾN CHỨNG" loading="lazy">
                         <div>
                             <span class="category-tag">Nhi Khoa</span>
-                            <h3 class="news-title" style="font-size: 1em;">
+                            <h3 class="news-title">
                                 <a href="news/articles/NEWS_20251201103245/NEWS_20251201103245.html">
                                     TAY CHÂN MIỆNG: BỆNH LÀNH TÍNH HAY &#34;SÁT THỦ&#34; GIẤU MẶT? NHẬN BIẾT SỚM ĐỂ TRÁNH BIẾN CHỨNG                                </a>
                             </h3>
