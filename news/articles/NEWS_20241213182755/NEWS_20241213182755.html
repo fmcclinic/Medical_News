@@ -268,29 +268,42 @@
             font-size: 0.9em;
         }
 
- 
+           
         @media (max-width: 768px) {
             .container {
-                padding: 10px;  
+                padding: 10px;
             }
 
-             
             .article-content {
-                padding: 15px;  
+                padding: 15px;
             }
 
              
-            .article-content p, 
-            .article-content li,
-            .article-content div {
-                font-size: 19px !important;    
-                line-height: 1.6 !important;   
-                text-align: justify;           
+             
+             
+            .article-content, 
+            .article-content * { 
+                font-size: 20px !important;      
+                line-height: 1.6 !important;     
+                font-family: Arial, sans-serif !important;  
+                height: auto !important;         
             }
 
+             
+            .article-content h2, 
+            .article-content h3,
+            .article-content h4 {
+                font-size: 22px !important;
+                font-weight: bold !important;
+                margin-top: 25px !important;
+                margin-bottom: 15px !important;
+            }
+
+             
             .article-title {
-                font-size: 1.6em;  
-                line-height: 1.3;
+                font-size: 24px !important;  
+                line-height: 1.3 !important;
+                font-weight: bold;
             }
 
             .article-meta {
@@ -304,7 +317,6 @@
                 align-items: stretch;
             }
 
-             
             .related-grid {
                 grid-template-columns: 1fr;
             }
@@ -628,8 +640,48 @@
 
             
         <style>
-           .article-content ul, .article-content ol { list-style-type: disc !important; margin-left: 20px !important; }
-           .article-content li { display: list-item !important; list-style-type: disc !important; }
+            
+           .article-content ul, .article-content ol { 
+               list-style-type: disc !important;
+               margin-left: 20px !important; 
+               padding-left: 20px !important;
+           }
+           .article-content li { 
+               display: list-item !important;
+               list-style-type: disc !important; 
+           }
+
+            
+           @media only screen and (max-width: 768px) {
+                
+               .article-content, 
+               .article-content p, 
+               .article-content span, 
+               .article-content div, 
+               .article-content li {
+                   font-size: 20px !important;       
+                   line-height: 1.6 !important;      
+                   text-align: justify !important;   
+                   height: auto !important;          
+                   width: auto !important;           
+               }
+               
+                
+               .article-content h2, 
+               .article-content h3, 
+               .article-content h4,
+               .article-content strong,
+               .article-content b {
+                   font-size: 22px !important;
+                   line-height: 1.4 !important;
+                   font-weight: bold !important;
+               }
+               
+                
+               .article-content p {
+                   margin-bottom: 15px !important;
+               }
+           }
         </style>
       <p>Bạn thường xuyên gặp phải các vấn đề về tai mũi họng như nghẹt mũi, chảy nước mũi, đau họng, ù tai...? Đừng lo lắng, với công nghệ hiện đại, nội soi tai mũi họng sẽ giúp bạn tìm ra nguyên nhân và có giải pháp điều trị hiệu quả nhất.</p><h3><strong>Nội soi tai mũi họng là gì?</strong></h3><p>Nội soi tai mũi họng là một kỹ thuật y khoa sử dụng ống nội soi có gắn camera siêu nhỏ để quan sát trực tiếp các cấu trúc bên trong tai, mũi, họng. Phương pháp này giúp bác sĩ phát hiện sớm và chính xác các bệnh lý, từ đó đưa ra phác đồ điều trị phù hợp.</p><h3><strong>Tại sao nên chọn nội soi tai mũi họng?</strong></h3><ul><li><strong>Chẩn đoán chính xác:</strong> Nội soi giúp bác sĩ nhìn thấy rõ ràng các tổn thương, từ đó đưa ra kết luận chính xác về bệnh.</li><li><strong>Ít xâm lấn:</strong> Thủ thuật đơn giản, nhanh chóng, không gây đau đớn.</li><li><strong>An toàn:</strong> Được thực hiện bởi các bác sĩ chuyên khoa giàu kinh nghiệm, sử dụng trang thiết bị hiện đại.</li><li><strong>Điều trị hiệu quả:</strong> Nhờ chẩn đoán chính xác, việc điều trị trở nên dễ dàng và hiệu quả hơn.</li></ul><h3><strong>Nội soi tai mũi họng phát hiện được những bệnh gì?</strong></h3><ul><li><strong>Bệnh về mũi:</strong> Viêm mũi dị ứng, viêm xoang, polyp mũi, vẹo vách ngăn...</li><li><strong>Bệnh về họng:</strong> Viêm họng, viêm amidan, ung thư họng...</li><li><strong>Bệnh về tai:</strong> Viêm tai giữa, ù tai, giảm thính lực...</li></ul><h3><strong>Quy trình nội soi tai mũi họng diễn ra như thế nào?</strong></h3><ol><li><strong>Chuẩn bị:</strong> Bác sĩ sẽ giải thích về thủ thuật và hướng dẫn bệnh nhân chuẩn bị.</li><li><strong>Tiến hành:</strong> Bác sĩ nhẹ nhàng đưa ống nội soi vào mũi hoặc tai để quan sát.</li><li><strong>Kết quả:</strong> Hình ảnh sẽ được hiển thị trên màn hình, bác sĩ sẽ giải thích kết quả và tư vấn phương pháp điều trị.</li></ol><p><br></p>
             <div class="share-section">

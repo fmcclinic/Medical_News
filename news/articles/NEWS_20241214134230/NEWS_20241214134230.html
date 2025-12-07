@@ -268,29 +268,42 @@
             font-size: 0.9em;
         }
 
- 
+           
         @media (max-width: 768px) {
             .container {
-                padding: 10px;  
+                padding: 10px;
             }
 
-             
             .article-content {
-                padding: 15px;  
+                padding: 15px;
             }
 
              
-            .article-content p, 
-            .article-content li,
-            .article-content div {
-                font-size: 19px !important;    
-                line-height: 1.6 !important;   
-                text-align: justify;           
+             
+             
+            .article-content, 
+            .article-content * { 
+                font-size: 20px !important;      
+                line-height: 1.6 !important;     
+                font-family: Arial, sans-serif !important;  
+                height: auto !important;         
             }
 
+             
+            .article-content h2, 
+            .article-content h3,
+            .article-content h4 {
+                font-size: 22px !important;
+                font-weight: bold !important;
+                margin-top: 25px !important;
+                margin-bottom: 15px !important;
+            }
+
+             
             .article-title {
-                font-size: 1.6em;  
-                line-height: 1.3;
+                font-size: 24px !important;  
+                line-height: 1.3 !important;
+                font-weight: bold;
             }
 
             .article-meta {
@@ -304,7 +317,6 @@
                 align-items: stretch;
             }
 
-             
             .related-grid {
                 grid-template-columns: 1fr;
             }
@@ -628,8 +640,48 @@
 
             
         <style>
-           .article-content ul, .article-content ol { list-style-type: disc !important; margin-left: 20px !important; }
-           .article-content li { display: list-item !important; list-style-type: disc !important; }
+            
+           .article-content ul, .article-content ol { 
+               list-style-type: disc !important;
+               margin-left: 20px !important; 
+               padding-left: 20px !important;
+           }
+           .article-content li { 
+               display: list-item !important;
+               list-style-type: disc !important; 
+           }
+
+            
+           @media only screen and (max-width: 768px) {
+                
+               .article-content, 
+               .article-content p, 
+               .article-content span, 
+               .article-content div, 
+               .article-content li {
+                   font-size: 20px !important;       
+                   line-height: 1.6 !important;      
+                   text-align: justify !important;   
+                   height: auto !important;          
+                   width: auto !important;           
+               }
+               
+                
+               .article-content h2, 
+               .article-content h3, 
+               .article-content h4,
+               .article-content strong,
+               .article-content b {
+                   font-size: 22px !important;
+                   line-height: 1.4 !important;
+                   font-weight: bold !important;
+               }
+               
+                
+               .article-content p {
+                   margin-bottom: 15px !important;
+               }
+           }
         </style>
       <p><strong>Giảm thính lực</strong> là một vấn đề sức khỏe phổ biến ở người cao tuổi, ảnh hưởng đáng kể đến chất lượng cuộc sống. Hiểu rõ về nguyên nhân và cách khắc phục sẽ giúp người già và gia đình có những biện pháp phù hợp.</p><h3>Nguyên nhân gây giảm thính lực ở người già</h3><ul><li><strong>Lão hóa tự nhiên:</strong> Theo thời gian, các tế bào lông cảm giác trong tai sẽ bị thoái hóa, gây giảm khả năng nghe.</li><li><strong>Tiếp xúc với tiếng ồn:</strong> Tiếp xúc lâu dài với tiếng ồn lớn có thể làm tổn thương các tế bào lông cảm giác, gây giảm thính lực vĩnh viễn.</li><li><strong>Một số bệnh lý:</strong> Bệnh tiểu đường, huyết áp cao, các bệnh về tim mạch, tai giữa, thần kinh... đều có thể gây giảm thính lực.</li><li><strong>Sử dụng một số loại thuốc:</strong> Một số loại thuốc có thể gây tác dụng phụ là giảm thính lực.</li></ul><p><br></p><h3>Các biểu hiện của giảm thính lực</h3><ul><li><strong>Nghe kém:</strong> Khó nghe rõ khi người khác nói, đặc biệt ở nơi ồn ào.</li><li><strong>Phải tăng âm lượng TV, radio.</strong></li><li><strong>Khó nghe âm thanh cao tần:</strong> Nghe kém tiếng trẻ con, tiếng chim hót.</li><li><strong>Hay hiểu nhầm lời người khác nói.</strong></li><li><strong>Cảm thấy cô lập, khó giao tiếp.</strong></li></ul><h3>Cách khắc phục và chăm sóc người già bị giảm thính lực</h3><ul><li><strong>Khám tai mũi họng định kỳ:</strong> Để phát hiện sớm các vấn đề về thính lực và có biện pháp can thiệp kịp thời.</li><li><strong>Sử dụng máy trợ thính:</strong> Máy trợ thính là một công cụ hữu ích giúp người già nghe rõ hơn.</li><li><strong>Tạo môi trường giao tiếp thuận lợi:</strong> Nói chậm, rõ ràng, tránh nói quá nhỏ hoặc quá lớn tiếng.</li><li><strong>Giảm thiểu tiếng ồn:</strong> Tạo không gian yên tĩnh để người già dễ nghe hơn.</li><li><strong>Tìm hiểu về các lớp tập phục hồi thính lực:</strong> Các lớp học này giúp người già cải thiện khả năng nghe và giao tiếp.</li><li><strong>Tư vấn tâm lý:</strong> Giúp người già vượt qua cảm giác cô lập, khó khăn trong giao tiếp.</li></ul><h3>Phòng ngừa giảm thính lực</h3><ul><li><strong>Bảo vệ tai khỏi tiếng ồn:</strong> Đeo tai nghe bảo hộ khi làm việc ở môi trường ồn ào.</li><li><strong>Điều trị kịp thời các bệnh lý về tai:</strong> Khám và điều trị các bệnh về tai ngay khi có dấu hiệu bất thường.</li><li><strong>Kiểm tra sức khỏe định kỳ:</strong> Đặc biệt là đối với người cao tuổi có các yếu tố nguy cơ.</li><li><strong>Chế độ ăn uống lành mạnh:</strong> Bổ sung các vitamin và khoáng chất cần thiết cho sức khỏe tai.</li></ul><p><strong>Lưu ý:</strong> Việc giảm thính lực ở người già là một quá trình tự nhiên, tuy nhiên, với những biện pháp phù hợp, người già vẫn có thể duy trì chất lượng cuộc sống tốt.</p>
             <div class="share-section">
