@@ -268,29 +268,42 @@
             font-size: 0.9em;
         }
 
- 
+           
         @media (max-width: 768px) {
             .container {
-                padding: 10px;  
+                padding: 10px;
             }
 
-             
             .article-content {
-                padding: 15px;  
+                padding: 15px;
             }
 
              
-            .article-content p, 
-            .article-content li,
-            .article-content div {
-                font-size: 19px !important;    
-                line-height: 1.6 !important;   
-                text-align: justify;           
+             
+             
+            .article-content, 
+            .article-content * { 
+                font-size: 20px !important;      
+                line-height: 1.6 !important;     
+                font-family: Arial, sans-serif !important;  
+                height: auto !important;         
             }
 
+             
+            .article-content h2, 
+            .article-content h3,
+            .article-content h4 {
+                font-size: 22px !important;
+                font-weight: bold !important;
+                margin-top: 25px !important;
+                margin-bottom: 15px !important;
+            }
+
+             
             .article-title {
-                font-size: 1.6em;  
-                line-height: 1.3;
+                font-size: 24px !important;  
+                line-height: 1.3 !important;
+                font-weight: bold;
             }
 
             .article-meta {
@@ -304,7 +317,6 @@
                 align-items: stretch;
             }
 
-             
             .related-grid {
                 grid-template-columns: 1fr;
             }
@@ -628,8 +640,48 @@
 
             
         <style>
-           .article-content ul, .article-content ol { list-style-type: disc !important; margin-left: 20px !important; }
-           .article-content li { display: list-item !important; list-style-type: disc !important; }
+            
+           .article-content ul, .article-content ol { 
+               list-style-type: disc !important;
+               margin-left: 20px !important; 
+               padding-left: 20px !important;
+           }
+           .article-content li { 
+               display: list-item !important;
+               list-style-type: disc !important; 
+           }
+
+            
+           @media only screen and (max-width: 768px) {
+                
+               .article-content, 
+               .article-content p, 
+               .article-content span, 
+               .article-content div, 
+               .article-content li {
+                   font-size: 20px !important;       
+                   line-height: 1.6 !important;      
+                   text-align: justify !important;   
+                   height: auto !important;          
+                   width: auto !important;           
+               }
+               
+                
+               .article-content h2, 
+               .article-content h3, 
+               .article-content h4,
+               .article-content strong,
+               .article-content b {
+                   font-size: 22px !important;
+                   line-height: 1.4 !important;
+                   font-weight: bold !important;
+               }
+               
+                
+               .article-content p {
+                   margin-bottom: 15px !important;
+               }
+           }
         </style>
       <p><em style="color: rgb(51, 51, 51);">Đây là hướng dẫn sơ cứu cho nhân viên y tế và nhân viên hỗ trợ, yêu cầu người thực hiện phải được huấn luyện chuyên môn thành thục trên mô hình, vì thủ thuật có thể gây các tổn thương lên cơ thể bệnh nhân.</em></p><p><br></p><p>	<span style="color: rgb(51, 51, 51);">Tai nạn hóc dị vật thường xảy ra đột ngột trong tích tắc: Một miếng thạch, một hạt nhãn, hay một mảnh đồ chơi nhỏ... lọt vào đường thở.</span></p><p><span style="color: rgb(51, 51, 51);">Lúc này, bố mẹ không có thời gian để chờ xe cấp cứu hay chạy đến bệnh viện.&nbsp;</span><strong style="color: rgb(51, 51, 51);">Sự sống của con nằm trọn trong tay người đang ở bên cạnh con lúc đó.</strong><span style="color: rgb(51, 51, 51);">&nbsp;Bởi vì não bộ chỉ chịu đựng được tình trạng thiếu oxy trong khoảng 4-6 phút trước khi bị tổn thương vĩnh viễn.</span></p><p><span style="color: rgb(51, 51, 51);">Bài viết này là "cẩm nang cứu mạng" giúp bố mẹ bình tĩnh nhận diện và thực hiện đúng thao tác sơ cứu.</span></p><p><br></p><h3><span style="color: rgb(0, 112, 192);">1. PHÒNG BỆNH HƠN CHỮA BỆNH: NHẬN DIỆN "KẺ THÙ"</span></h3><p><span style="color: rgb(51, 51, 51);">Hóc dị vật đường thở thường xảy ra nhất ở trẻ từ 6 tháng đến 3 tuổi – độ tuổi thích khám phá mọi thứ bằng miệng.</span></p><p><strong style="color: rgb(51, 51, 51);">Danh sách đen các dị vật nguy hiểm:</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong style="color: rgb(51, 51, 51);">Thực phẩm:</strong><span style="color: rgb(51, 51, 51);">&nbsp;Các loại hạt (lạc, óc chó, hạnh nhân), thạch rau câu (cực kỳ nguy hiểm vì trơn và dễ bít kín đường thở), kẹo cứng, quả tròn nhỏ (nho, nhãn, chôm chôm - cần cắt nhỏ hoặc bỏ hạt), xúc xích (cần cắt dọc), bỏng ngô.</span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong style="color: rgb(51, 51, 51);">Đồ vật:</strong><span style="color: rgb(51, 51, 51);">&nbsp;Đồng xu, pin cúc áo (nguy hiểm kép vì gây bỏng thực quản), mảnh lego nhỏ, cúc áo, nắp bút.</span></li></ol><p><strong style="color: rgb(51, 51, 51);">Thói quen xấu cần bỏ ngay:</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Ép trẻ ăn khi đang khóc, đang ho.</span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Cho trẻ vừa ăn vừa chạy nhảy, nô đùa.</span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Thói quen "ném" thức ăn vào miệng (lạc, bỏng ngô) khi đang cười đùa.</span></li></ol><h3><span style="color: rgb(0, 112, 192);">2. DẤU HIỆU NHẬN BIẾT: KHI NÀO LÀ HÓC THẬT SỰ?</span></h3><p><span style="color: rgb(51, 51, 51);"><img src="https://www.wikihow.com/images/thumb/b/b6/Perform-the-Heimlich-Maneuver-Step-1-Version-2.jpg/v4-460px-Perform-the-Heimlich-Maneuver-Step-1-Version-2.jpg" alt="Dấu hiệu nhận biết hóc dị vật"></span></p><p><span style="color: rgb(51, 51, 51);">Phản xạ ho là cách tự nhiên tốt nhất để tống dị vật ra ngoài. Tuy nhiên, cần phân biệt hai tình huống:</span></p><p><strong style="color: rgb(51, 51, 51);">Tình huống 1: Tắc nghẽn một phần (Vẫn còn khe hở để thở)</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong style="color: rgb(51, 51, 51);">Dấu hiệu:</strong><span style="color: rgb(51, 51, 51);">&nbsp;Trẻ vẫn&nbsp;</span><strong style="color: rgb(51, 51, 51);">khóc được, nói được (hoặc ú ớ), ho mạnh được</strong><span style="color: rgb(51, 51, 51);">. Da dẻ vẫn hồng hào hoặc chỉ hơi đỏ mặt.</span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong style="color: rgb(51, 51, 51);">Hành động:</strong><span style="color: rgb(51, 51, 51);">&nbsp;</span><strong style="color: rgb(51, 51, 51);">TUYỆT ĐỐI KHÔNG CAN THIỆP.</strong><span style="color: rgb(51, 51, 51);">&nbsp;Hãy khuyến khích trẻ ho thật mạnh. Việc vỗ lưng lúc này có thể làm dị vật rơi sâu hơn. Chỉ theo dõi sát sao và đưa đến viện nếu dị vật không ra sau khi ho.</span></li></ol><p><strong style="color: rgb(51, 51, 51);">Tình huống 2: Tắc nghẽn hoàn toàn (Nguy kịch – Cần sơ cứu ngay!)</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong style="color: rgb(51, 51, 51);">Dấu hiệu:</strong></li><li data-list="bullet" class="ql-indent-1"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Trẻ&nbsp;</span><strong style="color: rgb(51, 51, 51);">không thể ho, không thể khóc, không thể nói</strong><span style="color: rgb(51, 51, 51);">.</span></li><li data-list="bullet" class="ql-indent-1"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Dấu hiệu "bàn tay chẹn họng" (Universal choking sign): Trẻ hoảng loạn đưa tay nắm chặt lấy cổ.</span></li><li data-list="bullet" class="ql-indent-1"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Mặt và môi tím tái nhanh chóng do thiếu oxy.</span></li><li data-list="bullet" class="ql-indent-1"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Có thể nghe thấy tiếng rít "éc éc" nhỏ khi cố hít vào.</span></li><li data-list="bullet" class="ql-indent-1"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Lịm dần và bất tỉnh.</span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong style="color: rgb(51, 51, 51);">Hành động:</strong><span style="color: rgb(51, 51, 51);">&nbsp;Gọi người hỗ trợ gọi cấp cứu 115 ngay lập tức, đồng thời tiến hành thủ thuật sơ cứu NGAY TẠI CHỖ.</span></li></ol><h3><span style="color: rgb(0, 112, 192);">3. HÀNH ĐỘNG CỨU MẠNG: KỸ THUẬT VỖ LƯNG ẤN NGỰC &amp; HEIMLICH</span></h3><p><span style="color: rgb(51, 51, 51);">Nguyên lý chung: Tạo một áp lực đột ngột, mạnh mẽ từ bên dưới cơ hoành (bụng/ngực) để đẩy không khí còn sót lại trong phổi tống ra ngoài, tạo thành một lực "bắn" dị vật ra (giống như bật nút chai sâm-panh).</span></p><p><em style="color: rgb(51, 51, 51);">Lưu ý: Kỹ thuật khác nhau tùy theo độ tuổi.</em></p><h3><span style="color: rgb(0, 112, 192);">A. Với trẻ nhũ nhi (Dưới 1 tuổi) - Kỹ thuật Vỗ lưng &amp; Ấn ngực</span></h3><p><span style="color: rgb(51, 51, 51);">Tuyệt đối không dùng Heimlich (ép bụng) cho trẻ dưới 1 tuổi vì dễ gây tổn thương tạng trong bụng.</span></p><p><strong style="color: rgb(51, 51, 51);">Bước 1: Vỗ lưng (5 lần)</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);"><img src="https://www.wikihow.com/images/thumb/f/ff/Perform-the-Heimlich-Maneuver-Step-14.jpg/v4-460px-Perform-the-Heimlich-Maneuver-Step-14.jpg" alt="Vỗ lưng trẻ sơ sinh"></span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Người sơ cứu ngồi hoặc quỳ. Đặt trẻ nằm sấp trên cánh tay của bạn, đầu chúc xuống thấp hơn ngực. Dùng đùi của bạn để đỡ cánh tay đó.</span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Dùng gót bàn tay còn lại vỗ mạnh, dứt khoát 5 cái vào vùng giữa hai bả vai của trẻ.</span></li></ol><p><strong style="color: rgb(51, 51, 51);">Bước 2: Ấn ngực (5 lần)</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);"><img src="https://www.wikihow.com/images/thumb/9/92/Perform-the-Heimlich-Maneuver-Step-16.jpg/v4-460px-Perform-the-Heimlich-Maneuver-Step-16.jpg" alt="Ấn ngực trẻ sơ sinh"></span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Nếu dị vật chưa ra, lật ngược trẻ nằm ngửa lại trên cánh tay kia (vẫn giữ đầu thấp).</span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Dùng 2 ngón tay (ngón trỏ và giữa) ấn mạnh 5 lần vào vị trí giữa ngực (ngay dưới đường nối hai núm vú – vị trí ép tim).</span></li></ol><p><em style="color: rgb(51, 51, 51);">Lặp lại chu kỳ (5 vỗ lưng - 5 ấn ngực) cho đến khi dị vật bật ra hoặc trẻ bất tỉnh (nếu bất tỉnh thì chuyển sang CPR - Hồi sức tim phổi).</em></p><h3><span style="color: rgb(0, 112, 192);">B. Với trẻ lớn (Trên 1 tuổi) và Người lớn - Kỹ thuật Heimlich (Ép bụng)</span></h3><p><strong style="color: rgb(51, 51, 51);">Tư thế đứng (Khi trẻ còn tỉnh):</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);"><img src="https://www.wikihow.com/images/thumb/c/c8/Perform-the-Heimlich-Maneuver-Step-3-Version-2.jpg/v4-460px-Perform-the-Heimlich-Maneuver-Step-3-Version-2.jpg" alt="Tư thế đứng Heimlich"></span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Người sơ cứu đứng ra sau lưng trẻ. Quỳ một chân xuống nếu trẻ nhỏ để ngang tầm.</span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Vòng hai tay ra phía trước bụng trẻ.</span></li></ol><p><strong style="color: rgb(51, 51, 51);">Thao tác ép bụng:</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);"><img src="https://www.wikihow.com/images/thumb/e/e6/Perform-the-Heimlich-Maneuver-Step-5-Version-2.jpg/v4-460px-Perform-the-Heimlich-Maneuver-Step-5-Version-2.jpg" alt="Thao tác ép bụng Heimlich">Một tay nắm chặt lại thành nắm đấm, đặt ngay vùng thượng vị (vùng bụng trên rốn, ngay dưới xương ức).</span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Tay kia nắm lấy nắm đấm đó.</span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Dùng lực mạnh, dứt khoát giật nắm đấm theo hướng&nbsp;</span><strong style="color: rgb(51, 51, 51);">vào trong và lên trên</strong><span style="color: rgb(51, 51, 51);">&nbsp;(tạo hình chữ J ngược). Thực hiện liên tục 5 lần.</span></li></ol><p><strong style="color: rgb(51, 51, 51);">Trường hợp nạn nhân nằm (hoặc quá nặng không đỡ dậy được):</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);"><img src="https://www.wikihow.com/images/thumb/b/b2/Perform-the-Heimlich-Maneuver-Step-10.jpg/v4-460px-Perform-the-Heimlich-Maneuver-Step-10.jpg" alt="Heimlich tư thế nằm">Đặt nạn nhân nằm ngửa trên sàn cứng.</span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Người sơ cứu quỳ tách hai chân nạn nhân, đè lên đùi nạn nhân.</span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Đặt gót bàn tay lên vùng trên rốn và dưới xương ức. Đặt bàn tay kia chồng lên.</span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Ấn mạnh và nhanh theo hướng lên phía đầu nạn nhân.</span></li></ol><p><strong style="color: rgb(51, 51, 51);">Lưu ý quan trọng:</strong><span style="color: rgb(51, 51, 51);">&nbsp;Nếu trẻ/nạn nhân bất tỉnh, hãy ngừng Heimlich và thực hiện CPR (ép tim thổi ngạt) ngay lập tức.</span></p><h3><span style="color: rgb(0, 112, 192);">C. Tự sơ cứu bản thân (Khi ở một mình)</span></h3><p><span style="color: rgb(51, 51, 51);">Nếu bạn bị hóc dị vật và không có ai xung quanh, hãy bình tĩnh thực hiện:</span></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);"><img src="https://www.wikihow.com/images/thumb/3/36/Perform-the-Heimlich-Maneuver-Step-19.jpg/v4-460px-Perform-the-Heimlich-Maneuver-Step-19.jpg" alt="Tự sơ cứu Heimlich"></span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Nắm chặt một bàn tay thành nắm đấm, đặt lên bụng (trên rốn, dưới xương ức).</span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Dùng tay kia nắm lấy nắm đấm.</span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(51, 51, 51);">Hoặc tựa bụng vào một vật cứng ngang tầm (như thành ghế, bàn, lan can) và ấn mạnh bụng vào đó theo hướng lên trên.</span></li></ol><h3><span style="color: rgb(0, 112, 192);">4. NHỮNG ĐIỀU TUYỆT ĐỐI KHÔNG LÀM</span></h3><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong style="color: rgb(51, 51, 51);">KHÔNG dùng tay móc họng mù quáng (Blind finger sweep):</strong><span style="color: rgb(51, 51, 51);">&nbsp;Nếu bạn không nhìn thấy rõ dị vật, tuyệt đối không đưa ngón tay vào họng trẻ để "mò". Hành động này có thể đẩy dị vật vào sâu hơn hoặc làm trầy xước họng gây phù nề tắc nghẽn thêm. Chỉ móc khi nhìn thấy rõ dị vật ở ngay cửa miệng.</span></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong style="color: rgb(51, 51, 51);">KHÔNG dốc ngược trẻ lên rồi lắc:</strong><span style="color: rgb(51, 51, 51);">&nbsp;Hành động này không hiệu quả và có thể gây chấn thương cổ hoặc làm rơi trẻ.</span></li></ol><p><br></p><p><strong style="color: rgb(51, 51, 51);">Lời kết:</strong><span style="color: rgb(51, 51, 51);">&nbsp;Kỹ năng sơ cứu hóc dị vật không khó, nhưng cần sự bình tĩnh và thực hành. Bố mẹ nên tham gia các khóa huấn luyện và hãy xem các video hướng dẫn uy tín (từ các tổ chức y tế) và tập luyện trên gấu bông hoặc ma-nơ-canh để tạo phản xạ.</span></p><p><br></p><p><br></p><h2>Tài liệu tham khảo</h2><ol><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Committee on Injury, Violence, and Poison Prevention – 2010 (Reaffirmed 2020)</strong> Prevention of Choking Among Children / Phòng ngừa hóc dị vật ở trẻ em <em>Nguồn: PubMed / Pediatrics (AAP)</em> <a href="https://pubmed.ncbi.nlm.nih.gov/20176675/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/20176675/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>American Red Cross – 2021</strong> First Aid/CPR/AED Participant’s Manual / Sổ tay hướng dẫn tham gia Sơ cấp cứu/CPR/AED (Chương về Hóc dị vật) <em>Nguồn: American Red Cross</em> <a href="https://www.redcross.org/take-a-class/participant-materials" rel="noopener noreferrer" target="_blank">https://www.redcross.org/take-a-class/participant-materials</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Mayo Clinic Staff – 2023</strong> Choking: First aid / Hóc dị vật: Sơ cứu <em>Nguồn: Mayo Clinic</em> <a href="https://www.mayoclinic.org/first-aid/first-aid-choking/basics/art-20056637" rel="noopener noreferrer" target="_blank">https://www.mayoclinic.org/first-aid/first-aid-choking/basics/art-20056637</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Chapin MM, et al. – 2013</strong> Nonfatal Choking on Food Among Children 14 Years or Younger in the United States, 2001–2009 / Hóc thức ăn không gây tử vong ở trẻ em từ 14 tuổi trở xuống tại Hoa Kỳ, 2001–2009 <em>Nguồn: PubMed / Pediatrics</em> <a href="https://pubmed.ncbi.nlm.nih.gov/23897916/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/23897916/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Centers for Disease Control and Prevention (CDC) – 2023</strong> Choking Hazards / Các mối nguy hiểm gây hóc dị vật <em>Nguồn: CDC</em> <a href="https://www.google.com/search?q=https://www.cdc.gov/nutrition/infantandtoddlernutrition/foods-and-drinks/choking-hazards.html" rel="noopener noreferrer" target="_blank">https://www.cdc.gov/nutrition/infantandtoddlernutrition/foods-and-drinks/choking-hazards.html</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>National Health Service (NHS) – 2022</strong> Stop a child from choking / Xử trí khi trẻ bị hóc dị vật <em>Nguồn: NHS UK</em> <a href="https://www.nhs.uk/conditions/baby/first-aid-and-safety/first-aid/how-to-stop-a-child-from-choking/" rel="noopener noreferrer" target="_blank">https://www.nhs.uk/conditions/baby/first-aid-and-safety/first-aid/how-to-stop-a-child-from-choking/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Salih AM, et al. – 2016</strong> Airway foreign bodies: A critical review for a common pediatric emergency / Dị vật đường thở: Đánh giá quan trọng về một trường hợp cấp cứu nhi khoa phổ biến <em>Nguồn: PubMed / World Journal of Emergency Medicine</em> <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4786499/" rel="noopener noreferrer" target="_blank">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4786499/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Stanford Medicine Children's Health – 2023</strong> Choking Prevention for Children / Phòng ngừa hóc dị vật cho trẻ em <em>Nguồn: Stanford Medicine</em> <a href="https://www.google.com/search?q=https://www.stanfordchildrens.org/en/topic/default%3Fid%3Dchoking-prevention-for-children-90-P02844" rel="noopener noreferrer" target="_blank">https://www.stanfordchildrens.org/en/topic/default?id=choking-prevention-for-children-90-P02844</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Perkins GD, et al. – 2021</strong> European Resuscitation Council Guidelines 2021: Basic Life Support / Hướng dẫn của Hội đồng Hồi sức Châu Âu 2021: Hỗ trợ sự sống cơ bản <em>Nguồn: PubMed / Resuscitation</em> <a href="https://pubmed.ncbi.nlm.nih.gov/33773825/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/33773825/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>American Academy of Pediatrics (AAP) – 2023</strong> Choking Prevention and First Aid for Infants and Children / Phòng ngừa và sơ cứu hóc dị vật cho trẻ sơ sinh và trẻ nhỏ <em>Nguồn: HealthyChildren.org</em> <a href="https://www.healthychildren.org/English/health-issues/injuries-emergencies/Pages/Choking-Prevention.aspx" rel="noopener noreferrer" target="_blank">https://www.healthychildren.org/English/health-issues/injuries-emergencies/Pages/Choking-Prevention.aspx</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Duckett SA, et al. – 2023</strong> Choking / Hóc dị vật (Tổng quan lâm sàng và xử trí) <em>Nguồn: StatPearls [Internet] / NCBI</em> <a href="https://www.ncbi.nlm.nih.gov/books/NBK499941/" rel="noopener noreferrer" target="_blank">https://www.ncbi.nlm.nih.gov/books/NBK499941/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Cleveland Clinic – 2022</strong> Heimlich Maneuver / Thủ thuật Heimlich <em>Nguồn: Cleveland Clinic</em> <a href="https://my.clevelandclinic.org/health/treatments/21675-heimlich-maneuver" rel="noopener noreferrer" target="_blank">https://my.clevelandclinic.org/health/treatments/21675-heimlich-maneuver</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Johns Hopkins Medicine – 2023</strong> Choking and Foreign Body Aspiration / Hóc và hít phải dị vật <em>Nguồn: Johns Hopkins Medicine</em> <a href="https://www.google.com/search?q=https://www.hopkinsmedicine.org/health/conditions-and-diseases/choking-and-foreign-body-aspiration" rel="noopener noreferrer" target="_blank">https://www.hopkinsmedicine.org/health/conditions-and-diseases/choking-and-foreign-body-aspiration</a></li></ol><p><br></p><p><br></p>
             <div class="share-section">
@@ -657,7 +709,7 @@
         <div class="related-article">
           <a href="../NEWS_20251207101704/NEWS_20251207101704.html"><img src="https://drive.google.com/thumbnail?id=1YosWHQ-Yzx8irl80IW3qUjzdrA5bvJbr&amp;sz=w4096" alt="GIẤC NGỦ CỦA BÉ: TỪ &#34;CUỘC CHIẾN XUYÊN ĐÊM&#34; ĐẾN GIẤC NGỦ THIÊN THẦN. BÍ QUYẾT RÈN NẾP NGỦ KHOA HỌC"></a>
           <h3><a href="../NEWS_20251207101704/NEWS_20251207101704.html">GIẤC NGỦ CỦA BÉ: TỪ "CUỘC CHIẾN XUYÊN ĐÊM" ĐẾN GIẤC NGỦ THIÊN THẦN. BÍ QUYẾT RÈN NẾP NGỦ KHOA HỌC</a></h3>
-          <span class="date">07/12/2025</span>
+          <span class="date">08/12/2025</span>
         </div>
         <div class="related-article">
           <a href="../NEWS_20251207085919/NEWS_20251207085919.html"><img src="https://drive.google.com/thumbnail?id=13NtS7DnTxe-2Sb1TmRBx3AF0dAyvZiLD&amp;sz=w4096" alt="BIẾNG ĂN TÂM LÝ: KHI BỮA CƠM LÀ &#34;CHIẾN TRƯỜNG&#34;. NGUYÊN NHÂN VÀ CHIẾN LƯỢC ĐỂ CON ĂN TRONG HẠNH PHÚC MÀ KHÔNG CẦN ÉP BUỘC"></a>

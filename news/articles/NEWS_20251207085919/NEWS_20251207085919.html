@@ -268,29 +268,42 @@
             font-size: 0.9em;
         }
 
- 
+           
         @media (max-width: 768px) {
             .container {
-                padding: 10px;  
+                padding: 10px;
             }
 
-             
             .article-content {
-                padding: 15px;  
+                padding: 15px;
             }
 
              
-            .article-content p, 
-            .article-content li,
-            .article-content div {
-                font-size: 19px !important;    
-                line-height: 1.6 !important;   
-                text-align: justify;           
+             
+             
+            .article-content, 
+            .article-content * { 
+                font-size: 20px !important;      
+                line-height: 1.6 !important;     
+                font-family: Arial, sans-serif !important;  
+                height: auto !important;         
             }
 
+             
+            .article-content h2, 
+            .article-content h3,
+            .article-content h4 {
+                font-size: 22px !important;
+                font-weight: bold !important;
+                margin-top: 25px !important;
+                margin-bottom: 15px !important;
+            }
+
+             
             .article-title {
-                font-size: 1.6em;  
-                line-height: 1.3;
+                font-size: 24px !important;  
+                line-height: 1.3 !important;
+                font-weight: bold;
             }
 
             .article-meta {
@@ -304,7 +317,6 @@
                 align-items: stretch;
             }
 
-             
             .related-grid {
                 grid-template-columns: 1fr;
             }
@@ -628,8 +640,48 @@
 
             
         <style>
-           .article-content ul, .article-content ol { list-style-type: disc !important; margin-left: 20px !important; }
-           .article-content li { display: list-item !important; list-style-type: disc !important; }
+            
+           .article-content ul, .article-content ol { 
+               list-style-type: disc !important;
+               margin-left: 20px !important; 
+               padding-left: 20px !important;
+           }
+           .article-content li { 
+               display: list-item !important;
+               list-style-type: disc !important; 
+           }
+
+            
+           @media only screen and (max-width: 768px) {
+                
+               .article-content, 
+               .article-content p, 
+               .article-content span, 
+               .article-content div, 
+               .article-content li {
+                   font-size: 20px !important;       
+                   line-height: 1.6 !important;      
+                   text-align: justify !important;   
+                   height: auto !important;          
+                   width: auto !important;           
+               }
+               
+                
+               .article-content h2, 
+               .article-content h3, 
+               .article-content h4,
+               .article-content strong,
+               .article-content b {
+                   font-size: 22px !important;
+                   line-height: 1.4 !important;
+                   font-weight: bold !important;
+               }
+               
+                
+               .article-content p {
+                   margin-bottom: 15px !important;
+               }
+           }
         </style>
       <p><em>"Há miệng ra nào, một miếng nữa thôi con!", "Không ăn là mẹ không yêu đâu!", "Nhìn con nhà người ta ăn kìa..."</em></p><p>Những câu nói này có quen thuộc với bạn không? Nếu mỗi bữa ăn của gia đình bạn diễn ra trong cảnh bế rong, làm trò, năn nỉ, thậm chí quát tháo và kết thúc bằng nước mắt của cả mẹ lẫn con, thì rất có thể con bạn đang mắc <strong>Biếng ăn tâm lý</strong>.</p><p>Khác với biếng ăn do bệnh lý (khi cơ thể mệt mỏi), biếng ăn tâm lý là khi trẻ hoàn toàn khỏe mạnh nhưng lại có phản kháng mạnh mẽ với việc ăn uống. Bữa ăn không còn là niềm vui mà trở thành một "cuộc chiến quyền lực" và nỗi ám ảnh.</p><p>Bài viết này sẽ giúp bố mẹ gỡ bỏ áp lực và tìm lại niềm vui ăn uống cho con.</p><h3>1. GIẢI MÃ: TẠI SAO CON LẠI SỢ ĂN ĐẾN VẬY?</h3><p>Bố mẹ cần hiểu: <strong>Ăn uống là một trong những nhu cầu bản năng cơ bản nhất của con người.</strong> Không một đứa trẻ khỏe mạnh nào lại tự bỏ đói mình đến mức nguy hiểm.</p><p>Vậy tại sao trẻ lại từ chối ăn? Nguyên nhân gốc rễ thường đến từ những trải nghiệm tiêu cực liên quan đến bữa ăn:</p><p><strong>Nguyên nhân 1: Bị ÉP BUỘC quá mức (Phổ biến nhất)</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Đây là sai lầm kinh điển. Khi bố mẹ quá lo lắng về cân nặng, họ có xu hướng ép con ăn bằng mọi giá: đè ra đổ thức ăn, bóp mũi cho nuốt, dọa nạt...</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Hậu quả:</strong> Trẻ hình thành phản xạ có điều kiện: <em>Nhìn thấy thìa/bát cháo = Sắp bị ép = Sợ hãi và Phản kháng.</em> Bữa ăn trở thành một hình thức tra tấn tinh thần.</li></ol><p><strong>Nguyên nhân 2: Bữa ăn căng thẳng, thiếu không khí gia đình</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Trẻ rất nhạy cảm với cảm xúc của người lớn. Nếu bố mẹ cãi nhau trong bữa cơm, hoặc mẹ cho ăn với khuôn mặt cau có, căng thẳng, trẻ sẽ cảm thấy không an toàn và mất cảm giác ngon miệng.</li></ol><p><strong>Nguyên nhân 3: Ám ảnh quá khứ (Trauma)</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Trẻ từng bị sặc, hóc, nôn trớ dữ dội khi ăn, hoặc bị đau họng/nhiệt miệng khi ăn đồ nóng/cay. Ký ức đau đớn này khiến trẻ sợ ăn lại món đó hoặc sợ chính hành động ăn.</li></ol><p><strong>Nguyên nhân 4: Mất quyền kiểm soát và không được tôn trọng</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Trẻ từ 2 tuổi trở lên bắt đầu có nhu cầu khẳng định bản thân ("khủng hoảng tuổi lên 3"). Việc ăn uống là một trong số ít những thứ trẻ có thể tự kiểm soát. Nếu bố mẹ quyết định tất cả (ăn gì, ăn bao nhiêu, ăn khi nào) mà không cho trẻ quyền lựa chọn, trẻ sẽ dùng việc "không ăn" như một vũ khí để phản kháng lại sự áp đặt đó.</li></ol><h3>2. CÁI BẪY "VÒNG XOẮN BỆNH LÝ" MÀ BỐ MẸ THƯỜNG MẮC PHẢI</h3><p>Đây là lý do tại sao tình trạng biếng ăn cứ kéo dài mãi không dứt:</p><ol><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Bố mẹ lo lắng:</strong> Thấy con ăn ít, sợ con gầy/suy dinh dưỡng.</li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Hành động Ép buộc:</strong> Dùng mọi cách (dỗ dành, dụ dỗ tivi, dọa nạt, ép thô bạo) để nhồi thêm vài thìa.</li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Trẻ phản kháng:</strong> Trẻ khóc, ngậm chặt miệng, nôn trớ để chống lại. Bữa ăn trở nên căng thẳng tột độ.</li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Trẻ chán ghét thức ăn:</strong> Hình thành tâm lý sợ hãi bữa ăn. Lần sau chỉ cần thấy chuẩn bị ăn là đã khóc.</li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Bố mẹ càng lo lắng hơn:</strong> Vòng luẩn quẩn lại bắt đầu với mức độ tồi tệ hơn.</li></ol><p><img src="https://drive.google.com/thumbnail?id=1o6VVYJ2OCjViFQOH7rYCxQBq5juorJCh&amp;sz=w4096"></p><p class="ql-align-center"><em>Bé cùng mẹ chế biến thức ăn</em></p><p><br></p><blockquote><strong>Chìa khóa để phá vỡ vòng xoắn này là: BỐ MẸ PHẢI LÀ NGƯỜI THAY ĐỔI TRƯỚC.</strong></blockquote><h3>3. CHIẾN LƯỢC "GỠ RỐI": HÃY TRẢ LẠI QUYỀN ĐƯỢC ĐÓI CHO CON</h3><p>Mục tiêu của chúng ta không phải là nhồi nhét cho con ăn hết bát cơm hôm nay, mà là giúp con xây dựng một mối quan hệ lành mạnh và vui vẻ với thức ăn lâu dài.</p><h4>BƯỚC 1: Quy tắc vàng "Phân chia trách nhiệm" (Thay đổi tư duy)</h4><p>Hãy áp dụng quy tắc nổi tiếng của chuyên gia dinh dưỡng Ellyn Satter:</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Trách nhiệm của Bố Mẹ:</strong> Quyết định CÁI GÌ cho con ăn (chọn thực phẩm lành mạnh), KHI NÀO ăn (giờ giấc cố định) và Ở ĐÂU (tại bàn ăn, không phải vừa chạy vừa ăn).</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Trách nhiệm của Con:</strong> Quyết định CÓ ĂN HAY KHÔNG và ĂN BAO NHIÊU.</li></ol><blockquote><strong>Hãy tin tưởng con:</strong> Nếu con không ăn bữa này, con sẽ không chết đói. Con sẽ ăn bù vào bữa sau nếu thực sự đói. Đừng làm thay trách nhiệm của con.</blockquote><h4>BƯỚC 2: Thiết lập kỷ luật bàn ăn "KHÔNG NƯỚC MẮT"</h4><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Nguyên tắc 30 phút:</strong> Mỗi bữa ăn chỉ kéo dài tối đa 30 phút. Nếu con không ăn, ngậm, hoặc quấy khóc: Hãy bình tĩnh dọn mâm đi. Tuyệt đối không năn nỉ, không tỏ thái độ giận dữ. Hãy nói nhẹ nhàng: <em>"Con no rồi đúng không? Vậy chúng ta kết thúc bữa ăn nhé."</em></li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Tuyệt đối KHÔNG ÉP:</strong> Dừng ngay mọi hành động đè ép, bóp mũi. Nếu con từ chối thìa cơm, hãy tôn trọng.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Không Ti vi, điện thoại, đồ chơi:</strong> Bữa ăn là để ăn và giao tiếp. Những thứ gây xao nhãng chỉ khiến trẻ ăn thụ động (ăn không biết mùi vị) và càng kéo dài thời gian ngậm.</li></ol><h4>BƯỚC 3: Để con được biết cảm giác "ĐÓI"</h4><p>Rất nhiều trẻ biếng ăn vì... chưa bao giờ kịp đói!</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Cắt giảm bữa phụ vặt vãnh:</strong> Nếu trẻ vừa uống một hộp sữa, ăn cái bánh trước bữa chính 1 tiếng thì chắc chắn trẻ sẽ không muốn ăn cơm. Các bữa ăn (chính và phụ) cần cách nhau 2.5 - 3 tiếng.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Giữa các bữa chỉ uống nước lọc:</strong> Không cho uống sữa, nước ngọt hay ăn vặt giữa các cữ.</li></ol><h4>BƯỚC 4: Tăng quyền tự chủ và hứng thú (Kích thích sự tò mò)</h4><h4><img src="https://drive.google.com/thumbnail?id=1XZaV4crAXZYo1PggY84cIPT3TzmeacU7&amp;sz=w4096"></h4><p class="ql-align-center"><em>Cho phép được bẩn, để bé tự ăn</em></p><p class="ql-align-center"><br></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Cho phép "làm bẩn" (Self-feeding):</strong> Với trẻ nhỏ, hãy cho trẻ tự bốc, tự cầm thìa xúc dù vương vãi. Trẻ thích cảm giác tự mình khám phá thức ăn hơn là bị người khác đút.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Mời gọi, không ép buộc:</strong> Đặt thức ăn trước mặt trẻ và ăn mẫu một cách ngon lành. Đừng nhìn chằm chằm vào miệng con chờ đợi. Hãy để trẻ tự tò mò và muốn thử.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Cùng con chuẩn bị:</strong> Cho trẻ cùng nhặt rau, vo gạo, bày bát đũa. Trẻ sẽ hào hứng hơn với "thành quả" mình làm ra.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Trình bày bắt mắt:</strong> Một chút sáng tạo trong việc cắt tỉa rau củ hình thù ngộ nghĩnh có thể thay đổi thái độ của trẻ.</li></ol><p><strong>Lời kết:</strong> Chữa biếng ăn tâm lý là một cuộc hành trình đòi hỏi sự KIÊN NHẪN tột cùng của bố mẹ. Có thể mất vài tuần đến vài tháng để trẻ quên đi nỗi sợ cũ và tìm lại niềm vui ăn uống.</p><p>Hãy nhớ: Một vài bữa ăn ít không ảnh hưởng đến sự phát triển lâu dài của con, nhưng một tâm lý sợ hãi thức ăn sẽ ảnh hưởng cả đời. Hãy dũng cảm buông bỏ áp lực để bữa cơm gia đình thực sự là những giờ phút hạnh phúc!</p><p><br></p><p><strong>Bài viết cùng chủ đề:</strong></p><p><strong style="background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);"><a href="https://friendmedicalclinic.com/news/articles/NEWS_20251201002743/NEWS_20251201002743.html" rel="noopener noreferrer" target="_blank">GIẢI MÃ MA TRẬN BIẾNG ĂN – TÂM LÝ HAY BỆNH LÝ?</a></strong></p><p><br></p><h2>Tài liệu tham khảo</h2><ol><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Kerzner B, et al. – 2015</strong> A practical approach to classifying and managing feeding difficulties / Tiếp cận thực tế để phân loại và quản lý các khó khăn trong việc ăn uống <em>Nguồn: PubMed / Pediatrics (AAP)</em> <a href="https://pubmed.ncbi.nlm.nih.gov/25647684/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/25647684/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Galloway AT, et al. – 2006</strong> "Finish your soup": Counterproductive effects of pressuring children to eat / "Húp hết súp đi": Tác dụng ngược của việc ép trẻ ăn <em>Nguồn: PubMed / Appetite</em> <a href="https://pubmed.ncbi.nlm.nih.gov/16386818/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/16386818/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Birch LL, et al. – 2000</strong> Mothers' child-feeding practices influence daughters' eating and weight / Thực hành cho ăn của mẹ ảnh hưởng đến việc ăn uống và cân nặng của con gái <em>Nguồn: PubMed / The American Journal of Clinical Nutrition</em> <a href="https://pubmed.ncbi.nlm.nih.gov/10799397/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/10799397/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Mayo Clinic Staff – 2022</strong> Picky eaters: 5 tips to get your child to eat / Trẻ kén ăn: 5 mẹo giúp con bạn chịu ăn <em>Nguồn: Mayo Clinic</em> <a href="https://www.mayoclinic.org/healthy-lifestyle/childrens-health/in-depth/childrens-health/art-20044948" rel="noopener noreferrer" target="_blank">https://www.mayoclinic.org/healthy-lifestyle/childrens-health/in-depth/childrens-health/art-20044948</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Black MM, Aboud FE. – 2011</strong> Responsive feeding is embedded in a theoretical framework of responsive parenting / Nuôi ăn đáp ứng nằm trong khuôn khổ lý thuyết của việc làm cha mẹ đáp ứng <em>Nguồn: PubMed / The Journal of Nutrition</em> <a href="https://pubmed.ncbi.nlm.nih.gov/21270366/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/21270366/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Jansen PW, et al. – 2012</strong> Bidirectional associations between child fussy eating and parents' pressure to eat at 2 and 4 years / Mối liên hệ hai chiều giữa trẻ kén ăn và áp lực ép ăn của cha mẹ ở trẻ 2 và 4 tuổi <em>Nguồn: PubMed / Physiology &amp; Behavior</em> <a href="https://pubmed.ncbi.nlm.nih.gov/22609865/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/22609865/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Zero to Three – 2017</strong> How to Handle Picky Eaters / Cách xử lý trẻ kén ăn (Tâm lý học lứa tuổi 0-3) <em>Nguồn: Zero to Three</em> <a href="https://www.zerotothree.org/resource/how-to-handle-picky-eaters/" rel="noopener noreferrer" target="_blank">https://www.zerotothree.org/resource/how-to-handle-picky-eaters/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>World Health Organization (WHO) &amp; UNICEF – 2021</strong> Indicators for assessing infant and young child feeding practices / Các chỉ số đánh giá thực hành nuôi dưỡng trẻ sơ sinh và trẻ nhỏ <em>Nguồn: WHO/UNICEF</em> <a href="https://www.who.int/publications/i/item/9789240018389" rel="noopener noreferrer" target="_blank">https://www.who.int/publications/i/item/9789240018389</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Powell F, et al. – 2017</strong> The importance of mealtimes for family well-being / Tầm quan trọng của giờ ăn đối với sự an vui của gia đình <em>Nguồn: PubMed / Appetite</em> <a href="https://pubmed.ncbi.nlm.nih.gov/27866870/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/27866870/</a></li></ol><p><br></p>
             <div class="share-section">
@@ -657,7 +709,7 @@
         <div class="related-article">
           <a href="../NEWS_20251207101704/NEWS_20251207101704.html"><img src="https://drive.google.com/thumbnail?id=1YosWHQ-Yzx8irl80IW3qUjzdrA5bvJbr&amp;sz=w4096" alt="GIẤC NGỦ CỦA BÉ: TỪ &#34;CUỘC CHIẾN XUYÊN ĐÊM&#34; ĐẾN GIẤC NGỦ THIÊN THẦN. BÍ QUYẾT RÈN NẾP NGỦ KHOA HỌC"></a>
           <h3><a href="../NEWS_20251207101704/NEWS_20251207101704.html">GIẤC NGỦ CỦA BÉ: TỪ "CUỘC CHIẾN XUYÊN ĐÊM" ĐẾN GIẤC NGỦ THIÊN THẦN. BÍ QUYẾT RÈN NẾP NGỦ KHOA HỌC</a></h3>
-          <span class="date">07/12/2025</span>
+          <span class="date">08/12/2025</span>
         </div>
         <div class="related-article">
           <a href="../NEWS_20251201002743/NEWS_20251201002743.html"><img src="https://drive.google.com/thumbnail?id=17UOGNhTm7bUWN_iBjnTK5eyIbD4XngTY&amp;sz=w4096" alt="GIẢI MÃ MA TRẬN BIẾNG ĂN – TÂM LÝ HAY BỆNH LÝ?"></a>

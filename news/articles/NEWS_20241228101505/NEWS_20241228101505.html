@@ -268,29 +268,42 @@
             font-size: 0.9em;
         }
 
- 
+           
         @media (max-width: 768px) {
             .container {
-                padding: 10px;  
+                padding: 10px;
             }
 
-             
             .article-content {
-                padding: 15px;  
+                padding: 15px;
             }
 
              
-            .article-content p, 
-            .article-content li,
-            .article-content div {
-                font-size: 19px !important;    
-                line-height: 1.6 !important;   
-                text-align: justify;           
+             
+             
+            .article-content, 
+            .article-content * { 
+                font-size: 20px !important;      
+                line-height: 1.6 !important;     
+                font-family: Arial, sans-serif !important;  
+                height: auto !important;         
             }
 
+             
+            .article-content h2, 
+            .article-content h3,
+            .article-content h4 {
+                font-size: 22px !important;
+                font-weight: bold !important;
+                margin-top: 25px !important;
+                margin-bottom: 15px !important;
+            }
+
+             
             .article-title {
-                font-size: 1.6em;  
-                line-height: 1.3;
+                font-size: 24px !important;  
+                line-height: 1.3 !important;
+                font-weight: bold;
             }
 
             .article-meta {
@@ -304,7 +317,6 @@
                 align-items: stretch;
             }
 
-             
             .related-grid {
                 grid-template-columns: 1fr;
             }
@@ -628,8 +640,48 @@
 
             
         <style>
-           .article-content ul, .article-content ol { list-style-type: disc !important; margin-left: 20px !important; }
-           .article-content li { display: list-item !important; list-style-type: disc !important; }
+            
+           .article-content ul, .article-content ol { 
+               list-style-type: disc !important;
+               margin-left: 20px !important; 
+               padding-left: 20px !important;
+           }
+           .article-content li { 
+               display: list-item !important;
+               list-style-type: disc !important; 
+           }
+
+            
+           @media only screen and (max-width: 768px) {
+                
+               .article-content, 
+               .article-content p, 
+               .article-content span, 
+               .article-content div, 
+               .article-content li {
+                   font-size: 20px !important;       
+                   line-height: 1.6 !important;      
+                   text-align: justify !important;   
+                   height: auto !important;          
+                   width: auto !important;           
+               }
+               
+                
+               .article-content h2, 
+               .article-content h3, 
+               .article-content h4,
+               .article-content strong,
+               .article-content b {
+                   font-size: 22px !important;
+                   line-height: 1.4 !important;
+                   font-weight: bold !important;
+               }
+               
+                
+               .article-content p {
+                   margin-bottom: 15px !important;
+               }
+           }
         </style>
       <p>Sức khỏe sinh sản là một vấn đề quan trọng đối với phụ nữ. Hiểu biết về các bệnh phụ khoa thường gặp sẽ giúp bạn chăm sóc bản thân tốt hơn và phát hiện sớm các dấu hiệu bất thường.</p><p><strong>Khí hư bất thường</strong></p><p>Khí hư là chất dịch tiết ra từ âm đạo. Sự thay đổi về màu sắc, mùi, lượng và kết cấu của khí hư có thể là dấu hiệu của các vấn đề sức khỏe. Nguyên nhân gây khí hư bất thường có thể do nhiễm trùng, thay đổi hormone hoặc các bệnh lý khác.</p><ul><li><strong>Triệu chứng:</strong> Ngứa, rát, đau khi quan hệ, mùi hôi, khí hư có màu bất thường (vàng, xanh lá cây, trắng đục).</li><li><strong>Nguyên nhân:</strong> Nhiễm nấm men, vi khuẩn, trichomonas, viêm âm đạo do kích ứng.</li><li><strong>Phòng ngừa:</strong> Vệ sinh vùng kín đúng cách, hạn chế thụt rửa, sử dụng bao cao su, khám phụ khoa định kỳ.</li></ul><p><strong>Rối loạn kinh nguyệt</strong></p><p>Chu kỳ kinh nguyệt không đều, kinh nguyệt quá nhiều hoặc quá ít đều có thể là dấu hiệu của các vấn đề sức khỏe.</p><ul><li><strong>Triệu chứng:</strong> Kinh nguyệt không đều, rong kinh, kinh nguyệt quá ít, đau bụng kinh dữ dội.</li><li><strong>Nguyên nhân:</strong> Rối loạn nội tiết, u xơ tử cung, lạc nội mạc tử cung, PCOS (hội chứng buồng trứng đa nang).</li><li><strong>Phòng ngừa:</strong> Chế độ ăn uống lành mạnh, tập thể dục đều đặn, giảm stress.</li></ul><p><strong>U nang buồng trứng</strong></p><p>U nang buồng trứng là những túi nhỏ chứa đầy chất lỏng hình thành trong buồng trứng. Hầu hết các u nang đều lành tính và tự biến mất.</p><ul><li><strong>Triệu chứng:</strong> Đau bụng dưới, đầy hơi, đau khi quan hệ, kinh nguyệt không đều.</li><li><strong>Nguyên nhân:</strong> Thay đổi hormone, lạc nội mạc tử cung.</li><li><strong>Phòng ngừa:</strong> Không có cách phòng ngừa cụ thể, nhưng việc khám phụ khoa định kỳ giúp phát hiện sớm.</li></ul><p><strong>Khi nào nên đi khám bác sĩ:</strong></p><ul><li>Khí hư bất thường kéo dài</li><li>Đau bụng dưới kéo dài</li><li>Kinh nguyệt không đều</li><li>Chảy máu âm đạo bất thường</li><li>Đau khi quan hệ</li><li>Khó khăn khi đi tiểu</li></ul><p><strong>Kết luận:</strong></p><p>Các vấn đề phụ khoa rất phổ biến và có thể ảnh hưởng đến chất lượng cuộc sống của phụ nữ. Việc nhận biết các triệu chứng sớm và đi khám bác sĩ kịp thời là rất quan trọng. Hãy chăm sóc sức khỏe bản thân bằng cách duy trì lối sống lành mạnh và khám phụ khoa định kỳ.</p><p><strong>Lưu ý:</strong> Đây chỉ là thông tin tham khảo, không thay thế cho lời khuyên của bác sĩ. Hãy luôn tham khảo ý kiến bác sĩ để được chẩn đoán và điều trị chính xác.</p>
             <div class="share-section">

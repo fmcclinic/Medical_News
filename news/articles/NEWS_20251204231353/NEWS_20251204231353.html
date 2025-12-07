@@ -268,29 +268,42 @@
             font-size: 0.9em;
         }
 
- 
+           
         @media (max-width: 768px) {
             .container {
-                padding: 10px;  
+                padding: 10px;
             }
 
-             
             .article-content {
-                padding: 15px;  
+                padding: 15px;
             }
 
              
-            .article-content p, 
-            .article-content li,
-            .article-content div {
-                font-size: 19px !important;    
-                line-height: 1.6 !important;   
-                text-align: justify;           
+             
+             
+            .article-content, 
+            .article-content * { 
+                font-size: 20px !important;      
+                line-height: 1.6 !important;     
+                font-family: Arial, sans-serif !important;  
+                height: auto !important;         
             }
 
+             
+            .article-content h2, 
+            .article-content h3,
+            .article-content h4 {
+                font-size: 22px !important;
+                font-weight: bold !important;
+                margin-top: 25px !important;
+                margin-bottom: 15px !important;
+            }
+
+             
             .article-title {
-                font-size: 1.6em;  
-                line-height: 1.3;
+                font-size: 24px !important;  
+                line-height: 1.3 !important;
+                font-weight: bold;
             }
 
             .article-meta {
@@ -304,7 +317,6 @@
                 align-items: stretch;
             }
 
-             
             .related-grid {
                 grid-template-columns: 1fr;
             }
@@ -628,8 +640,48 @@
 
             
         <style>
-           .article-content ul, .article-content ol { list-style-type: disc !important; margin-left: 20px !important; }
-           .article-content li { display: list-item !important; list-style-type: disc !important; }
+            
+           .article-content ul, .article-content ol { 
+               list-style-type: disc !important;
+               margin-left: 20px !important; 
+               padding-left: 20px !important;
+           }
+           .article-content li { 
+               display: list-item !important;
+               list-style-type: disc !important; 
+           }
+
+            
+           @media only screen and (max-width: 768px) {
+                
+               .article-content, 
+               .article-content p, 
+               .article-content span, 
+               .article-content div, 
+               .article-content li {
+                   font-size: 20px !important;       
+                   line-height: 1.6 !important;      
+                   text-align: justify !important;   
+                   height: auto !important;          
+                   width: auto !important;           
+               }
+               
+                
+               .article-content h2, 
+               .article-content h3, 
+               .article-content h4,
+               .article-content strong,
+               .article-content b {
+                   font-size: 22px !important;
+                   line-height: 1.4 !important;
+                   font-weight: bold !important;
+               }
+               
+                
+               .article-content p {
+                   margin-bottom: 15px !important;
+               }
+           }
         </style>
       <p><em>"Bác sĩ ơi, sao da con em mấy hôm nay cứ vàng như nghệ thế này? Bà cháu bảo cứ cho ra phơi nắng buổi sáng là hết, có đúng không ạ?"</em></p><p>Khoảng 70% trẻ sơ sinh có hiện tượng vàng da trong những ngày đầu đời. Hầu hết là vô hại, nhưng ranh giới giữa "vô hại" và "nguy hiểm chết người" ở trẻ sơ sinh là rất mong manh. Nếu chủ quan, chất gây vàng da có thể thấm vào não, gây tổn thương não vĩnh viễn (bại não).</p><p>Bài viết này sẽ giúp bố mẹ trang bị kiến thức chuẩn để bảo vệ con trong tháng đầu đời quan trọng này.</p><video src="https://friendmedicalclinic.com/news/articles/NEWS_20251204231353/NEWBORN%20JAUNDICE.mp4" controls="" autoplay="" loop="" muted="" playsinline="" preload="auto" style="border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 10px; margin: 20px auto; display: block; width: 100%; max-width: 450px; aspect-ratio: 1 / 1;"></video><p><br></p><h3>1. TẠI SAO TRẺ SƠ SINH LẠI BỊ VÀNG DA? (CƠ CHẾ ĐƠN GIẢN)</h3><p>Chất gây ra màu vàng trên da và mắt trẻ gọi là <strong>Bilirubin</strong>.</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Nguồn gốc:</strong> Khi trẻ chào đời, các hồng cầu thai nhi (vốn có số lượng rất nhiều để thích nghi với môi trường thiếu oxy trong bụng mẹ) sẽ vỡ ra hàng loạt. Quá trình vỡ này giải phóng ra Bilirubin.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Nhà máy xử lý:</strong> Thông thường, Gan sẽ làm nhiệm vụ "bắt giữ" và đào thải Bilirubin này ra ngoài qua phân và nước tiểu.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Vấn đề ở trẻ sơ sinh:</strong> Gan của trẻ mới sinh chưa trưởng thành, hoạt động còn yếu nên không kịp xử lý lượng Bilirubin khổng lồ đang được tạo ra. Bilirubin bị ứ đọng trong máu, thấm ra ngoài da, gây nên hiện tượng vàng da.</li></ol><h3>2. PHÂN BIỆT VÀNG DA SINH LÝ (BÌNH THƯỜNG) VÀ BỆNH LÝ (NGUY HIỂM)</h3><p>Đây là kỹ năng quan trọng nhất bố mẹ cần nắm. Chúng ta phân biệt dựa trên <strong>Thời điểm</strong>, <strong>Mức độ</strong> và <strong>Tốc độ</strong>.</p><h4>A. Vàng da SINH LÝ (An toàn, tự hết)</h4><p>Phần lớn các bé gặp loại này.</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Thời điểm xuất hiện:</strong> Thường SAU 24 giờ tuổi (thường là ngày thứ 2, thứ 3 sau sinh).</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Vị trí:</strong> Chỉ vàng nhẹ ở vùng mặt, cổ, ngực và bụng phía trên rốn.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Toàn trạng:</strong> Em bé vẫn ăn ngủ tốt, phân vàng, nước tiểu trong.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Diễn biến:</strong> Tự lặn dần sau 7-10 ngày (với trẻ đủ tháng) hoặc 14 ngày (với trẻ non tháng) mà không cần điều trị gì đặc biệt ngoài việc cho bú mẹ tích cực.</li></ol><h4>B. Vàng da BỆNH LÝ (Báo động đỏ - Cần nhập viện gấp)</h4><p>Chỉ chiếm tỷ lệ nhỏ nhưng cực kỳ nguy hiểm.</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Thời điểm xuất hiện:</strong> Vàng da xuất hiện SỚM (NGAY TRONG 24 GIỜ ĐẦU SAU SINH).</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Mức độ &amp; Tốc độ:</strong></li><li data-list="bullet" class="ql-indent-1"><span class="ql-ui" contenteditable="false"></span>Vàng da lan rất nhanh xuống đùi, cẳng chân.</li><li data-list="bullet" class="ql-indent-1"><span class="ql-ui" contenteditable="false"></span>Đặc biệt nguy hiểm khi vàng đến <strong>lòng bàn tay, lòng bàn chân</strong>.</li><li data-list="bullet" class="ql-indent-1"><span class="ql-ui" contenteditable="false"></span>Mức độ vàng đậm, vàng rực như nghệ.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Toàn trạng:</strong> Trẻ lừ đừ, bỏ bú, hoặc quấy khóc thét, xoắn vặn người, có thể sốt hoặc hạ thân nhiệt.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Chất thải:</strong> Phân bạc màu (trắng như cứt cò) hoặc nước tiểu rất sậm màu.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Diễn biến:</strong> Kéo dài trên 2 tuần không đỡ.</li></ol><blockquote><strong>Nguy cơ:</strong> Nếu Bilirubin tăng quá cao, nó sẽ vượt qua hàng rào bảo vệ não, thấm vào các nhân xám trong não gây <strong>Vàng da nhân não</strong>. Di chứng là bại não, điếc, chậm phát triển trí tuệ vĩnh viễn, không thể hồi phục.</blockquote><h3>3. GIẢI MÃ "HUYỀN THOẠI" TẮM NẮNG CHỮA VÀNG DA</h3><p>Rất nhiều gia đình vẫn giữ thói quen bế trẻ ra phơi nắng buổi sáng để trị vàng da. Y học hiện đại khuyến cáo thế nào?</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Sự thật 1: Ánh nắng buổi sáng không đủ mạnh.</strong> Để phân hủy Bilirubin, cần ánh sáng xanh dương có bước sóng đặc biệt với cường độ cao. Ánh nắng dịu buổi sáng (trước 8h) không đủ cường độ này.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Sự thật 2: Nguy cơ nhiều hơn lợi ích.</strong> Phơi nắng lúc nắng gắt thì hại da và mắt bé. Phơi nắng buổi sớm thì dễ khiến trẻ bị lạnh, viêm hô hấp.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>KẾT LUẬN:</strong> Tổ chức Y tế Thế giới (WHO) và các Hiệp hội Nhi khoa hiện nay <strong>KHÔNG KHUYẾN CÁO</strong> dùng việc tắm nắng để ĐIỀU TRỊ vàng da bệnh lý.</li></ol><p><strong>Phương pháp điều trị chuẩn y khoa là gì?</strong> Đó là <strong>CHIẾU ĐÈN (Phototherapy)</strong> tại bệnh viện. Trẻ được cởi trần, che mắt và bộ phận sinh dục, nằm dưới hệ thống đèn chuyên dụng phát ra ánh sáng xanh. Ánh sáng này sẽ biến đổi Bilirubin độc hại thành dạng không độc và đào thải ra ngoài dễ dàng.</p><h3>4. HƯỚNG DẪN BỐ MẸ CÁCH TỰ KIỂM TRA CON TẠI NHÀ</h3><p>Vì vàng da rất khó phát hiện dưới ánh đèn neon hoặc trong phòng tối, bố mẹ cần:</p><ol><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Quan sát dưới ánh sáng tự nhiên:</strong> Bế bé ra nơi có ánh sáng mặt trời đầy đủ (gần cửa sổ) vào ban ngày để quan sát.</li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Thử nghiệm "làm trắng da":</strong> Dùng ngón tay ấn nhẹ lên vùng da trán, mũi, ngực, đùi của trẻ rồi thả ra nhanh.</li><li data-list="bullet" class="ql-indent-1"><span class="ql-ui" contenteditable="false"></span>Nếu da chỗ ấn có màu trắng rồi hồng lại ngay -&gt; Không vàng da.</li><li data-list="bullet" class="ql-indent-1"><span class="ql-ui" contenteditable="false"></span>Nếu da chỗ ấn có màu vàng nghệ -&gt; Trẻ đang bị vàng da ở vùng đó.</li></ol><p><img src="https://drive.google.com/thumbnail?id=16HfhRogmwKUyXfSHKpduBkOSNvZyRxH0&amp;sz=w4096"></p><ol><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Quy tắc Krammer (để ước lượng):</strong> Vàng da thường tiến triển từ đầu xuống chân. Vàng càng xuống thấp thì càng nặng.</li><li data-list="bullet" class="ql-indent-1"><span class="ql-ui" contenteditable="false"></span>Vùng 1 (Mặt, cổ): Nhẹ.</li><li data-list="bullet" class="ql-indent-1"><span class="ql-ui" contenteditable="false"></span>Vùng 2 (Ngực, lưng): Trung bình.</li><li data-list="bullet" class="ql-indent-1"><span class="ql-ui" contenteditable="false"></span>Vùng 3 (Bụng dưới rốn đến đùi): Cần theo dõi sát.</li><li data-list="bullet" class="ql-indent-1"><span class="ql-ui" contenteditable="false"></span>Vùng 4 (Cẳng tay, cẳng chân): Nặng.</li><li data-list="bullet" class="ql-indent-1"><span class="ql-ui" contenteditable="false"></span>Vùng 5 (Lòng bàn tay, bàn chân): Rất nặng -&gt; Đi viện ngay!</li></ol><h3>5. LỜI KHUYÊN TỪ BÁC SĨ</h3><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Cho trẻ bú mẹ tích cực:</strong> Bú nhiều giúp trẻ đi tiêu, đi tiểu nhiều hơn, hỗ trợ đào thải Bilirubin ra ngoài nhanh hơn.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Đừng chủ quan:</strong> Nếu thấy con vàng da lan quá rốn hoặc vàng da xuất hiện ngay ngày đầu tiên, hãy đưa con đi khám ngay lập tức. Xét nghiệm máu là cách duy nhất để biết chính xác mức độ Bilirubin.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Tuân thủ lịch tái khám:</strong> Với trẻ sơ sinh cho về nhà sớm, việc tái khám đúng hẹn (thường sau 2-3 ngày) là cực kỳ quan trọng để bác sĩ đánh giá lại tình trạng vàng da.</li></ol><h2>Tài liệu tham khảo</h2><ol><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Kemper AR, et al. – 2022</strong> Clinical Practice Guideline Revision: Management of Hyperbilirubinemia in the Newborn Infant 35 or More Weeks of Gestation / Bản sửa đổi Hướng dẫn thực hành lâm sàng: Quản lý tăng Bilirubin máu ở trẻ sơ sinh từ 35 tuần thai trở lên <em>Nguồn: Pediatrics (AAP)</em> <a href="https://www.google.com/search?q=https://publications.aap.org/pediatrics/article/150/3/e2022058859/188702/Clinical-Practice-Guideline-Revision-Management-of" rel="noopener noreferrer" target="_blank">https://publications.aap.org/pediatrics/article/150/3/e2022058859/188702/Clinical-Practice-Guideline-Revision-Management-of</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>National Institute for Health and Care Excellence (NICE) – 2016</strong> Jaundice in newborn babies under 28 days / Vàng da ở trẻ sơ sinh dưới 28 ngày tuổi <em>Nguồn: NICE Guidelines (UK)</em> <a href="https://www.nice.org.uk/guidance/cg98" rel="noopener noreferrer" target="_blank">https://www.nice.org.uk/guidance/cg98</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Mayo Clinic Staff – 2022</strong> Infant jaundice: Symptoms &amp; causes / Vàng da ở trẻ sơ sinh: Triệu chứng và nguyên nhân <em>Nguồn: Mayo Clinic</em> <a href="https://www.google.com/search?q=https://www.mayoclinic.org/diseases-conditions/infant-jaundice/symptoms-causes/syc-20373868" rel="noopener noreferrer" target="_blank">https://www.mayoclinic.org/diseases-conditions/infant-jaundice/symptoms-causes/syc-20373868</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Flaherman V, et al. – 2017</strong> ABM Clinical Protocol #22: Guidelines for Management of Jaundice in the Breastfeeding Infant / Giao thức lâm sàng ABM số 22: Hướng dẫn quản lý vàng da ở trẻ bú mẹ <em>Nguồn: PubMed / Academy of Breastfeeding Medicine</em> <a href="https://pubmed.ncbi.nlm.nih.gov/28961035/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/28961035/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Centers for Disease Control and Prevention (CDC) – 2020</strong> Jaundice &amp; Kernicterus: Facts / Vàng da và Vàng da nhân não: Các thông tin thực tế <em>Nguồn: CDC</em> <a href="https://www.google.com/search?q=https://www.cdc.gov/ncbddd/jaundice/facts.html" rel="noopener noreferrer" target="_blank">https://www.cdc.gov/ncbddd/jaundice/facts.html</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Maisels MJ, et al. – 2008</strong> Phototherapy for Neonatal Jaundice / Liệu pháp chiếu đèn điều trị vàng da sơ sinh <em>Nguồn: New England Journal of Medicine (NEJM)</em> <a href="https://www.nejm.org/doi/full/10.1056/NEJMct0708376" rel="noopener noreferrer" target="_blank">https://www.nejm.org/doi/full/10.1056/NEJMct0708376</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Ullah S, et al. – 2016</strong> Hyperbilirubinemia in Neonates: Types, Causes, Clinical Examinations, Preventive Measures and Treatments / Tăng Bilirubin máu ở trẻ sơ sinh: Phân loại, nguyên nhân, thăm khám lâm sàng, biện pháp phòng ngừa và điều trị <em>Nguồn: PubMed / Iran J Public Health</em> <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4935699/" rel="noopener noreferrer" target="_blank">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4935699/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>American Academy of Pediatrics (AAP) – 2022</strong> Jaundice in Newborns: Parent FAQs / Vàng da ở trẻ sơ sinh: Các câu hỏi thường gặp của cha mẹ <em>Nguồn: HealthyChildren.org</em> <a href="https://www.healthychildren.org/English/ages-stages/baby/Pages/Jaundice.aspx" rel="noopener noreferrer" target="_blank">https://www.healthychildren.org/English/ages-stages/baby/Pages/Jaundice.aspx</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Bhutani VK, et al. – 2013</strong> Neonatal hyperbilirubinemia and Rhesus disease of the newborn / Tăng Bilirubin máu sơ sinh và bất đồng nhóm máu Rhesus <em>Nguồn: PubMed / BMJ</em> <a href="https://pubmed.ncbi.nlm.nih.gov/23793653/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/23793653/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Cleveland Clinic – 2022</strong> Jaundice in Newborns: Risks, Diagnosis &amp; Treatment / Vàng da ở trẻ sơ sinh: Nguy cơ, Chẩn đoán và Điều trị <em>Nguồn: Cleveland Clinic</em> <a href="https://my.clevelandclinic.org/health/diseases/22263-jaundice-in-newborns" rel="noopener noreferrer" target="_blank">https://my.clevelandclinic.org/health/diseases/22263-jaundice-in-newborns</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>World Health Organization (WHO) – 2013</strong> WHO Recommendations on Postnatal Care of the Mother and Newborn / Khuyến nghị của WHO về chăm sóc hậu sản cho mẹ và bé (Bao gồm phần đánh giá vàng da) <em>Nguồn: WHO</em> <a href="https://www.who.int/publications/i/item/9789241506649" rel="noopener noreferrer" target="_blank">https://www.who.int/publications/i/item/9789241506649</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Kramer LI. – 1969</strong> Advancement of dermal icterus in the jaundiced newborn / Sự tiến triển của vàng da trên da ở trẻ sơ sinh (Cơ sở của quy tắc Kramer) <em>Nguồn: PubMed / Am J Dis Child</em> <a href="https://www.google.com/search?q=https://pubmed.ncbi.nlm.nih.gov/5817296/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/5817296/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>NHS UK – 2023</strong> Newborn jaundice: Treatment / Vàng da sơ sinh: Các phương pháp điều trị <em>Nguồn: National Health Service (UK)</em> <a href="https://www.nhs.uk/conditions/jaundice-newborn/treatment/" rel="noopener noreferrer" target="_blank">https://www.nhs.uk/conditions/jaundice-newborn/treatment/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Preer GL, et al. – 2011</strong> Understanding and managing breast milk jaundice / Hiểu và quản lý vàng da do sữa mẹ <em>Nguồn: PubMed / Arch Dis Child Fetal Neonatal Ed</em> <a href="https://pubmed.ncbi.nlm.nih.gov/20688866/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/20688866/</a></li></ol><p><br></p><p><br></p>
             <div class="share-section">
@@ -657,7 +709,7 @@
         <div class="related-article">
           <a href="../NEWS_20251207101704/NEWS_20251207101704.html"><img src="https://drive.google.com/thumbnail?id=1YosWHQ-Yzx8irl80IW3qUjzdrA5bvJbr&amp;sz=w4096" alt="GIẤC NGỦ CỦA BÉ: TỪ &#34;CUỘC CHIẾN XUYÊN ĐÊM&#34; ĐẾN GIẤC NGỦ THIÊN THẦN. BÍ QUYẾT RÈN NẾP NGỦ KHOA HỌC"></a>
           <h3><a href="../NEWS_20251207101704/NEWS_20251207101704.html">GIẤC NGỦ CỦA BÉ: TỪ "CUỘC CHIẾN XUYÊN ĐÊM" ĐẾN GIẤC NGỦ THIÊN THẦN. BÍ QUYẾT RÈN NẾP NGỦ KHOA HỌC</a></h3>
-          <span class="date">07/12/2025</span>
+          <span class="date">08/12/2025</span>
         </div>
         <div class="related-article">
           <a href="../NEWS_20251207085919/NEWS_20251207085919.html"><img src="https://drive.google.com/thumbnail?id=13NtS7DnTxe-2Sb1TmRBx3AF0dAyvZiLD&amp;sz=w4096" alt="BIẾNG ĂN TÂM LÝ: KHI BỮA CƠM LÀ &#34;CHIẾN TRƯỜNG&#34;. NGUYÊN NHÂN VÀ CHIẾN LƯỢC ĐỂ CON ĂN TRONG HẠNH PHÚC MÀ KHÔNG CẦN ÉP BUỘC"></a>

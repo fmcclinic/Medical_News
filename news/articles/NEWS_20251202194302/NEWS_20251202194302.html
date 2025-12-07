@@ -268,29 +268,42 @@
             font-size: 0.9em;
         }
 
- 
+           
         @media (max-width: 768px) {
             .container {
-                padding: 10px;  
+                padding: 10px;
             }
 
-             
             .article-content {
-                padding: 15px;  
+                padding: 15px;
             }
 
              
-            .article-content p, 
-            .article-content li,
-            .article-content div {
-                font-size: 19px !important;    
-                line-height: 1.6 !important;   
-                text-align: justify;           
+             
+             
+            .article-content, 
+            .article-content * { 
+                font-size: 20px !important;      
+                line-height: 1.6 !important;     
+                font-family: Arial, sans-serif !important;  
+                height: auto !important;         
             }
 
+             
+            .article-content h2, 
+            .article-content h3,
+            .article-content h4 {
+                font-size: 22px !important;
+                font-weight: bold !important;
+                margin-top: 25px !important;
+                margin-bottom: 15px !important;
+            }
+
+             
             .article-title {
-                font-size: 1.6em;  
-                line-height: 1.3;
+                font-size: 24px !important;  
+                line-height: 1.3 !important;
+                font-weight: bold;
             }
 
             .article-meta {
@@ -304,7 +317,6 @@
                 align-items: stretch;
             }
 
-             
             .related-grid {
                 grid-template-columns: 1fr;
             }
@@ -628,8 +640,48 @@
 
             
         <style>
-           .article-content ul, .article-content ol { list-style-type: disc !important; margin-left: 20px !important; }
-           .article-content li { display: list-item !important; list-style-type: disc !important; }
+            
+           .article-content ul, .article-content ol { 
+               list-style-type: disc !important;
+               margin-left: 20px !important; 
+               padding-left: 20px !important;
+           }
+           .article-content li { 
+               display: list-item !important;
+               list-style-type: disc !important; 
+           }
+
+            
+           @media only screen and (max-width: 768px) {
+                
+               .article-content, 
+               .article-content p, 
+               .article-content span, 
+               .article-content div, 
+               .article-content li {
+                   font-size: 20px !important;       
+                   line-height: 1.6 !important;      
+                   text-align: justify !important;   
+                   height: auto !important;          
+                   width: auto !important;           
+               }
+               
+                
+               .article-content h2, 
+               .article-content h3, 
+               .article-content h4,
+               .article-content strong,
+               .article-content b {
+                   font-size: 22px !important;
+                   line-height: 1.4 !important;
+                   font-weight: bold !important;
+               }
+               
+                
+               .article-content p {
+                   margin-bottom: 15px !important;
+               }
+           }
         </style>
       <p>	</p><p>Tiêu chảy cấp là một trong những nguyên nhân hàng đầu khiến trẻ em phải nhập viện, thậm chí gây tử vong ở các nước đang phát triển. "Thủ phạm" quen mặt nhất, chiếm đến 50-70% các ca tiêu chảy nặng ở trẻ dưới 5 tuổi, chính là <strong>Rota virus</strong>.</p><p>Điều quan trọng nhất bố mẹ cần khắc cốt ghi tâm: Bản thân virus Rota thường không gây tổn thương vĩnh viễn đường ruột, nhưng hậu quả của việc đi ngoài liên tục – là tình trạng <strong>MẤT NƯỚC VÀ ĐIỆN GIẢI CẤP TÍNH</strong> – chính là nguyên nhân giết chết trẻ.</p><p>Bài viết này sẽ hướng dẫn bố mẹ cách nhận biết và quan trọng nhất là kỹ năng "vàng" để cứu sống trẻ: Bù nước đúng cách tại nhà.</p><p><br></p><h3>1. TỔNG QUAN: ROTA VIRUS LÀ GÌ VÀ TẠI SAO NÓ ĐÁNG SỢ?</h3><p><br></p><p><strong>Hiểu về Tiêu chảy cấp:</strong> Trẻ được xác định là tiêu chảy cấp khi đi ngoài phân lỏng hoặc toé nước từ <strong>3 lần trở lên trong 24 giờ</strong>, và đợt bệnh kéo dài không quá 14 ngày.</p><p><strong>Kẻ thù số 1 - Rota virus:</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Đặc điểm:</strong> Đây là loại virus có khả năng lây lan cực mạnh và tồn tại bền vững trong môi trường. Hầu hết trẻ em trên thế giới đều ít nhất một lần nhiễm Rota virus trước 5 tuổi.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Đường lây truyền:</strong> Lây qua đường "phân - miệng". Trẻ chạm tay vào đồ chơi, sàn nhà có dính virus rồi đưa lên miệng. Người lớn vệ sinh cho trẻ bệnh không rửa tay kỹ cũng làm lây lan virus.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Cơ chế gây bệnh:</strong> Virus tấn công và phá hủy lớp tế bào niêm mạc ruột non, làm mất khả năng hấp thu nước và chất dinh dưỡng. Đồng thời, ruột bị kích thích tăng tiết dịch, dẫn đến tình trạng đi ngoài phân toàn nước ồ ạt.</li></ol><p><strong>Vaccine phòng bệnh:</strong> Hiện nay đã có vaccine uống ngừa Rota virus rất hiệu quả, thường được chỉ định cho trẻ từ 6 tuần tuổi. Đây là biện pháp phòng ngừa chủ động tốt nhất để giảm tỷ lệ mắc bệnh nặng.</p><p><br></p><h3>2. NHẬN DIỆN "KỊCH BẢN" ĐIỂN HÌNH CỦA NHIỄM ROTA VIRUS</h3><p><br></p><p>Khác với tiêu chảy do vi khuẩn hoặc ngộ độc thực phẩm, nhiễm Rota virus thường có diễn biến khá đặc trưng qua hai giai đoạn:</p><p><strong>Giai đoạn 1: Khởi phát với Nôn ói và Sốt (1-2 ngày đầu)</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Trẻ thường bắt đầu bằng việc nôn rất nhiều. Nôn thốc nôn tháo mọi thứ vừa ăn hoặc uống xong.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Kèm theo sốt nhẹ hoặc sốt vừa.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Ở giai đoạn này, trẻ có thể chưa đi ngoài phân lỏng, khiến bố mẹ dễ nhầm lẫn với các bệnh lý khác.</li></ol><p><strong>Giai đoạn 2: Tiêu chảy ồ ạt (Từ ngày thứ 2-3 trở đi)</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Khi nôn và sốt bắt đầu giảm thì tiêu chảy xuất hiện dữ dội.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><em>Đặc điểm phân:</em> Đi ngoài rất nhiều lần trong ngày (có thể lên đến 10-20 lần), phân lỏng hoàn toàn, màu vàng hoặc xanh, có thể có bọt, mùi rất tanh, nhưng thường KHÔNG CÓ MÁU.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Tình trạng mất nước diễn ra rất nhanh trong giai đoạn này.</li></ol><p><br></p><h3>3. KỸ NĂNG SỐNG CÒN: BÙ NƯỚC ĐÚNG CÁCH TẠI NHÀ</h3><p><br></p><p>Nguyên tắc điều trị quan trọng nhất của tiêu chảy cấp là: <strong>Bù lại lượng nước và muối đã mất</strong>. Dung dịch chuẩn nhất được Tổ chức Y tế Thế giới (WHO) khuyến cáo là <strong>Oresol</strong>.</p><p>Tuy nhiên, pha Oresol sai cách còn nguy hiểm hơn là không uống. Dưới đây là những sai lầm chết người và cách làm đúng:</p><p><strong>SAI LẦM 1: Pha Oresol quá đặc hoặc quá loãng</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><em>Sai lầm:</em> Nhiều bố mẹ nghĩ chia nhỏ gói Oresol để pha cho tiện, hoặc pha đặc một chút cho "chất lượng".</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><em>Hậu quả:</em> Pha quá đặc sẽ khiến áp lực thẩm thấu trong ruột tăng vọt, hút nước từ trong máu ra lòng ruột, làm tình trạng tiêu chảy và mất nước trầm trọng hơn, thậm chí gây ngộ độc muối, co giật, tổn thương não. Pha quá loãng thì không đủ bù điện giải.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><em>CÁCH LÀM ĐÚNG:</em> <strong>Pha nguyên một gói với đúng lượng nước quy định trên bao bì.</strong> (Ví dụ: Gói quy định pha với 200ml thì phải đong chính xác 200ml nước đun sôi để nguội, gói pha 1 lít thì đong đúng 1 lít). Tuyệt đối không "áng chừng".</li></ol><p><strong>SAI LẦM 2: Cách uống không đúng khi trẻ đang nôn</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><em>Sai lầm:</em> Cho trẻ uống một lượng lớn Oresol ngay sau khi trẻ vừa nôn. Điều này sẽ kích thích dạ dày và làm trẻ nôn tiếp.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><em>CÁCH LÀM ĐÚNG:</em> Nếu trẻ nôn, hãy đợi khoảng 10 phút cho dạ dày ổn định. Sau đó, bắt đầu cho uống lại <strong>từng thìa nhỏ một</strong> (mỗi 1-2 phút một thìa). Kiên nhẫn đút chậm rãi. Nếu sau vài giờ trẻ không nôn nữa thì mới cho uống ngụm lớn hơn.</li></ol><p><strong>SAI LẦM 3: Dùng sai loại nước để bù</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><em>Các loại nước TUYỆT ĐỐI TRÁNH:</em> Nước ngọt có ga, nước trái cây công nghiệp, nước tăng lực, nước đường tự pha. Những loại này chứa quá nhiều đường, sẽ làm tăng áp lực thẩm thấu, khiến trẻ tiêu chảy nặng hơn.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><em>Các loại nước thay thế tạm thời (nếu trẻ từ chối Oresol):</em> Nước cháo muối loãng, nước dừa tươi (thêm một chút xíu muối), nước lọc sạch. Tuy nhiên, Oresol vẫn là lựa chọn tối ưu nhất.</li></ol><p><br></p><h3>4. DINH DƯỠNG KHI BỊ TIÊU CHẢY: ĐỪNG BẮT TRẺ NHỊN ĂN</h3><p><br></p><p>Quan niệm cũ cho rằng trẻ bị tiêu chảy thì phải kiêng ăn, chỉ cho ăn cháo trắng muối là hoàn toàn sai lầm. Bắt trẻ nhịn ăn sẽ dẫn đến suy dinh dưỡng và chậm hồi phục niêm mạc ruột.</p><p><strong>Nguyên tắc ăn uống:</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Tiếp tục cho trẻ bú mẹ bình thường, thậm chí tăng số lần bú nếu trẻ muốn. Sữa mẹ là thức ăn và nguồn bù nước tuyệt vời.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Với trẻ đã ăn dặm: Cho ăn thức ăn mềm, lỏng, dễ tiêu hóa (cháo thịt nạc, súp cà rốt, khoai tây nghiền). Nấu chín kỹ.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Chia nhỏ bữa ăn thành nhiều lần trong ngày (6-8 bữa).</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Tránh:</strong> Thức ăn nhiều dầu mỡ, quá ngọt, các loại rau sợi thô khó tiêu, nước béo của nước hầm xương.</li></ol><p><br></p><h3>5. DẤU HIỆU BÁO ĐỘNG: KHI NÀO CẦN NHẬP VIỆN NGAY LẬP TỨC?</h3><p><img src="https://drive.google.com/thumbnail?id=1fy5_qc2m1hlqlL9auT2JO6meq3dO01EH&amp;sz=w4096"></p><p>Bố mẹ cần đưa trẻ đến cơ sở y tế ngay nếu việc bù nước tại nhà thất bại hoặc trẻ có các dấu hiệu mất nước nặng sau:</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Tinh thần:</strong> Trẻ lừ đừ, li bì khó đánh thức, hoặc ngược lại là vật vã, kích thích, quấy khóc liên tục.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Dấu hiệu khát:</strong> Trẻ khát nước dữ dội, uống háo hức (với trẻ lớn) hoặc không thể uống được, bú kém (với trẻ nhỏ).</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Mắt:</strong> Mắt trũng sâu, khô. Khi khóc không có nước mắt.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Miệng và lưỡi:</strong> Môi khô nứt nẻ, lưỡi khô.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Nước tiểu:</strong> Trẻ không đi tiểu trong vòng 6 tiếng. Nước tiểu rất ít và sẫm màu.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Da:</strong> Nếp véo da mất chậm (khi véo da bụng và thả ra, nếp da không phẳng lại ngay lập tức).</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Các dấu hiệu nguy hiểm khác:</strong> Sốt cao không hạ, nôn liên tục mọi thứ ăn uống vào, hoặc đi ngoài phân có máu.</li></ol><h2>Tài liệu tham khảo</h2><ol><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Mayo Clinic Staff – 2024</strong> Rotavirus: Symptoms and causes / Rotavirus: Triệu chứng và nguyên nhân <em>Nguồn: Mayo Clinic</em> <a href="https://www.mayoclinic.org/diseases-conditions/rotavirus/symptoms-causes/syc-20351300" rel="noopener noreferrer" target="_blank">https://www.mayoclinic.org/diseases-conditions/rotavirus/symptoms-causes/syc-20351300</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>American Academy of Pediatrics (AAP) – 2022</strong> Diarrhea in Children: What Parents Need to Know / Tiêu chảy ở trẻ em: Những điều cha mẹ cần biết <em>Nguồn: HealthyChildren.org (AAP)</em> <a href="https://www.healthychildren.org/English/health-issues/conditions/abdominal/Pages/Diarrhea.aspx" rel="noopener noreferrer" target="_blank">https://www.healthychildren.org/English/health-issues/conditions/abdominal/Pages/Diarrhea.aspx</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Vega RM, et al. – 2023</strong> Dehydration In Children / Mất nước ở trẻ em (Sinh lý bệnh và đánh giá lâm sàng) <em>Nguồn: PubMed / StatPearls</em> <a href="https://www.ncbi.nlm.nih.gov/books/NBK436022/" rel="noopener noreferrer" target="_blank">https://www.ncbi.nlm.nih.gov/books/NBK436022/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Lazzerini M, et al. – 2016</strong> Oral zinc for treating diarrhoea in children / Kẽm đường uống để điều trị tiêu chảy ở trẻ em <em>Nguồn: PubMed / Cochrane Database of Systematic Reviews</em> <a href="https://pubmed.ncbi.nlm.nih.gov/28026873/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/28026873/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Cleveland Clinic – 2022</strong> Dehydration: Signs, Symptoms, Causes &amp; Prevention / Mất nước: Dấu hiệu, triệu chứng, nguyên nhân và phòng ngừa <em>Nguồn: Cleveland Clinic</em> <a href="https://my.clevelandclinic.org/health/treatments/9013-dehydration" rel="noopener noreferrer" target="_blank">https://my.clevelandclinic.org/health/treatments/9013-dehydration</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Florez ID, et al. – 2018</strong> Comparative effectiveness and safety of interventions for acute diarrhea and gastroenteritis in children / So sánh hiệu quả và độ an toàn của các biện pháp can thiệp đối với tiêu chảy cấp và viêm dạ dày ruột ở trẻ em <em>Nguồn: PubMed / JAMA Pediatrics</em> <a href="https://pubmed.ncbi.nlm.nih.gov/30383112/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/30383112/</a></li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Ihekweazu C, et al. – 2017</strong> Management of Acute Diarrhea in Children / Quản lý tiêu chảy cấp ở trẻ em <em>Nguồn: PubMed / American Family Physician</em> <a href="https://www.aafp.org/pubs/afp/issues/2017/0401/p453.html" rel="noopener noreferrer" target="_blank">https://www.aafp.org/pubs/afp/issues/2017/0401/p453.html</a></li></ol><p><br></p><p><br></p>
             <div class="share-section">
@@ -657,7 +709,7 @@
         <div class="related-article">
           <a href="../NEWS_20251207101704/NEWS_20251207101704.html"><img src="https://drive.google.com/thumbnail?id=1YosWHQ-Yzx8irl80IW3qUjzdrA5bvJbr&amp;sz=w4096" alt="GIẤC NGỦ CỦA BÉ: TỪ &#34;CUỘC CHIẾN XUYÊN ĐÊM&#34; ĐẾN GIẤC NGỦ THIÊN THẦN. BÍ QUYẾT RÈN NẾP NGỦ KHOA HỌC"></a>
           <h3><a href="../NEWS_20251207101704/NEWS_20251207101704.html">GIẤC NGỦ CỦA BÉ: TỪ "CUỘC CHIẾN XUYÊN ĐÊM" ĐẾN GIẤC NGỦ THIÊN THẦN. BÍ QUYẾT RÈN NẾP NGỦ KHOA HỌC</a></h3>
-          <span class="date">07/12/2025</span>
+          <span class="date">08/12/2025</span>
         </div>
         <div class="related-article">
           <a href="../NEWS_20251207085919/NEWS_20251207085919.html"><img src="https://drive.google.com/thumbnail?id=13NtS7DnTxe-2Sb1TmRBx3AF0dAyvZiLD&amp;sz=w4096" alt="BIẾNG ĂN TÂM LÝ: KHI BỮA CƠM LÀ &#34;CHIẾN TRƯỜNG&#34;. NGUYÊN NHÂN VÀ CHIẾN LƯỢC ĐỂ CON ĂN TRONG HẠNH PHÚC MÀ KHÔNG CẦN ÉP BUỘC"></a>

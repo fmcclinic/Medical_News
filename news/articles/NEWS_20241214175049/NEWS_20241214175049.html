@@ -268,29 +268,42 @@
             font-size: 0.9em;
         }
 
- 
+           
         @media (max-width: 768px) {
             .container {
-                padding: 10px;  
+                padding: 10px;
             }
 
-             
             .article-content {
-                padding: 15px;  
+                padding: 15px;
             }
 
              
-            .article-content p, 
-            .article-content li,
-            .article-content div {
-                font-size: 19px !important;    
-                line-height: 1.6 !important;   
-                text-align: justify;           
+             
+             
+            .article-content, 
+            .article-content * { 
+                font-size: 20px !important;      
+                line-height: 1.6 !important;     
+                font-family: Arial, sans-serif !important;  
+                height: auto !important;         
             }
 
+             
+            .article-content h2, 
+            .article-content h3,
+            .article-content h4 {
+                font-size: 22px !important;
+                font-weight: bold !important;
+                margin-top: 25px !important;
+                margin-bottom: 15px !important;
+            }
+
+             
             .article-title {
-                font-size: 1.6em;  
-                line-height: 1.3;
+                font-size: 24px !important;  
+                line-height: 1.3 !important;
+                font-weight: bold;
             }
 
             .article-meta {
@@ -304,7 +317,6 @@
                 align-items: stretch;
             }
 
-             
             .related-grid {
                 grid-template-columns: 1fr;
             }
@@ -628,8 +640,48 @@
 
             
         <style>
-           .article-content ul, .article-content ol { list-style-type: disc !important; margin-left: 20px !important; }
-           .article-content li { display: list-item !important; list-style-type: disc !important; }
+            
+           .article-content ul, .article-content ol { 
+               list-style-type: disc !important;
+               margin-left: 20px !important; 
+               padding-left: 20px !important;
+           }
+           .article-content li { 
+               display: list-item !important;
+               list-style-type: disc !important; 
+           }
+
+            
+           @media only screen and (max-width: 768px) {
+                
+               .article-content, 
+               .article-content p, 
+               .article-content span, 
+               .article-content div, 
+               .article-content li {
+                   font-size: 20px !important;       
+                   line-height: 1.6 !important;      
+                   text-align: justify !important;   
+                   height: auto !important;          
+                   width: auto !important;           
+               }
+               
+                
+               .article-content h2, 
+               .article-content h3, 
+               .article-content h4,
+               .article-content strong,
+               .article-content b {
+                   font-size: 22px !important;
+                   line-height: 1.4 !important;
+                   font-weight: bold !important;
+               }
+               
+                
+               .article-content p {
+                   margin-bottom: 15px !important;
+               }
+           }
         </style>
       <p>"Chị Lan (35 tuổi, TP.HCM) tưởng chừng đã quá muộn khi phát hiện khối u ở giai đoạn 2. Nhưng nhờ tầm soát định kỳ trong chương trình khám sức khỏe công ty, chị đã kịp thời điều trị và hiện đã khỏe mạnh trở lại. 'Giá như tôi biết và đi khám sớm hơn...' - đây là tâm sự của rất nhiều chị em."</p><h2>Câu Chuyện Của Người Chiến Thắng</h2><p>"Tôi vẫn nhớ như in cảm giác hôm đó. Trong buổi khám sức khỏe định kỳ của công ty, bác sĩ phát hiện một khối u nhỏ ở vú phải. Ban đầu, tôi hoảng loạn và sợ hãi vô cùng," chị Lan chia sẻ. Sau khi được chẩn đoán ung thư vú giai đoạn 2, chị đã trải qua 6 tháng điều trị tích cực bao gồm phẫu thuật và hóa trị. "May mắn là nhờ phát hiện ở giai đoạn còn sớm, tôi đã có cơ hội điều trị hiệu quả. Giờ đây, tôi luôn nhắc nhở bạn bè và người thân về tầm quan trọng của việc tầm soát định kỳ."</p><h2>Thực Trạng Đáng Báo Động</h2><p>Theo thống kê mới nhất từ Globocan 2020, Việt Nam có khoảng 21.555 ca mắc mới ung thư vú mỗi năm, với 70% số ca được phát hiện ở giai đoạn muộn. Con số này đang gia tăng đáng kể trong những năm gần đây, đặc biệt ở nhóm phụ nữ trong độ tuổi 35-55.</p><h2>Các Phương Pháp Tầm Soát Hiệu Quả</h2><h3>1. Tự Khám Vú</h3><ul><li>Thực hiện định kỳ mỗi tháng</li><li>Thời điểm thích hợp: 7-10 ngày sau khi bắt đầu kỳ kinh</li><li>Có thể phát hiện những thay đổi bất thường sớm</li></ul><h3>2. Khám Lâm Sàng</h3><ul><li>Thực hiện bởi bác sĩ chuyên khoa</li><li>Tần suất: 6 tháng - 1 năm/lần</li><li>Đánh giá chuyên sâu về các dấu hiệu bất thường</li></ul><h3>3. Chụp X-quang Tuyến Vú (Mammogram)</h3><ul><li>Phương pháp tầm soát chuẩn xác nhất</li><li>Có thể phát hiện tổn thương từ rất sớm</li><li>Được khuyến nghị định kỳ cho phụ nữ từ 40 tuổi trở lên</li></ul><h2>Đối Tượng Cần Tầm Soát</h2><ul><li>Phụ nữ từ 40 tuổi trở lên: Khám định kỳ hàng năm</li><li>Phụ nữ từ 20-39 tuổi: Khám lâm sàng 3 năm/lần</li><li>Đối tượng có nguy cơ cao (tiền sử gia đình, gen BRCA1/2): Bắt đầu tầm soát sớm hơn theo tư vấn của bác sĩ</li></ul><h2>Quy Trình Tầm Soát Tại Phòng Khám</h2><ol><li>Đăng ký và khai báo thông tin</li><li>Tư vấn với bác sĩ chuyên khoa</li><li>Khám lâm sàng</li><li>Chỉ định cận lâm sàng phù hợp (siêu âm, chụp nhũ ảnh)</li><li>Đánh giá kết quả và tư vấn</li><li>Lập kế hoạch theo dõi</li></ol><h2><br></h2><h2>Lời Khuyên Từ Chuyên Gia</h2><p>BS CK2 Nguyễn Hoàng Lam, Phó Trưởng khoa Ung bướu Bệnh viện Từ Vũ chia sẻ: "Tầm soát ung thư vú không chỉ là việc đi khám bệnh, mà là một hành động chủ động bảo vệ sức khỏe. Chúng tôi khuyến khích chị em duy trì thói quen tự khám vú hàng tháng và đi khám định kỳ theo lịch. Phát hiện sớm là chìa khóa để điều trị hiệu quả."</p><h2>Hành Động Ngay Hôm Nay</h2><p>Đừng để những lo lắng về ung thư vú trở thành nỗi ám ảnh. Hãy chủ động đặt lịch tầm soát ngay hôm nay tại phòng khám của chúng tôi. Một cuộc hẹn nhỏ có thể đem lại sự an tâm lớn cho bạn và gia đình.</p>
             <div class="share-section">
