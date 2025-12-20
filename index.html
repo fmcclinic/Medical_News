@@ -19,39 +19,94 @@
             background-color: #f9f9f9; 
         }
 
-        .section-slot { min-height: 100px; }
+        .section-slot { 
+            min-height: 100px; 
+            margin-bottom: 30px; 
+        }
 
         /* --- 2. XỬ LÝ XUNG ĐỘT HEADER (QUAN TRỌNG) --- */
-        /* Ẩn hoàn toàn header con nằm trong news.html */
         #news-slot .fmc-header-wrapper,
         #news-slot .fmc-header,
         #news-slot header {
             display: none !important;
         }
-        /* Reset khoảng trống nếu news.html có padding thừa */
-        #news-slot { margin-top: 0 !important; padding-top: 0 !important; }
 
-        /* --- 3. CHAT WIDGET STYLES --- */
-        #chat-widget-fixed {
-            position: fixed; bottom: 90px; right: 20px;
-            width: 350px; height: 450px; border-radius: 15px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.2); z-index: 9990;
-            background: white; display: none; border: 1px solid #ddd; overflow: hidden;
+        /* --- 3. WIDGET CỐ ĐỊNH --- */
+        .fixed-widget {
+            position: fixed; 
+            bottom: 20px; 
+            z-index: 9990;
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px;
         }
-        #chat-widget-fixed.active { display: block; }
-        #chat-widget-fixed iframe { width: 100%; height: 100%; border: none; }
 
-        .chat-toggle-btn {
-            position: fixed; bottom: 20px; right: 20px;
-            width: 60px; height: 60px; border-radius: 50%;
-            background: #0084ff; color: white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; z-index: 9998; transition: transform 0.3s;
+        #widget-group-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9998;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-end;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .floating-btn:hover {
+            transform: scale(1.08);
         }
         
+        /* Zalo Button (Màu xanh Zalo) */
+        .zalo-toggle-btn {
+            background: #0084ff; 
+            color: white;
+        }
+        /* Messenger Button (Màu xanh Facebook/Chat) */
+        .chat-toggle-btn {
+            background: #0070c0; 
+            color: white;
+        }
+        
+        /* Chat Widget Iframe */
+        #chat-widget-iframe {
+            position: fixed; 
+            bottom: 90px; 
+            right: 20px;
+            width: 350px; 
+            height: 450px; 
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2); 
+            z-index: 9990;
+            background: white; 
+            display: none; 
+            border: 1px solid #ddd; 
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+            transform-origin: bottom right;
+        }
+        #chat-widget-iframe.active { 
+            display: block; 
+            transform: scale(1);
+        }
+
         @media (max-width: 480px) {
-            #chat-widget-fixed { width: 90vw; height: 80vh; bottom: 10px; right: 5vw; }
+            #chat-widget-iframe { 
+                width: 90vw; 
+                height: 80vh; 
+                bottom: 10px; 
+                right: 5vw; 
+            }
         }
     </style>
 </head>
@@ -61,52 +116,81 @@
 
     <div id="hero-slot" class="section-slot"></div>
     <div id="specialist-slot" class="section-slot"></div>
+    
+    <div id="promotion-slot" class="section-slot"></div> 
+
     <div id="news-slot" class="section-slot"></div>
     <div id="contact-slot" class="section-slot"></div>
     
-    <div id="chat-widget-fixed">
-        <iframe src="https://fmcchatbot.vercel.app/" title="FMC Chatbot" loading="lazy"></iframe>
+    <div id="chat-widget-iframe">
+        <iframe src="https://fmcchatbot.vercel.app/" title="FMC Chatbot" loading="lazy" style="width: 100%; height: 100%; border: none;"></iframe>
     </div>
-    <div class="chat-toggle-btn" onclick="toggleChatWidget()">
-        <i class="fab fa-facebook-messenger"></i>
+
+    <div id="widget-group-fixed">
+        <div class="zalo-chat-widget" data-oaid="1720397530862692001" data-welcome-message="Chào bạn! Chúng tôi có thể giúp gì cho bạn?" data-autopopup="0" data-width="" data-height="" style="z-index: 999999;"></div>
+
+        <div class="floating-btn chat-toggle-btn" onclick="toggleChatWidget()">
+            <i class="fab fa-facebook-messenger fa-2x"></i>
+        </div>
     </div>
-    <div class="zalo-chat-widget" data-oaid="1720397530862692001" data-welcome-message="Chào bạn! Chúng tôi có thể giúp gì cho bạn?" data-autopopup="0" data-width="" data-height="" style="z-index: 999999;"></div>
+    
     <script src="https://sp.zalo.me/plugins/sdk.js"></script>
 
-<script>
-    // --- HÀM LOAD COMPONENT ---
-    async function loadComponent(slotId, filePath) {
-        try {
-            const response = await fetch(filePath);
-            if (!response.ok) throw new Error(`Lỗi tải ${filePath}`);
-            const html = await response.text();
-            
-            const slot = document.getElementById(slotId);
-            if (slot) {
-                slot.innerHTML = html;
 
-                // Kích hoạt thẻ <script> bên trong component (để banner.html chạy được logic của nó)
-                const scripts = slot.querySelectorAll("script");
+    <script>
+    // --- HÀM LOAD COMPONENT ---
+    async function loadComponent(elementId, path) {
+        try {
+            const response = await fetch(path);
+            if (!response.ok) {
+                console.error(`Error loading component ${path}: ${response.statusText}`);
+                return;
+            }
+            const html = await response.text();
+            const container = document.getElementById(elementId);
+            
+            if (container) {
+                container.innerHTML = html;
+                
+                // Kích hoạt lại các script bên trong component vừa load
+                const scripts = container.querySelectorAll('script');
                 scripts.forEach(oldScript => {
-                    const newScript = document.createElement("script");
+                    const newScript = document.createElement('script');
+                    // Copy attributes (if any)
                     Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
-                    newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                    
+                    // Copy content or src
+                    if (oldScript.src) {
+                        newScript.src = oldScript.src;
+                    } else {
+                        newScript.textContent = oldScript.textContent;
+                    }
+
+                    // Replace old script tag with new one to trigger execution
                     oldScript.parentNode.replaceChild(newScript, oldScript);
                 });
+            } else {
+                console.warn(`Container element #${elementId} not found.`);
             }
+
         } catch (error) {
-            console.error(error);
+            console.error(`Failed to fetch component ${path}:`, error);
         }
     }
 
     // --- XỬ LÝ CUỘN TRANG MƯỢT ---
-    function smoothScroll(id) {
-        const element = document.getElementById(id);
-        if(element) {
+    function smoothScroll(targetId) {
+        const element = document.getElementById(targetId);
+        if (element) {
+            // Header height (70px) + một khoảng offset
             const headerOffset = 80; 
             const elementPosition = element.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+
+            window.scrollTo({ 
+                top: offsetPosition, 
+                behavior: "smooth" 
+            });
         }
     }
 
@@ -117,35 +201,40 @@
             // Đợi một chút để nội dung load xong rồi mới cuộn
             setTimeout(() => {
                 smoothScroll(id);
-            }, 600); 
+            }, 600); // Đợi 600ms để đảm bảo các component đã render
         }
     }
 
-    // --- KHỞI CHẠY ---
-    document.addEventListener("DOMContentLoaded", async () => {
-        // Load Banner đầu tiên và quan trọng nhất
-        await loadComponent('header-slot', 'banner.html');
-
-        // Load các phần còn lại song song
-        await Promise.all([
-            loadComponent('hero-slot', 'hero/hero.html'),
-            loadComponent('specialist-slot', 'specialist/specialist.html'),
-            loadComponent('news-slot', 'news/news.html'),
-            loadComponent('contact-slot', 'contact/contact.html')
-        ]);
-
-        // Kiểm tra cuộn trang
-        checkAndScrollToHash();
-    });
-
     // Toggle Chat
     window.toggleChatWidget = function() {
-        const widget = document.getElementById('chat-widget-fixed');
+        const widget = document.getElementById('chat-widget-iframe');
         if (widget) {
             widget.classList.toggle('active');
         }
     };
-</script>
+
+    // --- KHỞI CHẠY ---
+    document.addEventListener("DOMContentLoaded", async () => {
+        
+        // 1. Load Banner (Header) đầu tiên và quan trọng nhất
+        await loadComponent('header-slot', 'banner.html');
+
+        // 2. Load các phần còn lại song song
+        await Promise.all([
+            loadComponent('hero-slot', 'hero/hero.html'),
+            loadComponent('specialist-slot', 'specialist/specialist.html'),
+            
+            // Tải component khuyến mãi/quảng cáo
+            loadComponent('promotion-slot', 'promotion/promotion.html'), 
+
+            loadComponent('news-slot', 'news/news.html'),
+            loadComponent('contact-slot', 'contact/contact.html')
+        ]);
+
+        // 3. Kiểm tra và cuộn trang đến Hash (nếu có)
+        checkAndScrollToHash();
+    });
+    </script>
 
 </body>
 </html>
