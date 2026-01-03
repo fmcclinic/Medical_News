@@ -1,0 +1,359 @@
+<div id="promotion-component-wrapper" class="promotion-component-scope">
+    <style>
+        /* --- CSS Variables & Reset --- */
+        .promotion-component-scope {
+            --primary-color: #007bff;
+            --accent-color: #ff5722;
+            --accent-hover: #e64a19;
+            --text-dark: #2c3e50;
+            --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+            
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto 50px auto;
+            padding: 40px; 
+            background: var(--bg-gradient);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            
+            /* QUAN TRỌNG: Sửa lỗi mất nội dung */
+            overflow: visible !important; 
+            height: auto !important;
+            min-height: 500px; /* Đảm bảo độ cao thoáng */
+        }
+
+        .promotion-component-scope * {
+            box-sizing: border-box;
+        }
+
+        /* --- Cột Ảnh --- */
+        .promo-image-col {
+            flex: 0 0 42%; /* Chiếm 42% chiều ngang */
+            position: relative;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            display: flex; /* Fix lỗi khoảng trắng dưới ảnh */
+        }
+
+        .promo-image-col img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.6s ease;
+        }
+
+        .promo-image-col:hover img {
+            transform: scale(1.02);
+        }
+
+        /* Badge giảm giá */
+        .discount-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #ff0000;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9em;
+            box-shadow: 0 2px 10px rgba(255,0,0,0.3);
+            z-index: 10;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- Cột Nội Dung --- */
+        .promo-content-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .promo-tagline {
+            display: inline-block;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: rgba(0, 123, 255, 0.1);
+            padding: 5px 12px;
+            border-radius: 4px;
+            width: fit-content;
+        }
+
+        .promo-title {
+            font-size: 2.2em;
+            color: var(--text-dark);
+            margin: 0 0 10px 0;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .promo-highlight {
+            color: var(--accent-color);
+        }
+
+        .promo-desc {
+            font-size: 1.1em;
+            color: #cc0000;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border-left: 4px solid #cc0000;
+            padding-left: 15px;
+        }
+
+        /* --- Đồng Hồ Đếm Ngược --- */
+        .countdown-wrapper {
+            margin-bottom: 25px;
+            background: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            width: fit-content;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .countdown-label {
+            font-weight: bold;
+            color: var(--text-dark);
+            font-size: 0.95em;
+        }
+
+        .countdown-timer {
+            display: flex;
+            gap: 15px;
+        }
+
+        .time-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 40px;
+        }
+
+        .time-value {
+            font-size: 1.4em;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .time-unit {
+            font-size: 0.7em;
+            color: #888;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        /* --- Danh sách tính năng (Fix lỗi hiển thị) --- */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2 cột */
+            gap: 15px 30px;
+            margin-bottom: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 1em;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        .feature-icon {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            fill: #28a745; /* Màu xanh lá checkmark */
+            margin-top: 3px;
+        }
+
+        /* --- Nút CTA --- */
+        .promo-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 40px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            width: fit-content;
+        }
+
+        .promo-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 87, 34, 0.4);
+        }
+
+        .btn-icon {
+            margin-left: 10px;
+        }
+
+        /* --- Responsive Mobile --- */
+        @media (max-width: 900px) {
+            .promotion-component-scope {
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 30px;
+            }
+
+            .promo-image-col {
+                flex: none;
+                width: 100%;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr; /* Về 1 cột trên điện thoại */
+            }
+            
+            .promo-title {
+                font-size: 1.8em;
+            }
+            
+            .countdown-wrapper {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+
+    <div class="promo-image-col">
+        <div class="discount-badge">-100% PHÍ KHÁM</div>
+        <img src="promotion/nhi tung bung khai truong.jpg" alt="Bác sĩ nhi khoa khám cho bé" loading="lazy">
+    </div>
+
+    <div class="promo-content-col">
+        <div class="promo-tagline">Sự kiện đặc biệt tháng 12</div>
+        
+        <h2 class="promo-title">
+            Khai Trương Khoa Nhi <br>
+            <span class="promo-highlight">Chăm Sóc Bé Yêu Toàn Diện</span>
+        </h2>
+
+        <div class="promo-desc">
+            Áp dụng duy nhất: <strong>24/12/2025 - 31/12/2025</strong>
+        </div>
+
+        <div class="countdown-wrapper">
+            <span class="countdown-label">Ưu đãi kết thúc sau:</span>
+            <div class="countdown-timer">
+                <div class="time-box">
+                    <span class="time-value" id="promo-days">00</span>
+                    <span class="time-unit">Ngày</span>
+                </div>
+                <div class="time-box">
+                    <span class="time-value" id="promo-hours">00</span>
+                    <span class="time-unit">Giờ</span>
+                </div>
+                <div class="time-box">
+                    <span class="time-value" id="promo-minutes">00</span>
+                    <span class="time-unit">Phút</span>
+                </div>
+                <div class="time-box">
+                    <span class="time-value" id="promo-seconds">00</span>
+                    <span class="time-unit">Giây</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span><strong>Bác sĩ </strong> từ BV Nhi Đồng & Từ Dũ trực tiếp thăm khám.</span>
+            </div>
+            
+            <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Điều trị hiệu quả <strong>Hô hấp & Tiêu hóa</strong>, hạn chế kháng sinh.</span>
+            </div>
+
+            <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Tư vấn <strong>Dinh dưỡng chuyên sâu</strong>, biểu đồ tăng trưởng chuẩn WHO.</span>
+            </div>
+
+            <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Không gian <strong>"Play & Heal"</strong> vui nhộn, giúp bé không sợ bác sĩ.</span>
+            </div>
+        </div>
+
+        <a href="#contact-slot" class="promo-btn">
+            Đăng ký nhận ưu đãi
+            <span class="btn-icon">➜</span>
+        </a>
+    </div>
+
+<script>
+        (function() {
+            // Đặt thời gian đích: 31/12/2025 23:59:59
+            // Lưu ý: Tháng trong JS tính từ 0 (0 = tháng 1, 11 = tháng 12)
+            var targetDate = new Date(2025, 11, 31, 23, 59, 59).getTime();
+
+            function updateTimer() {
+                var now = new Date().getTime();
+                var distance = targetDate - now;
+
+                var elDays = document.getElementById("promo-days");
+                var elHours = document.getElementById("promo-hours");
+                var elMinutes = document.getElementById("promo-minutes");
+                var elSeconds = document.getElementById("promo-seconds");
+
+                if (!elDays || !elHours || !elMinutes || !elSeconds) return;
+
+                // Xử lý khi hết giờ
+                if (distance < 0) {
+                    elDays.innerText = "00";
+                    elHours.innerText = "00";
+                    elMinutes.innerText = "00";
+                    elSeconds.innerText = "00";
+                    return;
+                }
+
+                // Tính toán thời gian
+                var d = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var s = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Cập nhật giao diện (thêm số 0 đằng trước)
+                elDays.innerText = (d < 10 ? "0" : "") + d;
+                elHours.innerText = (h < 10 ? "0" : "") + h;
+                elMinutes.innerText = (m < 10 ? "0" : "") + m;
+                elSeconds.innerText = (s < 10 ? "0" : "") + s;
+            }
+
+            // Chạy ngay lập tức
+            updateTimer();
+            // Lặp lại mỗi giây
+            setInterval(updateTimer, 1000);
+        })();
+    </script>
+</div>
