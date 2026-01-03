@@ -1,50 +1,67 @@
-<div id="promotion-component-wrapper" class="promotion-component-scope">
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chương Trình Khuyến Mãi & Thẻ VIP</title>
     <style>
-        /* --- CSS Variables & Reset --- */
+        /* --- GLOBAL RESET & VARIABLES --- */
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f4f4; /* Màu nền chung của trang */
+        }
+
+        /* COMPONENT BASE STYLES (Dùng chung cho cả 2 thẻ) */
         .promotion-component-scope {
+            /* Biến màu mặc định (Màu xanh dương - Khoa Nhi) */
             --primary-color: #007bff;
             --accent-color: #ff5722;
             --accent-hover: #e64a19;
             --text-dark: #2c3e50;
             --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
             
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             max-width: 1200px;
-            margin: 0 auto 50px auto;
+            margin: 0 auto 50px auto; /* Margin bottom để tách 2 thẻ ra */
             padding: 40px; 
             background: var(--bg-gradient);
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             display: flex;
             align-items: center;
             gap: 40px;
             position: relative;
-            
-            /* QUAN TRỌNG: Sửa lỗi mất nội dung */
-            overflow: visible !important; 
-            height: auto !important;
-            min-height: 500px; /* Đảm bảo độ cao thoáng */
+            overflow: visible;
+        }
+
+        /* --- THEME VIP (Ghi đè màu sắc cho thẻ VIP) --- */
+        .promotion-component-scope.vip-theme {
+            --primary-color: #6a11cb; /* Tím */
+            --accent-color: #2575fc;  /* Xanh dương đậm */
+            --bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
         }
 
         .promotion-component-scope * {
             box-sizing: border-box;
         }
 
-        /* --- Cột Ảnh --- */
+        /* --- CỘT ẢNH --- */
         .promo-image-col {
-            flex: 0 0 42%; /* Chiếm 42% chiều ngang */
+            flex: 0 0 42%;
             position: relative;
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            display: flex; /* Fix lỗi khoảng trắng dưới ảnh */
+            display: flex;
+            overflow: hidden; /* Bo tròn ảnh */
         }
 
         .promo-image-col img {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            min-height: 350px; /* Đảm bảo chiều cao ảnh đồng đều */
             object-fit: cover;
-            border-radius: 12px;
+            display: block;
             transition: transform 0.6s ease;
         }
 
@@ -52,7 +69,7 @@
             transform: scale(1.02);
         }
 
-        /* Badge giảm giá */
+        /* Badge giảm giá / VIP */
         .discount-badge {
             position: absolute;
             top: 20px;
@@ -63,9 +80,19 @@
             border-radius: 50px;
             font-weight: bold;
             font-size: 0.9em;
-            box-shadow: 0 2px 10px rgba(255,0,0,0.3);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
             z-index: 10;
+        }
+
+        /* Hiệu ứng nhấp nháy cho badge giảm giá */
+        .pulse-animation {
             animation: pulse 2s infinite;
+        }
+
+        .vip-badge {
+            background: #ffd700 !important; /* Vàng kim */
+            color: #000 !important;
+            box-shadow: 0 2px 15px rgba(255, 215, 0, 0.4) !important;
         }
 
         @keyframes pulse {
@@ -74,7 +101,7 @@
             100% { transform: scale(1); }
         }
 
-        /* --- Cột Nội Dung --- */
+        /* --- CỘT NỘI DUNG --- */
         .promo-content-col {
             flex: 1;
             display: flex;
@@ -90,7 +117,7 @@
             color: var(--primary-color);
             font-weight: 700;
             margin-bottom: 10px;
-            background: rgba(0, 123, 255, 0.1);
+            background: rgba(0, 0, 0, 0.05);
             padding: 5px 12px;
             border-radius: 4px;
             width: fit-content;
@@ -108,6 +135,7 @@
             color: var(--accent-color);
         }
 
+        /* Style cho phần mô tả thời gian/điều kiện */
         .promo-desc {
             font-size: 1.1em;
             color: #cc0000;
@@ -116,8 +144,13 @@
             border-left: 4px solid #cc0000;
             padding-left: 15px;
         }
+        
+        .vip-theme .promo-desc {
+            color: #555;
+            border-left-color: var(--primary-color);
+        }
 
-        /* --- Đồng Hồ Đếm Ngược --- */
+        /* --- ĐỒNG HỒ ĐẾM NGƯỢC --- */
         .countdown-wrapper {
             margin-bottom: 25px;
             background: #fff;
@@ -163,10 +196,45 @@
             margin-top: 2px;
         }
 
-        /* --- Danh sách tính năng (Fix lỗi hiển thị) --- */
+        /* --- HỘP GIÁ TIỀN (Dùng cho thẻ VIP) --- */
+        .price-box-wrapper {
+            margin-bottom: 25px;
+            background: #fff;
+            padding: 15px 25px;
+            border-radius: 12px;
+            border: 1px solid #eee;
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+
+        .price-label {
+            font-weight: 600;
+            color: #555;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .price-number {
+            font-size: 2em;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .price-unit {
+            font-size: 1em;
+            color: #888;
+            font-weight: 500;
+        }
+
+        /* --- DANH SÁCH TÍNH NĂNG --- */
         .feature-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* 2 cột */
+            grid-template-columns: 1fr 1fr;
             gap: 15px 30px;
             margin-bottom: 30px;
         }
@@ -184,11 +252,11 @@
             flex-shrink: 0;
             width: 20px;
             height: 20px;
-            fill: #28a745; /* Màu xanh lá checkmark */
+            fill: #28a745; /* Màu xanh checkmark */
             margin-top: 3px;
         }
 
-        /* --- Nút CTA --- */
+        /* --- NÚT CTA --- */
         .promo-btn {
             display: inline-flex;
             align-items: center;
@@ -200,7 +268,7 @@
             text-decoration: none;
             font-weight: 700;
             font-size: 1.1em;
-            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             text-transform: uppercase;
             width: fit-content;
@@ -208,14 +276,14 @@
 
         .promo-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 87, 34, 0.4);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
         }
 
         .btn-icon {
             margin-left: 10px;
         }
 
-        /* --- Responsive Mobile --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
             .promotion-component-scope {
                 flex-direction: column;
@@ -229,92 +297,474 @@
             }
 
             .feature-grid {
-                grid-template-columns: 1fr; /* Về 1 cột trên điện thoại */
+                grid-template-columns: 1fr;
             }
             
             .promo-title {
                 font-size: 1.8em;
             }
             
-            .countdown-wrapper {
+            .countdown-wrapper, .price-box-wrapper {
                 width: 100%;
                 justify-content: center;
                 flex-wrap: wrap;
+                text-align: center;
             }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="opening-component-wrapper" class="promotion-component-scope">
+        <div class="promo-image-col">
+            <div class="discount-badge pulse-animation">-100% PHÍ KHÁM</div>
+            <img src="promotion/nhi tung bung khai truong.jpg" alt="Bác sĩ nhi khoa khám cho bé" loading="lazy">
+        </div>
+
+        <div class="promo-content-col">
+            <div class="promo-tagline">Sự kiện đặc biệt tháng 12</div>
+            
+            <h2 class="promo-title">
+                Khai Trương Khoa Nhi <br>
+                <span class="promo-highlight">Chăm Sóc Bé Yêu Toàn Diện</span>
+            </h2>
+
+            <div class="promo-desc">
+                Áp dụng duy nhất: <strong>24/12/2025 - 18/01/2026</strong>
+            </div>
+
+            <div class="countdown-wrapper">
+                <span class="countdown-label">Ưu đãi kết thúc sau:</span>
+                <div class="countdown-timer">
+                    <div class="time-box">
+                        <span class="time-value" id="promo-days">00</span>
+                        <span class="time-unit">Ngày</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-value" id="promo-hours">00</span>
+                        <span class="time-unit">Giờ</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-value" id="promo-minutes">00</span>
+                        <span class="time-unit">Phút</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-value" id="promo-seconds">00</span>
+                        <span class="time-unit">Giây</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <svg class="feature-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <span><strong>Bác sĩ </strong> từ BV Nhi Đồng & Từ Dũ trực tiếp thăm khám.</span>
+                </div>
+                
+                <div class="feature-item">
+                    <svg class="feature-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <span>Điều trị hiệu quả <strong>Hô hấp & Tiêu hóa</strong>, hạn chế kháng sinh.</span>
+                </div>
+
+                <div class="feature-item">
+                    <svg class="feature-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <span>Tư vấn <strong>Dinh dưỡng chuyên sâu</strong>, biểu đồ tăng trưởng chuẩn WHO.</span>
+                </div>
+
+                <div class="feature-item">
+                    <svg class="feature-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <span>Không gian <strong>"Play & Heal"</strong> vui nhộn, giúp bé không sợ bác sĩ.</span>
+                </div>
+            </div>
+
+            <a href="#contact-slot" class="promo-btn">
+                Đăng ký nhận ưu đãi
+                <span class="btn-icon">➜</span>
+            </a>
+        </div>
+    </div>
+
+    <div id="vip-component-wrapper" class="promotion-component-scope vip-theme">
+        <div class="promo-image-col">
+            <div class="discount-badge vip-badge">THẺ VIP MEMBER</div>
+            <img src="promotion/vip-card-mockup.jpg" alt="Thẻ thành viên VIP gia đình" loading="lazy">
+        </div>
+
+        <div class="promo-content-col">
+            <div class="promo-tagline">Đặc quyền sức khỏe</div>
+            
+            <h2 class="promo-title">
+                Chương Trình Thẻ VIP <br>
+                <span class="promo-highlight" style="color: var(--primary-color)">Gắn Kết Cả Gia Đình</span>
+            </h2>
+
+            <div class="promo-desc">
+                Hiệu lực: <strong>01 năm</strong> (tính từ lần khám đầu tiên)
+            </div>
+
+            <div class="price-box-wrapper">
+                <div class="price-info">
+                    <span class="price-label">Chi phí trọn gói</span>
+                    <div>
+                        <span class="price-number">1.200.000</span>
+                        <span class="price-unit">đ / năm</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <svg class="feature-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <span>Tổng cộng <strong>14 lượt khám</strong> (12 lần tiêu chuẩn + 2 lần miễn phí).</span>
+                </div>
+                
+                <div class="feature-item">
+                    <svg class="feature-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <span>Áp dụng cho <strong>mọi thành viên</strong> trong gia đình chủ thẻ.</span>
+                </div>
+
+                <div class="feature-item">
+                    <svg class="feature-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <span>Chi phí siêu tiết kiệm: Chỉ <strong>~85k/lần khám</strong>.</span>
+                </div>
+
+                <div class="feature-item">
+                    <svg class="feature-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <span>Thủ tục nhanh gọn, ưu tiên đặt lịch hẹn trước.</span>
+                </div>
+            </div>
+
+            <a href="#register-vip" class="promo-btn" style="background: linear-gradient(90deg, #6a11cb, #2575fc);">
+                Đăng ký mở thẻ ngay
+                <span class="btn-icon">➜</span>
+            </a>
+        </div>
+    </div>
+
+    <div id="thyroid-component-wrapper" class="promotion-component-scope thyroid-theme">
+    <style>
+        /* --- CSS Riêng cho Tầm Soát Tuyến Giáp --- */
+        .promotion-component-scope.thyroid-theme {
+            --primary-color: #00897b; /* Màu xanh ngọc y tế */
+            --accent-color: #d81b60;  /* Màu hồng đậm tạo điểm nhấn */
+            --bg-gradient: linear-gradient(135deg, #e0f2f1 0%, #ffffff 100%);
+            margin-top: 50px;
+        }
+
+        /* --- Tái sử dụng CSS gốc (copy lại nếu để riêng file) --- */
+        /* Giữ nguyên các class: promo-image-col, promo-content-col, feature-grid... */
+
+        /* Badge riêng */
+        .free-badge {
+            background: #d81b60 !important;
+            color: #fff !important;
+            box-shadow: 0 4px 15px rgba(216, 27, 96, 0.4) !important;
+            text-transform: uppercase;
+        }
+
+        /* --- Khung hiển thị Lịch Khám (Thay thế đồng hồ/giá) --- */
+        .schedule-box-wrapper {
+            margin-bottom: 25px;
+            background: #fff;
+            padding: 15px 25px;
+            border-radius: 12px;
+            border: 1px solid #b2dfdb; /* Viền xanh nhạt */
+            display: inline-flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0, 137, 123, 0.1);
+            min-width: 300px;
+        }
+
+        .schedule-header {
+            font-size: 0.9em;
+            color: #555;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 8px;
+            margin-bottom: 5px;
+        }
+
+        .schedule-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .schedule-day {
+            font-weight: 800;
+            color: var(--primary-color);
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .schedule-time {
+            background: #e0f2f1;
+            color: #00695c;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        /* Icon lịch nhỏ */
+        .cal-icon {
+            width: 18px;
+            height: 18px;
+            fill: var(--primary-color);
         }
     </style>
 
     <div class="promo-image-col">
-        <div class="discount-badge">-100% PHÍ KHÁM</div>
-        <img src="promotion/nhi tung bung khai truong.jpg" alt="Bác sĩ nhi khoa khám cho bé" loading="lazy">
+        <div class="discount-badge free-badge">Miễn Phí Lần Đầu</div>
+        <img src="promotion/sieu-am-tuyen-giap.jpg" alt="Bác sĩ siêu âm tuyến giáp cho bệnh nhân" loading="lazy">
     </div>
 
     <div class="promo-content-col">
-        <div class="promo-tagline">Sự kiện đặc biệt tháng 12</div>
+        <div class="promo-tagline">Tầm soát sớm - An tâm sống</div>
         
         <h2 class="promo-title">
-            Khai Trương Khoa Nhi <br>
-            <span class="promo-highlight">Chăm Sóc Bé Yêu Toàn Diện</span>
+            Tầm Soát Bướu Giáp <br>
+            <span class="promo-highlight" style="color: var(--primary-color)">Siêu Âm Tuyến Giáp Màu</span>
         </h2>
 
-        <div class="promo-desc">
-            Áp dụng duy nhất: <strong>24/12/2025 - 18/01/2026</strong>
+        <div class="promo-desc" style="border-color: var(--primary-color); color: #004d40;">
+            Thời gian: <strong>01/01/2026 - 24/02/2026</strong>
         </div>
 
-        <div class="countdown-wrapper">
-            <span class="countdown-label">Ưu đãi kết thúc sau:</span>
-            <div class="countdown-timer">
-                <div class="time-box">
-                    <span class="time-value" id="promo-days">00</span>
-                    <span class="time-unit">Ngày</span>
+        <div class="schedule-box-wrapper">
+            <div class="schedule-header">Khung giờ áp dụng ưu đãi:</div>
+            
+            <div class="schedule-row">
+                <div class="schedule-day">
+                    <svg class="cal-icon" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
+                    Tối Thứ 4
                 </div>
-                <div class="time-box">
-                    <span class="time-value" id="promo-hours">00</span>
-                    <span class="time-unit">Giờ</span>
+                <div class="schedule-time">17:00 - 20:00</div>
+            </div>
+
+            <div class="schedule-row">
+                <div class="schedule-day">
+                    <svg class="cal-icon" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
+                    Tối Thứ 6
                 </div>
-                <div class="time-box">
-                    <span class="time-value" id="promo-minutes">00</span>
-                    <span class="time-unit">Phút</span>
-                </div>
-                <div class="time-box">
-                    <span class="time-value" id="promo-seconds">00</span>
-                    <span class="time-unit">Giây</span>
-                </div>
+                <div class="schedule-time">17:00 - 20:00</div>
             </div>
         </div>
 
         <div class="feature-grid">
             <div class="feature-item">
-                <svg class="feature-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                <span><strong>Bác sĩ </strong> từ BV Nhi Đồng & Từ Dũ trực tiếp thăm khám.</span>
+                <svg class="feature-icon" viewBox="0 0 24 24" style="fill: var(--primary-color)"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span><strong>Miễn phí 100%</strong> phí siêu âm cho lần tầm soát đầu tiên.</span>
             </div>
             
             <div class="feature-item">
-                <svg class="feature-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                <span>Điều trị hiệu quả <strong>Hô hấp & Tiêu hóa</strong>, hạn chế kháng sinh.</span>
+                <svg class="feature-icon" viewBox="0 0 24 24" style="fill: var(--primary-color)"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Sử dụng máy siêu âm <strong>Doppler màu 4D</strong> độ phân giải cao.</span>
             </div>
 
             <div class="feature-item">
-                <svg class="feature-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                <span>Tư vấn <strong>Dinh dưỡng chuyên sâu</strong>, biểu đồ tăng trưởng chuẩn WHO.</span>
+                <svg class="feature-icon" viewBox="0 0 24 24" style="fill: var(--primary-color)"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Phát hiện sớm nhân giáp, nang giáp và hạch cổ bất thường.</span>
             </div>
 
             <div class="feature-item">
-                <svg class="feature-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                <span>Không gian <strong>"Play & Heal"</strong> vui nhộn, giúp bé không sợ bác sĩ.</span>
+                <svg class="feature-icon" viewBox="0 0 24 24" style="fill: var(--primary-color)"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Tư vấn trực tiếp bởi Bác sĩ Chuyên khoa Nội.</span>
             </div>
         </div>
 
-        <a href="#contact-slot" class="promo-btn">
-            Đăng ký nhận ưu đãi
+        <a href="#contact-slot" class="promo-btn" style="background: linear-gradient(90deg, #00897b, #004d40);">
+            Đặt lịch siêu âm ngay
             <span class="btn-icon">➜</span>
         </a>
     </div>
+</div>
 
-<script>
+<div id="breast-component-wrapper" class="promotion-component-scope breast-theme">
+    <style>
+        /* --- CSS Riêng cho Tầm Soát Tuyến Vú (Pink Theme) --- */
+        .promotion-component-scope.breast-theme {
+            --primary-color: #ec407a; /* Màu hồng đậm chủ đạo */
+            --accent-color: #ad1457;  /* Màu đỏ tía điểm nhấn */
+            --text-dark: #4a1428;     /* Màu chữ đậm pha đỏ */
+            --bg-gradient: linear-gradient(135deg, #fce4ec 0%, #fff0f5 100%); /* Nền hồng phấn */
+            margin-top: 50px;
+        }
+
+        /* --- Badge "Miễn Phí" --- */
+        .breast-theme .discount-badge {
+            background: #ff4081;
+            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
+            font-size: 0.95em;
+            padding: 8px 18px;
+        }
+
+        /* --- KHỐI GIỚI THIỆU BÁC SĨ (Điểm nhấn quan trọng) --- */
+        .doctor-profile-card {
+            background: #fff;
+            border-left: 5px solid var(--primary-color);
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(236, 64, 122, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Hiệu ứng nền mờ trang trí */
+        .doctor-profile-card::after {
+            content: "";
+            position: absolute;
+            right: -20px;
+            top: -20px;
+            width: 80px;
+            height: 80px;
+            background: rgba(236, 64, 122, 0.1);
+            border-radius: 50%;
+        }
+
+        .doc-icon-box {
+            background: #fce4ec;
+            padding: 10px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .doc-icon {
+            width: 32px;
+            height: 32px;
+            fill: var(--primary-color);
+        }
+
+        .doc-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.3em;
+            color: var(--text-dark);
+            font-weight: 800;
+        }
+
+        .doc-hospital-tag {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* --- Khung Lịch Khám (Layout 3 dòng) --- */
+        .schedule-box-compact {
+            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px dashed var(--primary-color);
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+        
+        .schedule-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .sch-day {
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+    </style>
+
+    <div class="promo-image-col">
+        <div class="discount-badge">MIỄN PHÍ SIÊU ÂM TUYẾN VÚ</div>
+        <img src="promotion/sieu-am-tuyen-vu.jpg" alt="Bác sĩ nữ khám và tư vấn cho bệnh nhân" loading="lazy">
+    </div>
+
+    <div class="promo-content-col">
+        <div class="promo-tagline">Chăm sóc sức khỏe phụ nữ</div>
+        
+        <h2 class="promo-title">
+            Tầm Soát Bệnh Lý <br>
+            <span class="promo-highlight" style="color: var(--primary-color)">Tuyến Vú</span>
+        </h2>
+
+        <div class="promo-desc" style="border-color: var(--primary-color); color: var(--accent-color);">
+            Thời gian: <strong>01/01/2026 - 24/02/2026</strong>
+        </div>
+
+        <div class="doctor-profile-card">
+            <div class="doc-icon-box">
+                <svg class="doc-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 2h2v2h-2V5zm0 4h2v2h-2V9zm-4 0h2v2H8V9zm0-4h2v2H8V5zm8 10H8v-2h8v2zm2 4H6v-2h12v2z"/></svg>
+            </div>
+            <div class="doc-info">
+                <div style="font-size: 0.9em; color: #666;">Trực tiếp thực hiện bởi:</div>
+                <h3>BS.CKII Nguyễn Hoàng Lam</h3>
+                <div class="doc-hospital-tag">Bệnh Viện Từ Dũ</div>
+            </div>
+        </div>
+
+        <div class="schedule-box-compact">
+            <div class="schedule-item">
+                <span class="sch-day">Tối Thứ 3</span>
+                <span>17:00 - 20:00</span>
+            </div>
+            <div class="schedule-item">
+                <span class="sch-day">Tối Thứ 5</span>
+                <span>17:00 - 20:00</span>
+            </div>
+            <div class="schedule-item">
+                <span class="sch-day">Sáng Thứ 7</span>
+                <span>07:30 - 11:30</span>
+            </div>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24" style="fill: var(--primary-color)"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span><strong>Miễn phí 100%</strong> Siêu âm kiểm tra Tuyến vú.</span>
+            </div>
+            
+            <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24" style="fill: var(--primary-color)"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Tầm soát ung thư sớm & các bệnh lý lành tính.</span>
+            </div>
+
+            <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24" style="fill: var(--primary-color)"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Quy trình nhẹ nhàng, riêng tư, kết quả chính xác.</span>
+            </div>
+        </div>
+
+        <a href="#contact-slot" class="promo-btn" style="background: linear-gradient(90deg, #ec407a, #c2185b);">
+            Đăng ký khám ngay
+            <span class="btn-icon">➜</span>
+        </a>
+    </div>
+</div>
+
+
+    <script>
         (function() {
             // 1. Cấu hình ngày kết thúc: 18/01/2026
-            // Lưu ý: Tháng trong JS bắt đầu từ 0 (Tháng 1 là 0)
             const targetDate = new Date(2026, 0, 18, 23, 59, 59).getTime();
 
             // 2. Hàm khởi chạy đồng hồ
@@ -366,4 +816,5 @@
             }
         })();
     </script>
-</div>
+</body>
+</html>
