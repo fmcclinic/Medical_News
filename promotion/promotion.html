@@ -250,7 +250,7 @@
     </div>
 
     <div class="promo-content-col">
-        <div class="promo-tagline">Sự kiện đặc biệt tháng 12</div>
+        <div class="promo-tagline">Sự kiện đặc biệt tháng 12 và tháng 1</div>
         
         <h2 class="promo-title">
             Khai Trương Khoa Nhi <br>
@@ -258,7 +258,7 @@
         </h2>
 
         <div class="promo-desc">
-            Áp dụng duy nhất: <strong>24/12/2025 - 31/12/2025</strong>
+            Áp dụng duy nhất: <strong>24/12/2025 - 18/01/2026</strong>
         </div>
 
         <div class="countdown-wrapper">
@@ -313,47 +313,61 @@
 
 <script>
         (function() {
-            // Đặt thời gian đích: 31/12/2025 23:59:59
-            // Lưu ý: Tháng trong JS tính từ 0 (0 = tháng 1, 11 = tháng 12)
-            var targetDate = new Date(2025, 11, 31, 23, 59, 59).getTime();
+<<<<<<< HEAD
+            // 1. Cấu hình ngày kết thúc: 18/01/2026
+            // Lưu ý: Tháng trong JS bắt đầu từ 0 (Tháng 1 là 0)
+=======
+            // CẬP NHẬT THỜI GIAN: Năm 2026, Tháng 1 (là 0), Ngày 18, 23h59m59s
+>>>>>>> 5ab05bd68fa63d9ec2f9f2e5a74b361f4b125340
+            const targetDate = new Date(2026, 0, 18, 23, 59, 59).getTime();
 
-            function updateTimer() {
-                var now = new Date().getTime();
-                var distance = targetDate - now;
+            // 2. Hàm khởi chạy đồng hồ
+            function initCountdown() {
+                const elDays = document.getElementById("promo-days");
+                const elHours = document.getElementById("promo-hours");
+                const elMinutes = document.getElementById("promo-minutes");
+                const elSeconds = document.getElementById("promo-seconds");
 
-                var elDays = document.getElementById("promo-days");
-                var elHours = document.getElementById("promo-hours");
-                var elMinutes = document.getElementById("promo-minutes");
-                var elSeconds = document.getElementById("promo-seconds");
-
-                if (!elDays || !elHours || !elMinutes || !elSeconds) return;
-
-                // Xử lý khi hết giờ
-                if (distance < 0) {
-                    elDays.innerText = "00";
-                    elHours.innerText = "00";
-                    elMinutes.innerText = "00";
-                    elSeconds.innerText = "00";
+                // Nếu không tìm thấy element (do HTML chưa load kịp), thử lại sau 100ms
+                if (!elDays || !elHours || !elMinutes || !elSeconds) {
+                    setTimeout(initCountdown, 100); 
                     return;
                 }
 
-                // Tính toán thời gian
-                var d = Math.floor(distance / (1000 * 60 * 60 * 24));
-                var h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var s = Math.floor((distance % (1000 * 60)) / 1000);
+                function updateTimer() {
+                    const now = new Date().getTime();
+                    const distance = targetDate - now;
 
-                // Cập nhật giao diện (thêm số 0 đằng trước)
-                elDays.innerText = (d < 10 ? "0" : "") + d;
-                elHours.innerText = (h < 10 ? "0" : "") + h;
-                elMinutes.innerText = (m < 10 ? "0" : "") + m;
-                elSeconds.innerText = (s < 10 ? "0" : "") + s;
+                    if (distance < 0) {
+                        elDays.innerText = "00";
+                        elHours.innerText = "00";
+                        elMinutes.innerText = "00";
+                        elSeconds.innerText = "00";
+                        return;
+                    }
+
+                    const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    elDays.innerText = d < 10 ? "0" + d : d;
+                    elHours.innerText = h < 10 ? "0" + h : h;
+                    elMinutes.innerText = m < 10 ? "0" + m : m;
+                    elSeconds.innerText = s < 10 ? "0" + s : s;
+                }
+
+                // Chạy ngay và lặp lại
+                updateTimer();
+                setInterval(updateTimer, 1000);
             }
 
-            // Chạy ngay lập tức
-            updateTimer();
-            // Lặp lại mỗi giây
-            setInterval(updateTimer, 1000);
+            // 3. Cơ chế kích hoạt an toàn
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initCountdown);
+            } else {
+                initCountdown();
+            }
         })();
     </script>
 </div>
