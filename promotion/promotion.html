@@ -311,50 +311,63 @@
         </a>
     </div>
 
-    <script>
+<script>
         (function() {
+<<<<<<< HEAD
+            // 1. Cấu hình ngày kết thúc: 18/01/2026
+            // Lưu ý: Tháng trong JS bắt đầu từ 0 (Tháng 1 là 0)
+=======
             // CẬP NHẬT THỜI GIAN: Năm 2026, Tháng 1 (là 0), Ngày 18, 23h59m59s
+>>>>>>> 5ab05bd68fa63d9ec2f9f2e5a74b361f4b125340
             const targetDate = new Date(2026, 0, 18, 23, 59, 59).getTime();
 
-            function updateTimer() {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
-
-                // Lấy các element theo ID (đảm bảo chính xác 100%)
+            // 2. Hàm khởi chạy đồng hồ
+            function initCountdown() {
                 const elDays = document.getElementById("promo-days");
                 const elHours = document.getElementById("promo-hours");
                 const elMinutes = document.getElementById("promo-minutes");
                 const elSeconds = document.getElementById("promo-seconds");
 
-                // Kiểm tra nếu các element tồn tại (tránh lỗi nếu DOM chưa load)
-                if (!elDays || !elHours || !elMinutes || !elSeconds) return;
-
-                if (distance < 0) {
-                    // Hết giờ
-                    elDays.innerText = "00";
-                    elHours.innerText = "00";
-                    elMinutes.innerText = "00";
-                    elSeconds.innerText = "00";
+                // Nếu không tìm thấy element (do HTML chưa load kịp), thử lại sau 100ms
+                if (!elDays || !elHours || !elMinutes || !elSeconds) {
+                    setTimeout(initCountdown, 100); 
                     return;
                 }
 
-                // Tính toán
-                const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const s = Math.floor((distance % (1000 * 60)) / 1000);
+                function updateTimer() {
+                    const now = new Date().getTime();
+                    const distance = targetDate - now;
 
-                // Cập nhật lên màn hình (thêm số 0 nếu nhỏ hơn 10)
-                elDays.innerText = d < 10 ? "0" + d : d;
-                elHours.innerText = h < 10 ? "0" + h : h;
-                elMinutes.innerText = m < 10 ? "0" + m : m;
-                elSeconds.innerText = s < 10 ? "0" + s : s;
+                    if (distance < 0) {
+                        elDays.innerText = "00";
+                        elHours.innerText = "00";
+                        elMinutes.innerText = "00";
+                        elSeconds.innerText = "00";
+                        return;
+                    }
+
+                    const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    elDays.innerText = d < 10 ? "0" + d : d;
+                    elHours.innerText = h < 10 ? "0" + h : h;
+                    elMinutes.innerText = m < 10 ? "0" + m : m;
+                    elSeconds.innerText = s < 10 ? "0" + s : s;
+                }
+
+                // Chạy ngay và lặp lại
+                updateTimer();
+                setInterval(updateTimer, 1000);
             }
 
-            // Chạy ngay lập tức 1 lần
-            updateTimer();
-            // Cập nhật mỗi 1 giây
-            setInterval(updateTimer, 1000);
+            // 3. Cơ chế kích hoạt an toàn
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initCountdown);
+            } else {
+                initCountdown();
+            }
         })();
     </script>
 </div>
