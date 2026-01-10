@@ -137,60 +137,64 @@
     <script src="https://sp.zalo.me/plugins/sdk.js"></script>
 
 
-    <script>
-    // --- HÀM LOAD COMPONENT ---
+<script>
+    // --- HÀM LOAD COMPONENT (PHIÊN BẢN FIX LỖI SCRIPT) ---
     async function loadComponent(elementId, path) {
         try {
             const response = await fetch(path);
             if (!response.ok) {
-                console.error(`Error loading component ${path}: ${response.statusText}`);
+                console.error(`Error loading ${path}: ${response.statusText}`);
                 return;
             }
             const html = await response.text();
             const container = document.getElementById(elementId);
             
             if (container) {
-                container.innerHTML = html;
+                // 1. Chèn HTML vào trước (nhưng lọc bỏ thẻ script để tránh chạy 2 lần)
+                // Tạo một div ảo để lọc script
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = html;
                 
-                // Kích hoạt lại các script bên trong component vừa load
-                const scripts = container.querySelectorAll('script');
-                scripts.forEach(oldScript => {
-                    const newScript = document.createElement('script');
-                    // Copy attributes (if any)
-                    Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
-                    
-                    // Copy content or src
-                    if (oldScript.src) {
-                        newScript.src = oldScript.src;
-                    } else {
-                        newScript.textContent = oldScript.textContent;
-                    }
-
-                    // Replace old script tag with new one to trigger execution
-                    oldScript.parentNode.replaceChild(newScript, oldScript);
-                });
-            } else {
-                console.warn(`Container element #${elementId} not found.`);
-            }
-
+                // Tách script ra khỏi HTML
+                const scripts = tempDiv.querySelectorAll('script');
+                scripts.forEach(script => script.remove());
+                
+                // Insert HTML (đã sạch script) vào trang
+                container.innerHTML = tempDiv.innerHTML;
+                
+                // 2. Chạy Script sau khi HTML đã nằm trên DOM
+                // Dùng setTimeout để đảm bảo trình duyệt đã render xong HTML
+                setTimeout(() => {
+                    scripts.forEach(oldScript => {
+                        const newScript = document.createElement('script');
+                        // Copy attributes (src, type, etc.)
+                        Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                        
+                        // Copy nội dung code
+                        if (oldScript.src) {
+                            newScript.src = oldScript.src;
+                        } else {
+                            newScript.textContent = oldScript.textContent;
+                        }
+                        
+                        // Chèn vào container để chạy
+                        container.appendChild(newScript);
+                    });
+                }, 50); // Delay 50ms là chìa khóa để fix lỗi "null"
+            } 
         } catch (error) {
             console.error(`Failed to fetch component ${path}:`, error);
         }
     }
 
-    // --- XỬ LÝ CUỘN TRANG MƯỢT ---
+    // --- CÁC HÀM TIỆN ÍCH KHÁC ---
     function smoothScroll(targetId) {
         const element = document.getElementById(targetId);
         if (element) {
-            // Header height (70px) + một khoảng offset
             const headerOffset = 80; 
             const elementPosition = element.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({ 
-                top: offsetPosition, 
-                behavior: "smooth" 
-            });
+            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
         }
     }
 
@@ -198,43 +202,32 @@
         const hash = window.location.hash; 
         if (hash) {
             const id = hash.replace('#', '');
-            // Đợi một chút để nội dung load xong rồi mới cuộn
-            setTimeout(() => {
-                smoothScroll(id);
-            }, 600); // Đợi 600ms để đảm bảo các component đã render
+            setTimeout(() => smoothScroll(id), 1000);
         }
     }
 
-    // Toggle Chat
     window.toggleChatWidget = function() {
         const widget = document.getElementById('chat-widget-iframe');
-        if (widget) {
-            widget.classList.toggle('active');
-        }
+        if (widget) widget.classList.toggle('active');
     };
 
     // --- KHỞI CHẠY ---
     document.addEventListener("DOMContentLoaded", async () => {
-        
-        // 1. Load Banner (Header) đầu tiên và quan trọng nhất
+        // Load Banner trước
         await loadComponent('header-slot', 'banner.html');
 
-        // 2. Load các phần còn lại song song
+        // Load các phần còn lại
         await Promise.all([
             loadComponent('hero-slot', 'hero/hero.html'),
             loadComponent('specialist-slot', 'specialist/specialist.html'),
-            
-            // Tải component khuyến mãi/quảng cáo
             loadComponent('promotion-slot', 'promotion/promotion.html'), 
-
             loadComponent('news-slot', 'news/news.html'),
             loadComponent('contact-slot', 'contact/contact.html')
         ]);
 
-        // 3. Kiểm tra và cuộn trang đến Hash (nếu có)
         checkAndScrollToHash();
     });
-    </script>
+</script>
 
 </body>
 </html>
