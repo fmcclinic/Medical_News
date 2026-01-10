@@ -115,11 +115,24 @@
         .theme-breast .fmc-sticker { background: linear-gradient(135deg, #ff4081, #c51162); }
         .theme-breast .doc-card { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; background: #fff0f5; padding: 10px; border-radius: 8px; }
 
-        /* Mobile */
+        /* --- MOBILE RESPONSIVE (ĐÃ FIX TỈ LỆ ẢNH) --- */
         @media (max-width: 768px) {
             .fmc-promo-card { flex-direction: column; height: auto; }
-            .theme-vip { flex-direction: column-reverse; }
-            .fmc-col-img { width: 100%; height: 250px; border-radius: 20px 20px 0 0; }
+            .theme-vip { flex-direction: column-reverse; } /* VIP: Ảnh dưới cùng */
+            
+            /* SỬA TẠI ĐÂY: Dùng aspect-ratio 9/16 để ảnh dọc */
+            .fmc-col-img { 
+                width: 100%; 
+                height: auto;
+                aspect-ratio: 9/16; /* Tỉ lệ 9:16 (Dọc) */
+                border-radius: 20px 20px 0 0; 
+            }
+            
+            /* Riêng VIP: Ảnh ở dưới nên bo góc dưới */
+            .theme-vip .fmc-col-img {
+                border-radius: 0 0 20px 20px;
+            }
+
             .fmc-col-info { width: 100%; padding: 30px 20px; }
             .fmc-sticker { top: 10px; right: 10px; font-size: 0.9rem; transform: rotate(0); }
             .fmc-list-grid { grid-template-columns: 1fr; }
@@ -205,8 +218,8 @@
             <p class="fmc-desc">📅 Thời gian: <strong>01/01/2026 - 24/02/2026</strong></p>
 
             <div class="fmc-info-box">
-                <strong>⏰ Khung giờ ưu đãi (BS Ung Bướu):</strong><br>
-                • Tối Thứ 4 & Thứ 6: 17:00 - 20:00
+                <strong>⏰ Khung giờ ưu đãi:</strong><br>
+                • Tối Thứ 4 & Thứ 6: 18:00 - 20:00
             </div>
 
             <div class="fmc-countdown" data-date="2026-02-24T23:59:59">
@@ -262,7 +275,7 @@
                 <div>✓ Tầm soát <strong>Ung thư vú</strong></div>
                 <div>✓ <strong>Bác sĩ Nữ</strong> thăm khám</div>
                 <div>✓ Riêng tư & Nhẹ nhàng</div>
-                <div>✓ Sáng Thứ 7 & Tối 3,5</div>
+                <div>✓ ⏰ Sáng Thứ 7 8:00 - 12:00 & các buổi Tối thứ 3, thứ 5 18:00 - 20:00</div>
             </div>
 
             <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">Đăng ký khám</a>
