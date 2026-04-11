@@ -48,34 +48,122 @@
             z-index: 9998;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 10px;
             align-items: flex-end;
+            transition: bottom 0.22s ease;
         }
 
         .floating-btn {
-            width: 60px;
-            height: 60px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 0;
+            padding: 0;
+            appearance: none;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-            transition: transform 0.3s, opacity 0.3s;
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.16);
+            transition: transform 0.22s ease, opacity 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease, color 0.22s ease;
         }
         .floating-btn:hover {
-            transform: scale(1.08);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 16px 32px rgba(15, 23, 42, 0.2);
+        }
+        .floating-btn:focus-visible {
+            outline: 3px solid rgba(13, 126, 204, 0.18);
+            outline-offset: 3px;
         }
         
         /* Zalo Button (Màu xanh Zalo) */
-        .zalo-toggle-btn {
-            background: #0084ff; 
-            color: white;
+        .zalo-chat-widget {
+            position: relative;
+            display: inline-flex;
+            align-self: flex-end;
+            background: rgba(255, 255, 255, 0.96);
+            color: #0068ff;
+            border: 1px solid rgba(0, 104, 255, 0.14);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            text-decoration: none;
+            font-size: 0.98rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+        .zalo-chat-label {
+            transform: translateY(-1px);
         }
         /* Messenger Button (Màu xanh Facebook/Chat) */
         .chat-toggle-btn {
-            background: #0070c0; 
-            color: white;
+            position: relative;
+            background: rgba(255, 255, 255, 0.96); 
+            color: #0d7ecc;
+            border: 1px solid rgba(13, 126, 204, 0.14);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .chat-toggle-btn::before,
+        .zalo-chat-widget::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            right: calc(100% + 12px);
+            top: 50%;
+            transform: translateY(-50%) translateX(8px);
+            padding: 9px 12px;
+            border-radius: 999px;
+            background: rgba(17, 24, 39, 0.92);
+            color: #fff;
+            font-size: 0.82rem;
+            font-weight: 600;
+            line-height: 1.2;
+            white-space: nowrap;
+            box-shadow: 0 14px 28px rgba(15, 23, 42, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
+        }
+        .chat-toggle-btn::after,
+        .zalo-chat-widget::after {
+            content: '';
+            position: absolute;
+            right: calc(100% + 4px);
+            top: 50%;
+            width: 10px;
+            height: 10px;
+            background: rgba(17, 24, 39, 0.92);
+            transform: translateY(-50%) rotate(45deg);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.18s ease, visibility 0s linear 0.18s;
+        }
+        .chat-toggle-btn:hover::before,
+        .chat-toggle-btn:hover::after,
+        .zalo-chat-widget:hover::before,
+        .zalo-chat-widget:hover::after,
+        .chat-toggle-btn:focus-visible::before,
+        .chat-toggle-btn:focus-visible::after,
+        .zalo-chat-widget:focus-within::before,
+        .zalo-chat-widget:focus-within::after {
+            opacity: 1;
+            visibility: visible;
+            transition-delay: 0s;
+        }
+        .chat-toggle-btn:hover::before,
+        .zalo-chat-widget:hover::before,
+        .chat-toggle-btn:focus-visible::before,
+        .zalo-chat-widget:focus-within::before {
+            transform: translateY(-50%) translateX(0);
+        }
+        .chat-toggle-btn i {
+            font-size: 1.35rem;
+        }
+        .chat-toggle-btn.active {
+            background: #111827;
+            color: #fff;
+            border-color: rgba(17, 24, 39, 0.12);
         }
         
         /* Chat Widget Iframe */
@@ -85,27 +173,161 @@
             right: 20px;
             width: 350px; 
             height: 450px; 
-            border-radius: 15px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.2); 
+            border-radius: 20px;
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.22); 
             z-index: 9990;
-            background: white; 
-            display: none; 
-            border: 1px solid #ddd; 
+            background: rgba(255, 255, 255, 0.98); 
+            border: 1px solid rgba(15, 23, 42, 0.08); 
             overflow: hidden;
-            transition: transform 0.3s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(18px) scale(0.96);
+            transition: transform 0.24s ease, opacity 0.24s ease, visibility 0s linear 0.24s;
             transform-origin: bottom right;
         }
         #chat-widget-iframe.active { 
-            display: block; 
-            transform: scale(1);
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateY(0) scale(1);
+            transition: transform 0.24s ease, opacity 0.24s ease;
+        }
+
+        .chat-widget-toolbar {
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px 0 16px;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .chat-widget-title {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #111827;
+            letter-spacing: 0.01em;
+        }
+
+        .chat-widget-close {
+            width: 32px;
+            height: 32px;
+            border: 0;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(15, 23, 42, 0.06);
+            color: #111827;
+            cursor: pointer;
+            transition: background-color 0.18s ease, transform 0.18s ease;
+        }
+
+        .chat-widget-close:hover {
+            background: rgba(15, 23, 42, 0.12);
+            transform: scale(1.04);
+        }
+
+        .chat-widget-close:focus-visible {
+            outline: 3px solid rgba(13, 126, 204, 0.18);
+            outline-offset: 2px;
+        }
+
+        #chat-widget-iframe iframe {
+            display: block;
+            width: 100%;
+            height: calc(100% - 48px);
+            border: none;
+        }
+
+        /* --- 4. MOBILE BOOKING BAR --- */
+        #mobile-booking-bar {
+            position: fixed;
+            left: 50%;
+            bottom: calc(env(safe-area-inset-bottom, 0px) + 20px);
+            z-index: 9997;
+            display: none;
+            pointer-events: none;
+            opacity: 0;
+            transform: translate(-50%, 120%);
+            transition: transform 0.22s ease, opacity 0.22s ease;
+        }
+
+        #mobile-booking-bar.visible {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        .mobile-booking-shell {
+            width: auto;
+            max-width: calc(100vw - 28px);
+        }
+
+        .mobile-booking-btn {
+            pointer-events: auto;
+            width: auto;
+            min-height: 46px;
+            border: 1px solid rgba(17, 17, 17, 0.16);
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.78);
+            color: #111;
+            font-size: 0.92rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .mobile-booking-btn:focus-visible {
+            outline: 3px solid rgba(17, 17, 17, 0.12);
+            outline-offset: 2px;
+        }
+
+        .mobile-booking-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(17, 17, 17, 0.08);
+            font-size: 0.82rem;
         }
 
         @media (max-width: 480px) {
             #chat-widget-iframe { 
-                width: 90vw; 
-                height: 80vh; 
-                bottom: 10px; 
-                right: 5vw; 
+                width: min(92vw, 360px); 
+                height: min(76vh, 560px); 
+                bottom: 86px; 
+                right: 14px; 
+            }
+        }
+
+        @media (hover: none) {
+            .chat-toggle-btn::before,
+            .chat-toggle-btn::after,
+            .zalo-chat-widget::before,
+            .zalo-chat-widget::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #mobile-booking-bar {
+                display: flex;
+                justify-content: center;
             }
         }
     </style>
@@ -121,22 +343,50 @@
 
     <div id="news-slot" class="section-slot"></div>
     <div id="contact-slot" class="section-slot"></div>
-    
-    <div id="chat-widget-iframe">
-        <iframe src="https://fmcchatbot.vercel.app/" title="FMC Chatbot" loading="lazy" style="width: 100%; height: 100%; border: none;"></iframe>
-    </div>
 
-    <div id="widget-group-fixed">
-        <div class="zalo-chat-widget" data-oaid="1720397530862692001" data-welcome-message="Chào bạn! Chúng tôi có thể giúp gì cho bạn?" data-autopopup="0" data-width="" data-height="" style="z-index: 999999;"></div>
-
-        <div class="floating-btn chat-toggle-btn" onclick="toggleChatWidget()">
-            <i class="fab fa-facebook-messenger fa-2x"></i>
+    <div id="mobile-booking-bar" aria-hidden="true" inert>
+        <div class="mobile-booking-shell">
+            <button type="button" class="mobile-booking-btn" onclick="smoothScroll('contact-slot')">
+                <span class="mobile-booking-icon"><i class="far fa-calendar-alt"></i></span>
+                <span>Đặt lịch hẹn</span>
+            </button>
         </div>
     </div>
     
-    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+    <div id="chat-widget-iframe" aria-hidden="true" inert>
+        <div class="chat-widget-toolbar">
+            <span class="chat-widget-title">FMC Chatbot</span>
+            <button type="button" class="chat-widget-close" onclick="toggleChatWidget(false)" aria-label="Đóng chatbot">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <iframe src="https://fmcchatbot.vercel.app/" title="FMC Chatbot" loading="lazy"></iframe>
+    </div>
 
+    <div id="widget-group-fixed">
+        <a
+            class="floating-btn zalo-chat-widget"
+            data-tooltip="Nhắn tin qua Zalo phòng khám"
+            href="https://zalo.me/1720397530862692001"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Nhắn tin qua Zalo phòng khám">
+            <span class="zalo-chat-label">Zalo</span>
+        </a>
 
+        <button
+            type="button"
+            id="chat-toggle-button"
+            class="floating-btn chat-toggle-btn"
+            data-tooltip="Trò chuyện với trợ lý AI phòng khám"
+            onclick="toggleChatWidget()"
+            aria-controls="chat-widget-iframe"
+            aria-expanded="false"
+            aria-label="Mở chatbot">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+    </div>
+    
 <script>
     // --- HÀM LOAD COMPONENT (PHIÊN BẢN FIX LỖI SCRIPT) ---
     async function loadComponent(elementId, path) {
@@ -206,10 +456,144 @@
         }
     }
 
-    window.toggleChatWidget = function() {
+    function initMobileBookingBar() {
+        const bookingBar = document.getElementById('mobile-booking-bar');
+        const contactSlot = document.getElementById('contact-slot');
+        const chatWidget = document.getElementById('chat-widget-iframe');
+
+        if (!bookingBar || !contactSlot || !window.matchMedia) return;
+
+        const mobileQuery = window.matchMedia('(max-width: 768px)');
+        let lastScrollY = window.pageYOffset || 0;
+        let upwardDistance = 0;
+        let downwardDistance = 0;
+        let ticking = false;
+
+        const showAfter = 320;
+        const showThreshold = 28;
+        const hideThreshold = 14;
+
+        const setVisible = (visible) => {
+            const isVisible = visible && mobileQuery.matches;
+            const activeElement = document.activeElement;
+
+            if (!isVisible && activeElement instanceof HTMLElement && bookingBar.contains(activeElement)) {
+                activeElement.blur();
+            }
+
+            bookingBar.classList.toggle('visible', isVisible);
+            bookingBar.inert = !isVisible;
+            bookingBar.setAttribute('aria-hidden', isVisible ? 'false' : 'true');
+        };
+
+        const isNearContact = () => {
+            const rect = contactSlot.getBoundingClientRect();
+            return rect.top <= window.innerHeight * 0.85;
+        };
+
+        const update = (resetDirection = false) => {
+            const currentY = window.pageYOffset || window.scrollY || 0;
+            const delta = currentY - lastScrollY;
+
+            if (resetDirection) {
+                upwardDistance = 0;
+                downwardDistance = 0;
+            } else if (Math.abs(delta) > 2) {
+                if (delta < 0) {
+                    upwardDistance += Math.abs(delta);
+                    downwardDistance = 0;
+                } else {
+                    downwardDistance += delta;
+                    upwardDistance = 0;
+                }
+            }
+
+            const shouldForceHide =
+                !mobileQuery.matches ||
+                currentY < showAfter ||
+                isNearContact() ||
+                chatWidget?.classList.contains('active');
+
+            if (shouldForceHide) {
+                setVisible(false);
+                upwardDistance = 0;
+                downwardDistance = 0;
+            } else if (upwardDistance >= showThreshold) {
+                setVisible(true);
+            } else if (downwardDistance >= hideThreshold) {
+                setVisible(false);
+            }
+
+            lastScrollY = currentY;
+        };
+
+        const onScroll = () => {
+            if (ticking) return;
+            ticking = true;
+            window.requestAnimationFrame(() => {
+                update(false);
+                ticking = false;
+            });
+        };
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', () => update(true));
+
+        if (typeof mobileQuery.addEventListener === 'function') {
+            mobileQuery.addEventListener('change', () => update(true));
+        } else if (typeof mobileQuery.addListener === 'function') {
+            mobileQuery.addListener(() => update(true));
+        }
+
+        window.updateMobileBookingBar = (resetDirection = false) => update(resetDirection);
+        update(true);
+    }
+
+    function setChatWidgetState(isOpen) {
         const widget = document.getElementById('chat-widget-iframe');
-        if (widget) widget.classList.toggle('active');
+        const toggleButton = document.getElementById('chat-toggle-button');
+
+        if (!widget) return;
+
+        const activeElement = document.activeElement;
+        if (!isOpen && activeElement instanceof HTMLElement && widget.contains(activeElement)) {
+            activeElement.blur();
+        }
+
+        widget.classList.toggle('active', isOpen);
+        widget.inert = !isOpen;
+        widget.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+
+        if (toggleButton) {
+            toggleButton.classList.toggle('active', isOpen);
+            toggleButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            toggleButton.setAttribute('aria-label', isOpen ? 'Đóng chatbot' : 'Mở chatbot');
+        }
+
+        if (typeof window.updateMobileBookingBar === 'function') {
+            window.updateMobileBookingBar(true);
+        }
+    }
+
+    window.toggleChatWidget = function(forceState) {
+        const widget = document.getElementById('chat-widget-iframe');
+        if (!widget) return;
+
+        const shouldOpen = typeof forceState === 'boolean'
+            ? forceState
+            : !widget.classList.contains('active');
+
+        setChatWidgetState(shouldOpen);
     };
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            const widget = document.getElementById('chat-widget-iframe');
+            if (widget?.classList.contains('active')) {
+                window.toggleChatWidget(false);
+            }
+        }
+    });
 
     // --- KHỞI CHẠY ---
     document.addEventListener("DOMContentLoaded", async () => {
@@ -226,6 +610,8 @@
         ]);
 
         checkAndScrollToHash();
+        initMobileBookingBar();
+        setTimeout(() => window.updateMobileBookingBar?.(true), 300);
     });
 </script>
 
