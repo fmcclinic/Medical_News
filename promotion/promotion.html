@@ -118,6 +118,120 @@
         .theme-vip .fmc-time-val { color: #d35400; }
         .theme-vip .fmc-btn { background: linear-gradient(90deg, #d35400, #e67e22); }
         .theme-vip .fmc-sticker { background: #2c3e50; color: #f1c40f; border-color: #f1c40f; }
+        .theme-vip .fmc-desc { color: #7a4a11; margin-bottom: 18px; }
+        .theme-vip .fmc-countdown { width: 100%; max-width: 520px; }
+        .vip-offer-box {
+            background: linear-gradient(135deg, #fff7dc 0%, #fff1c4 100%);
+            border: 1px solid rgba(211, 84, 0, 0.18);
+            border-radius: 18px;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 12px 28px rgba(211, 84, 0, 0.08);
+        }
+        .vip-offer-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+        .vip-discount-chip {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            font-weight: 900;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            border: 2px solid rgba(192, 57, 43, 0.18);
+            animation: vip-wiggle 2.2s ease-in-out infinite, vip-shift 2.2s ease-in-out infinite;
+            transform-origin: center;
+        }
+        .vip-discount-chip strong {
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+        .vip-value-line {
+            font-size: 1.08rem;
+            color: #8b5e1a;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .vip-value-line strong {
+            color: #d35400;
+            font-size: 1.32rem;
+        }
+        .vip-price-line {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .vip-price-caption {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #9a3412;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .vip-price-main {
+            font-size: 2rem;
+            font-weight: 900;
+            line-height: 1;
+            color: #c0392b;
+        }
+        .vip-price-main span {
+            font-size: 1rem;
+            color: #7c7c7c;
+            font-weight: 600;
+        }
+        .vip-member-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .vip-member-card {
+            display: block;
+            padding: 18px 20px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(255,247,220,0.98) 100%);
+            border: 1px solid rgba(211, 84, 0, 0.14);
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(211, 84, 0, 0.06);
+        }
+        .vip-member-copy strong {
+            display: block;
+            color: #9a3412;
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+        }
+        .vip-member-copy span {
+            color: #7a4a11;
+            font-size: 0.98rem;
+            line-height: 1.4;
+        }
+        @keyframes vip-wiggle {
+            0%, 100% { transform: translateX(0) rotate(0deg) scale(1); }
+            20% { transform: translateX(-1px) rotate(-1.2deg) scale(1.03); }
+            40% { transform: translateX(2px) rotate(1.2deg) scale(1.06); }
+            60% { transform: translateX(-2px) rotate(-0.8deg) scale(1.04); }
+            80% { transform: translateX(1px) rotate(0.8deg) scale(1.05); }
+        }
+        @keyframes vip-shift {
+            0%, 100% {
+                background: #fff4cf;
+                color: #a84711;
+                box-shadow: 0 8px 20px rgba(211, 84, 0, 0.12);
+            }
+            50% {
+                background: #c0392b;
+                color: #fff8e7;
+                box-shadow: 0 14px 28px rgba(192, 57, 43, 0.28);
+            }
+        }
 
         /* HPV & CỔ TỬ CUNG (Hồng đào) */
         .theme-cervical {
@@ -278,7 +392,26 @@
                 font-size: 1.05rem;
                 border-width: 4px;
             }
+            .vip-offer-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .vip-discount-chip strong {
+                font-size: 1.2rem;
+            }
+            .vip-price-main {
+                font-size: 1.7rem;
+            }
+            .vip-member-grid {
+                grid-template-columns: 1fr;
+            }
             .fmc-list-grid { grid-template-columns: 1fr; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .vip-discount-chip,
+            .fmc-sticker {
+                animation: none;
+            }
         }
     </style>
 
@@ -287,21 +420,50 @@
         <div class="fmc-col-info">
             <span class="fmc-badge">✨ DÀNH CHO CẢ GIA ĐÌNH</span>
             <h2 class="fmc-title">CHƯƠNG TRÌNH <br><span class="highlight" style="text-transform:uppercase">Thẻ VIP Member</span></h2>
-            
-            <div style="margin-bottom:20px; border-left:5px solid #d35400; padding-left:15px;">
-                <p style="margin:5px 0; font-size:1.1rem">Giá trị: <strong>12 lần khám</strong> + <span style="color:#d35400">2 lần miễn phí</span></p>
-                <p style="margin:5px 0; font-size:1.5rem; font-weight:800; color:#c0392b">1.200.000 VNĐ <span style="font-size:0.9rem; color:#666; font-weight:400">/ năm</span></p>
+
+            <p class="fmc-desc"><strong>12 lượt khám + 2 lượt khám miễn phí</strong></p>
+
+            <div class="vip-offer-box">
+                <div class="vip-offer-top">
+                    <div class="vip-discount-chip">
+                        <span>Giảm</span>
+                        <strong>57%</strong>
+                    </div>
+                </div>
+                <div class="vip-value-line">
+                    <strong>Tổng trị giá 2.800.000 VNĐ</strong>
+                </div>
+                <div class="vip-price-line">
+                    <span class="vip-price-caption">Chỉ còn</span>
+                    <div class="vip-price-main">1.200.000 VNĐ <span>/ năm</span></div>
+                </div>
             </div>
 
-            <div class="fmc-countdown" style="background:rgba(241, 196, 15, 0.1); border-color:#f1c40f;">
-                <span style="font-weight:600; color:#d35400;">Phạm vi áp dụng thẻ trong 1 năm.</span>
-            </div>
-
-            <div class="fmc-list-grid" style="color:#d35400; font-weight:600;">
-                <span>👴👵 Người cao tuổi</span>
-                <span>👨👩 Ba mẹ</span>
-                <span>🤰 Mẹ bầu</span>
-                <span>👶 Trẻ em</span>
+            <div class="vip-member-grid">
+                <div class="vip-member-card">
+                    <div class="vip-member-copy">
+                        <strong>Ông bà</strong>
+                        <span>Người cao tuổi trong gia đình</span>
+                    </div>
+                </div>
+                <div class="vip-member-card">
+                    <div class="vip-member-copy">
+                        <strong>Ba mẹ</strong>
+                        <span>Thăm khám chủ động mỗi năm</span>
+                    </div>
+                </div>
+                <div class="vip-member-card">
+                    <div class="vip-member-copy">
+                        <strong>Mẹ bầu &amp; Trẻ em</strong>
+                        <span>Chăm sóc và theo dõi sức khỏe thuận tiện</span>
+                    </div>
+                </div>
+                <div class="vip-member-card">
+                    <div class="vip-member-copy">
+                        <strong>Người thân</strong>
+                        <span>Linh hoạt sử dụng cho cả người thân, bạn bè</span>
+                    </div>
+                </div>
             </div>
 
             <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
