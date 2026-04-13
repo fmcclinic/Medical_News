@@ -72,6 +72,22 @@
             gap: 8px;
         }
 
+.fmc-btn-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.fmc-btn-outline {
+    background: white;
+    color: #2c3e50;
+    border: 1px solid rgba(44, 62, 80, 0.14);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+.theme-vip .fmc-btn-outline { color: #9a3412; }
+.theme-cervical .fmc-btn-outline { color: #ad1457; }
+.theme-breast-screening .fmc-btn-outline { color: #ad1457; }
+.theme-thyroid-advanced .fmc-btn-outline { color: #1565c0; }
+
         /* STICKER (-100%) */
         .fmc-sticker {
             position: absolute; top: -15px; right: -15px; z-index: 10;
@@ -117,7 +133,16 @@
         .theme-vip .highlight { color: #c0392b; }
         .theme-vip .fmc-time-val { color: #d35400; }
         .theme-vip .fmc-btn { background: linear-gradient(90deg, #d35400, #e67e22); }
-        .theme-vip .fmc-sticker { background: #2c3e50; color: #f1c40f; border-color: #f1c40f; }
+        .theme-vip .fmc-sticker {
+            background: linear-gradient(135deg, #c0392b 0%, #e67e22 55%, #f1c40f 100%);
+            color: #fffdf4;
+            border-color: #fff1b8;
+            padding: 12px 30px;
+            font-size: 1.24rem;
+            letter-spacing: 0.04em;
+            box-shadow: 0 14px 28px rgba(192, 57, 43, 0.28);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+        }
         .theme-vip .fmc-desc { color: #7a4a11; margin-bottom: 18px; }
         .theme-vip .fmc-countdown { width: 100%; max-width: 520px; }
         .vip-offer-box {
@@ -385,6 +410,10 @@
 
             .fmc-col-info { width: 100%; padding: 30px 20px; }
             .fmc-sticker { top: 10px; right: 10px; font-size: 0.9rem; transform: rotate(0); }
+            .theme-vip .fmc-sticker {
+                padding: 11px 22px;
+                font-size: 1rem;
+            }
             .fmc-sticker-discount {
                 top: 12px;
                 right: 10px;
@@ -465,13 +494,17 @@
                     </div>
                 </div>
             </div>
-
-            <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
-                <i class="fas fa-crown"></i> Đăng Ký Thẻ VIP
-            </a>
+<div class="fmc-btn-group">
+    <a href="promo/vip-member.html" class="fmc-btn fmc-btn-outline">
+        <i class="fas fa-external-link-alt"></i> Xem Chi Tiết
+    </a>
+    <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
+        <i class="fas fa-crown"></i> Đăng Ký Thẻ VIP
+    </a>
+</div>
         </div>
         <div class="fmc-col-img">
-            <img src="promotion/vip-card-mockup.jpg" alt="VIP Card" onerror="this.src='https://via.placeholder.com/600x800'">
+            <img src="promotion/thevip.png" alt="VIP Card" onerror="this.src='https://via.placeholder.com/600x800'">
         </div>
     </div>
 
@@ -519,13 +552,27 @@
             </div>
 
             <div class="fmc-info-box">
-                <strong>Lưu ý:</strong> Giá có thể thay đổi tùy chương trình.
+                <strong>Lưu ý:</strong> Xét nghiệm chức năng tuyến giáp có thể thêm vào gói tầm soát.
             </div>
-
-            <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
-                <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
-                Đặt lịch hẹn ngay
-            </a>
+<div class="fmc-btn-group">
+    <a href="promo/hpv-co-tu-cung.html" class="fmc-btn fmc-btn-outline">
+        <i class="fas fa-external-link-alt"></i> Xem Chi Tiết
+    </a>
+<div class="fmc-btn-group">
+    <a href="promo/ung-thu-vu.html" class="fmc-btn fmc-btn-outline">
+        <i class="fas fa-external-link-alt"></i> Xem Chi Tiết
+    </a>
+<div class="fmc-btn-group">
+    <a href="promo/ung-thu-tuyen-giap.html" class="fmc-btn fmc-btn-outline">
+        <i class="fas fa-external-link-alt"></i> Xem Chi Tiết
+    </a>
+    <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
+        <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
+        Đặt lịch hẹn ngay
+    </a>
+</div>
+</div>
+</div>
         </div>
     </div>
 
