@@ -66,27 +66,43 @@
             width: fit-content;
         }
         .fmc-btn:hover { transform: translateY(-3px); }
+
+        .fmc-btn-secondary {
+            background: rgba(255,255,255,0.92);
+            color: #1f2937;
+            border: 1px solid rgba(31,41,55,0.12);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        .fmc-btn-secondary:hover { color: #111827; }
+
+        .fmc-btn-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .fmc-share-note {
+            margin-top: 12px;
+            font-size: 0.88rem;
+            color: #6b7280;
+        }
+
+        .fmc-promo-card {
+            scroll-margin-top: 90px;
+            transition: box-shadow 0.22s ease, transform 0.22s ease, border-color 0.22s ease;
+        }
+
+        .fmc-promo-active {
+            border-color: rgba(13, 126, 204, 0.45) !important;
+            box-shadow: 0 16px 36px rgba(13, 126, 204, 0.14);
+            transform: translateY(-2px);
+        }
         .fmc-btn-icon-group {
             display: inline-flex;
             align-items: center;
             gap: 8px;
         }
-
-.fmc-btn-group {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-.fmc-btn-outline {
-    background: white;
-    color: #2c3e50;
-    border: 1px solid rgba(44, 62, 80, 0.14);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-}
-.theme-vip .fmc-btn-outline { color: #9a3412; }
-.theme-cervical .fmc-btn-outline { color: #ad1457; }
-.theme-breast-screening .fmc-btn-outline { color: #ad1457; }
-.theme-thyroid-advanced .fmc-btn-outline { color: #1565c0; }
 
         /* STICKER (-100%) */
         .fmc-sticker {
@@ -435,6 +451,14 @@
                 grid-template-columns: 1fr;
             }
             .fmc-list-grid { grid-template-columns: 1fr; }
+            .fmc-btn-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .fmc-btn,
+            .fmc-btn-secondary {
+                justify-content: center;
+            }
         }
         @media (prefers-reduced-motion: reduce) {
             .vip-discount-chip,
@@ -444,7 +468,12 @@
         }
     </style>
 
-    <div class="fmc-promo-card theme-vip">
+
+    <div class="fmc-info-box" style="margin: 0 0 24px 0; border-left-color:#0d7ecc; background:#eef7ff; color:#184a78;">
+        <strong>Gợi ý dùng link:</strong> Bạn có thể mở trực tiếp từng khuyến mãi bằng URL dạng <strong>?promo=vip</strong>, <strong>?promo=hpv</strong>, <strong>?promo=breast</strong>, <strong>?promo=thyroid</strong>.
+    </div>
+
+    <div id="promotion-vip-slot" class="fmc-promo-card theme-vip">
         <div class="fmc-sticker">★ VIP MEMBER</div>
         <div class="fmc-col-info">
             <span class="fmc-badge">✨ DÀNH CHO CẢ GIA ĐÌNH</span>
@@ -494,21 +523,23 @@
                     </div>
                 </div>
             </div>
-<div class="fmc-btn-group">
-    <a href="promo/vip-member.html" class="fmc-btn fmc-btn-outline">
-        <i class="fas fa-external-link-alt"></i> Xem Chi Tiết
-    </a>
-    <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
-        <i class="fas fa-crown"></i> Đăng Ký Thẻ VIP
-    </a>
-</div>
+
+            <div class="fmc-btn-row">
+                <a href="/?promo=vip#promotion-vip-slot" class="fmc-btn fmc-btn-secondary" onclick="navigateToPromo('vip'); return false;">
+                    <i class="fas fa-link"></i> Link Chia Sẻ
+                </a>
+                <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
+                    <i class="fas fa-crown"></i> Đăng Ký Thẻ VIP
+                </a>
+            </div>
+            <div class="fmc-share-note">URL điều hướng nội bộ: <strong>?promo=vip</strong></div>
         </div>
         <div class="fmc-col-img">
             <img src="promotion/thevip.png" alt="VIP Card" onerror="this.src='https://via.placeholder.com/600x800'">
         </div>
     </div>
 
-    <div class="fmc-promo-card theme-cervical">
+    <div id="promotion-hpv-slot" class="fmc-promo-card theme-cervical">
         <div class="fmc-sticker fmc-sticker-discount"><span class="fmc-sticker-star">★</span><span>GIẢM <span class="fmc-sticker-value">20%</span></span></div>
         <div class="fmc-col-img">
             <img src="promotion/tam soat ung thu co tư cung.png" alt="Gói tầm soát HPV và ung thư cổ tử cung" onerror="this.src='https://via.placeholder.com/600x800'">
@@ -554,29 +585,21 @@
             <div class="fmc-info-box">
                 <strong>Lưu ý:</strong> Xét nghiệm chức năng tuyến giáp có thể thêm vào gói tầm soát.
             </div>
-<div class="fmc-btn-group">
-    <a href="promo/hpv-co-tu-cung.html" class="fmc-btn fmc-btn-outline">
-        <i class="fas fa-external-link-alt"></i> Xem Chi Tiết
-    </a>
-<div class="fmc-btn-group">
-    <a href="promo/ung-thu-vu.html" class="fmc-btn fmc-btn-outline">
-        <i class="fas fa-external-link-alt"></i> Xem Chi Tiết
-    </a>
-<div class="fmc-btn-group">
-    <a href="promo/ung-thu-tuyen-giap.html" class="fmc-btn fmc-btn-outline">
-        <i class="fas fa-external-link-alt"></i> Xem Chi Tiết
-    </a>
-    <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
-        <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
-        Đặt lịch hẹn ngay
-    </a>
-</div>
-</div>
-</div>
+
+            <div class="fmc-btn-row">
+                <a href="/?promo=hpv#promotion-hpv-slot" class="fmc-btn fmc-btn-secondary" onclick="navigateToPromo('hpv'); return false;">
+                    <i class="fas fa-link"></i> Link Chia Sẻ
+                </a>
+                <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
+                    <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
+                    Đặt lịch hẹn ngay
+                </a>
+            </div>
+            <div class="fmc-share-note">URL điều hướng nội bộ: <strong>?promo=hpv</strong></div>
         </div>
     </div>
 
-    <div class="fmc-promo-card theme-breast-screening">
+    <div id="promotion-breast-slot" class="fmc-promo-card theme-breast-screening">
         <div class="fmc-sticker fmc-sticker-discount"><span class="fmc-sticker-star">★</span><span>GIẢM <span class="fmc-sticker-value">20%</span></span></div>
         <div class="fmc-col-img">
             <img src="promotion/tam soat ung thu vu.png" alt="Tầm soát ung thư vú" onerror="this.src='https://via.placeholder.com/600x800'">
@@ -634,14 +657,20 @@
                 <strong>Lưu ý:</strong> Chụp nhũ ảnh nếu cần sẽ tính ngoài gói.
             </div>
 
-            <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
-                <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
-                Đặt lịch hẹn ngay
-            </a>
+            <div class="fmc-btn-row">
+                <a href="/?promo=breast#promotion-breast-slot" class="fmc-btn fmc-btn-secondary" onclick="navigateToPromo('breast'); return false;">
+                    <i class="fas fa-link"></i> Link Chia Sẻ
+                </a>
+                <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
+                    <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
+                    Đặt lịch hẹn ngay
+                </a>
+            </div>
+            <div class="fmc-share-note">URL điều hướng nội bộ: <strong>?promo=breast</strong></div>
         </div>
     </div>
 
-    <div class="fmc-promo-card theme-thyroid-advanced">
+    <div id="promotion-thyroid-slot" class="fmc-promo-card theme-thyroid-advanced">
         <div class="fmc-sticker fmc-sticker-discount"><span class="fmc-sticker-star">★</span><span>GIẢM <span class="fmc-sticker-value">20%</span></span></div>
         <div class="fmc-col-img">
             <img src="promotion/tam soat ung thu tuyen giap.png" alt="Gói tầm soát ung thư tuyến giáp nâng cao" onerror="this.src='https://via.placeholder.com/600x800'">
@@ -684,16 +713,29 @@
                 <strong>Lưu ý:</strong> Giá có thể thay đổi tùy chương trình.
             </div>
 
-            <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
-                <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
-                Đặt lịch hẹn ngay
-            </a>
+            <div class="fmc-btn-row">
+                <a href="/?promo=thyroid#promotion-thyroid-slot" class="fmc-btn fmc-btn-secondary" onclick="navigateToPromo('thyroid'); return false;">
+                    <i class="fas fa-link"></i> Link Chia Sẻ
+                </a>
+                <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
+                    <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
+                    Đặt lịch hẹn ngay
+                </a>
+            </div>
+            <div class="fmc-share-note">URL điều hướng nội bộ: <strong>?promo=thyroid</strong></div>
         </div>
     </div>
 
 
     <script>
         {
+            const promoButtons = document.querySelectorAll('[href^="/?promo="]');
+            promoButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // handler đã có ở inline onclick; listener này giữ cho liên kết vẫn đúng khi copy link.
+                });
+            });
+
             const initPromotions = () => {
                 const timers = document.querySelectorAll('.fmc-countdown');
                 if (timers.length === 0) { setTimeout(initPromotions, 100); return; }
