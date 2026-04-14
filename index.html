@@ -5,21 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phòng Khám FMC - Friend Medical Clinic</title>
     <meta name="description" content="Phòng khám đa khoa FMC - Dịch vụ y tế chất lượng cao.">
-
-    <link rel="canonical" href="https://friendmedicalclinic.com/">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Friend Medical Clinic">
-    <meta property="og:title" content="Phòng Khám FMC - Friend Medical Clinic">
-    <meta property="og:description" content="Phòng khám đa khoa FMC - Dịch vụ y tế chất lượng cao.">
-    <meta property="og:url" content="https://friendmedicalclinic.com/">
-    <meta property="og:image" content="https://friendmedicalclinic.com/assets/og/home-share.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:locale" content="vi_VN">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Phòng Khám FMC - Friend Medical Clinic">
-    <meta name="twitter:description" content="Phòng khám đa khoa FMC - Dịch vụ y tế chất lượng cao.">
-    <meta name="twitter:image" content="https://friendmedicalclinic.com/assets/og/home-share.jpg">
     
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Friend Medical Clinic">
@@ -624,127 +609,8 @@
         }
     });
 
-    const PROMO_CONFIG = {
-        vip: {
-            targetId: 'promotion-vip-slot',
-            title: 'Chương trình Thẻ VIP Member | Friend Medical Clinic',
-            description: '12 lượt khám + 2 lượt khám miễn phí. Giảm 57%. Chỉ còn 1.200.000 VNĐ/năm cho cả gia đình.',
-            image: 'https://friendmedicalclinic.com/promotion/thevip.png'
-        },
-        hpv: {
-            targetId: 'promotion-hpv-slot',
-            title: 'Gói Tầm Soát HPV & Ung Thư Cổ Tử Cung | Friend Medical Clinic',
-            description: 'Giảm 20% gói tầm soát HPV và ung thư cổ tử cung. Thực hiện vào thứ 3, thứ 5 và sáng thứ 7.',
-            image: 'https://friendmedicalclinic.com/promotion/tam%20soat%20ung%20thu%20co%20t%C6%B0%20cung.png'
-        },
-        breast: {
-            targetId: 'promotion-breast-slot',
-            title: 'Tầm Soát Ung Thư Vú | Friend Medical Clinic',
-            description: 'Ưu đãi giảm 20% cho gói tầm soát ung thư vú. Khám nữ thuận tiện cùng bác sĩ chuyên khoa.',
-            image: 'https://friendmedicalclinic.com/promotion/tam%20soat%20ung%20thu%20vu.png'
-        },
-        thyroid: {
-            targetId: 'promotion-thyroid-slot',
-            title: 'Gói Tầm Soát Ung Thư Tuyến Giáp | Friend Medical Clinic',
-            description: 'Ưu đãi giảm 20% cho gói tầm soát ung thư tuyến giáp với siêu âm và tư vấn chuyên sâu.',
-            image: 'https://friendmedicalclinic.com/promotion/tam%20soat%20ung%20thu%20tuyen%20giap.png'
-        }
-    };
-
-    function setOrCreateMeta(attrName, attrValue, content) {
-        let selector = `meta[${attrName}="${attrValue}"]`;
-        let tag = document.head.querySelector(selector);
-        if (!tag) {
-            tag = document.createElement('meta');
-            tag.setAttribute(attrName, attrValue);
-            document.head.appendChild(tag);
-        }
-        tag.setAttribute('content', content);
-    }
-
-    function setCanonicalUrl(url) {
-        let link = document.head.querySelector('link[rel="canonical"]');
-        if (!link) {
-            link = document.createElement('link');
-            link.setAttribute('rel', 'canonical');
-            document.head.appendChild(link);
-        }
-        link.setAttribute('href', url);
-    }
-
-    function getPromoKeyFromUrl() {
-        const params = new URLSearchParams(window.location.search);
-        const promoKey = params.get('promo');
-        return promoKey && PROMO_CONFIG[promoKey] ? promoKey : null;
-    }
-
-    function applyPromoMetaFromQuery() {
-        const promoKey = getPromoKeyFromUrl();
-        if (!promoKey) return;
-
-        const promo = PROMO_CONFIG[promoKey];
-        const url = new URL(window.location.href);
-        url.hash = `#${promo.targetId}`;
-
-        document.title = promo.title;
-        const descTag = document.querySelector('meta[name="description"]');
-        if (descTag) descTag.setAttribute('content', promo.description);
-
-        setCanonicalUrl(url.toString());
-        setOrCreateMeta('property', 'og:title', promo.title);
-        setOrCreateMeta('property', 'og:description', promo.description);
-        setOrCreateMeta('property', 'og:url', url.toString());
-        setOrCreateMeta('property', 'og:image', promo.image);
-        setOrCreateMeta('name', 'twitter:title', promo.title);
-        setOrCreateMeta('name', 'twitter:description', promo.description);
-        setOrCreateMeta('name', 'twitter:image', promo.image);
-    }
-
-    function activatePromotionCard(promoKey) {
-        document.querySelectorAll('.fmc-promo-card').forEach(card => {
-            card.classList.remove('fmc-promo-active');
-        });
-
-        if (!promoKey || !PROMO_CONFIG[promoKey]) return;
-        const target = document.getElementById(PROMO_CONFIG[promoKey].targetId);
-        if (target) {
-            target.classList.add('fmc-promo-active');
-            target.setAttribute('tabindex', '-1');
-        }
-    }
-
-    function syncPromoQueryToHash(promoKey) {
-        if (!promoKey || !PROMO_CONFIG[promoKey]) return;
-        const targetId = PROMO_CONFIG[promoKey].targetId;
-        const nextUrl = new URL(window.location.href);
-        nextUrl.hash = `#${targetId}`;
-        window.history.replaceState({}, '', nextUrl.toString());
-    }
-
-    function navigateToPromo(promoKey, scrollNow = true) {
-        if (!promoKey || !PROMO_CONFIG[promoKey]) return;
-        activatePromotionCard(promoKey);
-        syncPromoQueryToHash(promoKey);
-
-        if (scrollNow) {
-            setTimeout(() => smoothScroll(PROMO_CONFIG[promoKey].targetId), 120);
-        }
-    }
-
-    function openPromotionFromQuery() {
-        const promoKey = getPromoKeyFromUrl();
-        if (!promoKey) return;
-        navigateToPromo(promoKey, true);
-    }
-
-    window.openPromotionFromQuery = openPromotionFromQuery;
-    window.navigateToPromo = navigateToPromo;
-    window.applyPromoMetaFromQuery = applyPromoMetaFromQuery;
-
     // --- KHỞI CHẠY ---
     document.addEventListener("DOMContentLoaded", async () => {
-        applyPromoMetaFromQuery();
-
         // Load Banner trước
         await loadComponent('header-slot', 'banner.html');
 
@@ -757,7 +623,6 @@
             loadComponent('contact-slot', 'contact/contact.html')
         ]);
 
-        openPromotionFromQuery();
         checkAndScrollToHash();
         initMobileBookingBar();
         setTimeout(() => window.updateMobileBookingBar?.(true), 300);
