@@ -22,8 +22,12 @@
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
         <link rel="stylesheet" href="promo-common.css">
+        <style>
+            .promo-page { padding-top: calc(36px + 80px); }
+        </style>
     </head>
     <body>
+        <div id="header-slot"></div>
         <main class="promo-page">
             <div class="promo-container">
                 <div class="promo-topbar">
@@ -31,7 +35,6 @@
                         <i class="fas fa-arrow-left"></i>
                         <span>Quay lại chương trình khuyến mãi</span>
                     </a>
-                    <div class="promo-share-note">Trang này có metadata riêng để chia sẻ lên Facebook.</div>
                 </div>
 
                 <section class="promo-card theme-breast">
@@ -105,5 +108,39 @@
                 </section>
             </div>
         </main>
+        <script>
+            async function loadComponent(elementId, path) {
+                try {
+                    const response = await fetch(path);
+                    if (!response.ok) {
+                        console.error('Load component failed:', path, response.statusText);
+                        return;
+                    }
+                    const html = await response.text();
+                    const container = document.getElementById(elementId);
+                    if (!container) return;
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = html;
+                    const scripts = tempDiv.querySelectorAll('script');
+                    scripts.forEach(script => script.remove());
+                    container.innerHTML = tempDiv.innerHTML;
+                    scripts.forEach(oldScript => {
+                        const newScript = document.createElement('script');
+                        Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                        if (oldScript.src) {
+                            newScript.src = oldScript.src;
+                        } else {
+                            newScript.textContent = oldScript.textContent;
+                        }
+                        document.body.appendChild(newScript);
+                    });
+                } catch (error) {
+                    console.error('Error loading component', error);
+                }
+            }
+            document.addEventListener('DOMContentLoaded', () => {
+                loadComponent('header-slot', '../banner.html');
+            });
+        </script>
     </body>
     </html>

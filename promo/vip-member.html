@@ -12,18 +12,234 @@
         <meta property="og:title" content="Chương trình Thẻ VIP Member">
         <meta property="og:description" content="12 lượt khám + 2 lượt khám miễn phí. Giảm 57%. Tổng trị giá 2.800.000 VNĐ, chỉ còn 1.200.000 VNĐ/năm cho cả gia đình.">
         <meta property="og:url" content="https://friendmedicalclinic.com/promo/vip-member.html">
-        <meta property="og:image" content="https://friendmedicalclinic.com/promotion/thevip.png">
+        <meta property="og:image" content="https://friendmedicalclinic.com/promotion/vip-card-mockup.jpg">
         <meta property="og:locale" content="vi_VN">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="Chương trình Thẻ VIP Member">
         <meta name="twitter:description" content="12 lượt khám + 2 lượt khám miễn phí. Giảm 57%. Tổng trị giá 2.800.000 VNĐ, chỉ còn 1.200.000 VNĐ/năm cho cả gia đình.">
-        <meta name="twitter:image" content="https://friendmedicalclinic.com/promotion/thevip.png">
+        <meta name="twitter:image" content="https://friendmedicalclinic.com/promotion/vip-card-mockup.jpg">
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
         <link rel="stylesheet" href="promo-common.css">
+        <style>
+            .promo-page {
+                padding-top: calc(36px + 80px);
+            }
+            .floating-btn {
+                width: 56px;
+                height: 56px;
+                border-radius: 50%;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border: 0;
+                padding: 0;
+                background: #fff;
+                color: #111;
+                box-shadow: 0 16px 32px rgba(15, 23, 42, 0.18);
+                transition: transform 0.22s ease, box-shadow 0.22s ease;
+                cursor: pointer;
+                text-decoration: none;
+            }
+            .floating-btn:hover {
+                transform: translateY(-2px);
+            }
+            .zalo-chat-widget {
+                position: relative;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 56px;
+                background: #fff;
+                color: #0068ff;
+                border: 1px solid rgba(0, 104, 255, 0.18);
+                font-weight: 800;
+            }
+            .zalo-chat-widget .zalo-chat-label {
+                font-size: 0.82rem;
+            }
+            .chat-toggle-btn {
+                background: #fff;
+                color: #0d7ecc;
+                border: 1px solid rgba(13, 126, 204, 0.18);
+            }
+            .chat-toggle-btn i {
+                font-size: 1.28rem;
+            }
+            .chat-toggle-btn::before,
+            .zalo-chat-widget::before {
+                content: attr(data-tooltip);
+                position: absolute;
+                right: calc(100% + 12px);
+                top: 50%;
+                transform: translateY(-50%) translateX(8px);
+                padding: 9px 12px;
+                border-radius: 999px;
+                background: rgba(17, 24, 39, 0.92);
+                color: #fff;
+                font-size: 0.82rem;
+                font-weight: 600;
+                white-space: nowrap;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
+            }
+            .chat-toggle-btn::after,
+            .zalo-chat-widget::after {
+                content: '';
+                position: absolute;
+                right: calc(100% + 4px);
+                top: 50%;
+                width: 10px;
+                height: 10px;
+                background: rgba(17, 24, 39, 0.92);
+                transform: translateY(-50%) rotate(45deg);
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.18s ease, visibility 0s linear 0.18s;
+            }
+            .chat-toggle-btn:hover::before,
+            .chat-toggle-btn:hover::after,
+            .zalo-chat-widget:hover::before,
+            .zalo-chat-widget:hover::after,
+            .chat-toggle-btn:focus-visible::before,
+            .chat-toggle-btn:focus-visible::after,
+            .zalo-chat-widget:focus-within::before,
+            .zalo-chat-widget:focus-within::after {
+                opacity: 1;
+                visibility: visible;
+                transition-delay: 0s;
+            }
+            .chat-toggle-btn:hover::before,
+            .zalo-chat-widget:hover::before,
+            .chat-toggle-btn:focus-visible::before,
+            .zalo-chat-widget:focus-within::before {
+                transform: translateY(-50%) translateX(0);
+            }
+            #chat-widget-iframe {
+                position: fixed;
+                bottom: 94px;
+                right: 20px;
+                width: 360px;
+                height: 500px;
+                border-radius: 20px;
+                box-shadow: 0 24px 60px rgba(15, 23, 42, 0.22);
+                z-index: 9998;
+                background: rgba(255, 255, 255, 0.98);
+                border: 1px solid rgba(15, 23, 42, 0.08);
+                overflow: hidden;
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transform: translateY(18px) scale(0.96);
+                transition: transform 0.24s ease, opacity 0.24s ease, visibility 0s linear 0.24s;
+                transform-origin: bottom right;
+            }
+            #chat-widget-iframe.active {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+                transform: translateY(0) scale(1);
+            }
+            .chat-widget-toolbar {
+                height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 14px;
+                border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+                background: rgba(255, 255, 255, 0.92);
+                backdrop-filter: blur(12px);
+            }
+            .chat-widget-title {
+                font-size: 0.92rem;
+                font-weight: 700;
+                color: #111827;
+            }
+            .chat-widget-close {
+                width: 32px;
+                height: 32px;
+                border: 0;
+                border-radius: 50%;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(15, 23, 42, 0.06);
+                color: #111827;
+                cursor: pointer;
+                transition: background-color 0.18s ease, transform 0.18s ease;
+            }
+            .chat-widget-close:hover {
+                background: rgba(15, 23, 42, 0.12);
+                transform: scale(1.04);
+            }
+            #chat-widget-iframe iframe {
+                width: 100%;
+                height: calc(100% - 48px);
+                border: none;
+                display: block;
+            }
+            #widget-group-fixed {
+                position: fixed;
+                bottom: 18px;
+                right: 18px;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                z-index: 9999;
+            }
+            @media (max-width: 1024px) {
+                .header {
+                    flex-wrap: wrap;
+                    align-items: flex-start;
+                    padding: 10px 16px;
+                    min-height: auto;
+                }
+                .main-nav {
+                    flex-direction: column;
+                    gap: 10px;
+                    margin: 0;
+                }
+                .nav-container {
+                    position: absolute;
+                    top: 70px;
+                    left: 0;
+                    right: 0;
+                    background: #fff;
+                    flex-direction: column;
+                    padding: 16px;
+                    transform: translateY(-140%);
+                    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.12);
+                    transition: transform 0.28s ease;
+                    z-index: 1001;
+                }
+                .nav-container.active {
+                    transform: translateY(0);
+                }
+                .status-container {
+                    width: 100%;
+                    justify-content: flex-start;
+                }
+                .mobile-menu-btn {
+                    display: inline-flex;
+                }
+            }
+            @media (max-width: 480px) {
+                #chat-widget-iframe { width: min(92vw, 360px); height: min(76vh, 560px); right: 14px; }
+            }
+            @media (hover: none) {
+                .chat-toggle-btn::before,
+                .chat-toggle-btn::after,
+                .zalo-chat-widget::before,
+                .zalo-chat-widget::after {
+                    display: none;
+                }
+            }
+        </style>
     </head>
     <body>
+        <div id="header-slot"></div>
         <main class="promo-page">
             <div class="promo-container">
                 <div class="promo-topbar">
@@ -31,7 +247,6 @@
                         <i class="fas fa-arrow-left"></i>
                         <span>Quay lại chương trình khuyến mãi</span>
                     </a>
-                    <div class="promo-share-note">Trang này có metadata riêng để chia sẻ lên Facebook.</div>
                 </div>
 
                 <section class="promo-card theme-vip">
@@ -86,10 +301,132 @@
                     </div>
 
                     <div class="promo-media">
-                        <img src="../promotion/thevip.png" alt="VIP Card">
+                        <img src="../promotion/vip-card-mockup.jpg" alt="VIP Card">
                     </div>
                 </section>
             </div>
         </main>
+
+        <script>
+            async function loadComponent(elementId, path) {
+                try {
+                    const response = await fetch(path);
+                    if (!response.ok) {
+                        console.error('Load component failed:', path, response.statusText);
+                        return;
+                    }
+                    const html = await response.text();
+                    const container = document.getElementById(elementId);
+                    if (!container) return;
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = html;
+                    const scripts = tempDiv.querySelectorAll('script');
+                    scripts.forEach(script => script.remove());
+                    container.innerHTML = tempDiv.innerHTML;
+                    scripts.forEach(oldScript => {
+                        const newScript = document.createElement('script');
+                        Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                        if (oldScript.src) {
+                            newScript.src = oldScript.src;
+                        } else {
+                            newScript.textContent = oldScript.textContent;
+                        }
+                        document.body.appendChild(newScript);
+                    });
+                } catch (error) {
+                    console.error('Error loading component', error);
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                loadComponent('header-slot', '../banner.html');
+            });
+        </script>
+
+        <div id="chat-widget-iframe" aria-hidden="true">
+            <div class="chat-widget-toolbar">
+                <span class="chat-widget-title">FMC Chatbot</span>
+                <button type="button" class="chat-widget-close" onclick="toggleChatWidget(false)" aria-label="Đóng chatbot">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <iframe src="https://fmcchatbot.vercel.app/" title="FMC Chatbot" loading="lazy"></iframe>
+        </div>
+
+        <div id="widget-group-fixed">
+            <a
+                class="floating-btn zalo-chat-widget"
+                data-tooltip="Nhắn tin qua Zalo phòng khám"
+                href="https://zalo.me/1720397530862692001"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Nhắn tin qua Zalo phòng khám">
+                <span class="zalo-chat-label">Zalo</span>
+            </a>
+            <button
+                type="button"
+                id="chat-toggle-button"
+                class="floating-btn chat-toggle-btn"
+                data-tooltip="Trò chuyện với trợ lý AI phòng khám"
+                onclick="toggleChatWidget()"
+                aria-controls="chat-widget-iframe"
+                aria-expanded="false"
+                aria-label="Mở chatbot">
+                <i class="fas fa-comment-dots"></i>
+            </button>
+        </div>
+
+        <script>
+            const menuBtn = document.getElementById('menuBtn');
+            const navContainer = document.querySelector('.nav-container');
+
+            menuBtn?.addEventListener('click', () => {
+                navContainer?.classList.toggle('active');
+                const currentIcon = menuBtn.querySelector('svg');
+                if (navContainer?.classList.contains('active')) {
+                    currentIcon.innerHTML = '<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>';
+                } else {
+                    currentIcon.innerHTML = '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>';
+                }
+            });
+
+            function updateOpenStatus() {
+                const now = new Date();
+                const day = now.getDay();
+                const hour = now.getHours();
+                const statusSpan = document.querySelector('#openStatus span');
+                const statusIcon = document.querySelector('#openStatus i');
+                const isOpen = day === 0 ? hour >= 8 && hour < 12 : hour >= 8 && hour < 20;
+                if (statusSpan) {
+                    statusSpan.textContent = isOpen ? 'Đang mở cửa' : 'Đang đóng cửa';
+                    statusSpan.style.color = isOpen ? '#28a745' : '#dc3545';
+                }
+                if (statusIcon) {
+                    statusIcon.style.color = isOpen ? '#28a745' : '#dc3545';
+                }
+            }
+
+            updateOpenStatus();
+            setInterval(updateOpenStatus, 60000);
+
+            function setChatWidgetState(isOpen) {
+                const widget = document.getElementById('chat-widget-iframe');
+                const toggleButton = document.getElementById('chat-toggle-button');
+                if (!widget || !toggleButton) return;
+                widget.classList.toggle('active', isOpen);
+                toggleButton.classList.toggle('active', isOpen);
+                toggleButton.setAttribute('aria-expanded', String(isOpen));
+                toggleButton.setAttribute('aria-label', isOpen ? 'Đóng chatbot' : 'Mở chatbot');
+                widget.setAttribute('aria-hidden', String(!isOpen));
+            }
+
+            window.toggleChatWidget = function(forceState) {
+                const widget = document.getElementById('chat-widget-iframe');
+                if (!widget) return;
+                const isOpen = widget.classList.contains('active');
+                const shouldOpen = typeof forceState === 'boolean' ? forceState : !isOpen;
+                setChatWidgetState(shouldOpen);
+            };
+        </script>
     </body>
     </html>

@@ -78,15 +78,16 @@
     flex-wrap: wrap;
 }
 .fmc-btn-outline {
-    background: white;
-    color: #2c3e50;
-    border: 1px solid rgba(44, 62, 80, 0.14);
+    --outline-color: #2c3e50;
+    background: var(--outline-color);
+    color: #fff;
+    border: 1px solid var(--outline-color);
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
-.theme-vip .fmc-btn-outline { color: #9a3412; }
-.theme-cervical .fmc-btn-outline { color: #ad1457; }
-.theme-breast-screening .fmc-btn-outline { color: #ad1457; }
-.theme-thyroid-advanced .fmc-btn-outline { color: #1565c0; }
+.theme-vip .fmc-btn-outline { --outline-color: #9a3412; }
+.theme-cervical .fmc-btn-outline { --outline-color: #ad1457; }
+.theme-breast-screening .fmc-btn-outline { --outline-color: #ad1457; }
+.theme-thyroid-advanced .fmc-btn-outline { --outline-color: #1565c0; }
 
         /* STICKER (-100%) */
         .fmc-sticker {
@@ -494,24 +495,24 @@
                     </div>
                 </div>
             </div>
-<div class="fmc-btn-group">
-    <a href="promo/vip-member.html" class="fmc-btn fmc-btn-outline">
-        <i class="fas fa-external-link-alt"></i> Xem Chi Tiết
-    </a>
-    <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
-        <i class="fas fa-crown"></i> Đăng Ký Thẻ VIP
-    </a>
-</div>
+            <div class="fmc-btn-group">
+                <a href="promo/vip-member.html" class="fmc-btn fmc-btn-outline">
+                    <i class="fas fa-external-link-alt"></i> Xem Chi Tiết
+                </a>
+                <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
+                    <i class="fas fa-crown"></i> Đăng Ký Thẻ VIP
+                </a>
+            </div>
         </div>
         <div class="fmc-col-img">
-            <img src="promotion/thevip.png" alt="VIP Card" onerror="this.src='https://via.placeholder.com/600x800'">
+            <img src="promotion/vip-card-mockup.jpg" alt="VIP Card" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5WaXAgQ2FyZDwvdGV4dD48L3N2Zz4='">
         </div>
     </div>
 
     <div class="fmc-promo-card theme-cervical">
         <div class="fmc-sticker fmc-sticker-discount"><span class="fmc-sticker-star">★</span><span>GIẢM <span class="fmc-sticker-value">20%</span></span></div>
         <div class="fmc-col-img">
-            <img src="promotion/tam soat ung thu co tư cung.png" alt="Gói tầm soát HPV và ung thư cổ tử cung" onerror="this.src='https://via.placeholder.com/600x800'">
+            <img src="promotion/tam soat ung thu co tư cung.png" alt="Gói tầm soát HPV và ung thư cổ tử cung" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5ISFZWIFNjcmVlbmluZzwvdGV4dD48L3N2Zz4='">
         </div>
         <div class="fmc-col-info">
             <span class="fmc-badge">Sức khỏe phụ nữ</span>
@@ -554,32 +555,22 @@
             <div class="fmc-info-box">
                 <strong>Lưu ý:</strong> Xét nghiệm chức năng tuyến giáp có thể thêm vào gói tầm soát.
             </div>
-<div class="fmc-btn-group">
-    <a href="promo/hpv-co-tu-cung.html" class="fmc-btn fmc-btn-outline">
-        <i class="fas fa-external-link-alt"></i> Xem Chi Tiết
-    </a>
-<div class="fmc-btn-group">
-    <a href="promo/ung-thu-vu.html" class="fmc-btn fmc-btn-outline">
-        <i class="fas fa-external-link-alt"></i> Xem Chi Tiết
-    </a>
-<div class="fmc-btn-group">
-    <a href="promo/ung-thu-tuyen-giap.html" class="fmc-btn fmc-btn-outline">
-        <i class="fas fa-external-link-alt"></i> Xem Chi Tiết
-    </a>
-    <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
-        <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
-        Đặt lịch hẹn ngay
-    </a>
-</div>
-</div>
-</div>
+            <div class="fmc-btn-group">
+                <a href="promo/hpv-co-tu-cung.html" class="fmc-btn fmc-btn-outline">
+                    <i class="fas fa-external-link-alt"></i> Xem Chi Tiết
+                </a>
+                <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
+                    <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
+                    Đặt lịch hẹn ngay
+                </a>
+            </div>
         </div>
     </div>
 
     <div class="fmc-promo-card theme-breast-screening">
         <div class="fmc-sticker fmc-sticker-discount"><span class="fmc-sticker-star">★</span><span>GIẢM <span class="fmc-sticker-value">20%</span></span></div>
         <div class="fmc-col-img">
-            <img src="promotion/tam soat ung thu vu.png" alt="Tầm soát ung thư vú" onerror="this.src='https://via.placeholder.com/600x800'">
+            <img src="promotion/tam soat ung thu vu.png" alt="Tầm soát ung thư vú" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5CcmVhc3QgU2NyZWVuaW5nPC90ZXh0Pjwvc3ZnPg=='">
         </div>
         <div class="fmc-col-info">
             <span class="fmc-badge">Sức khỏe phụ nữ</span>
@@ -634,17 +625,20 @@
                 <strong>Lưu ý:</strong> Chụp nhũ ảnh nếu cần sẽ tính ngoài gói.
             </div>
 
-            <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
-                <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
-                Đặt lịch hẹn ngay
-            </a>
+            <div class="fmc-btn-group">
+                <a href="promo/ung-thu-vu.html" class="fmc-btn fmc-btn-outline">Xem Chi Tiết</a>
+                <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
+                    <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
+                    Đặt lịch hẹn ngay
+                </a>
+            </div>
         </div>
     </div>
 
     <div class="fmc-promo-card theme-thyroid-advanced">
         <div class="fmc-sticker fmc-sticker-discount"><span class="fmc-sticker-star">★</span><span>GIẢM <span class="fmc-sticker-value">20%</span></span></div>
         <div class="fmc-col-img">
-            <img src="promotion/tam soat ung thu tuyen giap.png" alt="Gói tầm soát ung thư tuyến giáp nâng cao" onerror="this.src='https://via.placeholder.com/600x800'">
+            <img src="promotion/tam soat ung thu tuyen giap.png" alt="Gói tầm soát ung thư tuyến giáp nâng cao" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5UaHlyb2lkIFNjcmVlbmluZzwvdGV4dD48L3N2Zz4='">
         </div>
         <div class="fmc-col-info">
             <span class="fmc-badge">Tầm soát tuyến giáp</span>
@@ -654,7 +648,7 @@
 
             <div class="fmc-price-box" style="background:linear-gradient(135deg, #fff6cf 0%, #eef7ff 100%); border-color:#bfdcf2;">
                 <div class="fmc-price-kicker" style="color:#1d5f91;">Giá ưu đãi đặc biệt</div>
-                <div class="fmc-price-old">Từ 300.000đ</div>
+                <div class="fmc-price-old" style="font-size:1.2rem;">Từ 300.000đ</div>
                 <div class="fmc-price-discount" style="color:#1565c0;">Giảm 20%</div>
                 <div class="fmc-price-new" style="color:#0d47a1;">Chỉ còn 240.000đ</div>
             </div>
@@ -684,10 +678,13 @@
                 <strong>Lưu ý:</strong> Giá có thể thay đổi tùy chương trình.
             </div>
 
-            <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
-                <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
-                Đặt lịch hẹn ngay
-            </a>
+            <div class="fmc-btn-group">
+                <a href="promo/ung-thu-tuyen-giap.html" class="fmc-btn fmc-btn-outline">Xem Chi Tiết</a>
+                <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
+                    <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
+                    Đặt lịch hẹn ngay
+                </a>
+            </div>
         </div>
     </div>
 

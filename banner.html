@@ -159,8 +159,8 @@
             const path = window.location.pathname;
             let prefix = '';
             
-            if (path.includes('/articles/')) { prefix = '../../../'; } 
-            else if (path.includes('/news/')) { prefix = '../'; } 
+            if (path.includes('/articles/')) { prefix = '../../../'; }
+            else if (path.includes('/news/') || path.includes('/promo/') || path.includes('/promotion/') || path.includes('/specialist/') || path.includes('/contact/')) { prefix = '../'; }
             else { prefix = ''; }
 
             const homeFile = 'index.html'; 
