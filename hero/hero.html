@@ -140,6 +140,10 @@
         .hero-component-scope .strengths-list-child li:nth-child(1) { animation-delay: 1.5s; }
         .hero-component-scope .strengths-list-child li:nth-child(2) { animation-delay: 1.8s; }
         .hero-component-scope .strengths-list-child li:nth-child(3) { animation-delay: 2.1s; }
+        .hero-component-scope .strengths-list-child li:nth-child(4) { animation-delay: 2.4s; }
+        .hero-component-scope .strengths-list-child li:nth-child(5) { animation-delay: 2.7s; }
+        .hero-component-scope .strengths-list-child li:nth-child(6) { animation-delay: 3s; }
+        .hero-component-scope .strengths-list-child li:nth-child(7) { animation-delay: 3.3s; }
 
         /* ĐỔI TÊN CLASS ĐỂ TRÁNH XUNG ĐỘT VỚI SPECIALIST.HTML */
         .hero-component-scope .hero-specialty-anim {
@@ -240,10 +244,6 @@
 
     <section class="hero">
         <div class="background-slider">
-            <div class="slide active" style="background-image: url('hero/image/hero1.jpg')"></div>
-            <div class="slide" style="background-image: url('hero/image/hero2.jpg')"></div>
-            <div class="slide" style="background-image: url('hero/image/hero3.jpg')"></div>
-            <div class="slide" style="background-image: url('hero/image/hero4.jpg')"></div>
         </div>
         <div class="overlay"></div>
         
@@ -261,10 +261,13 @@
                             <strong>Khám chuyên sâu</strong> Với trang thiết bị hiện đại:
                         </li>
                         <ul class="strengths-list-child">
+                            <li><strong>Nhà thuốc GPP:</strong> do các dược sĩ đại học kinh nghiệm tư vấn.</li>
                             <li><strong>Tai Mũi Họng:</strong> Hệ thống nội soi tiên tiến.</li>
-                            <li><strong>Sản Phụ khoa:</strong> Hệ thống soi quang học chuyên dụng và máy đo tim thai không dây.</li>
+                            <li><strong>Sản khoa:</strong> Khám thai định kỳ, siêu âm thai, sàng lọc trước sinh và đo tim thai không dây.</li>
+                            <li><strong>Phụ khoa:</strong> Hệ thống soi quang học chuyên dụng, hỗ trợ khám và tầm soát phụ khoa.</li>
                             <li><strong>Nội khoa:</strong> được hỗ trợ bằng máy siêu âm và máy đo điện tim ECG 12 chuyển đạo.</li>
-                            <li><strong>Nhi khoa:</strong> được hỗ trợ bằng máy siêu âm.</li>
+                            <li><strong>Nhi khoa:</strong> được hỗ trợ khám với máy siêu âm.</li>
+                            <li><strong>Siêu âm:</strong> Siêu âm tổng quát, sản phụ khoa, tuyến giáp, tuyến vú và các khảo sát chuyên sâu.</li>
                         </ul>
                     </ul>
                 </div>
@@ -283,26 +286,41 @@
 
             if (!wrapper) return; // An toàn nếu load sai
 
-            const specialties = [
+            const heroSlides = [
                 {
-                    title: 'Sản Khoa',
-                    diseases: ['Khám thai định kỳ', 'Siêu âm thai', 'Sàng lọc trước sinh', 'Hỗ trợ sinh tại Từ Dũ', 'Chăm sóc sau sinh']
-                },
-                {
-                    title: 'Phụ Khoa',
-                    diseases: ['U xơ tử cung', 'U nang buồng trứng', 'Viêm nhiễm phụ khoa', 'Rối loạn kinh nguyệt', 'Tầm soát ung thư cổ tử cung']
+                    title: 'Nhà thuốc GPP',
+                    images: ['hero/image/hero1.jpg'],
+                    diseases: ['Nhà thuốc GPP do các dược sĩ đại học kinh nghiệm tư vấn.']
                 },
                 {
                     title: 'Tai Mũi Họng',
-                    diseases: ['Viêm xoang mãn tính', 'Viêm amidan', 'Viêm mũi dị ứng', 'Viêm họng mạn tính', 'Ngủ ngáy - Rối loạn giấc ngủ', 'Tầm soát ung thư vòm họng']
+                    images: ['hero/image/hero2.jpg', 'hero/image/hero2.png'],
+                    diseases: ['Hệ thống nội soi tiên tiến.']
                 },
                 {
-                    title: 'Nội Khoa',
-                    diseases: ['Tăng huyết áp', 'Rối loạn mỡ máu', 'Đái tháo đường', 'Bệnh tuyến giáp', 'Các bệnh về dạ dày']
+                    title: 'Sản khoa',
+                    images: ['hero/image/hero3.jpg', 'hero/image/hero3.JPG'],
+                    diseases: ['Khám thai định kỳ', 'Siêu âm thai', 'Sàng lọc trước sinh', 'Đo tim thai không dây']
                 },
                 {
-                    title: 'Nhi Khoa',
-                    diseases: ['Viêm đường hô hấp', 'Rối loạn tiêu hóa', 'Các bệnh truyền nhiễm', 'Dinh dưỡng', 'Rối loạn phát triển']
+                    title: 'Phụ khoa',
+                    images: ['hero/image/hero3a.jpg', 'hero/image/hero3a.JPG', 'hero/image/hero4a.jpg'],
+                    diseases: ['Hệ thống soi quang học chuyên dụng', 'Khám và điều trị bệnh lý phụ khoa', 'Tầm soát ung thư cổ tử cung']
+                },
+                {
+                    title: 'Nội khoa',
+                    images: ['hero/image/hero4.jpg'],
+                    diseases: ['Được hỗ trợ bằng máy siêu âm và máy đo điện tim ECG 12 chuyển đạo.']
+                },
+                {
+                    title: 'Nhi khoa',
+                    images: ['hero/image/hero5.jpg', 'hero/image/hero5.JPG'],
+                    diseases: ['Được hỗ trợ khám với máy siêu âm.']
+                },
+                {
+                    title: 'Siêu âm',
+                    images: ['hero/image/hero6.jpg', 'hero/image/hero6.JPG', 'hero/image/hero6.png'],
+                    diseases: ['Siêu âm tổng quát', 'Siêu âm sản phụ khoa', 'Siêu âm tuyến giáp, tuyến vú và các khảo sát chuyên sâu']
                 }
             ];
 
@@ -337,19 +355,59 @@
                 return ul;
             }
 
-            function initializeAnimations() {
-                const animationContent = wrapper.querySelector('.animation-content');
-                if (!animationContent) return;
+            function setSlideBackground(slideElement, images) {
+                if (!images || images.length === 0) return;
 
+                const applyImage = (imagePath) => {
+                    slideElement.style.backgroundImage = `url('${imagePath}')`;
+                };
+
+                applyImage(images[0]);
+
+                if (images.length === 1) return;
+
+                function tryImage(index) {
+                    const image = new Image();
+
+                    image.onload = () => applyImage(images[index]);
+                    image.onerror = () => {
+                        if (index + 1 < images.length) {
+                            tryImage(index + 1);
+                        }
+                    };
+                    image.src = images[index];
+                }
+
+                tryImage(0);
+            }
+
+            function createSlideElement(heroSlide, index) {
+                const div = document.createElement('div');
+                div.className = index === 0 ? 'slide active' : 'slide';
+                setSlideBackground(div, heroSlide.images);
+                return div;
+            }
+
+            function initializeAnimations() {
+                const backgroundSlider = wrapper.querySelector('.background-slider');
+                const animationContent = wrapper.querySelector('.animation-content');
+                if (!backgroundSlider || !animationContent) return;
+
+                backgroundSlider.innerHTML = ''; // Reset
                 animationContent.innerHTML = ''; // Reset
 
-                const slides = wrapper.querySelectorAll('.slide');
+                heroSlides.forEach((heroSlide, index) => {
+                    const slide = createSlideElement(heroSlide, index);
+                    backgroundSlider.appendChild(slide);
+                });
+
+                const slides = backgroundSlider.querySelectorAll('.slide');
                 let currentSlide = 0;
                 let currentSpecialty = 0;
 
                 // Tạo DOM
-                specialties.forEach(specialty => {
-                    const element = createSpecialtyElement(specialty);
+                heroSlides.forEach(heroSlide => {
+                    const element = createSpecialtyElement(heroSlide);
                     animationContent.appendChild(element);
                 });
 
@@ -378,14 +436,14 @@
                         slides[currentSlide].classList.add('active');
                     }
 
-                    if (specialties.length > 0) {
-                        currentSpecialty = (currentSpecialty + 1) % specialties.length;
+                    if (heroSlides.length > 0) {
+                        currentSpecialty = currentSlide % heroSlides.length;
                         updateSpecialty();
                     }
                 }
 
                 if (specialtyElements.length > 0) {
-                    specialtyElements[0].classList.add('active');
+                    updateSpecialty();
                 }
                 
                 setInterval(nextSlide, 5000);

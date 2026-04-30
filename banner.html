@@ -1,9 +1,9 @@
 <style>
-    /* --- 1. CSS CƠ BẢN --- */
+     
     .fmc-header-wrapper { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.5; }
     .fmc-header-wrapper * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* Header cố định */
+     
     .fmc-header {
         height: 70px; background-color: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
@@ -17,7 +17,7 @@
         padding: 0 15px; position: relative;
     }
 
-    /* Logo */
+     
     .fmc-logo-link {
         height: 46px; flex-shrink: 0; cursor: pointer; display: block;
         transition: transform 0.2s; position: relative; z-index: 10000;
@@ -25,20 +25,15 @@
     .fmc-logo-link:hover { transform: scale(1.03); }
     .fmc-logo-link img { height: 100%; width: auto; object-fit: contain; display: block; }
 
-    /* --- 2. MENU LAPTOP (DESKTOP) --- */
-    .fmc-desktop-nav { display: flex; list-style: none; gap: 20px; margin: 0 20px; }
+     
+    .fmc-desktop-nav { display: flex; list-style: none; gap: 25px; margin: 0 20px; }
     .fmc-nav-link {
         text-decoration: none; color: #333; font-size: 15px; font-weight: 600;
         display: flex; align-items: center; gap: 6px; padding: 8px 10px;
         border-radius: 6px; transition: all 0.2s; white-space: nowrap;
     }
     .fmc-nav-link:hover { color: #007bff; background: rgba(0, 123, 255, 0.05); }
-    
-    /* Highlight riêng cho nút Khuyến mãi nếu muốn */
-    .fmc-link-promo { color: #d35400; } 
-    .fmc-link-promo:hover { color: #e67e22; background: rgba(211, 84, 0, 0.05); }
 
-    /* Actions bên phải (Hotline, Đặt lịch) */
     .fmc-desktop-actions { display: flex; align-items: center; gap: 20px; }
     .fmc-status-box { text-align: right; font-size: 13px; }
     .fmc-status-text { font-weight: 700; display: block; margin-bottom: 2px;}
@@ -53,7 +48,7 @@
     .fmc-btn-primary:hover { background: #0056b3; }
     .fmc-btn-desktop { padding: 10px 20px; font-size: 14px; gap: 8px; }
 
-    /* --- 3. MENU MOBILE --- */
+     
     .fmc-mobile-quick-actions { display: none; align-items: center; gap: 10px; }
     .fmc-mobile-link-text {
         text-decoration: none; color: #333; font-weight: 600; font-size: 13px;
@@ -66,7 +61,7 @@
         cursor: pointer; padding: 0 0 0 5px; display: flex; align-items: center;
     }
 
-    /* Dropdown Mobile */
+     
     .fmc-mobile-dropdown {
         position: fixed; top: 70px; left: 0; right: 0; background: white;
         border-top: 1px solid #f0f0f0; box-shadow: 0 10px 15px rgba(0,0,0,0.1);
@@ -83,14 +78,14 @@
         display: flex; justify-content: space-between; align-items: center;
     }
 
-    /* Progress Bar */
+     
     .fmc-progress-track {
         position: absolute; bottom: 0; left: 0; width: 100%; height: 3px;
         background: transparent; pointer-events: none;
     }
     .fmc-progress-bar { height: 100%; background: #007bff; width: 0%; transition: width 0.1s; }
 
-    /* Responsive */
+     
     @media (max-width: 900px) {
         .fmc-desktop-nav, .fmc-desktop-actions { display: none !important; }
         .fmc-mobile-quick-actions { display: flex !important; }
@@ -108,9 +103,6 @@
             <nav>
                 <ul class="fmc-desktop-nav">
                     <li><a href="#specialist-slot" class="fmc-nav-link fmc-link-specialist">🩺 Chuyên khoa</a></li>
-                    
-                    <li><a href="#promotion-slot" class="fmc-nav-link fmc-link-promo">🎁 Khuyến mãi</a></li>
-                    
                     <li><a href="#news-slot" class="fmc-nav-link fmc-link-news">📰 Tin tức</a></li>
                     <li><a href="#contact-slot" class="fmc-nav-link fmc-link-contact">📞 Liên hệ</a></li>
                 </ul>
@@ -139,11 +131,7 @@
 
         <div class="fmc-mobile-dropdown" id="fmcMobileDropdown">
             <a href="#specialist-slot" class="fmc-dropdown-item fmc-link-specialist">🩺 Chuyên khoa</a>
-            
-            <a href="#promotion-slot" class="fmc-dropdown-item fmc-link-promo">🎁 Khuyến mãi</a>
-            
             <a href="#contact-slot" class="fmc-dropdown-item fmc-link-contact">📞 Liên hệ</a>
-            
             <div class="fmc-dropdown-info">
                 <span class="fmc-status-text" id="fmcStatusMobile" style="font-size: 13px;">...</span>
                 <a href="tel:02835355353" class="fmc-hotline">📞 028 3535 5353</a>
@@ -154,25 +142,26 @@
 
 <script>
     (function() {
-        // Hàm tự động sửa đường dẫn (cho trang con)
+        
         function resolvePaths() {
             const path = window.location.pathname;
             let prefix = '';
             
-            if (path.includes('/articles/')) { prefix = '../../../'; }
-            else if (path.includes('/news/') || path.includes('/promo/') || path.includes('/promotion/') || path.includes('/specialist/') || path.includes('/contact/')) { prefix = '../'; }
-            else { prefix = ''; }
+            
+            if (path.includes('/articles/')) {
+                prefix = '../../../';
+            } else if (path.includes('/news/')) {
+                prefix = '../';
+            } else {
+                prefix = ''; 
+            }
 
             const homeFile = 'index.html'; 
 
-            // Danh sách các link cần sửa
+            
             const targets = {
                 '#fmcLogo': prefix + homeFile,
                 '.fmc-link-specialist': prefix + homeFile + '#specialist-slot',
-                
-                // [THÊM MỚI] Mapping class 'fmc-link-promo' tới 'promotion-slot'
-                '.fmc-link-promo': prefix + homeFile + '#promotion-slot',
-
                 '.fmc-link-news': prefix + homeFile + '#news-slot',
                 '.fmc-link-contact': prefix + homeFile + '#contact-slot',
                 '.fmc-link-appoint': prefix + homeFile + '#contact-slot'
@@ -181,15 +170,18 @@
             for (let selector in targets) {
                 const elements = document.querySelectorAll(selector);
                 elements.forEach(el => {
+                    
                     if (prefix === '' && targets[selector].includes('#')) {
                         const hash = targets[selector].split('#')[1];
                         el.href = '#' + hash;
                     } else {
+                        
                         el.href = targets[selector];
                     }
                 });
             }
 
+            
             const logoImg = document.getElementById('fmcLogoImg');
             if (logoImg) {
                 const baseSrc = 'header/logo.png'; 
@@ -197,7 +189,7 @@
             }
         }
 
-        // Trạng thái Mở/Đóng cửa
+        
         function updateOpenStatus() {
             const now = new Date();
             const day = now.getDay();
@@ -214,16 +206,19 @@
             if(elMobile) elMobile.innerHTML = html;
         }
 
-        // Xử lý Scroll (Ẩn header + Progress bar)
+        
         let lastScroll = 0;
         const header = document.getElementById('fmcMainHeader');
         const progressBar = document.getElementById('fmcProgressBar');
 
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
+            
+            
             const winHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             if (progressBar && winHeight > 0) progressBar.style.width = (currentScroll / winHeight * 100) + "%";
 
+            
             if (Math.abs(lastScroll - currentScroll) <= 5) return;
             if (currentScroll > lastScroll && currentScroll > 80) {
                 header.classList.add('hidden-header');
@@ -235,12 +230,12 @@
             lastScroll = currentScroll <= 0 ? 0 : currentScroll;
         }, { passive: true });
 
-        // Toggle Mobile Menu
+        
         window.toggleFmcDropdown = function() {
             document.getElementById('fmcMobileDropdown').classList.toggle('active');
         };
 
-        // Khởi chạy
+        
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => { resolvePaths(); updateOpenStatus(); });
         } else {
