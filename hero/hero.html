@@ -11,12 +11,11 @@
 
         .hero-component-scope .hero {
             position: relative;
-            height: 800px;
-            min-height: 500px;
             width: 100%;
+            aspect-ratio: 16 / 9;
+            min-height: 0;
             overflow: hidden;
             background-color: #f5f5f5;
-            padding-bottom: 50px;
             margin-bottom: 50px;
         }
 
@@ -53,7 +52,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.3);
         }
 
         .hero-component-scope .content {
@@ -205,6 +204,7 @@
         /* Responsive */
         @media (max-width: 768px) {
             .hero-component-scope .hero {
+                aspect-ratio: auto;
                 height: auto;
                 min-height: 100vh;
             }
@@ -260,15 +260,7 @@
                         <li>
                             <strong>Khám chuyên sâu</strong> Với trang thiết bị hiện đại:
                         </li>
-                        <ul class="strengths-list-child">
-                            <li><strong>Nhà thuốc GPP:</strong> do các dược sĩ đại học kinh nghiệm tư vấn.</li>
-                            <li><strong>Tai Mũi Họng:</strong> Hệ thống nội soi tiên tiến.</li>
-                            <li><strong>Sản khoa:</strong> Khám thai định kỳ, siêu âm thai, sàng lọc trước sinh và đo tim thai không dây.</li>
-                            <li><strong>Phụ khoa:</strong> Hệ thống soi quang học chuyên dụng, hỗ trợ khám và tầm soát phụ khoa.</li>
-                            <li><strong>Nội khoa:</strong> được hỗ trợ bằng máy siêu âm và máy đo điện tim ECG 12 chuyển đạo.</li>
-                            <li><strong>Nhi khoa:</strong> được hỗ trợ khám với máy siêu âm.</li>
-                            <li><strong>Siêu âm:</strong> Siêu âm tổng quát, sản phụ khoa, tuyến giáp, tuyến vú và các khảo sát chuyên sâu.</li>
-                        </ul>
+
                     </ul>
                 </div>
             </div>
@@ -295,7 +287,7 @@
                 {
                     title: 'Tai Mũi Họng',
                     images: ['hero/image/hero2.jpg', 'hero/image/hero2.png'],
-                    diseases: ['Hệ thống nội soi tiên tiến.']
+                    diseases: ['Hệ thống nội soi tiên tiến.', 'Khám và điều trị bệnh lý tai mũi họng.', 'Tầm soát ung thư vòm họng.']
                 },
                 {
                     title: 'Sản khoa',
@@ -315,12 +307,12 @@
                 {
                     title: 'Nhi khoa',
                     images: ['hero/image/hero5.jpg', 'hero/image/hero5.JPG'],
-                    diseases: ['Được hỗ trợ khám với máy siêu âm.']
+                    diseases: ['Được hỗ trợ khám với máy siêu âm', 'Khám và điều trị các bệnh lý nhi khoa hô hấp', 'Tiêu hóa', 'Dinh dưỡng', 'Tư vấn tăng trưởng', 'sàng lọc sơ sinh', 'tư vấn tiêm chủng.']
                 },
                 {
                     title: 'Siêu âm',
                     images: ['hero/image/hero6.jpg', 'hero/image/hero6.JPG', 'hero/image/hero6.png'],
-                    diseases: ['Siêu âm tổng quát', 'Siêu âm sản phụ khoa', 'Siêu âm tuyến giáp, tuyến vú và các khảo sát chuyên sâu']
+                    diseases: ['Siêu âm tổng quát', 'Siêu âm sản phụ khoa', 'Siêu âm tuyến giáp, tuyến vú và các khảo sát chuyên sâu, thực hiện các thủ thuật chọc hút dưới hướng dẫn siêu âm.']
                 }
             ];
 
