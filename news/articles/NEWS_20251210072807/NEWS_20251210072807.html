@@ -268,24 +268,48 @@
             font-size: 0.9em;
         }
 
-         
+           
         @media (max-width: 768px) {
             .container {
-                padding: 5px;  
+                padding: 10px;
             }
 
             .article-content {
-                padding: 10px;  
+                padding: 15px;
             }
 
+             
+             
+             
+            .article-content, 
+            .article-content * { 
+                font-size: 20px !important;      
+                line-height: 1.6 !important;     
+                font-family: Arial, sans-serif !important;  
+                height: auto !important;         
+            }
+
+             
+            .article-content h2, 
+            .article-content h3,
+            .article-content h4 {
+                font-size: 22px !important;
+                font-weight: bold !important;
+                margin-top: 25px !important;
+                margin-bottom: 15px !important;
+            }
+
+             
             .article-title {
-                font-size: 1.6em;
+                font-size: 24px !important;  
+                line-height: 1.3 !important;
+                font-weight: bold;
             }
 
             .article-meta {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 5px;
+                gap: 8px;
             }
 
             .controls-container {
@@ -293,7 +317,6 @@
                 align-items: stretch;
             }
 
-             
             .related-grid {
                 grid-template-columns: 1fr;
             }
@@ -617,8 +640,48 @@
 
             
         <style>
-           .article-content ul, .article-content ol { list-style-type: disc !important; margin-left: 20px !important; }
-           .article-content li { display: list-item !important; list-style-type: disc !important; }
+            
+           .article-content ul, .article-content ol { 
+               list-style-type: disc !important;
+               margin-left: 20px !important; 
+               padding-left: 20px !important;
+           }
+           .article-content li { 
+               display: list-item !important;
+               list-style-type: disc !important; 
+           }
+
+            
+           @media only screen and (max-width: 768px) {
+                
+               .article-content, 
+               .article-content p, 
+               .article-content span, 
+               .article-content div, 
+               .article-content li {
+                   font-size: 20px !important;       
+                   line-height: 1.6 !important;      
+                   text-align: justify !important;   
+                   height: auto !important;          
+                   width: auto !important;           
+               }
+               
+                
+               .article-content h2, 
+               .article-content h3, 
+               .article-content h4,
+               .article-content strong,
+               .article-content b {
+                   font-size: 22px !important;
+                   line-height: 1.4 !important;
+                   font-weight: bold !important;
+               }
+               
+                
+               .article-content p {
+                   margin-bottom: 15px !important;
+               }
+           }
         </style>
       <p><em>"Bác sĩ ơi, con em đổi đến 5-6 loại sữa rồi mà vẫn không ổn. Cháu cứ uống xong là nôn trớ, đi ngoài phân lỏng liên tục, da thì nổi mẩn đỏ quanh miệng, đêm ngủ không yên. Em stress quá!"</em></p><p>Đây là tâm sự rất thường gặp tại các phòng khám dinh dưỡng nhi. Nhiều bố mẹ rơi vào ma trận đổi sữa vì con có các triệu chứng mơ hồ, dai dẳng mà không biết rằng nguyên nhân gốc rễ có thể nằm ở chính loại protein có trong sữa bò mà con đang uống.</p><p>Dị ứng đạm sữa bò (CMPA) là loại dị ứng thực phẩm phổ biến nhất ở trẻ nhũ nhi. Bài viết này sẽ giúp bố mẹ nhận diện "kẻ thù giấu mặt" này và biết hướng xử lý đúng đắn.</p><h3>1. DỊ ỨNG ĐẠM SỮA BÒ LÀ GÌ? TẠI SAO CON TÔI LẠI BỊ?</h3><p>Hãy tưởng tượng hệ miễn dịch của trẻ sơ sinh giống như một đội quân bảo vệ còn non nớt, chưa phân biệt rõ "địch - ta".</p><p>Ở trẻ bị dị ứng, hệ miễn dịch nhận định sai lầm rằng các protein trong sữa bò (đặc biệt là Whey và Casein) là "kẻ xâm nhập nguy hiểm". Do đó, mỗi khi trẻ uống sữa, "đội quân" này sẽ phát động một cuộc tấn công để tiêu diệt protein đó. Cuộc chiến này gây ra các phản ứng viêm ở nhiều cơ quan khác nhau trong cơ thể trẻ, tạo nên các triệu chứng bệnh.</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Tin tốt:</strong> Đa số trẻ sẽ tự khỏi dị ứng này khi lớn lên (thường sau 1-3 tuổi) khi hệ miễn dịch trưởng thành hơn.</li></ol><p><br></p><h3>2. "CỜ ĐỎ" CẢNH BÁO: CÁC TRIỆU CHỨNG ĐA DẠNG DỄ GÂY NHẦM LẪN</h3><p>Điều khiến dị ứng đạm sữa bò khó chẩn đoán là các triệu chứng của nó rất đa dạng, có thể xuất hiện ngay lập tức (trong vài phút sau khi uống) hoặc muộn (sau vài giờ đến vài ngày).</p><p>Bố mẹ cần cảnh giác nếu thấy con có các biểu hiện ở 3 nhóm cơ quan chính sau đây:</p><p><strong>NHÓM 1: Biểu hiện ngoài Da (Phổ biến nhất)</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Chàm sữa (Eczema) dai dẳng:</strong> Da khô, đỏ, tróc vảy, ngứa ngáy, thường ở má, trán, khuỷu tay, khoeo chân. Bôi thuốc dưỡng ẩm không đỡ hoặc tái phát liên tục.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Mề đay, phát ban:</strong> Nổi các mảng đỏ, sưng nề quanh miệng hoặc toàn thân ngay sau khi uống sữa.</li></ol><p><strong>NHÓM 2: Biểu hiện Tiêu hóa (Dễ nhầm với rối loạn tiêu hóa thông thường)</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Nôn trớ nhiều:</strong> Không chỉ là trớ sữa thông thường sau ăn, mà là nôn vọt, nôn nhiều lần trong ngày, trẻ tỏ ra đau đớn, khó chịu khi nôn (biểu hiện của trào ngược do dị ứng).</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Bất thường về phân:</strong></li><li data-list="bullet" class="ql-indent-1"><span class="ql-ui" contenteditable="false"></span>Đi tiêu phân lỏng, nhiều nước, có nhầy mũi.</li><li data-list="bullet" class="ql-indent-1"><span class="ql-ui" contenteditable="false"></span><strong>Đặc biệt báo động: Phân có dính sợi máu (do viêm ruột kích ứng).</strong></li><li data-list="bullet" class="ql-indent-1"><span class="ql-ui" contenteditable="false"></span>Một số ít trường hợp lại biểu hiện bằng táo bón dai dẳng.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Đau bụng colic:</strong> Trẻ khóc thét dữ dội, co rúm người, thường vào một giờ cố định trong ngày (khóc dạ đề) và rất khó dỗ dành.</li></ol><p><strong>NHÓM 3: Biểu hiện Hô hấp và Toàn thân (Ít gặp hơn)</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Khò khè, nghẹt mũi kéo dài mà không có dấu hiệu nhiễm trùng (không sốt).</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Chậm tăng cân, sụt cân, vẻ mặt mệt mỏi, xanh xao (do ruột bị tổn thương mãn tính, kém hấp thu dinh dưỡng).</li></ol><h3>3. CHẨN ĐOÁN: KHÔNG PHẢI CỨ XÉT NGHIỆM MÁU LÀ RA</h3><p>Nhiều bố mẹ tự đưa con đi xét nghiệm máu hoặc test lẩy da và nhận kết quả âm tính, nên đinh ninh con không bị dị ứng. Đây là một hiểu lầm lớn.</p><p>Có hai loại cơ chế dị ứng:</p><ol><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Qua trung gian IgE (Phản ứng nhanh):</strong> Có thể phát hiện qua xét nghiệm máu hoặc test da.</li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span><strong>Không qua trung gian IgE (Phản ứng chậm):</strong> Các triệu chứng thường xuất hiện muộn (như viêm ruột, chàm da). <strong>Loại này xét nghiệm máu thường ÂM TÍNH.</strong></li></ol><blockquote><strong>Tiêu chuẩn vàng để chẩn đoán:</strong> Là phương pháp "Loại trừ và Thử lại" (Elimination and Re-challenge) dưới sự giám sát của bác sĩ.</blockquote><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Bước 1:</strong> Ngưng hoàn toàn sữa bò (đổi sang sữa đặc biệt) trong 2-4 tuần. Nếu các triệu chứng cải thiện rõ rệt -&gt; Nghi ngờ cao.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Bước 2:</strong> Cho trẻ dùng lại sữa bò một cách thận trọng. Nếu triệu chứng tái xuất hiện -&gt; Chẩn đoán xác định.</li></ol><h3>4. GIẢI PHÁP DINH DƯỠNG: CHỌN SỮA GÌ KHI CON DỊ ỨNG?</h3><p>Khi đã xác định con bị dị ứng đạm sữa bò, nguyên tắc điều trị tiên quyết là <strong>LOẠI BỎ HOÀN TOÀN</strong> đạm sữa bò nguyên vẹn ra khỏi chế độ ăn.</p><p><strong>Nếu trẻ bú mẹ hoàn toàn:</strong> Mẹ cần thực hiện chế độ ăn loại trừ: Kiêng hoàn toàn sữa bò và các chế phẩm từ sữa (sữa chua, phô mai, bơ, bánh kẹo có sữa...) trong ít nhất 2 tuần để theo dõi phản ứng của con.</p><p><strong>Nếu trẻ uống sữa công thức:</strong> Bố mẹ CẦN chuyển sang các loại sữa điều trị đặc biệt. Không được tự ý đổi sang sữa dê, sữa cừu hay các loại sữa hạt thông thường.</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Sữa dê/cừu:</strong> Cấu trúc đạm của sữa dê/cừu tương tự sữa bò đến 90%, nên nguy cơ trẻ dị ứng chéo là rất cao.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Sữa đậu nành:</strong> Không khuyến cáo dùng cho trẻ dưới 6 tháng tuổi bị dị ứng đạm sữa bò vì nguy cơ dị ứng chéo và các vấn đề dinh dưỡng khác.</li></ol><p><img src="https://drive.google.com/thumbnail?id=1-QvLm4PicaxOLrp6XZrnQVxUfn4cVrS1&amp;sz=w4096"></p><p><strong>HAI LỰA CHỌN SỮA ĐIỀU TRỊ CHUẨN Y KHOA:</strong></p><p>Hãy hình dung đạm sữa bò như một "tòa lâu đài lego" lớn, hệ miễn dịch nhìn thấy nó sẽ tấn công.</p><p><strong>Lựa chọn 1 (Ưu tiên hàng đầu): Sữa thủy phân hoàn toàn (Extensively Hydrolyzed Formula - eHF)</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Cơ chế:</strong> Tòa lâu đài protein đã được đập nhỏ ra thành các mảnh lego vụn (chuỗi peptide ngắn). Hệ miễn dịch của đa số trẻ sẽ không nhận diện được các mảnh vụn này nên không tấn công.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Đặc điểm:</strong> Có vị hơi đắng và mùi hơi hôi đặc trưng. Phân trẻ uống sữa này thường có màu xanh rêu và mùi nồng.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><em>Ví dụ:</em> Nutramigen, Alimentum, Pregestimil, NAN Supreme... (Lưu ý: Phải là loại "thủy phân hoàn toàn", loại "thủy phân một phần/gentle" thường không có tác dụng điều trị).</li></ol><p><strong>Lựa chọn 2 (Dành cho ca nặng): Sữa Acid Amin (Amino Acid Formula - AAF)</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Chỉ định:</strong> Khi trẻ vẫn còn triệu chứng dù đã dùng sữa thủy phân hoàn toàn, hoặc trẻ có phản ứng phản vệ nghiêm trọng, suy dinh dưỡng nặng.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Cơ chế:</strong> Tòa lâu đài protein được nghiền nát thành từng hạt nhựa nguyên tử riêng lẻ (acid amin). Hệ miễn dịch hoàn toàn không thể nhận diện được nữa. Đây là loại sữa ít gây dị ứng nhất.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Đặc điểm:</strong> Vị khó uống hơn eHF và giá thành rất đắt.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><em>Ví dụ:</em> Neocate, EleCare, Puramino...</li></ol><h3>5. LỜI KHUYÊN: KIÊN NHẪN LÀ CHÌA KHÓA</h3><p>Chăm sóc trẻ bị dị ứng đạm sữa bò là một hành trình dài hơi.</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Đừng tự làm bác sĩ:</strong> Việc chẩn đoán và chọn sữa cần có sự tư vấn của bác sĩ chuyên khoa Nhi hoặc Dinh dưỡng.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Kiên trì với sữa đặc biệt:</strong> Trẻ cần thời gian để làm quen với vị sữa mới. Đừng bỏ cuộc quá sớm.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Không tự ý thử lại sữa bò:</strong> Việc cho trẻ dùng lại sữa bò để kiểm tra xem đã khỏi chưa cần được thực hiện theo lộ trình của bác sĩ (thường sau mỗi 6-12 tháng) để tránh các phản ứng nguy hiểm như sốc phản vệ.</li></ol><p><br></p>
             <div class="share-section">
