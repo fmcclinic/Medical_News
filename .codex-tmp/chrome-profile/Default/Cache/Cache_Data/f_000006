@@ -1,0 +1,795 @@
+<div id="fmc-promotion-module">
+    
+    <style>
+        /* --- SCOPED CSS --- */
+        #fmc-promotion-module {
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            width: 100%; max-width: 1200px; margin: 0 auto;
+            padding-bottom: 50px;
+        }
+
+        /* KHUNG CHUNG (CARD) */
+        .fmc-promo-card {
+            display: flex; position: relative;
+            background: #fff; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 40px; overflow: visible;
+            min-height: 500px; border: 1px solid #eee;
+        }
+
+        /* 2 CỘT */
+        .fmc-col-img {
+            width: 40%; position: relative;
+            border-top-left-radius: 20px; border-bottom-left-radius: 20px;
+            overflow: hidden; background: #f5f5f5;
+        }
+        .fmc-col-img img {
+            width: 100%; height: 100%; object-fit: cover; object-position: center;
+            transition: transform 0.6s; display: block;
+        }
+        .fmc-promo-card:hover .fmc-col-img img { transform: scale(1.03); }
+
+        .fmc-col-info {
+            width: 60%; padding: 40px 50px;
+            display: flex; flex-direction: column; justify-content: center;
+            border-top-right-radius: 20px; border-bottom-right-radius: 20px;
+        }
+
+        /* ELEMENT CƠ BẢN */
+        .fmc-badge {
+            display: inline-block; padding: 6px 12px; border-radius: 6px;
+            font-weight: 700; font-size: 0.8rem; text-transform: uppercase;
+            width: fit-content; margin-bottom: 15px;
+        }
+        .fmc-title {
+            font-size: 2.2rem; margin: 0 0 10px 0; line-height: 1.2; font-weight: 800; color: #2c3e50;
+        }
+        .fmc-desc { font-size: 1rem; color: #555; margin-bottom: 25px; }
+
+        /* ĐỒNG HỒ ĐẾM NGƯỢC */
+        .fmc-countdown {
+            background: #f8f9fa; border: 1px solid #eee; border-radius: 12px;
+            padding: 15px 25px; display: flex; align-items: center; gap: 20px;
+            margin-bottom: 25px; width: fit-content;
+        }
+        .fmc-timer-group { display: flex; gap: 20px; }
+        .fmc-time-box { text-align: center; min-width: 45px; }
+        .fmc-time-val { display: block; font-size: 1.8rem; font-weight: 800; line-height: 1; }
+        .fmc-time-lbl { font-size: 0.7rem; text-transform: uppercase; color: #888; font-weight: 600; margin-top: 5px; }
+
+        /* NÚT BẤM */
+        .fmc-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 15px 40px; border-radius: 50px; font-weight: 700;
+            text-decoration: none; text-transform: uppercase; color: white;
+            transition: transform 0.2s; box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            width: fit-content;
+        }
+        .fmc-btn:hover { transform: translateY(-3px); }
+        .fmc-btn-icon-group {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+.fmc-btn-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.fmc-btn-outline {
+    --outline-color: #2c3e50;
+    background: var(--outline-color);
+    color: #fff;
+    border: 1px solid var(--outline-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+.theme-vip .fmc-btn-outline { --outline-color: #9a3412; }
+.theme-cervical .fmc-btn-outline { --outline-color: #ad1457; }
+.theme-breast-screening .fmc-btn-outline { --outline-color: #ad1457; }
+.theme-thyroid-advanced .fmc-btn-outline { --outline-color: #1565c0; }
+
+        /* STICKER (-100%) */
+        .fmc-sticker {
+            position: absolute; top: -15px; right: -15px; z-index: 10;
+            padding: 10px 25px; font-size: 1.1rem; font-weight: 900; color: white;
+            text-transform: uppercase; border: 3px solid white; border-radius: 50px;
+            transform: rotate(10deg); box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            animation: fmc-pulse 2s infinite; cursor: default;
+        }
+        .fmc-sticker-discount {
+            top: 16px;
+            right: -18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 34px;
+            font-size: 1.55rem;
+            letter-spacing: 0.03em;
+            border-width: 5px;
+            border-radius: 999px;
+            box-shadow: 0 18px 34px rgba(0,0,0,0.24);
+            text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+        }
+        .fmc-sticker-discount .fmc-sticker-star {
+            font-size: 0.9em;
+            line-height: 1;
+        }
+        .fmc-sticker-discount .fmc-sticker-value {
+            font-size: 1.15em;
+            line-height: 1;
+        }
+        @keyframes fmc-pulse { 0%, 100% { transform: rotate(10deg) scale(1); } 50% { transform: rotate(10deg) scale(1.05); } }
+
+        /* DANH SÁCH & THÔNG TIN PHỤ */
+        .fmc-list-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; margin-bottom: 25px; font-size: 0.95rem; }
+        .fmc-info-box { background: rgba(0,0,0,0.03); border-radius: 8px; padding: 10px 15px; margin-bottom: 20px; border-left: 3px solid #ccc; font-size: 0.9rem; }
+        
+        /* --- THEMES (MÀU SẮC) --- */
+
+        /* VIP (Vàng - Nâu) */
+        .theme-vip { background: linear-gradient(100deg, #fffbf0 0%, #fff 40%); border: 2px solid #f1c40f; }
+        .theme-vip .fmc-badge { background: #f1c40f; color: #fff; }
+        .theme-vip .fmc-title { color: #d35400; text-shadow: 2px 2px 0 white; }
+        .theme-vip .highlight { color: #c0392b; }
+        .theme-vip .fmc-time-val { color: #d35400; }
+        .theme-vip .fmc-btn { background: linear-gradient(90deg, #d35400, #e67e22); }
+        .theme-vip .fmc-sticker {
+            background: linear-gradient(135deg, #c0392b 0%, #e67e22 55%, #f1c40f 100%);
+            color: #fffdf4;
+            border-color: #fff1b8;
+            padding: 12px 30px;
+            font-size: 1.24rem;
+            letter-spacing: 0.04em;
+            box-shadow: 0 14px 28px rgba(192, 57, 43, 0.28);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+        }
+        .theme-vip .fmc-desc { color: #7a4a11; margin-bottom: 18px; }
+        .theme-vip .fmc-countdown { width: 100%; max-width: 520px; }
+        .vip-offer-box {
+            background: linear-gradient(135deg, #fff7dc 0%, #fff1c4 100%);
+            border: 1px solid rgba(211, 84, 0, 0.18);
+            border-radius: 18px;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 12px 28px rgba(211, 84, 0, 0.08);
+        }
+        .vip-offer-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+        .vip-discount-chip {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            font-weight: 900;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            border: 2px solid rgba(192, 57, 43, 0.18);
+            animation: vip-wiggle 2.2s ease-in-out infinite, vip-shift 2.2s ease-in-out infinite;
+            transform-origin: center;
+        }
+        .vip-discount-chip strong {
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+        .vip-value-line {
+            font-size: 1.08rem;
+            color: #8b5e1a;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .vip-value-line strong {
+            color: #d35400;
+            font-size: 1.32rem;
+        }
+        .vip-price-line {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .vip-price-caption {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #9a3412;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .vip-price-main {
+            font-size: 2rem;
+            font-weight: 900;
+            line-height: 1;
+            color: #c0392b;
+        }
+        .vip-price-main span {
+            font-size: 1rem;
+            color: #7c7c7c;
+            font-weight: 600;
+        }
+        .vip-member-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .vip-member-card {
+            display: block;
+            padding: 18px 20px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(255,247,220,0.98) 100%);
+            border: 1px solid rgba(211, 84, 0, 0.14);
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(211, 84, 0, 0.06);
+        }
+        .vip-member-copy strong {
+            display: block;
+            color: #9a3412;
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+        }
+        .vip-member-copy span {
+            color: #7a4a11;
+            font-size: 0.98rem;
+            line-height: 1.4;
+        }
+        @keyframes vip-wiggle {
+            0%, 100% { transform: translateX(0) rotate(0deg) scale(1); }
+            20% { transform: translateX(-1px) rotate(-1.2deg) scale(1.03); }
+            40% { transform: translateX(2px) rotate(1.2deg) scale(1.06); }
+            60% { transform: translateX(-2px) rotate(-0.8deg) scale(1.04); }
+            80% { transform: translateX(1px) rotate(0.8deg) scale(1.05); }
+        }
+        @keyframes vip-shift {
+            0%, 100% {
+                background: #fff4cf;
+                color: #a84711;
+                box-shadow: 0 8px 20px rgba(211, 84, 0, 0.12);
+            }
+            50% {
+                background: #c0392b;
+                color: #fff8e7;
+                box-shadow: 0 14px 28px rgba(192, 57, 43, 0.28);
+            }
+        }
+
+        /* HPV & CỔ TỬ CUNG (Hồng đào) */
+        .theme-cervical {
+            background: linear-gradient(135deg, #fff6f8 0%, #fff 55%);
+            border: 1px solid #f6c8d8;
+        }
+        .theme-cervical .fmc-badge { background: #ffe5ee; color: #c2185b; }
+        .theme-cervical .highlight { color: #d63384; }
+        .theme-cervical .fmc-time-val { color: #d63384; }
+        .theme-cervical .fmc-btn { background: linear-gradient(90deg, #f06292, #d81b60); }
+        .theme-cervical .fmc-sticker { background: linear-gradient(135deg, #ff8fab, #d81b60); }
+        .theme-cervical .fmc-info-box { border-color: #f06292; background: #fff1f5; color: #7a2849; }
+        .theme-cervical .fmc-col-img {
+            background: linear-gradient(180deg, #fff1f6 0%, #ffe3ec 100%);
+        }
+        .theme-cervical .fmc-col-img img {
+            object-fit: contain;
+            object-position: center top;
+            padding: 12px;
+        }
+
+        /* UNG THƯ VÚ (Poster hồng) */
+        .theme-breast-screening {
+            background: linear-gradient(135deg, #fff4f8 0%, #fff 55%);
+            border: 1px solid #f5c7d7;
+        }
+        .theme-breast-screening .fmc-badge { background: #ffe3ee; color: #c2185b; }
+        .theme-breast-screening .highlight { color: #ec407a; }
+        .theme-breast-screening .fmc-time-val { color: #d81b60; }
+        .theme-breast-screening .fmc-btn { background: linear-gradient(90deg, #ec407a, #ad1457); }
+        .theme-breast-screening .fmc-sticker { background: linear-gradient(135deg, #ff5c93, #d81b60); }
+        .theme-breast-screening .fmc-info-box { border-color: #ec407a; background: #fff0f5; color: #7a2849; }
+        .theme-breast-screening .fmc-col-img {
+            background: linear-gradient(180deg, #ffe8f1 0%, #ffdce9 100%);
+        }
+        .theme-breast-screening .fmc-col-img img {
+            object-fit: contain;
+            object-position: center top;
+            padding: 10px;
+        }
+
+        /* TUYẾN GIÁP NÂNG CAO (Poster xanh) */
+        .theme-thyroid-advanced {
+            background: linear-gradient(135deg, #f4fbff 0%, #fff 55%);
+            border: 1px solid #c6e1f5;
+        }
+        .theme-thyroid-advanced .fmc-badge { background: #e3f2fd; color: #1565c0; }
+        .theme-thyroid-advanced .highlight { color: #1976d2; }
+        .theme-thyroid-advanced .fmc-time-val { color: #1976d2; }
+        .theme-thyroid-advanced .fmc-btn { background: linear-gradient(90deg, #29b6f6, #1976d2); }
+        .theme-thyroid-advanced .fmc-sticker { background: linear-gradient(135deg, #42a5f5, #1565c0); }
+        .theme-thyroid-advanced .fmc-info-box { border-color: #42a5f5; background: #eef7ff; color: #184a78; }
+        .theme-thyroid-advanced .fmc-col-img {
+            background: linear-gradient(180deg, #eef8ff 0%, #dff0ff 100%);
+        }
+        .theme-thyroid-advanced .fmc-col-img img {
+            object-fit: contain;
+            object-position: center top;
+            padding: 10px;
+        }
+
+        /* SIÊU ÂM TUYẾN GIÁP MIỄN PHÍ - Mừng Ngày Của Mẹ & Cha (Teal-Đỏ) */
+        .theme-family-thyroid {
+            background: linear-gradient(135deg, #f0fbff 0%, #fff 55%);
+            border: 1px solid #b2dfdb;
+        }
+        .theme-family-thyroid .fmc-badge { background: #e0f7fa; color: #00695c; }
+        .theme-family-thyroid .highlight { color: #c0392b; }
+        .theme-family-thyroid .fmc-time-val { color: #00796b; }
+        .theme-family-thyroid .fmc-btn { background: linear-gradient(90deg, #00acc1, #00796b); }
+        .theme-family-thyroid .fmc-sticker { background: linear-gradient(135deg, #ef5350, #c0392b); }
+        .theme-family-thyroid .fmc-col-img {
+            background: linear-gradient(180deg, #e8f9ff 0%, #cceeff 100%);
+        }
+        .theme-family-thyroid .fmc-col-img img {
+            object-fit: cover;
+            object-position: center top;
+        }
+        .fmc-family-target-box {
+            background: linear-gradient(135deg, #e0f7fa 0%, #f0fff8 100%);
+            border: 2px solid #80cbc4;
+            border-radius: 16px;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .fmc-family-target-box .fmc-family-icon { font-size: 2rem; margin-bottom: 8px; }
+        .fmc-family-target-box .fmc-family-main {
+            font-size: 1rem; color: #004d40; margin-bottom: 6px; line-height: 1.5;
+        }
+        .fmc-family-target-box .fmc-family-sub {
+            font-size: 0.85rem; color: #00796b; font-weight: 600;
+        }
+
+        .fmc-price-box {
+            background: linear-gradient(135deg, #fff3c4 0%, #fff0f5 100%);
+            border: 1px solid #f3bfd0;
+            border-radius: 16px;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+        }
+        .fmc-price-kicker {
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #b44a6a;
+            margin-bottom: 8px;
+        }
+        .fmc-price-old {
+            font-size: 1rem;
+            color: #8d5771;
+            text-decoration: line-through;
+            margin-bottom: 6px;
+        }
+        .fmc-price-discount {
+            font-size: 2rem;
+            font-weight: 900;
+            line-height: 1;
+            color: #d63384;
+            margin-bottom: 6px;
+        }
+        .fmc-price-new {
+            font-size: 1.9rem;
+            font-weight: 900;
+            line-height: 1.1;
+            color: #b3124b;
+        }
+        .fmc-feature-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        .fmc-feature-item {
+            background: rgba(255, 255, 255, 0.86);
+            border: 1px solid #f3d6e0;
+            border-radius: 12px;
+            padding: 12px 14px;
+            color: #6b2440;
+            font-size: 0.95rem;
+        }
+        .fmc-feature-item strong {
+            display: block;
+            color: #ad1457;
+            margin-bottom: 4px;
+        }
+        .fmc-stat-box {
+            background: linear-gradient(135deg, #fff7fb 0%, #fff0f5 100%);
+            border: 1px solid #f3d0dd;
+            border-radius: 14px;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            color: #742a46;
+        }
+        .fmc-stat-box strong {
+            color: #b3124b;
+            font-size: 1.1rem;
+        }
+
+        @media (min-width: 769px) {
+            .fmc-promo-card {
+                min-height: calc(100vh - 40px);
+            }
+        }
+
+        /* --- MOBILE RESPONSIVE (ĐÃ FIX TỈ LỆ ẢNH) --- */
+        @media (max-width: 768px) {
+            .fmc-promo-card { flex-direction: column; height: auto; min-height: auto; }
+            .theme-vip { flex-direction: column-reverse; } /* VIP: Ảnh dưới cùng */
+            
+            /* SỬA TẠI ĐÂY: Dùng aspect-ratio 9/16 để ảnh dọc */
+            .fmc-col-img { 
+                width: 100%; 
+                height: auto;
+                aspect-ratio: 9/16; /* Tỉ lệ 9:16 (Dọc) */
+                border-radius: 20px 20px 0 0; 
+            }
+            
+            /* Riêng VIP: Ảnh ở dưới nên bo góc dưới */
+            .theme-vip .fmc-col-img {
+                border-radius: 0 0 20px 20px;
+            }
+
+            .fmc-col-info { width: 100%; padding: 30px 20px; }
+            .fmc-sticker { top: 10px; right: 10px; font-size: 0.9rem; transform: rotate(0); }
+            .theme-vip .fmc-sticker {
+                padding: 11px 22px;
+                font-size: 1rem;
+            }
+            .fmc-sticker-discount {
+                top: 12px;
+                right: 10px;
+                padding: 12px 22px;
+                font-size: 1.05rem;
+                border-width: 4px;
+            }
+            .vip-offer-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .vip-discount-chip strong {
+                font-size: 1.2rem;
+            }
+            .vip-price-main {
+                font-size: 1.7rem;
+            }
+            .vip-member-grid {
+                grid-template-columns: 1fr;
+            }
+            .fmc-list-grid { grid-template-columns: 1fr; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .vip-discount-chip,
+            .fmc-sticker {
+                animation: none;
+            }
+        }
+    </style>
+
+    <div class="fmc-promo-card theme-vip">
+        <div class="fmc-sticker">★ VIP MEMBER</div>
+        <div class="fmc-col-info">
+            <span class="fmc-badge">✨ DÀNH CHO CẢ GIA ĐÌNH</span>
+            <h2 class="fmc-title">CHƯƠNG TRÌNH <br><span class="highlight" style="text-transform:uppercase">Thẻ VIP Member</span></h2>
+
+            <p class="fmc-desc"><strong>12 lượt khám + 2 lượt khám miễn phí</strong></p>
+
+            <div class="vip-offer-box">
+                <div class="vip-offer-top">
+                    <div class="vip-discount-chip">
+                        <span>Giảm</span>
+                        <strong>57%</strong>
+                    </div>
+                </div>
+                <div class="vip-value-line">
+                    <strong>Tổng trị giá 2.800.000 VNĐ</strong>
+                </div>
+                <div class="vip-price-line">
+                    <span class="vip-price-caption">Chỉ còn</span>
+                    <div class="vip-price-main">1.200.000 VNĐ <span>/ năm</span></div>
+                </div>
+            </div>
+
+            <div class="vip-member-grid">
+                <div class="vip-member-card">
+                    <div class="vip-member-copy">
+                        <strong>Ông bà</strong>
+                        <span>Người cao tuổi trong gia đình</span>
+                    </div>
+                </div>
+                <div class="vip-member-card">
+                    <div class="vip-member-copy">
+                        <strong>Ba mẹ</strong>
+                        <span>Thăm khám chủ động mỗi năm</span>
+                    </div>
+                </div>
+                <div class="vip-member-card">
+                    <div class="vip-member-copy">
+                        <strong>Mẹ bầu &amp; Trẻ em</strong>
+                        <span>Chăm sóc và theo dõi sức khỏe thuận tiện</span>
+                    </div>
+                </div>
+                <div class="vip-member-card">
+                    <div class="vip-member-copy">
+                        <strong>Người thân</strong>
+                        <span>Linh hoạt sử dụng cho cả người thân, bạn bè</span>
+                    </div>
+                </div>
+            </div>
+            <div class="fmc-btn-group">
+                <a href="/promo/vip-member.html" class="fmc-btn fmc-btn-outline">
+                    <i class="fas fa-external-link-alt"></i> Xem Chi Tiết
+                </a>
+                <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
+                    <i class="fas fa-crown"></i> Đăng Ký Thẻ VIP
+                </a>
+            </div>
+        </div>
+        <div class="fmc-col-img">
+            <img src="/promotion/vip-card-mockup.png" alt="VIP Card" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5WaXAgQ2FyZDwvdGV4dD48L3N2Zz4='">
+        </div>
+    </div>
+
+    <div class="fmc-promo-card theme-cervical">
+        <div class="fmc-sticker fmc-sticker-discount"><span class="fmc-sticker-star">★</span><span>GIẢM <span class="fmc-sticker-value">20%</span></span></div>
+        <div class="fmc-col-img">
+            <img src="/promotion/tam soat ung thu co tư cung.png" alt="Gói tầm soát HPV và ung thư cổ tử cung" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5ISFZWIFNjcmVlbmluZzwvdGV4dD48L3N2Zz4='">
+        </div>
+        <div class="fmc-col-info">
+            <span class="fmc-badge">Sức khỏe phụ nữ</span>
+            <h2 class="fmc-title">Gói Tầm Soát HPV &amp; <br><span class="highlight">Ung Thư Cổ Tử Cung</span></h2>
+            <p class="fmc-desc">📅 Thời gian: <strong>15/04/2026 - 15/06/2026</strong></p>
+            <p class="fmc-desc">🕕 Thực hiện vào <strong>thứ 3 và thứ 5 hàng tuần</strong>, từ <strong>18:00 đến 20:00</strong>; <strong>sáng thứ 7</strong>, từ <strong>8:00 đến 12:00</strong></p>
+
+            <div class="fmc-price-box">
+                <div class="fmc-price-kicker">Giá ưu đãi đặc biệt</div>
+                <div class="fmc-price-old">Từ 2.100.000đ</div>
+                <div class="fmc-price-discount">Giảm 20%</div>
+                <div class="fmc-price-new">Chỉ còn 1.680.000đ</div>
+            </div>
+
+            <div class="fmc-countdown" data-date="2026-06-15T23:59:59">
+                <span style="font-weight:600; color:#555;">Ưu đãi còn:</span>
+                <div class="fmc-timer-group">
+                    <div class="fmc-time-box"><span class="fmc-time-val d">00</span><span class="fmc-time-lbl">Ngày</span></div>
+                    <div class="fmc-time-box"><span class="fmc-time-val h">00</span><span class="fmc-time-lbl">Giờ</span></div>
+                    <div class="fmc-time-box"><span class="fmc-time-val m">00</span><span class="fmc-time-lbl">Phút</span></div>
+                    <div class="fmc-time-box"><span class="fmc-time-val s">00</span><span class="fmc-time-lbl">Giây</span></div>
+                </div>
+            </div>
+
+            <div class="fmc-feature-list">
+                <div class="fmc-feature-item">
+                    <strong>Xét nghiệm HPV DNA</strong>
+                    Phát hiện virus nguy cơ cao
+                </div>
+                <div class="fmc-feature-item">
+                    <strong>Pap nhúng dịch AI</strong>
+                    Tìm tế bào bất thường bằng AI
+                </div>
+                <div class="fmc-feature-item">
+                    <strong>Soi cổ tử cung (Colposcopy) bằng kính hiển vi quang học</strong>
+                    Quan sát tổn thương trực tiếp
+                </div>
+            </div>
+
+            <div class="fmc-info-box">
+                <strong>Lưu ý:</strong> Xét nghiệm chức năng tuyến giáp có thể thêm vào gói tầm soát.
+            </div>
+            <div class="fmc-btn-group">
+                <a href="/promo/hpv-co-tu-cung.html" class="fmc-btn fmc-btn-outline">
+                    <i class="fas fa-external-link-alt"></i> Xem Chi Tiết
+                </a>
+                <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
+                    <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
+                    Đặt lịch hẹn ngay
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="fmc-promo-card theme-breast-screening">
+        <div class="fmc-sticker fmc-sticker-discount"><span class="fmc-sticker-star">★</span><span>GIẢM <span class="fmc-sticker-value">20%</span></span></div>
+        <div class="fmc-col-img">
+            <img src="/promotion/tam soat ung thu vu.png" alt="Tầm soát ung thư vú" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5CcmVhc3QgU2NyZWVuaW5nPC90ZXh0Pjwvc3ZnPg=='">
+        </div>
+        <div class="fmc-col-info">
+            <span class="fmc-badge">Sức khỏe phụ nữ</span>
+            <h2 class="fmc-title">Tầm Soát <br><span class="highlight">Ung Thư Vú</span></h2>
+            <p class="fmc-desc">📅 Thời gian: <strong>15/04/2026 - 15/06/2026</strong></p>
+            <p class="fmc-desc">🕕 Thực hiện vào <strong>thứ 3 và thứ 5 hàng tuần</strong>, từ <strong>18:00 đến 20:00</strong>; <strong>sáng thứ 7</strong>, từ <strong>8:00 đến 12:00</strong></p>
+
+            <div class="fmc-stat-box">
+                <strong>Cứ 8 phụ nữ có 1 người mắc UNG THƯ VÚ 12.5%</strong>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:15px; margin-bottom:20px; background:#fff0f5; padding:10px; border-radius:8px;">
+                <div style="background:#fff; padding:8px; border-radius:50%;"><i class="fas fa-user-md" style="color:#ec407a"></i></div>
+                <div>
+                    <div style="font-size:0.85rem; font-weight:bold; color:#d81b60">BS.CKII Nguyễn Hoàng Lam</div>
+                    <div style="font-size:0.8rem; background:#ec407a; color:white; padding:2px 6px; border-radius:4px; display:inline-block">Khám nữ thuận tiện</div>
+                </div>
+            </div>
+
+            <div class="fmc-price-box">
+                <div class="fmc-price-kicker">Ưu đãi tầm soát</div>
+                <div class="fmc-price-discount">Giảm 20%</div>
+                <div class="fmc-price-new">Chỉ 400.000đ</div>
+            </div>
+
+            <div class="fmc-countdown" data-date="2026-06-15T23:59:59">
+                <span style="font-weight:600; color:#555;">Ưu đãi còn:</span>
+                <div class="fmc-timer-group">
+                    <div class="fmc-time-box"><span class="fmc-time-val d">00</span><span class="fmc-time-lbl">Ngày</span></div>
+                    <div class="fmc-time-box"><span class="fmc-time-val h">00</span><span class="fmc-time-lbl">Giờ</span></div>
+                    <div class="fmc-time-box"><span class="fmc-time-val m">00</span><span class="fmc-time-lbl">Phút</span></div>
+                    <div class="fmc-time-box"><span class="fmc-time-val s">00</span><span class="fmc-time-lbl">Giây</span></div>
+                </div>
+            </div>
+
+            <div class="fmc-feature-list">
+                <div class="fmc-feature-item">
+                    <strong>Siêu âm vú</strong>
+                    Thăm khám hình ảnh sàng lọc ban đầu
+                </div>
+                <div class="fmc-feature-item">
+                    <strong>Hướng dẫn tự khám</strong>
+                    Nhận hướng dẫn tự kiểm tra tại nhà
+                </div>
+                <div class="fmc-feature-item">
+                    <strong>Tư vấn chuyên sâu</strong>
+                    Giải thích kết quả và hướng xử trí phù hợp
+                </div>
+            </div>
+
+            <div class="fmc-info-box">
+                <strong>Lưu ý:</strong> Chụp nhũ ảnh nếu cần sẽ tính ngoài gói.
+            </div>
+
+            <div class="fmc-btn-group">
+                <a href="/promo/ung-thu-vu.html" class="fmc-btn fmc-btn-outline">Xem Chi Tiết</a>
+                <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
+                    <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
+                    Đặt lịch hẹn ngay
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="fmc-promo-card theme-family-thyroid">
+        <div class="fmc-sticker">★ MIỄN PHÍ</div>
+        <div class="fmc-col-img">
+            <img src="/promotion/sieu-am-tuyen-giap-mien-phi.jpg" alt="Siêu âm tuyến giáp miễn phí - Mừng Ngày Của Mẹ và Cha" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5TaWV1IEFtIFR1eWVuIEdpYXA8L3RleHQ+PC9zdmc+'">
+        </div>
+        <div class="fmc-col-info">
+            <span class="fmc-badge">🎁 Mừng Ngày Của Mẹ &amp; Ngày Của Cha</span>
+            <h2 class="fmc-title">Siêu Âm Tuyến Giáp <br><span class="highlight">MIỄN PHÍ</span></h2>
+            <p class="fmc-desc">Nhân dịp Ngày Của Mẹ và Ngày Của Cha, FMC tặng quà sức khỏe ý nghĩa đến những người thân yêu của bạn.</p>
+
+            <div class="fmc-family-target-box">
+                <div class="fmc-family-icon">👨‍👩‍👧‍👦</div>
+                <div class="fmc-family-main">Dành cho <strong>tất cả người thân</strong> của khách hàng Phòng Khám FMC</div>
+                
+            </div>
+
+            <p class="fmc-desc">📅 Thời gian: <strong>24/05/2026 – 30/06/2026</strong></p>
+
+            <div class="fmc-countdown" data-date="2026-06-30T23:59:59">
+                <span style="font-weight:600; color:#555;">Ưu đãi còn:</span>
+                <div class="fmc-timer-group">
+                    <div class="fmc-time-box"><span class="fmc-time-val d">00</span><span class="fmc-time-lbl">Ngày</span></div>
+                    <div class="fmc-time-box"><span class="fmc-time-val h">00</span><span class="fmc-time-lbl">Giờ</span></div>
+                    <div class="fmc-time-box"><span class="fmc-time-val m">00</span><span class="fmc-time-lbl">Phút</span></div>
+                    <div class="fmc-time-box"><span class="fmc-time-val s">00</span><span class="fmc-time-lbl">Giây</span></div>
+                </div>
+            </div>
+
+            <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
+                <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
+                Đặt lịch hẹn ngay
+            </a>
+        </div>
+    </div>
+
+    <div class="fmc-promo-card theme-thyroid-advanced">
+        <div class="fmc-sticker fmc-sticker-discount"><span class="fmc-sticker-star">★</span><span>GIẢM <span class="fmc-sticker-value">20%</span></span></div>
+        <div class="fmc-col-img">
+            <img src="/promotion/tam soat ung thu tuyen giap.png" alt="Gói tầm soát ung thư tuyến giáp nâng cao" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5UaHlyb2lkIFNjcmVlbmluZzwvdGV4dD48L3N2Zz4='">
+        </div>
+        <div class="fmc-col-info">
+            <span class="fmc-badge">Tầm soát tuyến giáp</span>
+            <h2 class="fmc-title">Gói Tầm Soát <br><span class="highlight">Ung Thư Tuyến Giáp</span></h2>
+            <p class="fmc-desc">📅 Thời gian: <strong>15/04/2026 - 15/06/2026</strong></p>
+            <p class="fmc-desc">🕕 Thực hiện vào <strong>thứ 4 và thứ 6 hàng tuần</strong>, từ <strong>18:00 đến 20:00</strong></p>
+
+            <div class="fmc-price-box" style="background:linear-gradient(135deg, #fff6cf 0%, #eef7ff 100%); border-color:#bfdcf2;">
+                <div class="fmc-price-kicker" style="color:#1d5f91;">Giá ưu đãi đặc biệt</div>
+                <div class="fmc-price-old" style="font-size:1.2rem;">Từ 300.000đ</div>
+                <div class="fmc-price-discount" style="color:#1565c0;">Giảm 20%</div>
+                <div class="fmc-price-new" style="color:#0d47a1;">Chỉ còn 240.000đ</div>
+            </div>
+
+            <div class="fmc-countdown" data-date="2026-06-15T23:59:59">
+                <span style="font-weight:600; color:#555;">Ưu đãi còn:</span>
+                <div class="fmc-timer-group">
+                    <div class="fmc-time-box"><span class="fmc-time-val d">00</span><span class="fmc-time-lbl">Ngày</span></div>
+                    <div class="fmc-time-box"><span class="fmc-time-val h">00</span><span class="fmc-time-lbl">Giờ</span></div>
+                    <div class="fmc-time-box"><span class="fmc-time-val m">00</span><span class="fmc-time-lbl">Phút</span></div>
+                    <div class="fmc-time-box"><span class="fmc-time-val s">00</span><span class="fmc-time-lbl">Giây</span></div>
+                </div>
+            </div>
+
+            <div class="fmc-feature-list">
+                <div class="fmc-feature-item" style="border-color:#cfe3f4; color:#194a73;">
+                    <strong style="color:#1565c0;">Bước 1: Siêu âm tuyến giáp</strong>
+                    Đánh giá kích thước, cấu trúc và phát hiện nhân tuyến giáp
+                </div>
+                <div class="fmc-feature-item" style="border-color:#cfe3f4; color:#194a73;">
+                    <strong style="color:#1565c0;">Bước 2: Tư vấn chuyên sâu</strong>
+                    Giải đáp và định hướng chăm sóc tuyến giáp
+                </div>
+            </div>
+
+            <div class="fmc-info-box">
+                <strong>Lưu ý:</strong> Giá có thể thay đổi tùy chương trình.
+            </div>
+
+            <div class="fmc-btn-group">
+                <a href="/promo/ung-thu-tuyen-giap.html" class="fmc-btn fmc-btn-outline">Xem Chi Tiết</a>
+                <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
+                    <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
+                    Đặt lịch hẹn ngay
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        {
+            const initPromotions = () => {
+                const timers = document.querySelectorAll('.fmc-countdown');
+                if (timers.length === 0) { setTimeout(initPromotions, 100); return; }
+
+                timers.forEach(timer => {
+                    const dateStr = timer.getAttribute('data-date');
+                    if (!dateStr) return;
+                    const targetDate = new Date(dateStr).getTime();
+                    const elD = timer.querySelector('.d'); const elH = timer.querySelector('.h');
+                    const elM = timer.querySelector('.m'); const elS = timer.querySelector('.s');
+
+                    const update = () => {
+                        const now = new Date().getTime();
+                        const dist = targetDate - now;
+                        if (dist < 0) {
+                            elD.innerText = "00"; elH.innerText = "00";
+                            elM.innerText = "00"; elS.innerText = "00"; return;
+                        }
+                        const d = Math.floor(dist / (1000 * 60 * 60 * 24));
+                        const h = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const m = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
+                        const s = Math.floor((dist % (1000 * 60)) / 1000);
+                        elD.innerText = d < 10 ? "0" + d : d;
+                        elH.innerText = h < 10 ? "0" + h : h;
+                        elM.innerText = m < 10 ? "0" + m : m;
+                        elS.innerText = s < 10 ? "0" + s : s;
+                    };
+                    update(); setInterval(update, 1000);
+                });
+            };
+            initPromotions();
+        }
+    </script>
+</div>

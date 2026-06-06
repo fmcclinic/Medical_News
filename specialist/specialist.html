@@ -56,7 +56,7 @@
         .specialist-component-scope .specialty-image {
             width: 180px;
             min-width: 180px;
-            height: 180px;
+            aspect-ratio: 9 / 16;
             position: relative;
             overflow: hidden;
         }
@@ -65,14 +65,32 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: top center;
+            transform: scale(1.15);
+            transform-origin: top center;
             transition: opacity 0.5s ease;
             position: absolute;
             top: 0;
             left: 0;
         }
 
+        .specialist-component-scope .specialty-image img.active {
+            animation: specialtyImageZoomOut 3s linear forwards;
+            opacity: 1;
+        }
+
         .specialist-component-scope .specialty-image img:not(.active) {
             opacity: 0;
+        }
+
+        @keyframes specialtyImageZoomOut {
+            from {
+                transform: scale(1.15);
+            }
+
+            to {
+                transform: scale(1);
+            }
         }
 
         .specialist-component-scope .specialty-content {
@@ -201,6 +219,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        .specialist-component-scope .doctor-avatar img.fallback-logo {
+            object-fit: contain;
+            padding: 5px;
+            background: #fff;
         }
 
         .specialist-component-scope .doctor-info {
@@ -338,7 +362,6 @@
             .specialist-component-scope .specialty-image {
                 width: 150px;
                 min-width: 150px;
-                height: 150px;
             }
 
             .specialist-component-scope .doctor-card {
@@ -363,7 +386,6 @@
             .specialist-component-scope .specialty-image {
                 width: 100%;
                 max-width: 200px;
-                height: 200px;
                 margin: 0 auto;
             }
 
@@ -471,11 +493,8 @@
         <h1 class="section-title">Đội Ngũ Bác Sĩ Chuyên Khoa Giàu Kinh Nghiệm</h1>
 
         <div class="specialty">
-            <div class="specialty-image">
-                <img src="specialist/image/specialist1-1.jpg" alt="Chuyên Khoa Sản Phụ Khoa" class="active" loading="lazy">
-                <img src="specialist/image/specialist1-2.jpg" alt="Chuyên Khoa Sản Phụ Khoa" loading="lazy">
-                <img src="specialist/image/specialist1-3.jpg" alt="Chuyên Khoa Sản Phụ Khoa" loading="lazy">
-                <img src="specialist/image/specialist1-4.jpg" alt="Chuyên Khoa Sản Phụ Khoa" loading="lazy">
+            <div class="specialty-image" data-image-folder="ob_gyn">
+                <img src="specialist/images/specialists/ob_gyn/1.jpg" alt="Chuyên Khoa Sản Phụ Khoa" class="active" loading="lazy">
             </div>
             <div class="specialty-content">
                 <h2 class="specialty-title">Chuyên Khoa Sản Phụ Khoa</h2>
@@ -494,7 +513,7 @@
                                 <div class="doctors-track">
                                     <div class="doctor-card">
                                         <div class="doctor-avatar">
-                                            <img src="specialist/image/doctor1.jpg" alt="BS.CK2 Nguyễn Hoàng Lam" loading="lazy">
+                                            <img src="header/logo.png" alt="BS.CK2 Nguyễn Hoàng Lam" class="fallback-logo" loading="lazy">
                                         </div>
                                         <div class="doctor-info">
                                             <div class="doctor-name">BS. Nguyễn Hoàng Lam</div>
@@ -503,17 +522,17 @@
                                     </div>
                                     <div class="doctor-card">
                                         <div class="doctor-avatar">
-                                            <img src="specialist/image/doctor2.jpg" alt="BS. Đào Hoàng Hoa Hà Hải Âu" loading="lazy">
+                                            <img src="header/logo.png" alt="Bs. Đỗ Thị Lan Vy" class="fallback-logo" loading="lazy">
                                         </div>
                                         <div class="doctor-info">
-                                            <div class="doctor-name">BS. Đào Hoàng Hoa Hà Hải Âu</div>
-                                            <div class="doctor-title">Chuyên khoa cấp 1</div>
+                                            <div class="doctor-name">Bs. Đỗ Thị Lan Vy</div>
+                                            <div class="doctor-title">Chuyên khoa sản phụ khoa</div>
                                         </div>
                                     </div>
 
                                     <div class="doctor-card">
                                         <div class="doctor-avatar">
-                                            <img src="specialist/image/doctor3.jpg" alt="BS. Nguyễn Thị Việt Linh" loading="lazy">
+                                            <img src="header/logo.png" alt="BS. Nguyễn Thị Việt Linh" class="fallback-logo" loading="lazy">
                                         </div>
                                         <div class="doctor-info">
                                             <div class="doctor-name">BS. Nguyễn Thị Việt Linh</div>
@@ -535,9 +554,8 @@
         </div>
 
         <div class="specialty">
-            <div class="specialty-image">
-                <img src="specialist/image/specialist2-3.jpg" alt="Chuyên Khoa Tai Mũi Họng" class="active" loading="lazy">
-                <img src="specialist/image/specialist2-2.jpg" alt="Chuyên Khoa Tai Mũi Họng" loading="lazy">
+            <div class="specialty-image" data-image-folder="ent">
+                <img src="specialist/images/specialists/ent/1.jpg" alt="Chuyên Khoa Tai Mũi Họng" class="active" loading="lazy">
             </div>
             <div class="specialty-content">
                 <h2 class="specialty-title">Chuyên Khoa Tai Mũi Họng</h2>
@@ -556,7 +574,7 @@
                                 <div class="doctors-track">
                                     <div class="doctor-card">
                                         <div class="doctor-avatar">
-                                            <img src="specialist/image/doctor7.jpg" alt="BS. Sử Ngọc Kiều Chinh" loading="lazy">
+                                            <img src="header/logo.png" alt="BS. Sử Ngọc Kiều Chinh" class="fallback-logo" loading="lazy">
                                         </div>
                                         <div class="doctor-info">
                                             <div class="doctor-name">BS. Sử Ngọc Kiều Chinh</div>
@@ -565,11 +583,20 @@
                                     </div>
                                     <div class="doctor-card">
                                         <div class="doctor-avatar">
-                                            <img src="specialist/image/doctor6.jpg" alt="BS. Dương Minh Trọng" loading="lazy">
+                                            <img src="header/logo.png" alt="BS. Dương Minh Trọng" class="fallback-logo" loading="lazy">
                                         </div>
                                         <div class="doctor-info">
                                             <div class="doctor-name">BS. Dương Minh Trọng</div>
                                             <div class="doctor-title">Bác sĩ -Chuyên khoa 1</div>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-card">
+                                        <div class="doctor-avatar">
+                                            <img src="header/logo.png" alt="ThS.BS. Hồ Thị Thanh Tâm" class="fallback-logo" loading="lazy">
+                                        </div>
+                                        <div class="doctor-info">
+                                            <div class="doctor-name">ThS.BS. Hồ Thị Thanh Tâm</div>
+                                            <div class="doctor-title">Thạc sĩ - Bác sĩ</div>
                                         </div>
                                     </div>
                                 </div>
@@ -587,10 +614,8 @@
         </div>
 
         <div class="specialty">
-            <div class="specialty-image">
-                <img src="specialist/image/specialist3-1.jpg" alt="Chuyên Khoa Nội" class="active" loading="lazy">
-                <img src="specialist/image/specialist3-2.jpg" alt="Chuyên Khoa Nội" loading="lazy">
-                <img src="specialist/image/specialist3-3.jpg" alt="Chuyên Khoa Nội" loading="lazy">
+            <div class="specialty-image" data-image-folder="internal_medicine">
+                <img src="specialist/images/specialists/internal_medicine/1.jpg" alt="Chuyên Khoa Nội" class="active" loading="lazy">
             </div>
             <div class="specialty-content">
                 <h2 class="specialty-title">Chuyên Khoa Nội</h2>
@@ -609,37 +634,28 @@
                                 <div class="doctors-track">
                                     <div class="doctor-card">
                                         <div class="doctor-avatar">
-                                            <img src="specialist/image/doctor9.jpg" alt="BS. Đỗ Thành Long" loading="lazy">
+                                            <img src="header/logo.png" alt="BS.CK1 Đỗ Thành Long" class="fallback-logo" loading="lazy">
                                         </div>
                                         <div class="doctor-info">
-                                            <div class="doctor-name">BS. Đỗ Thành Long</div>
+                                            <div class="doctor-name">BS.CK1 Đỗ Thành Long</div>
                                             <div class="doctor-title">Chuyên khoa 1</div>
                                         </div>
                                     </div>
                                     <div class="doctor-card">
                                         <div class="doctor-avatar">
-                                            <img src="specialist/image/doctor10.jpg" alt="BS. Nguyễn Xuân Long" loading="lazy">
+                                            <img src="header/logo.png" alt="BS.CK1 Nguyễn Xuân Long" class="fallback-logo" loading="lazy">
                                         </div>
                                         <div class="doctor-info">
-                                            <div class="doctor-name">BS. Nguyễn Xuân Long</div>
+                                            <div class="doctor-name">BS.CK1 Nguyễn Xuân Long</div>
                                             <div class="doctor-title">Chuyên khoa 1</div>
                                         </div>
                                     </div>
                                     <div class="doctor-card">
                                         <div class="doctor-avatar">
-                                            <img src="specialist/image/doctor11.jpg" alt="BS.CK1 Đỗ Thành Long" loading="lazy">
+                                            <img src="header/logo.png" alt="BS.CK1 Phạm Bá Dương" class="fallback-logo" loading="lazy">
                                         </div>
                                         <div class="doctor-info">
-                                            <div class="doctor-name">BS. Đỗ Thành Long</div>
-                                            <div class="doctor-title">Chuyên khoa 1</div>
-                                        </div>
-                                    </div>
-                                    <div class="doctor-card">
-                                        <div class="doctor-avatar">
-                                            <img src="specialist/image/doctor12.jpg" alt="BS. Nguyễn Xuân Long" loading="lazy">
-                                        </div>
-                                        <div class="doctor-info">
-                                            <div class="doctor-name">BS. Nguyễn Xuân Long</div>
+                                            <div class="doctor-name">BS.CK1 Phạm Bá Dương</div>
                                             <div class="doctor-title">Chuyên khoa 1</div>
                                         </div>
                                     </div>
@@ -657,10 +673,8 @@
             </div>
         </div>
         <div class="specialty">
-            <div class="specialty-image">
-                <img src="specialist/image/specialist4-1.jpg" alt="Chuyên Khoa Nhi" class="active" loading="lazy">
-                <img src="specialist/image/specialist4-2.jpg" alt="Chuyên Khoa Nhi" loading="lazy">
-                <img src="specialist/image/specialist4-1.jpg" alt="Chuyên Khoa Nhi" loading="lazy">
+            <div class="specialty-image" data-image-folder="pediatrics">
+                <img src="specialist/images/specialists/pediatrics/1.jpg" alt="Chuyên Khoa Nhi" class="active" loading="lazy">
             </div>
             <div class="specialty-content">
                 <h2 class="specialty-title">Chuyên Khoa Nhi</h2>
@@ -679,7 +693,7 @@
                                 <div class="doctors-track">
                                     <div class="doctor-card">
                                         <div class="doctor-avatar">
-                                            <img src="specialist/image/specialist4-1.jpg" alt="ThS.BS. Đặng Hoàng Khánh Duy" loading="lazy">
+                                            <img src="header/logo.png" alt="ThS.BS. Đặng Hoàng Khánh Duy" class="fallback-logo" loading="lazy">
                                         </div>
                                         <div class="doctor-info">
                                             <div class="doctor-name">ThS.BS. Đặng Hoàng Khánh Duy</div>
@@ -688,7 +702,7 @@
                                     </div>
                                     <div class="doctor-card">
                                         <div class="doctor-avatar">
-                                            <img src="specialist/image/specialist4-2.jpg" alt="BS. Nguyễn Văn Nhật" loading="lazy">
+                                            <img src="header/logo.png" alt="BS. Nguyễn Văn Nhật" class="fallback-logo" loading="lazy">
                                         </div>
                                         <div class="doctor-info">
                                             <div class="doctor-name">BS. Phạm Tiến Nhật</div>
@@ -716,6 +730,9 @@
             console.log("Initializing Specialist Component...");
 
             const COMPONENT_SELECTOR = '#specialist-component-wrapper';
+            const SPECIALTY_IMAGE_BASE_PATH = 'specialist/images/specialists';
+            const SPECIALTY_IMAGE_DELAY = 3000;
+            const DOCTOR_FALLBACK_IMAGE = 'header/logo.png';
             
             // Helper: Debounce function
             function debounce(func, wait) {
@@ -730,13 +747,64 @@
                 };
             }
 
-            // --- Logic Image Slider (Giữ nguyên) ---
+            function checkImageExists(src) {
+                return new Promise(resolve => {
+                    const img = new Image();
+                    img.onload = () => resolve(true);
+                    img.onerror = () => resolve(false);
+                    img.src = src;
+                });
+            }
+
+            async function discoverSpecialtyImages(folderName) {
+                const paths = [];
+                let imageIndex = 1;
+
+                while (true) {
+                    const imagePath = `${SPECIALTY_IMAGE_BASE_PATH}/${folderName}/${imageIndex}.jpg`;
+                    const exists = await checkImageExists(imagePath);
+
+                    if (!exists) break;
+
+                    paths.push(imagePath);
+                    imageIndex += 1;
+                }
+
+                return paths;
+            }
+
+            function assignDoctorImages(specialtyImage, imagePaths) {
+                const specialty = specialtyImage.closest('.specialty');
+                if (!specialty) return;
+
+                const doctorImages = specialty.querySelectorAll('.doctor-avatar img');
+
+                doctorImages.forEach((doctorImage, index) => {
+                    const imagePath = imagePaths[index];
+
+                    doctorImage.onerror = null;
+                    doctorImage.src = imagePath || DOCTOR_FALLBACK_IMAGE;
+                    doctorImage.classList.toggle('fallback-logo', !imagePath);
+
+                    if (imagePath) {
+                        doctorImage.onerror = () => {
+                            doctorImage.onerror = null;
+                            doctorImage.src = DOCTOR_FALLBACK_IMAGE;
+                            doctorImage.classList.add('fallback-logo');
+                        };
+                    }
+                });
+            }
+
+            // --- Logic Image Slider ---
             function initializeImageSlider(specialtyImage) {
-                const images = Array.from(specialtyImage.querySelectorAll('img'));
+                const folderName = specialtyImage.dataset.imageFolder;
+                let images = Array.from(specialtyImage.querySelectorAll('img'));
                 if (!images.length) return null;
 
                 let currentIndex = 0;
                 let interval = null;
+                let isCleanedUp = false;
 
                 const showImage = (index) => {
                     images.forEach(img => img.classList.remove('active'));
@@ -744,11 +812,12 @@
                 };
 
                 const startSlideshow = () => {
+                    if (images.length <= 1) return;
                     if (interval) clearInterval(interval);
                     interval = setInterval(() => {
                         currentIndex = (currentIndex + 1) % images.length;
                         showImage(currentIndex);
-                    }, 3000);
+                    }, SPECIALTY_IMAGE_DELAY);
                 };
 
                 const stopSlideshow = () => {
@@ -758,16 +827,44 @@
                     }
                 };
 
-                const cleanup = () => {
-                    stopSlideshow();
-                    specialtyImage.removeEventListener('mouseenter', stopSlideshow);
-                    specialtyImage.removeEventListener('mouseleave', startSlideshow);
+                const renderImages = (imagePaths) => {
+                    const altText = images[0]?.alt || '';
+                    const fragment = document.createDocumentFragment();
+
+                    imagePaths.forEach((imagePath, index) => {
+                        const img = document.createElement('img');
+                        img.src = imagePath;
+                        img.alt = altText;
+                        img.loading = 'lazy';
+                        if (index === 0) img.classList.add('active');
+                        fragment.appendChild(img);
+                    });
+
+                    specialtyImage.innerHTML = '';
+                    specialtyImage.appendChild(fragment);
+                    images = Array.from(specialtyImage.querySelectorAll('img'));
+                    currentIndex = 0;
                 };
 
-                specialtyImage.addEventListener('mouseenter', stopSlideshow);
-                specialtyImage.addEventListener('mouseleave', startSlideshow);
+                const loadFolderImages = async () => {
+                    let imagePaths = [];
 
-                startSlideshow();
+                    if (folderName) {
+                        imagePaths = await discoverSpecialtyImages(folderName);
+                        if (isCleanedUp) return;
+                        if (imagePaths.length) renderImages(imagePaths);
+                    }
+
+                    assignDoctorImages(specialtyImage, imagePaths);
+                    startSlideshow();
+                };
+
+                loadFolderImages();
+
+                const cleanup = () => {
+                    isCleanedUp = true;
+                    stopSlideshow();
+                };
 
                 return cleanup;
             }

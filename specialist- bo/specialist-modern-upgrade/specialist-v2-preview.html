@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview - Specialist Component V2</title>
+    <style>
+        body { margin: 0; background: #f7fbff; }
+        .preview-note {
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 1100px;
+            margin: 24px auto 0;
+            padding: 12px 18px;
+            color: #42576b;
+            background: #fff;
+            border: 1px solid #e4edf6;
+            border-radius: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-note">
+        Bản preview local. Khi đưa lên website, dùng file <strong>specialist-v2.html</strong> để thay component chuyên khoa hiện tại. Ảnh vẫn lấy từ thư mục <code>specialist/image/...</code> của website.
+    </div>
+<div id="specialist-component-wrapper" class="specialist-component-scope specialist-modern-component">
+    <style>
+        /* =========================================================
+           Friend Medical Clinic - Specialist Component V2
+           Drop-in replacement for specialist.html
+           Scope: #specialist-component-wrapper only
+           ========================================================= */
+
+        .specialist-component-scope {
+            --fmc-blue: #0a6fcf;
+            --fmc-blue-dark: #073a68;
+            --fmc-teal: #10a6a6;
+            --fmc-cyan: #2cb9d6;
+            --fmc-pink: #f25d8d;
+            --fmc-purple: #805eea;
+            --fmc-orange: #f29a45;
+            --fmc-text: #10263f;
+            --fmc-muted: #62758c;
+            --fmc-soft: #f3f8fd;
+            --fmc-card: rgba(255, 255, 255, 0.92);
+            --fmc-border: rgba(20, 102, 168, 0.12);
+            --fmc-radius-xl: 32px;
+            --fmc-radius-lg: 24px;
+            --fmc-radius-md: 18px;
+            --fmc-shadow-soft: 0 20px 55px rgba(12, 58, 105, 0.10);
+            --fmc-shadow-card: 0 14px 34px rgba(15, 51, 88, 0.11);
+
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--fmc-text);
+            background: #f7fbff;
+            width: 100%;
+            position: relative;
+            z-index: 20;
+            display: block;
+            overflow: hidden;
+            line-height: 1.6;
+        }
+
+        .specialist-component-scope * {
+            box-sizing: border-box;
+        }
+
+        .specialist-component-scope img,
+        .specialist-component-scope svg {
+            display: block;
+        }
+
+        .specialist-component-scope button {
+            font-family: inherit;
+        }
+
+        .specialist-component-scope .specialist-modern-section {
+            position: relative;
+            padding: 72px 18px 76px;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 6% 10%, rgba(67, 148, 226, 0.14) 0 12%, transparent 32%),
+                radial-gradient(circle at 95% 78%, rgba(16, 166, 166, 0.13) 0 12%, transparent 34%),
+                linear-gradient(135deg, #f6fbff 0%, #ffffff 48%, #f2f8ff 100%);
+        }
+
+        .specialist-component-scope .specialist-modern-section::before,
+        .specialist-component-scope .specialist-modern-section::after {
+            content: '';
+            position: absolute;
+            border-radius: 999px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .specialist-component-scope .specialist-modern-section::before {
+            width: 460px;
+            height: 460px;
+            left: -190px;
+            top: -160px;
+            background: linear-gradient(135deg, rgba(7, 111, 207, 0.12), rgba(44, 185, 214, 0.03));
+        }
+
+        .specialist-component-scope .specialist-modern-section::after {
+            width: 420px;
+            height: 420px;
+            right: -160px;
+            bottom: -190px;
+            background: linear-gradient(135deg, rgba(16, 166, 166, 0.10), rgba(7, 111, 207, 0.03));
+        }
+
+        .specialist-component-scope .specialist-modern-shell {
+            position: relative;
+            z-index: 1;
+            max-width: 1480px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(300px, 390px) minmax(0, 1fr);
+            gap: 38px;
+            align-items: center;
+        }
+
+        /* =========================
+           Intro panel
+           ========================= */
+        .specialist-component-scope .specialist-intro-panel {
+            position: relative;
+            min-height: 560px;
+            padding: 34px 28px;
+            border-radius: var(--fmc-radius-xl);
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,255,255,0.66)),
+                url('specialist/image/specialist3-2.jpg') center bottom / cover no-repeat;
+            box-shadow: none;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .specialist-component-scope .specialist-intro-panel::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.90) 58%, rgba(255,255,255,0.32) 100%),
+                linear-gradient(180deg, rgba(245,250,255,0.30), rgba(219,237,255,0.82));
+            z-index: -1;
+        }
+
+        .specialist-component-scope .specialist-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 100%;
+            margin-bottom: 26px;
+            padding: 10px 14px;
+            border: 1px solid rgba(16, 166, 166, 0.18);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.78);
+            color: var(--fmc-blue-dark);
+            font-weight: 700;
+            font-size: 0.96rem;
+            white-space: nowrap;
+        }
+
+        .specialist-component-scope .specialist-kicker-icon {
+            width: 25px;
+            height: 25px;
+            display: inline-grid;
+            place-items: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e7fbff, #dceeff);
+            color: var(--fmc-teal);
+            box-shadow: 0 8px 18px rgba(18, 118, 177, 0.12);
+            flex: 0 0 auto;
+        }
+
+        .specialist-component-scope .specialist-kicker-icon svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        .specialist-component-scope .specialist-title {
+            margin: 0 0 24px;
+            color: var(--fmc-blue-dark);
+            font-size: clamp(3rem, 5.8vw, 5.15rem);
+            line-height: 0.98;
+            letter-spacing: -0.055em;
+            font-weight: 800;
+        }
+
+        .specialist-component-scope .specialist-title span {
+            color: var(--fmc-teal);
+        }
+
+        .specialist-component-scope .specialist-lead {
+            max-width: 420px;
+            margin: 0;
+            color: var(--fmc-muted);
+            font-size: 1.05rem;
+            line-height: 1.75;
+        }
+
+        .specialist-component-scope .specialist-trust-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin: 48px 0 34px;
+        }
+
+        .specialist-component-scope .specialist-trust-item {
+            display: grid;
+            grid-template-columns: 38px minmax(0, 1fr);
+            gap: 10px;
+            align-items: center;
+            min-width: 0;
+        }
+
+        .specialist-component-scope .specialist-trust-icon {
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.82);
+            color: var(--fmc-blue);
+            box-shadow: 0 10px 25px rgba(12, 78, 134, 0.12);
+        }
+
+        .specialist-component-scope .specialist-trust-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .specialist-component-scope .specialist-trust-text {
+            color: #254058;
+            font-size: 0.84rem;
+            line-height: 1.28;
+            font-weight: 700;
+        }
+
+        .specialist-component-scope .specialist-main-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            width: min(330px, 100%);
+            min-height: 58px;
+            padding: 14px 16px 14px 24px;
+            border: 0;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #075da8, #08aeb4);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 18px 36px rgba(7, 111, 207, 0.22);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+        }
+
+        .specialist-component-scope .specialist-main-cta:hover,
+        .specialist-component-scope .specialist-main-cta:focus-visible {
+            transform: translateY(-2px);
+            box-shadow: 0 22px 45px rgba(7, 111, 207, 0.28);
+            filter: saturate(1.05);
+        }
+
+        .specialist-component-scope .specialist-main-cta:focus-visible,
+        .specialist-component-scope .specialty-card-button:focus-visible,
+        .specialist-component-scope .specialist-carousel-nav:focus-visible,
+        .specialist-component-scope .specialist-dot:focus-visible,
+        .specialist-component-scope .specialist-detail-close:focus-visible {
+            outline: 3px solid rgba(7, 111, 207, 0.28);
+            outline-offset: 3px;
+        }
+
+        .specialist-component-scope .specialist-main-cta-circle {
+            width: 34px;
+            height: 34px;
+            display: inline-grid;
+            place-items: center;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.95);
+            color: var(--fmc-blue);
+            flex: 0 0 auto;
+        }
+
+        /* =========================
+           Showcase / carousel
+           ========================= */
+        .specialist-component-scope .specialist-showcase {
+            position: relative;
+            min-width: 0;
+        }
+
+        .specialist-component-scope .specialist-carousel-shell {
+            position: relative;
+            border-radius: var(--fmc-radius-xl);
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: var(--fmc-shadow-soft);
+            backdrop-filter: blur(10px);
+        }
+
+        .specialist-component-scope .specialist-carousel-viewport {
+            overflow-x: auto;
+            overflow-y: visible;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-snap-type: x mandatory;
+            padding: 4px;
+        }
+
+        .specialist-component-scope .specialist-carousel-viewport::-webkit-scrollbar {
+            display: none;
+        }
+
+        .specialist-component-scope .specialist-carousel-track {
+            display: flex;
+            gap: 16px;
+            align-items: stretch;
+        }
+
+        .specialist-component-scope .specialty-card {
+            position: relative;
+            flex: 0 0 calc((100% - 48px) / 4);
+            min-width: 185px;
+            display: flex;
+            flex-direction: column;
+            min-height: 520px;
+            border-radius: 26px;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid var(--fmc-border);
+            box-shadow: 0 10px 26px rgba(13, 58, 100, 0.08);
+            scroll-snap-align: start;
+            transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+        }
+
+        .specialist-component-scope .specialty-card:hover,
+        .specialist-component-scope .specialty-card.is-active {
+            transform: translateY(-5px);
+            box-shadow: var(--fmc-shadow-card);
+            border-color: rgba(7, 111, 207, 0.18);
+        }
+
+        .specialist-component-scope .specialty-card-media {
+            position: relative;
+            height: 205px;
+            overflow: hidden;
+            background: #eaf3fb;
+        }
+
+        .specialist-component-scope .specialty-card-media::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0) 40%, rgba(255,255,255,0.92) 100%);
+            pointer-events: none;
+        }
+
+        .specialist-component-scope .specialty-card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.02);
+            transition: transform 0.35s ease;
+        }
+
+        .specialist-component-scope .specialty-card:hover .specialty-card-media img {
+            transform: scale(1.07);
+        }
+
+        .specialist-component-scope .specialty-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+            width: 58px;
+            height: 58px;
+            display: grid;
+            place-items: center;
+            border-radius: 18px;
+            color: #fff;
+            box-shadow: 0 15px 30px rgba(20, 91, 154, 0.20);
+        }
+
+        .specialist-component-scope .specialty-icon svg {
+            width: 30px;
+            height: 30px;
+            stroke-width: 1.7;
+        }
+
+        .specialist-component-scope .specialty-experience {
+            position: absolute;
+            left: 22px;
+            bottom: 18px;
+            z-index: 2;
+            display: grid;
+            gap: 1px;
+            color: var(--fmc-blue-dark);
+        }
+
+        .specialist-component-scope .specialty-experience strong {
+            display: block;
+            font-size: 2rem;
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        .specialist-component-scope .specialty-experience span {
+            display: block;
+            font-size: 0.86rem;
+            line-height: 1.25;
+            font-weight: 700;
+        }
+
+        .specialist-component-scope .specialty-card-body {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 24px 20px 18px;
+        }
+
+        .specialist-component-scope .specialty-card-title {
+            margin: 0;
+            color: var(--specialty-color, var(--fmc-blue));
+            font-size: clamp(1.2rem, 1.35vw, 1.45rem);
+            line-height: 1.2;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+
+        .specialist-component-scope .specialty-card-title::after {
+            content: '';
+            display: block;
+            width: 52px;
+            height: 2px;
+            margin: 16px auto 0;
+            border-radius: 999px;
+            background: currentColor;
+            opacity: 0.85;
+        }
+
+        .specialist-component-scope .specialty-card-summary {
+            min-height: 92px;
+            margin: 20px 0 24px;
+            color: #3d4f61;
+            font-size: 0.94rem;
+            line-height: 1.65;
+            text-align: center;
+        }
+
+        .specialist-component-scope .specialty-card-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            min-height: 43px;
+            margin-top: auto;
+            padding: 10px 18px;
+            border: 1px solid var(--specialty-border, rgba(10, 111, 207, 0.32));
+            border-radius: 999px;
+            background: #fff;
+            color: var(--specialty-color, var(--fmc-blue));
+            font-weight: 800;
+            font-size: 0.92rem;
+            cursor: pointer;
+            transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+        }
+
+        .specialist-component-scope .specialty-card-button:hover {
+            background: var(--specialty-color, var(--fmc-blue));
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .specialist-component-scope .specialty-card-footer {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            min-height: 56px;
+            padding: 14px 20px;
+            background: var(--specialty-soft, #eef6ff);
+            color: var(--specialty-color, var(--fmc-blue));
+            font-size: 0.83rem;
+            line-height: 1.25;
+            font-weight: 800;
+        }
+
+        .specialist-component-scope .specialty-check {
+            width: 19px;
+            height: 19px;
+            display: inline-grid;
+            place-items: center;
+            border-radius: 999px;
+            border: 1px solid currentColor;
+            font-size: 0.75rem;
+            flex: 0 0 auto;
+        }
+
+        .specialist-component-scope .card-obgyn {
+            --specialty-color: var(--fmc-pink);
+            --specialty-soft: #fff1f6;
+            --specialty-border: rgba(242, 93, 141, 0.36);
+        }
+
+        .specialist-component-scope .card-ent {
+            --specialty-color: var(--fmc-teal);
+            --specialty-soft: #ecfbfb;
+            --specialty-border: rgba(16, 166, 166, 0.36);
+        }
+
+        .specialist-component-scope .card-internal {
+            --specialty-color: var(--fmc-blue);
+            --specialty-soft: #eef6ff;
+            --specialty-border: rgba(10, 111, 207, 0.34);
+        }
+
+        .specialist-component-scope .card-pediatric {
+            --specialty-color: var(--fmc-cyan);
+            --specialty-soft: #ecfbff;
+            --specialty-border: rgba(44, 185, 214, 0.36);
+        }
+
+        .specialist-component-scope .card-obgyn .specialty-icon {
+            background: linear-gradient(135deg, #ff7aa6, #e9467b);
+        }
+
+        .specialist-component-scope .card-ent .specialty-icon {
+            background: linear-gradient(135deg, #22c7c1, #078d91);
+        }
+
+        .specialist-component-scope .card-internal .specialty-icon {
+            background: linear-gradient(135deg, #4a98ff, #116ad2);
+        }
+
+        .specialist-component-scope .card-pediatric .specialty-icon {
+            background: linear-gradient(135deg, #4ec9ec, #1c9cc5);
+        }
+
+        .specialist-component-scope .card-obgyn .specialty-card-media {
+            background: linear-gradient(135deg, #fff0f5, #fff);
+        }
+
+        .specialist-component-scope .card-ent .specialty-card-media {
+            background: linear-gradient(135deg, #eafffb, #fff);
+        }
+
+        .specialist-component-scope .card-internal .specialty-card-media {
+            background: linear-gradient(135deg, #eef6ff, #fff);
+        }
+
+        .specialist-component-scope .card-pediatric .specialty-card-media {
+            background: linear-gradient(135deg, #eafaff, #fff);
+        }
+
+        .specialist-component-scope .specialist-carousel-nav {
+            position: absolute;
+            top: 50%;
+            z-index: 4;
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.96);
+            color: var(--fmc-blue-dark);
+            box-shadow: 0 14px 30px rgba(20, 64, 102, 0.13);
+            cursor: pointer;
+            transform: translateY(-50%);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .specialist-component-scope .specialist-carousel-nav:hover {
+            transform: translateY(-50%) scale(1.04);
+            box-shadow: 0 18px 38px rgba(20, 64, 102, 0.18);
+            background: #fff;
+        }
+
+        .specialist-component-scope .specialist-carousel-prev {
+            left: -18px;
+        }
+
+        .specialist-component-scope .specialist-carousel-next {
+            right: -18px;
+        }
+
+        .specialist-component-scope .specialist-carousel-nav svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .specialist-component-scope .specialist-dots {
+            display: flex;
+            justify-content: center;
+            gap: 11px;
+            margin-top: 24px;
+        }
+
+        .specialist-component-scope .specialist-dot {
+            width: 12px;
+            height: 12px;
+            border: 0;
+            border-radius: 999px;
+            background: #d4dce4;
+            cursor: pointer;
+            transition: width 0.2s ease, background 0.2s ease, transform 0.2s ease;
+        }
+
+        .specialist-component-scope .specialist-dot.is-active {
+            width: 24px;
+            background: var(--fmc-blue);
+        }
+
+        /* =========================
+           Detail panel
+           ========================= */
+        .specialist-component-scope .specialist-detail-panel {
+            position: relative;
+            z-index: 1;
+            max-width: 1480px;
+            margin: 28px auto 0;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid var(--fmc-border);
+            box-shadow: var(--fmc-shadow-soft);
+            overflow: hidden;
+        }
+
+        .specialist-component-scope .specialist-detail-panel[hidden] {
+            display: none;
+        }
+
+        .specialist-component-scope .specialist-detail-inner {
+            display: grid;
+            grid-template-columns: minmax(220px, 310px) minmax(0, 1fr);
+            gap: 28px;
+            padding: 26px;
+        }
+
+        .specialist-component-scope .specialist-detail-image {
+            min-height: 240px;
+            border-radius: 22px;
+            overflow: hidden;
+            background: #e9f5ff;
+        }
+
+        .specialist-component-scope .specialist-detail-image img {
+            width: 100%;
+            height: 100%;
+            min-height: 240px;
+            object-fit: cover;
+        }
+
+        .specialist-component-scope .specialist-detail-content {
+            min-width: 0;
+        }
+
+        .specialist-component-scope .specialist-detail-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 18px;
+            margin-bottom: 10px;
+        }
+
+        .specialist-component-scope .specialist-detail-eyebrow {
+            margin: 0 0 8px;
+            color: var(--detail-color, var(--fmc-blue));
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .specialist-component-scope .specialist-detail-title {
+            margin: 0;
+            color: var(--fmc-blue-dark);
+            font-size: clamp(1.55rem, 2.2vw, 2.2rem);
+            line-height: 1.12;
+            letter-spacing: -0.03em;
+        }
+
+        .specialist-component-scope .specialist-detail-close {
+            width: 40px;
+            height: 40px;
+            border: 0;
+            border-radius: 50%;
+            background: #eff6fd;
+            color: var(--fmc-blue-dark);
+            cursor: pointer;
+            font-size: 1.45rem;
+            line-height: 1;
+            flex: 0 0 auto;
+        }
+
+        .specialist-component-scope .specialist-detail-text {
+            margin: 14px 0 20px;
+            color: #42576b;
+            font-size: 1rem;
+            line-height: 1.78;
+        }
+
+        .specialist-component-scope .specialist-feature-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .specialist-component-scope .specialist-feature-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: var(--detail-soft, #eef6ff);
+            border: 1px solid var(--detail-border, rgba(10, 111, 207, 0.16));
+            color: var(--detail-color, var(--fmc-blue));
+            font-size: 0.86rem;
+            font-weight: 800;
+        }
+
+        .specialist-component-scope .specialist-doctors-title {
+            margin: 0 0 13px;
+            color: var(--fmc-blue-dark);
+            font-size: 1.05rem;
+            font-weight: 800;
+        }
+
+        .specialist-component-scope .specialist-doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .specialist-component-scope .specialist-doctor-card {
+            display: grid;
+            grid-template-columns: 56px minmax(0, 1fr);
+            gap: 12px;
+            align-items: center;
+            padding: 12px;
+            border-radius: 18px;
+            background: #f7fbff;
+            border: 1px solid rgba(19, 91, 154, 0.08);
+        }
+
+        .specialist-component-scope .specialist-doctor-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #e3eef8;
+        }
+
+        .specialist-component-scope .specialist-doctor-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .specialist-component-scope .specialist-doctor-name {
+            color: var(--fmc-blue-dark);
+            font-size: 0.96rem;
+            line-height: 1.25;
+            font-weight: 800;
+        }
+
+        .specialist-component-scope .specialist-doctor-title {
+            margin-top: 3px;
+            color: var(--fmc-muted);
+            font-size: 0.86rem;
+            line-height: 1.3;
+        }
+
+        /* =========================
+           Responsive
+           ========================= */
+        @media (max-width: 1180px) {
+            .specialist-component-scope .specialist-modern-shell {
+                grid-template-columns: 1fr;
+                gap: 26px;
+            }
+
+            .specialist-component-scope .specialist-intro-panel {
+                min-height: auto;
+                padding: 30px;
+            }
+
+            .specialist-component-scope .specialist-trust-list {
+                max-width: 720px;
+                margin-top: 32px;
+            }
+
+            .specialist-component-scope .specialty-card {
+                flex-basis: calc((100% - 32px) / 3);
+            }
+        }
+
+        @media (max-width: 860px) {
+            .specialist-component-scope .specialist-modern-section {
+                padding: 52px 14px 58px;
+            }
+
+            .specialist-component-scope .specialist-title {
+                font-size: clamp(2.75rem, 10vw, 4.5rem);
+            }
+
+            .specialist-component-scope .specialist-trust-list {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .specialist-component-scope .specialist-trust-item {
+                grid-template-columns: 38px minmax(0, 1fr);
+            }
+
+            .specialist-component-scope .specialist-trust-text {
+                font-size: 0.94rem;
+            }
+
+            .specialist-component-scope .specialty-card {
+                flex-basis: calc((100% - 16px) / 2);
+                min-height: 505px;
+            }
+
+            .specialist-component-scope .specialist-detail-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .specialist-component-scope .specialist-doctors-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .specialist-component-scope .specialist-intro-panel {
+                padding: 24px 18px;
+                border-radius: 24px;
+            }
+
+            .specialist-component-scope .specialist-kicker {
+                white-space: normal;
+                align-items: flex-start;
+                font-size: 0.9rem;
+            }
+
+            .specialist-component-scope .specialist-lead {
+                font-size: 0.98rem;
+            }
+
+            .specialist-component-scope .specialist-main-cta {
+                width: 100%;
+            }
+
+            .specialist-component-scope .specialist-carousel-shell {
+                padding: 12px;
+                border-radius: 24px;
+            }
+
+            .specialist-component-scope .specialty-card {
+                flex-basis: min(86vw, 326px);
+                min-width: min(86vw, 326px);
+            }
+
+            .specialist-component-scope .specialist-carousel-nav {
+                display: none;
+            }
+
+            .specialist-component-scope .specialist-detail-inner {
+                padding: 18px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .specialist-component-scope *,
+            .specialist-component-scope *::before,
+            .specialist-component-scope *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+    </style>
+
+    <section class="specialist-modern-section" aria-labelledby="specialist-modern-title">
+        <div class="specialist-modern-shell">
+            <div class="specialist-intro-panel">
+                <div class="specialist-kicker">
+                    <span class="specialist-kicker-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 3l2.2 4.4 4.8.7-3.5 3.4.8 4.8L12 14.1 7.7 16.3l.8-4.8L5 8.1l4.8-.7L12 3z"/>
+                        </svg>
+                    </span>
+                    Chăm sóc toàn diện – Nâng tầm sức khỏe
+                </div>
+
+                <h2 id="specialist-modern-title" class="specialist-title">Chuyên khoa <span>nổi bật</span></h2>
+                <p class="specialist-lead">
+                    Đội ngũ bác sĩ giàu kinh nghiệm, trang thiết bị hiện đại và quy trình chuẩn y khoa, đồng hành cùng bạn và gia đình trong chăm sóc sức khỏe toàn diện.
+                </p>
+
+                <div class="specialist-trust-list" aria-label="Điểm nổi bật của phòng khám">
+                    <div class="specialist-trust-item">
+                        <span class="specialist-trust-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <path d="M9 12l2 2 4-5"/>
+                            </svg>
+                        </span>
+                        <span class="specialist-trust-text">Bác sĩ giỏi chuyên môn cao</span>
+                    </div>
+                    <div class="specialist-trust-item">
+                        <span class="specialist-trust-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 14V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7"/>
+                                <path d="M2 14h20v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-3z"/>
+                                <path d="M8 10h8"/>
+                            </svg>
+                        </span>
+                        <span class="specialist-trust-text">Trang thiết bị hiện đại</span>
+                    </div>
+                    <div class="specialist-trust-item">
+                        <span class="specialist-trust-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/>
+                            </svg>
+                        </span>
+                        <span class="specialist-trust-text">Tận tâm vì sức khỏe bạn</span>
+                    </div>
+                </div>
+
+                <button type="button" class="specialist-main-cta" data-specialist-action="focus-carousel">
+                    <span>Xem tất cả chuyên khoa</span>
+                    <span class="specialist-main-cta-circle" aria-hidden="true">→</span>
+                </button>
+            </div>
+
+            <div class="specialist-showcase" id="specialist-showcase">
+                <button type="button" class="specialist-carousel-nav specialist-carousel-prev" aria-label="Chuyên khoa trước" data-specialist-action="prev">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+
+                <div class="specialist-carousel-shell">
+                    <div class="specialist-carousel-viewport" tabindex="0" aria-label="Danh sách chuyên khoa" data-specialist-carousel>
+                        <div class="specialist-carousel-track" data-specialist-track>
+                            <article class="specialty-card card-obgyn is-active" data-specialty-card="obgyn">
+                                <div class="specialty-card-media">
+                                    <img src="specialist/image/specialist1-1.jpg" alt="Chuyên khoa Sản Phụ Khoa" loading="lazy">
+                                    <span class="specialty-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M10 20c-3.2-.8-5.5-3.6-5.5-7 0-3 1.8-5.6 4.4-6.7"/>
+                                            <path d="M13 4c3.7.5 6.5 3.6 6.5 7.4 0 4.1-3.4 7.5-7.5 7.5"/>
+                                            <path d="M8.7 10.7a3.3 3.3 0 1 0 6.6 0 3.3 3.3 0 0 0-6.6 0z"/>
+                                        </svg>
+                                    </span>
+                                    <div class="specialty-experience"><strong>15+</strong><span>năm<br>kinh nghiệm</span></div>
+                                </div>
+                                <div class="specialty-card-body">
+                                    <h3 class="specialty-card-title">Sản Phụ Khoa</h3>
+                                    <p class="specialty-card-summary">Chăm sóc sức khỏe sinh sản toàn diện, theo dõi thai kỳ, khám phụ khoa định kỳ và tầm soát ung thư sớm.</p>
+                                    <button type="button" class="specialty-card-button" data-specialty-detail="obgyn">Tìm hiểu thêm <span aria-hidden="true">›</span></button>
+                                </div>
+                                <div class="specialty-card-footer"><span class="specialty-check">✓</span> Tầm soát – Phát hiện sớm</div>
+                            </article>
+
+                            <article class="specialty-card card-ent" data-specialty-card="ent">
+                                <div class="specialty-card-media">
+                                    <img src="specialist/image/specialist2-3.jpg" alt="Chuyên khoa Tai Mũi Họng" loading="lazy">
+                                    <span class="specialty-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M6 10a6 6 0 1 1 10.3 4.2c-1.2 1.2-1.8 2.1-1.8 3.3A3.5 3.5 0 0 1 11 21"/>
+                                            <path d="M10 10a2 2 0 1 1 3.4 1.4"/>
+                                            <path d="M4 18h4"/>
+                                        </svg>
+                                    </span>
+                                    <div class="specialty-experience"><strong>10+</strong><span>năm<br>kinh nghiệm</span></div>
+                                </div>
+                                <div class="specialty-card-body">
+                                    <h3 class="specialty-card-title">Tai Mũi Họng</h3>
+                                    <p class="specialty-card-summary">Điều trị các bệnh lý tai – mũi – họng thường gặp, viêm xoang, viêm họng mạn tính và rối loạn thính lực.</p>
+                                    <button type="button" class="specialty-card-button" data-specialty-detail="ent">Tìm hiểu thêm <span aria-hidden="true">›</span></button>
+                                </div>
+                                <div class="specialty-card-footer"><span class="specialty-check">✓</span> Chẩn đoán chính xác</div>
+                            </article>
+
+                            <article class="specialty-card card-internal" data-specialty-card="internal">
+                                <div class="specialty-card-media">
+                                    <img src="specialist/image/specialist3-1.jpg" alt="Chuyên khoa Nội" loading="lazy">
+                                    <span class="specialty-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M6 3v5a6 6 0 0 0 12 0V3"/>
+                                            <path d="M12 14v2a4 4 0 0 0 8 0v-1"/>
+                                            <path d="M20 15a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+                                            <path d="M4 3h4"/><path d="M16 3h4"/>
+                                        </svg>
+                                    </span>
+                                    <div class="specialty-experience"><strong>20+</strong><span>năm<br>kinh nghiệm</span></div>
+                                </div>
+                                <div class="specialty-card-body">
+                                    <h3 class="specialty-card-title">Nội</h3>
+                                    <p class="specialty-card-summary">Khám và điều trị các bệnh nội khoa, tầm soát bệnh lý tim mạch, tiểu đường, huyết áp và khám tổng quát.</p>
+                                    <button type="button" class="specialty-card-button" data-specialty-detail="internal">Tìm hiểu thêm <span aria-hidden="true">›</span></button>
+                                </div>
+                                <div class="specialty-card-footer"><span class="specialty-check">✓</span> Khám tổng quát toàn diện</div>
+                            </article>
+
+                            <article class="specialty-card card-pediatric" data-specialty-card="pediatric">
+                                <div class="specialty-card-media">
+                                    <img src="specialist/image/specialist4-1.jpg" alt="Chuyên khoa Nhi" loading="lazy">
+                                    <span class="specialty-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M9 9h.01M15 9h.01"/>
+                                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                                            <path d="M12 3a8 8 0 1 0 8 8"/>
+                                            <path d="M19 4v4h-4"/>
+                                        </svg>
+                                    </span>
+                                    <div class="specialty-experience"><strong>12+</strong><span>năm<br>kinh nghiệm</span></div>
+                                </div>
+                                <div class="specialty-card-body">
+                                    <h3 class="specialty-card-title">Nhi</h3>
+                                    <p class="specialty-card-summary">Chăm sóc sức khỏe toàn diện cho trẻ, theo dõi tăng trưởng, tiêm chủng và điều trị các bệnh lý thường gặp.</p>
+                                    <button type="button" class="specialty-card-button" data-specialty-detail="pediatric">Tìm hiểu thêm <span aria-hidden="true">›</span></button>
+                                </div>
+                                <div class="specialty-card-footer"><span class="specialty-check">✓</span> Chăm sóc trẻ em toàn diện</div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="specialist-carousel-nav specialist-carousel-next" aria-label="Chuyên khoa tiếp theo" data-specialist-action="next">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+
+                <div class="specialist-dots" aria-label="Điều hướng chuyên khoa" data-specialist-dots></div>
+            </div>
+        </div>
+
+        <div class="specialist-detail-panel" data-specialist-detail-panel hidden>
+            <div class="specialist-detail-inner">
+                <div class="specialist-detail-image">
+                    <img src="specialist/image/specialist1-1.jpg" alt="" data-detail-image loading="lazy">
+                </div>
+                <div class="specialist-detail-content">
+                    <div class="specialist-detail-top">
+                        <div>
+                            <p class="specialist-detail-eyebrow" data-detail-eyebrow>Chuyên khoa</p>
+                            <h3 class="specialist-detail-title" data-detail-title></h3>
+                        </div>
+                        <button type="button" class="specialist-detail-close" data-specialist-action="close-detail" aria-label="Đóng chi tiết">×</button>
+                    </div>
+                    <p class="specialist-detail-text" data-detail-text></p>
+                    <div class="specialist-feature-tags" data-detail-tags></div>
+                    <h4 class="specialist-doctors-title">Đội ngũ bác sĩ</h4>
+                    <div class="specialist-doctors-grid" data-detail-doctors></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        (function () {
+            const wrapper = document.querySelector('#specialist-component-wrapper');
+            if (!wrapper) return;
+
+            const viewport = wrapper.querySelector('[data-specialist-carousel]');
+            const track = wrapper.querySelector('[data-specialist-track]');
+            const cards = Array.from(wrapper.querySelectorAll('[data-specialty-card]'));
+            const dotsContainer = wrapper.querySelector('[data-specialist-dots]');
+            const prevButton = wrapper.querySelector('[data-specialist-action="prev"]');
+            const nextButton = wrapper.querySelector('[data-specialist-action="next"]');
+            const focusCarouselButton = wrapper.querySelector('[data-specialist-action="focus-carousel"]');
+            const detailPanel = wrapper.querySelector('[data-specialist-detail-panel]');
+            const closeDetailButton = wrapper.querySelector('[data-specialist-action="close-detail"]');
+
+            const detailData = {
+                obgyn: {
+                    color: '#f25d8d',
+                    soft: '#fff1f6',
+                    border: 'rgba(242, 93, 141, 0.22)',
+                    eyebrow: 'Chuyên khoa Sản Phụ Khoa',
+                    title: 'Chăm sóc sức khỏe sinh sản toàn diện',
+                    image: 'specialist/image/specialist1-1.jpg',
+                    imageAlt: 'Bác sĩ chuyên khoa Sản Phụ Khoa',
+                    text: 'Phòng khám tự hào với đội ngũ bác sĩ giàu kinh nghiệm đến từ Bệnh viện Từ Dũ. Chuyên khoa tập trung vào khám phụ khoa, theo dõi thai kỳ, tầm soát ung thư cổ tử cung, tư vấn kế hoạch hóa gia đình và chăm sóc sức khỏe sinh sản theo từng giai đoạn.',
+                    tags: ['Theo dõi thai kỳ', 'Khám phụ khoa', 'Tầm soát ung thư cổ tử cung'],
+                    doctors: [
+                        { name: 'BS. Nguyễn Hoàng Lam', title: 'Chuyên khoa cấp 2', avatar: 'specialist/image/doctor1.jpg' },
+                        { name: 'BS. Đào Hoàng Hoa Hà Hải Âu', title: 'Chuyên khoa cấp 1', avatar: 'specialist/image/doctor2.jpg' },
+                        { name: 'BS. Nguyễn Thị Việt Linh', title: 'Chuyên khoa cấp 1', avatar: 'specialist/image/doctor3.jpg' }
+                    ]
+                },
+                ent: {
+                    color: '#10a6a6',
+                    soft: '#ecfbfb',
+                    border: 'rgba(16, 166, 166, 0.22)',
+                    eyebrow: 'Chuyên khoa Tai Mũi Họng',
+                    title: 'Nội soi – chẩn đoán – điều trị bệnh lý tai mũi họng',
+                    image: 'specialist/image/specialist2-3.jpg',
+                    imageAlt: 'Bác sĩ chuyên khoa Tai Mũi Họng',
+                    text: 'Chuyên khoa Tai Mũi Họng cung cấp dịch vụ khám, nội soi và điều trị các bệnh lý như viêm xoang mạn tính, viêm amidan, viêm mũi dị ứng, viêm họng kéo dài và các vấn đề liên quan đến thính lực, hô hấp trên.',
+                    tags: ['Nội soi hiện đại', 'Viêm mũi xoang', 'Viêm họng – amidan'],
+                    doctors: [
+                        { name: 'BS. Sử Ngọc Kiều Chinh', title: 'Bác sĩ Chuyên khoa 1', avatar: 'specialist/image/doctor7.jpg' },
+                        { name: 'BS. Dương Minh Trọng', title: 'Bác sĩ Chuyên khoa 1', avatar: 'specialist/image/doctor6.jpg' }
+                    ]
+                },
+                internal: {
+                    color: '#0a6fcf',
+                    soft: '#eef6ff',
+                    border: 'rgba(10, 111, 207, 0.20)',
+                    eyebrow: 'Chuyên khoa Nội',
+                    title: 'Quản lý sức khỏe tổng quát và bệnh mạn tính',
+                    image: 'specialist/image/specialist3-1.jpg',
+                    imageAlt: 'Bác sĩ chuyên khoa Nội',
+                    text: 'Chuyên khoa Nội quy tụ đội ngũ bác sĩ giàu kinh nghiệm trong khám tổng quát, tim mạch, nội tiết – chuyển hóa, tiểu đường, tăng huyết áp, rối loạn lipid máu và theo dõi sức khỏe định kỳ cho người trưởng thành.',
+                    tags: ['Tim mạch', 'Tiểu đường', 'Tăng huyết áp', 'Khám tổng quát'],
+                    doctors: [
+                        { name: 'BS. Đỗ Thành Long', title: 'Chuyên khoa 1', avatar: 'specialist/image/doctor9.jpg' },
+                        { name: 'BS. Nguyễn Xuân Long', title: 'Chuyên khoa 1', avatar: 'specialist/image/doctor10.jpg' },
+                        { name: 'BS. Đỗ Thành Long', title: 'Chuyên khoa 1', avatar: 'specialist/image/doctor11.jpg' },
+                        { name: 'BS. Nguyễn Xuân Long', title: 'Chuyên khoa 1', avatar: 'specialist/image/doctor12.jpg' }
+                    ]
+                },
+                pediatric: {
+                    color: '#2cb9d6',
+                    soft: '#ecfbff',
+                    border: 'rgba(44, 185, 214, 0.22)',
+                    eyebrow: 'Chuyên khoa Nhi',
+                    title: 'Đồng hành cùng sự phát triển khỏe mạnh của trẻ',
+                    image: 'specialist/image/specialist4-1.jpg',
+                    imageAlt: 'Bác sĩ chuyên khoa Nhi',
+                    text: 'Chuyên khoa Nhi chăm sóc sức khỏe toàn diện cho trẻ sơ sinh, trẻ nhỏ và thiếu niên. Tập trung vào các bệnh lý thường gặp như viêm hô hấp, rối loạn tiêu hóa, bệnh truyền nhiễm, tư vấn dinh dưỡng, tiêm chủng và theo dõi phát triển.',
+                    tags: ['Khám sức khỏe trẻ em', 'Tiêm chủng', 'Tư vấn dinh dưỡng', 'Theo dõi phát triển'],
+                    doctors: [
+                        { name: 'ThS.BS. Đặng Hoàng Khánh Duy', title: 'Thạc sĩ - Bác sĩ Nhi khoa', avatar: 'specialist/image/specialist4-1.jpg' },
+                        { name: 'BS. Phạm Tiến Nhật', title: 'Bác sĩ Nhi khoa', avatar: 'specialist/image/specialist4-2.jpg' }
+                    ]
+                }
+            };
+
+            let activeIndex = 0;
+            let scrollTimer = null;
+
+            function createDots() {
+                if (!dotsContainer) return;
+                dotsContainer.innerHTML = '';
+                cards.forEach((card, index) => {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = 'specialist-dot' + (index === activeIndex ? ' is-active' : '');
+                    dot.setAttribute('aria-label', 'Xem chuyên khoa ' + (index + 1));
+                    dot.addEventListener('click', () => scrollToCard(index));
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            function setActive(index) {
+                if (!cards.length) return;
+                activeIndex = Math.max(0, Math.min(index, cards.length - 1));
+                cards.forEach((card, i) => card.classList.toggle('is-active', i === activeIndex));
+                if (dotsContainer) {
+                    Array.from(dotsContainer.children).forEach((dot, i) => dot.classList.toggle('is-active', i === activeIndex));
+                }
+            }
+
+            function scrollToCard(index) {
+                if (!viewport || !track || !cards[index]) return;
+                setActive(index);
+                const targetLeft = cards[index].offsetLeft - track.offsetLeft;
+                viewport.scrollTo({ left: targetLeft, behavior: 'smooth' });
+            }
+
+            function findNearestCard() {
+                if (!viewport || !track || !cards.length) return 0;
+                const currentLeft = viewport.scrollLeft;
+                let nearestIndex = 0;
+                let nearestDistance = Infinity;
+                cards.forEach((card, index) => {
+                    const cardLeft = card.offsetLeft - track.offsetLeft;
+                    const distance = Math.abs(cardLeft - currentLeft);
+                    if (distance < nearestDistance) {
+                        nearestDistance = distance;
+                        nearestIndex = index;
+                    }
+                });
+                return nearestIndex;
+            }
+
+            function renderDetail(key) {
+                const data = detailData[key];
+                if (!data || !detailPanel) return;
+
+                const detailImage = detailPanel.querySelector('[data-detail-image]');
+                const detailEyebrow = detailPanel.querySelector('[data-detail-eyebrow]');
+                const detailTitle = detailPanel.querySelector('[data-detail-title]');
+                const detailText = detailPanel.querySelector('[data-detail-text]');
+                const detailTags = detailPanel.querySelector('[data-detail-tags]');
+                const detailDoctors = detailPanel.querySelector('[data-detail-doctors]');
+
+                detailPanel.style.setProperty('--detail-color', data.color);
+                detailPanel.style.setProperty('--detail-soft', data.soft || '#eef6ff');
+                detailPanel.style.setProperty('--detail-border', data.border || 'rgba(10, 111, 207, 0.16)');
+                if (detailImage) {
+                    detailImage.src = data.image;
+                    detailImage.alt = data.imageAlt || data.title;
+                }
+                if (detailEyebrow) detailEyebrow.textContent = data.eyebrow;
+                if (detailTitle) detailTitle.textContent = data.title;
+                if (detailText) detailText.textContent = data.text;
+
+                if (detailTags) {
+                    detailTags.innerHTML = data.tags.map(tag => '<span class="specialist-feature-tag"><span aria-hidden="true">✓</span>' + escapeHtml(tag) + '</span>').join('');
+                }
+
+                if (detailDoctors) {
+                    detailDoctors.innerHTML = data.doctors.map(doctor => {
+                        return '<div class="specialist-doctor-card">'
+                            + '<div class="specialist-doctor-avatar"><img src="' + escapeAttribute(doctor.avatar) + '" alt="' + escapeAttribute(doctor.name) + '" loading="lazy"></div>'
+                            + '<div><div class="specialist-doctor-name">' + escapeHtml(doctor.name) + '</div>'
+                            + '<div class="specialist-doctor-title">' + escapeHtml(doctor.title) + '</div></div>'
+                            + '</div>';
+                    }).join('');
+                }
+
+                detailPanel.hidden = false;
+                const relatedCard = cards.find(card => card.dataset.specialtyCard === key);
+                if (relatedCard) setActive(cards.indexOf(relatedCard));
+
+                requestAnimationFrame(() => {
+                    detailPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                });
+            }
+
+            function closeDetail() {
+                if (!detailPanel) return;
+                detailPanel.hidden = true;
+            }
+
+            function escapeHtml(value) {
+                return String(value)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+            }
+
+            function escapeAttribute(value) {
+                return escapeHtml(value).replace(/`/g, '&#096;');
+            }
+
+            if (prevButton) {
+                prevButton.addEventListener('click', () => {
+                    const nextIndex = activeIndex <= 0 ? cards.length - 1 : activeIndex - 1;
+                    scrollToCard(nextIndex);
+                });
+            }
+
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    const nextIndex = activeIndex >= cards.length - 1 ? 0 : activeIndex + 1;
+                    scrollToCard(nextIndex);
+                });
+            }
+
+            if (focusCarouselButton && viewport) {
+                focusCarouselButton.addEventListener('click', () => {
+                    viewport.focus({ preventScroll: true });
+                    wrapper.querySelector('#specialist-showcase')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                });
+            }
+
+            wrapper.querySelectorAll('[data-specialty-detail]').forEach(button => {
+                button.addEventListener('click', event => {
+                    const key = event.currentTarget.getAttribute('data-specialty-detail');
+                    renderDetail(key);
+                });
+            });
+
+            cards.forEach((card, index) => {
+                card.addEventListener('mouseenter', () => setActive(index));
+                card.addEventListener('focusin', () => setActive(index));
+            });
+
+            if (closeDetailButton) {
+                closeDetailButton.addEventListener('click', closeDetail);
+            }
+
+            if (viewport) {
+                viewport.addEventListener('scroll', () => {
+                    window.clearTimeout(scrollTimer);
+                    scrollTimer = window.setTimeout(() => setActive(findNearestCard()), 80);
+                }, { passive: true });
+
+                viewport.addEventListener('keydown', event => {
+                    if (event.key === 'ArrowRight') {
+                        event.preventDefault();
+                        scrollToCard(activeIndex >= cards.length - 1 ? 0 : activeIndex + 1);
+                    }
+                    if (event.key === 'ArrowLeft') {
+                        event.preventDefault();
+                        scrollToCard(activeIndex <= 0 ? cards.length - 1 : activeIndex - 1);
+                    }
+                });
+            }
+
+            createDots();
+            setActive(0);
+
+            wrapper._cleanupSpecialist = function () {
+                // Component V2 uses only event listeners attached inside this DOM node.
+                // If your SPA removes this node entirely, the browser will clean them up automatically.
+            };
+        })();
+    </script>
+</div>
+
+</body>
+</html>
