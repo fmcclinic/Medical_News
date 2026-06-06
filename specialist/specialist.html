@@ -21,7 +21,7 @@
         }
 
         .specialist-component-scope .specialist-section {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             padding: 50px 20px; /* Tăng padding top để tách biệt rõ ràng */
         }
@@ -54,8 +54,8 @@
         }
 
         .specialist-component-scope .specialty-image {
-            width: 180px;
-            min-width: 180px;
+            width: 220px;
+            min-width: 220px;
             aspect-ratio: 9 / 16;
             position: relative;
             overflow: hidden;
@@ -132,6 +132,8 @@
         }
 
         .specialist-component-scope .specialty-overview {
+            width: 100%;
+            max-width: 1000px;
             min-width: 0;
         }
 
@@ -263,11 +265,8 @@
         }
 
         @media (min-width: 1200px) {
-            .specialist-component-scope .content-wrapper {
-                display: grid;
-                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-                align-items: start;
-                gap: 28px;
+            .specialist-component-scope .doctors-track {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
             }
         }
 
@@ -411,7 +410,6 @@
                         </div>
                     </div>
                     <div class="doctors-slider">
-                        <h3>Đội ngũ bác sĩ:</h3>
                         <div class="doctors-wrapper">
                             <button class="slider-button prev" disabled>&lt;</button>
                             <div class="doctors-container">
@@ -469,7 +467,6 @@
                         </div>
                     </div>
                     <div class="doctors-slider">
-                        <h3>Đội ngũ bác sĩ:</h3>
                         <div class="doctors-wrapper">
                             <button class="slider-button prev" disabled>&lt;</button>
                             <div class="doctors-container">
@@ -526,7 +523,6 @@
                         </div>
                     </div>
                     <div class="doctors-slider">
-                        <h3>Đội ngũ bác sĩ:</h3>
                         <div class="doctors-wrapper">
                             <button class="slider-button prev" disabled>&lt;</button>
                             <div class="doctors-container">
@@ -583,7 +579,6 @@
                         </div>
                     </div>
                     <div class="doctors-slider">
-                        <h3>Đội ngũ bác sĩ:</h3>
                         <div class="doctors-wrapper">
                             <button class="slider-button prev" disabled>&lt;</button>
                             <div class="doctors-container">
@@ -631,7 +626,6 @@
                         </div>
                     </div>
                     <div class="doctors-slider">
-                        <h3>Tiêu biểu:</h3>
                         <div class="doctors-wrapper">
                             <button class="slider-button prev" disabled>&lt;</button>
                             <div class="doctors-container">
