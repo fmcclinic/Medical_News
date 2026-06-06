@@ -1,19 +1,15 @@
 <div id="specialist-component-wrapper" class="specialist-component-scope">
     <style>
-        /* --- CSS Scoping & Isolation --- */
-        
-        /* Container chính để cô lập style, tránh reset global của index */
         .specialist-component-scope {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
             background: #f9f9f9;
             width: 100%;
-            /* QUAN TRỌNG: Fix lỗi hiển thị với Hero */
-            position: relative; 
-            z-index: 20; /* Đảm bảo nằm trên các element background của Hero */
+            position: relative;
+            z-index: 20;
             display: block;
-            overflow: hidden; /* Tránh margin collapse */
+            overflow: hidden;
         }
 
         .specialist-component-scope * {
@@ -23,7 +19,7 @@
         .specialist-component-scope .specialist-section {
             max-width: 1350px;
             margin: 0 auto;
-            padding: 50px 20px; /* Tăng padding top để tách biệt rõ ràng */
+            padding: 50px 20px;
         }
 
         .specialist-component-scope .section-title {
@@ -35,7 +31,7 @@
             margin-top: 0;
         }
 
-        .specialist-component-scope .section-title:after {
+        .specialist-component-scope .section-title::after {
             content: '';
             display: block;
             width: 80px;
@@ -45,7 +41,7 @@
         }
 
         .specialist-component-scope .specialty {
-            display: flex;
+            display: block;
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -53,10 +49,15 @@
             overflow: hidden;
         }
 
+        .specialist-component-scope .specialty-body {
+            display: flex;
+            align-items: stretch;
+        }
+
         .specialist-component-scope .specialty-image {
-            width: 220px;
-            min-width: 220px;
-            aspect-ratio: 9 / 16;
+            width: 250px;
+            min-width: 250px;
+            aspect-ratio: 3 / 4;
             position: relative;
             overflow: hidden;
         }
@@ -64,14 +65,14 @@
         .specialist-component-scope .specialty-image img {
             width: 100%;
             height: 100%;
+            display: block;
             object-fit: cover;
             object-position: top center;
             transform: scale(1.15);
             transform-origin: top center;
             transition: opacity 0.5s ease;
             position: absolute;
-            top: 0;
-            left: 0;
+            inset: 0;
         }
 
         .specialist-component-scope .specialty-image img.active {
@@ -81,6 +82,47 @@
 
         .specialist-component-scope .specialty-image img:not(.active) {
             opacity: 0;
+        }
+
+        .specialist-component-scope .image-profile {
+            position: absolute;
+            z-index: 2;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 22%;
+            padding: 6px 10px;
+            background: rgba(16, 35, 52, 0.72);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .specialist-component-scope .image-profile-name {
+            width: 100%;
+            font-size: 0.88em;
+            font-weight: 700;
+            line-height: 1.15;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+        }
+
+        .specialist-component-scope .image-profile-title,
+        .specialist-component-scope .image-profile-workplace {
+            width: 100%;
+            margin-top: 2px;
+            font-size: 0.7em;
+            line-height: 1.15;
+            color: rgba(255, 255, 255, 0.9);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         @keyframes specialtyImageZoomOut {
@@ -96,206 +138,69 @@
         .specialist-component-scope .specialty-content {
             flex: 1;
             padding: 20px;
-            display: flex;
-            flex-direction: column;
             min-width: 0;
         }
 
         .specialist-component-scope .specialty-title {
             color: #3498db;
             font-size: 1.4em;
-            margin-bottom: 15px;
+            margin: 0;
             position: relative;
-            padding-bottom: 10px;
+            padding: 18px 20px 14px;
+            text-align: center;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            margin-top: 0;
         }
 
-        .specialist-component-scope .specialty-title:after {
+        .specialist-component-scope .specialty-title::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 40px;
             height: 2px;
             background: #3498db;
         }
 
-        .specialist-component-scope .content-wrapper {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            min-width: 0;
-        }
-
-        .specialist-component-scope .specialty-overview {
+        .specialist-component-scope .specialty-text {
             width: 100%;
             max-width: 1000px;
-            min-width: 0;
-        }
-
-        .specialist-component-scope .specialty-text {
+            margin: 0;
             font-size: 1em;
             color: #555;
             line-height: 1.6;
-            overflow: visible;
-            max-height: none;
-            margin-bottom: 0;
         }
 
-        .specialist-component-scope .specialty-text p {
-            margin: 0;
-        }
-
-        /* Doctors Slider */
-        .specialist-component-scope .doctors-slider {
-            display: block;
-            margin-top: 0;
-            overflow: visible;
-            min-width: 0;
-        }
-
-        .specialist-component-scope .doctors-slider h3 {
-            color: #2c3e50;
-            font-size: 1.1em;
-            margin: 0 0 12px;
-        }
-
-        .specialist-component-scope .doctors-wrapper {
-            position: relative;
-            padding: 0;
-            overflow: visible;
-        }
-
-        .specialist-component-scope .doctors-container {
-            overflow: visible;
-            margin: 0;
-            scroll-snap-type: none;
-        }
-
-        .specialist-component-scope .doctors-track {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 12px;
-            width: 100%;
-            transform: none !important;
-        }
-
-        .specialist-component-scope .doctor-card {
-            width: auto;
-            min-width: 0;
-            margin: 0;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            display: flex;
-            align-items: flex-start;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
-
-        .specialist-component-scope .doctor-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 10px;
-            flex-shrink: 0;
-        }
-
-        .specialist-component-scope .doctor-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top center;
-        }
-
-        .specialist-component-scope .doctor-avatar img.fallback-logo {
-            object-fit: contain;
-            padding: 5px;
-            background: #fff;
-        }
-
-        .specialist-component-scope .doctor-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .specialist-component-scope .doctor-name {
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 4px;
-            line-height: 1.3;
-            word-wrap: break-word;
-        }
-
-        .specialist-component-scope .doctor-title {
-            font-size: 0.9em;
-            color: #666;
-            line-height: 1.3;
-            word-wrap: break-word;
-        }
-
-        /* Slider Controls */
-        .specialist-component-scope .slider-button {
-            display: none;
-        }
-
-        .specialist-component-scope .dots-container {
-            display: none;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 15px;
-            padding: 10px 0;
-        }
-
-        .specialist-component-scope .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #ddd;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .specialist-component-scope .dot.active {
-            background: #3498db;
-        }
-
-        @media (min-width: 1200px) {
-            .specialist-component-scope .doctors-track {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-        }
-
-        /* Tablet Responsive */
         @media (max-width: 768px) and (min-width: 481px) {
-            .specialist-component-scope .specialty {
-                flex-direction: row;
+            .specialist-component-scope .image-profile {
+                padding: 4px 7px;
             }
 
-            .specialist-component-scope .specialty-image {
-                width: 150px;
-                min-width: 150px;
+            .specialist-component-scope .image-profile-name {
+                font-size: 0.74em;
             }
 
+            .specialist-component-scope .image-profile-title,
+            .specialist-component-scope .image-profile-workplace {
+                font-size: 0.62em;
+            }
         }
 
-        /* Mobile Responsive */
         @media (max-width: 480px) {
             .specialist-component-scope .section-title {
                 font-size: 1.8em;
             }
 
-            .specialist-component-scope .specialty {
+            .specialist-component-scope .specialty-body {
                 flex-direction: column;
             }
 
             .specialist-component-scope .specialty-image {
                 width: 100%;
-                max-width: 200px;
+                min-width: 0;
+                max-width: 300px;
                 margin: 0 auto;
             }
 
@@ -313,82 +218,16 @@
                 font-size: 0.95em;
             }
 
-            /* Doctor Slider optimized for mobile */
-            .specialist-component-scope .doctors-wrapper {
-                padding: 0;
-                overflow: visible;
+            .specialist-component-scope .image-profile {
+                padding: 10px 14px;
             }
+        }
 
-            .specialist-component-scope .doctors-container {
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
+        @media (prefers-reduced-motion: reduce) {
+            .specialist-component-scope .specialty-image img.active {
+                animation: none;
+                transform: scale(1);
             }
-
-            .specialist-component-scope .doctors-container::-webkit-scrollbar {
-                display: none;
-            }
-
-            .specialist-component-scope .doctors-track {
-                display: flex;
-                width: 100%;
-                gap: 12px;
-                transform: none !important;
-            }
-
-            .specialist-component-scope .doctor-card {
-                width: 100%;
-                max-width: none;
-                flex: 0 0 100%;
-                margin: 0;
-                padding: 15px;
-                scroll-snap-align: center;
-                min-height: 90px;
-            }
-
-            .specialist-component-scope .doctor-avatar {
-                width: 60px;
-                height: 60px;
-                margin-right: 15px;
-            }
-
-            .specialist-component-scope .doctor-info {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .specialist-component-scope .doctor-name {
-                font-size: 1.1em;
-                margin-bottom: 4px;
-                word-wrap: break-word;
-                white-space: normal;
-            }
-
-            .specialist-component-scope .doctor-title {
-                font-size: 0.9em;
-                white-space: normal;
-            }
-
-            .specialist-component-scope .slider-button {
-                display: none;
-            }
-
-            .specialist-component-scope .dots-container {
-                display: flex;
-                margin-top: 20px;
-                gap: 12px;
-            }
-
-            .specialist-component-scope .dot {
-                width: 10px;
-                height: 10px;
-            }
-
-            .specialist-component-scope .dot.active {
-                transform: scale(1.2);
-            }
-
         }
     </style>
 
@@ -396,278 +235,71 @@
         <h1 class="section-title">Đội Ngũ Bác Sĩ Chuyên Khoa Giàu Kinh Nghiệm</h1>
 
         <div class="specialty">
-            <div class="specialty-image" data-image-folder="ob_gyn">
-                <img src="specialist/images/specialists/ob_gyn/1.jpg" alt="Chuyên Khoa Sản Phụ Khoa" class="active" loading="lazy">
-            </div>
-            <div class="specialty-content">
-                <div class="content-wrapper">
-                    <div class="specialty-overview">
-                        <h2 class="specialty-title">Chuyên Khoa Sản Phụ Khoa</h2>
-                        <div class="specialty-text">
-                            <p>
-                                Phòng khám tự hào với đội ngũ bác sĩ giàu kinh nghiệm đến từ Bệnh viện Từ Dũ - một trong những trung tâm sản khoa hàng đầu khu vực phía Nam. Các bác sĩ chuyên về điều trị các bệnh lý phụ khoa phức tạp như u xơ tử cung, u nang buồng trứng, và tầm soát ung thư cổ tử cung. Đồng thời, chúng tôi cung cấp dịch vụ chăm sóc thai sản toàn diện, từ khám thai định kỳ, sàng lọc trước sinh đến hỗ trợ sinh tại Bệnh viện Từ Dũ.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="doctors-slider">
-                        <div class="doctors-wrapper">
-                            <button class="slider-button prev" disabled>&lt;</button>
-                            <div class="doctors-container">
-                                <div class="doctors-track">
-                                    <div class="doctor-card">
-                                        <div class="doctor-avatar">
-                                            <img src="header/logo.png" alt="BS.CK2 Nguyễn Hoàng Lam" class="fallback-logo" loading="lazy">
-                                        </div>
-                                        <div class="doctor-info">
-                                            <div class="doctor-name">CK2. BS. Nguyễn Hoàng Lam</div>
-                                            <div class="doctor-title">Chuyên khoa  cấp 2</div>
-                                        </div>
-                                    </div>
-                                    <div class="doctor-card">
-                                        <div class="doctor-avatar">
-                                            <img src="header/logo.png" alt="Bs. Đỗ Thị Lan Vy" class="fallback-logo" loading="lazy">
-                                        </div>
-                                        <div class="doctor-info">
-                                            <div class="doctor-name">Bs. Đỗ Thị Lan Vy</div>
-                                            <div class="doctor-title">Chuyên khoa sản phụ khoa</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="doctor-card">
-                                        <div class="doctor-avatar">
-                                            <img src="header/logo.png" alt="BS. Nguyễn Thị Việt Linh" class="fallback-logo" loading="lazy">
-                                        </div>
-                                        <div class="doctor-info">
-                                            <div class="doctor-name">BS. Nguyễn Thị Việt Linh</div>
-                                            <div class="doctor-title">Chuyên khoa cấp 1</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="slider-button next">&gt;</button>
-                            <div class="dots-container"></div>
-                        </div>
-                    </div>
+            <h2 class="specialty-title">Chuyên Khoa Sản Phụ Khoa</h2>
+            <div class="specialty-body">
+                <div class="specialty-image" data-image-folder="ob_gyn">
+                    <img src="specialist/images/specialists/ob_gyn/1.jpg" alt="Chuyên Khoa Sản Phụ Khoa" class="active" loading="lazy" decoding="async">
+                </div>
+                <div class="specialty-content">
+                    <p class="specialty-text">
+                        Phòng khám tự hào với đội ngũ bác sĩ giàu kinh nghiệm đến từ Bệnh viện Từ Dũ - một trong những trung tâm sản khoa hàng đầu khu vực phía Nam. Các bác sĩ chuyên về điều trị các bệnh lý phụ khoa phức tạp như u xơ tử cung, u nang buồng trứng, và tầm soát ung thư cổ tử cung. Đồng thời, chúng tôi cung cấp dịch vụ chăm sóc thai sản toàn diện, từ khám thai định kỳ, sàng lọc trước sinh đến hỗ trợ sinh tại Bệnh viện Từ Dũ.
+                    </p>
                 </div>
             </div>
         </div>
 
         <div class="specialty">
-            <div class="specialty-image" data-image-folder="ent">
-                <img src="specialist/images/specialists/ent/1.jpg" alt="Chuyên Khoa Tai Mũi Họng" class="active" loading="lazy">
-            </div>
-            <div class="specialty-content">
-                <div class="content-wrapper">
-                    <div class="specialty-overview">
-                        <h2 class="specialty-title">Chuyên Khoa Tai Mũi Họng</h2>
-                        <div class="specialty-text">
-                            <p>
-                                Phòng khám mang đến dịch vụ khám và điều trị các bệnh lý tai mũi họng chất lượng cao. Các bác sĩ có nhiều năm kinh nghiệm trong điều trị các bệnh lý như viêm xoang mãn tính, viêm amidan, viêm mũi dị ứng và đặc biệt là tầm soát ung thư vòm họng. Phòng khám được trang bị hệ thống nội soi hiện đại, giúp chẩn đoán chính xác và điều trị hiệu quả.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="doctors-slider">
-                        <div class="doctors-wrapper">
-                            <button class="slider-button prev" disabled>&lt;</button>
-                            <div class="doctors-container">
-                                <div class="doctors-track">
-                                    <div class="doctor-card">
-                                        <div class="doctor-avatar">
-                                            <img src="header/logo.png" alt="Ths. CK1. Sử Ngọc Kiều Chinh" class="fallback-logo" loading="lazy">
-                                        </div>
-                                        <div class="doctor-info">
-                                            <div class="doctor-name">Ths. CK1. Sử Ngọc Kiều Chinh</div>
-                                            <div class="doctor-title">Bác sĩ -Chuyên khoa 1, Thạc sĩ</div>
-                                        </div>
-                                    </div>
-                                    <div class="doctor-card">
-                                        <div class="doctor-avatar">
-                                            <img src="header/logo.png" alt="BS. Dương Minh Trọng" class="fallback-logo" loading="lazy">
-                                        </div>
-                                        <div class="doctor-info">
-                                            <div class="doctor-name">CK1. BS. Dương Minh Trọng</div>
-                                            <div class="doctor-title">Bác sĩ -Chuyên khoa 1</div>
-                                        </div>
-                                    </div>
-                                    <div class="doctor-card">
-                                        <div class="doctor-avatar">
-                                            <img src="header/logo.png" alt="ThS.BS. Hồ Thị Thanh Tâm" class="fallback-logo" loading="lazy">
-                                        </div>
-                                        <div class="doctor-info">
-                                            <div class="doctor-name">Ths.Bs. Hồ Thị Thanh Tâm</div>
-                                            <div class="doctor-title">Thạc sĩ - Bác sĩ</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="slider-button next">&gt;</button>
-                            <div class="dots-container"></div>
-                        </div>
-                    </div>
+            <h2 class="specialty-title">Chuyên Khoa Tai Mũi Họng</h2>
+            <div class="specialty-body">
+                <div class="specialty-image" data-image-folder="ent">
+                    <img src="specialist/images/specialists/ent/1.jpg" alt="Chuyên Khoa Tai Mũi Họng" class="active" loading="lazy" decoding="async">
+                </div>
+                <div class="specialty-content">
+                    <p class="specialty-text">
+                        Phòng khám mang đến dịch vụ khám và điều trị các bệnh lý tai mũi họng chất lượng cao. Các bác sĩ có nhiều năm kinh nghiệm trong điều trị các bệnh lý như viêm xoang mãn tính, viêm amidan, viêm mũi dị ứng và đặc biệt là tầm soát ung thư vòm họng. Phòng khám được trang bị hệ thống nội soi hiện đại, giúp chẩn đoán chính xác và điều trị hiệu quả.
+                    </p>
                 </div>
             </div>
         </div>
 
         <div class="specialty">
-            <div class="specialty-image" data-image-folder="internal_medicine">
-                <img src="specialist/images/specialists/internal_medicine/1.jpg" alt="Chuyên Khoa Nội" class="active" loading="lazy">
-            </div>
-            <div class="specialty-content">
-                <div class="content-wrapper">
-                    <div class="specialty-overview">
-                        <h2 class="specialty-title">Chuyên Khoa Nội</h2>
-                        <div class="specialty-text">
-                            <p>
-                                Phòng khám quy tụ đội ngũ chuyên gia giàu kinh nghiệm đến từ các bệnh viện lớn như Bệnh viện FV, với đa dạng chuyên môn sâu. Các lĩnh vực chuyên sâu bao gồm: Nội tổng quát – khám và điều trị các bệnh lý thông thường; Tim mạch – chẩn đoán và quản lý toàn diện các bệnh về tim; Tim mạch can thiệp – tư vấn và theo dõi các trường hợp tim mạch phức tạp sau can thiệp; cùng Nội tiết – chuyển hóa, chuyên sâu trong chẩn đoán và điều trị đái tháo đường, rối loạn tuyến giáp, và các bệnh lý chuyển hóa khác
-                            </p>
-                        </div>
-                    </div>
-                    <div class="doctors-slider">
-                        <div class="doctors-wrapper">
-                            <button class="slider-button prev" disabled>&lt;</button>
-                            <div class="doctors-container">
-                                <div class="doctors-track">
-                                    <div class="doctor-card">
-                                        <div class="doctor-avatar">
-                                            <img src="header/logo.png" alt="BS.CK1 Đỗ Thành Long" class="fallback-logo" loading="lazy">
-                                        </div>
-                                        <div class="doctor-info">
-                                            <div class="doctor-name">BS.CK1 Đỗ Thành Long</div>
-                                            <div class="doctor-title">Chuyên khoa 1</div>
-                                        </div>
-                                    </div>
-                                    <div class="doctor-card">
-                                        <div class="doctor-avatar">
-                                            <img src="header/logo.png" alt="BS.CK1 Nguyễn Xuân Long" class="fallback-logo" loading="lazy">
-                                        </div>
-                                        <div class="doctor-info">
-                                            <div class="doctor-name">BS.CK1 Nguyễn Xuân Long</div>
-                                            <div class="doctor-title">Chuyên khoa 1</div>
-                                        </div>
-                                    </div>
-                                    <div class="doctor-card">
-                                        <div class="doctor-avatar">
-                                            <img src="header/logo.png" alt="BS.CK1 Phạm Bá Dương" class="fallback-logo" loading="lazy">
-                                        </div>
-                                        <div class="doctor-info">
-                                            <div class="doctor-name">BS.CK1 Phạm Bá Dương</div>
-                                            <div class="doctor-title">Chuyên khoa 1</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="slider-button next">&gt;</button>
-                            <div class="dots-container"></div>
-                        </div>
-                    </div>
+            <h2 class="specialty-title">Chuyên Khoa Nội</h2>
+            <div class="specialty-body">
+                <div class="specialty-image" data-image-folder="internal_medicine">
+                    <img src="specialist/images/specialists/internal_medicine/1.jpg" alt="Chuyên Khoa Nội" class="active" loading="lazy" decoding="async">
+                </div>
+                <div class="specialty-content">
+                    <p class="specialty-text">
+                        Phòng khám quy tụ đội ngũ chuyên gia giàu kinh nghiệm đến từ các bệnh viện lớn như Bệnh viện FV, với đa dạng chuyên môn sâu. Các lĩnh vực chuyên sâu bao gồm: Nội tổng quát – khám và điều trị các bệnh lý thông thường; Tim mạch – chẩn đoán và quản lý toàn diện các bệnh về tim; Tim mạch can thiệp – tư vấn và theo dõi các trường hợp tim mạch phức tạp sau can thiệp; cùng Nội tiết – chuyển hóa, chuyên sâu trong chẩn đoán và điều trị đái tháo đường, rối loạn tuyến giáp, và các bệnh lý chuyển hóa khác
+                    </p>
                 </div>
             </div>
         </div>
 
         <div class="specialty">
-            <div class="specialty-image" data-image-folder="pediatrics">
-                <img src="specialist/images/specialists/pediatrics/1.jpg" alt="Chuyên Khoa Nhi" class="active" loading="lazy">
-            </div>
-            <div class="specialty-content">
-                <div class="content-wrapper">
-                    <div class="specialty-overview">
-                        <h2 class="specialty-title">Chuyên Khoa Nhi</h2>
-                        <div class="specialty-text">
-                            <p>
-                                Chuyên khoa Nhi tại phòng khám cung cấp dịch vụ chăm sóc sức khỏe toàn diện, tận tâm cho trẻ sơ sinh, trẻ nhỏ và thiếu niên. Chúng tôi tập trung vào chẩn đoán và điều trị hiệu quả các bệnh lý phổ biến ở trẻ em như viêm đường hô hấp, rối loạn tiêu hóa, các bệnh truyền nhiễm, cũng như tư vấn chuyên sâu về dinh dưỡng, tiêm chủng và theo dõi sát sao sự phát triển thể chất, trí tuệ của trẻ.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="doctors-slider">
-                        <div class="doctors-wrapper">
-                            <button class="slider-button prev" disabled>&lt;</button>
-                            <div class="doctors-container">
-                                <div class="doctors-track">
-                                    <div class="doctor-card">
-                                        <div class="doctor-avatar">
-                                            <img src="header/logo.png" alt="ThS.BS. Đặng Hoàng Khánh Duy" class="fallback-logo" loading="lazy">
-                                        </div>
-                                        <div class="doctor-info">
-                                            <div class="doctor-name">ThS.BS. Đặng Hoàng Khánh Duy</div>
-                                            <div class="doctor-title">Thạc sĩ - Bác sĩ Nhi khoa</div>
-                                        </div>
-                                    </div>
-                                    <div class="doctor-card">
-                                        <div class="doctor-avatar">
-                                            <img src="header/logo.png" alt="BS. Nguyễn Văn Nhật" class="fallback-logo" loading="lazy">
-                                        </div>
-                                        <div class="doctor-info">
-                                            <div class="doctor-name">BS. Phạm Tiến Nhật</div>
-                                            <div class="doctor-title">Bác sĩ Nhi khoa</div>
-                                        </div>
-                                    </div>
-                                    </div>
-                            </div>
-                            <button class="slider-button next">&gt;</button>
-                            <div class="dots-container"></div>
-                        </div>
-                    </div>
+            <h2 class="specialty-title">Chuyên Khoa Nhi</h2>
+            <div class="specialty-body">
+                <div class="specialty-image" data-image-folder="pediatrics">
+                    <img src="specialist/images/specialists/pediatrics/1.jpg" alt="Chuyên Khoa Nhi" class="active" loading="lazy" decoding="async">
+                </div>
+                <div class="specialty-content">
+                    <p class="specialty-text">
+                        Chuyên khoa Nhi tại phòng khám cung cấp dịch vụ chăm sóc sức khỏe toàn diện, tận tâm cho trẻ sơ sinh, trẻ nhỏ và thiếu niên. Chúng tôi tập trung vào chẩn đoán và điều trị hiệu quả các bệnh lý phổ biến ở trẻ em như viêm đường hô hấp, rối loạn tiêu hóa, các bệnh truyền nhiễm, cũng như tư vấn chuyên sâu về dinh dưỡng, tiêm chủng và theo dõi sát sao sự phát triển thể chất, trí tuệ của trẻ.
+                    </p>
                 </div>
             </div>
         </div>
 
         <div class="specialty">
-            <div class="specialty-image" data-image-folder="ultrasound">
-                <img src="specialist/images/specialists/ultrasound/1.jpg" alt="Dịch Vụ Siêu Âm" class="active" loading="lazy">
-            </div>
-            <div class="specialty-content">
-                <div class="content-wrapper">
-                    <div class="specialty-overview">
-                        <h2 class="specialty-title">Dịch Vụ Siêu Âm</h2>
-                        <div class="specialty-text">
-                            <p>
-                                Dịch vụ siêu âm cung cấp các kỹ thuật siêu âm tổng quát, hỗ trợ khảo sát và phát hiện sớm nhiều bất thường của cơ thể. Phòng khám đặc biệt chú trọng siêu âm tim, đánh giá cấu trúc và chức năng tim, đồng thời hỗ trợ tầm soát bệnh tim bẩm sinh. Dịch vụ siêu âm thai 4D nâng cao mang đến hình ảnh thai nhi sắc nét, giúp bác sĩ theo dõi hình thái và sự phát triển của thai. Ngoài ra, phòng khám thực hiện siêu âm hỗ trợ tầm soát các tổn thương tại vú và tuyến giáp; khi có chỉ định, bác sĩ có thể thực hiện chọc hút bằng kim nhỏ dưới hướng dẫn siêu âm (FNA) và gửi mẫu xét nghiệm tế bào học.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="doctors-slider">
-                        <div class="doctors-wrapper">
-                            <button class="slider-button prev" disabled>&lt;</button>
-                            <div class="doctors-container">
-                                <div class="doctors-track">
-                                    <div class="doctor-card">
-                                        <div class="doctor-avatar">
-                                            <img src="header/logo.png" alt="Siêu âm giáp cổ" class="fallback-logo" loading="lazy">
-                                        </div>
-                                        <div class="doctor-info">
-                                            <div class="doctor-name">Siêu âm giáp cổ</div>
-                                        </div>
-                                    </div>
-                                    <div class="doctor-card">
-                                        <div class="doctor-avatar">
-                                            <img src="header/logo.png" alt="Siêu âm nhi" class="fallback-logo" loading="lazy">
-                                        </div>
-                                        <div class="doctor-info">
-                                            <div class="doctor-name">Siêu âm nhi</div>
-                                        </div>
-                                    </div>
-                                    <div class="doctor-card">
-                                        <div class="doctor-avatar">
-                                            <img src="header/logo.png" alt="Siêu âm thai 4D" class="fallback-logo" loading="lazy">
-                                        </div>
-                                        <div class="doctor-info">
-                                            <div class="doctor-name">Siêu âm thai 4D</div>
-                                        </div>
-                                    </div>
-                                    <div class="doctor-card">
-                                        <div class="doctor-avatar">
-                                            <img src="header/logo.png" alt="Siêu âm tổng quát" class="fallback-logo" loading="lazy">
-                                        </div>
-                                        <div class="doctor-info">
-                                            <div class="doctor-name">Siêu âm tổng quát</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="slider-button next">&gt;</button>
-                            <div class="dots-container"></div>
-                        </div>
-                    </div>
+            <h2 class="specialty-title">Dịch Vụ Siêu Âm</h2>
+            <div class="specialty-body">
+                <div class="specialty-image" data-image-folder="ultrasound">
+                    <img src="specialist/images/specialists/ultrasound/1.jpg" alt="Dịch Vụ Siêu Âm" class="active" loading="lazy" decoding="async">
+                </div>
+                <div class="specialty-content">
+                    <p class="specialty-text">
+                        Dịch vụ siêu âm cung cấp các kỹ thuật siêu âm tổng quát, hỗ trợ khảo sát và phát hiện sớm nhiều bất thường của cơ thể. Phòng khám đặc biệt chú trọng siêu âm tim, đánh giá cấu trúc và chức năng tim, đồng thời hỗ trợ tầm soát bệnh tim bẩm sinh. Dịch vụ siêu âm thai 4D nâng cao mang đến hình ảnh thai nhi sắc nét, giúp bác sĩ theo dõi hình thái và sự phát triển của thai. Ngoài ra, phòng khám thực hiện siêu âm hỗ trợ tầm soát các tổn thương tại vú và tuyến giáp; khi có chỉ định, bác sĩ có thể thực hiện chọc hút bằng kim nhỏ dưới hướng dẫn siêu âm (FNA) và gửi mẫu xét nghiệm tế bào học.
+                    </p>
                 </div>
             </div>
         </div>
@@ -675,28 +307,39 @@
 
     <script>
         (function() {
-            // IIFE để đóng gói code, tránh xung đột biến toàn cục
-            console.log("Initializing Specialist Component...");
-
             const COMPONENT_SELECTOR = '#specialist-component-wrapper';
             const SPECIALTY_IMAGE_BASE_PATH = 'specialist/images/specialists';
             const SPECIALTY_IMAGE_DELAY = 3000;
-            const DOCTOR_FALLBACK_IMAGE = 'header/logo.png';
-            
-            // Helper: Debounce function
-            function debounce(func, wait) {
-                let timeout;
-                return function executedFunction(...args) {
-                    const later = () => {
-                        clearTimeout(timeout);
-                        func(...args);
-                    };
-                    clearTimeout(timeout);
-                    timeout = setTimeout(later, wait);
-                };
-            }
+            const REDUCE_MOTION = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+            const SPECIALTY_PROFILES = {
+                ob_gyn: [
+                    { name: 'CK2. BS. Nguyễn Hoàng Lam', title: 'Chuyên khoa cấp 2', workplace: 'Bệnh viện Từ Dũ' },
+                    { name: 'Bs. Đỗ Thị Lan Vy', title: 'Chuyên khoa sản phụ khoa' },
+                    { name: 'BS. Nguyễn Thị Việt Linh', title: 'Chuyên khoa cấp 1', workplace: 'Bệnh viện Từ Dũ' }
+                ],
+                ent: [
+                    { name: 'Ths. CK1. Sử Ngọc Kiều Chinh', title: 'Bác sĩ - Chuyên khoa 1, Thạc sĩ', workplace: 'Bệnh viện Ung Bướu TP.HCM' },
+                    { name: 'CK1. BS. Dương Minh Trọng', title: 'Bác sĩ - Chuyên khoa 1' },
+                    { name: 'Ths.Bs. Hồ Thị Thanh Tâm', title: 'Thạc sĩ - Bác sĩ' }
+                ],
+                internal_medicine: [
+                    { name: 'BS.CK1 Đỗ Thành Long', title: 'Chuyên khoa 1', workplace: 'Bệnh viện FV (Pháp Việt)' },
+                    { name: 'BS.CK1 Nguyễn Xuân Long', title: 'Chuyên khoa 1', workplace: 'Bệnh viện Ung Bướu TP.HCM' },
+                    { name: 'BS.CK1 Phạm Bá Dương', title: 'Chuyên khoa 1' }
+                ],
+                pediatrics: [
+                    { name: 'ThS.BS. Đặng Hoàng Khánh Duy', title: 'Thạc sĩ - Bác sĩ Nhi khoa', workplace: 'Bệnh viện Nhi Đồng 1' },
+                    { name: 'BS. Phạm Tiến Nhật', title: 'Bác sĩ Nhi khoa' }
+                ],
+                ultrasound: [
+                    { name: 'Siêu âm giáp cổ', title: '' },
+                    { name: 'Siêu âm nhi', title: '' },
+                    { name: 'Siêu âm thai 4D', title: '' },
+                    { name: 'Siêu âm tổng quát', title: '' }
+                ]
+            };
 
-            function checkImageExists(src) {
+            function imageExists(src) {
                 return new Promise(resolve => {
                     const img = new Image();
                     img.onload = () => resolve(true);
@@ -705,15 +348,13 @@
                 });
             }
 
-            async function discoverSpecialtyImages(folderName) {
+            async function discoverAdditionalImages(folderName) {
                 const paths = [];
-                let imageIndex = 1;
+                let imageIndex = 2;
 
                 while (true) {
                     const imagePath = `${SPECIALTY_IMAGE_BASE_PATH}/${folderName}/${imageIndex}.jpg`;
-                    const exists = await checkImageExists(imagePath);
-
-                    if (!exists) break;
+                    if (!await imageExists(imagePath)) break;
 
                     paths.push(imagePath);
                     imageIndex += 1;
@@ -722,209 +363,123 @@
                 return paths;
             }
 
-            function assignDoctorImages(specialtyImage, imagePaths) {
-                const specialty = specialtyImage.closest('.specialty');
-                if (!specialty) return;
+            function createProfileOverlay(container) {
+                const overlay = document.createElement('div');
+                overlay.className = 'image-profile';
 
-                const doctorImages = specialty.querySelectorAll('.doctor-avatar img');
+                const createField = className => {
+                    const field = document.createElement('div');
+                    field.className = className;
+                    overlay.appendChild(field);
+                    return field;
+                };
 
-                doctorImages.forEach((doctorImage, index) => {
-                    const imagePath = imagePaths[index];
+                const fields = {
+                    name: createField('image-profile-name'),
+                    title: createField('image-profile-title'),
+                    workplace: createField('image-profile-workplace')
+                };
 
-                    doctorImage.onerror = null;
-                    doctorImage.src = imagePath || DOCTOR_FALLBACK_IMAGE;
-                    doctorImage.classList.toggle('fallback-logo', !imagePath);
-
-                    if (imagePath) {
-                        doctorImage.onerror = () => {
-                            doctorImage.onerror = null;
-                            doctorImage.src = DOCTOR_FALLBACK_IMAGE;
-                            doctorImage.classList.add('fallback-logo');
-                        };
-                    }
-                });
+                container.appendChild(overlay);
+                return { overlay, fields };
             }
 
-            // --- Logic Image Slider ---
-            function initializeImageSlider(specialtyImage) {
-                const folderName = specialtyImage.dataset.imageFolder;
-                let images = Array.from(specialtyImage.querySelectorAll('img'));
-                if (!images.length) return null;
+            function setField(field, value) {
+                field.textContent = value || '';
+                field.hidden = !value;
+            }
 
+            function initializeImageSlider(container) {
+                container.querySelector('.image-profile')?.remove();
+                container.querySelectorAll('img[data-specialty-generated]').forEach(image => image.remove());
+
+                const folderName = container.dataset.imageFolder;
+                const profiles = SPECIALTY_PROFILES[folderName] || [];
+                const firstImage = container.querySelector('img');
+                if (!folderName || !firstImage) return null;
+
+                const { overlay, fields } = createProfileOverlay(container);
+                const images = [firstImage];
                 let currentIndex = 0;
-                let interval = null;
-                let isCleanedUp = false;
+                let timer = null;
+                let destroyed = false;
 
-                const showImage = (index) => {
-                    images.forEach(img => img.classList.remove('active'));
-                    if(images[index]) images[index].classList.add('active');
+                const updateProfile = index => {
+                    const profile = profiles[index] || {};
+                    setField(fields.name, profile.name);
+                    setField(fields.title, profile.title);
+                    setField(
+                        fields.workplace,
+                        profile.workplace ? `Công tác tại: ${profile.workplace}` : ''
+                    );
+                };
+
+                const showImage = index => {
+                    images.forEach((image, imageIndex) => {
+                        image.classList.toggle('active', imageIndex === index);
+                    });
+                    updateProfile(index);
+                };
+
+                const stopSlideshow = () => {
+                    if (!timer) return;
+                    clearInterval(timer);
+                    timer = null;
                 };
 
                 const startSlideshow = () => {
-                    if (images.length <= 1) return;
-                    if (interval) clearInterval(interval);
-                    interval = setInterval(() => {
+                    if (REDUCE_MOTION || images.length < 2) return;
+                    stopSlideshow();
+                    timer = setInterval(() => {
                         currentIndex = (currentIndex + 1) % images.length;
                         showImage(currentIndex);
                     }, SPECIALTY_IMAGE_DELAY);
                 };
 
-                const stopSlideshow = () => {
-                    if (interval) {
-                        clearInterval(interval);
-                        interval = null;
-                    }
-                };
+                const loadImages = async () => {
+                    const imagePaths = await discoverAdditionalImages(folderName);
+                    if (destroyed || !imagePaths.length) return;
 
-                const renderImages = (imagePaths) => {
-                    const altText = images[0]?.alt || '';
                     const fragment = document.createDocumentFragment();
-
-                    imagePaths.forEach((imagePath, index) => {
-                        const img = document.createElement('img');
-                        img.src = imagePath;
-                        img.alt = altText;
-                        img.loading = 'lazy';
-                        if (index === 0) img.classList.add('active');
-                        fragment.appendChild(img);
+                    imagePaths.forEach(imagePath => {
+                        const image = document.createElement('img');
+                        image.src = imagePath;
+                        image.alt = firstImage.alt;
+                        image.loading = 'lazy';
+                        image.decoding = 'async';
+                        image.dataset.specialtyGenerated = '';
+                        images.push(image);
+                        fragment.appendChild(image);
                     });
 
-                    specialtyImage.innerHTML = '';
-                    specialtyImage.appendChild(fragment);
-                    images = Array.from(specialtyImage.querySelectorAll('img'));
-                    currentIndex = 0;
-                };
-
-                const loadFolderImages = async () => {
-                    let imagePaths = [];
-
-                    if (folderName) {
-                        imagePaths = await discoverSpecialtyImages(folderName);
-                        if (isCleanedUp) return;
-                        if (imagePaths.length) renderImages(imagePaths);
-                    }
-
-                    assignDoctorImages(specialtyImage, imagePaths);
+                    container.insertBefore(fragment, overlay);
                     startSlideshow();
                 };
 
-                loadFolderImages();
-
-                const cleanup = () => {
-                    isCleanedUp = true;
-                    stopSlideshow();
-                };
-
-                return cleanup;
-            }
-
-            // --- Logic Doctor Slider (Giữ nguyên & Fix responsive logic) ---
-            function initializeDoctorSlider(slider) {
-                const container = slider.querySelector('.doctors-container');
-                const track = slider.querySelector('.doctors-track');
-                const cards = Array.from(track.querySelectorAll('.doctor-card'));
-                const dotsContainer = slider.querySelector('.dots-container');
-
-                if (!container || !track || cards.length === 0) return null;
-
-                const isMobile = () => window.innerWidth <= 480;
-
-                const updateDots = (index) => {
-                    if(!dotsContainer) return;
-                    const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
-                    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-                };
-
-                const createDots = () => {
-                    if(!dotsContainer) return;
-                    dotsContainer.innerHTML = '';
-                    if (!isMobile()) return;
-
-                    const fragment = document.createDocumentFragment();
-                    cards.forEach((card, index) => {
-                        const dot = document.createElement('div');
-                        dot.classList.add('dot');
-                        if (index === 0) dot.classList.add('active');
-
-                        dot.addEventListener('click', () => {
-                            container.scrollTo({
-                                left: card.offsetLeft - track.offsetLeft,
-                                behavior: 'smooth'
-                            });
-                            updateDots(index);
-                        });
-
-                        fragment.appendChild(dot);
-                    });
-                    dotsContainer.appendChild(fragment);
-                };
-
-                let scrollTimeout;
-                const handleScroll = () => {
-                    if (!isMobile() || scrollTimeout) return;
-                    scrollTimeout = setTimeout(() => {
-                        const targetSlide = cards.reduce((closestIndex, card, index) => {
-                            const currentDistance = Math.abs((card.offsetLeft - track.offsetLeft) - container.scrollLeft);
-                            const closestCard = cards[closestIndex];
-                            const closestDistance = Math.abs((closestCard.offsetLeft - track.offsetLeft) - container.scrollLeft);
-                            return currentDistance < closestDistance ? index : closestIndex;
-                        }, 0);
-                        updateDots(targetSlide);
-                        scrollTimeout = null;
-                    }, 50);
-                };
-
-                container.addEventListener('scroll', handleScroll, { passive: true });
-
-                createDots();
-
-                const handleResize = debounce(() => {
-                    createDots();
-                    updateDots(0);
-                    container.scrollLeft = 0;
-                }, 250);
-
-                window.addEventListener('resize', handleResize);
+                showImage(currentIndex);
+                loadImages();
 
                 return () => {
-                    container.removeEventListener('scroll', handleScroll);
-                    window.removeEventListener('resize', handleResize);
+                    destroyed = true;
+                    stopSlideshow();
                 };
             }
 
-            // --- MAIN INITIALIZATION ---
-            function initSpecialistComponent() {
-                const wrapper = document.querySelector(COMPONENT_SELECTOR);
-                if (!wrapper) {
-                    console.error("Specialist wrapper not found in DOM");
-                    return;
-                }
+            const wrapper = document.querySelector(COMPONENT_SELECTOR);
+            if (!wrapper) return;
 
-                const cleanupFunctions = [];
-
-                // 1. Init Image Sliders
-                const specialtyImages = wrapper.querySelectorAll('.specialty-image');
-                specialtyImages.forEach(image => {
-                    const cleanup = initializeImageSlider(image);
-                    if (cleanup) cleanupFunctions.push(cleanup);
-                });
-
-                // 2. Init Doctor Sliders
-                const doctorsSliders = wrapper.querySelectorAll('.doctors-slider');
-                doctorsSliders.forEach(slider => {
-                    const cleanup = initializeDoctorSlider(slider);
-                    if (cleanup) cleanupFunctions.push(cleanup);
-                });
-
-                // Cleanup khi component bị remove (nếu có cơ chế SPA router unmount)
-                // Lưu hàm này vào property của element để có thể gọi từ bên ngoài nếu cần
-                wrapper._cleanupSpecialist = () => {
-                    cleanupFunctions.forEach(fn => fn());
-                };
+            if (typeof wrapper._cleanupSpecialist === 'function') {
+                wrapper._cleanupSpecialist();
             }
 
-            // Chạy ngay lập tức khi script được load (vì lúc này HTML đã được inject)
-            initSpecialistComponent();
+            const cleanupFunctions = Array.from(
+                wrapper.querySelectorAll('.specialty-image'),
+                initializeImageSlider
+            ).filter(Boolean);
+
+            wrapper._cleanupSpecialist = () => {
+                cleanupFunctions.forEach(cleanup => cleanup());
+            };
 
         })();
     </script>
