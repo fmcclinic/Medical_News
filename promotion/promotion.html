@@ -427,19 +427,11 @@
         /* --- MOBILE RESPONSIVE (ĐÃ FIX TỈ LỆ ẢNH) --- */
         @media (max-width: 768px) {
             .fmc-promo-card { flex-direction: column; height: auto; min-height: auto; }
-            .theme-vip { flex-direction: column-reverse; } /* VIP: Ảnh dưới cùng */
-            
-            /* SỬA TẠI ĐÂY: Dùng aspect-ratio 9/16 để ảnh dọc */
-            .fmc-col-img { 
-                width: 100%; 
+            .fmc-col-img {
+                width: 100%;
                 height: auto;
-                aspect-ratio: 9/16; /* Tỉ lệ 9:16 (Dọc) */
-                border-radius: 20px 20px 0 0; 
-            }
-            
-            /* Riêng VIP: Ảnh ở dưới nên bo góc dưới */
-            .theme-vip .fmc-col-img {
-                border-radius: 0 0 20px 20px;
+                aspect-ratio: 9/16;
+                border-radius: 20px 20px 0 0;
             }
 
             .fmc-col-info { width: 100%; padding: 30px 20px; }
@@ -476,10 +468,80 @@
                 animation: none;
             }
         }
+
+        /* KHÁM MIỄN PHÍ */
+        .theme-free-checkup {
+            background: linear-gradient(135deg, #f0f7ff 0%, #fff 55%);
+            border: 1px solid #b3d4f0;
+        }
+        .theme-free-checkup .fmc-badge { background: #e3f2fd; color: #1565c0; }
+        .theme-free-checkup .highlight { color: #1976d2; }
+        .theme-free-checkup .fmc-btn { background: linear-gradient(90deg, #29b6f6, #1976d2); }
+        .theme-free-checkup .fmc-col-img {
+            background: linear-gradient(180deg, #eef8ff 0%, #dff0ff 100%);
+        }
+        .theme-free-checkup .fmc-col-img img {
+            object-fit: contain;
+            object-position: center;
+            padding: 10px;
+        }
+
+        .fmc-free-list {
+            display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px;
+        }
+        .fmc-free-item {
+            display: flex; align-items: center; gap: 14px;
+            padding: 14px 18px; background: #f0f7ff;
+            border: 1px solid #c3ddf5; border-radius: 10px;
+            font-size: 1rem; color: #1a3a5c; font-weight: 500;
+        }
+        .fmc-free-item i {
+            color: #1976d2; font-size: 1.1rem; width: 20px;
+            text-align: center; flex-shrink: 0;
+        }
+        .fmc-free-date { font-weight: 800; color: #0d47a1; }
+
+        @media (max-width: 768px) {
+            .theme-free-checkup .fmc-col-img { aspect-ratio: 4/3; }
+        }
     </style>
+
+    <!-- KHÁM MIỄN PHÍ -->
+    <div class="fmc-promo-card theme-free-checkup">
+        <div class="fmc-col-img">
+            <img src="/promotion/kham-mien-phi.png" alt="Khám miễn phí lượt đầu tiên tại FMC" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5LaGFtIE1pZW4gUGhpPC90ZXh0Pjwvc3ZnPg=='">
+        </div>
+        <div class="fmc-col-info">
+            <span class="fmc-badge">✦ MIỄN PHÍ</span>
+            <h2 class="fmc-title">Khám <span class="highlight">Miễn Phí</span></h2>
+            <p class="fmc-desc">Phòng khám FMC dành tặng lượt khám đầu tiên hoàn toàn miễn phí cho tất cả bệnh nhân mới.</p>
+
+            <div class="fmc-free-list">
+                <div class="fmc-free-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Cho lượt khám đầu tiên</span>
+                </div>
+                <div class="fmc-free-item">
+                    <i class="fas fa-users"></i>
+                    <span>Dành cho mọi bệnh nhân</span>
+                </div>
+                <div class="fmc-free-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Thời hạn đến hết <span class="fmc-free-date">30/06/2026</span></span>
+                </div>
+            </div>
+
+            <a href="../index.html#contact-slot" class="fmc-btn">
+                <i class="far fa-calendar-alt"></i> Đặt lịch khám
+            </a>
+        </div>
+    </div>
 
     <div class="fmc-promo-card theme-vip">
         <div class="fmc-sticker">★ VIP MEMBER</div>
+        <div class="fmc-col-img">
+            <img src="/promotion/vip-card-mockup.png" alt="VIP Card" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5WaXAgQ2FyZDwvdGV4dD48L3N2Zz4='">
+        </div>
         <div class="fmc-col-info">
             <span class="fmc-badge">✨ DÀNH CHO CẢ GIA ĐÌNH</span>
             <h2 class="fmc-title">CHƯƠNG TRÌNH <br><span class="highlight" style="text-transform:uppercase">Thẻ VIP Member</span></h2>
@@ -536,9 +598,6 @@
                     <i class="fas fa-crown"></i> Đăng Ký Thẻ VIP
                 </a>
             </div>
-        </div>
-        <div class="fmc-col-img">
-            <img src="/promotion/vip-card-mockup.png" alt="VIP Card" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5WaXAgQ2FyZDwvdGV4dD48L3N2Zz4='">
         </div>
     </div>
 

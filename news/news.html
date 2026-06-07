@@ -15,6 +15,7 @@
             margin: 0 auto;
             color: #333;
             width: 100%;
+            box-sizing: border-box;
         }
 
         .news-component-scope * { box-sizing: border-box; }
@@ -154,6 +155,72 @@
             font-weight: 700; text-transform: uppercase; margin-bottom: 8px;
         }
 
+        .news-component-scope .news-title.news-card-title {
+            width: 100%;
+            margin: 0;
+            padding: 18px 20px 14px;
+            background: #fff;
+        }
+
+        .news-component-scope .main-story .news-title.news-card-title {
+            padding: 22px 25px 18px;
+        }
+
+        .news-component-scope .news-image-wrap {
+            position: relative;
+            width: 100%;
+            padding: 0;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .news-component-scope .news-image-wrap img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            margin: 0;
+            border: 0;
+        }
+
+        .news-component-scope .news-image-wrap .category-tag {
+            position: absolute;
+            z-index: 2;
+            top: 12px;
+            left: 12px;
+            margin: 0;
+            padding: 7px 13px;
+            border: 1px solid rgba(0, 112, 192, 0.16);
+            border-radius: 7px;
+            background: rgba(227, 242, 253, 0.94);
+            color: #0070c0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            backdrop-filter: blur(3px);
+        }
+
+        .news-component-scope .main-story .news-image-wrap .category-tag {
+            background: rgba(0, 112, 192, 0.94);
+            color: #fff;
+        }
+
+        .news-component-scope .news-image-wrap .category-tag:hover {
+            background: #0070c0;
+            color: #fff;
+        }
+
+        .news-component-scope .secondary-story .news-image-wrap {
+            padding: 0;
+        }
+
+        .news-component-scope .main-story-content {
+            padding-top: 15px;
+            border-top: 0;
+        }
+
+        .news-component-scope .news-content {
+            padding-top: 15px;
+        }
+
          
         .news-component-scope .news-grid {
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px;
@@ -187,6 +254,7 @@
             
              
             .news-component-scope .main-story-content { padding: 15px; }
+            .news-component-scope .main-story .news-title.news-card-title { padding: 18px 15px 14px; }
             .news-component-scope .main-story .news-title a { font-size: 1.3em; }
             .news-component-scope .main-story img { max-height: auto; }
         }
@@ -195,6 +263,12 @@
             body { padding-top: 70px; }
             .news-component-scope { padding: 15px 10px; }
             .news-component-scope .news-grid { grid-template-columns: 1fr; }
+            .news-component-scope .news-title.news-card-title { padding: 15px 15px 12px; }
+            .news-component-scope .news-image-wrap .category-tag {
+                top: 8px;
+                left: 8px;
+                padding: 5px 10px;
+            }
             .news-component-scope .news-categories { 
                 justify-content: flex-start; overflow-x: auto; 
                 white-space: nowrap; padding: 10px;
@@ -216,36 +290,47 @@
 
     <div class="featured-news">
                     <div class="main-story">
-                <img src="https://drive.google.com/thumbnail?id=1NIAPE81rmkv1IC6ppHl7v-eImD3Upwjt&amp;sz=w4096" alt="Thẻ VIP Member là chương trình ưu đãi dành cho cá nhân và gia đình muốn thăm khám thuận tiện, tiết kiệm và chủ động hơn trong suốt một năm" loading="lazy">
+                <h2 class="news-title news-card-title">
+                    <a href="news/articles/NEWS_20260606131239/NEWS_20260606131239.html">
+                        Thẻ VIP Member là chương trình ưu đãi dành cho cá nhân và gia đình muốn thăm khám thuận tiện, tiết kiệm và chủ động hơn trong suốt một năm                    </a>
+                </h2>
+                <div class="news-image-wrap">
+                    <img src="https://drive.google.com/thumbnail?id=1NIAPE81rmkv1IC6ppHl7v-eImD3Upwjt&amp;sz=w4096" alt="Thẻ VIP Member là chương trình ưu đãi dành cho cá nhân và gia đình muốn thăm khám thuận tiện, tiết kiệm và chủ động hơn trong suốt một năm" loading="lazy">
+                    <a class="category-tag"
+                       href="news/archive.html?department=Promotion"
+                       aria-label="Xem tin Promotion">
+                        Promotion                    </a>
+                </div>
                 <div class="main-story-content">
-                    <span class="category-tag">Promotion</span>
-                    <h2 class="news-title">
-                        <a href="news/articles/NEWS_20260606131239/NEWS_20260606131239.html">
-                            Thẻ VIP Member là chương trình ưu đãi dành cho cá nhân và gia đình muốn thăm khám thuận tiện, tiết kiệm và chủ động hơn trong suốt một năm                        </a>
-                    </h2>
                     <p>Thẻ VIP Member là chương trình ưu đãi dành cho cá nhân và gia đình muốn thăm khám thuận tiện, tiết kiệm và chủ động hơn trong suốt một nămƯU ĐÃI ĐẶ...</p>
                 </div>
             </div>
 
             <div class="secondary-stories">
                                     <div class="secondary-story">
-                        <img src="https://drive.google.com/thumbnail?id=16x2Vh0PhKTKVoRWP19VY9w2DK9lHjK9h&amp;sz=w4096" alt="GÓI TẦM SOÁT HPV VÀ UNG THƯ CỔ TỬ CUNG" loading="lazy">
-                        <div>
-                            <span class="category-tag">Promotion</span>
-                            <h3 class="news-title">
-                                <a href="news/articles/NEWS_20260606143925/NEWS_20260606143925.html">
-                                    GÓI TẦM SOÁT HPV VÀ UNG THƯ CỔ TỬ CUNG                                </a>
-                            </h3>
+                        <h3 class="news-title news-card-title">
+                            <a href="news/articles/NEWS_20260606235846/NEWS_20260606235846.html">
+                                Hăm tã ở trẻ nhỏ: chăm sóc da đúng cách và khi nào cần đi khám?                            </a>
+                        </h3>
+                        <div class="news-image-wrap">
+                            <img src="https://drive.google.com/thumbnail?id=1mgO-2IifQEdq8TihD9EjvI4x1Ntp3Kf5&amp;sz=w4096" alt="Hăm tã ở trẻ nhỏ: chăm sóc da đúng cách và khi nào cần đi khám?" loading="lazy">
+                            <a class="category-tag"
+                               href="news/archive.html?department=Pediatrics"
+                               aria-label="Xem tin Nhi Khoa">
+                                Nhi Khoa                            </a>
                         </div>
                     </div>
                                     <div class="secondary-story">
-                        <img src="https://drive.google.com/thumbnail?id=15ylRreOESTERoBnwKQvXFaHk11V4jq6C&amp;sz=w4096" alt="Hạ natri máu ở người cao tuổi: khi uống nước và thuốc cần được theo dõi đúng cách" loading="lazy">
-                        <div>
-                            <span class="category-tag">Nội Khoa</span>
-                            <h3 class="news-title">
-                                <a href="news/articles/NEWS_20260604231534/NEWS_20260604231534.html">
-                                    Hạ natri máu ở người cao tuổi: khi uống nước và thuốc cần được theo dõi đúng cách                                </a>
-                            </h3>
+                        <h3 class="news-title news-card-title">
+                            <a href="news/articles/NEWS_20260606235724/NEWS_20260606235724.html">
+                                Ngủ ngày nhiều ở người cao tuổi: đừng vội xem là “lười” hay “do tuổi”                            </a>
+                        </h3>
+                        <div class="news-image-wrap">
+                            <img src="https://drive.google.com/thumbnail?id=1ga-dIRtzoy0UTH8WYQBgjsHN0lDdxnAl&amp;sz=w4096" alt="Ngủ ngày nhiều ở người cao tuổi: đừng vội xem là “lười” hay “do tuổi”" loading="lazy">
+                            <a class="category-tag"
+                               href="news/archive.html?department=Internal_Medicine"
+                               aria-label="Xem tin Nội Khoa">
+                                Nội Khoa                            </a>
                         </div>
                     </div>
                             </div>
@@ -253,69 +338,99 @@
 
     <div class="news-grid">
                     <article class="news-item">
-                <img src="https://drive.google.com/thumbnail?id=1cr0JwZeT2BFS3fhYsew-bVrT5uG7C9-C&amp;sz=w4096" alt="Nắng nóng và mất nước ở người cao tuổi: đừng chờ khát mới uống nước" loading="lazy">
+                <h3 class="news-title news-card-title">
+                    <a href="news/articles/NEWS_20260606235814/NEWS_20260606235814.html">
+                        Thiếu máu thai kỳ: đừng bỏ qua xét nghiệm máu và bổ sung sắt đúng cách                    </a>
+                </h3>
+                <div class="news-image-wrap">
+                    <img src="https://drive.google.com/thumbnail?id=1MTZGMHDLX50oDja3IIg0EUvcZISOZ5Vl&amp;sz=w4096" alt="Thiếu máu thai kỳ: đừng bỏ qua xét nghiệm máu và bổ sung sắt đúng cách" loading="lazy">
+                    <a class="category-tag"
+                       href="news/archive.html?department=Obstetrics_and_Gynecology"
+                       aria-label="Xem tin Sản Phụ Khoa">
+                        Sản Phụ Khoa                    </a>
+                </div>
                 <div class="news-content">
-                    <span class="category-tag">Nội Khoa</span>
-                    <h3 class="news-title">
-                        <a href="news/articles/NEWS_20260605082608/NEWS_20260605082608.html">
-                            Nắng nóng và mất nước ở người cao tuổi: đừng chờ khát mới uống nước                        </a>
-                    </h3>
-                    <p class="news-brief">Gia đình nên chủ động nhắc người cao tuổi uống nước và nghỉ ở nơi mát trong những ngày nắng nóng.Giới thiệuTrời nóng không chỉ làm khó chịu. Với ng...</p>
+                    <p class="news-brief">Khám thai và xét nghiệm máu đúng hẹn giúp phát hiện thiếu máu thai kỳ sớm.Giới thiệuTrong thai kỳ, cơ thể mẹ cần tạo thêm máu để nuôi mẹ và em bé. ...</p>
                 </div>
             </article>
                     <article class="news-item">
-                <img src="https://drive.google.com/thumbnail?id=1P8-wm1VA0fmMAN7wXdBNzXiPC8Rds-qW&amp;sz=w4096" alt="Táo bón ở trẻ: cha mẹ nên làm gì để con đi tiêu dễ hơn?" loading="lazy">
+                <h3 class="news-title news-card-title">
+                    <a href="news/articles/NEWS_20260606235450/NEWS_20260606235450.html">
+                        Dị ứng thức ăn ở trẻ: nhận biết dấu hiệu nguy hiểm và chuẩn bị kế hoạch an toàn                    </a>
+                </h3>
+                <div class="news-image-wrap">
+                    <img src="https://drive.google.com/thumbnail?id=1ThNcjJ16D94mP1t8VuC7OgQxUaujIgdZ&amp;sz=w4096" alt="Dị ứng thức ăn ở trẻ: nhận biết dấu hiệu nguy hiểm và chuẩn bị kế hoạch an toàn" loading="lazy">
+                    <a class="category-tag"
+                       href="news/archive.html?department=Pediatrics"
+                       aria-label="Xem tin Nhi Khoa">
+                        Nhi Khoa                    </a>
+                </div>
                 <div class="news-content">
-                    <span class="category-tag">Nhi Khoa</span>
-                    <h3 class="news-title">
-                        <a href="news/articles/NEWS_20260604231138/NEWS_20260604231138.html">
-                            Táo bón ở trẻ: cha mẹ nên làm gì để con đi tiêu dễ hơn?                        </a>
-                    </h3>
-                    <p class="news-brief">Bác sĩ nhi khoa trao đổi với gia đình về thói quen đi tiêu lành mạnh của trẻ.Giới thiệuTáo bón là vấn đề rất thường gặp ở trẻ em. Nhiều cha mẹ lo l...</p>
+                    <p class="news-brief">Cha mẹ đọc nhãn thực phẩm để chuẩn bị bữa ăn an toàn cho trẻ.Giới thiệuDị ứng thức ăn xảy ra khi hệ miễn dịch của trẻ phản ứng quá mức với một loại...</p>
                 </div>
             </article>
                     <article class="news-item">
-                <img src="https://drive.google.com/thumbnail?id=1lA7YDYUy6BcsY0YhsINNpMay9cwGNB_s&amp;sz=w4096" alt="Mắt đỏ ở trẻ: khi nào chỉ cần chăm sóc, khi nào phải đi khám?" loading="lazy">
+                <h3 class="news-title news-card-title">
+                    <a href="news/articles/NEWS_20260606235359/NEWS_20260606235359.html">
+                        Run tay ở người cao tuổi: khi nào nên theo dõi, khi nào cần đi khám?                    </a>
+                </h3>
+                <div class="news-image-wrap">
+                    <img src="https://drive.google.com/thumbnail?id=17o8T6s_-ycbg1WA8ws8yzQ_DqPDS-U_H&amp;sz=w4096" alt="Run tay ở người cao tuổi: khi nào nên theo dõi, khi nào cần đi khám?" loading="lazy">
+                    <a class="category-tag"
+                       href="news/archive.html?department=Internal_Medicine"
+                       aria-label="Xem tin Nội Khoa">
+                        Nội Khoa                    </a>
+                </div>
                 <div class="news-content">
-                    <span class="category-tag">Nhi Khoa</span>
-                    <h3 class="news-title">
-                        <a href="news/articles/NEWS_20260604230749/NEWS_20260604230749.html">
-                            Mắt đỏ ở trẻ: khi nào chỉ cần chăm sóc, khi nào phải đi khám?                        </a>
-                    </h3>
-                    <p class="news-brief">Bác sĩ nhi khoa hướng dẫn cha mẹ chăm sóc trẻ bị mắt đỏ trong phòng khám.Giới thiệuMắt đỏ là tình huống rất thường gặp ở trẻ. Tên y khoa thường dùn...</p>
+                    <p class="news-brief">Run tay ở người cao tuổi nên được quan sát đúng cách để phân biệt run lành tính, tác dụng thuốc và dấu hiệu cần khám sớm.Giới thiệuRun tay là tình ...</p>
                 </div>
             </article>
                     <article class="news-item">
-                <img src="https://drive.google.com/thumbnail?id=19x9l_Ctd4TkNIrC9AKrrnOtixV_CmfAx&amp;sz=w4096" alt="Đau vai đông cứng ở người cao tuổi: đừng cố kéo giật, hãy tập đúng và khám đúng lúc" loading="lazy">
+                <h3 class="news-title news-card-title">
+                    <a href="news/articles/NEWS_20260606235116/NEWS_20260606235116.html">
+                        Ra huyết âm đạo trong thai kỳ: đừng tự đoán, hãy liên hệ cơ sở sản khoa                    </a>
+                </h3>
+                <div class="news-image-wrap">
+                    <img src="https://drive.google.com/thumbnail?id=1Ui4coxCvIFBmvzUnDh4_TpVJyH8z0VtI&amp;sz=w4096" alt="Ra huyết âm đạo trong thai kỳ: đừng tự đoán, hãy liên hệ cơ sở sản khoa" loading="lazy">
+                    <a class="category-tag"
+                       href="news/archive.html?department=Obstetrics_and_Gynecology"
+                       aria-label="Xem tin Sản Phụ Khoa">
+                        Sản Phụ Khoa                    </a>
+                </div>
                 <div class="news-content">
-                    <span class="category-tag">Nội Khoa</span>
-                    <h3 class="news-title">
-                        <a href="news/articles/NEWS_20260604230828/NEWS_20260604230828.html">
-                            Đau vai đông cứng ở người cao tuổi: đừng cố kéo giật, hãy tập đúng và khám đúng lúc                        </a>
-                    </h3>
-                    <p class="news-brief">Tập vai nhẹ nhàng và đúng hướng dẫn giúp người cao tuổi giảm đau, giữ vận động an toàn hơn.Giới thiệuĐau vai đông cứng, còn gọi là viêm dính bao kh...</p>
+                    <p class="news-brief">Ra huyết trong thai kỳ nên được trao đổi sớm với bác sĩ hoặc nữ hộ sinh để đánh giá an toàn.Giới thiệuThấy máu khi đang mang thai thường làm mẹ bầu...</p>
                 </div>
             </article>
                     <article class="news-item">
-                <img src="https://drive.google.com/thumbnail?id=120MaMNFeog-laLn7r5i-du-OzfYG_GAu&amp;sz=w4096" alt="Trầm cảm ở người cao tuổi: đừng xem là buồn bình thường hay “do tuổi già”" loading="lazy">
+                <h3 class="news-title news-card-title">
+                    <a href="news/articles/NEWS_20260606235159/NEWS_20260606235159.html">
+                        Trẻ em trong ngày nắng nóng: nhận biết sớm say nóng và phòng ngừa an toàn                    </a>
+                </h3>
+                <div class="news-image-wrap">
+                    <img src="https://drive.google.com/thumbnail?id=1jwFhUfjhQAXzSM2EbgwlXtsVd516dwkP&amp;sz=w4096" alt="Trẻ em trong ngày nắng nóng: nhận biết sớm say nóng và phòng ngừa an toàn" loading="lazy">
+                    <a class="category-tag"
+                       href="news/archive.html?department=Pediatrics"
+                       aria-label="Xem tin Nhi Khoa">
+                        Nhi Khoa                    </a>
+                </div>
                 <div class="news-content">
-                    <span class="category-tag">Nội Khoa</span>
-                    <h3 class="news-title">
-                        <a href="news/articles/NEWS_20260604230714/NEWS_20260604230714.html">
-                            Trầm cảm ở người cao tuổi: đừng xem là buồn bình thường hay “do tuổi già”                        </a>
-                    </h3>
-                    <p class="news-brief">Trao đổi sớm với bác sĩ và gia đình giúp người cao tuổi được hỗ trợ đúng lúc.Giới thiệuỞ người cao tuổi, trầm cảm không phải lúc nào cũng biểu hiện...</p>
+                    <p class="news-brief">Cha mẹ cho trẻ uống nước và nghỉ ở nơi mát trong ngày nắng nóng.Giới thiệuNắng nóng không chỉ làm trẻ khó chịu. Khi nhiệt độ cao, độ ẩm lớn hoặc tr...</p>
                 </div>
             </article>
                     <article class="news-item">
-                <img src="https://drive.google.com/thumbnail?id=12DF7X4DkW9D_cwOSbufqPS5pK5urjMXZ&amp;sz=w4096" alt="Đái tháo đường thai kỳ: vì sao cần tầm soát đúng hẹn?" loading="lazy">
+                <h3 class="news-title news-card-title">
+                    <a href="news/articles/NEWS_20260606234928/NEWS_20260606234928.html">
+                        Thiếu vitamin D ở người cao tuổi: yếu cơ, đau mỏi và nguy cơ té ngã                    </a>
+                </h3>
+                <div class="news-image-wrap">
+                    <img src="https://drive.google.com/thumbnail?id=1fCGfVC9h9JEj_DZZ78sbHYqL5yBesjfb&amp;sz=w4096" alt="Thiếu vitamin D ở người cao tuổi: yếu cơ, đau mỏi và nguy cơ té ngã" loading="lazy">
+                    <a class="category-tag"
+                       href="news/archive.html?department=Internal_Medicine"
+                       aria-label="Xem tin Nội Khoa">
+                        Nội Khoa                    </a>
+                </div>
                 <div class="news-content">
-                    <span class="category-tag">Sản Phụ Khoa</span>
-                    <h3 class="news-title">
-                        <a href="news/articles/NEWS_20260604230458/NEWS_20260604230458.html">
-                            Đái tháo đường thai kỳ: vì sao cần tầm soát đúng hẹn?                        </a>
-                    </h3>
-                    <p class="news-brief">Thai phụ trao đổi với bác sĩ trong buổi khám thai về tầm soát đường huyết.Giới thiệuĐái tháo đường thai kỳ là tình trạng đường huyết tăng được phát...</p>
+                    <p class="news-brief">Thiếu vitamin D có thể làm người cao tuổi yếu cơ và dễ té ngã hơn, nhưng cần đánh giá đúng thay vì tự uống liều cao.Giới thiệuVitamin D thường được...</p>
                 </div>
             </article>
             </div>
