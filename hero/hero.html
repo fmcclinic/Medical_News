@@ -206,7 +206,7 @@
             .hero-component-scope .hero {
                 aspect-ratio: auto;
                 height: auto;
-                min-height: 100vh;
+                min-height: 70vh;
             }
 
             .hero-component-scope .content {
@@ -236,8 +236,21 @@
             
             .hero-component-scope .strengths { margin-top: 1.5rem; }
 
+            @keyframes heroPanLeft {
+                from { background-position: 0% center; }
+                to   { background-position: 100% center; }
+            }
+
             .hero-component-scope .slide {
-                background-position: center center !important;
+                background-size: auto 100%;
+                background-position: 0% center;
+                transform: scale(1);
+            }
+
+            .hero-component-scope .slide.active {
+                transform: scale(1);
+                transition: opacity 1s ease-in-out;
+                animation: heroPanLeft 8s linear forwards;
             }
         }
     </style>
