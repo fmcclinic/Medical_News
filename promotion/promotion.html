@@ -88,6 +88,7 @@
 .theme-cervical .fmc-btn-outline { --outline-color: #ad1457; }
 .theme-breast-screening .fmc-btn-outline { --outline-color: #ad1457; }
 .theme-thyroid-advanced .fmc-btn-outline { --outline-color: #1565c0; }
+.theme-stroke-screening .fmc-btn-outline { --outline-color: #00656f; }
 
         /* STICKER (-100%) */
         .fmc-sticker {
@@ -126,6 +127,206 @@
         .fmc-info-box { background: rgba(0,0,0,0.03); border-radius: 8px; padding: 10px 15px; margin-bottom: 20px; border-left: 3px solid #ccc; font-size: 0.9rem; }
         
         /* --- THEMES (MÀU SẮC) --- */
+
+        /* Tầm soát đột quỵ */
+        .theme-stroke-screening {
+            min-height: 560px;
+            background: linear-gradient(135deg, #fff 0%, #f4fbfb 58%, #fff6f6 100%);
+            border: 1px solid #d8eeee;
+            overflow: hidden;
+        }
+        .theme-stroke-screening .fmc-col-img {
+            width: 44%;
+            background: #f8fbfb;
+        }
+        .theme-stroke-screening .fmc-col-img img {
+            object-fit: contain;
+            padding: 16px;
+        }
+        .theme-stroke-screening .fmc-col-info {
+            width: 56%;
+        }
+        .theme-stroke-screening .fmc-badge {
+            background: #e5f7f8;
+            color: #00656f;
+        }
+        .theme-stroke-screening .fmc-title {
+            color: #c1121f;
+            max-width: 620px;
+        }
+        .theme-stroke-screening .highlight {
+            color: #00656f;
+        }
+        .theme-stroke-screening .fmc-desc {
+            max-width: 560px;
+            color: #334155;
+            font-size: 1.08rem;
+            line-height: 1.65;
+        }
+        .theme-stroke-screening .fmc-countdown {
+            background: #fff;
+            border-color: #ffd0d0;
+            box-shadow: 0 10px 24px rgba(193, 18, 31, 0.08);
+        }
+        .theme-stroke-screening .fmc-time-val {
+            color: #c1121f;
+        }
+        .theme-stroke-screening .fmc-btn {
+            background: linear-gradient(90deg, #c1121f, #e5484d);
+        }
+        .theme-stroke-screening.stroke-animated .stroke-reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            animation: stroke-reveal-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            animation-delay: var(--stroke-delay, 0s);
+        }
+        .stroke-ecg-hero {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            width: fit-content;
+            max-width: 100%;
+            padding: 16px 20px;
+            margin: 8px 0 18px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #c1121f 0%, #e5484d 100%);
+            color: #fff;
+            box-shadow: 0 18px 34px rgba(193, 18, 31, 0.24);
+            animation: stroke-soft-glow 2.6s ease-in-out infinite;
+        }
+        .stroke-ecg-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.32);
+            font-size: 1.45rem;
+        }
+        .stroke-ecg-copy strong {
+            display: block;
+            font-size: 1.55rem;
+            line-height: 1.15;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+        .stroke-ecg-copy span {
+            display: block;
+            margin-top: 5px;
+            color: rgba(255,255,255,0.88);
+            font-weight: 700;
+        }
+        .stroke-intro {
+            max-width: 590px;
+            margin: 0 0 16px;
+            color: #334155;
+            font-size: 1rem;
+            line-height: 1.65;
+        }
+        .stroke-symptoms {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+        .stroke-symptoms span {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 10px;
+            border-radius: 999px;
+            background: #fff7f7;
+            border: 1px solid #ffd3d3;
+            color: #9f1239;
+            font-size: 0.86rem;
+            font-weight: 700;
+        }
+        .stroke-free-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        .stroke-free-item {
+            min-height: 96px;
+            padding: 12px 10px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.88);
+            border: 1px solid #d5eeee;
+            color: #00656f;
+            text-align: center;
+            box-shadow: 0 10px 22px rgba(0, 101, 111, 0.08);
+        }
+        .stroke-free-item i {
+            display: block;
+            margin-bottom: 8px;
+            color: #c1121f;
+            font-size: 1.2rem;
+        }
+        .stroke-free-item strong {
+            display: block;
+            font-size: 0.88rem;
+            line-height: 1.25;
+        }
+        .stroke-callout {
+            margin: 0 0 18px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            background: #f0fbfb;
+            border-left: 4px solid #00656f;
+            color: #0f4f57;
+            font-weight: 800;
+            line-height: 1.45;
+        }
+        .stroke-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+        .stroke-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 12px;
+            border-radius: 999px;
+            background: #f0fbfb;
+            color: #00656f;
+            border: 1px solid #cdebec;
+            font-size: 0.92rem;
+            font-weight: 700;
+        }
+        .stroke-note {
+            margin: 0 0 14px;
+            color: #64748b;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            font-size: 0.82rem;
+        }
+        @keyframes stroke-soft-glow {
+            0%, 100% {
+                transform: translateY(0);
+                box-shadow: 0 18px 34px rgba(193, 18, 31, 0.22);
+            }
+            50% {
+                transform: translateY(-2px);
+                box-shadow: 0 24px 42px rgba(193, 18, 31, 0.32);
+            }
+        }
+        @keyframes stroke-reveal-up {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         /* VIP (Vàng - Nâu) */
         .theme-vip { background: linear-gradient(100deg, #fffbf0 0%, #fff 40%); border: 2px solid #f1c40f; }
@@ -517,10 +718,50 @@
                 grid-template-columns: 1fr;
             }
             .fmc-list-grid { grid-template-columns: 1fr; }
+            .theme-stroke-screening .fmc-col-img,
+            .theme-stroke-screening .fmc-col-info {
+                width: 100%;
+            }
+            .theme-stroke-screening .fmc-col-img {
+                aspect-ratio: 9/16;
+            }
+            .theme-stroke-screening .fmc-col-img img {
+                padding: 10px;
+            }
+            .theme-stroke-screening .fmc-title {
+                font-size: 1.85rem;
+            }
+            .stroke-ecg-hero {
+                width: 100%;
+                align-items: flex-start;
+            }
+            .stroke-ecg-copy strong {
+                font-size: 1.25rem;
+            }
+            .stroke-free-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .theme-stroke-screening .fmc-countdown {
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .theme-stroke-screening .fmc-timer-group {
+                width: 100%;
+                justify-content: space-between;
+                gap: 8px;
+            }
         }
         @media (prefers-reduced-motion: reduce) {
+            .stroke-ecg-hero,
             .vip-discount-chip,
             .fmc-sticker {
+                animation: none;
+            }
+            .theme-stroke-screening.stroke-animated .stroke-reveal {
+                opacity: 1;
+                transform: none;
                 animation: none;
             }
         }
@@ -561,6 +802,78 @@
             .theme-free-checkup .fmc-col-img { aspect-ratio: 4/3; }
         }
     </style>
+
+    <div class="fmc-promo-card theme-stroke-screening stroke-animated">
+        <div class="fmc-col-img">
+            <img src="/promotion/Tam soat dot quy.jpg" alt="Miễn phí tầm soát nguy cơ đột quỵ do rung nhĩ bằng ECG tại Friend Medical Clinic, áp dụng cho tất cả mọi người từ ngày 01/07/2026 đến 30/07/2026.">
+        </div>
+        <div class="fmc-col-info">
+            <span class="fmc-badge stroke-reveal" style="--stroke-delay: 0.2s;">Chủ động phòng đột quỵ</span>
+            <h2 class="fmc-title stroke-reveal" style="--stroke-delay: 0.8s;">Tầm Soát Nguy Cơ <br><span class="highlight">Đột Quỵ Do Rung Nhĩ</span></h2>
+
+            <div class="stroke-reveal" style="--stroke-delay: 1.6s;">
+                <div class="stroke-ecg-hero" aria-label="Miễn phí ECG điện tâm đồ">
+                    <span class="stroke-ecg-icon"><i class="fas fa-heartbeat"></i></span>
+                    <span class="stroke-ecg-copy">
+                        <strong>Miễn phí ECG (Điện tâm đồ)</strong>
+                        <span>Nhanh chóng, an toàn, không xâm lấn</span>
+                    </span>
+                </div>
+            </div>
+
+            <p class="stroke-intro stroke-reveal" style="--stroke-delay: 2.6s;">Rung nhĩ là một nguyên nhân quan trọng làm tăng nguy cơ đột quỵ. Nếu có triệu chứng nghi ngờ, hãy bắt đầu tầm soát bằng hành động đơn giản: đo điện tâm đồ ECG.</p>
+
+            <div class="stroke-symptoms" aria-label="Triệu chứng nên tầm soát">
+                <span class="stroke-reveal" style="--stroke-delay: 3.4s;"><i class="fas fa-heart"></i> Hồi hộp</span>
+                <span class="stroke-reveal" style="--stroke-delay: 3.7s;"><i class="fas fa-wave-square"></i> Tim không đều</span>
+                <span class="stroke-reveal" style="--stroke-delay: 4.0s;"><i class="fas fa-lungs"></i> Khó thở</span>
+                <span class="stroke-reveal" style="--stroke-delay: 4.3s;"><i class="fas fa-user"></i> Chóng mặt</span>
+                <span class="stroke-reveal" style="--stroke-delay: 4.6s;"><i class="fas fa-battery-quarter"></i> Mệt bất thường</span>
+            </div>
+
+            <div class="stroke-free-grid" aria-label="Các kiểm tra miễn phí">
+                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 5.3s;">
+                    <i class="fas fa-heartbeat"></i>
+                    <strong>ECG</strong>
+                </div>
+                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 5.6s;">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <strong>Huyết áp</strong>
+                </div>
+                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 5.9s;">
+                    <i class="fas fa-tint"></i>
+                    <strong>Đường huyết đói</strong>
+                </div>
+                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 6.2s;">
+                    <i class="fas fa-weight"></i>
+                    <strong>BMI</strong>
+                </div>
+            </div>
+
+            <p class="stroke-callout stroke-reveal" style="--stroke-delay: 7.0s;">ECG, huyết áp, đường huyết đói và BMI giúp nhận diện các yếu tố liên quan nguy cơ đột quỵ. Hãy bắt đầu bằng một hành động đơn giản hôm nay.</p>
+
+            <div class="stroke-meta stroke-reveal" style="--stroke-delay: 7.8s;" aria-label="Thông tin chương trình">
+                <span><i class="far fa-calendar-alt"></i> 01/07 - 30/07/2026</span>
+                <span><i class="fas fa-heartbeat"></i> Kết quả nhanh</span>
+                <span><i class="fas fa-users"></i> Mọi người lớn</span>
+            </div>
+
+            <p class="stroke-note stroke-reveal" style="--stroke-delay: 8.6s;">Thời gian ưu đãi còn</p>
+            <div class="fmc-countdown stroke-reveal" style="--stroke-delay: 8.9s;" data-date="2026-07-30T23:59:59">
+                <div class="fmc-timer-group">
+                    <div class="fmc-time-box"><span class="fmc-time-val d">00</span><span class="fmc-time-lbl">Ngày</span></div>
+                    <div class="fmc-time-box"><span class="fmc-time-val h">00</span><span class="fmc-time-lbl">Giờ</span></div>
+                    <div class="fmc-time-box"><span class="fmc-time-val m">00</span><span class="fmc-time-lbl">Phút</span></div>
+                    <div class="fmc-time-box"><span class="fmc-time-val s">00</span><span class="fmc-time-lbl">Giây</span></div>
+                </div>
+            </div>
+
+            <a href="#contact-slot" class="fmc-btn stroke-reveal" style="--stroke-delay: 9.2s;" onclick="smoothScroll('contact-slot'); return false;">
+                <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
+                Đặt lịch hẹn ngay
+            </a>
+        </div>
+    </div>
 
     <div class="fmc-promo-card vip-banner-card">
         <div class="vip-banner-wrap">
