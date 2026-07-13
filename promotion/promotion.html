@@ -219,6 +219,23 @@
             color: rgba(255,255,255,0.88);
             font-weight: 700;
         }
+        .stroke-video-wrap {
+            width: 100%;
+            max-width: 590px;
+            aspect-ratio: 16 / 9;
+            margin: 0 0 16px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #071b22;
+            border: 1px solid #cdebec;
+            box-shadow: 0 14px 30px rgba(0, 101, 111, 0.14);
+        }
+        .stroke-video-wrap video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
         .stroke-intro {
             max-width: 590px;
             margin: 0 0 16px;
@@ -821,30 +838,37 @@
                 </div>
             </div>
 
-            <p class="stroke-intro stroke-reveal" style="--stroke-delay: 2.6s;">Rung nhĩ là một nguyên nhân quan trọng làm tăng nguy cơ đột quỵ. Nếu có triệu chứng nghi ngờ, hãy bắt đầu tầm soát bằng hành động đơn giản: đo điện tâm đồ ECG.</p>
+            <div class="stroke-video-wrap stroke-reveal" style="--stroke-delay: 2.4s;">
+                <video controls autoplay muted loop playsinline preload="metadata" aria-label="Video giới thiệu nguy cơ đột quỵ do rung nhĩ">
+                    <source src="/promotion/Dot%20quy%20do%20AF.mp4" type="video/mp4">
+                    Trình duyệt của bạn không hỗ trợ phát video.
+                </video>
+            </div>
+
+            <p class="stroke-intro stroke-reveal" style="--stroke-delay: 3.1s;">Rung nhĩ là một nguyên nhân quan trọng làm tăng nguy cơ đột quỵ. Nếu có triệu chứng nghi ngờ, hãy bắt đầu tầm soát bằng hành động đơn giản: đo điện tâm đồ ECG.</p>
 
             <div class="stroke-symptoms" aria-label="Triệu chứng nên tầm soát">
-                <span class="stroke-reveal" style="--stroke-delay: 3.4s;"><i class="fas fa-heart"></i> Hồi hộp</span>
-                <span class="stroke-reveal" style="--stroke-delay: 3.7s;"><i class="fas fa-wave-square"></i> Tim không đều</span>
-                <span class="stroke-reveal" style="--stroke-delay: 4.0s;"><i class="fas fa-lungs"></i> Khó thở</span>
-                <span class="stroke-reveal" style="--stroke-delay: 4.3s;"><i class="fas fa-user"></i> Chóng mặt</span>
-                <span class="stroke-reveal" style="--stroke-delay: 4.6s;"><i class="fas fa-battery-quarter"></i> Mệt bất thường</span>
+                <span class="stroke-reveal" style="--stroke-delay: 3.8s;"><i class="fas fa-heart"></i> Hồi hộp</span>
+                <span class="stroke-reveal" style="--stroke-delay: 4.1s;"><i class="fas fa-wave-square"></i> Tim không đều</span>
+                <span class="stroke-reveal" style="--stroke-delay: 4.4s;"><i class="fas fa-lungs"></i> Khó thở</span>
+                <span class="stroke-reveal" style="--stroke-delay: 4.7s;"><i class="fas fa-user"></i> Chóng mặt</span>
+                <span class="stroke-reveal" style="--stroke-delay: 5.0s;"><i class="fas fa-battery-quarter"></i> Mệt bất thường</span>
             </div>
 
             <div class="stroke-free-grid" aria-label="Các kiểm tra miễn phí">
-                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 5.3s;">
+                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 5.6s;">
                     <i class="fas fa-heartbeat"></i>
                     <strong>ECG</strong>
                 </div>
-                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 5.6s;">
+                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 5.9s;">
                     <i class="fas fa-tachometer-alt"></i>
                     <strong>Huyết áp</strong>
                 </div>
-                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 5.9s;">
+                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 6.2s;">
                     <i class="fas fa-tint"></i>
                     <strong>Đường huyết đói</strong>
                 </div>
-                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 6.2s;">
+                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 6.5s;">
                     <i class="fas fa-weight"></i>
                     <strong>BMI</strong>
                 </div>
@@ -868,10 +892,15 @@
                 </div>
             </div>
 
-            <a href="#contact-slot" class="fmc-btn stroke-reveal" style="--stroke-delay: 9.2s;" onclick="smoothScroll('contact-slot'); return false;">
-                <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
-                Đặt lịch hẹn ngay
-            </a>
+            <div class="fmc-btn-group stroke-reveal" style="--stroke-delay: 9.2s;">
+                <a href="http://127.0.0.1:5500/news/articles/NEWS_20260701124737/NEWS_20260701124737.html" class="fmc-btn fmc-btn-outline">
+                    <i class="fas fa-external-link-alt"></i> Xem chi tiết
+                </a>
+                <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
+                    <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
+                    Đặt lịch hẹn ngay
+                </a>
+            </div>
         </div>
     </div>
 
