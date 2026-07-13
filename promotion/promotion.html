@@ -238,34 +238,83 @@
         }
         .stroke-intro {
             max-width: 590px;
-            margin: 0 0 16px;
-            color: #334155;
-            font-size: 1rem;
-            line-height: 1.65;
+            margin: 0 0 14px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            background: #fff7f7;
+            border: 1px solid #ffd3d3;
+            color: #8f1222;
+            font-size: 1.03rem;
+            font-weight: 800;
+            line-height: 1.5;
         }
         .stroke-symptoms {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 18px;
+            gap: 10px;
+            margin-bottom: 14px;
         }
         .stroke-symptoms span {
             display: inline-flex;
             align-items: center;
-            gap: 7px;
-            padding: 8px 10px;
+            gap: 8px;
+            padding: 11px 14px;
             border-radius: 999px;
-            background: #fff7f7;
-            border: 1px solid #ffd3d3;
+            background: #fff;
+            border: 1px solid #ffc9c9;
             color: #9f1239;
-            font-size: 0.86rem;
+            font-size: 0.98rem;
+            font-weight: 900;
+            box-shadow: 0 8px 18px rgba(193, 18, 31, 0.09);
+        }
+        .stroke-symptoms span i {
+            color: #c1121f;
+            animation: stroke-icon-pulse 1.8s ease-in-out infinite;
+        }
+        .stroke-af-warning {
+            max-width: 590px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 0 0 16px;
+            padding: 14px 16px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #f0fbfb 0%, #fff 100%);
+            border: 1px solid #cdebec;
+            color: #0f4f57;
+            box-shadow: 0 12px 26px rgba(0, 101, 111, 0.1);
+        }
+        .stroke-af-warning i {
+            margin-top: 3px;
+            color: #c1121f;
+            font-size: 1.25rem;
+        }
+        .stroke-af-warning strong {
+            display: block;
+            color: #00656f;
+            font-size: 1.14rem;
+            line-height: 1.25;
+            margin-bottom: 4px;
+        }
+        .stroke-af-warning span {
+            display: block;
+            color: #475569;
             font-weight: 700;
+            line-height: 1.45;
         }
         .stroke-free-grid {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 10px;
             margin-bottom: 18px;
+        }
+        .stroke-free-title {
+            margin: 0 0 10px;
+            color: #00656f;
+            font-size: 0.92rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0;
         }
         .stroke-free-item {
             min-height: 96px;
@@ -285,8 +334,19 @@
         }
         .stroke-free-item strong {
             display: block;
-            font-size: 0.88rem;
+            font-size: 0.95rem;
             line-height: 1.25;
+        }
+        .stroke-free-item span {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 3px 7px;
+            border-radius: 999px;
+            background: #ffecec;
+            color: #b91c1c;
+            font-size: 0.72rem;
+            font-weight: 900;
+            text-transform: uppercase;
         }
         .stroke-callout {
             margin: 0 0 18px;
@@ -343,6 +403,10 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+        @keyframes stroke-icon-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.86; }
+            50% { transform: scale(1.16); opacity: 1; }
         }
 
         /* VIP (Vàng - Nâu) */
@@ -781,6 +845,9 @@
                 transform: none;
                 animation: none;
             }
+            .stroke-symptoms span i {
+                animation: none;
+            }
         }
 
         /* KHÁM MIỄN PHÍ */
@@ -825,58 +892,72 @@
             <img src="/promotion/Tam soat dot quy.jpg" alt="Miễn phí tầm soát nguy cơ đột quỵ do rung nhĩ bằng ECG tại Friend Medical Clinic, áp dụng cho tất cả mọi người từ ngày 01/07/2026 đến 30/07/2026.">
         </div>
         <div class="fmc-col-info">
-            <span class="fmc-badge stroke-reveal" style="--stroke-delay: 0.2s;">Chủ động phòng đột quỵ</span>
-            <h2 class="fmc-title stroke-reveal" style="--stroke-delay: 0.8s;">Tầm Soát Nguy Cơ <br><span class="highlight">Đột Quỵ Do Rung Nhĩ</span></h2>
+            <span class="fmc-badge stroke-reveal" style="--stroke-delay: 0.2s;">Khuyến mãi tầm soát miễn phí</span>
+            <h2 class="fmc-title stroke-reveal" style="--stroke-delay: 0.8s;">Có Dấu Hiệu <br><span class="highlight">Nghi Ngờ Rung Nhĩ?</span></h2>
 
-            <div class="stroke-reveal" style="--stroke-delay: 1.6s;">
+            <p class="stroke-intro stroke-reveal" style="--stroke-delay: 1.4s;">Nếu bạn có một trong các triệu chứng này, đừng chủ quan:</p>
+
+            <div class="stroke-symptoms" aria-label="Triệu chứng nên tầm soát">
+                <span class="stroke-reveal" style="--stroke-delay: 2.0s;"><i class="fas fa-heart"></i> Hồi hộp</span>
+                <span class="stroke-reveal" style="--stroke-delay: 2.3s;"><i class="fas fa-wave-square"></i> Tim không đều</span>
+                <span class="stroke-reveal" style="--stroke-delay: 2.6s;"><i class="fas fa-lungs"></i> Khó thở</span>
+                <span class="stroke-reveal" style="--stroke-delay: 2.9s;"><i class="fas fa-user"></i> Chóng mặt</span>
+                <span class="stroke-reveal" style="--stroke-delay: 3.2s;"><i class="fas fa-battery-quarter"></i> Mệt bất thường</span>
+            </div>
+
+            <div class="stroke-af-warning stroke-reveal" style="--stroke-delay: 3.8s;">
+                <i class="fas fa-exclamation-circle"></i>
+                <div>
+                    <strong>Có thể liên quan rung nhĩ</strong>
+                    <span>Rung nhĩ là yếu tố làm tăng nguy cơ đột quỵ. Kiểm tra sớm giúp bạn chủ động phòng ngừa.</span>
+                </div>
+            </div>
+
+            <div class="stroke-reveal" style="--stroke-delay: 4.6s;">
                 <div class="stroke-ecg-hero" aria-label="Miễn phí ECG điện tâm đồ">
                     <span class="stroke-ecg-icon"><i class="fas fa-heartbeat"></i></span>
                     <span class="stroke-ecg-copy">
                         <strong>Miễn phí ECG (Điện tâm đồ)</strong>
-                        <span>Nhanh chóng, an toàn, không xâm lấn</span>
+                        <span>Đến FMC kiểm tra nhanh, an toàn, không xâm lấn</span>
                     </span>
                 </div>
             </div>
 
-            <div class="stroke-video-wrap stroke-reveal" style="--stroke-delay: 2.4s;">
+            <div class="stroke-video-wrap stroke-reveal" style="--stroke-delay: 5.4s;">
                 <video controls autoplay muted loop playsinline preload="metadata" aria-label="Video giới thiệu nguy cơ đột quỵ do rung nhĩ">
                     <source src="/promotion/Dot%20quy%20do%20AF.mp4" type="video/mp4">
                     Trình duyệt của bạn không hỗ trợ phát video.
                 </video>
             </div>
 
-            <p class="stroke-intro stroke-reveal" style="--stroke-delay: 3.1s;">Rung nhĩ là một nguyên nhân quan trọng làm tăng nguy cơ đột quỵ. Nếu có triệu chứng nghi ngờ, hãy bắt đầu tầm soát bằng hành động đơn giản: đo điện tâm đồ ECG.</p>
-
-            <div class="stroke-symptoms" aria-label="Triệu chứng nên tầm soát">
-                <span class="stroke-reveal" style="--stroke-delay: 3.8s;"><i class="fas fa-heart"></i> Hồi hộp</span>
-                <span class="stroke-reveal" style="--stroke-delay: 4.1s;"><i class="fas fa-wave-square"></i> Tim không đều</span>
-                <span class="stroke-reveal" style="--stroke-delay: 4.4s;"><i class="fas fa-lungs"></i> Khó thở</span>
-                <span class="stroke-reveal" style="--stroke-delay: 4.7s;"><i class="fas fa-user"></i> Chóng mặt</span>
-                <span class="stroke-reveal" style="--stroke-delay: 5.0s;"><i class="fas fa-battery-quarter"></i> Mệt bất thường</span>
-            </div>
+            <p class="stroke-free-title stroke-reveal" style="--stroke-delay: 6.2s;">Miễn phí kiểm tra các yếu tố liên quan nguy cơ đột quỵ</p>
 
             <div class="stroke-free-grid" aria-label="Các kiểm tra miễn phí">
-                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 5.6s;">
+                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 6.5s;">
                     <i class="fas fa-heartbeat"></i>
                     <strong>ECG</strong>
+                    <span>Miễn phí</span>
                 </div>
-                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 5.9s;">
+                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 6.8s;">
                     <i class="fas fa-tachometer-alt"></i>
                     <strong>Huyết áp</strong>
+                    <span>Miễn phí</span>
                 </div>
-                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 6.2s;">
+                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 7.1s;">
                     <i class="fas fa-tint"></i>
                     <strong>Đường huyết đói</strong>
+                    <span>Miễn phí</span>
                 </div>
-                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 6.5s;">
+                <div class="stroke-free-item stroke-reveal" style="--stroke-delay: 7.4s;">
                     <i class="fas fa-weight"></i>
                     <strong>BMI</strong>
+                    <span>Miễn phí</span>
                 </div>
             </div>
 
-            <p class="stroke-callout stroke-reveal" style="--stroke-delay: 7.0s;">ECG, huyết áp, đường huyết đói và BMI giúp nhận diện các yếu tố liên quan nguy cơ đột quỵ. Hãy bắt đầu bằng một hành động đơn giản hôm nay.</p>
+            <p class="stroke-callout stroke-reveal" style="--stroke-delay: 8.0s;">Hãy đến phòng khám FMC để kiểm tra miễn phí và bắt đầu phòng chống đột quỵ bằng một hành động đơn giản.</p>
 
-            <div class="stroke-meta stroke-reveal" style="--stroke-delay: 7.8s;" aria-label="Thông tin chương trình">
+            <div class="stroke-meta stroke-reveal" style="--stroke-delay: 8.4s;" aria-label="Thông tin chương trình">
                 <span><i class="far fa-calendar-alt"></i> 01/07 - 30/07/2026</span>
                 <span><i class="fas fa-heartbeat"></i> Kết quả nhanh</span>
                 <span><i class="fas fa-users"></i> Mọi người lớn</span>
