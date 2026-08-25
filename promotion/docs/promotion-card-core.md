@@ -269,6 +269,9 @@ Giá, thời gian và điều kiện quan trọng phải có trong HTML, không 
 | `theme-male-checkup` | Active | Gói khám nam, tim mạch, đột quỵ |
 | `theme-female-checkup` | Active | Gói sức khỏe nữ |
 | `theme-premarital` | Active | Gói khám tiền hôn nhân |
+| `theme-allergy-screening` | Active | Tầm soát dị ứng IgE và rối loạn sau ăn |
+| `theme-first-prenatal` | Active | Khám thai và siêu âm thai lần đầu |
+| `theme-abdominal-ultrasound` | Active | Khám Nội và siêu âm bụng tổng quát |
 | `theme-vip` | Có thể tái sử dụng | Thành viên, gói cao cấp |
 | `theme-stroke-screening` | Legacy | Rung nhĩ và nguy cơ đột quỵ |
 | `theme-cervical` | Legacy | HPV, phụ khoa, cổ tử cung |
