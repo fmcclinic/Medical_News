@@ -1,4 +1,4 @@
-# Miễn phí khám Nội & siêu âm bụng tổng quát — ảnh hoạt động
+# Khám Nội miễn phí siêu âm bụng tổng quát — ảnh hoạt động
 
 - File đang dùng: `poster.png`.
 - Tỷ lệ: 4:3, 1448 × 1086 px.
