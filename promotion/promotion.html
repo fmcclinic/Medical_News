@@ -690,6 +690,279 @@
             font-size: 0.85rem; color: #00796b; font-weight: 600;
         }
 
+        /* GÓI KHÁM TỔNG QUÁT NAM (Xanh y tế - Teal) */
+        .theme-male-checkup {
+            min-height: 620px;
+            background: linear-gradient(135deg, #f2f9ff 0%, #ffffff 52%, #effcf9 100%);
+            border: 1px solid #b7d9e8;
+            overflow: hidden;
+        }
+        .theme-male-checkup .fmc-col-img {
+            width: 35%;
+            background: linear-gradient(180deg, #e9f6ff 0%, #dff5f1 100%);
+        }
+        .theme-male-checkup .fmc-col-img img {
+            object-fit: contain;
+            object-position: center;
+            padding: 16px;
+        }
+        .theme-male-checkup .fmc-col-info {
+            width: 65%;
+        }
+        .theme-male-checkup .fmc-badge {
+            background: #e1f2fb;
+            color: #075985;
+        }
+        .theme-male-checkup .fmc-title {
+            color: #164e73;
+            max-width: 680px;
+        }
+        .theme-male-checkup .highlight {
+            color: #00796b;
+        }
+        .theme-male-checkup .fmc-desc {
+            max-width: 680px;
+            color: #334155;
+            line-height: 1.6;
+        }
+        .theme-male-checkup .fmc-info-box {
+            background: #effaf8;
+            border-left-color: #14b8a6;
+            color: #155e75;
+        }
+        .theme-male-checkup .fmc-list-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px 16px;
+            color: #164e63;
+        }
+        .theme-male-checkup .fmc-list-grid i {
+            color: #0f9f8c;
+            margin-right: 5px;
+        }
+        .theme-male-checkup .fmc-btn {
+            background: linear-gradient(90deg, #087f8c, #0f9f8c);
+        }
+        .theme-male-checkup .fmc-btn-outline {
+            --outline-color: #075985;
+            background: var(--outline-color);
+        }
+        .theme-male-checkup .fmc-package-price {
+            text-decoration: line-through;
+            opacity: 0.65;
+        }
+        .fmc-package-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .fmc-package-card {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            padding: 16px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #c9e2ee;
+            box-shadow: 0 8px 18px rgba(8, 79, 107, 0.06);
+        }
+        .fmc-package-card.is-advanced {
+            background: linear-gradient(135deg, #effcf9 0%, #ffffff 100%);
+            border-color: #8ed8ca;
+        }
+        .fmc-package-card.is-complete {
+            background: linear-gradient(135deg, #eef5ff 0%, #ffffff 100%);
+            border-color: #91b9e4;
+        }
+        .fmc-package-heading {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        .fmc-package-heading strong {
+            color: #075985;
+            font-size: 1rem;
+        }
+        .fmc-package-card.is-advanced .fmc-package-heading strong {
+            color: #00796b;
+        }
+        .fmc-package-card.is-complete .fmc-package-heading strong {
+            color: #1d4ed8;
+        }
+        .fmc-package-name {
+            display: block;
+            margin-top: 2px;
+            color: #475569;
+            font-size: 0.86rem;
+            font-weight: 700;
+            line-height: 1.25;
+        }
+        .fmc-package-price-label {
+            display: block;
+            color: #64748b;
+            font-size: 0.75rem;
+            line-height: 1.3;
+        }
+        .fmc-package-price {
+            display: block;
+            margin-top: 3px;
+            color: #164e73;
+            font-size: 1.18rem;
+            line-height: 1.1;
+        }
+        .fmc-package-card.is-advanced .fmc-package-price {
+            color: #00796b;
+        }
+        .fmc-package-card.is-complete .fmc-package-price {
+            color: #1d4ed8;
+        }
+        .fmc-package-offer,
+        .fmc-package-pay {
+            display: block;
+            margin-top: 4px;
+            font-size: 0.78rem;
+            line-height: 1.3;
+        }
+        .fmc-package-offer { color: #0f766e; }
+        .fmc-package-pay {
+            color: #164e73;
+            font-weight: 800;
+        }
+        .fmc-package-card ul {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+            color: #475569;
+            font-size: 0.88rem;
+            line-height: 1.45;
+        }
+        .fmc-package-card li + li { margin-top: 4px; }
+        .fmc-package-card li::before { content: "- "; font-weight: 800; color: #0f9f8c; }
+
+        /* GÓI SỨC KHỎE NỮ (Hồng - Teal) */
+        .theme-female-checkup {
+            min-height: 620px;
+            background: linear-gradient(135deg, #fff5f9 0%, #ffffff 52%, #effcf9 100%);
+            border: 1px solid #f1c6d7;
+            overflow: hidden;
+        }
+        .theme-female-checkup .fmc-col-img {
+            width: 35%;
+            background: linear-gradient(180deg, #fff0f6 0%, #e9faf7 100%);
+        }
+        .theme-female-checkup .fmc-col-img img {
+            object-fit: cover;
+            object-position: center;
+            padding: 0;
+        }
+        .theme-female-checkup .fmc-col-info {
+            width: 65%;
+        }
+        .theme-female-checkup .fmc-badge {
+            background: #ffe5ee;
+            color: #ad1457;
+        }
+        .theme-female-checkup .fmc-title {
+            color: #7a2849;
+            max-width: 680px;
+        }
+        .theme-female-checkup .highlight {
+            color: #d63384;
+        }
+        .theme-female-checkup .fmc-desc {
+            max-width: 680px;
+            color: #5b4050;
+            line-height: 1.6;
+        }
+        .theme-female-checkup .fmc-info-box {
+            background: #fff1f5;
+            border-left-color: #ec407a;
+            color: #7a2849;
+        }
+        .theme-female-checkup .fmc-list-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px 16px;
+            color: #6b2440;
+        }
+        .theme-female-checkup .fmc-list-grid i {
+            color: #d63384;
+            margin-right: 5px;
+        }
+        .theme-female-checkup .fmc-btn {
+            background: linear-gradient(90deg, #d63384, #ad1457);
+        }
+        .theme-female-checkup .fmc-btn-outline {
+            --outline-color: #ad1457;
+            background: var(--outline-color);
+        }
+        .theme-female-checkup .fmc-package-card {
+            border-color: #f3d6e0;
+            background: linear-gradient(135deg, #fffafd 0%, #fff 100%);
+        }
+        .theme-female-checkup .fmc-package-card.is-advanced {
+            border-color: #eab3c9;
+            background: linear-gradient(135deg, #fff1f5 0%, #fff 100%);
+        }
+        .theme-female-checkup .fmc-package-card.is-complete {
+            border-color: #9ed8cf;
+            background: linear-gradient(135deg, #effcf9 0%, #fff 100%);
+        }
+        .theme-female-checkup .fmc-package-heading strong,
+        .theme-female-checkup .fmc-package-price {
+            color: #ad1457;
+        }
+        .theme-female-checkup .fmc-package-price {
+            text-decoration: line-through;
+            opacity: 0.65;
+        }
+        .theme-female-checkup .fmc-package-card.is-advanced .fmc-package-heading strong,
+        .theme-female-checkup .fmc-package-card.is-advanced .fmc-package-price {
+            color: #c2185b;
+        }
+        .theme-female-checkup .fmc-package-card.is-complete .fmc-package-heading strong,
+        .theme-female-checkup .fmc-package-card.is-complete .fmc-package-price {
+            color: #00796b;
+        }
+        .theme-female-checkup .fmc-package-card li::before { color: #d63384; }
+        .theme-female-checkup .fmc-package-offer { color: #c2185b; }
+        .theme-female-checkup .fmc-package-pay { color: #7a2849; }
+
+        /* GÓI KHÁM TIỀN HÔN NHÂN (Tím - Teal) */
+        .theme-premarital {
+            min-height: 620px;
+            background: linear-gradient(135deg, #f7f3ff 0%, #ffffff 52%, #effcf9 100%);
+            border: 1px solid #d9cdf4;
+            overflow: hidden;
+        }
+        .theme-premarital .fmc-col-img {
+            width: 35%;
+            background: linear-gradient(160deg, #ede7f6 0%, #daf5f1 100%);
+        }
+        .theme-premarital .fmc-col-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+        .theme-premarital .fmc-col-info { width: 65%; }
+        .theme-premarital .fmc-badge { background: #eee7fb; color: #64429a; }
+        .theme-premarital .fmc-title { color: #4c2d7f; }
+        .theme-premarital .highlight { color: #00796b; }
+        .theme-premarital .fmc-desc { max-width: 680px; color: #475569; line-height: 1.6; }
+        .theme-premarital .fmc-list-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px; color: #55406f; }
+        .theme-premarital .fmc-list-grid i { color: #7e57c2; margin-right: 5px; }
+        .theme-premarital .fmc-package-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .theme-premarital .fmc-package-card { border-color: #ded3f2; background: linear-gradient(135deg, #fcfaff 0%, #fff 100%); }
+        .theme-premarital .fmc-package-card.is-advanced { border-color: #b9ded8; background: linear-gradient(135deg, #effcf9 0%, #fff 100%); }
+        .theme-premarital .fmc-package-card.is-complete { border-color: #d7b6df; background: linear-gradient(135deg, #fff5fc 0%, #fff 100%); }
+        .theme-premarital .fmc-package-heading strong,
+        .theme-premarital .fmc-package-price { color: #5b3a93; }
+        .theme-premarital .fmc-package-card.is-advanced .fmc-package-heading strong,
+        .theme-premarital .fmc-package-card.is-advanced .fmc-package-price { color: #00796b; }
+        .theme-premarital .fmc-package-card.is-complete .fmc-package-heading strong,
+        .theme-premarital .fmc-package-card.is-complete .fmc-package-price { color: #ad4a83; }
+        .theme-premarital .fmc-package-card li::before { color: #7e57c2; }
+        .theme-premarital .fmc-info-box { background: #f4effd; border-left-color: #7e57c2; color: #523a78; }
+        .theme-premarital .fmc-btn { background: linear-gradient(90deg, #6d4aa1, #007f7a); }
+        .theme-premarital .fmc-btn-outline { --outline-color: #5b3a93; background: var(--outline-color); }
+
         .fmc-price-box {
             background: linear-gradient(135deg, #fff3c4 0%, #fff0f5 100%);
             border: 1px solid #f3bfd0;
@@ -833,6 +1106,34 @@
                 justify-content: space-between;
                 gap: 8px;
             }
+            .theme-male-checkup .fmc-col-img,
+            .theme-male-checkup .fmc-col-info,
+            .theme-premarital .fmc-col-img,
+            .theme-premarital .fmc-col-info {
+                width: 100%;
+            }
+            .theme-male-checkup .fmc-col-img {
+                aspect-ratio: 4/3;
+            }
+            .theme-male-checkup .fmc-title {
+                font-size: 1.85rem;
+            }
+            .theme-male-checkup .fmc-list-grid,
+            .theme-female-checkup .fmc-list-grid,
+            .fmc-package-grid {
+                grid-template-columns: 1fr;
+            }
+            .theme-female-checkup .fmc-col-img,
+            .theme-female-checkup .fmc-col-info {
+                width: 100%;
+            }
+            .theme-female-checkup .fmc-col-img {
+                aspect-ratio: 4/3;
+            }
+            .theme-premarital .fmc-col-img { aspect-ratio: 4/3; }
+            .theme-female-checkup .fmc-title {
+                font-size: 1.85rem;
+            }
         }
         @media (prefers-reduced-motion: reduce) {
             .stroke-ecg-hero,
@@ -887,9 +1188,10 @@
         }
     </style>
 
-    <div class="fmc-promo-card theme-stroke-screening stroke-animated">
+    <!-- Chương trình tầm soát miễn phí đã được gỡ bỏ. -->
+    <!--
         <div class="fmc-col-img">
-            <img src="/promotion/Tam soat dot quy.jpg" alt="Miễn phí tầm soát nguy cơ đột quỵ do rung nhĩ bằng ECG tại Friend Medical Clinic, áp dụng cho tất cả mọi người từ ngày 01/07/2026 đến 30/07/2026.">
+            <img src="/promotion/assets/images/legacy/stroke-screening/poster.jpg" alt="Miễn phí tầm soát nguy cơ đột quỵ do rung nhĩ bằng ECG tại Friend Medical Clinic, áp dụng cho tất cả mọi người từ ngày 01/07/2026 đến 30/07/2026.">
         </div>
         <div class="fmc-col-info">
             <span class="fmc-badge stroke-reveal" style="--stroke-delay: 0.2s;">Khuyến mãi tầm soát miễn phí</span>
@@ -925,7 +1227,7 @@
 
             <div class="stroke-video-wrap stroke-reveal" style="--stroke-delay: 5.4s;">
                 <video controls autoplay muted loop playsinline preload="metadata" aria-label="Video giới thiệu nguy cơ đột quỵ do rung nhĩ">
-                    <source src="/promotion/Dot%20quy%20do%20AF.mp4" type="video/mp4">
+                    <source src="/promotion/assets/videos/legacy/stroke-screening/atrial-fibrillation-stroke.mp4" type="video/mp4">
                     Trình duyệt của bạn không hỗ trợ phát video.
                 </video>
             </div>
@@ -984,10 +1286,276 @@
             </div>
         </div>
     </div>
+    -->
+
+    <div class="fmc-promo-card theme-male-checkup">
+        <div class="fmc-col-img">
+            <img src="/promotion/assets/images/active/male-checkup/poster.png" alt="Khám sức khỏe tổng quát và đánh giá nguy cơ tim mạch, đột quỵ cho nam giới">
+        </div>
+        <div class="fmc-col-info">
+            <span class="fmc-badge">GÓI KHÁM SỨC KHỎE</span>
+            <h2 class="fmc-title">
+                Gói khám tổng quát Nam<br>
+                <span class="highlight">Đánh giá nguy cơ tim mạch &amp; đột quỵ</span>
+            </h2>
+            <p class="fmc-desc">
+                Kiểm tra sức khỏe toàn diện dành cho nam giới, kết hợp đánh giá các yếu tố nguy cơ tim mạch và đột quỵ, giúp phát hiện sớm bất thường và xây dựng kế hoạch theo dõi phù hợp.
+            </p>
+
+            <div class="fmc-list-grid" aria-label="Nội dung đánh giá nguy cơ tim mạch và đột quỵ">
+                <span><i class="fas fa-heartbeat"></i> Đo huyết áp &amp; BMI</span>
+                <span><i class="fas fa-smoking"></i> Đánh giá hút thuốc &amp; lối sống</span>
+                <span><i class="fas fa-tint"></i> Đường huyết &amp; lipid máu</span>
+                <span><i class="fas fa-user-md"></i> Tư vấn nguy cơ cá nhân</span>
+            </div>
+
+            <div class="fmc-package-grid" aria-label="Ba lựa chọn gói khám sức khỏe nam">
+                <section class="fmc-package-card" aria-label="Gói 1 Nam Chủ động">
+                    <div class="fmc-package-heading">
+                        <strong>GÓI 1</strong>
+                        <span class="fmc-package-name">Nam Chủ động</span>
+                        <span>
+                            <span class="fmc-package-price-label">Giá tiền</span>
+                            <strong class="fmc-package-price">1.108.500 VNĐ</strong>
+                            <span class="fmc-package-offer">FMC hỗ trợ 550.000 VNĐ</span>
+                            <span class="fmc-package-pay">Chỉ còn: 558.500 VNĐ</span>
+                        </span>
+                    </div>
+                    <ul>
+                        <li>Khám tổng quát và đo các chỉ số sức khỏe cơ bản</li>
+                        <li>Kiểm tra nguy cơ tim mạch, đường huyết và mỡ máu</li>
+                        <li>Đánh giá sức khỏe gan, thận và tuyến giáp</li>
+                        <li>Điện tim, siêu âm và khám Tai Mũi Họng</li>
+                        <li>Bác sĩ tư vấn kết quả và hướng dẫn chăm sóc sức khỏe</li>
+                    </ul>
+                </section>
+                <section class="fmc-package-card is-advanced" aria-label="Gói Nâng cao">
+                    <div class="fmc-package-heading">
+                        <strong>GÓI 2</strong>
+                        <span class="fmc-package-name">Nam Nâng cao</span>
+                        <span>
+                            <span class="fmc-package-price-label">Giá tiền</span>
+                            <strong class="fmc-package-price">1.466.500 VNĐ</strong>
+                            <span class="fmc-package-offer">FMC hỗ trợ 650.000 VNĐ</span>
+                            <span class="fmc-package-pay">Chỉ còn: 816.500 VNĐ</span>
+                        </span>
+                    </div>
+                    <ul>
+                        <li>Bao gồm toàn bộ nội dung Gói 1</li>
+                        <li>Kiểm tra kỹ hơn đường huyết, chức năng gan và acid uric</li>
+                        <li>Khám Tai Mũi Họng bằng nội soi</li>
+                        <li>Điện tim và các siêu âm cần thiết</li>
+                        <li>Bác sĩ đánh giá nguy cơ tim mạch và tư vấn theo dõi</li>
+                    </ul>
+                </section>
+                <section class="fmc-package-card is-complete" aria-label="Gói 3 Nam Toàn diện">
+                    <div class="fmc-package-heading">
+                        <strong>GÓI 3</strong>
+                        <span class="fmc-package-name">Nam Toàn diện</span>
+                        <span>
+                            <span class="fmc-package-price-label">Giá tiền</span>
+                            <strong class="fmc-package-price">2.544.500 VNĐ</strong>
+                            <span class="fmc-package-offer">FMC hỗ trợ 950.000 VNĐ</span>
+                            <span class="fmc-package-pay">Chỉ còn: 1.594.500 VNĐ</span>
+                        </span>
+                    </div>
+                    <ul>
+                        <li>Bao gồm toàn bộ nội dung Gói 2</li>
+                        <li>Kiểm tra thêm tuyến giáp, viêm gan B và viêm gan C</li>
+                        <li>Xét nghiệm PSA hỗ trợ theo dõi sức khỏe tuyến tiền liệt</li>
+                        <li>Siêu âm tim</li>
+                        <li>Đánh giá chuyên sâu nguy cơ tim mạch và tư vấn kế hoạch theo dõi</li>
+                    </ul>
+                </section>
+            </div>
+
+            <div class="fmc-info-box">
+                <strong>Thời gian áp dụng:</strong> 28/8/2026 – 28/9/2026<br>
+                Bác sĩ trực tiếp tổng hợp kết quả và đánh giá các yếu tố nguy cơ tim mạch – đột quỵ để tư vấn kế hoạch theo dõi phù hợp.
+            </div>
+
+            <div class="fmc-btn-group">
+                <a href="/promo/goi-kham-tong-quat-nam.html" class="fmc-btn fmc-btn-outline">
+                    <i class="fas fa-external-link-alt"></i> Xem chi tiết
+                </a>
+                <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
+                    <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
+                    Đặt lịch hẹn ngay
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="fmc-promo-card theme-female-checkup">
+        <div class="fmc-col-img">
+            <img src="/promotion/assets/images/active/female-checkup/poster.png" alt="Khám sức khỏe phụ nữ với các gói khám phụ khoa và chăm sóc sức khỏe tuyến vú tại FMC">
+        </div>
+        <div class="fmc-col-info">
+            <span class="fmc-badge">GÓI KHÁM SỨC KHỎE NỮ</span>
+            <h2 class="fmc-title">
+                Gói sức khỏe Nữ<br>
+                <span class="highlight">Khám tổng quát, phụ khoa &amp; sức khỏe tuyến vú</span>
+            </h2>
+            <p class="fmc-desc">
+                Ba lựa chọn kết hợp khám sức khỏe tổng quát, xét nghiệm theo từng mức độ và dịch vụ phụ khoa chuyên biệt, giúp phụ nữ chủ động theo dõi sức khỏe toàn diện hơn.
+            </p>
+
+            <div class="fmc-list-grid" aria-label="Điểm nổi bật của các gói sức khỏe nữ">
+                <span><i class="fas fa-notes-medical"></i> Khám tổng quát &amp; xét nghiệm DIAG</span>
+                <span><i class="fas fa-female"></i> Khám phụ khoa theo từng gói</span>
+                <span><i class="fas fa-heart"></i> Gói 3 thêm khám vú &amp; siêu âm vú</span>
+                <span><i class="fas fa-percent"></i> Ưu đãi phụ khoa hiện tại 50%</span>
+            </div>
+
+            <div class="fmc-package-grid" aria-label="Ba lựa chọn gói sức khỏe nữ">
+                <section class="fmc-package-card" aria-label="Gói 1 Sức khỏe Nữ Chủ động">
+                    <div class="fmc-package-heading">
+                        <strong>GÓI 1</strong>
+                        <span class="fmc-package-name">Nữ Chủ động</span>
+                        <span>
+                            <span class="fmc-package-price-label">Giá tiền</span>
+                            <strong class="fmc-package-price">1.208.500 VNĐ</strong>
+                            <span class="fmc-package-offer">Ưu đãi FMC: 550.000 VNĐ</span>
+                            <span class="fmc-package-pay">Chỉ còn: 658.500 VNĐ</span>
+                        </span>
+                    </div>
+                    <ul>
+                        <li>Khám tổng quát và xét nghiệm nền tảng</li>
+                        <li>Khám phụ khoa thường, ưu đãi 50%</li>
+                        <li>ECG, siêu âm bụng và siêu âm tuyến giáp</li>
+                        <li>Tư vấn nguy cơ và lối sống</li>
+                    </ul>
+                </section>
+                <section class="fmc-package-card is-advanced" aria-label="Gói 2 Sức khỏe Nữ Nâng cao">
+                    <div class="fmc-package-heading">
+                        <strong>GÓI 2</strong>
+                        <span class="fmc-package-name">Nữ Nâng cao</span>
+                        <span>
+                            <span class="fmc-package-price-label">Giá tiền</span>
+                            <strong class="fmc-package-price">1.566.500 VNĐ</strong>
+                            <span class="fmc-package-offer">Ưu đãi FMC: 600.000 VNĐ</span>
+                            <span class="fmc-package-pay">Chỉ còn: 966.500 VNĐ</span>
+                        </span>
+                    </div>
+                    <ul>
+                        <li>Nội dung nền tảng Gói 1</li>
+                        <li>Thêm HbA1c, GGT và Acid uric</li>
+                        <li>Khám phụ khoa bằng công cụ hỗ trợ, ưu đãi 50%</li>
+                        <li>Thay thế khám phụ khoa thường</li>
+                    </ul>
+                </section>
+                <section class="fmc-package-card is-complete" aria-label="Gói 3 Sức khỏe Nữ Toàn diện">
+                    <div class="fmc-package-heading">
+                        <strong>GÓI 3</strong>
+                        <span class="fmc-package-name">Nữ Toàn diện</span>
+                        <span>
+                            <span class="fmc-package-price-label">Giá tiền</span>
+                            <strong class="fmc-package-price">2.692.500 VNĐ</strong>
+                            <span class="fmc-package-offer">Ưu đãi FMC: 1.050.000 VNĐ</span>
+                            <span class="fmc-package-pay">Chỉ còn: 1.642.500 VNĐ</span>
+                        </span>
+                    </div>
+                    <ul>
+                        <li>Nội dung nền tảng Gói 2</li>
+                        <li>Thêm TSH, HBsAg, Anti-HCV và siêu âm tim</li>
+                        <li>Khám vú + siêu âm tuyến vú, ưu đãi 50%</li>
+                    </ul>
+                </section>
+            </div>
+
+            <div class="fmc-info-box">
+                <strong>Thời gian áp dụng:</strong> 28/8/2026 – 28/9/2026
+            </div>
+
+            <div class="fmc-btn-group">
+                <a href="/promo/goi-suc-khoe-nu.html" class="fmc-btn fmc-btn-outline">
+                    <i class="fas fa-external-link-alt"></i> Xem chi tiết
+                </a>
+                <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
+                    <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
+                    Đặt lịch hẹn ngay
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="fmc-promo-card theme-premarital">
+        <div class="fmc-col-img">
+            <img src="/promotion/assets/images/active/premarital-checkup/poster.png" alt="Cặp đôi tư vấn khám sức khỏe tiền hôn nhân cùng bác sĩ tại FMC">
+        </div>
+        <div class="fmc-col-info">
+            <span class="fmc-badge">GÓI KHÁM TIỀN HÔN NHÂN</span>
+            <h2 class="fmc-title">
+                Gói khám Tiền hôn nhân<br>
+                <span class="highlight">Chủ động sức khỏe, vững vàng tương lai</span>
+            </h2>
+            <p class="fmc-desc">
+                Hai lựa chọn xét nghiệm dành cho nam và nữ, hỗ trợ kiểm tra sức khỏe sinh sản, bệnh truyền nhiễm và các chỉ số tổng quát trước khi kết hôn.
+            </p>
+
+            <div class="fmc-list-grid" aria-label="Điểm nổi bật của gói khám tiền hôn nhân">
+                <span><i class="fas fa-shield-virus"></i> Sàng lọc bệnh truyền nhiễm</span>
+                <span><i class="fas fa-heartbeat"></i> Đánh giá sức khỏe tổng quát</span>
+                <span><i class="fas fa-dna"></i> Xét nghiệm sức khỏe sinh sản</span>
+                <span><i class="fas fa-user-md"></i> Bác sĩ tư vấn kết quả</span>
+            </div>
+
+            <div class="fmc-package-grid" aria-label="Hai lựa chọn gói khám tiền hôn nhân">
+                <section class="fmc-package-card is-advanced" aria-label="Gói 1 Nam Chuyên sâu">
+                    <div class="fmc-package-heading">
+                        <strong>GÓI 1</strong>
+                        <span class="fmc-package-name">Nam Chuyên sâu</span>
+                        <span>
+                            <span class="fmc-package-price-label">Giá tiền</span>
+                            <strong class="fmc-package-price">3.128.000 VNĐ</strong>
+                        </span>
+                    </div>
+                    <ul>
+                        <li>Sàng lọc bệnh truyền nhiễm, viêm gan và nhóm máu</li>
+                        <li>Công thức máu, đường huyết, gan thận, mỡ máu và tuyến giáp</li>
+                        <li>Bổ sung Testosterone</li>
+                        <li>Phân tích tinh dịch đồ</li>
+                        <li>Đánh giá chuyên sâu sức khỏe sinh sản nam</li>
+                    </ul>
+                </section>
+                <section class="fmc-package-card is-complete" aria-label="Gói 2 Nữ Toàn diện">
+                    <div class="fmc-package-heading">
+                        <strong>GÓI 2</strong>
+                        <span class="fmc-package-name">Nữ Toàn diện</span>
+                        <span>
+                            <span class="fmc-package-price-label">Giá tiền</span>
+                            <strong class="fmc-package-price">5.822.000 VNĐ</strong>
+                        </span>
+                    </div>
+                    <ul>
+                        <li>Gói STDs 13+ tác nhân và viêm gan</li>
+                        <li>Rubella, HPV genotype PCR và Pap ThinPrep</li>
+                        <li>AMH và các hormon sinh sản nữ</li>
+                        <li>Xét nghiệm tổng quát, nhóm máu và tuyến giáp</li>
+                    </ul>
+                </section>
+            </div>
+
+            <div class="fmc-info-box">
+                <strong>Thời gian áp dụng:</strong> 28/8/2026 – 28/9/2026<br>
+                Phù hợp với các cặp đôi hoặc cá nhân chuẩn bị kết hôn, mong muốn chủ động kiểm tra sức khỏe và nhận tư vấn chuyên môn.
+            </div>
+
+            <div class="fmc-btn-group">
+                <a href="/promo/kham-tien-hon-nhan.html" class="fmc-btn fmc-btn-outline">
+                    <i class="fas fa-external-link-alt"></i> Xem chi tiết
+                </a>
+                <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;">
+                    <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
+                    Đặt lịch hẹn ngay
+                </a>
+            </div>
+        </div>
+    </div>
 
     <div class="fmc-promo-card vip-banner-card">
         <div class="vip-banner-wrap">
-            <img class="vip-banner-img" src="/promotion/vip-member-banner.png" alt="Chương trình Thẻ VIP Member: 12 lượt khám + 2 lượt khám miễn phí, tổng trị giá 2.800.000 VNĐ mỗi năm, ưu đãi còn 1.200.000 VNĐ mỗi năm, hotline 028 3535 5353." onerror="this.src='/promotion/vip-card-mockup.png'; this.closest('.vip-banner-card').classList.add('is-fallback');">
+            <img class="vip-banner-img" src="/promotion/assets/images/active/vip-member/banner.png" alt="Chương trình Thẻ VIP Member: 12 lượt khám + 2 lượt khám miễn phí, tổng trị giá 2.800.000 VNĐ mỗi năm, ưu đãi còn 1.200.000 VNĐ mỗi năm, hotline 028 3535 5353." onerror="this.onerror=null; this.src='/promotion/assets/images/active/vip-member/card.png'; this.closest('.vip-banner-card').classList.add('is-fallback');">
             <a class="vip-banner-hotspot vip-banner-detail" href="/promo/vip-member.html" aria-label="Xem chi tiết chương trình Thẻ VIP Member">
                 <span class="fmc-sr-only">Xem chi tiết</span>
             </a>
@@ -997,39 +1565,4 @@
         </div>
     </div>
 
-    <script>
-        {
-            const initPromotions = () => {
-                const timers = document.querySelectorAll('.fmc-countdown');
-                if (timers.length === 0) { setTimeout(initPromotions, 100); return; }
-
-                timers.forEach(timer => {
-                    const dateStr = timer.getAttribute('data-date');
-                    if (!dateStr) return;
-                    const targetDate = new Date(dateStr).getTime();
-                    const elD = timer.querySelector('.d'); const elH = timer.querySelector('.h');
-                    const elM = timer.querySelector('.m'); const elS = timer.querySelector('.s');
-
-                    const update = () => {
-                        const now = new Date().getTime();
-                        const dist = targetDate - now;
-                        if (dist < 0) {
-                            elD.innerText = "00"; elH.innerText = "00";
-                            elM.innerText = "00"; elS.innerText = "00"; return;
-                        }
-                        const d = Math.floor(dist / (1000 * 60 * 60 * 24));
-                        const h = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                        const m = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
-                        const s = Math.floor((dist % (1000 * 60)) / 1000);
-                        elD.innerText = d < 10 ? "0" + d : d;
-                        elH.innerText = h < 10 ? "0" + h : h;
-                        elM.innerText = m < 10 ? "0" + m : m;
-                        elS.innerText = s < 10 ? "0" + s : s;
-                    };
-                    update(); setInterval(update, 1000);
-                });
-            };
-            initPromotions();
-        }
-    </script>
 </div>

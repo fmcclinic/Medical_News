@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gói Sức Khỏe Nữ | Friend Medical Clinic</title>
+    <meta name="description" content="Chi tiết 3 gói sức khỏe nữ tại Friend Medical Clinic: Nữ Chủ động, Nữ Nâng cao và Nữ Toàn diện.">
+    <link rel="canonical" href="https://friendmedicalclinic.com/promo/goi-suc-khoe-nu.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Friend Medical Clinic">
+    <meta property="og:title" content="Gói Sức Khỏe Nữ – Khám tổng quát, phụ khoa &amp; sức khỏe tuyến vú">
+    <meta property="og:description" content="Xem chi tiết nội dung và cơ cấu 3 gói sức khỏe nữ tại FMC.">
+    <meta property="og:url" content="https://friendmedicalclinic.com/promo/goi-suc-khoe-nu.html">
+    <meta property="og:image" content="https://friendmedicalclinic.com/promotion/assets/images/active/female-checkup/poster.png">
+    <meta property="og:locale" content="vi_VN">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gói Sức Khỏe Nữ – Friend Medical Clinic">
+    <meta name="twitter:description" content="Chi tiết 3 gói khám tổng quát, chăm sóc phụ khoa và sức khỏe tuyến vú tại FMC.">
+    <meta name="twitter:image" content="https://friendmedicalclinic.com/promotion/assets/images/active/female-checkup/poster.png">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="promo-common.css">
+    <style>
+        .promo-page { padding-top: calc(36px + 80px); }
+        .female-detail-page {
+            --female-pink: #d63384;
+            --female-deep: #ad1457;
+            --female-teal: #00796b;
+            --female-navy: #7a2849;
+            --female-line: #f1c6d7;
+        }
+        .female-hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+            gap: 28px;
+            margin-bottom: 28px;
+            padding: 34px;
+            border: 1px solid var(--female-line);
+            border-radius: 20px;
+            background: linear-gradient(135deg, #fff5f9 0%, #fff 54%, #effcf9 100%);
+            box-shadow: 0 10px 30px rgba(173, 20, 87, 0.08);
+        }
+        .female-hero .badge { background: #ffe5ee; color: var(--female-deep); }
+        .female-hero .title { color: var(--female-navy); }
+        .female-hero .title span { color: var(--female-pink); }
+        .female-hero .lead { max-width: 760px; }
+        .female-hero-media {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 280px;
+            overflow: hidden;
+            border-radius: 16px;
+            background: linear-gradient(180deg, #fff0f6 0%, #e9faf7 100%);
+        }
+        .female-hero-media img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-height: 470px;
+            object-fit: cover;
+        }
+        .detail-section {
+            margin-bottom: 28px;
+            padding: 28px;
+            border: 1px solid #f2dce5;
+            border-radius: 18px;
+            background: #fff;
+            box-shadow: 0 8px 24px rgba(122, 40, 73, 0.05);
+        }
+        .detail-section h2 {
+            margin: 0 0 8px;
+            color: var(--female-navy);
+            font-size: 1.7rem;
+        }
+        .detail-section > p {
+            margin: 0 0 20px;
+            color: #5b4050;
+            line-height: 1.6;
+        }
+        .draft-note,
+        .note-box {
+            padding: 16px 18px;
+            border-left: 4px solid var(--female-pink);
+            border-radius: 10px;
+            background: #fff1f5;
+            color: var(--female-navy);
+            line-height: 1.55;
+        }
+        .draft-note { margin-top: 20px; }
+        .package-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+        .package-summary {
+            padding: 20px;
+            border: 1px solid #f3d6e0;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #fffafd 0%, #fff 100%);
+        }
+        .package-summary.is-advanced {
+            border-color: #eab3c9;
+            background: linear-gradient(135deg, #fff1f5 0%, #fff 100%);
+        }
+        .package-summary.is-complete {
+            border-color: #9ed8cf;
+            background: linear-gradient(135deg, #effcf9 0%, #fff 100%);
+        }
+        .package-summary h3 {
+            margin: 0 0 3px;
+            color: var(--female-deep);
+            font-size: 1.05rem;
+        }
+        .package-summary.is-advanced h3 { color: #c2185b; }
+        .package-summary.is-complete h3 { color: var(--female-teal); }
+        .package-summary .package-name {
+            display: block;
+            min-height: 42px;
+            color: #6b4052;
+            font-weight: 700;
+        }
+        .price-stack {
+            margin: 14px 0 16px;
+            padding: 13px 14px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.82);
+        }
+        .price-stack span,
+        .price-stack strong { display: block; }
+        .price-stack .price-label { color: #8d5771; font-size: 0.78rem; }
+        .price-stack .price-total {
+            margin-top: 3px;
+            color: var(--female-deep);
+            font-size: 1.3rem;
+        }
+        .price-stack .price-total del {
+            color: #8d5771;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+        .package-summary.is-advanced .price-total { color: #c2185b; }
+        .package-summary.is-complete .price-total { color: var(--female-teal); }
+        .price-stack .price-support {
+            margin-top: 6px;
+            color: #c2185b;
+            font-size: 0.86rem;
+        }
+        .price-stack .price-pay {
+            margin-top: 3px;
+            color: var(--female-navy);
+            font-size: 0.95rem;
+        }
+        .package-summary ul {
+            margin: 0;
+            padding-left: 18px;
+            color: #6b4052;
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+        .package-summary li + li { margin-top: 6px; }
+        .table-wrap {
+            overflow-x: auto;
+            border: 1px solid var(--female-line);
+            border-radius: 12px;
+        }
+        .package-table {
+            width: 100%;
+            min-width: 900px;
+            border-collapse: collapse;
+            color: #5b4050;
+            font-size: 0.91rem;
+        }
+        .package-table caption {
+            padding: 14px 16px;
+            color: var(--female-navy);
+            font-weight: 800;
+            text-align: left;
+            background: #fff1f5;
+        }
+        .package-table th,
+        .package-table td {
+            padding: 11px 12px;
+            border-bottom: 1px solid #f2dce5;
+            vertical-align: top;
+            text-align: left;
+        }
+        .package-table th {
+            color: #fff;
+            background: var(--female-deep);
+            font-weight: 800;
+        }
+        .package-table th:nth-child(4) { background: #c2185b; }
+        .package-table th:nth-child(5) { background: var(--female-teal); }
+        .package-table tbody tr:nth-child(even) { background: #fffafd; }
+        .package-table td:first-child { color: var(--female-deep); font-weight: 700; }
+        .package-table .included {
+            color: var(--female-pink);
+            font-weight: 900;
+            text-align: center;
+        }
+        .package-table .not-included {
+            color: #c4a1af;
+            text-align: center;
+        }
+        .package-table .price { white-space: nowrap; font-weight: 700; }
+        .female-detail-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        .female-detail-actions .btn-primary {
+            background: linear-gradient(90deg, #d63384, #ad1457);
+        }
+        .female-detail-actions .btn-secondary {
+            color: var(--female-deep);
+            background: #ffe5ee;
+        }
+        @media (max-width: 900px) {
+            .female-hero { grid-template-columns: 1fr; }
+            .female-hero-media { min-height: 240px; }
+            .package-summary-grid { grid-template-columns: 1fr; }
+            .package-summary .package-name { min-height: 0; }
+        }
+        @media (max-width: 600px) {
+            .female-hero,
+            .detail-section { padding: 20px; }
+            .female-hero .title { font-size: 2rem; }
+            .detail-section h2 { font-size: 1.4rem; }
+            .female-detail-actions .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-slot"></div>
+    <main class="promo-page female-detail-page">
+        <div class="promo-container">
+            <div class="promo-topbar">
+                <a class="promo-back" href="../index.html#promotion-slot">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Quay lại chương trình khuyến mãi</span>
+                </a>
+            </div>
+
+            <section class="female-hero" aria-labelledby="female-package-title">
+                <div>
+                    <span class="badge">GÓI KHÁM SỨC KHỎE NỮ</span>
+                    <h1 id="female-package-title" class="title">
+                        Gói sức khỏe Nữ<br>
+                        <span>Khám tổng quát, phụ khoa &amp; sức khỏe tuyến vú</span>
+                    </h1>
+                    <p class="lead">
+                        Ba lựa chọn chăm sóc sức khỏe phụ nữ, từ khám phụ khoa chủ động đến khám có công cụ hỗ trợ và bổ sung khám vú – siêu âm tuyến vú ở gói toàn diện.
+                    </p>
+                    <div class="draft-note">
+                        <strong>Nguyên tắc tính giá:</strong> cơ cấu mới đã bao gồm khám tổng quát, xét nghiệm DIAG và dịch vụ FMC theo từng gói. Dịch vụ phụ khoa hiện áp dụng ưu đãi 50%.
+                    </div>
+                    <div class="female-detail-actions">
+                        <a class="btn btn-primary" href="../index.html#contact-slot">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>Đặt lịch hẹn ngay</span>
+                        </a>
+                        <a class="btn btn-secondary" href="../index.html#promotion-slot">
+                            <i class="fas fa-arrow-left"></i>
+                            <span>Về trang khuyến mãi</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="female-hero-media">
+                    <img src="../promotion/assets/images/active/female-checkup/poster.png" alt="Khám sức khỏe phụ nữ với các dịch vụ phụ khoa và chăm sóc tuyến vú tại FMC">
+                </div>
+            </section>
+
+            <section class="detail-section" aria-labelledby="female-summary-title">
+                <h2 id="female-summary-title">Tổng quan 3 gói khám</h2>
+                <p>Giá tiền là tổng giá trị các hạng mục trong gói. Phần “FMC ưu đãi” đã áp dụng theo cơ cấu mới; mức “Chỉ còn” là giá sau ưu đãi.</p>
+                <div class="package-summary-grid">
+                    <article class="package-summary">
+                        <h3>Gói 1</h3>
+                        <span class="package-name">Sức khỏe Nữ Chủ động</span>
+                        <div class="price-stack">
+                            <span class="price-label">Giá tiền</span>
+                            <strong class="price-total"><del>1.208.500 VNĐ</del></strong>
+                            <span class="price-support">FMC ưu đãi: 550.000 VNĐ</span>
+                            <strong class="price-pay">Chỉ còn: 658.500 VNĐ</strong>
+                        </div>
+                        <ul>
+                            <li>Khám tổng quát và xét nghiệm nền tảng</li>
+                            <li>Khám phụ khoa thường, ưu đãi 50%</li>
+                            <li>ECG, siêu âm bụng và siêu âm tuyến giáp</li>
+                            <li>Tư vấn nguy cơ và lối sống</li>
+                        </ul>
+                    </article>
+                    <article class="package-summary is-advanced">
+                        <h3>Gói 2</h3>
+                        <span class="package-name">Sức khỏe Nữ Nâng cao</span>
+                        <div class="price-stack">
+                            <span class="price-label">Giá tiền</span>
+                            <strong class="price-total"><del>1.566.500 VNĐ</del></strong>
+                            <span class="price-support">FMC ưu đãi: 600.000 VNĐ</span>
+                            <strong class="price-pay">Chỉ còn: 966.500 VNĐ</strong>
+                        </div>
+                        <ul>
+                            <li>Nội dung nền tảng của Gói 1</li>
+                            <li>Thêm HbA1c, GGT và Acid uric</li>
+                            <li>Khám phụ khoa bằng công cụ hỗ trợ, ưu đãi 50%</li>
+                            <li>Thay thế khám phụ khoa thường</li>
+                        </ul>
+                    </article>
+                    <article class="package-summary is-complete">
+                        <h3>Gói 3</h3>
+                        <span class="package-name">Sức khỏe Nữ Toàn diện</span>
+                        <div class="price-stack">
+                            <span class="price-label">Giá tiền</span>
+                            <strong class="price-total"><del>2.692.500 VNĐ</del></strong>
+                            <span class="price-support">FMC ưu đãi: 1.050.000 VNĐ</span>
+                            <strong class="price-pay">Chỉ còn: 1.642.500 VNĐ</strong>
+                        </div>
+                        <ul>
+                            <li>Nội dung nền tảng của Gói 2</li>
+                            <li>Thêm TSH, HBsAg, Anti-HCV và siêu âm tim</li>
+                            <li>Khám vú + siêu âm tuyến vú, ưu đãi 50%</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section class="detail-section" aria-labelledby="female-table-title">
+                <h2 id="female-table-title">Bảng chi tiết các hạng mục</h2>
+                <p>✓: có trong gói. Dịch vụ cấp cao thay thế dịch vụ cấp thấp khi nâng gói; không cộng trùng hai dịch vụ.</p>
+                <div class="table-wrap">
+                    <table class="package-table">
+                        <caption>So sánh cơ cấu 3 gói sức khỏe nữ</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Hạng mục</th>
+                                <th scope="col">Giá niêm yết</th>
+                                <th scope="col">Gói 1<br>Nữ Chủ động</th>
+                                <th scope="col">Gói 2<br>Nữ Nâng cao</th>
+                                <th scope="col">Gói 3<br>Nữ Toàn diện</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Khám Nội tổng quát + tư vấn kết quả</td><td class="price">0 VNĐ</td><td class="included">✓</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>Đo huyết áp, mạch, SpO2 và BMI</td><td class="price">0 VNĐ</td><td class="included">✓</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>Công thức máu (CBC)</td><td class="price">113.000 VNĐ</td><td class="included">✓</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>Glucose đói</td><td class="price">36.000 VNĐ</td><td class="included">✓</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>HbA1c</td><td class="price">169.000 VNĐ</td><td class="not-included">—</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>Cholesterol toàn phần</td><td class="price">44.500 VNĐ</td><td class="included">✓</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>Triglyceride</td><td class="price">40.000 VNĐ</td><td class="included">✓</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>HDL-C</td><td class="price">62.500 VNĐ</td><td class="included">✓</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>LDL-C trực tiếp</td><td class="price">64.500 VNĐ</td><td class="included">✓</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>AST</td><td class="price">40.000 VNĐ</td><td class="included">✓</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>ALT</td><td class="price">40.000 VNĐ</td><td class="included">✓</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>GGT</td><td class="price">47.000 VNĐ</td><td class="not-included">—</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>Creatinine + eGFR</td><td class="price">36.000 VNĐ</td><td class="included">✓</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>Urea</td><td class="price">40.000 VNĐ</td><td class="included">✓</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>Acid uric</td><td class="price">42.000 VNĐ</td><td class="not-included">—</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>TSH</td><td class="price">151.000 VNĐ</td><td class="not-included">—</td><td class="not-included">—</td><td class="included">✓</td></tr>
+                            <tr><td>Tổng phân tích nước tiểu tự động</td><td class="price">42.000 VNĐ</td><td class="included">✓</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>HBsAg định tính</td><td class="price">140.000 VNĐ</td><td class="not-included">—</td><td class="not-included">—</td><td class="included">✓</td></tr>
+                            <tr><td>HCV Ab (Anti-HCV)</td><td class="price">235.000 VNĐ</td><td class="not-included">—</td><td class="not-included">—</td><td class="included">✓</td></tr>
+                            <tr><td>Điện tim 12 chuyển đạo (ECG)</td><td class="price">50.000 VNĐ</td><td class="included">✓</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>Siêu âm bụng</td><td class="price">200.000 VNĐ</td><td class="included">✓</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>Siêu âm tuyến giáp</td><td class="price">200.000 VNĐ</td><td class="included">✓</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>Siêu âm tim</td><td class="price">300.000 VNĐ</td><td class="not-included">—</td><td class="not-included">—</td><td class="included">✓</td></tr>
+                            <tr><td>Khám phụ khoa thường</td><td class="price">200.000 VNĐ</td><td class="included">✓</td><td class="not-included">—</td><td class="not-included">—</td></tr>
+                            <tr><td>Khám phụ khoa bằng công cụ hỗ trợ (siêu âm đầu dò hoặc nội soi cổ tử cung)</td><td class="price">300.000 VNĐ</td><td class="not-included">—</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>Khám vú + siêu âm tuyến vú</td><td class="price">300.000 VNĐ</td><td class="not-included">—</td><td class="not-included">—</td><td class="included">✓</td></tr>
+                            <tr><td>Đánh giá nguy cơ tim mạch</td><td class="price">0 VNĐ</td><td class="included">✓</td><td class="included">✓</td><td class="included">✓</td></tr>
+                            <tr><td>Tư vấn dinh dưỡng, vận động</td><td class="price">0 VNĐ</td><td class="included">✓</td><td class="included">✓</td><td class="included">✓</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <div class="female-detail-actions">
+                <a class="btn btn-primary" href="../index.html#contact-slot">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Đặt lịch hẹn ngay</span>
+                </a>
+                <a class="btn btn-secondary" href="../index.html#promotion-slot">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Quay lại khuyến mãi</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        async function loadComponent(elementId, path) {
+            try {
+                const response = await fetch(path);
+                if (!response.ok) {
+                    console.error('Load component failed:', path, response.statusText);
+                    return;
+                }
+                const html = await response.text();
+                const container = document.getElementById(elementId);
+                if (!container) return;
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = html;
+                const scripts = tempDiv.querySelectorAll('script');
+                scripts.forEach(script => script.remove());
+                container.innerHTML = tempDiv.innerHTML;
+                scripts.forEach(oldScript => {
+                    const newScript = document.createElement('script');
+                    Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                    if (oldScript.src) {
+                        newScript.src = oldScript.src;
+                    } else {
+                        newScript.textContent = oldScript.textContent;
+                    }
+                    document.body.appendChild(newScript);
+                });
+            } catch (error) {
+                console.error('Error loading component', error);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            loadComponent('header-slot', '../banner.html');
+        });
+    </script>
+</body>
+</html>
