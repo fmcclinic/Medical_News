@@ -983,7 +983,9 @@
         .theme-allergy-screening .fmc-package-card.is-advanced { border-color: #75c9c1; background: linear-gradient(135deg, #e9fbf8, #fff); }
         .theme-allergy-screening .fmc-package-card.is-complete { border-color: #b7cde8; background: linear-gradient(135deg, #f4f8ff, #fff); }
         .theme-allergy-screening .fmc-package-heading strong, .theme-allergy-screening .fmc-package-price { color: #08756f; }
-        .theme-allergy-screening .fmc-package-price { text-decoration: line-through; opacity: .7; }
+        .theme-allergy-screening .fmc-package-price { text-decoration: none; opacity: 1; }
+        .theme-allergy-screening .fmc-package-price-label { color: #5d747c; }
+        .theme-allergy-screening .fmc-package-offer { display: none; }
         .theme-allergy-screening .fmc-package-card.is-advanced .fmc-package-heading strong, .theme-allergy-screening .fmc-package-card.is-advanced .fmc-package-price { color: #007c74; }
         .theme-allergy-screening .fmc-package-card.is-complete .fmc-package-heading strong, .theme-allergy-screening .fmc-package-card.is-complete .fmc-package-price { color: #315f9b; }
         .theme-allergy-screening .fmc-package-card li::before { color: #009688; }
@@ -1036,6 +1038,111 @@
         .abdominal-free-box strong { display:block; color:#17648a; font-size:.8rem; letter-spacing:.08em; }
         .abdominal-free-box span { display:block; margin-top:5px; color:#195779; font-size:1.5rem; font-weight:900; }
         .abdominal-free-box b { display:block; margin-top:7px; color:#008d84; font-size:2rem; line-height:1; }
+
+        /* TẦM SOÁT CHỨC NĂNG TUYẾN GIÁP */
+        .theme-thyroid-function { min-height:620px; background:linear-gradient(135deg,#f3faff 0%,#fff 54%,#eef8ff 100%); border:1px solid #bfdef3; overflow:hidden; }
+        .theme-thyroid-function .fmc-col-img { width:35%; background:linear-gradient(160deg,#e8f5ff,#e9f7fa); }
+        .theme-thyroid-function .fmc-col-img img { width:100%; height:100%; object-fit:cover; object-position:center; }
+        .theme-thyroid-function .fmc-col-info { width:65%; }
+        .theme-thyroid-function .fmc-badge { background:#e0f2fe; color:#17648a; }
+        .theme-thyroid-function .fmc-title { color:#195779; }
+        .theme-thyroid-function .highlight { color:#1685a7; }
+        .theme-thyroid-function .fmc-desc { max-width:680px; color:#435967; line-height:1.6; }
+        .theme-thyroid-function .fmc-list-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 16px; color:#275d70; }
+        .theme-thyroid-function .fmc-list-grid i { color:#1685a7; margin-right:5px; }
+        .theme-thyroid-function .fmc-info-box { background:#eef8ff; border-left-color:#1685a7; color:#235c76; }
+        .theme-thyroid-function .fmc-btn { background:linear-gradient(90deg,#176f99,#1685a7); }
+        .theme-thyroid-function .fmc-btn-outline { --outline-color:#17648a; background:var(--outline-color); }
+        .thyroid-function-price { margin:20px 0; padding:18px 20px; border:1px solid #bddbea; border-radius:16px; background:linear-gradient(135deg,#f4fbff,#fff); }
+        .thyroid-function-price strong { display:block; color:#17648a; font-size:.8rem; letter-spacing:.08em; }
+        .thyroid-function-price b { display:block; margin-top:5px; color:#0d5f87; font-size:2rem; line-height:1.05; }
+        .thyroid-function-price span { display:block; margin-top:6px; color:#477080; font-size:.9rem; }
+        .theme-kidney-urinary { min-height:570px; background:linear-gradient(135deg,#f1fbfb 0%,#fff 55%,#edf6ff 100%); border:1px solid #b9dde0; overflow:hidden; }
+        .theme-kidney-urinary .fmc-col-img { width:35%; background:#eaf7f7; }
+        .theme-kidney-urinary .fmc-col-img img { width:100%; height:100%; object-fit:cover; object-position:center; }
+        .theme-kidney-urinary .fmc-col-info { width:65%; }
+        .theme-kidney-urinary .fmc-badge { background:#dff3f0; color:#126c74; }
+        .theme-kidney-urinary .fmc-title { color:#175b70; }
+        .theme-kidney-urinary .highlight { color:#078b83; }
+        .theme-kidney-urinary .fmc-desc { max-width:680px; color:#435f69; line-height:1.6; }
+        .theme-kidney-urinary .fmc-list-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 16px; color:#285d68; }
+        .theme-kidney-urinary .fmc-list-grid i { color:#078b83; margin-right:5px; }
+        .theme-kidney-urinary .fmc-info-box { background:#effafa; border-left-color:#078b83; color:#245d69; }
+        .theme-kidney-urinary .fmc-btn { background:linear-gradient(90deg,#167b8a,#078b83); }
+        .theme-kidney-urinary .fmc-btn-outline { --outline-color:#167b8a; background:var(--outline-color); }
+        .kidney-urinary-price { margin:20px 0; padding:18px 20px; border:1px solid #b9dde0; border-radius:16px; background:linear-gradient(135deg,#f2fbfb,#fff); }
+        .kidney-urinary-price strong { display:block; color:#126c74; font-size:.8rem; letter-spacing:.08em; }
+        .kidney-urinary-price b { display:block; margin-top:5px; color:#175b70; font-size:2rem; line-height:1.05; }
+        .kidney-urinary-price span { display:block; margin-top:6px; color:#477080; font-size:.9rem; }
+        .theme-liver-biliary { min-height:570px; background:linear-gradient(135deg,#f4faf2 0%,#fff 55%,#f5f1e7 100%); border:1px solid #cbdcb6; overflow:hidden; }
+        .theme-liver-biliary .fmc-col-img { width:35%; background:#eef5e8; }
+        .theme-liver-biliary .fmc-col-img img { width:100%; height:100%; object-fit:cover; object-position:center; }
+        .theme-liver-biliary .fmc-col-info { width:65%; }
+        .theme-liver-biliary .fmc-badge { background:#e3efd7; color:#496b32; }
+        .theme-liver-biliary .fmc-title { color:#405f2c; }
+        .theme-liver-biliary .highlight { color:#8a6122; }
+        .theme-liver-biliary .fmc-desc { max-width:680px; color:#52624a; line-height:1.6; }
+        .theme-liver-biliary .fmc-list-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 16px; color:#4d663d; }
+        .theme-liver-biliary .fmc-list-grid i { color:#789d51; margin-right:5px; }
+        .theme-liver-biliary .fmc-info-box { background:#f4f8ed; border-left-color:#789d51; color:#506441; }
+        .theme-liver-biliary .fmc-btn { background:linear-gradient(90deg,#587d37,#789d51); }
+        .theme-liver-biliary .fmc-btn-outline { --outline-color:#587d37; background:var(--outline-color); }
+        .liver-biliary-price { margin:20px 0; padding:18px 20px; border:1px solid #cbdcb6; border-radius:16px; background:linear-gradient(135deg,#f6faef,#fff); }
+        .liver-biliary-price strong { display:block; color:#496b32; font-size:.8rem; letter-spacing:.08em; }
+        .liver-biliary-price b { display:block; margin-top:5px; color:#405f2c; font-size:2rem; line-height:1.05; }
+        .liver-biliary-price span { display:block; margin-top:6px; color:#607455; font-size:.9rem; }
+        .theme-diabetes-risk { min-height:570px; background:linear-gradient(135deg,#f1f8fb 0%,#fff 55%,#f4f0fb 100%); border:1px solid #bddbe8; overflow:hidden; }
+        .theme-diabetes-risk .fmc-col-img { width:35%; background:#eaf5f8; }
+        .theme-diabetes-risk .fmc-col-img img { width:100%; height:100%; object-fit:cover; object-position:center; }
+        .theme-diabetes-risk .fmc-col-info { width:65%; }
+        .theme-diabetes-risk .fmc-badge { background:#dceff5; color:#21647a; }
+        .theme-diabetes-risk .fmc-title { color:#195d75; }
+        .theme-diabetes-risk .highlight { color:#78558c; }
+        .theme-diabetes-risk .fmc-desc { max-width:680px; color:#476775; line-height:1.6; }
+        .theme-diabetes-risk .fmc-list-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 16px; color:#356878; }
+        .theme-diabetes-risk .fmc-list-grid i { color:#4b9bb4; margin-right:5px; }
+        .theme-diabetes-risk .fmc-info-box { background:#eef8fb; border-left-color:#4b9bb4; color:#416b79; }
+        .theme-diabetes-risk .fmc-btn { background:linear-gradient(90deg,#287b98,#4b9bb4); }
+        .theme-diabetes-risk .fmc-btn-outline { --outline-color:#287b98; background:var(--outline-color); }
+        .diabetes-risk-price { margin:20px 0; padding:18px 20px; border:1px solid #bddbe8; border-radius:16px; background:linear-gradient(135deg,#f3fbfd,#fff); }
+        .diabetes-risk-price strong { display:block; color:#21647a; font-size:.8rem; letter-spacing:.08em; }
+        .diabetes-risk-price b { display:block; margin-top:5px; color:#195d75; font-size:2rem; line-height:1.05; }
+        .diabetes-risk-price span { display:block; margin-top:6px; color:#54727d; font-size:.9rem; }
+        .theme-cardiovascular-vascular { min-height:570px; background:linear-gradient(135deg,#f2f6fb 0%,#fff 55%,#f7f2f6 100%); border:1px solid #c6d8ea; overflow:hidden; }
+        .theme-cardiovascular-vascular .fmc-col-img { width:35%; background:#eaf1f8; }
+        .theme-cardiovascular-vascular .fmc-col-img img { width:100%; height:100%; object-fit:cover; object-position:center; }
+        .theme-cardiovascular-vascular .fmc-col-info { width:65%; }
+        .theme-cardiovascular-vascular .fmc-badge { background:#e1edf8; color:#285b86; }
+        .theme-cardiovascular-vascular .fmc-title { color:#184c78; }
+        .theme-cardiovascular-vascular .highlight { color:#9a4d66; }
+        .theme-cardiovascular-vascular .fmc-desc { max-width:680px; color:#476477; line-height:1.6; }
+        .theme-cardiovascular-vascular .fmc-list-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 16px; color:#38627f; }
+        .theme-cardiovascular-vascular .fmc-list-grid i { color:#4e8dbb; margin-right:5px; }
+        .theme-cardiovascular-vascular .fmc-info-box { background:#eff6fb; border-left-color:#4e8dbb; color:#416779; }
+        .theme-cardiovascular-vascular .fmc-btn { background:linear-gradient(90deg,#246b9b,#559dca); }
+        .theme-cardiovascular-vascular .fmc-btn-outline { --outline-color:#246b9b; background:var(--outline-color); }
+        .cardiovascular-vascular-price { margin:20px 0; padding:18px 20px; border:1px solid #c6d8ea; border-radius:16px; background:linear-gradient(135deg,#f3f8fc,#fff); }
+        .cardiovascular-vascular-price strong { display:block; color:#285b86; font-size:.8rem; letter-spacing:.08em; }
+        .cardiovascular-vascular-price b { display:block; margin-top:5px; color:#184c78; font-size:2rem; line-height:1.05; }
+        .cardiovascular-vascular-price span { display:block; margin-top:6px; color:#547080; font-size:.9rem; }
+
+        .theme-parasite-screening { min-height:570px; background:linear-gradient(135deg,#f1fbf8 0%,#fff 55%,#f2f6ff 100%); border:1px solid #b9ddd6; overflow:hidden; }
+        .theme-parasite-screening .fmc-col-img { width:35%; background:#e8f7f3; }
+        .theme-parasite-screening .fmc-col-img img { width:100%; height:100%; object-fit:cover; object-position:center; }
+        .theme-parasite-screening .fmc-col-info { width:65%; }
+        .theme-parasite-screening .fmc-badge { background:#dff3ee; color:#126f69; }
+        .theme-parasite-screening .fmc-title { color:#17566c; }
+        .theme-parasite-screening .highlight { color:#008c7d; }
+        .theme-parasite-screening .fmc-desc { max-width:680px; color:#435f69; line-height:1.6; }
+        .theme-parasite-screening .fmc-list-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 16px; color:#285d68; }
+        .theme-parasite-screening .fmc-list-grid i { color:#008c7d; margin-right:5px; }
+        .theme-parasite-screening .fmc-info-box { background:#effaf7; border-left-color:#008c7d; color:#245d69; }
+        .theme-parasite-screening .fmc-btn { background:linear-gradient(90deg,#167b78,#008c7d); }
+        .theme-parasite-screening .fmc-btn-outline { --outline-color:#167b78; background:var(--outline-color); }
+        .parasite-screening-price { margin:20px 0; padding:18px 20px; border:1px solid #b9ddd6; border-radius:16px; background:linear-gradient(135deg,#f2fbf8,#fff); }
+        .parasite-screening-price strong { display:block; color:#126f69; font-size:.8rem; letter-spacing:.08em; }
+        .parasite-screening-price b { display:block; margin-top:5px; color:#17566c; font-size:2rem; line-height:1.05; }
+        .parasite-screening-price span { display:block; margin-top:6px; color:#477080; font-size:.9rem; }
 
         .fmc-price-box {
             background: linear-gradient(135deg, #fff3c4 0%, #fff0f5 100%);
@@ -1192,6 +1299,14 @@
             .theme-abdominal-ultrasound .fmc-col-info {
                 width: 100%;
             }
+            .theme-thyroid-function .fmc-col-img,
+            .theme-thyroid-function .fmc-col-info {
+                width: 100%;
+            }
+            .theme-parasite-screening .fmc-col-img,
+            .theme-parasite-screening .fmc-col-info {
+                width: 100%;
+            }
             .theme-male-checkup .fmc-col-img {
                 aspect-ratio: 4/3;
             }
@@ -1214,6 +1329,8 @@
             .theme-allergy-screening .fmc-col-img { aspect-ratio: 4/3; }
             .theme-first-prenatal .fmc-col-img { aspect-ratio:4/3; }
             .theme-abdominal-ultrasound .fmc-col-img { aspect-ratio:4/3; }
+            .theme-thyroid-function .fmc-col-img { aspect-ratio:4/3; }
+            .theme-parasite-screening .fmc-col-img { aspect-ratio:4/3; }
             .theme-female-checkup .fmc-title {
                 font-size: 1.85rem;
             }
@@ -1370,6 +1487,129 @@
         </div>
     </div>
     -->
+
+    <div class="fmc-promo-card theme-thyroid-function">
+        <div class="fmc-col-img">
+            <img src="/promotion/assets/images/active/thyroid-function-screening/poster.png" alt="Bác sĩ thực hiện siêu âm tuyến giáp cho khách hàng tại phòng khám">
+        </div>
+        <div class="fmc-col-info">
+            <span class="fmc-badge">TẦM SOÁT TUYẾN GIÁP</span>
+            <h2 class="fmc-title">Gói Tầm soát Chức năng, U bướu Tuyến giáp<br><span class="highlight">Đánh giá cấu trúc &amp; chức năng</span></h2>
+            <p class="fmc-desc">Kết hợp khám chuyên khoa Nội, siêu âm tuyến giáp, xét nghiệm TSH, FT3, FT4 và công thức máu để bác sĩ có thêm thông tin đánh giá và tư vấn bước theo dõi phù hợp.</p>
+            <div class="fmc-list-grid" aria-label="Nội dung gói tầm soát chức năng tuyến giáp">
+                <span><i class="fas fa-user-md"></i> Khám chuyên khoa Nội</span>
+                <span><i class="fas fa-wave-square"></i> Siêu âm tuyến giáp</span>
+                <span><i class="fas fa-vial"></i> TSH, FT3 và FT4</span>
+                <span><i class="fas fa-notes-medical"></i> Công thức máu toàn bộ</span>
+            </div>
+            <div class="thyroid-function-price"><strong>GIÁ TRỌN GÓI</strong><b>911.500 VNĐ</b><span>Gồm 6 hạng mục khám, xét nghiệm và siêu âm.</span></div>
+            <div class="fmc-info-box"><strong>Thời gian áp dụng:</strong> 28/09/2026 – 28/10/2026<br>Phù hợp khi có triệu chứng hoặc nhu cầu trao đổi về sức khỏe tuyến giáp cùng bác sĩ.</div>
+            <div class="fmc-btn-group">
+                <a href="/promo/tam-soat-chuc-nang-tuyen-giap.html" class="fmc-btn fmc-btn-outline"><i class="fas fa-external-link-alt"></i> Xem chi tiết</a>
+                <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;"><span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span> Đặt lịch hẹn ngay</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="fmc-promo-card theme-kidney-urinary">
+        <div class="fmc-col-img">
+            <img src="/promotion/assets/images/active/kidney-urinary-screening/poster.png" alt="Bác sĩ thực hiện siêu âm hệ tiết niệu cho khách hàng tại phòng khám">
+        </div>
+        <div class="fmc-col-info">
+            <span class="fmc-badge">TẦM SOÁT THẬN &amp; TIẾT NIỆU</span>
+            <h2 class="fmc-title">Chương trình Tầm soát Bệnh lý Thận và Hệ tiết niệu</h2>
+            <p class="fmc-desc">Gói kết hợp xét nghiệm máu, xét nghiệm nước tiểu, công thức máu và siêu âm hệ tiết niệu để bác sĩ có thêm thông tin đánh giá và tư vấn phù hợp.</p>
+            <div class="fmc-list-grid" aria-label="Nội dung chính của chương trình tầm soát bệnh lý thận">
+                <span><i class="fas fa-vial"></i> Ure, Creatinine và độ thanh lọc Creatinine</span>
+                <span><i class="fas fa-tint"></i> Tổng phân tích nước tiểu 10 thông số</span>
+                <span><i class="fas fa-microscope"></i> Bảng công thức máu toàn bộ (CBC)</span>
+                <span><i class="fas fa-wave-square"></i> Siêu âm hệ tiết niệu</span>
+            </div>
+            <div class="kidney-urinary-price"><strong>GIÁ TRỌN GÓI CHƯƠNG TRÌNH</strong><b>434.000 VNĐ</b><span>Gồm 6 hạng mục xét nghiệm và siêu âm.</span></div>
+            <div class="fmc-info-box"><strong>Thời gian triển khai:</strong> 28/09/2026 – 28/10/2026<br>Kết quả cần được bác sĩ diễn giải theo tình trạng thực tế; gói chưa bao gồm đánh giá chuyên sâu chức năng thận.</div>
+            <div class="fmc-btn-group"><a href="/promo/tam-soat-benh-ly-than.html" class="fmc-btn fmc-btn-outline"><i class="fas fa-external-link-alt"></i> Xem chi tiết</a><a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;"><span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span> Đặt lịch hẹn ngay</a></div>
+        </div>
+    </div>
+
+    <div class="fmc-promo-card theme-liver-biliary">
+        <div class="fmc-col-img">
+            <img src="/promotion/assets/images/active/liver-biliary-screening/poster.png" alt="Bác sĩ thực hiện siêu âm bụng cho khách hàng tại phòng khám">
+        </div>
+        <div class="fmc-col-info">
+            <span class="fmc-badge">TẦM SOÁT GAN - MẬT</span>
+            <h2 class="fmc-title">Chương trình Tầm soát Bệnh lý Gan - Mật<br><span class="highlight">&amp; tầm soát sớm ung thư gan</span></h2>
+            <p class="fmc-desc">Gói kết hợp khám chuyên khoa, siêu âm và xét nghiệm để cung cấp thông tin về chức năng gan, vi-rút viêm gan và các dấu hiệu cần được bác sĩ đánh giá thêm.</p>
+            <div class="fmc-list-grid" aria-label="Nội dung chính của chương trình tầm soát gan mật">
+                <span><i class="fas fa-user-md"></i> Khám chuyên khoa Nội / Gan mật</span>
+                <span><i class="fas fa-wave-square"></i> Siêu âm gan, mật và tụy</span>
+                <span><i class="fas fa-vial"></i> Men gan, Bilirubin và Protein</span>
+                <span><i class="fas fa-shield-virus"></i> Vi-rút viêm gan B/C và AFP</span>
+            </div>
+            <div class="liver-biliary-price"><strong>GIÁ TRỌN GÓI CHƯƠNG TRÌNH</strong><b>1.316.000 VNĐ</b><span>Gồm 13 hạng mục khám, siêu âm và xét nghiệm.</span></div>
+            <div class="fmc-info-box"><strong>Thời gian triển khai:</strong> 28/09/2026 – 28/10/2026<br>Kết quả cần được bác sĩ diễn giải theo tình trạng thực tế; gói không thay thế cho chẩn đoán.</div>
+            <div class="fmc-btn-group"><a href="/promo/tam-soat-benh-ly-gan-mat.html" class="fmc-btn fmc-btn-outline"><i class="fas fa-external-link-alt"></i> Xem chi tiết</a><a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;"><span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span> Đặt lịch hẹn ngay</a></div>
+        </div>
+    </div>
+
+    <div class="fmc-promo-card theme-diabetes-risk">
+        <div class="fmc-col-img">
+            <img src="/promotion/assets/images/active/diabetes-risk-screening/poster.png" alt="Nhân viên y tế chuẩn bị lấy máu xét nghiệm cho khách hàng tại phòng khám">
+        </div>
+        <div class="fmc-col-info">
+            <span class="fmc-badge">TẦM SOÁT ĐÁI THÁO ĐƯỜNG</span>
+            <h2 class="fmc-title">Chương trình Tầm soát Nguy cơ <br><span class="highlight">Bệnh Tiểu đường</span></h2>
+            <p class="fmc-desc">Gói kết hợp khám, siêu âm và xét nghiệm để cung cấp thông tin về đường huyết, mỡ máu, nước tiểu và những chỉ số cần được bác sĩ đánh giá thêm.</p>
+            <div class="fmc-list-grid" aria-label="Hạng mục chương trình tầm soát nguy cơ bệnh tiểu đường">
+                <span><i class="fas fa-user-md"></i> Khám Nội tổng quát / Nội tiết</span>
+                <span><i class="fas fa-wave-square"></i> Siêu âm tổng quát bụng</span>
+                <span><i class="fas fa-vial"></i> Glucose, HbA1c và bộ mỡ máu</span>
+                <span><i class="fas fa-tint"></i> Nước tiểu và Microalbumin niệu</span>
+            </div>
+            <div class="diabetes-risk-price"><strong>GIÁ TRỌN GÓI CHƯƠNG TRÌNH</strong><b>1.014.000 VNĐ</b><span>Gồm 11 hạng mục khám, siêu âm và xét nghiệm.</span></div>
+            <div class="fmc-info-box"><strong>Thời gian triển khai:</strong> 28/09/2026 – 28/10/2026<br>Kết quả cần được bác sĩ diễn giải theo tình trạng thực tế; gói không thay thế cho chẩn đoán.</div>
+            <div class="fmc-btn-group"><a href="/promo/tam-soat-nguy-co-benh-tieu-duong.html" class="fmc-btn fmc-btn-outline"><i class="fas fa-external-link-alt"></i> Xem chi tiết</a><a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;"><span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span> Đặt lịch hẹn ngay</a></div>
+        </div>
+    </div>
+
+    <div class="fmc-promo-card theme-cardiovascular-vascular">
+        <div class="fmc-col-img">
+            <img src="/promotion/assets/images/active/cardiovascular-vascular-screening/poster.png" alt="Bác sĩ thực hiện siêu âm tim cho khách hàng tại phòng khám">
+        </div>
+        <div class="fmc-col-info">
+            <span class="fmc-badge">TẦM SOÁT TIM MẠCH</span>
+            <h2 class="fmc-title">Chương trình Tầm soát <br><span class="highlight">Thiếu máu cơ tim &amp; Bệnh lý mạch máu</span></h2>
+            <p class="fmc-desc">Gói kết hợp khám Tim mạch, điện tâm đồ, siêu âm và xét nghiệm để cung cấp thông tin ban đầu về tim, mạch máu và các yếu tố nguy cơ cần được bác sĩ đánh giá.</p>
+            <div class="fmc-list-grid" aria-label="Hạng mục chương trình tầm soát tim mạch và mạch máu">
+                <span><i class="fas fa-user-md"></i> Khám chuyên khoa Tim mạch</span>
+                <span><i class="fas fa-heartbeat"></i> ECG 12 dẫn truyền &amp; siêu âm tim</span>
+                <span><i class="fas fa-wave-square"></i> Siêu âm Doppler mạch cảnh</span>
+                <span><i class="fas fa-vial"></i> Máu, mỡ máu và đường huyết</span>
+            </div>
+            <div class="cardiovascular-vascular-price"><strong>GIÁ TRỌN GÓI CHƯƠNG TRÌNH</strong><b>1.243.000 VNĐ</b><span>Gồm 11 hạng mục khám, thăm dò chức năng và xét nghiệm.</span></div>
+            <div class="fmc-info-box"><strong>Thời gian triển khai:</strong> 28/09/2026 – 28/10/2026<br>Kết quả cần được bác sĩ Tim mạch diễn giải theo tình trạng thực tế; gói không thay thế cho chẩn đoán.</div>
+            <div class="fmc-btn-group"><a href="/promo/tam-soat-thieu-mau-co-tim-mach-mau.html" class="fmc-btn fmc-btn-outline"><i class="fas fa-external-link-alt"></i> Xem chi tiết</a><a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;"><span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span> Đặt lịch hẹn ngay</a></div>
+        </div>
+    </div>
+
+    <div class="fmc-promo-card theme-parasite-screening">
+        <div class="fmc-col-img">
+            <img src="/promotion/assets/images/active/parasite-screening/poster.png" alt="Bác sĩ tư vấn và chuẩn bị lấy mẫu máu trong chương trình tầm soát giun sán và ký sinh trùng">
+        </div>
+        <div class="fmc-col-info">
+            <span class="fmc-badge">TẦM SOÁT KÝ SINH TRÙNG</span>
+            <h2 class="fmc-title">Chương trình Tầm soát Bệnh giun sán<br><span class="highlight">&amp; Ký sinh trùng</span></h2>
+            <p class="fmc-desc">Gói kết hợp khám Nội tổng quát, công thức máu và xét nghiệm huyết thanh học IgG đối với một số tác nhân ký sinh trùng. Bác sĩ sẽ diễn giải kết quả cùng triệu chứng, tiền sử và chỉ định bổ sung khi phù hợp.</p>
+            <div class="fmc-list-grid" aria-label="Nội dung chính của chương trình tầm soát giun sán và ký sinh trùng">
+                <span><i class="fas fa-user-md"></i> Khám chuyên khoa Nội tổng quát</span>
+                <span><i class="fas fa-microscope"></i> CBC và chỉ số Eosinophil</span>
+                <span><i class="fas fa-vial"></i> Panel huyết thanh học IgG</span>
+                <span><i class="fas fa-notes-medical"></i> Tư vấn kết quả cùng bác sĩ</span>
+            </div>
+            <div class="parasite-screening-price"><strong>GIÁ TRỌN GÓI CHƯƠNG TRÌNH</strong><b>883.000 VNĐ</b><span>Gồm 6 hạng mục khám và xét nghiệm.</span></div>
+            <div class="fmc-info-box"><strong>Thời gian triển khai:</strong> 28/09/2026 – 28/10/2026<br>Gói cung cấp thông tin sàng lọc ban đầu; kết quả cần được bác sĩ diễn giải theo tình trạng thực tế.</div>
+            <div class="fmc-btn-group"><a href="/promo/tam-soat-benh-giun-san-ky-sinh-trung.html" class="fmc-btn fmc-btn-outline"><i class="fas fa-external-link-alt"></i> Xem chi tiết</a><a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;"><span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span> Đặt lịch hẹn ngay</a></div>
+        </div>
+    </div>
 
     <div class="fmc-promo-card theme-male-checkup">
         <div class="fmc-col-img">
@@ -1638,36 +1878,36 @@
 
     <div class="fmc-promo-card theme-allergy-screening">
         <div class="fmc-col-img">
-            <img src="/promotion/assets/images/active/allergy-post-meal/poster.png" alt="Bác sĩ FMC tư vấn cho khách hàng về tầm soát dị ứng và triệu chứng khó chịu sau ăn">
+            <img src="/promotion/assets/images/active/allergy-post-meal/poster.png" alt="Bác sĩ FMC tư vấn cho khách hàng về xét nghiệm dị nguyên và triệu chứng khó chịu sau ăn">
         </div>
         <div class="fmc-col-info">
-            <span class="fmc-badge">TẦM SOÁT DỊ ỨNG</span>
-            <h2 class="fmc-title">Tầm soát Dị ứng &amp; Rối loạn sau ăn<br><span class="highlight">Hiểu triệu chứng, chọn hướng đánh giá phù hợp</span></h2>
-            <p class="fmc-desc">Ba lựa chọn dành cho người có triệu chứng dị ứng hoặc khó chịu kéo dài sau ăn. Hai gói IgE hỗ trợ khảo sát dị nguyên; gói Rối loạn sau ăn được đánh giá theo mục tiêu riêng.</p>
+            <span class="fmc-badge">DỊ ỨNG &amp; BẤT DUNG NẠP</span>
+            <h2 class="fmc-title">Chương trình Xét nghiệm Bất dung nạp<br><span class="highlight">&amp; Tìm nguyên nhân Dị ứng</span></h2>
+            <p class="fmc-desc">Ba lựa chọn gồm khám, CBC và panel xét nghiệm theo mục tiêu. IgE hỗ trợ khảo sát tình trạng mẫn cảm; Food IgG 222 cần được bác sĩ diễn giải cùng triệu chứng, bệnh sử và chế độ ăn.</p>
 
-            <div class="fmc-list-grid" aria-label="Điểm nổi bật chương trình tầm soát dị ứng">
-                <span><i class="fas fa-vial"></i> IgE đặc hiệu 44 hoặc 72 dị nguyên</span>
-                <span><i class="fas fa-user-md"></i> Bác sĩ FMC đọc và tư vấn kết quả</span>
-                <span><i class="fas fa-utensils"></i> Đánh giá triệu chứng khó chịu sau ăn</span>
-                <span><i class="fas fa-clipboard-check"></i> Hướng dẫn theo dõi cá nhân hóa</span>
+            <div class="fmc-list-grid" aria-label="Điểm nổi bật chương trình xét nghiệm dị ứng và bất dung nạp">
+                <span><i class="fas fa-vial"></i> Panel IgE 44 hoặc 72 dị nguyên</span>
+                <span><i class="fas fa-utensils"></i> Panel Food IgG 222</span>
+                <span><i class="fas fa-microscope"></i> CBC và chỉ số Eosinophil</span>
+                <span><i class="fas fa-user-md"></i> Bác sĩ khai thác bệnh sử, diễn giải</span>
             </div>
 
-            <div class="fmc-package-grid" aria-label="Ba lựa chọn tầm soát dị ứng và rối loạn sau ăn">
-                <section class="fmc-package-card" aria-label="Gói 1 FMC Dị ứng Cơ bản">
-                    <div class="fmc-package-heading"><strong>GÓI 1</strong><span class="fmc-package-name">FMC Dị ứng Cơ bản</span><span><span class="fmc-package-price-label">Tổng giá trị</span><strong class="fmc-package-price">1.936.000đ</strong><span class="fmc-package-offer">Chỉ còn 1.690.000đ</span></span></div>
-                    <ul><li>Khảo sát IgE đặc hiệu 44 dị nguyên</li><li>Phù hợp khi nổi ban, ngứa hoặc nghi dị ứng thức ăn</li><li>Bác sĩ khai thác bệnh sử và tư vấn tránh dị nguyên</li><li>Tiết kiệm 246.000đ (12,7%)</li></ul>
+            <div class="fmc-package-grid" aria-label="Ba lựa chọn xét nghiệm dị ứng và bất dung nạp">
+                <section class="fmc-package-card" aria-label="Gói Cơ bản Bộ 44 dị nguyên IgE">
+                    <div class="fmc-package-heading"><strong>GÓI 1</strong><span class="fmc-package-name">Gói Cơ bản – Bộ 44 dị nguyên IgE</span><span><span class="fmc-package-price-label">Giá dự kiến</span><strong class="fmc-package-price">1.263.000 VNĐ</strong></span></div>
+                    <ul><li>Khám và tư vấn lâm sàng</li><li>CBC và chỉ số Eosinophil</li><li>Khảo sát 44 dị nguyên bằng IgE</li><li>Đối chiếu kết quả với bệnh sử</li></ul>
                 </section>
-                <section class="fmc-package-card is-advanced" aria-label="Gói 2 FMC Dị ứng Nâng cao 72 - được khuyên chọn">
-                    <div class="fmc-package-heading"><strong>GÓI 2 · ĐƯỢC KHUYÊN CHỌN</strong><span class="fmc-package-name">FMC Dị ứng Nâng cao 72</span><span><span class="fmc-package-price-label">Tổng giá trị</span><strong class="fmc-package-price">2.414.000đ</strong><span class="fmc-package-offer">Chỉ còn 2.050.000đ</span></span></div>
-                    <ul><li>Khảo sát IgE đặc hiệu 72 dị nguyên</li><li>Phổ khảo sát rộng hơn cho nhiều tác nhân nghi ngờ</li><li>Phân tầng kết quả và tư vấn theo dõi chuyên sâu</li><li>Tiết kiệm 364.000đ (15,1%)</li></ul>
+                <section class="fmc-package-card is-advanced" aria-label="Gói Chuyên sâu Bộ 72 dị nguyên IgE">
+                    <div class="fmc-package-heading"><strong>GÓI 2</strong><span class="fmc-package-name">Gói Chuyên sâu – Bộ 72 dị nguyên IgE</span><span><span class="fmc-package-price-label">Giá dự kiến</span><strong class="fmc-package-price">1.763.000 VNĐ</strong></span></div>
+                    <ul><li>Khám và tư vấn lâm sàng</li><li>CBC và chỉ số Eosinophil</li><li>Khảo sát rộng hơn với 72 dị nguyên IgE</li><li>Tư vấn theo dõi phù hợp</li></ul>
                 </section>
-                <section class="fmc-package-card is-complete" aria-label="Gói 3 FMC Rối loạn sau ăn - Đánh giá chuyên sâu">
-                    <div class="fmc-package-heading"><strong>GÓI 3 · MỤC TIÊU RIÊNG</strong><span class="fmc-package-name">FMC Rối loạn sau ăn – Đánh giá chuyên sâu</span><span><span class="fmc-package-price-label">Tổng giá trị</span><strong class="fmc-package-price">4.230.000đ</strong><span class="fmc-package-offer">Chỉ còn 3.850.000đ</span></span></div>
-                    <ul><li>Phù hợp khi đầy bụng, đau bụng hoặc tiêu chảy sau ăn</li><li>Đánh giá Food IgG 222 kết hợp triệu chứng và bệnh sử</li><li>Bác sĩ xây dựng kế hoạch theo dõi dinh dưỡng</li><li>Tiết kiệm 380.000đ (9,0%)</li></ul>
+                <section class="fmc-package-card is-complete" aria-label="Gói Bất dung nạp thức ăn Bộ 222 dị nguyên IgG">
+                    <div class="fmc-package-heading"><strong>GÓI 3</strong><span class="fmc-package-name">Gói Bất dung nạp thức ăn – Bộ 222 IgG</span><span><span class="fmc-package-price-label">Giá dự kiến</span><strong class="fmc-package-price">4.563.000 VNĐ</strong></span></div>
+                    <ul><li>Khám và tư vấn lâm sàng</li><li>CBC và chỉ số Eosinophil</li><li>Panel Food IgG 222 thực phẩm</li><li>Diễn giải cùng triệu chứng và chế độ ăn</li></ul>
                 </section>
             </div>
 
-            <div class="fmc-info-box"><strong>Thời gian áp dụng:</strong> dự kiến tháng tới<br><strong>Gói 3 không phải phiên bản cao hơn của gói IgE.</strong><br>Food IgG 222 cần được bác sĩ kết hợp với triệu chứng, bệnh sử và chế độ ăn để diễn giải.</div>
+            <div class="fmc-info-box"><strong>Thời gian triển khai:</strong> 28/09/2026 – 28/10/2026<br>Gói 3 có mục tiêu khác với hai gói IgE; kết quả xét nghiệm không tự xác định dị ứng hoặc bất dung nạp.</div>
 
             <div class="fmc-btn-group">
                 <a href="/promo/tam-soat-di-ung-roi-loan-sau-an.html" class="fmc-btn fmc-btn-outline"><i class="fas fa-external-link-alt"></i> Xem chi tiết</a>
