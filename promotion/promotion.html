@@ -1144,6 +1144,24 @@
         .parasite-screening-price b { display:block; margin-top:5px; color:#17566c; font-size:2rem; line-height:1.05; }
         .parasite-screening-price span { display:block; margin-top:6px; color:#477080; font-size:.9rem; }
 
+        .theme-joint-screening { min-height:570px; background:linear-gradient(135deg,#f4f8ff 0%,#fff 55%,#f1fbf8 100%); border:1px solid #c6d9ea; overflow:hidden; }
+        .theme-joint-screening .fmc-col-img { width:35%; background:#edf4fb; }
+        .theme-joint-screening .fmc-col-img img { width:100%; height:100%; object-fit:cover; object-position:center; }
+        .theme-joint-screening .fmc-col-info { width:65%; }
+        .theme-joint-screening .fmc-badge { background:#e7f0fb; color:#245b88; }
+        .theme-joint-screening .fmc-title { color:#234d72; }
+        .theme-joint-screening .highlight { color:#168276; }
+        .theme-joint-screening .fmc-desc { max-width:680px; color:#42576b; line-height:1.6; }
+        .theme-joint-screening .fmc-list-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 16px; color:#315d78; }
+        .theme-joint-screening .fmc-list-grid i { color:#168276; margin-right:5px; }
+        .theme-joint-screening .fmc-info-box { background:#eff7fb; border-left-color:#168276; color:#285b69; }
+        .theme-joint-screening .fmc-btn { background:linear-gradient(90deg,#2b6e9f,#168276); }
+        .theme-joint-screening .fmc-btn-outline { --outline-color:#245b88; background:var(--outline-color); }
+        .joint-screening-price { margin:20px 0; padding:18px 20px; border:1px solid #c6d9ea; border-radius:16px; background:linear-gradient(135deg,#f3f8fd,#fff); }
+        .joint-screening-price strong { display:block; color:#245b88; font-size:.8rem; letter-spacing:.08em; }
+        .joint-screening-price b { display:block; margin-top:5px; color:#234d72; font-size:2rem; line-height:1.05; }
+        .joint-screening-price span { display:block; margin-top:6px; color:#527083; font-size:.9rem; }
+
         .fmc-price-box {
             background: linear-gradient(135deg, #fff3c4 0%, #fff0f5 100%);
             border: 1px solid #f3bfd0;
@@ -1293,6 +1311,8 @@
             .theme-premarital .fmc-col-info,
             .theme-allergy-screening .fmc-col-img,
             .theme-allergy-screening .fmc-col-info,
+            .theme-joint-screening .fmc-col-img,
+            .theme-joint-screening .fmc-col-info,
             .theme-first-prenatal .fmc-col-img,
             .theme-first-prenatal .fmc-col-info,
             .theme-abdominal-ultrasound .fmc-col-img,
@@ -1331,6 +1351,7 @@
             .theme-abdominal-ultrasound .fmc-col-img { aspect-ratio:4/3; }
             .theme-thyroid-function .fmc-col-img { aspect-ratio:4/3; }
             .theme-parasite-screening .fmc-col-img { aspect-ratio:4/3; }
+            .theme-joint-screening .fmc-col-img { aspect-ratio:4/3; }
             .theme-female-checkup .fmc-title {
                 font-size: 1.85rem;
             }
@@ -1611,6 +1632,66 @@
         </div>
     </div>
 
+    <div class="fmc-promo-card theme-allergy-screening">
+        <div class="fmc-col-img">
+            <img src="/promotion/assets/images/active/allergy-post-meal/poster.png" alt="Bác sĩ FMC tư vấn cho khách hàng về xét nghiệm dị nguyên và triệu chứng khó chịu sau ăn">
+        </div>
+        <div class="fmc-col-info">
+            <span class="fmc-badge">DỊ ỨNG &amp; BẤT DUNG NẠP</span>
+            <h2 class="fmc-title">Chương trình Xét nghiệm Bất dung nạp<br><span class="highlight">&amp; Tìm nguyên nhân Dị ứng</span></h2>
+            <p class="fmc-desc">Ba lựa chọn gồm khám, CBC và panel xét nghiệm theo mục tiêu. IgE hỗ trợ khảo sát tình trạng mẫn cảm; Food IgG 222 cần được bác sĩ diễn giải cùng triệu chứng, bệnh sử và chế độ ăn.</p>
+
+            <div class="fmc-list-grid" aria-label="Điểm nổi bật chương trình xét nghiệm dị ứng và bất dung nạp">
+                <span><i class="fas fa-vial"></i> Panel IgE 44 hoặc 72 dị nguyên</span>
+                <span><i class="fas fa-utensils"></i> Panel Food IgG 222</span>
+                <span><i class="fas fa-microscope"></i> CBC và chỉ số Eosinophil</span>
+                <span><i class="fas fa-user-md"></i> Bác sĩ khai thác bệnh sử, diễn giải</span>
+            </div>
+
+            <div class="fmc-package-grid" aria-label="Ba lựa chọn xét nghiệm dị ứng và bất dung nạp">
+                <section class="fmc-package-card" aria-label="Gói Cơ bản Bộ 44 dị nguyên IgE">
+                    <div class="fmc-package-heading"><strong>GÓI 1</strong><span class="fmc-package-name">Gói Cơ bản – Bộ 44 dị nguyên IgE</span><span><span class="fmc-package-price-label">Giá dự kiến</span><strong class="fmc-package-price">1.263.000 VNĐ</strong></span></div>
+                    <ul><li>Khám và tư vấn lâm sàng</li><li>CBC và chỉ số Eosinophil</li><li>Khảo sát 44 dị nguyên bằng IgE</li><li>Đối chiếu kết quả với bệnh sử</li></ul>
+                </section>
+                <section class="fmc-package-card is-advanced" aria-label="Gói Chuyên sâu Bộ 72 dị nguyên IgE">
+                    <div class="fmc-package-heading"><strong>GÓI 2</strong><span class="fmc-package-name">Gói Chuyên sâu – Bộ 72 dị nguyên IgE</span><span><span class="fmc-package-price-label">Giá dự kiến</span><strong class="fmc-package-price">1.763.000 VNĐ</strong></span></div>
+                    <ul><li>Khám và tư vấn lâm sàng</li><li>CBC và chỉ số Eosinophil</li><li>Khảo sát rộng hơn với 72 dị nguyên IgE</li><li>Tư vấn theo dõi phù hợp</li></ul>
+                </section>
+                <section class="fmc-package-card is-complete" aria-label="Gói Bất dung nạp thức ăn Bộ 222 dị nguyên IgG">
+                    <div class="fmc-package-heading"><strong>GÓI 3</strong><span class="fmc-package-name">Gói Bất dung nạp thức ăn – Bộ 222 IgG</span><span><span class="fmc-package-price-label">Giá dự kiến</span><strong class="fmc-package-price">4.563.000 VNĐ</strong></span></div>
+                    <ul><li>Khám và tư vấn lâm sàng</li><li>CBC và chỉ số Eosinophil</li><li>Panel Food IgG 222 thực phẩm</li><li>Diễn giải cùng triệu chứng và chế độ ăn</li></ul>
+                </section>
+            </div>
+
+            <div class="fmc-info-box"><strong>Thời gian triển khai:</strong> 28/09/2026 – 28/10/2026<br>Gói 3 có mục tiêu khác với hai gói IgE; kết quả xét nghiệm không tự xác định dị ứng hoặc bất dung nạp.</div>
+
+            <div class="fmc-btn-group">
+                <a href="/promo/tam-soat-di-ung-roi-loan-sau-an.html" class="fmc-btn fmc-btn-outline"><i class="fas fa-external-link-alt"></i> Xem chi tiết</a>
+                <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;"><span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span> Đặt lịch hẹn ngay</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="fmc-promo-card theme-joint-screening">
+        <div class="fmc-col-img">
+            <img src="/promotion/assets/images/active/gout-thap-khop-thoai-hoa-khop/poster.png" alt="Bác sĩ tư vấn đánh giá khớp và hướng dẫn theo dõi đau sưng khớp cho khách hàng">
+        </div>
+        <div class="fmc-col-info">
+            <span class="fmc-badge">CƠ – XƯƠNG – KHỚP</span>
+            <h2 class="fmc-title">Chương trình Khám &amp; Đánh giá<br><span class="highlight">Gút, Thấp khớp &amp; Thoái hóa khớp</span></h2>
+            <p class="fmc-desc">Gói kết hợp khám, siêu âm khớp và xét nghiệm hỗ trợ đánh giá một số nguyên nhân đau, sưng hoặc cứng khớp. Bác sĩ sẽ diễn giải kết quả cùng triệu chứng, thăm khám và chỉ định phù hợp.</p>
+            <div class="fmc-list-grid" aria-label="Nội dung chính của chương trình khám và đánh giá bệnh lý khớp">
+                <span><i class="fas fa-user-md"></i> Khám Cơ – Xương – Khớp / Nội tổng quát</span>
+                <span><i class="fas fa-wave-square"></i> Siêu âm khớp theo chỉ định</span>
+                <span><i class="fas fa-vial"></i> Acid Uric và yếu tố dạng thấp RF</span>
+                <span><i class="fas fa-shield-alt"></i> Đánh giá thận, nước tiểu và công thức máu</span>
+            </div>
+            <div class="joint-screening-price"><strong>GIÁ TRỌN GÓI CHƯƠNG TRÌNH</strong><b>704.000 VNĐ</b><span>Gồm 7 hạng mục khám, siêu âm và xét nghiệm.</span></div>
+            <div class="fmc-info-box"><strong>Thời gian triển khai:</strong> 28/09/2026 – 28/10/2026<br>Kết quả chỉ hỗ trợ đánh giá; bác sĩ cần kết hợp triệu chứng, thăm khám và bệnh sử để tư vấn tiếp theo.</div>
+            <div class="fmc-btn-group"><a href="/promo/kham-chan-doan-gout-thap-khop-thoai-hoa-khop.html" class="fmc-btn fmc-btn-outline"><i class="fas fa-external-link-alt"></i> Xem chi tiết</a><a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;"><span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span> Đặt lịch hẹn ngay</a></div>
+        </div>
+    </div>
+
     <div class="fmc-promo-card theme-male-checkup">
         <div class="fmc-col-img">
             <img src="/promotion/assets/images/active/male-checkup/poster.png" alt="Khám sức khỏe tổng quát và đánh giá nguy cơ tim mạch, đột quỵ cho nam giới">
@@ -1872,46 +1953,6 @@
                     <span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span>
                     Đặt lịch hẹn ngay
                 </a>
-            </div>
-        </div>
-    </div>
-
-    <div class="fmc-promo-card theme-allergy-screening">
-        <div class="fmc-col-img">
-            <img src="/promotion/assets/images/active/allergy-post-meal/poster.png" alt="Bác sĩ FMC tư vấn cho khách hàng về xét nghiệm dị nguyên và triệu chứng khó chịu sau ăn">
-        </div>
-        <div class="fmc-col-info">
-            <span class="fmc-badge">DỊ ỨNG &amp; BẤT DUNG NẠP</span>
-            <h2 class="fmc-title">Chương trình Xét nghiệm Bất dung nạp<br><span class="highlight">&amp; Tìm nguyên nhân Dị ứng</span></h2>
-            <p class="fmc-desc">Ba lựa chọn gồm khám, CBC và panel xét nghiệm theo mục tiêu. IgE hỗ trợ khảo sát tình trạng mẫn cảm; Food IgG 222 cần được bác sĩ diễn giải cùng triệu chứng, bệnh sử và chế độ ăn.</p>
-
-            <div class="fmc-list-grid" aria-label="Điểm nổi bật chương trình xét nghiệm dị ứng và bất dung nạp">
-                <span><i class="fas fa-vial"></i> Panel IgE 44 hoặc 72 dị nguyên</span>
-                <span><i class="fas fa-utensils"></i> Panel Food IgG 222</span>
-                <span><i class="fas fa-microscope"></i> CBC và chỉ số Eosinophil</span>
-                <span><i class="fas fa-user-md"></i> Bác sĩ khai thác bệnh sử, diễn giải</span>
-            </div>
-
-            <div class="fmc-package-grid" aria-label="Ba lựa chọn xét nghiệm dị ứng và bất dung nạp">
-                <section class="fmc-package-card" aria-label="Gói Cơ bản Bộ 44 dị nguyên IgE">
-                    <div class="fmc-package-heading"><strong>GÓI 1</strong><span class="fmc-package-name">Gói Cơ bản – Bộ 44 dị nguyên IgE</span><span><span class="fmc-package-price-label">Giá dự kiến</span><strong class="fmc-package-price">1.263.000 VNĐ</strong></span></div>
-                    <ul><li>Khám và tư vấn lâm sàng</li><li>CBC và chỉ số Eosinophil</li><li>Khảo sát 44 dị nguyên bằng IgE</li><li>Đối chiếu kết quả với bệnh sử</li></ul>
-                </section>
-                <section class="fmc-package-card is-advanced" aria-label="Gói Chuyên sâu Bộ 72 dị nguyên IgE">
-                    <div class="fmc-package-heading"><strong>GÓI 2</strong><span class="fmc-package-name">Gói Chuyên sâu – Bộ 72 dị nguyên IgE</span><span><span class="fmc-package-price-label">Giá dự kiến</span><strong class="fmc-package-price">1.763.000 VNĐ</strong></span></div>
-                    <ul><li>Khám và tư vấn lâm sàng</li><li>CBC và chỉ số Eosinophil</li><li>Khảo sát rộng hơn với 72 dị nguyên IgE</li><li>Tư vấn theo dõi phù hợp</li></ul>
-                </section>
-                <section class="fmc-package-card is-complete" aria-label="Gói Bất dung nạp thức ăn Bộ 222 dị nguyên IgG">
-                    <div class="fmc-package-heading"><strong>GÓI 3</strong><span class="fmc-package-name">Gói Bất dung nạp thức ăn – Bộ 222 IgG</span><span><span class="fmc-package-price-label">Giá dự kiến</span><strong class="fmc-package-price">4.563.000 VNĐ</strong></span></div>
-                    <ul><li>Khám và tư vấn lâm sàng</li><li>CBC và chỉ số Eosinophil</li><li>Panel Food IgG 222 thực phẩm</li><li>Diễn giải cùng triệu chứng và chế độ ăn</li></ul>
-                </section>
-            </div>
-
-            <div class="fmc-info-box"><strong>Thời gian triển khai:</strong> 28/09/2026 – 28/10/2026<br>Gói 3 có mục tiêu khác với hai gói IgE; kết quả xét nghiệm không tự xác định dị ứng hoặc bất dung nạp.</div>
-
-            <div class="fmc-btn-group">
-                <a href="/promo/tam-soat-di-ung-roi-loan-sau-an.html" class="fmc-btn fmc-btn-outline"><i class="fas fa-external-link-alt"></i> Xem chi tiết</a>
-                <a href="#contact-slot" class="fmc-btn" onclick="smoothScroll('contact-slot'); return false;"><span class="fmc-btn-icon-group"><i class="fas fa-phone-alt"></i><i class="far fa-calendar-alt"></i></span> Đặt lịch hẹn ngay</a>
             </div>
         </div>
     </div>
