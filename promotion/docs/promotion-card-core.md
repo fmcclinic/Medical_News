@@ -83,6 +83,8 @@ quyen_loi:
 goi_kham:
   - ten: "<Tên gói>"
     gia_tien: "<Ví dụ: 3.128.000 VNĐ>"
+gia_la_du_kien: false
+noi_dung_chuyen_mon_da_xac_nhan: "<Phạm vi đánh giá và các lưu ý đã được duyệt>"
     hang_muc: ["<Hạng mục 1>", "<Hạng mục 2>"]
 dieu_kien: "<Đối tượng, số lượng, thời gian hoặc điều kiện>"
 link_chi_tiet: "/promo/<landing-page>.html"
@@ -441,3 +443,23 @@ Không đưa nguyên snapshot archived lên trang chủ:
 - [ ] Chạy `git diff --check`.
 - [ ] Xem diff để không ghi đè thay đổi chưa commit.
 - [ ] Ghi lại cách rollback trước khi deploy.
+
+## 15. Landing page, media mới và nội dung sức khỏe
+
+### Giá và nội dung chuyên môn
+
+- Nếu nguồn dữ liệu ghi `giá dự kiến`, phải giữ nguyên tính chất này trên card, landing page, bảng chi tiết và metadata; không tự chuyển thành giá ưu đãi hoặc thêm điều kiện áp dụng.
+- Với gói tầm soát hoặc dịch vụ y tế, mô tả phạm vi đánh giá và vai trò diễn giải của bác sĩ. Không cam kết chẩn đoán chính xác, kết quả điều trị, hay một tần suất tầm soát chung cho mọi người khi chưa có chỉ định/sources đã xác nhận.
+- Khi thêm nội dung chuyên môn mới có ảnh hưởng tới chỉ định, dấu hiệu khẩn, điều trị hoặc tần suất theo dõi, kiểm tra nguồn chuyên môn trước khi xuất bản. Giữ sự không chắc chắn có cơ sở trong HTML, không chỉ trong ghi chú nội bộ.
+
+### Ảnh minh họa mới
+
+1. Khi không có media được duyệt và cần tạo ảnh, tạo một asset riêng, kiểm tra bằng mắt rồi mới tham chiếu.
+2. Asset phải nằm tại `promotion/assets/images/active/<campaign-slug>/` và không chứa chữ giá/khuyến mãi, logo, watermark, thông tin nhận diện, kết quả xét nghiệm hoặc ngụ ý chẩn đoán.
+3. Cập nhật đồng thời card, ảnh hero, `og:image` và `twitter:image`; dùng alt mô tả cảnh thực tế.
+
+### Runtime của trang `/promo/`
+
+- Kiểm thử route thực tế `promo/<landing-page>.html`, không chỉ mở `promotion/promotion.html` độc lập. `index.html` tải component bằng fetch; kiểm tra card từ `index.html` để tránh kết luận sai do encoding hoặc context khác.
+- Header tải động trong page `/promo/` phải dùng đường dẫn `../header/logo.png` và `../index.html#...` cho logo, chuyên khoa, tin tức, liên hệ và đặt lịch. Nếu cập nhật `banner.html`, dùng URL fetch có phiên bản ở page mới để tránh cache cũ, sau đó kiểm tra ảnh/logo và href đã render.
+- Trước khi bàn giao, xác nhận ở desktop và mobile: không tràn ngang, ảnh chiến dịch tải thật, đủ số dòng bảng giá, CTA chi tiết/đặt lịch tới đúng đích và không có lỗi console do thay đổi mới.
