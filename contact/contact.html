@@ -106,7 +106,9 @@
                     <div style="margin-bottom:12px;">
                         <p style="font-size:0.82rem;color:#6b7280;margin-bottom:10px;">
                             <i class="far fa-clock text-blue-500" style="width:16px;margin-right:6px;"></i>
-                            <span style="font-weight:600;color:#374151;">Giờ làm việc:</span>
+                            <span style="font-weight:600;color:#374151;">Thứ 2 – Thứ 5:</span> 13:30–20:30
+                            <br>
+                            <span style="font-weight:600;color:#374151;">Cuối tuần:</span>
                             <span style="font-weight:600;color:#d97706;">Sáng</span> 8:00–12:30
                             <span style="margin:0 5px;color:#d1d5db;">·</span>
                             <span style="font-weight:600;color:#2563eb;">Chiều</span> 13:30–17:30
@@ -114,13 +116,16 @@
                             <span style="font-weight:600;color:#7c3aed;">Tối</span> 17:30–20:30
                         </p>
 
+                        <p style="font-size:0.82rem;color:#b91c1c;margin-bottom:10px;font-weight:600;">Các ngày thường nghỉ các buổi sáng. Thứ 6 nghỉ cả ngày để sửa chữa đến 31/12/2026. Chủ nhật chỉ khám buổi sáng.</p>
+
                             <!-- Bảng lịch theo khoa -->
                             <div style="overflow-x:auto;">
                                 <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
                                     <thead>
                                         <tr style="border-bottom:2px solid #e5e7eb;">
                                             <th style="text-align:left;padding:5px 8px 5px 2px;color:#374151;font-weight:600;">Khoa / Dịch vụ</th>
-                                            <th style="text-align:center;padding:6px 4px;color:#374151;font-weight:600;">T2 – T6</th>
+                                            <th style="text-align:center;padding:6px 4px;color:#374151;font-weight:600;">T2 – T5</th>
+                                            <th style="text-align:center;padding:6px 4px;color:#374151;font-weight:600;">Thứ 6</th>
                                             <th style="text-align:center;padding:6px 4px;color:#374151;font-weight:600;">Thứ 7</th>
                                             <th style="text-align:center;padding:6px 4px;color:#374151;font-weight:600;">Chủ Nhật</th>
                                         </tr>
@@ -128,13 +133,19 @@
                                     <tbody>
                                         <tr style="border-bottom:1px solid #f3f4f6;">
                                             <td style="padding:5px 8px 5px 2px;font-weight:500;color:#1f2937;">Tai Mũi Họng</td>
-                                            <td style="text-align:center;padding:5px 4px;"><span style="background:#dcfce7;color:#15803d;border-radius:4px;padding:2px 9px;font-size:0.78rem;font-weight:500;white-space:nowrap;">Cả ngày</span></td>
+                                            <td style="text-align:center;padding:5px 4px;"><span style="background:#dcfce7;color:#15803d;border-radius:4px;padding:2px 9px;font-size:0.78rem;font-weight:500;white-space:nowrap;">Chiều &amp; Tối</span></td>
+                                            <td rowspan="5" style="text-align:center;padding:8px 6px;background:#fef2f2;color:#b91c1c;font-weight:600;">
+                                                <strong style="display:block;">Nghỉ cả ngày</strong>
+                                                <span style="display:block;margin-top:4px;font-size:0.75rem;font-weight:400;">để sửa chữa đến<br><time datetime="2026-12-31">31/12/2026</time></span>
+                                                <span style="display:block;margin-top:10px;font-size:0.7rem;font-weight:400;">còn</span>
+                                                <span id="renovation-countdown" role="timer" aria-label="Thời gian còn lại đến ngày 31 tháng 12 năm 2026" style="display:block;margin-top:3px;font-size:0.75rem;font-variant-numeric:tabular-nums;"></span>
+                                            </td>
                                             <td style="text-align:center;padding:5px 4px;"><span style="background:#dcfce7;color:#15803d;border-radius:4px;padding:2px 9px;font-size:0.78rem;font-weight:500;white-space:nowrap;">Cả ngày</span></td>
                                             <td style="text-align:center;padding:5px 4px;"><span style="background:#fef3c7;color:#d97706;border-radius:4px;padding:2px 9px;font-size:0.78rem;font-weight:500;white-space:nowrap;">Sáng</span></td>
                                         </tr>
                                         <tr style="border-bottom:1px solid #f3f4f6;">
                                             <td style="padding:5px 8px 5px 2px;font-weight:500;color:#1f2937;">Nhà thuốc & xét nghiệm</td>
-                                            <td style="text-align:center;padding:5px 4px;"><span style="background:#dcfce7;color:#15803d;border-radius:4px;padding:2px 9px;font-size:0.78rem;font-weight:500;white-space:nowrap;">Cả ngày</span></td>
+                                            <td style="text-align:center;padding:5px 4px;"><span style="background:#dcfce7;color:#15803d;border-radius:4px;padding:2px 9px;font-size:0.78rem;font-weight:500;white-space:nowrap;">Chiều &amp; Tối</span></td>
                                             <td style="text-align:center;padding:5px 4px;"><span style="background:#dcfce7;color:#15803d;border-radius:4px;padding:2px 9px;font-size:0.78rem;font-weight:500;white-space:nowrap;">Cả ngày</span></td>
                                             <td style="text-align:center;padding:5px 4px;"><span style="background:#fef3c7;color:#d97706;border-radius:4px;padding:2px 9px;font-size:0.78rem;font-weight:500;white-space:nowrap;">Sáng</span></td>
                                         </tr>
@@ -221,16 +232,16 @@
 
                     <div class="time-slots-container hidden">
                         <label class="block text-sm font-medium text-gray-700 mb-2">Chọn giờ khám</label>
-                        <div class="time-slots-section">
+                        <div class="time-slots-section" id="morning-section">
                             <h4 class="text-sm font-medium text-gray-600 mb-2">Buổi sáng (8:00 - 12:00)</h4>
                             <div class="grid grid-cols-4 gap-2" id="morning-slots"></div>
                         </div>
-                        <div class="time-slots-section">
-                            <h4 class="text-sm font-medium text-gray-600 mb-2">Buổi chiều (13:00 - 17:00)</h4>
+                        <div class="time-slots-section" id="afternoon-section">
+                            <h4 class="text-sm font-medium text-gray-600 mb-2" id="afternoon-heading">Buổi chiều (13:00 - 17:00)</h4>
                             <div class="grid grid-cols-4 gap-2" id="afternoon-slots"></div>
                         </div>
                         <div class="time-slots-section" id="evening-section">
-                            <h4 class="text-sm font-medium text-gray-600 mb-2">Buổi tối (17:00 - 20:00)</h4>
+                            <h4 class="text-sm font-medium text-gray-600 mb-2" id="evening-heading">Buổi tối (17:00 - 20:00)</h4>
                             <div class="grid grid-cols-4 gap-2" id="evening-slots"></div>
                         </div>
                     </div>
@@ -274,6 +285,32 @@
 
 <script>
 (function initContactLogic() {
+    const countdown = document.getElementById('renovation-countdown');
+    const renovationDeadline = new Date('2026-12-31T00:00:00+07:00').getTime();
+    let countdownInterval;
+
+    function updateRenovationCountdown() {
+        if (!countdown || !countdown.isConnected) {
+            clearInterval(countdownInterval);
+            return;
+        }
+        const remaining = renovationDeadline - Date.now();
+        if (remaining <= 0) {
+            countdown.textContent = 'Đã đến ngày 31/12/2026';
+            clearInterval(countdownInterval);
+            return;
+        }
+        const totalSeconds = Math.floor(remaining / 1000);
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = String(Math.floor(totalSeconds / 3600) % 24).padStart(2, '0');
+        const minutes = String(Math.floor(totalSeconds / 60) % 60).padStart(2, '0');
+        const seconds = String(totalSeconds % 60).padStart(2, '0');
+        countdown.textContent = `${days} ngày ${hours}:${minutes}:${seconds}`;
+    }
+
+    countdownInterval = setInterval(updateRenovationCountdown, 1000);
+    updateRenovationCountdown();
+
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyJ01a3bzlALRdvYViabspGUfT0OrfmiHZY-9WCJxhX4y2CtsKFCoSUCgE5elF7pMX6/exec';
     // Sử dụng getElementById để chắc chắn lấy đúng form trong context nhúng
     const form = document.getElementById('google-sheet-form');
@@ -299,22 +336,38 @@
         const dateInput = document.getElementById('date');
         if (!dateInput.value) return;
         
-        const date = new Date(dateInput.value);
-        const isSunday = date.getDay() === 0;
+        document.getElementById('selected_time').value = '';
+        const date = new Date(`${dateInput.value}T00:00:00`);
+        const day = date.getDay();
+        const isSunday = day === 0;
+        const isWeekday = day >= 1 && day <= 4;
         const currentDate = new Date();
         
         document.getElementById('morning-slots').innerHTML = '';
         document.getElementById('afternoon-slots').innerHTML = '';
         document.getElementById('evening-slots').innerHTML = '';
         
-        document.querySelector('.time-slots-container').classList.remove('hidden');
+        const slotsContainer = document.querySelector('.time-slots-container');
+        slotsContainer.classList.toggle('hidden', day === 5);
+        if (day === 5) {
+            showErrorMessage('Thứ 6 phòng khám nghỉ cả ngày để nâng cấp. Vui lòng chọn ngày khác.');
+            return;
+        }
         
         const isToday = date.toDateString() === currentDate.toDateString();
         const currentTime = isToday ? currentDate.getHours() * 60 + currentDate.getMinutes() : 0;
 
-        const slots = isSunday ? { morning: TIME_SLOTS.morning } : TIME_SLOTS;
-        const eveningSection = document.getElementById('evening-section');
-        if(eveningSection) eveningSection.style.display = isSunday ? 'none' : 'block';
+        const slots = isSunday ? { morning: TIME_SLOTS.morning } : isWeekday ? {
+            afternoon: generateTimeSlots("13:30", "17:00", 30),
+            evening: generateTimeSlots("17:00", "20:30", 30)
+        } : TIME_SLOTS;
+        ['morning', 'afternoon', 'evening'].forEach(period => {
+            document.getElementById(`${period}-section`).style.display = slots[period] ? 'block' : 'none';
+        });
+        document.getElementById('afternoon-heading').textContent = isWeekday
+            ? 'Buổi chiều (13:30 - 17:00)' : 'Buổi chiều (13:00 - 17:00)';
+        document.getElementById('evening-heading').textContent = isWeekday
+            ? 'Buổi tối (17:00 - 20:30)' : 'Buổi tối (17:00 - 20:00)';
         
         Object.entries(slots).forEach(([period, timeSlots]) => {
             const container = document.getElementById(`${period}-slots`);
@@ -368,7 +421,7 @@
                 if (!value) isValid = false;
                 break;
             case 'date':
-                if (!value) isValid = false;
+                if (!value || new Date(`${value}T00:00:00`).getDay() === 5) isValid = false;
                 break;
         }
 
