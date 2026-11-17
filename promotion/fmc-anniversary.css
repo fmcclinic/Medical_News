@@ -1,0 +1,16 @@
+#fmc-promotion-module .theme-fmc-anniversary {background:linear-gradient(135deg,#eef9ff,#fff 60%,#fff8df);border:1px solid #e7c778;overflow:hidden;align-items:center;}
+#fmc-promotion-module .theme-fmc-anniversary * {box-sizing:border-box;}
+#fmc-promotion-module .theme-fmc-anniversary .fmc-col-img {width:40%;background:#eef9ff;border-radius:0;flex-shrink:0;}
+#fmc-promotion-module .theme-fmc-anniversary .fmc-col-img img {height:auto;object-fit:contain;transform:none;}
+#fmc-promotion-module .theme-fmc-anniversary .fmc-col-info {width:60%;padding:36px;}
+#fmc-promotion-module .theme-fmc-anniversary .fmc-badge {background:#fff0bf;color:#704700;}
+#fmc-promotion-module .theme-fmc-anniversary .fmc-title {color:#064c83;font-size:clamp(1.6rem,3vw,2.2rem);}
+#fmc-promotion-module .theme-fmc-anniversary .highlight {color:#9a6400;}
+#fmc-promotion-module .theme-fmc-anniversary .fmc-desc {line-height:1.7;}
+#fmc-promotion-module .theme-fmc-anniversary .anniversary-gift {font-size:1.6rem;font-weight:800;color:#07558f;margin:14px 0;}
+#fmc-promotion-module .theme-fmc-anniversary .anniversary-facts {padding-left:20px;line-height:1.8;color:#344b60;margin:0 0 20px;}
+#fmc-promotion-module .theme-fmc-anniversary .fmc-btn {background:#07558f;color:#fff;padding:13px 20px;text-transform:none;font-size:.95rem;}
+#fmc-promotion-module .theme-fmc-anniversary .fmc-btn-outline {background:#fff;color:#07558f;border:1px solid #07558f;}
+#fmc-promotion-module .theme-fmc-anniversary .anniversary-status {font-weight:700;color:#07558f;margin-bottom:12px;}
+#fmc-promotion-module .theme-fmc-anniversary .anniversary-note {font-size:.9rem;line-height:1.6;color:#526476;margin:18px 0 0;}
+@media(max-width:767px){#fmc-promotion-module .theme-fmc-anniversary {flex-direction:column;}#fmc-promotion-module .theme-fmc-anniversary .fmc-col-img,#fmc-promotion-module .theme-fmc-anniversary .fmc-col-info {width:100%;}#fmc-promotion-module .theme-fmc-anniversary .fmc-col-info {padding:25px 20px;}#fmc-promotion-module .theme-fmc-anniversary .fmc-btn-group {display:flex;flex-direction:column;}#fmc-promotion-module .theme-fmc-anniversary .fmc-btn {width:100%;justify-content:center;}}
