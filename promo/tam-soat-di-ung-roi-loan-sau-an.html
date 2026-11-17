@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chương trình Xét nghiệm Bất dung nạp &amp; Tìm nguyên nhân Dị ứng | Friend Medical Clinic</title>
+    <meta name="description" content="Ba lựa chọn xét nghiệm dị nguyên và bất dung nạp gồm khám, CBC, panel IgE 44 hoặc 72 dị nguyên và Food IgG 222. Kết quả được bác sĩ diễn giải cùng triệu chứng và bệnh sử.">
+    <link rel="canonical" href="https://friendmedicalclinic.com/promo/tam-soat-di-ung-roi-loan-sau-an.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Friend Medical Clinic">
+    <meta property="og:title" content="Chương trình Xét nghiệm Bất dung nạp &amp; Tìm nguyên nhân Dị ứng | Friend Medical Clinic">
+    <meta property="og:description" content="Ba lựa chọn xét nghiệm dị nguyên và bất dung nạp. Giá dự kiến từ 1.263.000 VNĐ; cần bác sĩ diễn giải cùng triệu chứng và bệnh sử.">
+    <meta property="og:url" content="https://friendmedicalclinic.com/promo/tam-soat-di-ung-roi-loan-sau-an.html">
+    <meta property="og:image" content="https://friendmedicalclinic.com/promotion/assets/images/active/allergy-post-meal/poster.png">
+    <meta property="og:locale" content="vi_VN">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Chương trình Xét nghiệm Bất dung nạp &amp; Tìm nguyên nhân Dị ứng | Friend Medical Clinic">
+    <meta name="twitter:description" content="Khám, CBC và lựa chọn panel IgE hoặc Food IgG theo mục tiêu đánh giá. Giá dự kiến từ 1.263.000 VNĐ.">
+    <meta name="twitter:image" content="https://friendmedicalclinic.com/promotion/assets/images/active/allergy-post-meal/poster.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="promo-common.css">
+    <style>
+        .promo-page { padding-top:calc(36px + 80px); }
+        .allergy-page { --teal:#007c74; --blue:#216a95; --line:#c9e6e4; --pale:#edf9f8; }
+        .allergy-hero { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr); gap:28px; margin-bottom:28px; padding:34px; border:1px solid var(--line); border-radius:20px; background:linear-gradient(135deg,#f0fbfb 0%,#fff 54%,#f4f8ff 100%); box-shadow:0 10px 30px rgba(0,100,100,.08); }
+        .allergy-hero .badge { background:#dff5f2; color:#08756f; }
+        .allergy-hero .title { color:#135b70; }
+        .allergy-hero .title span { color:#008d84; }
+        .allergy-hero .lead { max-width:740px; }
+        .hero-placeholder { min-height:280px; overflow:hidden; border-radius:16px; background:linear-gradient(160deg,#dff5f2,#eaf3ff); }
+        .hero-placeholder img { display:block; width:100%; height:100%; min-height:280px; object-fit:cover; object-position:center; }
+        .detail-section { margin-bottom:28px; padding:28px; border:1px solid #dbe9e8; border-radius:18px; background:#fff; box-shadow:0 8px 24px rgba(23,77,86,.05); }
+        .detail-section h2 { margin:0 0 8px; color:#135b70; font-size:1.7rem; }
+        .detail-section > p { margin:0 0 20px; color:#5b6574; line-height:1.6; }
+        .package-summary-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+        .package-summary { padding:20px; border:1px solid #c9e6e4; border-radius:16px; background:linear-gradient(135deg,#faffff,#fff); }
+        .package-summary.recommended { border:2px solid #62bdb6; background:linear-gradient(135deg,#e9fbf8,#fff); }
+        .package-summary.separate { border-color:#bdd1e8; background:linear-gradient(135deg,#f4f8ff,#fff); }
+        .package-summary h3 { margin:0 0 3px; color:var(--teal); font-size:1.06rem; }
+        .package-summary.separate h3 { color:#315f9b; }
+        .package-tag { display:inline-block; margin-bottom:8px; padding:4px 8px; border-radius:999px; background:#d8f3ee; color:#08756f; font-size:.7rem; font-weight:800; letter-spacing:.03em; }
+        .package-summary.separate .package-tag { background:#e7effa; color:#315f9b; }
+        .package-name { display:block; min-height:44px; color:#405966; font-weight:800; line-height:1.35; }
+        .price-stack { margin:14px 0; padding:13px 14px; border-radius:12px; background:rgba(255,255,255,.85); }
+        .price-stack span,.price-stack strong { display:block; }
+        .price-label { color:#6e8089; font-size:.78rem; }
+        .projected-price { margin-top:3px; color:var(--teal); font-size:1.34rem; }
+        .separate .projected-price { color:#315f9b; }
+        .package-summary ul { margin:0; padding-left:0; list-style:none; color:#5b6574; font-size:.9rem; line-height:1.5; }
+        .package-summary li + li { margin-top:6px; }
+        .package-summary li::before { content:"- "; color:#009688; font-weight:800; }
+        .package-summary.separate li::before { color:#315f9b; }
+        .section-actions,.detail-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; }
+        .section-actions .btn-primary,.detail-actions .btn-primary { background:linear-gradient(90deg,#007f7a,#1685a7); }
+        .section-actions .btn-secondary,.detail-actions .btn-secondary { color:#08756f; background:#dff5f2; }
+        .choice-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+        .choice-card { padding:18px; border-left:4px solid #009688; border-radius:12px; background:var(--pale); color:#285c63; line-height:1.55; }
+        .choice-card:nth-child(2) { border-left-color:#2c9e98; background:#effbf9; }
+        .choice-card:nth-child(3) { border-left-color:#315f9b; background:#f2f6fc; color:#365675; }
+        .choice-card strong { display:block; margin-bottom:6px; color:#135b70; }
+        .choice-card:nth-child(3) strong { color:#315f9b; }
+        .comparison-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:12px; }
+        .comparison-table { width:100%; min-width:760px; border-collapse:collapse; color:#45515f; font-size:.92rem; }
+        .comparison-table caption { padding:14px 16px; color:#135b70; font-weight:800; text-align:left; background:#edf9f8; }
+        .comparison-table th,.comparison-table td { padding:12px; border-bottom:1px solid #e0eceb; text-align:left; }
+        .comparison-table th { color:#fff; background:#08756f; }
+        .comparison-table th:nth-child(3) { background:#007c74; }
+        .comparison-table th:nth-child(4) { background:#315f9b; }
+        .comparison-table td:first-child { color:#135b70; font-weight:700; }
+        .comparison-table td:not(:first-child) { text-align:center; }
+        .comparison-table tfoot td { background:#f2fbfb; color:#135b70; font-weight:900; }
+        .comparison-table tfoot td:not(:first-child) { color:#007c74; }
+        .choice-note,.clinical-note { margin-top:18px; padding:16px 18px; border-left:4px solid #315f9b; border-radius:10px; background:#f2f6fc; color:#365675; line-height:1.55; }
+        .clinical-note { margin-top:20px; padding:18px; border-left-color:#007c74; background:#edf9f8; color:#285c63; line-height:1.6; }
+        .clinical-note strong { color:#135b70; }
+        .preparation-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+        .preparation-card { padding:18px; border-left:4px solid #009688; border-radius:12px; background:#f8fbfb; color:#47616f; line-height:1.55; }
+        .preparation-card strong { display:block; margin-bottom:6px; color:#135b70; }
+        @media (max-width:900px) { .allergy-hero,.package-summary-grid,.choice-grid,.preparation-grid { grid-template-columns:1fr; } .hero-placeholder { min-height:240px; } .package-name { min-height:0; } }
+        @media (max-width:600px) { .allergy-hero,.detail-section { padding:20px; } .allergy-hero .title { font-size:2rem; } .detail-section h2 { font-size:1.4rem; } .section-actions .btn,.detail-actions .btn { width:100%; } }
+    </style>
+</head>
+<body>
+    <div id="header-slot"></div>
+    <main class="promo-page allergy-page"><div class="promo-container">
+        <div class="promo-topbar"><a class="promo-back" href="../index.html#promotion-slot"><i class="fas fa-arrow-left"></i><span>Quay lại chương trình khuyến mãi</span></a></div>
+
+        <section class="allergy-hero" aria-labelledby="allergy-title">
+            <div>
+                <span class="badge">DỊ ỨNG &amp; BẤT DUNG NẠP</span>
+                <h1 id="allergy-title" class="title">Chương trình Xét nghiệm Bất dung nạp<br><span>&amp; Tìm nguyên nhân Dị ứng</span></h1>
+                <p class="lead">Ba lựa chọn gồm khám, CBC và panel xét nghiệm theo mục tiêu. IgE hỗ trợ khảo sát tình trạng mẫn cảm; Food IgG 222 cần được bác sĩ diễn giải cùng triệu chứng, bệnh sử và chế độ ăn.</p>
+                <p class="lead"><strong>Thời gian triển khai:</strong> 28/09/2026 – 28/10/2026</p>
+                <div class="section-actions"><a class="btn btn-primary" href="../index.html#contact-slot"><i class="far fa-calendar-alt"></i><span>Đặt lịch hẹn ngay</span></a><a class="btn btn-secondary" href="../index.html#promotion-slot"><i class="fas fa-arrow-left"></i><span>Về trang khuyến mãi</span></a></div>
+            </div>
+            <div class="hero-placeholder"><img src="../promotion/assets/images/active/allergy-post-meal/poster.png" alt="Bác sĩ FMC tư vấn cho khách hàng về xét nghiệm dị nguyên và triệu chứng khó chịu sau ăn"></div>
+        </section>
+
+        <section class="detail-section" aria-labelledby="packages-title">
+            <h2 id="packages-title">Ba lựa chọn theo mục tiêu đánh giá</h2>
+            <p>Gói 1 và Gói 2 khảo sát dị nguyên bằng IgE. Gói 3 sử dụng panel Food IgG 222 theo mục tiêu chương trình và không phải cấp độ cao hơn của hai gói IgE.</p>
+            <div class="package-summary-grid">
+                <article class="package-summary"><span class="package-tag">GÓI 1 · IgE</span><h3>Gói Cơ bản</h3><span class="package-name">Khám + CBC + Bộ 44 dị nguyên IgE</span><div class="price-stack"><span class="price-label">Giá dự kiến</span><strong class="projected-price">1.263.000 VNĐ</strong></div><ul><li>Khám và tư vấn lâm sàng</li><li>CBC và chỉ số Eosinophil</li><li>Khảo sát 44 dị nguyên bằng IgE</li><li>Đối chiếu kết quả với bệnh sử</li></ul></article>
+                <article class="package-summary recommended"><span class="package-tag">GÓI 2 · IgE</span><h3>Gói Chuyên sâu</h3><span class="package-name">Khám + CBC + Bộ 72 dị nguyên IgE</span><div class="price-stack"><span class="price-label">Giá dự kiến</span><strong class="projected-price">1.763.000 VNĐ</strong></div><ul><li>Khám và tư vấn lâm sàng</li><li>CBC và chỉ số Eosinophil</li><li>Khảo sát rộng hơn với 72 dị nguyên IgE</li><li>Tư vấn theo dõi phù hợp</li></ul></article>
+                <article class="package-summary separate"><span class="package-tag">GÓI 3 · IgG</span><h3>Gói Bất dung nạp thức ăn</h3><span class="package-name">Khám + CBC + Bộ 222 thực phẩm IgG</span><div class="price-stack"><span class="price-label">Giá dự kiến</span><strong class="projected-price">4.563.000 VNĐ</strong></div><ul><li>Khám và tư vấn lâm sàng</li><li>CBC và chỉ số Eosinophil</li><li>Panel Food IgG 222 thực phẩm</li><li>Diễn giải cùng triệu chứng và chế độ ăn</li></ul></article>
+            </div>
+            <div class="detail-actions"><a class="btn btn-primary" href="../index.html#contact-slot"><i class="far fa-calendar-alt"></i><span>Đăng ký tư vấn</span></a></div>
+        </section>
+
+        <section class="detail-section" aria-labelledby="choice-title">
+            <h2 id="choice-title">Gói tầm soát đánh giá những gì?</h2>
+            <div class="choice-grid">
+                <article class="choice-card"><strong>Khám và CBC</strong>Cung cấp thông tin ban đầu về triệu chứng, bệnh sử và các chỉ số huyết học, trong đó có Eosinophil để bác sĩ xem xét trong bối cảnh lâm sàng.</article>
+                <article class="choice-card"><strong>Panel IgE 44 hoặc 72</strong>Khảo sát kháng thể IgE đặc hiệu với các dị nguyên được lựa chọn. Kết quả là dữ liệu hỗ trợ và cần đối chiếu với tiền sử phản ứng thực tế.</article>
+                <article class="choice-card"><strong>Panel Food IgG 222</strong>Kết quả Food IgG không được dùng đơn độc để xác định dị ứng hoặc bất dung nạp; bác sĩ cần kết hợp triệu chứng, bệnh sử và chế độ ăn.</article>
+            </div>
+        </section>
+
+        <section class="detail-section" aria-labelledby="compare-title">
+            <h2 id="compare-title">So sánh nội dung ba lựa chọn</h2>
+            <div class="comparison-wrap"><table class="comparison-table"><caption>Mỗi lựa chọn có cùng phần khám và CBC; panel dị nguyên/bất dung nạp thay đổi theo gói.</caption><thead><tr><th>Hạng mục</th><th>Gói Cơ bản<br>44 IgE</th><th>Gói Chuyên sâu<br>72 IgE</th><th>Gói Bất dung nạp<br>222 IgG</th></tr></thead><tbody><tr><td>Khám và tư vấn lâm sàng</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>CBC và Eosinophil</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>Panel 44 dị nguyên IgE</td><td>✓</td><td>—</td><td>—</td></tr><tr><td>Panel 72 dị nguyên IgE</td><td>—</td><td>✓</td><td>—</td></tr><tr><td>Panel Food IgG 222</td><td>—</td><td>—</td><td>✓</td></tr></tbody><tfoot><tr><td>Giá dự kiến</td><td>1.263.000 VNĐ</td><td>1.763.000 VNĐ</td><td>4.563.000 VNĐ</td></tr></tfoot></table></div>
+            <div class="choice-note"><strong>Lưu ý:</strong> Xét nghiệm IgE dương tính có thể chỉ phản ánh tình trạng mẫn cảm và không tự xác định dị ứng có ý nghĩa lâm sàng. Không tự ý loại bỏ nhiều thực phẩm chỉ dựa trên kết quả xét nghiệm.</div>
+        </section>
+
+        <section class="detail-section" aria-labelledby="preparation-title">
+            <h2 id="preparation-title">Hướng dẫn chuẩn bị trước khi khám</h2>
+            <div class="preparation-grid">
+                <article class="preparation-card"><strong>Ăn uống và nhịn ăn</strong>Không nhất thiết phải nhịn ăn tuyệt đối trước xét nghiệm IgE/IgG. Có thể lấy máu buổi sáng và nhịn ăn nhẹ khoảng 4–6 giờ nếu phù hợp hoặc theo hướng dẫn của cơ sở xét nghiệm.</article>
+                <article class="preparation-card"><strong>Thuốc đang sử dụng</strong>Không tự ý ngừng thuốc kháng Histamin hoặc Corticoid. Hãy thông báo bác sĩ nếu đang dùng thuốc dị ứng hoặc Corticoid liều cao/kéo dài để được hướng dẫn phù hợp.</article>
+                <article class="preparation-card"><strong>Ghi lại triệu chứng</strong>Chuẩn bị danh sách món ăn, mỹ phẩm, môi trường tiếp xúc và thời điểm xuất hiện ngứa, mề đay, hắt hơi, đau bụng hoặc tiêu chảy để bác sĩ đối chiếu.</article>
+            </div>
+            <div class="clinical-note"><strong>Giới hạn của xét nghiệm</strong><br>Gói cung cấp thông tin hỗ trợ đánh giá, không thay thế cho chẩn đoán. Xét nghiệm IgE/IgG cần được diễn giải cùng bệnh sử và triệu chứng; Food IgG 222 không nên được sử dụng đơn độc để chẩn đoán dị ứng hoặc bất dung nạp thực phẩm. Bác sĩ sẽ tư vấn bước tiếp theo khi phù hợp.</div>
+            <div class="detail-actions"><a class="btn btn-primary" href="../index.html#contact-slot"><i class="far fa-calendar-alt"></i><span>Đặt lịch hẹn ngay</span></a><a class="btn btn-secondary" href="../index.html#promotion-slot"><i class="fas fa-arrow-left"></i><span>Quay lại khuyến mãi</span></a></div>
+        </section>
+    </div></main>
+    <script>async function loadComponent(elementId,path){try{const response=await fetch(path);if(!response.ok)return;const html=await response.text();const container=document.getElementById(elementId);if(!container)return;const tempDiv=document.createElement('div');tempDiv.innerHTML=html;if(elementId==='header-slot'){const links={'#fmcLogo':'../index.html','.fmc-link-specialist':'../index.html#specialist-slot','.fmc-link-news':'../index.html#news-slot','.fmc-link-contact':'../index.html#contact-slot','.fmc-link-appoint':'../index.html#contact-slot'};Object.entries(links).forEach(([selector,href])=>tempDiv.querySelectorAll(selector).forEach(link=>link.setAttribute('href',href)));const logo=tempDiv.querySelector('#fmcLogoImg');if(logo)logo.setAttribute('src','../header/logo.png')}const scripts=tempDiv.querySelectorAll('script');scripts.forEach(script=>script.remove());container.innerHTML=tempDiv.innerHTML;scripts.forEach(oldScript=>{const newScript=document.createElement('script');Array.from(oldScript.attributes).forEach(attr=>newScript.setAttribute(attr.name,attr.value));if(oldScript.src)newScript.src=oldScript.src;else newScript.textContent=oldScript.textContent;document.body.appendChild(newScript)})}catch(error){console.error('Error loading component',error)}}document.addEventListener('DOMContentLoaded',()=>loadComponent('header-slot','../banner.html?v=20260920-allergy-r2'));</script>
+</body>
+</html>

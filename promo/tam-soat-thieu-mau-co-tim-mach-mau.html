@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Chương trình Tầm soát Thiếu máu cơ tim &amp; Bệnh lý mạch máu | Friend
+      Medical Clinic
+    </title>
+    <meta
+      name="description"
+      content="Gói tầm soát tim mạch kết hợp khám Tim mạch, ECG, siêu âm tim, Doppler mạch cảnh và xét nghiệm. Triển khai từ 28/09 đến 28/10/2026."
+    />
+    <link
+      rel="canonical"
+      href="https://friendmedicalclinic.com/promo/tam-soat-thieu-mau-co-tim-mach-mau.html"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Friend Medical Clinic" />
+    <meta
+      property="og:title"
+      content="Chương trình Tầm soát Thiếu máu cơ tim &amp; Bệnh lý mạch máu | Friend Medical Clinic"
+    />
+    <meta
+      property="og:description"
+      content="Khám Tim mạch, điện tâm đồ, siêu âm và xét nghiệm hỗ trợ bác sĩ đánh giá sức khỏe tim mạch ban đầu. Giá trọn gói 1.243.000 VNĐ."
+    />
+    <meta
+      property="og:url"
+      content="https://friendmedicalclinic.com/promo/tam-soat-thieu-mau-co-tim-mach-mau.html"
+    />
+    <meta
+      property="og:image"
+      content="https://friendmedicalclinic.com/promotion/assets/images/active/cardiovascular-vascular-screening/poster.png"
+    />
+    <meta property="og:locale" content="vi_VN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Chương trình Tầm soát Thiếu máu cơ tim &amp; Bệnh lý mạch máu | Friend Medical Clinic"
+    />
+    <meta
+      name="twitter:description"
+      content="Gói khám và xét nghiệm đánh giá ban đầu các yếu tố nguy cơ tim mạch."
+    />
+    <meta
+      name="twitter:image"
+      content="https://friendmedicalclinic.com/promotion/assets/images/active/cardiovascular-vascular-screening/poster.png"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="promo-common.css" />
+    <style>
+      .promo-page {
+        padding-top: calc(36px + 80px);
+      }
+      .cv-page {
+        --blue: #184c78;
+        --cyan: #4e8dbb;
+        --line: #c6d8ea;
+        --pale: #eff6fb;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+        gap: 28px;
+        margin-bottom: 28px;
+        padding: 34px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: linear-gradient(135deg, #f2f6fb, #fff 55%, #f7f2f6);
+        box-shadow: 0 10px 30px rgba(24, 76, 120, 0.08);
+      }
+      .hero .badge {
+        background: #e1edf8;
+        color: #285b86;
+      }
+      .hero .title {
+        color: var(--blue);
+      }
+      .hero .title span {
+        color: #9a4d66;
+      }
+      .hero .lead {
+        max-width: 720px;
+      }
+      .hero-media {
+        min-height: 290px;
+        overflow: hidden;
+        border-radius: 16px;
+        background: #eaf1f8;
+      }
+      .hero-media img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 290px;
+        object-fit: cover;
+      }
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 18px 0;
+      }
+      .hero-meta span {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: var(--pale);
+        color: #416779;
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+      .hero-meta i,
+      .summary-card i {
+        color: var(--cyan);
+      }
+      .section {
+        margin-bottom: 28px;
+        padding: 28px;
+        border: 1px solid #d6e3ef;
+        border-radius: 18px;
+        background: #fff;
+        box-shadow: 0 8px 24px rgba(24, 76, 120, 0.05);
+      }
+      .section h2 {
+        margin: 0 0 8px;
+        color: var(--blue);
+        font-size: 1.7rem;
+      }
+      .section > p {
+        margin: 0 0 20px;
+        color: #506b76;
+        line-height: 1.6;
+      }
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+      .summary-card {
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: linear-gradient(135deg, #f9fcfe, #fff);
+      }
+      .summary-card i {
+        font-size: 1.25rem;
+      }
+      .summary-card h3 {
+        margin: 12px 0 6px;
+        color: var(--blue);
+        font-size: 1.06rem;
+      }
+      .summary-card p {
+        margin: 0;
+        color: #56717b;
+        line-height: 1.5;
+      }
+      .price-callout,
+      .clinical-note {
+        margin-top: 20px;
+        padding: 18px 20px;
+        border-left: 4px solid var(--cyan);
+        border-radius: 12px;
+        background: var(--pale);
+        color: #416779;
+        line-height: 1.6;
+      }
+      .price-callout b {
+        display: block;
+        margin-top: 4px;
+        color: var(--blue);
+        font-size: 1.5rem;
+      }
+      .table-wrap {
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+      }
+      .package-table {
+        width: 100%;
+        min-width: 620px;
+        border-collapse: collapse;
+        color: #465a62;
+        font-size: 0.94rem;
+      }
+      .package-table caption {
+        padding: 14px 16px;
+        color: var(--blue);
+        font-weight: 800;
+        text-align: left;
+        background: var(--pale);
+      }
+      .package-table th,
+      .package-table td {
+        padding: 12px;
+        border-bottom: 1px solid #dce8f2;
+        text-align: left;
+        vertical-align: top;
+      }
+      .package-table th {
+        color: #fff;
+        background: var(--blue);
+      }
+      .package-table td:first-child {
+        width: 58px;
+        color: var(--blue);
+        font-weight: 800;
+        text-align: center;
+      }
+      .package-table tfoot td {
+        background: var(--pale);
+        color: var(--blue);
+        font-weight: 900;
+      }
+      .package-table .group td {
+        background: #f8fbfe;
+        color: #285b86;
+        font-weight: 800;
+        text-align: left;
+      }
+      .preparation-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .preparation-card {
+        padding: 18px;
+        border-left: 4px solid var(--cyan);
+        border-radius: 12px;
+        background: #f8fbfe;
+        color: #506b76;
+        line-height: 1.55;
+      }
+      .preparation-card strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--blue);
+      }
+      .section-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 22px;
+      }
+      .section-actions .btn-primary {
+        background: linear-gradient(90deg, #246b9b, #559dca);
+      }
+      .section-actions .btn-secondary {
+        color: var(--blue);
+        background: #eaf2f9;
+      }
+      @media (max-width: 900px) {
+        .hero,
+        .summary-grid,
+        .preparation-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-media,
+        .hero-media img {
+          min-height: 240px;
+        }
+      }
+      @media (max-width: 600px) {
+        .hero,
+        .section {
+          padding: 20px;
+        }
+        .hero .title {
+          font-size: 2rem;
+        }
+        .section h2 {
+          font-size: 1.4rem;
+        }
+        .section-actions .btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header-slot"></div>
+    <main class="promo-page cv-page">
+      <div class="promo-container">
+        <div class="promo-topbar">
+          <a class="promo-back" href="../index.html#promotion-slot"
+            ><i class="fas fa-arrow-left"></i
+            ><span>Quay lại chương trình khuyến mãi</span></a
+          >
+        </div>
+        <section class="hero" aria-labelledby="cv-title">
+          <div>
+            <span class="badge">TẦM SOÁT TIM MẠCH</span>
+            <h1 id="cv-title" class="title">
+              Chương trình Tầm soát
+              <span>Thiếu máu cơ tim &amp; Bệnh lý mạch máu</span>
+            </h1>
+            <p class="lead">
+              Gói kết hợp khám Tim mạch, thăm dò chức năng, siêu âm và xét
+              nghiệm để cung cấp thông tin ban đầu về tim, mạch máu cùng các yếu
+              tố nguy cơ cần được bác sĩ đánh giá.
+            </p>
+            <div class="hero-meta" aria-label="Thông tin chương trình">
+              <span><i class="far fa-calendar-alt"></i> 28/09 – 28/10/2026</span
+              ><span><i class="fas fa-list-check"></i> 11 hạng mục</span
+              ><span><i class="fas fa-wallet"></i> 1.243.000 VNĐ</span>
+            </div>
+            <div class="section-actions">
+              <a class="btn btn-primary" href="../index.html#contact-slot"
+                ><i class="far fa-calendar-alt"></i
+                ><span>Đặt lịch hẹn ngay</span></a
+              ><a class="btn btn-secondary" href="../index.html#promotion-slot"
+                ><i class="fas fa-arrow-left"></i
+                ><span>Về trang khuyến mãi</span></a
+              >
+            </div>
+          </div>
+          <div class="hero-media">
+            <img
+              src="../promotion/assets/images/active/cardiovascular-vascular-screening/poster.png"
+              alt="Bác sĩ thực hiện siêu âm tim cho khách hàng tại phòng khám"
+            />
+          </div>
+        </section>
+        <section class="section" aria-labelledby="overview-title">
+          <h2 id="overview-title">Gói khám đánh giá những gì?</h2>
+          <p>
+            Các hạng mục trong gói cung cấp thông tin để bác sĩ Tim mạch kết hợp
+            cùng triệu chứng, tiền sử và tình trạng thực tế khi tư vấn hướng xử
+            trí phù hợp.
+          </p>
+          <div class="summary-grid">
+            <article class="summary-card">
+              <i class="fas fa-heartbeat" aria-hidden="true"></i>
+              <h3>Tim và chức năng tim</h3>
+              <p>
+                Khám Tim mạch, ECG 12 dẫn truyền và siêu âm tim hỗ trợ bác sĩ
+                đánh giá các thông tin lâm sàng và cận lâm sàng liên quan.
+              </p>
+            </article>
+            <article class="summary-card">
+              <i class="fas fa-wave-square" aria-hidden="true"></i>
+              <h3>Mạch cảnh</h3>
+              <p>
+                Siêu âm Doppler mạch cảnh cung cấp hình ảnh để bác sĩ xem xét
+                mạch máu vùng cổ và các dấu hiệu cần theo dõi thêm.
+              </p>
+            </article>
+            <article class="summary-card">
+              <i class="fas fa-vial" aria-hidden="true"></i>
+              <h3>Yếu tố nguy cơ chuyển hóa</h3>
+              <p>
+                Đường huyết, HbA1c và bộ mỡ máu bổ sung thông tin về các chỉ số
+                bác sĩ cần xem xét.
+              </p>
+            </article>
+          </div>
+          <div class="price-callout">
+            <strong>Giá trọn gói chương trình</strong><b>1.243.000 VNĐ</b>Gồm 11
+            hạng mục theo danh mục dưới đây.
+          </div>
+        </section>
+        <section class="section" aria-labelledby="price-title">
+          <h2 id="price-title">Danh mục và giá chi tiết</h2>
+          <div class="table-wrap">
+            <table class="package-table">
+              <caption>
+                Chương trình Tầm soát Thiếu máu cơ tim &amp; Bệnh lý mạch máu
+              </caption>
+              <thead>
+                <tr>
+                  <th>STT</th>
+                  <th>Danh mục / Xét nghiệm</th>
+                  <th>Giá dịch vụ</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="group">
+                  <td colspan="3">I. Khám lâm sàng và đọc kết quả</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Khám chuyên khoa Tim mạch</td>
+                  <td>200.000 VNĐ</td>
+                </tr>
+                <tr class="group">
+                  <td colspan="3">
+                    II. Chẩn đoán hình ảnh và thăm dò chức năng
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Đo điện tâm đồ (ECG 12 dẫn truyền)</td>
+                  <td>100.000 VNĐ</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Siêu âm tim (đánh giá co bóp, van tim)</td>
+                  <td>250.000 VNĐ</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Siêu âm Doppler mạch cảnh (tầm soát xơ vữa mạch máu hướng não)</td>
+                  <td>250.000 VNĐ</td>
+                </tr>
+                <tr class="group">
+                  <td colspan="3">III. Xét nghiệm máu và sinh hóa</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Bảng công thức máu toàn bộ (CBC)</td>
+                  <td>63.000 VNĐ</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>Đường huyết lúc đói (Glucose)</td>
+                  <td>41.000 VNĐ</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>HbA1c (Đường huyết trung bình 3 tháng)</td>
+                  <td>155.000 VNĐ</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>Cholesterol toàn phần</td>
+                  <td>41.000 VNĐ</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>Triglyceride</td>
+                  <td>41.000 VNĐ</td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>HDL-Cholesterol (Mỡ tốt)</td>
+                  <td>51.000 VNĐ</td>
+                </tr>
+                <tr>
+                  <td>11</td>
+                  <td>LDL-Cholesterol (Mỡ xấu)</td>
+                  <td>51.000 VNĐ</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="2">TỔNG — Trọn gói chương trình</td>
+                  <td>1.243.000 VNĐ</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </section>
+        <section class="section" aria-labelledby="preparation-title">
+          <h2 id="preparation-title">Hướng dẫn chuẩn bị trước khi khám</h2>
+          <div class="preparation-grid">
+            <article class="preparation-card">
+              <strong>Nhịn ăn trước khi lấy máu</strong>Nhịn ăn từ 8–12 tiếng
+              trước khi lấy máu xét nghiệm; chỉ uống nước lọc để chỉ số đường
+              huyết lúc đói và bộ mỡ máu có điều kiện đánh giá phù hợp.
+            </article>
+            <article class="preparation-card">
+              <strong>Sử dụng thuốc thường quy</strong>Nếu đang dùng thuốc tăng
+              huyết áp hoặc bệnh tim mạch, tiếp tục dùng theo chỉ định của bác
+              sĩ với nước lọc. Nếu dùng thuốc đái tháo đường, mang theo thuốc và
+              sử dụng sau lấy máu theo tư vấn của nhân viên y tế.
+            </article>
+            <article class="preparation-card">
+              <strong>Trang phục và chuẩn bị</strong>Mặc trang phục thoải mái,
+              rộng rãi để thuận tiện dán điện cực ECG, siêu âm tim và siêu âm
+              Doppler mạch cảnh vùng cổ.
+            </article>
+          </div>
+          <div class="clinical-note">
+            <strong>Lưu ý</strong><br />Gói khám cung cấp thông tin sàng lọc ban
+            đầu, không thay thế cho chẩn đoán. Bác sĩ Tim mạch sẽ diễn giải kết
+            quả theo tình trạng thực tế và tư vấn khám, xét nghiệm hoặc theo dõi
+            bổ sung khi phù hợp.
+          </div>
+          <div class="section-actions">
+            <a class="btn btn-primary" href="../index.html#contact-slot"
+              ><i class="far fa-calendar-alt"></i
+              ><span>Đặt lịch hẹn ngay</span></a
+            ><a class="btn btn-secondary" href="../index.html#promotion-slot"
+              ><i class="fas fa-arrow-left"></i
+              ><span>Quay lại khuyến mãi</span></a
+            >
+          </div>
+        </section>
+      </div>
+    </main>
+    <script>
+      async function loadComponent(elementId, path) {
+        try {
+          const response = await fetch(path);
+          if (!response.ok) return;
+          const html = await response.text();
+          const container = document.getElementById(elementId);
+          if (!container) return;
+          const tempDiv = document.createElement("div");
+          tempDiv.innerHTML = html;
+          if (elementId === "header-slot") {
+            const links = {
+              "#fmcLogo": "../index.html",
+              ".fmc-link-specialist": "../index.html#specialist-slot",
+              ".fmc-link-news": "../index.html#news-slot",
+              ".fmc-link-contact": "../index.html#contact-slot",
+              ".fmc-link-appoint": "../index.html#contact-slot",
+            };
+            Object.entries(links).forEach(([selector, href]) =>
+              tempDiv
+                .querySelectorAll(selector)
+                .forEach((link) => link.setAttribute("href", href)),
+            );
+            const logo = tempDiv.querySelector("#fmcLogoImg");
+            if (logo) logo.setAttribute("src", "../header/logo.png");
+          }
+          const scripts = tempDiv.querySelectorAll("script");
+          scripts.forEach((script) => script.remove());
+          container.innerHTML = tempDiv.innerHTML;
+          scripts.forEach((oldScript) => {
+            const newScript = document.createElement("script");
+            Array.from(oldScript.attributes).forEach((attr) =>
+              newScript.setAttribute(attr.name, attr.value),
+            );
+            if (oldScript.src) newScript.src = oldScript.src;
+            else newScript.textContent = oldScript.textContent;
+            document.body.appendChild(newScript);
+          });
+        } catch (error) {
+          console.error("Error loading component", error);
+        }
+      }
+      document.addEventListener("DOMContentLoaded", () =>
+        loadComponent("header-slot", "../banner.html?v=20260920-cv-r1"),
+      );
+    </script>
+  </body>
+</html>
